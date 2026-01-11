@@ -1,0 +1,182 @@
+[
+    {
+        "id": "GOS-11",
+        "title": "Bowl de Tofu para Diabéticos",
+        "description": "Control glucémico 2025 - Bajo índice glucémico.",
+        "tags": [
+            "Diabetes",
+            "Low-GI",
+            "MNT"
+        ],
+        "ingredients": [
+            "Tofu firme",
+            "Quinoa integral (fibra)",
+            "Brócoli",
+            "AOVE"
+        ],
+        "steps": [
+            {
+                "instruction": "Cocer quinoa integral (mayor fibra que blanca).",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Saltear tofu en AOVE.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Añadir brócoli (vegetal no feculento de consumo libre).",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Servir porción controlada.",
+                "is_branch_point": false,
+                "cross_contamination_alert": "0% azúcares añadidos. NO usar edulcorantes nutritivos como fructosa o agave."
+            }
+        ]
+    },
+    {
+        "id": "GOS-12",
+        "title": "Pescado al Horno con Patatas Lixiviadas",
+        "description": "Dieta renal: Reducción de potasio mediante lixiviación.",
+        "tags": [
+            "Renal",
+            "Low-Potassium",
+            "Leaching"
+        ],
+        "ingredients": [
+            "Merluza fresca",
+            "Patatas (peladas, cortadas y remojadas 4h)",
+            "Aceite de oliva"
+        ],
+        "steps": [
+            {
+                "instruction": "Pelar y cortar patatas en rodajas finas.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Remojar patatas en agua abundante durante 4 horas (cambiar agua cada  hora).",
+                "is_branch_point": false,
+                "cross_contamination_alert": "Lixiviación reduce potasio hasta 50%. Esencial para pacientes con hiperkalemia."
+            },
+            {
+                "instruction": "Escurrir y secar patatas.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Hornear merluza y patatas con aceite de oliva a 180°C durante 25 minutos.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Servir porción controlada (evitar exceso de proteína si GFR<30).",
+                "is_branch_point": false
+            }
+        ]
+    },
+    {
+        "id": "GOS-13",
+        "title": "Ensalada de Lentejas 'Low-Reactant'",
+        "description": "Baja en FODMAPs (Fase 2) - GOS eliminados.",
+        "tags": [
+            "Low FODMAP",
+            "Phase 2",
+            "Legumes"
+        ],
+        "ingredients": [
+            "Lentejas en conserva (muy enjuagadas)",
+            "Merluza",
+            "Zanahoria",
+            "AOVE"
+        ],
+        "steps": [
+            {
+                "instruction": "Enjuagar lentejas enlatadas bajo agua corriente durante 2 minutos.",
+                "is_branch_point": false,
+                "cross_contamination_alert": "GOS (oligosacáridos) son solubles en agua. El líquido de la lata contiene la mayor carga de FODMAPs."
+            },
+            {
+                "instruction": "Cocinar merluza al vapor.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Rallar zanahoria fresca.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Mezclar lentejas, pescado y zanahoria. Aliñar con AOVE.",
+                "is_branch_point": false,
+                "cross_contamination_alert": "Límite: máximo 1/2 taza de lentejas por porción para controlar FODMAPs."
+            }
+        ]
+    },
+    {
+        "id": "GOS-14",
+        "title": "Merluza con Patata (Libre de Soja y Frutos Secos)",
+        "description": "Alergia a soja y frutos secos - Evita ingredientes ocultos.",
+        "tags": [
+            "Soy-Free",
+            "Nut-Free",
+            "Allergen-Safe"
+        ],
+        "ingredients": [
+            "Merluza",
+            "Patata",
+            "Aceite de Oliva (no refinado de soja)",
+            "Sal"
+        ],
+        "steps": [
+            {
+                "instruction": "Verificar que el aceite de oliva NO sea refinado de soja.",
+                "is_branch_point": false,
+                "cross_contamination_alert": "Aceite de soja refinado es común en mezclas genéricas. Leer etiqueta."
+            },
+            {
+                "instruction": "Cocer patatas hasta que estén tiernas.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Cocinar merluza al horno.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Servir con patata hervida.",
+                "is_branch_point": false,
+                "cross_contamination_alert": "NO usar caldos vegetales genéricos (frecuentemente contienen proteína de soja hidrolizada oculta)."
+            }
+        ]
+    },
+    {
+        "id": "GOS-15",
+        "title": "Guiso Marinero 'No Crustáceo'",
+        "description": "Alergia a mariscos - Solo pescado blanco seguro.",
+        "tags": [
+            "Shellfish-Free",
+            "Fish-Only",
+            "Allergen-Safe"
+        ],
+        "ingredients": [
+            "Merluza",
+            "Patata",
+            "Zanahoria",
+            "Sal"
+        ],
+        "steps": [
+            {
+                "instruction": "Cortar merluza en trozos medianos.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Hervir patata y zanahoria hasta que estén tiernas.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Añadir merluza y cocinar 10 minutos más.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Servir caliente.",
+                "is_branch_point": false,
+                "cross_contamination_alert": "NO usar surimi (imitación de marisco hecho con pescado, pero saborizado con extracto de marisco real). Prohibido usar salsas de pescado que puedan contener extracto de marisco."
+            }
+        ]
+    }
+]

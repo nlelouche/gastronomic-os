@@ -1,4 +1,7 @@
+import 'dart:math';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:gastronomic_os/features/recipes/domain/entities/recipe_step.dart';
+import 'package:gastronomic_os/features/recipes/data/models/recipe_step_model.dart';
 
 part 'recipe_snapshot_model.g.dart';
 
@@ -29,5 +32,23 @@ class RecipeSnapshotModel {
 
   // Helpers to retrieve typed lists from the JSONB column
   List<String> get ingredients => List<String>.from(fullStructure['ingredients'] ?? []);
-  List<String> get steps => List<String>.from(fullStructure['steps'] ?? []);
+  
+  List<RecipeStep> get steps {
+    final stepsData = fullStructure['steps'] ?? [];
+    if (stepsData is List) {
+      return stepsData.map((e) {
+        if (e is String) {
+          // Backward compatibility for old string-based steps
+          return RecipeStepModel(instruction: e);
+        } else if (e is Map<String, dynamic>) {
+          print('📥 Loading step from Supabase: $e');
+          final step = RecipeStepModel.fromJson(e);
+          print('   → Loaded as: instruction="${step.instruction.substring(0, min(30, step.instruction.length))}...", skippedForDiets=${step.skippedForDiets}');
+          return step;
+        }
+        return RecipeStepModel(instruction: e.toString());
+      }).toList();
+    }
+    return [];
+  }
 }

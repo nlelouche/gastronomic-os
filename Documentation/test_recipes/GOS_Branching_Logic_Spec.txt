@@ -1,0 +1,36 @@
+# ESPECIFICACIÓN TÉCNICA: LÓGICA DE RAMIFICACIÓN Y RESOLUCIÓN DE MATRIZ (GOS)
+# Versión: 1.0
+# Referencia Científica: Protocolo Maestro de Arquitectura Nutricional 
+
+1. CONCEPTO FUNDAMENTAL: LA RECETA COMO GRAFO (DAG)
+El sistema no debe tratar las recetas como texto lineal, sino como un Grafo Acíclico Dirigido (DAG). Cada receta se compone de "Nodos de Acción" e "Ingredientes" que pueden bifurcarse según los perfiles de usuario activos.
+
+2. FASES DE RESOLUCIÓN DEL SOLVER
+Para cada preparación familiar, el agente debe ejecutar estos tres pasos lógicos:
+
+2.1 Identificación de la "Base Universal" (Mínimo Común Denominador)
+- Acción: Comparar todos los ingredientes del paso actual contra la "Matriz de Compatibilidad" de los perfiles presentes.
+- Regla: Si un ingrediente es "Sí/Apto" para todos los perfiles, el nodo se etiqueta como "UNIVERSAL_BASE".
+- Objetivo: Maximizar el uso de una sola olla/proceso inicial para ahorrar tiempo y energía.
+
+2.2 Detección de "Puntos de Bifurcación" (Conflict Points)
+- Disparador: Se activa cuando un ingrediente o proceso viola una restricción clínica de al menos un perfil del hogar.
+- Categorías de Conflicto:
+    a) Conflicto de Ingrediente: Ejemplo, Mantequilla vs. Alergia Proteína Leche (APLV).
+    b) Conflicto de Proceso: Ejemplo, Fritura compartida vs. Celíaco/Marisco.
+    c) Conflicto de Técnica: Ejemplo, Necesidad de Lixiviación para pacientes Renales.
+
+2.3 Aplicación de Sustitución y Exclusión
+- Sustitución Funcional: Ante un conflicto, el sistema debe consultar la "Tabla de Sustituciones Funcionales".
+- Regla de Branching: El sistema debe generar una instrucción dual:
+    - Rama A (Main): Continuar con el ingrediente original para perfiles sin conflicto.
+    - Rama B (Branch): Separar porción y aplicar sustituto (ej. usar Aquafaba en lugar de Huevo para el alérgico).
+
+3. REQUERIMIENTO DE ESTRUCTURA DE DATOS (JSON SCHEMATIC)
+Para validar si la base de datos es correcta, Antigravity debe verificar que cada receta soporte:
+- "is_branch_point" (Boolean): Indica si el paso permite separación.
+- "variant_logic" (Object): Contiene las reglas de exclusión/sustitución específicas por dieta.
+- "cross_contamination_alert" (String): Instrucciones de higiene si se detectan vectores de riesgo como harinas en suspensión o utensilios porosos.
+
+4. VALIDACIÓN DE SEGURIDAD CRÍTICA
+El agente debe rechazar cualquier receta que no identifique correctamente ingredientes ocultos (ej. Caseinatos en carnes procesadas o Gluten en maltas) antes de proponer el plan de cocina.

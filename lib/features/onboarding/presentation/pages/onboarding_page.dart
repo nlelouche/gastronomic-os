@@ -11,19 +11,29 @@ import 'package:gastronomic_os/init/injection_container.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class OnboardingPage extends StatelessWidget {
-  const OnboardingPage({super.key});
+  final bool isEditing;
+
+  const OnboardingPage({super.key, this.isEditing = false});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => sl<OnboardingBloc>(),
-      child: const OnboardingView(),
+      create: (context) {
+        final bloc = sl<OnboardingBloc>();
+        if (isEditing) {
+          bloc.add(LoadFamilyMembers());
+        }
+        return bloc;
+      },
+      child: OnboardingView(isEditing: isEditing),
     );
   }
 }
 
 class OnboardingView extends StatelessWidget {
-  const OnboardingView({super.key});
+  final bool isEditing;
+
+  const OnboardingView({super.key, required this.isEditing});
 
   @override
   Widget build(BuildContext context) {
@@ -36,10 +46,15 @@ class OnboardingView extends StatelessWidget {
         child: BlocConsumer<OnboardingBloc, OnboardingState>(
           listener: (context, state) {
             if (state is OnboardingSuccess) {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (_) => const DashboardPage()),
-              );
+              if (isEditing) {
+                Navigator.of(context).pop();
+                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Family profile updated!')));
+              } else {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (_) => const DashboardPage()),
+                );
+              }
             } else if (state is OnboardingError) {
               ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(state.message)));
             }
@@ -113,7 +128,7 @@ class OnboardingView extends StatelessWidget {
                   const SizedBox(height: 24),
                   
                   PrimaryButton(
-                    label: 'Finish Setup',
+                    label: isEditing ? 'Save Changes' : 'Finish Setup',
                     icon: Icons.check,
                     onPressed: state.members.isNotEmpty 
                         ? () => context.read<OnboardingBloc>().add(SubmitOnboarding())

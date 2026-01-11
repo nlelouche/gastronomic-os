@@ -15,6 +15,16 @@ RecipeModel _$RecipeModelFromJson(Map<String, dynamic> json) => RecipeModel(
       description: json['description'] as String?,
       isPublic: json['is_public'] as bool,
       createdAt: DateTime.parse(json['created_at'] as String),
+      ingredients: (json['ingredients'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const [],
+      steps: json['steps'] == null
+          ? const []
+          : const _RecipeStepListConverter().fromJson(json['steps'] as List),
+      tags:
+          (json['tags'] as List<dynamic>?)?.map((e) => e as String).toList() ??
+              const [],
     );
 
 Map<String, dynamic> _$RecipeModelToJson(RecipeModel instance) =>
@@ -27,4 +37,7 @@ Map<String, dynamic> _$RecipeModelToJson(RecipeModel instance) =>
       'is_fork': instance.isFork,
       'is_public': instance.isPublic,
       'created_at': instance.createdAt.toIso8601String(),
+      'ingredients': instance.ingredients,
+      'steps': const _RecipeStepListConverter().toJson(instance.steps),
+      'tags': instance.tags,
     };

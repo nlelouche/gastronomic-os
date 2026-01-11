@@ -1,0 +1,97 @@
+# MASTER RECIPE DATABASE V1 - GASTRONOMIC OS (GOS)
+# Objetivo: Pruebas de Estrés de Matriz y Filtros de Seguridad Clínica.
+
+============================================================
+BASE LOGÍSTICA A: "EL NÚCLEO MEDITERRÁNEO"
+Componentes: Pollo fresco, Aceite de Oliva AOVE, Arroz Integral, Zanahoria, Calabacín.
+============================================================
+
+RECETA 01: Pollo al Limón con Arroz y Vegetales
+- DIETA: Mediterránea [cite: 275, 277]
+- INGREDIENTES: Pechuga de pollo, Arroz integral, Zanahoria, Calabacín, AOVE, Limón, Ajo, Cebolla, Sal marina.
+- LOGIC FLAG: Estándar de oro antiinflamatorio[cite: 275].
+
+RECETA 02: Pollo 'Clean' de 20 Minutos
+- DIETA: Histamina (Protocolo SIGHI) [cite: 178, 184]
+- INGREDIENTES: Pechuga de pollo (Extremadamente fresca), Arroz, Calabacín fresco, Zanahoria fresca, AOVE, Sal.
+- LOGIC FLAG: EXCLUYE Ajo, Cebolla, Limón (Liberadores de histamina)[cite: 198, 203]. Prohibido sobras[cite: 183].
+
+RECETA 03: Bowl de Pollo y Arroz 'FODMAP-Safe'
+- DIETA: Baja en FODMAPs (Eliminación) [cite: 153, 157]
+- INGREDIENTES: Pechuga de pollo, Arroz, Zanahoria, Aceite infusionado en ajo (sin sólidos), Sal.
+- LOGIC FLAG: EXCLUYE Cebolla, Ajo sólido y Calabacín (>65g)[cite: 161, 162].
+
+RECETA 04: Pollo Renal con Arroz (Control K/P)
+- DIETA: Renal (Hiperkalemia / Fósforo bajo) [cite: 205, 220]
+- INGREDIENTES: Pollo fresco (no inyectado), Arroz blanco (bajo P), Zanahoria (Lixiviada), Aceite de oliva.
+- LOGIC FLAG: EXCLUYE Arroz integral (alto P), Sal (Sodio bajo)[cite: 208, 232]. Fosfatos inorgánicos 0%[cite: 226].
+
+============================================================
+BASE LOGÍSTICA B: "BOWL DE PROTEÍNA Y GRASAS"
+Componentes: Ternera magra fresca, Huevo (opcional), Aguacate, Espinaca, Aceite de Oliva.
+============================================================
+
+RECETA 05: Steak & Eggs Power Bowl
+- DIETA: Keto [cite: 246]
+- INGREDIENTES: Ternera magra, Huevo entero, Aguacate, Espinaca cocida, AOVE, Sal.
+- LOGIC FLAG: Carbohidratos netos < 5g[cite: 247, 287].
+
+RECETA 06: Bowl Paleo Ancestral
+- DIETA: Paleo [cite: 254]
+- INGREDIENTES: Ternera magra, Aguacate, Espinaca, Huevo, Aceite de oliva.
+- LOGIC FLAG: EXCLUYE Lácteos, Granos, Legumbres[cite: 257, 258].
+
+RECETA 07: Reset Familiar Whole30
+- DIETA: Whole30 [cite: 260]
+- INGREDIENTES: Ternera, Aguacate, Espinaca, Aceite de Oliva, Sal.
+- LOGIC FLAG: EXCLUYE Alcohol, Azúcares, Edulcorantes, Huevo (en caso de sensibilidad)[cite: 263, 264].
+
+RECETA 08: Bowl de Carne 'Sin Alérgenos' (APLV + Huevo 0)
+- DIETA: Alergia Proteína Leche (APLV) + Alergia Huevo [cite: 14, 44]
+- INGREDIENTES: Ternera magra, Aguacate, Espinaca, Arroz integral.
+- LOGIC FLAG: EXCLUYE Mantequilla (caseína), Caseinatos en carne procesada, Huevo[cite: 18, 25, 47].
+
+============================================================
+BASE LOGÍSTICA C: "PLATOS DE ORIGEN VEGETAL"
+Componentes: Tofu firme, Quinoa, Brócoli, Semillas de lino.
+============================================================
+
+RECETA 09: Salteado de Tofu y Quinoa
+- DIETA: Vegana Estricta [cite: 267]
+- INGREDIENTES: Tofu firme, Quinoa, Brócoli, Aceite de oliva, Semillas de lino.
+- LOGIC FLAG: EXCLUYE Todo producto animal, Vitamina D3 de lanolina, Gelatina[cite: 268, 271, 274].
+
+RECETA 10: Quinoa Garden (Celiaco Safe)
+- DIETA: Celíaca (Sin Gluten Estricta) [cite: 126]
+- INGREDIENTES: Quinoa (certificada), Tofu firme, Brócoli, AOVE.
+- LOGIC FLAG: EXCLUYE Trigo, Espelta, Cebada, Malta, Salsas de soja con trigo[cite: 130, 132, 137, 140].
+
+RECETA 11: Bowl de Tofu para Diabéticos
+- DIETA: Diabetes (Control Glucémico 2025) [cite: 235]
+- INGREDIENTES: Tofu firme, Quinoa integral (fibra), Brócoli, AOVE.
+- LOGIC FLAG: Índice glucémico bajo, 0% azúcares añadidos[cite: 237, 241, 242].
+
+============================================================
+BASE LOGÍSTICA D: "PESCADOS BLANCOS Y LEGUMBRES LIGERAS"
+Componentes: Pescado blanco fresco (Merluza), Lentejas (Lata/Enjuagadas), Patatas.
+============================================================
+
+RECETA 12: Pescado al Horno con Patatas Lixiviadas
+- DIETA: Renal (Potasio controlado) [cite: 205, 218]
+- INGREDIENTES: Merluza fresca, Patatas (peladas, cortadas y remojadas 4h), Aceite de oliva.
+- LOGIC FLAG: Reducción de potasio mediante técnica de lixiviación[cite: 218].
+
+RECETA 13: Ensalada de Lentejas 'Low-Reactant'
+- DIETA: Baja en FODMAPs (Fase 2) [cite: 153, 165]
+- INGREDIENTES: Lentejas en conserva (muy enjuagadas), Merluza, Zanahoria, AOVE.
+- LOGIC FLAG: GOS eliminados en el líquido de la lata[cite: 165]. Límite < 1/2 taza.
+
+RECETA 14: Merluza con Patata (Libre de Soja y Frutos Secos)
+- DIETA: Alergia Soja + Alergia Frutos Secos [cite: 72, 93]
+- INGREDIENTES: Merluza, Patata, Aceite de Oliva (no refinado de soja), Sal.
+- LOGIC FLAG: EXCLUYE Lecitina de soja, aceites de nuez, caldos vegetales genéricos[cite: 80, 87, 102].
+
+RECETA 15: Guiso Marinero 'No Crustáceo'
+- DIETA: Alergia a Mariscos (Crustáceos/Moluscos) [cite: 111]
+- INGREDIENTES: Merluza, Patata, Zanahoria, Sal.
+- LOGIC FLAG: EXCLUYE Camarón, Surimi, Salsas de pescado con extracto de marisco[cite: 113, 119, 121].

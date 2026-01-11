@@ -29,6 +29,7 @@ class ForkRecipe extends RecipeEvent {
   List<Object> get props => [originalRecipeId, newTitle];
 }
 
+
 class LoadRecipeDetails extends RecipeEvent {
   final String recipeId;
 
@@ -37,3 +38,12 @@ class LoadRecipeDetails extends RecipeEvent {
   @override
   List<Object> get props => [recipeId];
 }
+
+class SeedDatabase extends RecipeEvent {
+  final String? filterTitle;
+  const SeedDatabase({this.filterTitle});
+  
+  @override
+  List<Object> get props => [if (filterTitle != null) filterTitle!];
+}
+

@@ -1,0 +1,102 @@
+# MASTER RECIPE DATABASE V2 - GASTRONOMIC OS (GOS)
+# Enfoque: Validación de Contaminación Cruzada, Aditivos Ocultos y Nutrición Clínica.
+
+============================================================
+BASE LOGÍSTICA E: "EL NÚCLEO PROTEICO ROJO"
+Componentes: Carne de ternera magra, Batata (Boniato), Brócoli, Aceite de Coco.
+============================================================
+
+RECETA 16: Steak Paleo con Batata Asada
+- DIETA: Paleo
+- INGREDIENTES: Ternera magra, Batata, Brócoli, Aceite de coco, Sal.
+- LOGIC FLAG: Cumple con la exclusión de alimentos neolíticos (granos/lácteos).
+
+RECETA 17: Ternera 'Renal-Leaching'
+- DIETA: Renal (Hiperkalemia controlada)
+- INGREDIENTES: Ternera magra fresca, Batata (Lixiviada: pelada y remojada 4h), Brócoli (porción pequeña <1/2 taza), Aceite de coco.
+- LOGIC FLAG: Reduce potasio mediante técnica de lixiviación de la batata.
+
+RECETA 18: Stir-fry de Ternera para Diabéticos
+- DIETA: Diabetes (MNT 2025)
+- INGREDIENTES: Ternera magra, Brócoli abundante (vegetal no feculento), Aceite de coco, Semillas de sésamo.
+- LOGIC FLAG: Minimiza carbohidratos refinados y prioriza fibra.
+
+============================================================
+BASE LOGÍSTICA F: "EL NÚCLEO DE MAR Y TIERRA"
+Componentes: Salmón fresco (congelado rápido), Espárragos, Quinoa, Semillas de calabaza.
+============================================================
+
+RECETA 19: Salmón al Vapor 'SIGHI-Safe'
+- DIETA: Intolerancia a la Histamina (Protocolo Frescura)
+- INGREDIENTES: Salmón (fresco congelado inmediatamente), Espárragos frescos, Quinoa, AOVE.
+- LOGIC FLAG: EXCLUYE Pescado en conserva, ahumado o no fresco.
+
+RECETA 20: Quinoa Marina 'FODMAP-Low'
+- DIETA: Baja en FODMAPs (Fase Eliminación)
+- INGREDIENTES: Quinoa, Salmón, Espárragos (Solo puntas, <5 unidades), Aceite infusionado en ajo.
+- LOGIC FLAG: Control de porciones en espárragos (fructanos).
+
+RECETA 21: Salmón Atlántico 'Heart-Healthy'
+- DIETA: Mediterránea
+- INGREDIENTES: Salmón, Quinoa integral, Espárragos, AOVE, Limón, Hierbas frescas.
+- LOGIC FLAG: Alta en Omega-3 y grasas monoinsaturadas.
+
+============================================================
+BASE LOGÍSTICA G: "EL NÚCLEO VEGETAL DENSO"
+Componentes: Lentejas Rojas, Calabaza, Espinacas, Leche de Coco (Lata sin aditivos).
+============================================================
+
+RECETA 22: Curry de Lentejas Vegano
+- DIETA: Vegana Estricta
+- INGREDIENTES: Lentejas rojas, Calabaza, Espinacas, Leche de coco, Cúrcuma, Comino.
+- LOGIC FLAG: EXCLUYE Caldos con colorante Carmín (E120) o trazas lácteas.
+
+RECETA 23: Guiso de Lentejas 'Gluten-Free'
+- DIETA: Celíaca
+- INGREDIENTES: Lentejas rojas (certificadas), Calabaza, Espinacas, Leche de coco, Tamari (sin trigo).
+- LOGIC FLAG: EXCLUYE Salsa de soja común y espesantes con trigo.
+
+RECETA 24: Sopa de Lentejas 'Low-Phos'
+- DIETA: Renal (Gestión de Fósforo)
+- INGREDIENTES: Lentejas rojas (enjuagadas), Calabaza, Espinacas, Leche de coco (natural).
+- LOGIC FLAG: Fósforo orgánico (absorción 40-60%). Prohíbe aditivos "PHOS".
+
+============================================================
+BASE LOGÍSTICA H: "EL NÚCLEO DE AVES Y SEMILLAS"
+Componentes: Pavo picado, Calabacín, Champiñones, Semillas de Chía.
+============================================================
+
+RECETA 25: Albóndigas de Pavo 'Egg-Free'
+- DIETA: Alergia al Huevo
+- INGREDIENTES: Pavo picado, Calabacín rallado, Semillas de chía hidratadas ("huevo de chía"), Sal.
+- LOGIC FLAG: Sustitución funcional del huevo para aglutinación.
+
+RECETA 26: Salteado de Pavo 'No-Soy'
+- DIETA: Alergia a la Soja
+- INGREDIENTES: Pavo picado, Calabacín, Champiñones, Aceite de canola (no soja), Sal.
+- LOGIC FLAG: EXCLUYE Proteína vegetal texturizada (TVP) y lecitina de soja.
+
+RECETA 27: Pavo y Champiñones Keto
+- DIETA: Keto
+- INGREDIENTES: Pavo picado, Calabacín, Champiñones, Mantequilla (Ghee), Sal.
+- LOGIC FLAG: Carbohidratos netos ultra-bajos. Champiñones permitidos.
+
+============================================================
+BASE LOGÍSTICA I: "EL NÚCLEO DE DESAYUNO/SNACK"
+Componentes: Avena (Certificada), Manzana, Canela, Leche de Arroz.
+============================================================
+
+RECETA 28: Porridge de Avena 'Milk-Free'
+- DIETA: APLV (Alergia Proteína Leche Vaca)
+- INGREDIENTES: Avena certificada, Manzana, Canela, Leche de arroz.
+- LOGIC FLAG: EXCLUYE Caseinatos y productos "Non-Dairy" con caseinato de sodio.
+
+RECETA 29: Avena con Manzana para Celíacos
+- DIETA: Celíaca
+- INGREDIENTES: Avena (Certificada Gluten-Free), Manzana, Canela, Leche de arroz.
+- LOGIC FLAG: EXCLUYE Avena genérica (contaminación cruzada).
+
+RECETA 30: Snack de Manzana y Canela 'Whole30'
+- DIETA: Whole30
+- INGREDIENTES: Manzana, Canela, Agua (sin leche de arroz por ser grano).
+- LOGIC FLAG: EXCLUYE Azúcar añadido, miel y jarabe de arce.

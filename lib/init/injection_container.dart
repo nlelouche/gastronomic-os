@@ -12,6 +12,8 @@ import 'package:gastronomic_os/features/onboarding/data/datasources/onboarding_r
 import 'package:gastronomic_os/features/onboarding/data/repositories/onboarding_repository_impl.dart';
 import 'package:gastronomic_os/features/onboarding/domain/repositories/i_onboarding_repository.dart';
 import 'package:gastronomic_os/features/onboarding/presentation/bloc/onboarding_bloc.dart';
+import 'package:gastronomic_os/features/planner/domain/usecases/get_meal_suggestions.dart';
+import 'package:gastronomic_os/features/planner/presentation/bloc/planner_bloc.dart';
 
 final sl = GetIt.instance;
 
@@ -45,6 +47,15 @@ Future<void> init() async {
   sl.registerLazySingleton<OnboardingRemoteDataSource>(
     () => OnboardingRemoteDataSourceImpl(supabaseClient: sl()),
   );
+
+  // Planner Feature
+  sl.registerLazySingleton(() => GetMealSuggestions(
+    recipeRepository: sl(),
+    inventoryRepository: sl(),
+    onboardingRepository: sl(),
+  ));
+  
+  sl.registerFactory(() => PlannerBloc(getMealSuggestions: sl()));
 
   // ! External
   sl.registerLazySingleton(() => Supabase.instance.client);

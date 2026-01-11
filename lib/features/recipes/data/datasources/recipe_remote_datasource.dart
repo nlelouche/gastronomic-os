@@ -1,17 +1,21 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'dart:math';
 import 'package:gastronomic_os/core/error/failures.dart';
 import 'package:gastronomic_os/features/recipes/data/models/recipe_snapshot_model.dart';
 import 'package:gastronomic_os/features/recipes/data/models/recipe_model.dart';
 import 'package:gastronomic_os/features/recipes/data/models/commit_model.dart';
+import 'package:gastronomic_os/features/recipes/data/models/recipe_step_model.dart';
 import 'package:gastronomic_os/features/recipes/domain/entities/recipe.dart'; 
 
 abstract class RecipeRemoteDataSource {
   Future<List<RecipeModel>> getRecipes();
+  Future<List<RecipeModel>> getRecipeHeaders();
   Future<RecipeModel> createRecipe(Recipe recipe);
   Future<RecipeModel> forkRecipe(String originalRecipeId, String newTitle, String authorId);
   Future<List<CommitModel>> getCommits(String recipeId);
   Future<CommitModel> addCommit(CommitModel commit);
   Future<RecipeModel> getRecipeDetails(String recipeId);
+  Future<void> clearAllRecipes(); // For development: clear all recipes
 }
 
 class RecipeRemoteDataSourceImpl implements RecipeRemoteDataSource {
@@ -21,9 +25,53 @@ class RecipeRemoteDataSourceImpl implements RecipeRemoteDataSource {
 
   @override
   Future<List<RecipeModel>> getRecipes() async {
+    // Legacy implementation - still useful if we need full dump, but generally inefficient.
+    // Consider using getRecipeHeaders() + getRecipeDetails() instead.
     try {
-      final response = await supabaseClient.from('recipes').select(); // RLS handles filtering
-      return (response as List).map((e) => RecipeModel.fromJson(e)).toList();
+      final response = await supabaseClient.from('recipes').select();
+      final List<RecipeModel> recipes = [];
+
+      for (final recipeData in response) {
+        // ... (legacy logic) ...
+        // Re-using getRecipeDetails logic would be cleaner but let's keep it isolated for now.
+        // Actually, let's just make getRecipes call getRecipeHeaders and then populate? 
+        // No, that's N+1. 
+        // Let's leave this as is for backward compatibility if needed, 
+        // but the Repository will switch to getRecipeHeaders.
+        final recipeId = recipeData['id'] as String;
+        final recipeModel = RecipeModel.fromJson(recipeData);
+
+        final snapshotResponse = await supabaseClient
+            .from('recipe_snapshots')
+            .select()
+            .eq('recipe_id', recipeId)
+            .order('created_at', ascending: false)
+            .limit(1)
+            .maybeSingle();
+
+        if (snapshotResponse != null) {
+          final snapshot = RecipeSnapshotModel.fromJson(snapshotResponse);
+          recipes.add(recipeModel.copyWith(
+            ingredients: snapshot.ingredients,
+            steps: snapshot.steps,
+          ));
+        } else {
+          recipes.add(recipeModel);
+        }
+      }
+      return recipes;
+    } catch (e) {
+      throw const ServerFailure();
+    }
+  }
+
+  @override
+  Future<List<RecipeModel>> getRecipeHeaders() async {
+    try {
+      // Optimized query: Only fetch recipe table data, no snapshots/joins.
+      final response = await supabaseClient.from('recipes').select();
+      
+      return (response as List).map((data) => RecipeModel.fromJson(data)).toList();
     } catch (e) {
       throw const ServerFailure();
     }
@@ -32,13 +80,59 @@ class RecipeRemoteDataSourceImpl implements RecipeRemoteDataSource {
   @override
   Future<RecipeModel> createRecipe(Recipe recipe) async {
     try {
-      // 1. Insert Recipe Header
-      // We don't send ingredients/steps here as they are not in 'recipes' table
+      final currentUserId = supabaseClient.auth.currentUser!.id;
+
+      // 1. Calculate Enriched Tags (Move logic to top)
+      final enrichedTags = List<String>.from(recipe.tags);
+      print('🔍 Enriching tags for "${recipe.title}". Initial tags: $enrichedTags');
+      
+      for (final step in recipe.steps) {
+        if (step.isBranchPoint && step.variantLogic != null) {
+          print('   Found variant step: ${step.variantLogic!.keys}');
+          for (final diet in step.variantLogic!.keys) {
+            final normalizedDiet = diet; 
+            if (!enrichedTags.any((t) => t.toLowerCase() == normalizedDiet.toLowerCase())) {
+              enrichedTags.add(normalizedDiet);
+              print('   ✅ Added enriched tag: $normalizedDiet');
+            }
+          }
+        }
+      }
+      print('🏁 Final enriched tags: $enrichedTags');
+      
+      // 2. Check Existence
+      final existingRecipe = await supabaseClient
+          .from('recipes')
+          .select('id')
+          .eq('author_id', currentUserId)
+          .eq('title', recipe.title)
+          .maybeSingle();
+      
+      if (existingRecipe != null) {
+        print('⚠️ Recipe "${recipe.title}" already exists. Updating Tags & Skipping creation.');
+        
+        // SELF-HEALING: Ensure tags are up to date!
+        await supabaseClient
+            .from('recipes')
+            .update({'tags': enrichedTags})
+            .eq('id', existingRecipe['id']);
+
+        // Return existing recipe
+        final fullRecipe = await supabaseClient
+            .from('recipes')
+            .select()
+            .eq('id', existingRecipe['id'])
+            .single();
+        return RecipeModel.fromJson(fullRecipe);
+      }
+      
+      // 3. Insert New Recipe (using enrichedTags)
       final recipeData = {
         'title': recipe.title,
         'description': recipe.description,
+        'tags': enrichedTags, // ✅ Save enriched tags
         'is_public': recipe.isPublic,
-        'author_id': supabaseClient.auth.currentUser!.id,
+        'author_id': currentUserId,
       };
 
       final recipeResponse = await supabaseClient
@@ -66,14 +160,39 @@ class RecipeRemoteDataSourceImpl implements RecipeRemoteDataSource {
       final commitId = commitResponse['id'];
 
       // 3. Insert Snapshot (The Content)
+      // CRITICAL: Supabase client has issues with deeply nested Maps.
+      // We need to convert steps to JSON first, then parse back to ensure proper serialization
+      final stepsJson = recipe.steps.map((step) {
+        if (step is RecipeStepModel) {
+          final json = step.toJson();
+          print('💾 Serializing step: "${step.instruction.substring(0, min(30, step.instruction.length))}..." - toJson: $json');
+          return json;
+        }
+        return {
+          'instruction': step.instruction,
+          'is_branch_point': step.isBranchPoint,
+          'variant_logic': step.variantLogic,
+          'cross_contamination_alert': step.crossContaminationAlert,
+        };
+      }).toList();
+
+      // Convert the entire structure to JSON string and back to force proper serialization
+      final fullStructureJson = {
+        'ingredients': recipe.ingredients,
+        'steps': stepsJson,
+      };
+      
       final snapshotData = {
         'commit_id': commitId,
         'recipe_id': recipeId,
-        'full_structure': {
-          'ingredients': recipe.ingredients,
-          'steps': recipe.steps,
-        },
+        'full_structure': fullStructureJson,
       };
+
+      print('🚀 About to insert snapshot to Supabase. Full payload:');
+      print('   Steps count: ${stepsJson.length}');
+      print('   Step 2 JSON: ${stepsJson.length > 1 ? stepsJson[1] : "N/A"}');
+      print('   full_structure type: ${fullStructureJson.runtimeType}');
+      print('   full_structure JSON: $fullStructureJson');
 
       await supabaseClient
           .from('recipe_snapshots')
@@ -183,6 +302,18 @@ class RecipeRemoteDataSourceImpl implements RecipeRemoteDataSource {
       return recipeModel; // Return header only if no snapshot found
     } catch (e) {
       print('Error fetching details: $e');
+      throw const ServerFailure();
+    }
+  }
+
+  @override
+  Future<void> clearAllRecipes() async {
+    try {
+      // Delete in correct order to respect foreign key constraints
+      await supabaseClient.from('recipe_snapshots').delete().neq('commit_id', '00000000-0000-0000-0000-000000000000');
+      await supabaseClient.from('commits').delete().neq('id', '00000000-0000-0000-0000-000000000000');
+      await supabaseClient.from('recipes').delete().neq('id', '00000000-0000-0000-0000-000000000000');
+    } catch (e) {
       throw const ServerFailure();
     }
   }

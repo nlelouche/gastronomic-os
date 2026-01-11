@@ -1,0 +1,184 @@
+[
+    {
+        "id": "GOS-06",
+        "title": "Bowl Paleo Ancestral",
+        "description": "Dieta Paleolítica - Exclusión de alimentos neolíticos.",
+        "tags": [
+            "Paleo",
+            "Ancestral",
+            "Grain-Free"
+        ],
+        "ingredients": [
+            "Ternera magra",
+            "Aguacate",
+            "Espinaca",
+            "Huevo",
+            "Aceite de oliva"
+        ],
+        "steps": [
+            {
+                "instruction": "Saltear espinacas en aceite de oliva.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Cocinar ternera magra al término deseado.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Freír huevo en la grasa del filete.",
+                "is_branch_point": true,
+                "variant_logic": {
+                    "Egg Allergy": "Sustituir huevo por porción extra de aguacate."
+                }
+            },
+            {
+                "instruction": "Servir con aguacate laminado.",
+                "is_branch_point": false
+            }
+        ]
+    },
+    {
+        "id": "GOS-07",
+        "title": "Reset Familiar Whole30",
+        "description": "Protocolo Whole30 de eliminación estricta (30 días).",
+        "tags": [
+            "Whole30",
+            "Reset",
+            "Elimination"
+        ],
+        "ingredients": [
+            "Ternera",
+            "Aguacate",
+            "Espinaca",
+            "Aceite de Oliva",
+            "Sal"
+        ],
+        "steps": [
+            {
+                "instruction": "Saltear espinaca en AOVE.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Cocinar ternera sin azúcar ni edulcorantes.",
+                "is_branch_point": false,
+                "cross_contamination_alert": "Prohibido: Carragenina, Sulfitos y MSG (aditivos explícitamente prohibidos en Whole30)."
+            },
+            {
+                "instruction": "Servir con aguacate.",
+                "is_branch_point": false
+            }
+        ]
+    },
+    {
+        "id": "GOS-08",
+        "title": "Bowl de Carne 'Sin Alérgenos' (APLV + Huevo 0)",
+        "description": "Libre de lácteos y huevo para múltiples alergias.",
+        "tags": [
+            "APLV",
+            "Egg-Free",
+            "Allergen-Free"
+        ],
+        "ingredients": [
+            "Ternera magra",
+            "Aguacate",
+            "Espinaca",
+            "Arroz integral"
+        ],
+        "steps": [
+            {
+                "instruction": "Verificar que la ternera NO sea procesada ni inyectada con caldo.",
+                "is_branch_point": false,
+                "cross_contamination_alert": "Carne procesada puede contener caseinatos ocultos como aglutinante."
+            },
+            {
+                "instruction": "Cocer arroz integral.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Cocinar ternera en sartén sin mantequilla (usar AOVE).",
+                "is_branch_point": false,
+                "cross_contamination_alert": "Limpiar sartén a fondo si se usó previamente con lácteos."
+            },
+            {
+                "instruction": "Saltear espinaca y servir sobre arroz con aguacate.",
+                "is_branch_point": false
+            }
+        ]
+    },
+    {
+        "id": "GOS-09",
+        "title": "Salteado de Tofu y Quinoa",
+        "description": "Plato vegano estricto con proteína vegetal completa.",
+        "tags": [
+            "Vegan",
+            "Plant-Based",
+            "Protein"
+        ],
+        "ingredients": [
+            "Tofu firme",
+            "Quinoa",
+            "Brócoli",
+            "Aceite de oliva",
+            "Semillas de lino"
+        ],
+        "steps": [
+            {
+                "instruction": "Cocer quinoa según indicaciones del paquete.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Cortar tofu en cubos y saltear en aceite de oliva hasta dorar.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Añadir brócoli y cocinar 5 minutos.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Servir sobre quinoa y esparcir semillas de lino.",
+                "is_branch_point": false,
+                "cross_contamination_alert": "Verificar que la quinoa NO contenga Vitamina D3 de lanolina (debe ser D2 o D3 de liquen)."
+            }
+        ]
+    },
+    {
+        "id": "GOS-10",
+        "title": "Quinoa Garden (Celiaco Safe)",
+        "description": "Plato libre de gluten certificado para enfermedad celíaca.",
+        "tags": [
+            "Celiac",
+            "Gluten-Free",
+            "Safe"
+        ],
+        "ingredients": [
+            "Quinoa (certificada GF)",
+            "Tofu firme",
+            "Brócoli",
+            "AOVE"
+        ],
+        "steps": [
+            {
+                "instruction": "Verificar certificación Gluten-Free en la quinoa.",
+                "is_branch_point": false,
+                "cross_contamination_alert": "Quinoa genérica puede estar contaminada con trigo en instalaciones compartidas."
+            },
+            {
+                "instruction": "Cocer quinoa en agua pura.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Saltear tofu en AOVE.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Añadir brócoli y cocinar hasta tierno.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Mezclar con quinoa y servir.",
+                "is_branch_point": false,
+                "cross_contamination_alert": "NO usar salsa de soja común (contiene trigo). Usar Tamari certificado sin trigo."
+            }
+        ]
+    }
+]

@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'recipe_step.dart';
 
 class Recipe extends Equatable {
   final String id;
@@ -10,7 +11,8 @@ class Recipe extends Equatable {
   final bool isPublic;
   final DateTime createdAt;
   final List<String> ingredients;
-  final List<String> steps;
+  final List<RecipeStep> steps;
+  final List<String> tags; // e.g. ['Vegan', 'Keto', 'Gluten-Free']
 
   const Recipe({
     required this.id,
@@ -23,8 +25,9 @@ class Recipe extends Equatable {
     required this.createdAt,
     this.ingredients = const [],
     this.steps = const [],
+    this.tags = const [],
   });
 
   @override
-  List<Object?> get props => [id, authorId, originId, isFork, title, description, isPublic, createdAt, ingredients, steps];
+  List<Object?> get props => [id, authorId, originId, isFork, title, description, isPublic, createdAt, ingredients, steps, tags];
 }

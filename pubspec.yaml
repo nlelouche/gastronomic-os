@@ -19,7 +19,8 @@ dependencies:
   shadcn_ui: ^0.8.0
   flutter_animate: ^4.5.0
   responsive_framework: ^1.4.0
-  skeletonizer: ^1.4.1 
+  skeletonizer: ^1.4.1
+  uuid: ^4.5.1
 
 dev_dependencies:
   flutter_test:
@@ -30,3 +31,5 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - Documentation/test_recipes/json/

@@ -1,0 +1,378 @@
+﻿Protocolo Maestro de Arquitectura Nutricional: Parametrización Algorítmica de Patologías Clínicas y Marcos Dietéticos
+1. Introducción y Marco Operativo del Sistema
+Este informe constituye la capa de lógica fundamental para un sistema operativo gastronómico de alta precisión. En el contexto de la nutrición clínica y la seguridad alimentaria, la ambigüedad es un vector de riesgo inaceptable. A diferencia del asesoramiento dietético humano, que puede depender de la intuición y la negociación con el paciente, un motor algorítmico requiere definiciones binarias y conjuntos de datos rigurosamente delimitados para garantizar la seguridad del usuario. La misión de este documento es traducir la complejidad biológica de las interacciones nutriente-huésped en reglas computables que gestionen la exclusión, sustitución y validación de ingredientes.
+El análisis abarca más de 18 protocolos dietéticos distintos, desglosados en tres dominios fisiológicos críticos: patologías inmunológicas (alergias e intolerancias autoinmunes), trastornos metabólicos y enzimáticos (FODMAP, histamina, diabetes, nefropatía) y marcos de exclusión voluntaria o antiinflamatoria (Keto, Paleo, Vegano). La precisión en la identificación de sinónimos químicos, la comprensión de la reactividad cruzada y la gestión de la contaminación cruzada son los pilares sobre los que debe construirse este motor. Un error en la clasificación de un aditivo como la caseína hidrolizada o el reconocimiento fallido de un fosfato inorgánico en un paciente renal puede derivar en consecuencias clínicas graves, desde la anafilaxia hasta arritmias letales. Por tanto, la exactitud científica extraída de las fuentes proporcionadas es el estándar mínimo de operación.
+________________
+2. Dominio de Patologías Inmunológicas y Alergias IgE-Mediadas
+La gestión algorítmica de las alergias alimentarias exige un enfoque de "tolerancia cero". A diferencia de las intolerancias metabólicas, donde pequeñas cantidades pueden causar malestar, en las alergias IgE-mediadas, trazas microscópicas pueden desencadenar una respuesta sistémica.
+2.1 Alergia a la Proteína de la Leche de Vaca (APLV)
+2.1.1 Fisiopatología y Diferenciación Clínica
+Es imperativo que el algoritmo distinga categóricamente entre la APLV y la intolerancia a la lactosa. La APLV es una reacción inmunológica a las proteínas de la leche, principalmente la caseína (80%) y el suero o whey (20%), que incluye beta-lactoglobulina y alfa-lactoalbúmina.1 La ingestión desencadena una respuesta inflamatoria que puede afectar la piel, el sistema gastrointestinal y el respiratorio. El sistema no debe sugerir productos "sin lactosa" a un usuario con APLV, ya que estos productos mantienen las proteínas intactas y representan un riesgo mortal.2
+2.1.2 Vectores de Exclusión Algorítmica
+El motor debe identificar y excluir cualquier ingrediente derivado de la secreción mamaria de mamíferos. Aunque la alergia primaria es a la leche de vaca, existe una alta tasa de reactividad cruzada con la leche de cabra y oveja, por lo que estas deben ser excluidas por defecto a menos que se indique una tolerancia explícita.2
+Identificadores Críticos de Ingredientes:
+El sistema debe escanear las etiquetas en busca de términos técnicos que ocultan la presencia de proteínas lácteas. Estos incluyen:
+* Caseinatos: Todas las sales de caseína (amónico, cálcico, magnésico, potásico, sódico) son peligrosas. Se utilizan frecuentemente como aglutinantes en carnes procesadas y "quesos" vegetales de baja calidad.2
+* Hidrolizados: Proteína de leche hidrolizada, hidrolizado de caseína, hidrolizado de suero. Aunque las proteínas están fragmentadas, a menudo retienen epítopos alergénicos suficientes para provocar una reacción.2
+* Aditivos Menores: Lactoalbúmina, fosfato de lactoalbúmina, lactoglobulina, lactoferrina.
+* Conservantes y Saborizantes: Recaldent, nisin (un conservante derivado de la fermentación láctea), cuajo (rennet casein), saborizante artificial de mantequilla, diacetilo (sabor a mantequilla).1
+* Tagatosa: Un edulcorante que se deriva de la lactosa y puede contener trazas de proteína.1
+2.1.3 Fuentes Ocultas y Contaminación Cruzada
+El algoritmo debe aplicar una "etiqueta de riesgo" a categorías de alimentos que no son lácteos per se pero tienen un alto riesgo de inclusión oculta:
+* Embutidos y Carnes Procesadas: Las máquinas cortadoras en charcuterías se utilizan indistintamente para queso y carne, transfiriendo proteínas. Además, la caseína se usa como aglutinante en salchichas y fiambres.4
+* Atún en Lata: Algunas marcas añaden caseína hidrolizada como potenciador del sabor o portador de aromas.5
+* Patatas Fritas y Snacks: Los saborizantes (incluso los que no son de "queso", como hierbas o vinagre) pueden usar suero en polvo como portador.5
+* Productos "No Lácteos": Las cremas para café etiquetadas como "non-dairy" a menudo contienen caseinato de sodio para lograr textura, lo cual es una trampa semántica peligrosa para el consumidor.3
+2.1.4 Sustitución Funcional
+Para la funcionalidad culinaria, el sistema debe recomendar sustitutos basándose en la química de los alimentos:
+* Para hornear: Leche de soja (rica en proteínas, comportamiento similar en la reacción de Maillard), leche de avena (aporta cuerpo y cremosidad).6
+* Para espesar: El tofu sedoso (silken tofu) o la crema de anacardos pueden replicar la textura de la nata o el queso crema en postres y salsas.6 La leche de arroz, por ser muy ligera, no es adecuada para sustituir grasas o natas.6
+________________
+2.2 Alergia al Huevo
+2.2.1 Fisiopatología
+La alergia al huevo es una reacción a las proteínas presentes principalmente en la clara (ovoalbúmina, ovomucoide, ovotransferrina, lisozima) pero también en la yema (livetina, vitelina).9 Dado que separar la clara de la yema sin contaminación cruzada es imposible a nivel industrial o doméstico estándar, el algoritmo debe excluir el huevo entero.
+2.2.2 Vectores de Exclusión Algorítmica
+El motor de búsqueda debe rastrear términos derivados del latín ovum y componentes técnicos:
+* Proteínas Específicas: Albúmina (y silico-albuminato), globulina, livetina, lisozima (frecuentemente usada como conservante en quesos duros), ovalbúmina, ovoglobulina, ovomucina, ovomucoide, ovovitelina, vitelina.9
+* Productos Derivados: Mayonesa, merengue (polvo de merengue), surimi (a menudo contiene clara de huevo para la textura), ponche de huevo (eggnog), sustitutos de huevo comerciales (como Egg Beaters, que son claras pasteurizadas, no libres de huevo).9
+* Aditivos: Simplesse (un sustituto de grasa hecho de proteína de huevo o leche microparticulada).9 Lecitina puede ser de huevo; si la etiqueta dice solo "lecitina" sin especificar "soja" o "girasol", el algoritmo debe marcarla como riesgo.12
+2.2.3 Fuentes Ocultas
+* Brillo en Panadería: Muchos panes, pretzels y bollería se pincelan con "egg wash" (huevo batido) para dar brillo.11
+* Pastas: Los fideos al huevo y algunas pastas frescas contienen huevo. La pasta seca italiana de sémola suele ser segura, pero requiere verificación.12
+* Bebidas de Café: Algunas espumas de capuchino o bebidas especiales utilizan clara de huevo para estabilizar la espuma.11
+* Sustitutos de Carne: Albóndigas y pasteles de carne usan huevo como aglutinante.11
+2.2.4 Estrategias de Sustitución Química
+El huevo cumple dos funciones principales: aglutinación (unir ingredientes) y levadura (hacer crecer la masa). El algoritmo debe sugerir sustitutos según el contexto de la receta:
+* Aglutinación: Puré de plátano o compota de manzana (añaden humedad y unión, pero sabor frutal), semillas de lino o chía molidas hidratadas en agua ("huevo de lino"), goma xantana.13
+* Levadura/Elevación: Mezcla de vinagre y bicarbonato de sodio (reacción ácido-base que genera CO2). El agua de cocción de los garbanzos (aquafaba) es el único sustituto capaz de crear espumas estables tipo merengue debido a su contenido de saponinas y proteínas.15
+* Limitaciones: Los sustitutos generalmente fallan en recetas que requieren más de 3 huevos (ej. Angel Food Cake), donde la estructura proteica del huevo es insustituible. El sistema debe desaconsejar adaptar estas recetas.14
+________________
+2.3 Alergia a la Soja
+2.3.1 El Debate de la Lecitina y el Aceite Refinado
+La soja es un alérgeno complejo porque sus derivados son omnipresentes en la industria alimentaria. Sin embargo, clínicamente, no todos los derivados presentan el mismo riesgo.
+* Aceite de Soja Altamente Refinado: La FDA y múltiples estudios indican que el proceso de refinado elimina casi toda la proteína alergénica, haciéndolo seguro para la mayoría de los pacientes.16 El algoritmo debe tener una configuración de "tolerancia" para esto; en modo estricto, se excluye; en modo estándar, se permite. Aceites prensados en frío o expeller no son seguros.17
+* Lecitina de Soja: Aunque contiene trazas de proteína, muchos alérgicos la toleran. Sin embargo, no está exenta de las leyes de etiquetado de alérgenos.16 El sistema debe marcarla como "Precaución".
+2.3.2 Vectores de Exclusión
+* Ingredientes Directos: Edamame, Miso, Natto, Okara, Shoyu, Salsa de Soja, Tamari, Tempeh, Tofu, Yuba (piel de tofu), Kinako (harina de soja tostada).17
+* Proteínas Industriales: Proteína vegetal texturizada (TVP), aislado de proteína de soja, concentrado de proteína de soja, harina de soja.18
+2.3.3 Identificadores Críticos Ocultos
+El algoritmo debe escanear ingredientes genéricos que a menudo ocultan soja:
+* Saborizantes y Caldos: Caldo vegetal, goma vegetal, almidón vegetal. Frecuentemente derivados de la soja.18
+* Vitamina E: A menudo se extrae del aceite de soja.19
+* Salsas Asiáticas: Salsa Teriyaki, salsa de ostras y salsa de pescado a menudo se extienden con proteína de soja hidrolizada o salsa de soja.19
+* Proteína Hidrolizada: Si no especifica la fuente, se asume soja o trigo.19
+________________
+2.4 Alergia a los Frutos Secos (Tree Nuts) y Cacahuete
+2.4.1 Distinción Botánica y Riesgo Cruzado
+Aunque los cacahuetes son legumbres y los frutos secos (almendras, nueces, anacardos) son semillas de árboles, el riesgo de contaminación cruzada en las instalaciones de procesamiento es tan alto que a menudo se agrupan en protocolos de seguridad, aunque biológicamente son distintos. El sistema debe permitir la gestión separada pero advertir sobre el riesgo de manufactura compartida.20
+2.4.2 Lista Exhaustiva de Exclusión
+El algoritmo debe bloquear: Almendras, Nueces de Brasil, Anacardos (Cashews), Avellanas (Filberts), Nueces de Macadamia, Nueces Pecanas, Piñones (Pine nuts), Pistachos, Nueces (Walnuts), Nueces de Karité (Shea nut), Nueces de Ginkgo, Lichi (Lichee nut), Nangai nut.21
+2.4.3 Fuentes Ocultas y Derivados
+* Extractos y Destilados: Extractos naturales de nuez (almendra, nuez negra) en repostería. Los extractos artificiales suelen ser seguros, pero requieren validación del fabricante.23
+* Aceites: Aceites de nuez (nogal, almendra, avellana) utilizados en aderezos gourmet o cosméticos. A diferencia del aceite de soja, los aceites de frutos secos a menudo son prensados en frío y retienen proteínas alergénicas.23
+* Bebidas Alcohólicas: Licores como Amaretto (almendra/hueso de albaricoque), Frangelico (avellana), Nocello (nuez). Algunas ginebras y cervezas artesanales usan nueces en la fermentación.24
+* Salsas: Pesto (piñones o nueces), salsas de mole (almendras, cacahuetes, nueces), salsas barbacoa (a veces usan nuez para el sabor ahumado o textura).22
+* Embutidos: Mortadela (pistachos).24
+________________
+2.5 Alergia a Mariscos (Crustáceos y Moluscos)
+2.5.1 Clasificación y Reactividad
+Existen dos categorías biológicas: Crustáceos (camarón, langosta, cangrejo, cigala) y Moluscos (almejas, mejillones, ostras, vieiras, pulpo, calamar, caracoles). La alergia a crustáceos es más prevalente y severa, mediada por la proteína tropomiosina. Existe una alta reactividad cruzada entre ambos grupos, y con los ácaros del polvo (también artrópodos con tropomiosina).20
+2.5.2 Vectores de Exclusión y Contaminación
+* Imitación de Marisco (Surimi): Aunque está hecho de pescado, a menudo se saboriza con extracto de marisco real o se procesa en las mismas líneas.26
+* Suplementos: Glucosamina (frecuentemente derivada de caparazones de crustáceos) y Calcio (a veces derivado de conchas de ostras).27
+* Salsas de Pescado: Muchas salsas asiáticas de pescado pueden contener extractos de marisco o ser procesadas en instalaciones compartidas. La salsa Worcestershire a veces contiene anchoas (pescado) pero el riesgo de contacto cruzado es posible.27
+* Fritura: El aceite compartido en restaurantes es un vector crítico. Un calamar frito en el mismo aceite que las patatas contamina las patatas.20
+________________
+3. Dominio de Trastornos Gastrointestinales y Enzimáticos
+3.1 Enfermedad Celíaca y Dieta Estricta Sin Gluten
+3.1.1 Fisiopatología y Umbral Crítico
+La enfermedad celíaca es una enteropatía autoinmune crónica precipitada por la exposición al gluten dietético en individuos genéticamente predispuestos.28 El umbral de daño es extremadamente bajo; la contaminación cruzada es la causa principal de fallo terapéutico. El algoritmo no puede aceptar "bajo en gluten"; debe ser "cero gluten detectable".
+3.1.2 Cereales Prohibidos y Variantes Botánicas
+El sistema debe reconocer todas las variantes taxonómicas del trigo (Triticum):
+* Trigos: Espelta (Spelt), Kamut (Khorasan), Farro (Emmer), Durum, Sémola, Bulgur, Einkorn, Triticale (híbrido trigo-centeno).
+* Cebada y Centeno: Todas las formas.
+* Avena (El Caso Especial): La avena es naturalmente libre de gluten pero se cultiva y procesa junto al trigo. Solo la avena certificada "Gluten-Free" es permitida. El algoritmo debe bloquear la avena genérica.29
+3.1.3 Fuentes Ocultas de Gluten
+* Malta: Vinagre de malta, jarabe de malta, aromatizante de malta (derivados de cebada).30
+* Levadura de Cerveza: A menudo es un subproducto de la cerveza (cebada) y contiene gluten, a menos que se especifique que es de remolacha.31
+* Salsas de Soja: La mayoría se fermentan con trigo. Se requiere Tamari sin trigo.30
+* Queso Azul: Los cultivos de moho (Penicillium roqueforti) históricamente se cultivaban en pan de centeno. Aunque hoy es menos común, el riesgo persiste en variedades artesanales; el sistema debe verificar el medio de cultivo.31
+* Carne Procesada: El gluten se usa como relleno o aglutinante en salchichas y fiambres.29
+* Sucedáneos de Carne: Seitan es gluten puro.
+* Regaliz: El dulce de regaliz casi siempre contiene harina de trigo como base.19
+3.1.4 Protocolos de Cocina Segura (Contaminación Cruzada)
+El sistema operativo debe incluir alertas de procedimiento:
+* Harina en Suspensión: La harina de trigo puede permanecer en el aire por horas y asentarse en superficies limpias. No se debe preparar comida sin gluten simultáneamente con panadería convencional.29
+* Utensilios Porosos: Tablas de cortar de madera, coladores y tostadoras son reservorios de gluten imposibles de limpiar. Se requieren utensilios dedicados.29
+________________
+3.2 Dieta Baja en FODMAPs (Síndrome del Intestino Irritable)
+3.2.1 Fisiopatología y Naturaleza Fasada
+Los FODMAPs (Oligosacáridos, Disacáridos, Monosacáridos y Polioles Fermentables) son carbohidratos de cadena corta que se absorben mal en el intestino delgado. Su llegada al colon provoca fermentación bacteriana rápida y efectos osmóticos (atracción de agua), causando distensión y dolor.32 El algoritmo debe tratar esta dieta como una intervención médica de tres fases (Eliminación, Reintroducción, Personalización), no un estilo de vida permanente.
+3.2.2 Criterios de Exclusión Algorítmica (Fase de Eliminación)
+El sistema debe calcular la carga total de FODMAPs, considerando el efecto acumulativo ("stacking").33
+* Oligosacáridos (Fructanos y GOS):
+   * Vegetales: Cebolla (bulbo), ajo (incluyendo polvo y sal), alcachofas, espárragos, remolacha. El aceite infusionado con ajo es seguro (los fructanos no son solubles en aceite), pero el ajo sólido no.34
+   * Cereales: Trigo, centeno, cebada (en grandes cantidades).
+   * Legumbres: La mayoría de las legumbres enteras (frijoles, soja). Las lentejas en lata enjuagadas son toleradas en pequeñas dosis (<1/2 taza) porque los GOS son solubles en agua y se eliminan en el líquido.34
+   * Frutos Secos: Anacardos y pistachos son altos en GOS.34
+* Disacáridos (Lactosa): Leche animal, yogur estándar, quesos blandos no curados.35
+* Monosacáridos (Exceso de Fructosa): Miel, Jarabe de Maíz de Alta Fructosa (HFCS), Agave, manzanas, peras, mango, sandía.35
+* Polioles (Sorbitol y Manitol): Frutas de hueso (melocotón, ciruela, albaricoque, cereza), aguacate (alto en sorbitol en grandes cantidades), champiñones, coliflor. Edulcorantes terminados en "-ol" (xilitol, sorbitol).34
+3.2.3 Alimentos Permitidos (Luz Verde)
+* Cereales: Arroz, avena, quinoa, maíz, pan de espelta de masa madre (la fermentación reduce los fructanos), patatas.34
+* Proteínas: Todas las carnes/pescados frescos, huevos, tofu firme (el tofu sedoso es alto en FODMAPs), tempeh.34
+* Frutas: Plátano (solo si no está maduro; el plátano maduro acumula fructosa), arándanos, kiwi, cítricos, fresas.35
+* Lácteos: Quesos curados (Cheddar, Parmesano, Suizo) y mantequilla (prácticamente sin lactosa).34
+________________
+3.3 Intolerancia a la Histamina y Protocolo SIGHI
+3.3.1 Fisiopatología: El Algoritmo de la Frescura
+La intolerancia a la histamina se debe a un déficit en la enzima Diamino Oxidasa (DAO), encargada de degradar la histamina dietética. A diferencia de las alergias, el efecto es acumulativo. El factor crítico no es solo el ingrediente, sino su edad. La acción bacteriana convierte el aminoácido histidina en histamina con el tiempo. El sistema debe marcar cualquier "sobra" de comida (leftovers) o carne no fresca como riesgo alto.37
+3.3.2 Categorización de Riesgos
+1. Alimentos Ricos en Histamina (Fermentación/Maduración):
+   * Quesos curados (cuanto más viejo, peor: Parmesano, Gouda, Roquefort).39
+   * Embutidos y carnes curadas (salami, jamón serrano, bacon).
+   * Pescado en conserva o no fresco (atún, caballa, sardinas, anchoas). El pescado fresco congelado inmediatamente es seguro.39
+   * Vegetales fermentados (chucrut, kimchi, pepinillos en vinagre) y derivados de soja fermentada (salsa de soja, miso).40
+   * Bebidas alcohólicas (especialmente vino tinto y cerveza).41
+   * Vinagre (excepto a veces el de manzana).40
+2. Liberadores de Histamina (Histamine Liberators):
+   * Alimentos que, aunque bajos en histamina, provocan la degranulación de mastocitos en el cuerpo: Cítricos, fresas, kiwi, piña, papaya, tomate, espinacas, chocolate/cacao, claras de huevo (crudas o poco cocidas).41
+3. Bloqueadores de la DAO:
+   * Alcohol, té negro, té verde, bebidas energéticas (mate).38
+3.3.3 Lista Verde (Segura)
+Carne y pescado extremadamente frescos, yemas de huevo, frutas no cítricas (manzana, pera, melón), vegetales frescos (excepto tomate, espinaca, berenjena, aguacate), cereales sin gluten, aceites vegetales frescos, quesos frescos (mozarella, ricota - con precaución).37
+________________
+4. Dominio Metabólico y Patologías Renales
+4.1 Dieta Renal: Restricción de Potasio (Hiperkalemia)
+4.1.1 Racional Clínico
+En la Enfermedad Renal Crónica (ERC), la incapacidad de excretar potasio puede llevar a paros cardíacos. La restricción típica es <2000 mg/día. El algoritmo debe priorizar el control de frutas y verduras específicas.44
+4.1.2 Listas de Exclusión (>200mg/porción)
+* Frutas: Plátano, melón (cantalupo, rocío de miel), naranja y jugo de naranja, kiwi, nectarina, mango, papaya, granada, frutas secas (pasas, dátiles, ciruelas).45
+* Vegetales: Patata (blanca y dulce/boniato), tomate (y salsas), aguacate, espinaca cocida, acelga, calabaza de invierno, coles de Bruselas.45
+* Legumbres: Frijoles secos, lentejas, soja.45
+* Sustitutos de Sal: Muchos usan Cloruro de Potasio (KCl) en lugar de Sodio. Estos son letales para un paciente renal y deben ser bloqueados totalmente.45
+4.1.3 Técnicas de Reducción (Lixiviación)
+El sistema debe sugerir "Lixiviación" (Leaching) para tubérculos: pelar, cortar en rodajas finas y remojar en agua abundante durante horas reduce el contenido de potasio significativamente, permitiendo su consumo moderado.44
+4.2 Dieta Renal: Gestión del Fósforo
+4.2.1 Biodisponibilidad: Fósforo Orgánico vs. Inorgánico
+El control del fósforo es vital para prevenir la osteodistrofia renal. Un insight crítico para el algoritmo es la tasa de absorción:
+* Fósforo Orgánico (Natural): En carnes, nueces y legumbres. Tasa de absorción del 40-60%. A menudo permitido con moderación.
+* Fósforo Inorgánico (Aditivos): En procesados. Tasa de absorción del 90-100%. Debe ser estrictamente prohibido.46
+4.2.2 El Filtro de Aditivos "PHOS"
+El algoritmo debe escanear etiquetas buscando la cadena de texto "PHOS": Ácido fosfórico (en refrescos de cola oscura), Hexametafosfato de sodio, Fosfato dicálcico, Polifosfatos. Estos se encuentran en refrescos oscuros, quesos procesados, mezclas para hornear y carnes inyectadas.47
+4.2.3 Alimentos a Evitar y Alternativas
+* Evitar: Lácteos (muy altos en fósforo), hígado, sardinas, ostras, salvado, nueces, chocolate, cerveza.47
+* Permitir: Refrescos claros (lima-limón, ginger ale), leche de arroz no enriquecida, carnes frescas no procesadas, frutas y verduras bajas en potasio.47
+4.3 Diabetes Mellitus y Terapia Nutricional Médica (MNT)
+4.3.1 Control Glucémico
+La directriz 2025 se aleja de macros rígidos hacia "patrones de alimentación" densos en nutrientes, minimizando azúcares añadidos y carbohidratos refinados.49
+* Prohibidos/Limitar: Bebidas azucaradas (causa principal de picos rápidos), granos refinados (pan blanco, arroz blanco), grasas trans, sodio (riesgo CV aumentado).50
+* Permitidos: Vegetales no feculentos (consumo libre), granos enteros (fibra retarda absorción), legumbres, frutas enteras (no jugos), grasas monoinsaturadas (aguacate, nueces).49
+* Edulcorantes: Se debe distinguir entre nutritivos (fructosa, agave - afectan glucosa) y no nutritivos (stevia, aspartamo - seguros pero con precaución en microbiota).51
+________________
+5. Marcos de Estilo de Vida y Exclusión Antiinflamatoria
+5.1 Dieta Cetogénica (Keto)
+Objetivo: Inducir cetosis metabólica (<20-50g carbohidratos netos/día).
+* Prohibido: Todos los cereales, tubérculos, legumbres, frutas (excepto bayas), azúcar y la mayoría de edulcorantes naturales (miel, agave).52
+* Carbohidratos Ocultos en Especias: El algoritmo debe calcular carbohidratos netos en especias: Polvo de cebolla (5g carbohidratos/cucharada) y ajo en polvo son altos; la albahaca y orégano son bajos.53
+* Aditivos Prohibidos: Maltodextrina y Dextrosa (rellenos comunes en edulcorantes en polvo que rompen la cetosis).
+5.2 Dieta Paleo (Discordancia Evolutiva)
+Objetivo: Eliminar alimentos neolíticos.
+* Prohibido: Todos los cereales (incluido maíz y arroz), todas las legumbres (incluido cacahuete y soja - por lectinas/fitatos), todos los lácteos, aceites refinados (canola, girasol), azúcar refinada, edulcorantes artificiales.54
+* Permitido: Carnes, pescados, huevos, verduras, frutas, nueces, semillas, grasas animales (sebo, manteca), aceite de coco/oliva.54
+5.3 Whole30 (Eliminación Estricta)
+Protocolo de 30 días similar a Paleo pero más restrictivo conductualmente.
+* Reglas Específicas: Prohibido recrear comida chatarra con ingredientes permitidos ("sex with your pants on" rule). Prohibido alcohol (incluso para cocinar), azúcar añadido de cualquier tipo (incluido miel y jarabe de arce, permitidos en Paleo).
+* Aditivos Específicos: Carragenina, Sulfitos y MSG están prohibidos explícitamente.56
+* Excepciones: Se permite Ghee, jugo de fruta como endulzante en recetas (no para beber) y ciertas legumbres verdes (judías verdes, tirabeques).58
+5.4 Veganismo Estricto
+Exclusión ética de todo producto animal.
+* Ingredientes Ocultos Críticos (Flags):
+   * Carmín/Cochinilla (E120): Colorante rojo derivado de insectos.59
+   * Vitamina D3: Generalmente derivada de lanolina (lana de oveja); se requiere D2 o D3 de liquen.60
+   * L-Cisteína: Acondicionador de masa derivado de plumas o pelo.60
+   * Isinglass (Cola de pescado): Clarificante en vinos y cervezas.60
+   * Gelatina: Derivada de huesos/piel.61
+5.5 Dieta Mediterránea (Estándar de Oro Antiinflamatorio)
+Basada en el estudio PREDIMED.
+* Estructura: Base de aceite de oliva virgen extra (AOVE), vegetales, legumbres, nueces y granos enteros. Pescado y aves con moderación. Carnes rojas y dulces limitados drásticamente. Vino tinto permitido con moderación en las comidas.62
+* Restricción: Alimentos ultraprocesados, carnes procesadas, mantequilla (reemplazada por AOVE).64
+________________
+6. Lógica Algorítmica de Seguridad y Tablas de Datos
+6.1 Protocolos de Contaminación Cruzada
+El sistema operativo debe diferenciar entre "Ingrediente" y "Proceso".
+1. Flag de Freidora Compartida: Un alimento seguro (patatas) se vuelve tóxico para celíacos y alérgicos si se fríe en aceite donde se cocinó gluten o marisco.20
+2. Higiene de Condimentos: Alerta de "doble inmersión" (Double-dipping) en frascos de mermelada o mantequilla de cacahuete.65
+3. Etiquetado Preventivo: El usuario debe poder configurar su tolerancia a etiquetas "Puede contener" (May contain). Para anafilaxia, el valor debe ser FALSE por defecto.66
+Tabla 6.2: Matriz de Compatibilidad de Ingredientes Comunes
+Ingrediente
+	Keto
+	Paleo
+	Whole30
+	Low FODMAP
+	Renal (K)
+	Renal (P)
+	Histamina
+	Aceite de Oliva
+	Sí
+	Sí
+	Sí
+	Sí
+	Sí
+	Sí
+	Sí
+	Mantequilla
+	Sí
+	No*
+	No (Ghee ok)
+	Sí
+	Sí
+	No
+	Sí
+	Aguacate
+	Sí
+	Sí
+	Sí
+	No (>1/8)
+	No
+	Sí
+	No
+	Tomate
+	Sí (Limit)
+	Sí
+	Sí
+	Sí
+	No
+	Sí
+	No
+	Espinaca (Cocida)
+	Sí
+	Sí
+	Sí
+	Sí
+	No
+	Sí
+	No
+	Almendras
+	Sí
+	Sí
+	Sí
+	Limit (<10)
+	Limit
+	Limit
+	Sí
+	Lentejas
+	No
+	No
+	No
+	Limit (Lata)
+	Limit
+	Limit
+	Sí
+	Huevo (Entero)
+	Sí
+	Sí
+	Sí
+	Sí
+	Sí
+	Sí
+	No (Clara)*
+	*Mantequilla en Paleo: A veces tolerada en variantes Primal. Clara de huevo en Histamina: A veces liberador.
+Tabla 6.3: Sustituciones Funcionales para Alergias
+Función Culinaria
+	Sustituto Huevo (Aglutinar)
+	Sustituto Huevo (Levar)
+	Sustituto Leche (Cocina)
+	Sustituto Trigo (Espesar)
+	Ingrediente
+	Plátano pisado, Semillas Lino
+	Vinagre + Bicarbonato
+	Leche Soja/Avena
+	Maicena, Goma Xantana
+	Ratio
+	1/2 plátano : 1 huevo
+	1 cda : 1 cdta
+	1:1
+	1 cda : 2 cdas harina
+	Nota Técnica
+	Aporta sabor a fruta
+	Reacción inmediata
+	Soja para proteínas
+	Diluir en frío primero
+	Contraindicación
+	FODMAPs, Renal (K)
+	Sabor residual
+	Alergia Soja/Gluten (Avena)
+	Maicena en Paleo/Keto
+	________________
+7. Conclusión
+La arquitectura de este sistema de restricciones dietéticas no permite zonas grises. La investigación demuestra que términos comunes como "Nuez", "Leche" o "Natural" son insuficientes para la seguridad clínica. La parametrización debe descender al nivel molecular (Caseína vs. Lactosa, Fructano vs. Fructosa, Fósforo Orgánico vs. Inorgánico).
+La implementación de estos 18 protocolos mediante las reglas lógicas definidas permitirá al sistema operativo gastronómico navegar la compleja matriz de necesidades humanas, protegiendo al usuario de reacciones adversas que van desde el malestar digestivo hasta el shock anafiláctico, cumpliendo así con el mandato de exactitud científica crítica.
+Citas integradas en el texto según identificadores.
+Obras citadas
+1. The Scare of a Hidden Food: Read Labels Carefully - FAST OIT, fecha de acceso: enero 11, 2026, https://fastoit.org/the-scare-of-hidden-foods/
+2. Milk Allergy Diet | Johns Hopkins Medicine, fecha de acceso: enero 11, 2026, https://www.hopkinsmedicine.org/health/wellness-and-prevention/milk-allergy-diet
+3. your-guide-to-managing-milk-allergy.pdf, fecha de acceso: enero 11, 2026, https://www.kidswithfoodallergies.org/wp-content/uploads/2022/12/your-guide-to-managing-milk-allergy.pdf
+4. Hidden Dairy “Cheat Sheet” - - KellyMom.com, fecha de acceso: enero 11, 2026, https://kellymom.com/store/freehandouts/hidden-dairy01.pdf
+5. 17 Products with Hidden Dairy Ingredients - Neocate, fecha de acceso: enero 11, 2026, https://www.neocate.com/living-with-food-allergies-blog/17-products-hidden-dairy-ingredients/
+6. Dairy-Free Baking Substitutes: Tips, Tricks, & Swaps - Webstaurant Store, fecha de acceso: enero 11, 2026, https://www.webstaurantstore.com/blog/4302/baking-dairy-free.html
+7. Milk Allergy? How to Substitute Milk in Recipes, fecha de acceso: enero 11, 2026, https://kidswithfoodallergies.org/recipes-diet/recipe-substitutions/substitutions-for-milk/
+8. The Best Dairy-Free Baking Alternatives - Bake Me Healthy, fecha de acceso: enero 11, 2026, https://bakemehealthy.co/blogs/healthy-baking/the-best-dairy-free-baking-alternatives
+9. Egg - Food Allergy Canada, fecha de acceso: enero 11, 2026, https://foodallergycanada.ca/allergies/egg/
+10. Egg - FoodAllergy.org, fecha de acceso: enero 11, 2026, https://www.foodallergy.org/living-food-allergy/food-allergy-essentials/common-allergens/egg
+11. your-guide-to-managing-egg-allergy.pdf, fecha de acceso: enero 11, 2026, https://www.kidswithfoodallergies.org/wp-content/uploads/2022/12/your-guide-to-managing-egg-allergy.pdf
+12. Food Allergy Alternate Names and Hidden Foods - FAST OIT, fecha de acceso: enero 11, 2026, https://fastoit.org/food-allergy-alternate-names-hidden-foods/
+13. Egg Allergy Food Substitutes For Baking and Mixtures - WebMD, fecha de acceso: enero 11, 2026, https://www.webmd.com/allergies/food-substitutes-for-egg-allergy
+14. 16 egg substitutes for baking, binding, flavor, and more - Medical News Today, fecha de acceso: enero 11, 2026, https://www.medicalnewstoday.com/articles/egg-substitutes
+15. Egg Substitutions - FoodAllergy.org, fecha de acceso: enero 11, 2026, https://www.foodallergy.org/living-food-allergies/food-allergy-essentials/common-allergens/substitutions/egg-substitutions
+16. Soy Avoidance Nutrition Therapy | OHSU, fecha de acceso: enero 11, 2026, https://www.ohsu.edu/sites/default/files/2019-06/Soy-Avoidance-Nutrition-Therapy.pdf
+17. Soy - FoodAllergy.org, fecha de acceso: enero 11, 2026, https://www.foodallergy.org/living-food-allergy/food-allergy-essentials/common-allergens/soy
+18. A Guide to Managing Soy Allergy December 2022, fecha de acceso: enero 11, 2026, https://www.kidswithfoodallergies.org/wp-content/uploads/2022/12/your-guide-to-managing-soy-allergy.pdf
+19. Food Labels 101: Hidden Soy | The Dairy & Soy Free Mama, fecha de acceso: enero 11, 2026, https://www.dairyandsoyfreemama.com/about
+20. Shellfish Allergy Facts, Symptoms, and Treatment - Thermo Fisher Scientific, fecha de acceso: enero 11, 2026, https://www.thermofisher.com/allergy/wo/en/allergen-fact-sheets/shellfish.html
+21. Tree Nut - FoodAllergy.org, fecha de acceso: enero 11, 2026, https://www.foodallergy.org/living-food-allergies/food-allergy-essentials/common-allergens/tree-nut
+22. FOOD ALLERGY FACT SHEET - NC DHHS, fecha de acceso: enero 11, 2026, https://www.ncdhhs.gov/tree-nut-allergies/download?attachment
+23. Food Allergen Graph: Avoiding Peanut, Tree Nuts, Egg, Corn, and Wheat Ingredients - DHHS, fecha de acceso: enero 11, 2026, https://dhhs.ne.gov/MCAH/MI-OtherFoodAllergens-Graph.pdf
+24. Tree nuts - Food Allergy Canada, fecha de acceso: enero 11, 2026, https://foodallergycanada.ca/allergies/tree-nuts/
+25. Shellfish - FoodAllergy.org, fecha de acceso: enero 11, 2026, https://www.foodallergy.org/living-food-allergy/food-allergy-essentials/common-allergens/shellfish
+26. Crustacean Shellfish | FAACT - Food Allergy and Anaphylaxis Connection Team, fecha de acceso: enero 11, 2026, https://www.foodallergyawareness.org/food-allergy-and-anaphylaxis/food-allergens/crustacean-shellfish/
+27. Shellfish Allergy | Anaphylaxis UK, fecha de acceso: enero 11, 2026, https://www.anaphylaxis.org.uk/fact-sheet/shellfish-allergy/
+28. The Gluten-Free Diet for Celiac Disease and Beyond - PMC - PubMed Central, fecha de acceso: enero 11, 2026, https://pmc.ncbi.nlm.nih.gov/articles/PMC8625243/
+29. Sources of Gluten | Celiac Disease Foundation, fecha de acceso: enero 11, 2026, https://celiac.org/gluten-free-living/what-is-gluten/sources-of-gluten/
+30. 38 Foods Where Gluten May Be “Hidden”, fecha de acceso: enero 11, 2026, https://gluten.org/2021/03/23/43-foods-where-gluten-may-be-hidden/
+31. Confusing Gluten-Free Diet Ingredients - National Celiac Association, fecha de acceso: enero 11, 2026, https://nationalceliac.org/ingredients-people-question/
+32. Starting the Low FODMAP Diet, fecha de acceso: enero 11, 2026, http://www.monashfodmap.com/ibs-central/i-have-ibs/starting-the-low-fodmap-diet/
+33. "Eat This, Not That" FODMAPs Food List (+Printable PDF Chart) - Diet vs Disease, fecha de acceso: enero 11, 2026, https://www.dietvsdisease.org/low-fodmaps-food-list/
+34. High and low FODMAP foods, fecha de acceso: enero 11, 2026, http://www.monashfodmap.com/about-fodmap-and-ibs/high-and-low-fodmap-foods/
+35. Foods That You Can and Cannot Eat On A Low FODMAP Diet - Modify Health, fecha de acceso: enero 11, 2026, https://modifyhealth.com/blogs/blog/foods-you-should-and-should-not-be-eating-while-on-a-low-fodmap-diet-draft
+36. Lactose-Free Dairy Products, fecha de acceso: enero 11, 2026, https://www.usdairy.com/dairy-nutrition/products/lactose-free
+37. Low Histamine Diet - Johns Hopkins Medicine, fecha de acceso: enero 11, 2026, https://www.hopkinsmedicine.org/-/media/johns-hopkins-childrens-center/documents/specialties/adolescent-medicine/cfs-low-histamine-diet.pdf
+38. Histamine Avoidance Diet - UCT Lung Institute, fecha de acceso: enero 11, 2026, https://lunginstitute.co.za/wp-content/uploads/2017/10/Histamine-Avoidance-Diet.pdf
+39. SIGHI Histamine Elimination Diet: Managing Histamine Intolerance | The EDS Clinic, fecha de acceso: enero 11, 2026, https://www.eds.clinic/articles/sighi-histamine-elimination-diet-histamine-intolerance
+40. SIGHI-Leaflet Histamine Elimination Diet, fecha de acceso: enero 11, 2026, https://www.histaminintoleranz.ch/downloads/SIGHI-Leaflet_HistamineEliminationDiet.pdf
+41. The Food List | Histamine Intolerance, fecha de acceso: enero 11, 2026, https://www.histamineintolerance.org.uk/about/the-food-diary/the-food-list/
+42. The low histamine diet guide: Foods to eat and avoid for better health, fecha de acceso: enero 11, 2026, https://oshihealth.com/low-histamine-diet/
+43. Low Histamine Diet - Specialists in Gastroenterology, fecha de acceso: enero 11, 2026, https://www.gidoctor.net/low-histamine-diet/
+44. Potassium in Your CKD Diet | National Kidney Foundation, fecha de acceso: enero 11, 2026, https://www.kidney.org/kidney-topics/potassium-your-ckd-diet
+45. potassium - National Kidney Foundation, fecha de acceso: enero 11, 2026, https://www.kidney.org/sites/default/files/02-10-0410_EBB_Potassium.pdf
+46. Your kidney-friendly food plan: Managing phosphorus, fecha de acceso: enero 11, 2026, https://www.kidneyfund.org/article/your-kidney-friendly-food-plan-managing-phosphorus
+47. Phosphorus and Your CKD Diet - National Kidney Foundation, fecha de acceso: enero 11, 2026, https://www.kidney.org/kidney-topics/phosphorus-and-your-ckd-diet
+48. Low-phosphorus diet: Helpful for kidney disease? - Mayo Clinic, fecha de acceso: enero 11, 2026, https://www.mayoclinic.org/diseases-conditions/chronic-kidney-disease/expert-answers/food-and-nutrition/faq-20058408
+49. 5. Facilitating Positive Health Behaviors and Well-being to Improve Health Outcomes: Standards of Care in Diabetes—2025, fecha de acceso: enero 11, 2026, https://diabetesjournals.org/care/article/48/Supplement_1/S86/157563/5-Facilitating-Positive-Health-Behaviors-and-Well
+50. Keep Your Kidneys Healthy: 5 Foods To Avoid, fecha de acceso: enero 11, 2026, https://www.kidney.org/kidney-topics/keep-your-kidneys-healthy-5-foods-to-avoid
+51. Academy Statement on 2025-2030 DGAs Release - eatrightPRO.org, fecha de acceso: enero 11, 2026, https://www.eatrightpro.org/about-us/who-we-are/public-statements/academy-statement-on-2025-2030-dgas-release
+52. Diet Review: Ketogenic Diet for Weight Loss - The Nutrition Source, fecha de acceso: enero 11, 2026, https://nutritionsource.hsph.harvard.edu/healthy-weight/diet-reviews/ketogenic-diet/
+53. Finding Hidden Carbs on a Ketogenic Diet - Perfect Keto, fecha de acceso: enero 11, 2026, https://perfectketo.com/finding-hidden-carbs-ketogenic-diet/
+54. 10 Foods You Shouldn't Eat on Paleo Diet - Ideal Nutrition, fecha de acceso: enero 11, 2026, https://idealnutritionnow.com/blogs/news/10-foods-you-shouldnt-eat-on-paleo-diet
+55. The Complete Paleo Diet Food List: What to Eat and What to Avoid - EatingWell, fecha de acceso: enero 11, 2026, https://www.eatingwell.com/article/290612/the-complete-paleo-diet-food-list-what-to-eat-and-what-to-avoid/
+56. The Whole30 Food List: Here's Exactly What You Can (and Can't) Eat - theSkimm, fecha de acceso: enero 11, 2026, https://www.theskimm.com/health/nutrition/whole30-food-list
+57. WHOLE30 GUIDE TO ADDITIVES & HIDDEN INGREDIENTS - Nyssa's Kitchen, fecha de acceso: enero 11, 2026, https://nyssaskitchen.com/wp-content/uploads/2021/01/Whole30-Guide-to-Additives-Hidden-Ingredients_compressed.pdf
+58. The Official "Can I Have" Guide to Whole30 Compatible Foods, fecha de acceso: enero 11, 2026, https://whole30.com/the-official-can-i-have-guide-to-the-whole30/
+59. Food Additives - Vegan Easy, fecha de acceso: enero 11, 2026, https://www.veganeasy.org/food/food-additives/
+60. Animal Ingredients List: Non-Vegan Substances, fecha de acceso: enero 11, 2026, https://vegan.com/info/animal-ingredients/
+61. Watch out: Animal ingredients are hidden here! - Nutri-Plus.de, fecha de acceso: enero 11, 2026, https://www.nutri-plus.de/en/blog/watch-out-animal-ingredients-are-hidden-here
+62. Mediterranean diet, fecha de acceso: enero 11, 2026, https://www.health.qld.gov.au/__data/assets/pdf_file/0032/946049/cardiac-meddiet.pdf
+63. Mediterranean Diet: Food List & Meal Plan - Cleveland Clinic, fecha de acceso: enero 11, 2026, https://my.clevelandclinic.org/health/articles/16037-mediterranean-diet
+64. On the Mediterranean Diet? Here's What Not to Eat. - Food Network, fecha de acceso: enero 11, 2026, https://www.foodnetwork.com/healthy/articles/what-foods-are-not-allowed-on-mediterranean-diet
+65. Preventing Cross-Contact at Home - Academy of Nutrition and Dietetics, fecha de acceso: enero 11, 2026, https://www.eatright.org/food/home-food-safety/wash-and-separate-foods/preventing-cross-contact-at-home
+66. Avoiding Cross-Contact - FoodAllergy.org, fecha de acceso: enero 11, 2026, https://www.foodallergy.org/resources/avoiding-cross-contact

@@ -15,4 +15,9 @@ abstract class IRecipeRepository {
   
   // Advanced: Get the resolved recipe state at a specific commit (Snapshot)
   // Future<(Failure?, RecipeSnapshot?)> getRecipeSnapshot(String commitId); 
+  
+  // Debug/Dev
+  /// Seeds the database with test recipes
+  /// [filterTitle] if provided, only seeds recipes containing this string in title
+  Future<void> seedDatabase({String? filterTitle});
 }

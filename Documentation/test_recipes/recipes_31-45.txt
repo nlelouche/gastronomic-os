@@ -1,0 +1,102 @@
+# MASTER RECIPE DATABASE V3 - GASTRONOMIC OS (GOS)
+# Objetivo Final: Validación de Reactividad Cruzada, Carga Glicémica y Sustitución de Aditivos.
+
+============================================================
+BASE LOGÍSTICA J: "SALTEADO DE CERDO Y CRUCÍFERAS"
+Componentes: Magro de cerdo fresco, Repollo (Col), Pimiento Rojo, Aceite de Girasol (Refinado).
+============================================================
+
+RECETA 31: Stir-fry de Cerdo y Repollo Keto
+- DIETA: Keto
+- INGREDIENTES: Cerdo magro, Repollo, Pimiento rojo, Aceite de girasol, Sal.
+- LOGIC FLAG: Carbohidratos netos < 5g por porción.
+
+RECETA 32: Salteado 'Low-FODMAP' de Cerdo
+- DIETA: Baja en FODMAPs (Eliminación)
+- INGREDIENTES: Cerdo magro, Repollo (límite 75g), Pimiento rojo, Aceite infusionado en ajo (sin sólidos).
+- LOGIC FLAG: EXCLUYE Ajo/Cebolla sólidos. El aceite infusionado evita fructanos.
+
+RECETA 33: Cerdo al Wok 'Soy-Free'
+- DIETA: Alergia a la Soja
+- INGREDIENTES: Cerdo magro, Repollo, Pimiento rojo, Aceite de girasol (Refinado), Sal.
+- LOGIC FLAG: El aceite refinado es tolerado; prohíbe aceites prensados en frío.
+
+RECETA 34: Cerdo Mediterráneo con Repollo
+- DIETA: Mediterránea
+- INGREDIENTES: Cerdo magro, Repollo, Pimiento rojo, Aceite de oliva (sustituye girasol), Hierbas.
+- LOGIC FLAG: Prioriza AOVE como fuente de grasa.
+
+============================================================
+BASE LOGÍSTICA K: "LEGUMBRES Y HOJAS VERDES"
+Componentes: Alubias blancas (Secas o Lata), Espinacas, Ajo, Caldo vegetal.
+============================================================
+
+RECETA 35: Estofado de Alubias Vegano
+- DIETA: Vegana Estricta
+- INGREDIENTES: Alubias blancas, Espinacas frescas, Ajo, Caldo vegetal (certificado sin carmín E120).
+- LOGIC FLAG: EXCLUYE Vitamina D3 de lanolina y saborizantes animales.
+
+RECETA 36: Alubias 'Phos-Safe' para Pacientes Renales
+- DIETA: Renal (Gestión de Fósforo)
+- INGREDIENTES: Alubias blancas (Secas, remojadas), Espinacas (Lixiviadas), Ajo.
+- LOGIC FLAG: El fósforo orgánico de legumbres se absorbe solo al 40-60%.
+
+RECETA 37: Alubias Blancas 'Fiber-Rich' para Diabéticos
+- DIETA: Diabetes (MNT)
+- INGREDIENTES: Alubias blancas, Espinacas, Ajo, Caldo vegetal (bajo en sodio).
+- LOGIC FLAG: Granos enteros y legumbres retardan la absorción de glucosa.
+
+============================================================
+BASE LOGÍSTICA L: "PESCADO BLANCO Y TUBÉRCULOS LIGEROS"
+Componentes: Merluza fresca, Patatas, Cebolla, Perejil.
+============================================================
+
+RECETA 38: Merluza al Horno 'Anti-APLV'
+- DIETA: Alergia a la Proteína de Leche (APLV)
+- INGREDIENTES: Merluza, Patatas, Cebolla, Perejil, Aceite de oliva.
+- LOGIC FLAG: EXCLUYE Mantequilla, caseinatos y saborizantes de mantequilla (diacetilo).
+
+RECETA 39: Merluza con Patatas 'Gluten-Free'
+- DIETA: Celíaca
+- INGREDIENTES: Merluza, Patatas, Cebolla, Perejil, Aceite de oliva.
+- LOGIC FLAG: EXCLUYE Harina de trigo para rebozar; usar maicena si es necesario.
+
+RECETA 40: Pescado Blanco 'Histamine-Zero'
+- DIETA: Intolerancia a la Histamina
+- INGREDIENTES: Merluza (Frescamente congelada), Patatas, Perejil, Aceite de oliva.
+- LOGIC FLAG: EXCLUYE Cebolla y pescado no fresco. Prohíbe sobras.
+
+============================================================
+BASE LOGÍSTICA M: "RES Y VEGETALES DE RAÍZ"
+Componentes: Carne picada de res, Zanahoria, Calabaza, Tomate (opcional).
+============================================================
+
+RECETA 41: Pastel de Carne 'Potassium-Controlled'
+- DIETA: Renal (Hiperkalemia)
+- INGREDIENTES: Res fresca (no inyectada), Zanahoria lixiviada, Calabaza lixiviada.
+- LOGIC FLAG: Técnica de lixiviación obligatoria para reducir potasio.
+
+RECETA 42: Res con Vegetales 'Paleo-Style'
+- DIETA: Paleo
+- INGREDIENTES: Res, Zanahoria, Calabaza, Aceite de oliva, Sal marina.
+- LOGIC FLAG: EXCLUYE Aceites refinados y edulcorantes artificiales.
+
+RECETA 43: Salsa Boloñesa 'Whole30'
+- DIETA: Whole30
+- INGREDIENTES: Res picada, Tomate triturado (sin azúcar), Zanahoria, Sal.
+- LOGIC FLAG: EXCLUYE Vino para cocinar y azúcar añadido.
+
+============================================================
+BASE LOGÍSTICA N: "HUEVOS Y VEGETALES"
+Componentes: Huevos frescos, Calabacín, Champiñones, Queso (opcional).
+============================================================
+
+RECETA 44: Frittata de Vegetales Keto
+- DIETA: Keto
+- INGREDIENTES: Huevos, Calabacín, Champiñones, Mantequilla, Queso curado.
+- LOGIC FLAG: Carbohidratos netos mínimos; alto en grasas saludables.
+
+RECETA 45: Revuelto de Claras 'Low-Histamine'
+- DIETA: Intolerancia a la Histamina (SIGHI)
+- INGREDIENTES: Yemas de huevo (exclusivo), Calabacín, Champiñones frescos, AOVE.
+- LOGIC FLAG: La clara de huevo puede actuar como liberador de histamina; priorizar yema.

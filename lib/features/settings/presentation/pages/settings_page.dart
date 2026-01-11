@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:gastronomic_os/core/widgets/ui_kit.dart';
+import 'package:gastronomic_os/features/onboarding/presentation/pages/onboarding_page.dart';
 import 'package:gastronomic_os/features/onboarding/presentation/bloc/onboarding_bloc.dart';
 import 'package:gastronomic_os/features/onboarding/presentation/bloc/onboarding_state_event.dart';
+import 'package:gastronomic_os/features/recipes/presentation/bloc/recipe_bloc.dart';
+import 'package:gastronomic_os/features/recipes/presentation/bloc/recipe_event.dart';
 import 'package:gastronomic_os/main.dart';
 import 'package:gastronomic_os/init/injection_container.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -13,8 +16,11 @@ class SettingsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => sl<OnboardingBloc>(), // Use a fresh bloc instance
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => sl<OnboardingBloc>()),
+        BlocProvider(create: (context) => sl<RecipeBloc>()),
+      ],
       child: const SettingsView(),
     );
   }
@@ -70,8 +76,22 @@ class SettingsView extends StatelessWidget {
                   delegate: SliverChildListDelegate([
                     
                     // --- Data Management Section ---
-                    const SectionHeader(title: 'Data Management'),
+                    const SectionHeader(title: 'Family & Data'),
                     const SizedBox(height: 12),
+                    
+                    _buildSettingsTile(
+                      context,
+                      title: 'Manage Family',
+                      subtitle: 'Add, edit or remove family members.',
+                      icon: Icons.people_outline,
+                      onTap: () {
+                         Navigator.of(context).push(
+                           MaterialPageRoute(builder: (_) => const OnboardingPage(isEditing: true)),
+                         );
+                      },
+                    ),
+                    const SizedBox(height: 12),
+
                     _buildSettingsTile(
                       context,
                       title: 'Reset App Data',
@@ -80,6 +100,35 @@ class SettingsView extends StatelessWidget {
                       iconColor: Colors.orange,
                       onTap: () => _confirmReset(context),
                       isDestructive: true,
+                    ),
+                    const SizedBox(height: 12),
+
+                    _buildSettingsTile(
+                      context,
+                      title: 'Seed Test Recipes',
+                      subtitle: 'Dev: Populate Graph DB with Matrix Recipes',
+                      icon: Icons.science,
+                      iconColor: Colors.deepPurple,
+                      onTap: () {
+                        context.read<RecipeBloc>().add(const SeedDatabase());
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text('Seeding Database with Graph Recipes... Check Dashboard shortly.'))
+                        );
+                      },
+                    ),
+                    const SizedBox(height: 12),
+                    _buildSettingsTile(
+                      context,
+                      title: 'Debug: Seed Steak Only',
+                      subtitle: 'Fast seed for "Steak & Eggs" debugging',
+                      icon: Icons.bug_report,
+                      iconColor: Colors.red,
+                      onTap: () {
+                        context.read<RecipeBloc>().add(const SeedDatabase(filterTitle: 'Steak'));
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text('Seeding ONLY Steak & Eggs...'))
+                        );
+                      },
                     ),
                     const SizedBox(height: 24),
 

@@ -7,6 +7,17 @@ class OnboardingBloc extends Bloc<OnboardingEvent, OnboardingState> {
   final IOnboardingRepository repository;
 
   OnboardingBloc({required this.repository}) : super(OnboardingInitial()) {
+    on<LoadFamilyMembers>((event, emit) async {
+      emit(OnboardingLoading(members: state.members));
+      final result = await repository.getFamilyMembers();
+      
+      if (result.$1 != null) {
+        emit(OnboardingError(result.$1!.message, members: state.members));
+      } else {
+        emit(OnboardingUpdated(members: result.$2 ?? []));
+      }
+    });
+
     on<AddFamilyMember>((event, emit) {
       final updatedMembers = List<FamilyMember>.from(state.members)..add(event.member);
       emit(OnboardingUpdated(members: updatedMembers));

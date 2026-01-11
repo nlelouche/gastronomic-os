@@ -64,6 +64,7 @@ create table public.recipes (
   is_fork boolean default false,
   title text not null,
   description text,
+  tags text[] default '{}', -- Array of diet/restriction tags
   is_public boolean default true,
   created_at timestamp with time zone default now(),
   updated_at timestamp with time zone default now()
@@ -108,6 +109,8 @@ create table public.recipe_snapshots (
 alter table public.recipe_snapshots enable row level security;
 create policy "Snapshots viewable if recipe is viewable." on public.recipe_snapshots for select
   using (exists (select 1 from public.recipes where id = recipe_snapshots.recipe_id and (is_public = true or author_id = auth.uid())));
+create policy "Users can create snapshots for own recipes." on public.recipe_snapshots for insert
+  with check (exists (select 1 from public.recipes where id = recipe_snapshots.recipe_id and author_id = auth.uid()));
 
 
 -- INDEXES for Performance (JSONB)

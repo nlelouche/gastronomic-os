@@ -7,6 +7,8 @@ abstract class OnboardingEvent extends Equatable {
   List<Object> get props => [];
 }
 
+class LoadFamilyMembers extends OnboardingEvent {} // NEW EVENT
+
 class AddFamilyMember extends OnboardingEvent {
   final FamilyMember member;
   const AddFamilyMember(this.member);

@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gastronomic_os/core/widgets/ui_kit.dart';
 import 'package:gastronomic_os/features/inventory/presentation/pages/inventory_page.dart';
+import 'package:gastronomic_os/features/planner/presentation/bloc/planner_bloc.dart';
+import 'package:gastronomic_os/features/planner/presentation/bloc/planner_event.dart';
+import 'package:gastronomic_os/features/planner/presentation/bloc/planner_state.dart';
+import 'package:gastronomic_os/features/planner/presentation/widgets/chefs_suggestions.dart';
 import 'package:gastronomic_os/features/recipes/presentation/pages/recipes_page.dart';
 import 'package:gastronomic_os/features/settings/presentation/pages/settings_page.dart';
+import 'package:gastronomic_os/init/injection_container.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class DashboardPage extends StatelessWidget {
@@ -14,91 +20,113 @@ class DashboardPage extends StatelessWidget {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
 
-    return Scaffold(
-      backgroundColor: theme.scaffoldBackgroundColor,
-      appBar: AppBar(
-        title: Text(
-          'Gastronomic OS',
-          style: GoogleFonts.outfit(fontWeight: FontWeight.bold),
-        ),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.settings_outlined),
-            onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => const SettingsPage()),
-              );
-            },
-          ),
-        ],
-      ),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.all(24.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Good Morning!',
-                style: GoogleFonts.outfit(
-                  fontSize: 16,
-                  color: colorScheme.onSurfaceVariant,
-                ),
-              ).animate().fadeIn().slideX(begin: -0.1),
-              Text(
-                'What are we cooking?',
-                style: GoogleFonts.outfit(
-                  fontSize: 32,
-                  fontWeight: FontWeight.bold,
-                  color: colorScheme.onSurface,
-                  height: 1.1,
-                ),
-              ).animate().fadeIn(delay: 200.ms).slideX(begin: -0.1),
-              
-              const SizedBox(height: 32),
-
-              _buildFeatureCard(
-                context,
-                title: 'My Fridge',
-                subtitle: 'Manage your supplies',
-                icon: Icons.kitchen,
-                color: Colors.blueAccent,
-                delay: 400.ms,
-                onTap: () => Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => const InventoryPage()),
-                ),
+    return BlocProvider(
+      create: (_) => sl<PlannerBloc>()..add(LoadPlannerSuggestions()),
+      child: Builder(
+        builder: (context) {
+          return Scaffold(
+            backgroundColor: theme.scaffoldBackgroundColor,
+            appBar: AppBar(
+              title: Text(
+                'Gastronomic OS',
+                style: GoogleFonts.outfit(fontWeight: FontWeight.bold),
               ),
-              const SizedBox(height: 16),
-              _buildFeatureCard(
-                context,
-                title: 'Cookbook',
-                subtitle: 'Explore recipes',
-                icon: Icons.menu_book_rounded,
-                color: Colors.orangeAccent,
-                delay: 500.ms,
-                onTap: () => Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => const RecipesPage()),
+              backgroundColor: Colors.transparent,
+              elevation: 0,
+              actions: [
+                IconButton(
+                  icon: const Icon(Icons.settings_outlined),
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => const SettingsPage()),
+                    );
+                  },
                 ),
-              ),
-              const SizedBox(height: 16),
-              _buildFeatureCard(
-                context,
-                title: 'Social',
-                subtitle: 'Share & Discover (Coming Soon)',
-                icon: Icons.people_outline,
-                color: Colors.pinkAccent,
-                delay: 600.ms,
-                onTap: () {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Social features coming soon!')),
-                  );
+              ],
+            ),
+            body: SafeArea(
+              child: RefreshIndicator(
+                onRefresh: () async {
+                  context.read<PlannerBloc>().add(LoadPlannerSuggestions());
+                  // Simple delay to let the UI show the refresh spinner briefly or wait for state?
+                  // Since Bloc is async, we can just await a small delay or future from bloc if designed.
+                  // For now, fire and forget. 
+                  await Future.delayed(const Duration(seconds: 1));
                 },
+                child: SingleChildScrollView(
+                  physics: const AlwaysScrollableScrollPhysics(), // Ensure scroll even if content is short
+                  padding: const EdgeInsets.all(24.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Good Morning!',
+                        style: GoogleFonts.outfit(
+                          fontSize: 16,
+                          color: colorScheme.onSurfaceVariant,
+                        ),
+                      ).animate().fadeIn().slideX(begin: -0.1),
+                      Text(
+                        'What are we cooking?',
+                        style: GoogleFonts.outfit(
+                          fontSize: 32,
+                          fontWeight: FontWeight.bold,
+                          color: colorScheme.onSurface,
+                          height: 1.1,
+                        ),
+                      ).animate().fadeIn(delay: 200.ms).slideX(begin: -0.1),
+                      
+                      const SizedBox(height: 32),
+
+                      // The Brain (New)
+                      const ChefsSuggestions(),
+                      const SizedBox(height: 32),
+
+                      _buildFeatureCard(
+                        context,
+                        title: 'My Fridge',
+                        subtitle: 'Manage your supplies',
+                        icon: Icons.kitchen,
+                        color: Colors.blueAccent,
+                        delay: 400.ms,
+                        onTap: () => Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) => const InventoryPage()),
+                        ),
+                      ),
+                      // ... rest of cards
+                      const SizedBox(height: 16),
+                      _buildFeatureCard(
+                        context,
+                        title: 'Cookbook',
+                        subtitle: 'Explore recipes',
+                        icon: Icons.menu_book_rounded,
+                        color: Colors.orangeAccent,
+                        delay: 500.ms,
+                        onTap: () => Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) => const RecipesPage()),
+                        ),
+                      ),
+                      const SizedBox(height: 16),
+                      _buildFeatureCard(
+                        context,
+                        title: 'Social',
+                        subtitle: 'Share & Discover (Coming Soon)',
+                        icon: Icons.people_outline,
+                        color: Colors.pinkAccent,
+                        delay: 600.ms,
+                        onTap: () {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(content: Text('Social features coming soon!')),
+                          );
+                        },
+                      ),
+                    ],
+                  ),
+                ),
               ),
-            ],
-          ),
-        ),
+            ),
+          );
+        }
       ),
     );
   }

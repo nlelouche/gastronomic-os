@@ -45,4 +45,25 @@ class OnboardingRepositoryImpl implements IOnboardingRepository {
       return (const ServerFailure(), null);
     }
   }
+
+  @override
+  Future<(Failure?, List<FamilyMember>?)> getFamilyMembers() async {
+    try {
+      final config = await remoteDataSource.getProfileConfig();
+      if (config != null && config['members'] != null) {
+        final membersList = config['members'] as List;
+        final members = membersList.map((m) => FamilyMember(
+          id: m['id'] ?? '',
+          name: m['name'] ?? '',
+          role: m['role'] ?? '',
+          diet: m['diet'] ?? 'Omnivore',
+          allergies: List<String>.from(m['allergies'] ?? []),
+        )).toList();
+        return (null, members);
+      }
+      return (null, <FamilyMember>[]);
+    } catch (e) {
+      return (const ServerFailure(), null);
+    }
+  }
 }

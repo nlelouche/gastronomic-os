@@ -3,9 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:gastronomic_os/core/widgets/ui_kit.dart';
 import 'package:gastronomic_os/features/recipes/domain/entities/recipe.dart';
+import 'package:gastronomic_os/features/recipes/domain/entities/recipe_step.dart';
+import 'package:gastronomic_os/features/recipes/domain/entities/resolved_step.dart';
+import 'package:gastronomic_os/features/recipes/domain/logic/recipe_resolver.dart';
 import 'package:gastronomic_os/features/recipes/presentation/bloc/recipe_bloc.dart';
 import 'package:gastronomic_os/features/recipes/presentation/bloc/recipe_event.dart';
 import 'package:gastronomic_os/features/recipes/presentation/bloc/recipe_state.dart';
+import 'package:gastronomic_os/features/onboarding/domain/repositories/i_onboarding_repository.dart';
 import 'package:gastronomic_os/init/injection_container.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -23,10 +27,52 @@ class RecipeDetailPage extends StatelessWidget {
   }
 }
 
-class RecipeDetailView extends StatelessWidget {
+class RecipeDetailView extends StatefulWidget {
   final Recipe recipe;
 
   const RecipeDetailView({super.key, required this.recipe});
+
+  @override
+  State<RecipeDetailView> createState() => _RecipeDetailViewState();
+}
+
+class _RecipeDetailViewState extends State<RecipeDetailView> {
+  List<ResolvedStep>? _resolvedSteps;
+  bool _isResolvingSteps = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _resolveSteps();
+  }
+
+  Future<void> _resolveSteps([Recipe? recipe]) async {
+    // If resolving a new recipe (from Bloc), don't show loading if we already have partial data?
+    // Actually, resolving is fast, but let's keep the spinner logic for initState.
+    if (recipe == null) setState(() => _isResolvingSteps = true); // Only show loading on initial
+    
+    try {
+      final targetRecipe = recipe ?? widget.recipe;
+
+      final onboardingRepo = sl<IOnboardingRepository>();
+      final familyResult = await onboardingRepo.getFamilyMembers();
+      final family = familyResult.$2 ?? [];
+      
+      final resolver = RecipeResolver();
+      final resolved = resolver.resolve(targetRecipe, family);
+      
+      if (mounted) {
+        setState(() {
+          _resolvedSteps = resolved;
+          _isResolvingSteps = false;
+        });
+      }
+    } catch (e, stack) {
+      print('🔥 Error resolving steps: $e');
+      print(stack);
+      if (mounted) setState(() => _isResolvingSteps = false);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +80,12 @@ class RecipeDetailView extends StatelessWidget {
     final colorScheme = theme.colorScheme;
 
     return Scaffold(
-      body: BlocBuilder<RecipeBloc, RecipeState>(
+      body: BlocConsumer<RecipeBloc, RecipeState>(
+        listener: (context, state) {
+          if (state is RecipeDetailLoaded) {
+            _resolveSteps(state.recipe);
+          }
+        },
         builder: (context, state) {
           if (state is RecipeLoading) {
             return const Center(child: CircularProgressIndicator());
@@ -156,17 +207,20 @@ class RecipeDetailView extends StatelessWidget {
     );
   }
 
-  Widget _buildStepsTimeline(BuildContext context, List<String> steps) {
-     if (steps.isEmpty) {
+  Widget _buildStepsTimeline(BuildContext context, List<RecipeStep> steps) {
+    if (_isResolvingSteps) {
+      return const Center(child: CircularProgressIndicator());
+    }
+
+    if (_resolvedSteps == null || _resolvedSteps!.isEmpty) {
       return const Text('No instructions listed.');
     }
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: steps.asMap().entries.map((entry) {
-        final index = entry.key + 1;
-        final step = entry.value;
-        final isLast = index == steps.length;
+      children: _resolvedSteps!.asMap().entries.map((entry) {
+        final resolvedStep = entry.value;
+        final isLast = entry.key == _resolvedSteps!.length - 1;
         
         return IntrinsicHeight(
           child: Row(
@@ -179,16 +233,24 @@ class RecipeDetailView extends StatelessWidget {
                      width: 28,
                      height: 28,
                      decoration: BoxDecoration(
-                       color: Theme.of(context).colorScheme.primaryContainer,
+                       color: resolvedStep.isUniversal 
+                           ? Theme.of(context).colorScheme.primaryContainer 
+                           : Theme.of(context).colorScheme.tertiaryContainer,
                        shape: BoxShape.circle,
-                       border: Border.all(color: Theme.of(context).colorScheme.primary)
+                       border: Border.all(
+                           color: resolvedStep.isUniversal 
+                               ? Theme.of(context).colorScheme.primary 
+                               : Theme.of(context).colorScheme.tertiary
+                       )
                      ),
                      child: Center(
                        child: Text(
-                         '$index',
+                         '${resolvedStep.index}',
                          style: TextStyle(
                            fontWeight: FontWeight.bold,
-                           color: Theme.of(context).colorScheme.primary,
+                           color: resolvedStep.isUniversal 
+                               ? Theme.of(context).colorScheme.primary 
+                               : Theme.of(context).colorScheme.onTertiaryContainer,
                            fontSize: 12,
                          ),
                        ),
@@ -210,9 +272,68 @@ class RecipeDetailView extends StatelessWidget {
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.only(bottom: 24.0),
-                  child: Text(
-                    step,
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(height: 1.5),
+                  child: Column(
+                     crossAxisAlignment: CrossAxisAlignment.start,
+                     children: [
+                       // Target Group Badge (For Juan, María...)
+                       if (!resolvedStep.isUniversal)
+                         Container(
+                           margin: const EdgeInsets.only(bottom: 8),
+                           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                           decoration: BoxDecoration(
+                             color: Theme.of(context).colorScheme.tertiaryContainer.withOpacity(0.5),
+                             borderRadius: BorderRadius.circular(12),
+                             border: Border.all(color: Theme.of(context).colorScheme.tertiary.withOpacity(0.3)),
+                           ),
+                           child: Row(
+                             mainAxisSize: MainAxisSize.min,
+                             children: [
+                               Icon(Icons.person, size: 14, color: Theme.of(context).colorScheme.tertiary),
+                               const SizedBox(width: 4),
+                               Text(
+                                 resolvedStep.targetGroupLabel,
+                                 style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                                   color: Theme.of(context).colorScheme.onTertiaryContainer,
+                                   fontWeight: FontWeight.bold,
+                                 ),
+                               ),
+                             ],
+                           ),
+                         ),
+                       
+                       // Main Instruction
+                       Text(
+                         resolvedStep.instruction,
+                         style: Theme.of(context).textTheme.bodyMedium?.copyWith(height: 1.5),
+                       ),
+
+                       // Cross Contamination Alert
+                       if (resolvedStep.crossContaminationAlert != null)
+                        Container(
+                          margin: const EdgeInsets.only(top: 8),
+                          padding: const EdgeInsets.all(8),
+                          decoration: BoxDecoration(
+                            color: Theme.of(context).colorScheme.errorContainer.withOpacity(0.5),
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(color: Theme.of(context).colorScheme.error.withOpacity(0.5)),
+                          ),
+                          child: Row(
+                            children: [
+                              Icon(Icons.warning_amber, size: 16, color: Theme.of(context).colorScheme.error),
+                              const SizedBox(width: 8),
+                               Expanded(
+                                 child: Text(
+                                   resolvedStep.crossContaminationAlert!,
+                                   style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                                     color: Theme.of(context).colorScheme.onErrorContainer,
+                                     fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                    ],
                   ),
                 ),
               ),

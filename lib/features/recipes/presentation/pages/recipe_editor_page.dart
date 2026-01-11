@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gastronomic_os/features/recipes/domain/entities/recipe.dart';
+import 'package:gastronomic_os/features/recipes/domain/entities/recipe_step.dart';
+import 'package:gastronomic_os/features/recipes/data/models/recipe_step_model.dart';
 import 'package:gastronomic_os/features/recipes/presentation/bloc/recipe_bloc.dart';
 import 'package:gastronomic_os/features/recipes/presentation/bloc/recipe_event.dart';
 
@@ -39,7 +41,7 @@ class _RecipeEditorPageState extends State<RecipeEditorPage> {
     // Initialize steps
     if (widget.initialRecipe != null && widget.initialRecipe!.steps.isNotEmpty) {
       for (var step in widget.initialRecipe!.steps) {
-        _stepsControllers.add(TextEditingController(text: step));
+        _stepsControllers.add(TextEditingController(text: step.instruction));
       }
     } else {
       _stepsControllers.add(TextEditingController());
@@ -93,8 +95,8 @@ class _RecipeEditorPageState extends State<RecipeEditorPage> {
           .toList();
       
       final steps = _stepsControllers
-          .map((c) => c.text.trim())
-          .where((t) => t.isNotEmpty)
+          .map((c) => RecipeStepModel(instruction: c.text.trim()))
+          .where((s) => s.instruction.isNotEmpty)
           .toList();
 
       final newRecipe = Recipe(

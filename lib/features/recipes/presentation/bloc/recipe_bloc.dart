@@ -11,6 +11,7 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
     on<CreateRecipe>(_onCreateRecipe);
     on<ForkRecipe>(_onForkRecipe);
     on<LoadRecipeDetails>(_onLoadRecipeDetails);
+    on<SeedDatabase>(_onSeedDatabase);
   }
 
   Future<void> _onLoadRecipeDetails(LoadRecipeDetails event, Emitter<RecipeState> emit) async {
@@ -56,6 +57,17 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
     } else {
       // Reload to show the forked recipe in the list
       add(LoadRecipes());
+    }
+  }
+
+  Future<void> _onSeedDatabase(SeedDatabase event, Emitter<RecipeState> emit) async {
+    emit(RecipeLoading());
+    try {
+      await repository.seedDatabase(filterTitle: event.filterTitle);
+      // Reload recipes to show the new seeded recipes
+      add(LoadRecipes());
+    } catch (e) {
+      emit(RecipeError('Failed to seed database: $e'));
     }
   }
 }
