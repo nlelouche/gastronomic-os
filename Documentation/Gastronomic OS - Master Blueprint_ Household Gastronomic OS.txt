@@ -1,0 +1,37 @@
+﻿Aquí tienes el Master Blueprint: Household Gastronomic OS (GOS) consolidado. Este documento ha sido diseñado específicamente para servir como el Contexto Maestro para tu desarrollo en Google Antigravity.
+Al entregarle este documento al IDE, le estarás dando no solo instrucciones de código, sino la lógica de negocio, los fundamentos matemáticos y la psicología de usuario necesarios para construir un unicornio.
+________________
+🚀 Master Blueprint: Household Gastronomic OS (GOS)
+I. Visión de Producto y Negocio (C CFO de la Cocina)
+* Propuesta de Valor Única (UVP): Una herramienta Fintech para el hogar que ahorra un promedio de $2,913 USD anuales eliminando el desperdicio de alimentos.
+* El Problema: El Mixed Diet Matrix; la incapacidad de las apps actuales para resolver cenas familiares con dietas conflictivas (Vegano, Keto, Atleta, Alergias).
+* Mercado Objetivo: EE. UU. y Europa (2026), enfocado en la Privacidad (GDPR) y el ahorro frente a la inflación.
+II. El Motor de Inteligencia (Cerebro Algorítmico)
+1. Mixed Diet Matrix Solver
+* Modelo: Problema de Satisfacción de Restricciones (CSP) ejecutado con Google OR-Tools (CP-SAT).
+* Heurística: Minimización de la Distancia de Hamming Culinaria entre platos para maximizar el uso de una Base Común de cocina.
+* Fuzzy Logic: Manejo de preferencias subjetivas (picante, textura) para evitar descartes rígidos.
+2. Infraestructura "Git-for-Food"
+* Estructura: PostgreSQL con JSONB en Supabase para gestionar Forks, Commits y Merges de recetas.
+* Deltas: Solo se almacenan los cambios (diffs) entre una receta maestra y su versión adaptada.
+III. Capa Sensorial (Vision AI)
+* Inferencia Local (Edge): YOLOv10 corriendo en el dispositivo para detección de inventario a 30-50 FPS con costo $0 y privacidad total.
+* El Oracle (Cloud): Escalado a Gemini 1.5 Pro / GPT-4o Vision solo para identificación de sobras o alimentos complejos.
+* OCR: Captura masiva de ingredientes mediante el escaneo de tickets de supermercado.
+IV. Experiencia de Usuario y Retención
+* Onboarding "Aha! Moment": Proceso de 60 segundos que incluye la configuración familiar, el escaneo mágico y la revelación del "Dinero en Riesgo".
+* Option Reduction: Presentación de solo 3 opciones óptimas: Eficiente (ahorro), Rápida (<20 min) y Placer.
+* Gamificación: Freshness Score (barra de salud de la heladera), rachas de desperdicio cero y roles familiares RPG.
+V. Stack Tecnológico (Independiente & Scalable)
+* Frontend: Flutter (Android/iOS) para desarrollo multiplataforma rápido.
+* Backend: Supabase (Auth, DB Realtime, Storage) para evitar gestión de servidores.
+* Solver: Microservicio en Python para lógica matemática compleja.
+________________
+VI. Roadmap de Ejecución (Fases Críticas)
+1. Fase 1 (Cerebro): Implementar el Solver y el esquema Git en Supabase.
+2. Fase 2 (Visión): Integrar YOLOv10 y el onboarding de 60 segundos.
+3. Fase 3 (Social/Mercado): Comunidad, Programas de Creadores y compras vía API (Instacart/Walmart).
+________________
+Instrucción Final para Google Antigravity: > "Eres el ingeniero principal de este proyecto. Utiliza este Master Blueprint como tu única fuente de verdad. No omitas la lógica de 'Git-for-Food' ni el requerimiento de privacidad local. Tu prioridad es la Fase 1: El Solver y la Fundación de Datos."
+________________
+¿Te gustaría que redacte el primer Prompt Maestro detallado para que lo pegues en Google Antigravity y comiences a generar la estructura de carpetas y la conexión inicial con Supabase?

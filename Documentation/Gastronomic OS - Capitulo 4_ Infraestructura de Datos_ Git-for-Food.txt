@@ -1,0 +1,72 @@
+﻿Como Senior Engineer y CTO, procedo con la expansión técnica y detallada del Capítulo 4. Este apartado define la estructura de persistencia de datos, esencial para que el IDE (Google Antigravity) comprenda cómo gestionar la evolución de las recetas y la interacción social de los usuarios mediante una arquitectura inspirada en el control de versiones de software1111.
++2
+
+
+________________
+4. Infraestructura de Datos: "Git-for-Food"
+4.1. Filosofía de Versionado de Recetas (Commits, Forks, Merges)
+A diferencia de las aplicaciones gastronómicas tradicionales que tratan las recetas como archivos de texto estáticos, el GOS considera que la información culinaria es data viva2. El sistema permite que los usuarios ajusten ingredientes y pasos (ej. reducir sal, sustituir un vegetal por otro o modificar tiempos de cocción) sin perder la referencia original3.
++1
+
+
+* Forks Gastronómicos: Inspirado en el desarrollo de software, un "Fork" permite crear una rama independiente de una receta maestra para adaptarla a necesidades específicas (ej. "Carbonara Madre" forkeada a "Carbonara Vegana de Emilio")44.
++1
+
+* Commits y Trazabilidad: Cada cambio realizado en una receta se registra como un "Commit", manteniendo un historial completo de la evolución del plato5555.
++2
+
+* Merges Semánticos: Si una modificación en un "Fork" resulta ser altamente popular o mejora la receta base, el sistema puede sugerir una actualización a la receta maestra (equivalente a un "Pull Request"), permitiendo que la sabiduría colectiva refine los datos globales66.
++1
+
+4.2. Diseño de Schema en PostgreSQL (JSONB) para Forks Dinámicos
+Para soportar esta flexibilidad, utilizaremos PostgreSQL con el tipo de dato JSONB, lo que permite una estructura de datos semiesctructurada y consultas rápidas sobre esquemas dinámicos7777.
++2
+
+
+4.2.1. Tablas Core (La Arquitectura Git)
+   * Recipes (Repositorios): Almacena el ID único de la receta, el nombre, el autor original (author_id), una referencia a la receta maestra de origen (origin_id) y una bandera booleana que indica si es un fork (is_fork)888888888.
++2
+
+   * Commits (Historial): Registra cada cambio. Contiene el id, el recipe_id al que pertenece, el parent_commit_id para mantener la genealogía, el author_id del cambio y un mensaje descriptivo (ej. "Sustitución de azúcar por miel")9999.
++1
+
+   * Tree (Snapshot): Una vista materializada o un objeto JSONB que representa el estado final de la receta en un punto específico del tiempo, facilitando la carga rápida para el usuario10101010.
++1
+
+4.2.2. Lógica de "Diff" (Diferenciales)
+En lugar de duplicar toda la receta con cada cambio, el sistema solo almacena la diferencia semántica (el "delta")11.
+
+
+      * Estructura del Diff: Se utiliza un objeto JSONB para indicar qué ingredientes se eliminan (remove), cuáles se añaden (add) y qué pasos de la instrucción se modifican (modify)121212121212121212.
++2
+
+4.3. Gestión de Autoría y Reputación de Creadores
+El sistema gestiona la jerarquía de los usuarios para fomentar una comunidad de alta calidad.
+         * Atribución de Forks: Cada usuario que pública un fork mantiene la autoría de sus cambios, pero el sistema preserva la referencia al creador original de la "rama maestra"13131313.
++1
+
+         * Privacidad de Datos: Los usuarios pueden configurar sus recetas y modificaciones como "Privadas" (solo visibles para su familia) o "Públicas" (disponibles para la comunidad)14141414.
++1
+
+         * Métricas Sociales: Se rastrean estadísticas de "Likes", "Favoritos" y, lo más importante, cuántas veces una receta ha sido "forkeada", lo cual define la autoridad del creador en la red social.
+4.4. Integración de Recetarios Externos e Inteligencia Colectiva
+Para poblar el sistema inicialmente (Bootstrapping), el GOS utiliza fuentes externas de datos estructurados.
+            * APIs Gastronómicas: Integración con proveedores como Spoonacular o Edamam para obtener metadatos nutricionales y alérgenos certificados que alimenten al Solver.
+            * Análisis Semántico de Tendencias: El sistema analiza los "diffs" de toda la base de usuarios de forma agregada para identificar tendencias (ej. si el 50% de los usuarios reduce el azúcar en una receta específica, el sistema ajusta automáticamente los metadatos de salud de ese plato)15.
+
+            * Validación de Comunidad: Los usuarios pueden responder a recetas con fotos de sus platos preparados y puntuaciones multidimensionales, validando la precisión de la receta y sus variaciones16.
+
+4.5. Infraestructura de Backend: Supabase
+La plataforma recomendada para gestionar este ecosistema es Supabase17.
+
+
+               * PostgreSQL Nativo: Permite el uso de extensiones como pg_jsonschema para validar que los forks cumplan con la estructura requerida antes de ser guardados18181818.
++1
+
+               * Realtime Subscriptions: Esencial para que, cuando un miembro de la familia marca un ingrediente en la lista o modifica una receta, el cambio se refleje instantáneamente en los dispositivos de los demás miembros19.
+
+               * Declarative Schemas: Permite manejar la base de datos como código, alineándose con la filosofía de control de versiones del proyecto20.
+
+________________
+Nota de CTO para Antigravity: Al programar este módulo, es vital que las consultas SQL utilicen funciones de agregación de JSONB para "reconstruir" la receta final a partir de sus commits de forma eficiente. La integridad referencial entre parent_id y origin_id debe ser estricta para no romper el árbol genealógico de las recetas.
+¿Damos por concluido este capítulo para proceder con el Capítulo 5: Capa de Inteligencia Artificial (Vision AI)?

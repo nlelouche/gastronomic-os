@@ -1,0 +1,37 @@
+﻿Como Senior Engineer y CTO, procedo con la expansión detallada del Capítulo 7. Este apartado define la capa de gestión proactiva del sistema, donde pasamos de la reacción inmediata ("¿qué como hoy?") a la estrategia logística a largo plazo, transformando el inventario en un flujo de activos optimizado.
+________________
+7. Funcionalidades de Planificación y Gestión
+7.1. Dualidad de Modos: Estratégico vs. Táctico
+Para cubrir todas las realidades de la cocina doméstica, el sistema opera en dos modalidades distintas pero interconectadas, adaptándose al nivel de planificación del usuario en cada momento.
+* 7.1.1. Modo "Inventory Optimizer" (El CFO de la cocina):
+   * Lógica de Operación: Consulta la base de datos de Supabase para analizar el inventario completo cargado históricamente.
+   * Objetivo de Negocio: Maximizar el ahorro y reducir el desperdicio financiero.
+   * Priorización: El algoritmo selecciona recetas que utilizan ingredientes con el Freshness Score más bajo (próximos a vencer).
+   * Uso Ideal: Planeamiento semanal de domingo y rutinas diarias familiares para evitar la pérdida de los $2,913 USD anuales identificados en la investigación.
+* 7.1.2. Modo "Flash Chef" (La Improvisación Inteligente):
+   * Lógica de Operación: Ignora el inventario histórico y se basa exclusivamente en la inferencia inmediata de YOLOv10 local.
+   * Objetivo de Negocio: Resolver la fatiga de decisión en segundos sin preparación previa.
+   * Uso Ideal: Cuando el usuario tiene 3 o 4 ingredientes sobre la mesada y necesita una solución creativa inmediata.
+7.2. El Wishlist Inteligente y Planificador a Futuro
+Esta funcionalidad permite al usuario proyectar sus necesidades alimentarias, permitiendo que el sistema actúe como un gestor de compras anticipado.
+* 7.2.1. Snapshot de Planificación:
+   * El usuario puede navegar por el recetario y marcar platos para fechas futuras (ej. "Cena con amigos el próximo sábado").
+   * El sistema genera un Snapshot de los ingredientes necesarios y lo compara con el inventario actual de la casa en Supabase.
+* 7.2.2. Generación Automática de "Gap List":
+   * La IA calcula la diferencia semántica entre la receta deseada y el stock actual.
+   * Genera automáticamente una Lista de Compras Faltantes, evitando la compra de duplicados que el usuario ya posee.
+* 7.2.3. Asistente de Adquisición Conductual:
+   * Recordatorios Contextuales: El sistema aprende los patrones de compra del usuario. Si detecta que es viernes y falta un ingrediente clave para la receta planeada del sábado, envía una alerta preventiva.
+   * Estimación de Costo: Proyecta el gasto adicional basado en precios de mercado, permitiendo al usuario ajustar su presupuesto antes de ejecutar la compra.
+7.3. Sistema de Notificaciones de Aversión a la Pérdida
+Utilizamos la psicología del comportamiento para transformar la gestión del inventario en una tarea de alta prioridad.
+* 7.3.1. Alertas de "Dinero en Riesgo":
+   * En lugar de notificaciones genéricas como "Recuerda usar tus tomates", el sistema utiliza un enfoque financiero: "Tienes $15.00 en ingredientes (Salmón y Espárragos) que perderán su valor en 24 horas. ¿Quieres ver 3 recetas para salvarlos hoy?".
+* 7.3.2. El Freshness Score Dashboard:
+   * Un panel visual que muestra la "salud" de la heladera.
+   * Funciona como un Health Bar de videojuego; el usuario recibe refuerzo positivo (XP) cada vez que tacha un ingrediente próximo a vencer de una receta preparada.
+* 7.3.3. Notificaciones de "Family Sync":
+   * Gracias a Supabase Realtime, cuando un miembro de la familia compra un ítem de la Wishlist o tacha un ingrediente, el resto recibe una actualización instantánea para evitar compras dobles por error.
+________________
+Nota de CTO para Antigravity: Para implementar la Wishlist, debes asegurar que el esquema de la base de datos distinga claramente entre el inventory_stock (lo que hay físicamente) y el planned_stock (lo que se necesita para el futuro). El "Mixed Diet Matrix Solver" debe ser capaz de correr simulaciones sobre ingredientes que aún no existen en la casa para predecir si una cena futura será viable para todos los perfiles familiares.
+¿Confirmamos la finalización de este capítulo para avanzar al Capítulo 8: Stack Tecnológico Final y Desarrollo?

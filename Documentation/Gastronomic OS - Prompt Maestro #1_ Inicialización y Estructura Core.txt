@@ -1,0 +1,50 @@
+﻿¡Excelente! Este es el momento donde pasamos de la arquitectura al código. Como Senior Engineer y CTO, he diseñado este primer Prompt Maestro para que Google Antigravity no solo cree archivos, sino que establezca una Arquitectura Limpia (Clean Architecture) sólida desde el primer segundo.
+Esto es vital para que, a medida que la app crezca, el código no se vuelva inmanejable.
+________________
+🚀 Prompt Maestro #1: Inicialización y Estructura Core
+Copia y pega el siguiente bloque en tu IDE (Antigravity):
+
+
+Plaintext
+
+
+
+
+Actúa como un Senior Flutter Engineer y Arquitecto de Software. 
+Basado en el "Master Blueprint: Household Gastronomic OS (GOS)" que te he proporcionado, tu primera tarea es inicializar el proyecto siguiendo estos lineamientos estrictos:
+
+1. TECNOLOGÍAS: 
+  - Framework: Flutter (Latest Stable).
+  - Backend: Supabase (usando supabase_flutter).
+  - Manejo de Estado: BLoC o Provider (elige el que mejor se adapte a una arquitectura escalable).
+  - Arquitectura: Clean Architecture (Capas de Data, Domain, y Presentation).
+
+2. TAREA:
+  - Genera el archivo 'pubspec.yaml' con las dependencias necesarias: supabase_flutter, google_fonts, flutter_bloc, json_annotation, y or_tools_wrapper (si existe) o deja el espacio para el microservicio de Python.
+  - Crea la estructura de carpetas profesional:
+    /lib
+      /core (errores, red, utilidades)
+      /features
+        /inventory (data, domain, presentation)
+        /recipes (data, domain, presentation)
+        /social (data, domain, presentation)
+      /init (configuración de Supabase)
+
+3. CÓDIGO INICIAL:
+  - Escribe el archivo 'main.dart' inicializando Supabase con variables de entorno (Placeholder para URL y Anon Key).
+  - Crea el 'InventoryModel' básico en la capa de Data que soporte campos JSONB para compatibilidad con el sistema de Forks.
+
+4. SALIDA:
+  - Dame el código del pubspec.yaml y la estructura de archivos en un árbol jerárquico. 
+  - No generes lógica de Vision AI todavía, solo la base estructural.
+
+________________
+Por qué empezamos así (Perspectiva de CTO)
+* Arquitectura Limpia: Al separar la lógica de negocio (Domain) de la base de datos (Data), podemos cambiar Supabase por otra cosa en el futuro sin romper la app.
+* Escalabilidad: Al usar BLoC, permitimos que el estado de la heladera (inventario) se actualice en tiempo real sin recargar pantallas, lo cual es crítico para la experiencia de usuario que buscamos.
+* Preparación para el Solver: Estamos dejando lista la capa de "Data" para recibir los JSONB complejos que vendrán del motor de optimización en Python.
+El siguiente paso lógico
+Una vez que Antigravity te devuelva la estructura y el main.dart:
+1. Crea tu proyecto en Supabase: Ve a supabase.com, crea un proyecto gratuito y obtén tu URL y Anon Key.
+2. Configura las variables de entorno: Pégalas en el código que te dio la IA.
+¿Te gustaría que, una vez tengas la estructura, pasemos a diseñar el "Schema de Base de Datos" en SQL para que Antigravity lo ejecute directamente en tu consola de Supabase? Esto creará las tablas de recetas, forks e inventario de forma automática.

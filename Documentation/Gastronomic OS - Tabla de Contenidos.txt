@@ -1,0 +1,114 @@
+﻿Como Senior Engineer y CTO, entiendo perfectamente la importancia de este documento. En el mundo del desarrollo asistido por IA, la calidad del "output" depende directamente de la profundidad del "contexto" que le entreguemos al IDE. Este documento será el "Master Blueprint" de nuestro unicornio, asegurando que Google Antigravity no solo escriba código, sino que entienda la lógica de negocio y la arquitectura técnica detrás de cada línea.
+Aquí tienes la Tabla de Contenidos Detallada para la Documentación de Diseño del Household Gastronomic OS (GOS). He incluido absolutamente cada punto discutido, desde la matemática del solver hasta la psicología de la retención.
+________________
+Tabla de Contenidos: Proyecto "Gastronomic OS"
+1. Visión Ejecutiva y Propuesta de Valor
+* 1.1. Resumen del Proyecto y Definición de "Unicornio Argentino".
+* 1.2. El Problema: El Hemorragia Financiera del Desperdicio Alimentario ($2,913 USD/año)1111.
++1
+
+* 1.3. El Problema: El "Mixed Diet Matrix" y la Fatiga de Decisión Familiar2222.
++1
+
+* 1.4. La Solución: De Recetario Estático a Sistema Operativo Gastronómico (GOS)3333.
++1
+
+* 1.5. Propuesta de Valor Única (UVP): "Fintech para la Cocina".
+2. Análisis de Mercado y KPIs
+   * 2.1. El Mercado Global de Nutrición Hiper-Personalizada (Tendencia 2026-2027)4444.
++1
+
+   * 2.2. Análisis de la Competencia (Samsung Food, Yummly, Paprika, Mealime) y sus fallos técnicos555555555.
++2
+
+   * 2.3. Métricas de Éxito (KPIs):
+      * 2.3.1. Retención (D1, D7, D30).
+      * 2.3.2. Ahorro Real Generado por Usuario (CASH-ROI)6.
+
+      * 2.3.3. Tasa de "Aha! Moment" (Onboarding de 60s)7.
+
+3. Arquitectura del "Mixed Diet Matrix Solver"
+         * 3.1. Definición Matemática del Problema: Optimización Combinatoria8888.
++1
+
+         * 3.2. Modelado de Restricciones (Hard vs. Soft Constraints)9999.
++1
+
+         * 3.3. La Heurística del "Base Meal": Distancia de Hamming Culinaria10101010.
++1
+
+         * 3.4. Implementación del Solver: Google OR-Tools (CP-SAT)11111111.
++1
+
+         * 3.5. Lógica de Divergencia (Forks Automáticos por Perfil)12121212.
++1
+
+4. Infraestructura de Datos: "Git-for-Food"
+            * 4.1. Filosofía de Versionado de Recetas (Commits, Forks, Merges)13131313.
++1
+
+            * 4.2. Diseño de Schema en PostgreSQL (JSONB) para Forks Dinámicos14141414.
++1
+
+            * 4.3. Gestión de Autoría y Reputación de Creadores.
+            * 4.4. Integración de Recetarios Externos (APIs de Spoonacular/Edamam).
+5. Capa de Inteligencia Artificial (Vision AI)
+               * 5.1. Pipeline de Visión Híbrida: Edge AI + Cloud AI15.
+
+               * 5.2. Inferencia Local con YOLOv10 (Seguridad, Privacidad y Costo Cero)161616.
++1
+
+               * 5.3. El "Oracle" (LLM Vision): Identificación de Sobras y Casos Complejos17.
+
+               * 5.4. Lógica de Predicción de Expiración y Salud de la Heladera (Freshness Score)18181818.
++1
+
+6. Experiencia de Usuario (UX) y Retención
+                  * 6.1. El "60-Second Hook" Onboarding Flow:
+                  * 6.1.1. Pantalla de Configuración de la Matriz Familiar Dinámica.
+                  * 6.1.2. El "Magic Scan" (Video Sweep vs. Ticket OCR).
+                  * 6.1.3. La Pantalla de Resultados de Convergencia (Option Reduction)19.
+
+                     * 6.2. Gamificación: XP de Cocina, Streaks de Desperdicio Cero y Roles RPG Familiares20202020.
++1
+
+                     * 6.3. La Red Social: Influencers, Likes, Forks Públicos y Proof of Cook21.
+
+7. Funcionalidades de Planificación y Gestión
+                        * 7.1. Modos de Uso: "Inventory Optimizer" vs. "Flash Chef".
+                        * 7.2. El Wishlist Inteligente y Planificador a Futuro.
+                        * 7.3. Sistema de Notificaciones de Aversión a la Pérdida22.
+
+8. Stack Tecnológico Final y Desarrollo
+                           * 8.1. Frontend: Flutter (Android/iOS)23232323.
++1
+
+                           * 8.2. Backend: Supabase (PostgreSQL, Auth, Realtime)242424242424242424.
++2
+
+                           * 8.3. Lógica de Negocio: Python (Solver) + Google Antigravity (IDE Integration).
+                           * 8.4. Seguridad y Privacidad (Local-First Data / GDPR Compliance)25252525.
++1
+
+9. Modelo de Negocio y Monetización
+                              * 9.1. Niveles de Suscripción SaaS (Freemium vs. Premium)26.
+
+                              * 9.2. Economía de APIs y Comisiones de Afiliados (Instacart/Walmart - Wishlist)272727272727272727.
++2
+
+                              * 9.3. Marketplace de Contenido y Forks Premium.
+10. Roadmap de Implementación (Fases)
+                                 * 10.1. Fase 1: MVP - El Solver y la Configuración Familiar28.
+
+                                 * 10.2. Fase 2: Vision Layer - Integración de YOLO y OCR29.
+
+                                 * 10.3. Fase 3: Social & Market Network - Comunidad y Compras30.
+
+11. Riesgos, Mitigaciones y Wishlist
+                                    * 11.1. Desafíos de Precisión en Visión AI (Oclusión de Alimentos)31.
+
+                                    * 11.2. Escalabilidad de Costos de API32.
+
+                                    * 11.3. Wishlist: Integración completa de compras en "Última Milla".
+________________
+¿Qué te parece esta estructura? Si estás de acuerdo, comenzaremos expandiendo el Punto 1 y 2, donde definiremos la visión de negocio, el problema real que solucionamos y los perfiles de usuario, para que la IA entienda el "por qué" de todo lo que sigue.

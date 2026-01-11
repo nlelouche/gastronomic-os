@@ -1,0 +1,54 @@
+﻿Como Senior Engineer y CTO, procedo con la expansión detallada del Capítulo 10. Este apartado es el cronograma maestro que permitirá que tú, como desarrollador independiente asistido por Google Antigravity, puedas navegar el desarrollo sin perder el foco en lo que genera valor. La estrategia se divide en tres fases críticas para mitigar riesgos técnicos y asegurar el flujo de caja operativo lo antes posible.
+________________
+10. Roadmap de Implementación (Fases)
+10.1. Fase 1: La Fundación y el "Cerebro" (Meses 1-4)
+El objetivo de esta fase es construir el valor central de la aplicación: resolver la Mixed Diet Matrix mediante la lógica matemática, permitiendo que las familias vean por primera vez un plan unificado.
+* Hitos Técnicos:
+   * Configuración del entorno en Flutter y conexión con Supabase (Auth y DB).
+   * Implementación del esquema PostgreSQL (JSONB) para perfiles y recetas forkeables.
+   * Desarrollo del microservicio en Python con Google OR-Tools para el Solver.
+* Funcionalidades del MVP:
+   * Creación de perfiles familiares con restricciones biológicas y éticas.
+   * Generación de una lista de compras única basada en un plan de comidas multi-dieta (entrada manual).
+   * Sincronización en tiempo real entre los miembros del hogar mediante Supabase Realtime.
+10.2. Fase 2: La Capa de Visión y Onboarding "Mágico" (Meses 5-8)
+Una vez resuelta la lógica, debemos atacar el mayor punto de fricción: la entrada de datos. Esta fase introduce la Vision AI para garantizar la retención.
+* Hitos Técnicos:
+   * Integración de TFLite / YOLOv10n en el código de Flutter para detección local.
+   * Implementación de OCR para el escaneo de tickets de supermercado.
+   * Optimización de la inferencia local para mantener >30 FPS en dispositivos de gama media.
+* Funcionalidades Clave:
+   * "Scan-to-Log": El usuario barre la heladera con la cámara y el inventario se actualiza solo.
+   * "Freshness Score": Dashboard visual que alerta sobre el "Dinero en Riesgo" (ingredientes por vencer).
+   * Flujo de Onboarding de 60 segundos diseñado para el "Aha! Moment" instantáneo.
+10.3. Fase 3: Red Social, Mercado y Escala (Meses 9-12)
+La fase final transforma la utilidad en un ecosistema. Aquí es donde surge el componente de red social y se activa la monetización pasiva.
+* Hitos Técnicos:
+   * Integración de las APIs de Instacart, Kroger o Walmart para el cumplimiento de compras (Wishlist).
+   * Desarrollo de la "Social Feed" para compartir fotos (Proof of Cook) y Forks de recetas.
+   * Implementación del sistema de "Forks" públicos y gestión de autoría para influencers.
+* Funcionalidades de Cierre:
+   * One-click fulfillment: Comprar los faltantes de la planificación semanal con un botón.
+   * Programa de beneficios y gamificación social (Likes, XP y recompensas por engagement).
+   * Marketplace de contenidos premium y exportación de "Libros de Cocina Familiares".
+________________
+Resumen de Esfuerzo para el Desarrollador Independiente
+Fase
+	Enfoque Principal
+	Riesgo Crítico
+	Mitigación con Antigravity
+	1
+	Lógica y Datos
+	Complejidad del Solver
+	Pedir a la IA que modele las restricciones en OR-Tools.
+	2
+	Visión Artificial
+	Latencia y Consumo de Batería
+	Usar modelos YOLOv10n pre-optimizados para Edge.
+	3
+	Monetización y Social
+	Integración de APIs externas
+	Usar documentación oficial de Instacart para generar Deep Links.
+	________________
+Nota de CTO para Antigravity: Durante la Fase 1, asegúrate de que el código sea lo más modular posible. Como no tienes experiencia previa en apps móviles, pide a Antigravity que implemente una arquitectura de estados limpia (como BLoC o Provider) en Flutter desde el día uno. Esto evitará que la app se vuelva inmanejable cuando agreguemos la visión y la red social en las fases posteriores.
+¿Damos por finalizado este capítulo para proceder con el último, el Capítulo 11: Riesgos, Mitigaciones y Wishlist?
