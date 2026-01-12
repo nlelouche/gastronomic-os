@@ -22,6 +22,7 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
     required this.onboardingRepository,
   }) : super(RecipeInitial()) {
     on<LoadRecipes>(_onLoadRecipes);
+    on<LoadMoreRecipes>(_onLoadMoreRecipes);
     on<CreateRecipe>(_onCreateRecipe);
     on<ForkRecipe>(_onForkRecipe);
     on<LoadRecipeDetails>(_onLoadRecipeDetails);
@@ -30,13 +31,8 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
   }
 
   Future<void> _onLoadRecipeDetails(LoadRecipeDetails event, Emitter<RecipeState> emit) async {
-    // Keep filter state if possible? 
-    // Usually navigating to detail doesn't clear the list state unless we emit Loading and replace everything.
-    // But RecipeDetailLoaded replaces the whole state. 
-    // If we return, we might lose the filter.
-    // Ideally, Details should be handled by a separate Bloc or just a FutureBuilder if we want to preserve the List state in the background.
-    // However, for now, let's follow existing pattern.
-    emit(RecipeLoading());
+    // Keep state if possible, or just emit loading
+    emit(RecipeLoading()); // Simplification for now
     final result = await repository.getRecipeDetails(event.recipeId);
     
     if (result.$1 != null) {
@@ -48,70 +44,105 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
 
   Future<void> _onLoadRecipes(LoadRecipes event, Emitter<RecipeState> emit) async {
     emit(RecipeLoading());
-    final result = await repository.getRecipes(); // Returns (Failure?, List<Recipe>?)
+    // Initial Load: Offset 0, Limit 20
+    final result = await repository.getRecipes(limit: 20, offset: 0); 
     
     if (result.$1 != null) {
       emit(RecipeError(result.$1!.message));
     } else {
       final list = result.$2!;
       emit(RecipeLoaded(
-        recipes: list, 
-        allRecipes: list
+        recipes: list,
+        hasReachedMax: list.length < 20,
+      ));
+    }
+  }
+
+  Future<void> _onLoadMoreRecipes(LoadMoreRecipes event, Emitter<RecipeState> emit) async {
+    if (state is! RecipeLoaded) return;
+    final currentState = state as RecipeLoaded;
+    if (currentState.hasReachedMax) return;
+
+    final currentLen = currentState.recipes.length;
+    // Fetch next page
+    final result = await repository.getRecipes(
+      limit: 20, 
+      offset: currentLen,
+      query: currentState.query // Maintain current search query!
+    );
+
+    if (result.$1 != null) {
+      // Create a minor error side-effect or just ignore?
+      // Usually we don't break the whole view. 
+      // For now, let's just do nothing or store error in a separate field (not defined yet).
+      // Or emit same state.
+    } else {
+      final newRecipes = result.$2!;
+      emit(currentState.copyWith(
+        recipes: currentState.recipes + newRecipes,
+        hasReachedMax: newRecipes.length < 20,
       ));
     }
   }
 
   Future<void> _onFilterRecipes(FilterRecipes event, Emitter<RecipeState> emit) async {
-    if (state is! RecipeLoaded) return;
-    final currentState = state as RecipeLoaded;
+    emit(RecipeLoading());
     
-    // Start with full list
-    var filtered = List<Recipe>.from(currentState.allRecipes);
+    // Server-Side Search for Text Query
+    // We reset pagination (offset 0)
+    final result = await repository.getRecipes(
+      limit: 20, 
+      offset: 0,
+      query: event.query
+    );
 
-    // 1. Text Search / Query
-    if (event.query.isNotEmpty) {
-       filtered = filtered.where((r) => r.title.toLowerCase().contains(event.query.toLowerCase())).toList();
+    if (result.$1 != null) {
+      emit(RecipeError(result.$1!.message));
+    } else {
+      final list = result.$2!;
+      // Client-side filtering for other flags (Family/Pantry) on this page?
+      // Plan Phase 2 says: "Filter Implications... server-side search" for text.
+      // It doesn't explicitly solve Family/Pantry for the whole DB.
+      // So we apply it to the returned page for now, or ignore it?
+      // If we apply it to the page, we might get 0 results on Page 1 even if Page 2 has them.
+      // This is a known limitation until Phase 3 (Scoring Engine).
+      // Let's apply it simply to the current fetched batch so features don't look broken.
+      
+      var filtered = list;
+
+      // 3. Family Safe
+      if (event.isFamilySafe) {
+          final familyResult = await onboardingRepository.getFamilyMembers();
+          if (familyResult.$2 != null) {
+              final family = familyResult.$2!;
+              filtered = filtered.where((r) => _dietEngine.areRecipesCompatible(r, family)).toList();
+          }
+      }
+
+      // 4. Pantry Ready
+      // ... (Same limitation, applied to batch)
+       if (event.isPantryReady) {
+          final invResult = await inventoryRepository.getInventory();
+          if (invResult.$2 != null) {
+              final inventory = invResult.$2!;
+              // Sort batch by score
+              filtered.sort((a, b) {
+                  final scoreA = _scoringEngine.calculateScore(a, inventory);
+                  final scoreB = _scoringEngine.calculateScore(b, inventory);
+                  return scoreB.compareTo(scoreA); // Descending
+              });
+          }
+      }
+
+      emit(RecipeLoaded(
+        recipes: filtered,
+        hasReachedMax: list.length < 20, // Based on FETCHED count, not filtered count
+        query: event.query,
+        isFamilySafe: event.isFamilySafe,
+        isPantryReady: event.isPantryReady,
+        requiredIngredients: event.requiredIngredients
+      ));
     }
-
-    // 2. Ingredients
-    if (event.requiredIngredients.isNotEmpty) {
-       filtered = filtered.where((r) => 
-          event.requiredIngredients.every((req) => 
-             r.ingredients.any((ing) => ing.toLowerCase().contains(req.toLowerCase()))
-          )
-       ).toList();
-    }
-
-    // 3. Family Safe
-    if (event.isFamilySafe) {
-        final familyResult = await onboardingRepository.getFamilyMembers();
-        if (familyResult.$2 != null) {
-            final family = familyResult.$2!;
-            filtered = filtered.where((r) => _dietEngine.areRecipesCompatible(r, family)).toList();
-        }
-    }
-
-    // 4. Pantry Ready (Best Match)
-    if (event.isPantryReady) {
-        final invResult = await inventoryRepository.getInventory();
-        if (invResult.$2 != null) {
-            final inventory = invResult.$2!;
-            // Sort by score
-            filtered.sort((a, b) {
-                final scoreA = _scoringEngine.calculateScore(a, inventory);
-                final scoreB = _scoringEngine.calculateScore(b, inventory);
-                return scoreB.compareTo(scoreA); // Descending
-            });
-        }
-    }
-
-    emit(currentState.copyWith(
-       recipes: filtered,
-       isFamilySafe: event.isFamilySafe,
-       isPantryReady: event.isPantryReady,
-       query: event.query,
-       requiredIngredients: event.requiredIngredients
-    ));
   }
 
   Future<void> _onCreateRecipe(CreateRecipe event, Emitter<RecipeState> emit) async {

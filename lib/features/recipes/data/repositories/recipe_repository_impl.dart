@@ -20,22 +20,33 @@ class RecipeRepositoryImpl implements IRecipeRepository {
   });
 
   @override
-  Future<(Failure?, List<Recipe>?)> getRecipes() async {
-    // 1. Return Cache if available
-    if (_cachedRecipes != null) {
-      print('📦 Returning cached recipes (${_cachedRecipes!.length})');
-      return (null, _cachedRecipes);
-    }
-
+  Future<(Failure?, List<Recipe>?)> getRecipes({int limit = 20, int offset = 0, String? query}) async {
+    // For infinite scroll & search, we bypass the simple list cache.
+    // The Bloc will manage the accumulated list.
+    // We could implement a more complex Page Cache later if needed.
+    
     try {
-      // 2. Fetch Full Recipes (Reverting Header-only optimization to allowing filtering)
-      // The optimization prevented ingredients from being loaded, breaking client-side logic.
-      final result = await remoteDataSource.getRecipes(); // Was getRecipeHeaders()
+      final result = await remoteDataSource.getRecipes(limit: limit, offset: offset, query: query);
       
-      // 3. Update Cache
-      _cachedRecipes = result;
+      // We can still update the detail cache with these lightweight headers if we want,
+      // but strictly speaking, they might be incomplete? 
+      // Actually, they ARE headers (lightweight). getRecipeDetails fetches full.
+      // So let's NOT polute the detail cache with headers, unless we carefully merge.
+      // For now: Clean pass-through.
       return (null, result);
     } catch (e) {
+      return (const ServerFailure(), null);
+    }
+  }
+
+  @override
+  Future<(Failure?, List<Recipe>?)> getDashboardSuggestions({int limit = 10}) async {
+    try {
+      final result = await remoteDataSource.getDashboardSuggestions(limit: limit);
+      return (null, result);
+    } catch (e) {
+      // Logic: If failure, maybe return fallback empty list? Or propagate error?
+      // Since it's suggestions, empty list is safer for UI.
       return (const ServerFailure(), null);
     }
   }

@@ -1,0 +1,139 @@
+﻿Como Chief Gastronomic Architect, he diseñado esta Matriz de Sustitución Funcional basada en la evidencia clínica de Gastronomic OS1. Esta tabla permite que el sistema mantenga la integridad culinaria de una receta (textura, sabor y volumen) mientras garantiza la seguridad biológica del usuario.
+
+
+Matriz de Sustitución Funcional para Alergias y Restricciones
+Función Culinaria
+	Ingrediente Original
+	Sustituto Seguro
+	Ratio / Nota Técnica
+	Contraindicación
+	Aglutinar (Binding)
+	Huevo
+	Puré de Plátano
+	$1/2$ plátano : 1 huevo. Aporta humedad y unión2.
+
+
+	FODMAPs y Renal (K)3.
+
+
+	Aglutinar (Binding)
+	Huevo
+	Semillas de Lino/Chía
+	"Huevo de lino": semillas molidas e hidratadas444.
++1
+
+
+	Sabor residual a semilla5.
+
+
+	Leudar (Raising)
+	Huevo
+	Vinagre + Bicarbonato
+	$1$ cda vinagre : $1$ cdta bicarbonato. Reacción inmediata de $CO_{2}$6.
+
+
+	Sabor residual ácido7.
+
+
+	Espumas / Merengue
+	Clara de Huevo
+	Aquafaba
+	Agua de cocción de garbanzos; crea espumas estables por saponinas8.
+
+
+	Histamina (si no es fresca)9.
+
+
+	Cremosidad / Cocción
+	Leche de Vaca
+	Leche de Soja
+	$1:1$. Rica en proteínas, ideal para reacción de Maillard101010.
++2
+
+
+	Alergia a la Soja11.
+
+
+	Cremosidad / Cuerpo
+	Leche de Vaca
+	Leche de Avena
+	$1:1$. Aporta cuerpo y textura cremosa1212.
++1
+
+
+	Gluten (Avena no certificada)13.
+
+
+	Sustituto de Nata
+	Crema de Leche
+	Tofu Sedoso / Cashews
+	El tofu sedoso o crema de anacardos replica texturas densas14.
+
+
+	FODMAPs (Tofu sedoso)15.
+
+
+	Espesar Salsas
+	Harina de Trigo
+	Maicena / Goma Xantana
+	$1$ cda maicena : $2$ cdas harina. Diluir siempre en frío16.
+
+
+	Paleo y Keto17.
+
+
+	Potenciador de Sabor
+	Ajo / Cebolla
+	Aceite Infusionado
+	Los fructanos no son solubles en aceite; sabor seguro18181818.
++1
+
+
+	Ninguna (en dosis normales).
+	Sazón / Salado
+	Sal (Sodio)
+	Hierbas / Especias
+	
+
+NUNCA usar sales de potasio ($KCl$) en pacientes renales19191919.
++1
+
+
+	Ninguna.
+	Sabor Umami
+	Salsa de Soja
+	Tamari
+	Sustituto fermentado sin trigo20.
+
+
+	Alergia a la Soja21.
+
+
+	Endulzar (Recetas)
+	Azúcar / Miel
+	Jugo de Fruta
+	Permitido en Whole30 como ingrediente (no como bebida)22.
+
+
+	Diabetes (afecta glucosa)23.
+
+
+	________________
+Notas de Optimización por Perfil de Usuario
+1. High Performance (Alto Rendimiento):
+   * Para usuarios deportistas con APLV, se recomienda priorizar la Leche de Soja sobre la de arroz, ya que la de arroz es demasiado ligera y carece de las proteínas necesarias para la recuperación muscular24242424.
++1
+
+   * El uso de Aquafaba es una excelente fuente de proteínas y fibra sin las grasas saturadas del huevo25.
+
+   2. Seguridad en Alergias (Tolerancia Cero):
+   * Lecitina: Si una etiqueta dice solo "lecitina" sin especificar origen, el algoritmo debe bloquearla para alérgicos al huevo y a la soja26262626.
++1
+
+   * Aceite de Soja: En modo estricto, se excluye. En modo estándar, el aceite altamente refinado es tolerable para la mayoría27.
+
+      3. Procesos Técnicos (Sustitución de Método):
+      * Lixiviación: No es un ingrediente, pero es el "sustituto" de la seguridad para el consumo de patatas y zanahorias en perfiles Renales28282828.
++1
+
+¿Deseas que procedamos a integrar este diccionario y estas reglas en el JSON final de las 45 recetas para que cada una tenga sus variantes de sustitución automáticas?

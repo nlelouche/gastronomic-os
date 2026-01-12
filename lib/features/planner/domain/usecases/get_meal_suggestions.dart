@@ -5,6 +5,8 @@ import 'package:gastronomic_os/features/planner/domain/logic/diet_engine.dart';
 import 'package:gastronomic_os/features/planner/domain/logic/scoring_engine.dart';
 import 'package:gastronomic_os/features/recipes/domain/entities/recipe.dart';
 import 'package:gastronomic_os/features/recipes/domain/repositories/i_recipe_repository.dart';
+import 'package:gastronomic_os/features/inventory/domain/entities/inventory_item.dart';
+import 'package:gastronomic_os/features/onboarding/domain/entities/family_member.dart';
 
 class RecipeSuggestion {
   final Recipe recipe;
@@ -29,65 +31,60 @@ class GetMealSuggestions {
   });
 
   Future<(Failure?, List<RecipeSuggestion>?)> call() async {
-    // 1. Fetch Data
-    // We fetch sequentially for safety, or parallel if confident.
-    // Parallel is better for performance.
+    // 1. Fetch Suggestions from Server (The Chef's Brain - Coarse Filter)
+    final suggestionsResult = await recipeRepository.getDashboardSuggestions(limit: 20);
     
-    final recipesFuture = recipeRepository.getRecipes();
+    if (suggestionsResult.$1 != null) {
+      return (suggestionsResult.$1, null);
+    }
+    
+    final candidateRecipes = suggestionsResult.$2 ?? [];
+    if (candidateRecipes.isEmpty) return (null, <RecipeSuggestion>[]);
+
+    // 2. Fetch Context for Client-Side Enrichment (Score/Reasons/Diet)
     final inventoryFuture = inventoryRepository.getInventory();
     final familyFuture = onboardingRepository.getFamilyMembers();
-
-    final results = await Future.wait([recipesFuture, inventoryFuture, familyFuture]);
-
-    final recipesResult = results[0] as (Failure?, List<Recipe>?);
-    final inventoryResult = results[1] as (Failure?, dynamic); // Dynamic cast cause List<InventoryItem>? vs List<dynamic>?
-    final familyResult = results[2] as (Failure?, dynamic);
-
-    // 2. Error Handling
-    if (recipesResult.$1 != null) return (recipesResult.$1, null);
-    if (inventoryResult.$1 != null) return (inventoryResult.$1, null);
-    if (familyResult.$1 != null) return (familyResult.$1, null);
-
-    final recipes = recipesResult.$2 ?? [];
-    // Need to cast correctly
-    final inventory = (inventoryResult.$2 as List?)?.cast<dynamic>() ?? [];
-    // Convert to InventoryItem if needed? Repository returns InventoryItem.
-    // Actually, let's just use typed results from the futures if we await them separately or cast carefully.
     
-    // Let's re-do await separately to keep types clean.
-    var rRes = await recipeRepository.getRecipes();
-    if (rRes.$1 != null) return (rRes.$1, null);
+    final contextResults = await Future.wait([inventoryFuture, familyFuture]);
     
-    var iRes = await inventoryRepository.getInventory();
-    if (iRes.$1 != null) return (iRes.$1, null);
-    
-    var fRes = await onboardingRepository.getFamilyMembers();
-    if (fRes.$1 != null) return (fRes.$1, null);
+    final inventoryResult = contextResults[0] as (Failure?, dynamic); // List<InventoryItem>?
+    final familyResult = contextResults[1] as (Failure?, dynamic); // List<FamilyMember>?
 
-    final recipeList = rRes.$2 ?? [];
-    final inventoryList = iRes.$2 ?? [];
-    final familyList = fRes.$2 ?? [];
+    // If context fails, we can still show recipes but with 0 score, or fail?
+    // Let's degrade gracefully: Default empty context.
+    final inventoryList = (inventoryResult.$2 as List?)?.cast<InventoryItem>() ?? <InventoryItem>[];
+    final familyList = (familyResult.$2 as List?)?.cast<FamilyMember>() ?? <FamilyMember>[];
 
-    // 3. Filter & Score
+    // 3. Enrich & Validate (Fine Filter)
     List<RecipeSuggestion> suggestions = [];
 
-    for (final recipe in recipeList) {
-      if (!_dietEngine.areRecipesCompatible(recipe, familyList)) {
-        continue;
+    for (final recipe in candidateRecipes) {
+      // Client-Side Diet Check (Safety Net)
+      if (familyList.isNotEmpty) {
+          if (!_dietEngine.areRecipesCompatible(recipe, familyList)) {
+            continue; 
+          }
       }
 
-      double score = _scoringEngine.calculateScore(recipe, inventoryList);
-      
+      // Client-Side Scoring (Presentation Details)
+      // Since the server already ranked them (mostly), this is just to generating 
+      // the "Great Value" badge and reason strings accurately.
+      double score = 0;
       List<String> reasons = [];
-      if (score > 40) reasons.add("Savior! Uses expiring items.");
-      else if (score > 10) reasons.add("You have ingredients.");
+      
+      if (inventoryList.isNotEmpty) {
+         score = _scoringEngine.calculateScore(recipe, inventoryList);
+         
+         if (score > 40) reasons.add("Savior! Uses expiring items.");
+         else if (score > 10) reasons.add("You have ingredients.");
+      }
 
       suggestions.add(RecipeSuggestion(recipe: recipe, score: score, matchingReasons: reasons));
     }
-
-    // 4. Sort
+    
+    // Re-sort just in case local scoring logic differs slightly from server logic (e.g. detailed expiration match)
     suggestions.sort((a, b) => b.score.compareTo(a.score));
 
-    return (null, suggestions.take(20).toList());
+    return (null, suggestions);
   }
 }

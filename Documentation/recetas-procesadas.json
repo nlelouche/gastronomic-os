@@ -1,0 +1,325 @@
+[
+  {
+    "id": "GOS-01",
+    "title": "Pollo al Limón con Arroz y Vegetales",
+    "description": "Estándar mediterráneo antiinflamatorio optimizado para múltiples patologías.",
+    "tags": ["Mediterranean", "Anti-inflammatory", "High-Carb"],
+    "ingredients": ["Pechuga de pollo", "Arroz integral", "Zanahoria", "Calabacín", "AOVE", "Limón", "Ajo", "Cebolla", "Sal marina"],
+    "steps": [
+      {
+        "instruction": "Cocer el arroz integral con una pizca de sal marina.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Keto": "Sustituir Arroz por Arroz de Coliflor salteado (200g).",
+          "Renal": "Usar Arroz Blanco para reducir fósforo. Omitir sal marina[cite: 1005].",
+          "Celiac": "Asegurar arroz certificado libre de contaminación cruzada[cite: 712].",
+          "Low FODMAP": "Sustituir arroz integral por arroz blanco (menor carga fermentativa)."
+        }
+      },
+      {
+        "instruction": "Sofreír ajo y cebolla en AOVE hasta que estén dorados.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Low FODMAP": "Usar Aceite Infusionado en Ajo (sin sólidos). NO usar cebolla ni ajo sólido[cite: 739].",
+          "Histamine": "Saltar sofrito. Usar solo AOVE fresco directamente para evitar liberadores[cite: 780].",
+          "Renal": "Sofreír solo cebolla (limitar ajo por potasio si es necesario).",
+          "Paleo": "Usar Aceite de Coco o AOVE; evitar aceites de semillas refinados[cite: 836]."
+        }
+      },
+      {
+        "instruction": "Incorporar zanahoria y calabacín. Cocinar 5-7 minutos.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Low FODMAP": "Limitar calabacín a máximo 65g (riesgo de polioles)[cite: 1003].",
+          "Renal": "Usar zanahoria lixiviada (remojada 4h) para reducir potasio[cite: 795].",
+          "Histamine": "Sustituir calabacín por zanahoria extra (el calabacín debe ser muy fresco)[cite: 780].",
+          "Keto": "Aumentar proporción de calabacín y reducir zanahoria."
+        }
+      },
+      {
+        "instruction": "Añadir zumo de limón fresco y cocinar 3 minutos más.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Histamine": "NO usar limón (liberador de histamina). Usar pizca de ácido ascórbico[cite: 775].",
+          "Whole30": "Asegurar que el zumo sea natural, sin conservantes prohibidos[cite: 841].",
+          "Renal": "Limitar limón si se requiere control estricto de líquidos.",
+          "Vegan": "Sin cambios; el limón es apto."
+        }
+      }
+    ]
+  },
+  {
+    "id": "GOS-02",
+    "title": "Pollo 'Clean' de 20 Minutos",
+    "description": "Protocolo de frescura máxima para evitar aminas biógenas.",
+    "tags": ["Histamine", "Low-Reactant", "Fast-Cooking"],
+    "ingredients": ["Pechuga de pollo fresca", "Arroz", "Calabacín fresco", "Zanahoria fresca", "AOVE", "Sal"],
+    "steps": [
+      {
+        "instruction": "Preparar el pollo inmediatamente tras la compra o descongelación rápida.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Histamine": "PROHIBIDO usar pollo que haya estado en la nevera >24h o sobras[cite: 760].",
+          "Renal": "Asegurar que el pollo no sea 'inyectado' con fosfatos inorgánicos[cite: 807].",
+          "Vegan": "Sustituir pollo por Tofu Firme fresco (evitar fermentados)[cite: 751].",
+          "Keto": "Sustituir arroz por espinaca fresca salteada."
+        }
+      },
+      {
+        "instruction": "Cocer el arroz y saltear vegetales frescos en AOVE.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Low FODMAP": "Evitar las partes blancas del calabacín si se supera la dosis segura.",
+          "Renal": "Lixiviar zanahoria y calabacín[cite: 795].",
+          "Celiac": "Asegurar arroz sin trazas de gluten[cite: 707].",
+          "Diabetes": "Usar arroz integral para mejorar la curva glucémica[cite: 819]."
+        }
+      }
+    ]
+  },
+  {
+    "id": "GOS-05",
+    "title": "Steak & Eggs Power Bowl",
+    "description": "Alta densidad proteica con control de reactividad inmunológica.",
+    "tags": ["Keto", "High-Protein", "Paleo"],
+    "ingredients": ["Ternera magra", "Huevo entero", "Aguacate", "Espinaca cocida", "AOVE", "Sal"],
+    "steps": [
+      {
+        "instruction": "Cocinar la ternera magra al punto deseado en AOVE.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "APLV": "Asegurar que la carne no ha sido procesada con caseinatos como aglutinantes[cite: 603].",
+          "Whole30": "No usar mantequilla para el sellado; solo AOVE o Ghee[cite: 842].",
+          "Renal": "Limitar porción de proteína roja según indicación clínica[cite: 802].",
+          "Histamine": "Carne extremadamente fresca; no madurada (aged steak)[cite: 765]."
+        }
+      },
+      {
+        "instruction": "Añadir el huevo (frito o escalfado).",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Histamine": "Usar SOLO la yema. La clara es un liberador de histamina potente[cite: 775].",
+          "Vegan": "Sustituir por 'Huevo de Lino' (semillas de lino hidratadas)[cite: 642].",
+          "Renal": "Limitar a 1 huevo para controlar el fósforo orgánico[cite: 802].",
+          "Egg-Free": "Sustituir por 50g de tofu firme salteado."
+        },
+        "cross_contamination_alert": "Para alérgicos al huevo, usar sartén separada."
+      },
+      {
+        "instruction": "Incorporar aguacate y espinaca cocida.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Low FODMAP": "Limitar aguacate a 1/8 de pieza (sorbitol)[cite: 746].",
+          "Renal": "Lixiviar la espinaca obligatoriamente para reducir potasio[cite: 790].",
+          "Histamine": "Omitir aguacate y espinaca (altos en histamina/liberadores). Sustituir por calabacín[cite: 775].",
+          "Keto": "Aumentar aguacate para alcanzar metas de grasas saludables."
+        }
+      }
+    ]
+  },
+  {
+    "id": "GOS-12",
+    "title": "Pescado al Horno con Patatas Lixiviadas",
+    "description": "Proteína ligera con técnica de reducción de electrolitos para salud renal.",
+    "tags": ["Renal", "Low-Potassium", "Heart-Healthy"],
+    "ingredients": ["Merluza fresca", "Patatas", "Aceite de oliva", "Perejil"],
+    "steps": [
+      {
+        "instruction": "Pelar, cortar y remojar las patatas 4h en agua abundante.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Keto": "Sustituir patatas por ramilletes de brócoli asado.",
+          "Diabetes": "Sustituir por batata (índice glucémico menor) lixiviada[cite: 552].",
+          "Low FODMAP": "Asegurar que la ración de patata sea estándar (la patata es segura)[cite: 750].",
+          "Histamine": "Asegurar que la patata no esté brotada ni almacenada por largo tiempo."
+        },
+        "cross_contamination_alert": "Desechar el agua del remojo; no usar para caldos (contiene potasio)[cite: 795]."
+      },
+      {
+        "instruction": "Hornear la merluza con aceite de oliva y perejil.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Histamine": "Merluza congelada en alta mar y cocinada sin descongelación lenta[cite: 766].",
+          "Soy-Free": "No usar aceites vegetales genéricos; solo AOVE puro[cite: 654].",
+          "APLV": "PROHIBIDO pincelar con mantequilla; usar solo aceite[cite: 597].",
+          "Shellfish": "Asegurar que el pescado no se haya procesado con trazas de marisco[cite: 696]."
+        }
+      }
+    ]
+  },
+  {
+    "id": "GOS-19",
+    "title": "Salmón al Vapor 'SIGHI-Safe'",
+    "description": "Omega-3 de alta disponibilidad con protocolo estricto de aminas.",
+    "tags": ["Histamine", "Omega-3", "Anti-inflammatory"],
+    "ingredients": ["Salmón fresco-congelado", "Espárragos frescos", "Quinoa", "AOVE"],
+    "steps": [
+      {
+        "instruction": "Cocer la quinoa en agua con una pizca de sal.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Keto": "Sustituir por semillas de cáñamo o rábano daikon picado.",
+          "Celiac": "Usar Quinoa Certificada (riesgo de contaminación en cosecha)[cite: 711].",
+          "Renal": "Limitar quinoa por fósforo; usar arroz blanco en su lugar[cite: 809].",
+          "Whole30": "Sin cambios; la quinoa es apta si no se procesa como 'cereal falso'[cite: 843]."
+        }
+      },
+      {
+        "instruction": "Cocinar el salmón al vapor con puntas de espárragos.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Low FODMAP": "Usar SOLO las puntas de los espárragos (<5 unidades)[cite: 738, 1003].",
+          "Histamine": "Prohibido salmón ahumado o marinado; solo fresco-congelado[cite: 766].",
+          "Renal": "Evitar espárragos si el potasio está descompensado; usar judías verdes lixiviadas.",
+          "Paleo": "Sin cambios; ingredientes 100% ancestrales."
+        }
+      }
+    ]
+  },
+  {
+    "id": "GOS-22",
+    "title": "Curry de Lentejas Vegano",
+    "description": "Legumbres ricas en hierro con lógica de exclusión de aditivos industriales.",
+    "tags": ["Vegan", "High-Fiber", "Iron-Rich"],
+    "ingredients": ["Lentejas rojas", "Calabaza", "Espinacas", "Leche de coco (Lata sin aditivos)", "Cúrcuma"],
+    "steps": [
+      {
+        "instruction": "Cocer las lentejas rojas con dados de calabaza y cúrcuma.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Low FODMAP": "Usar lentejas de conserva enjuagadas (<1/2 taza) para eliminar GOS[cite: 742].",
+          "Keto": "Sustituir lentejas por tofu firme desmigado.",
+          "Renal": "Lixiviar la calabaza. Las lentejas rojas tienen fósforo de baja absorción (40-60%)[cite: 802].",
+          "Whole30": "Prohibido lentejas (legumbres); usar carne picada de res[cite: 834]."
+        }
+      },
+      {
+        "instruction": "Añadir leche de coco y espinacas al final.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "APLV": "Asegurar que la leche de coco no contenga caseinatos (común en marcas 'low-cost')[cite: 615].",
+          "Histamine": "Omitir espinacas (liberador). Usar acelgas jóvenes muy frescas[cite: 775].",
+          "Vegan": "Verificar que el caldo no tenga colorante Carmín E120[cite: 848].",
+          "Celiac": "Asegurar que la leche de coco no use espesantes con gluten[cite: 714]."
+        }
+      }
+    ]
+  },
+  {
+    "id": "GOS-28",
+    "title": "Porridge de Avena 'Milk-Free'",
+    "description": "Desayuno reconfortante optimizado para alérgicos y celíacos.",
+    "tags": ["APLV", "Celiac", "Dairy-Free"],
+    "ingredients": ["Avena certificada", "Manzana", "Canela", "Leche de arroz"],
+    "steps": [
+      {
+        "instruction": "Cocer la avena en la leche de arroz con canela.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Celiac": "USAR SOLO avena con sello oficial 'Gluten-Free'[cite: 712].",
+          "Renal": "Usar leche de arroz NO enriquecida (evitar fosfatos/calcio añadidos)[cite: 810].",
+          "Keto": "Sustituir avena por semillas de chía y cáñamo hidratadas.",
+          "Low FODMAP": "Asegurar que la manzana sea <20g (fructosa) o sustituir por arándanos[cite: 744, 753]."
+        }
+      },
+      {
+        "instruction": "Decorar con láminas de manzana fresca.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Whole30": "Sustituir leche de arroz por agua o leche de almendras (sin azúcar)[cite: 835].",
+          "Histamine": "Asegurar que la manzana sea de una variedad tolerada y muy fresca.",
+          "Diabetes": "Añadir semillas de chía para reducir la carga glucémica de la avena[cite: 819].",
+          "APLV": "Sin cambios; la leche de arroz es el sustituto de elección[cite: 620]."
+        }
+      }
+    ]
+  },
+  {
+    "id": "GOS-31",
+    "title": "Stir-fry de Cerdo y Repollo Keto",
+    "description": "Plato de alta eficiencia metabólica con control de carbohidratos netos.",
+    "tags": ["Keto", "Soy-Free", "Low-Carb"],
+    "ingredients": ["Cerdo magro", "Repollo", "Pimiento rojo", "Aceite de girasol refinado", "Sal"],
+    "steps": [
+      {
+        "instruction": "Cortar el cerdo en tiras y saltear a fuego fuerte.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Paleo": "Usar Aceite de Coco en lugar de Girasol[cite: 836].",
+          "Low FODMAP": "Limitar repollo a 75g por ración[cite: 518].",
+          "Renal": "Evitar sal; usar hierbas frescas para dar sabor.",
+          "Histamine": "Cerdo muy fresco (el cerdo picado o procesado acumula histamina rápido)[cite: 765]."
+        }
+      },
+      {
+        "instruction": "Añadir repollo y pimiento. Cocinar hasta que estén al dente.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Diabetes": "Añadir brotes de bambú para aumentar la fibra sin carbohidratos.",
+          "Vegan": "Sustituir cerdo por Tofu Firme prensado.",
+          "APLV": "Sin riesgo lácteo; receta segura[cite: 597].",
+          "Whole30": "Verificar que el aceite no tenga aditivos como MSG[cite: 842]."
+        }
+      }
+    ]
+  },
+  {
+    "id": "GOS-41",
+    "title": "Pastel de Carne 'Potassium-Controlled'",
+    "description": "Gestión avanzada de electrolitos para insuficiencia renal.",
+    "tags": ["Renal", "Low-Sodium", "Protein-Management"],
+    "ingredients": ["Res fresca picada", "Zanahoria", "Calabaza", "Hierbas secas"],
+    "steps": [
+      {
+        "instruction": "Lixiviar zanahoria y calabaza (pelar, trocear pequeño, remojar 4h).",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Keto": "Sustituir calabaza por apionabo (menor carga de CH).",
+          "Low FODMAP": "Evitar calabaza tipo Butternut si se excede la ración; usar calabaza japonesa.",
+          "Whole30": "Asegurar que la carne sea 100% pasto sin rellenos de grano[cite: 835].",
+          "Histamine": "Usar carne picada en el momento; no usar bandejas de supermercado antiguas."
+        }
+      },
+      {
+        "instruction": "Mezclar carne con vegetales y hornear en moldes individuales.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Celiac": "Asegurar que no se usen migas de pan como aglutinante[cite: 721].",
+          "APLV": "No usar queso ni leche para suavizar la mezcla[cite: 612].",
+          "Diabetes": "Añadir salvado de avena certificado para control de glucosa.",
+          "Vegan": "Sustituir res por lentejas cocidas y nueces picadas."
+        }
+      }
+    ]
+  },
+  {
+    "id": "GOS-45",
+    "title": "Revuelto de Claras 'Low-Histamine'",
+    "description": "Optimización de proteínas para sensibilidad a aminas.",
+    "tags": ["Histamine", "Low-Fat", "SIGHI"],
+    "ingredients": ["Yemas de huevo", "Calabacín fresco", "Champiñones frescos", "AOVE"],
+    "steps": [
+      {
+        "instruction": "Saltear calabacín y champiñones en AOVE.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Low FODMAP": "Omitir champiñones (polioles) o usar <10g[cite: 746].",
+          "Renal": "Lixiviar calabacín; limitar champiñones por potasio.",
+          "Keto": "Añadir tocino fresco (no curado) para aumentar grasas.",
+          "Paleo": "Asegurar que los champiñones sean silvestres o de cultivo orgánico."
+        }
+      },
+      {
+        "instruction": "Añadir las yemas de huevo y cuajar suavemente.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Histamine": "USAR SOLO YEMAS. Desechar la clara (liberador de histamina)[cite: 546].",
+          "Vegan": "Sustituir por tofu sedoso (si no es FODMAP) o harina de garbanzo.",
+          "Diabetes": "Añadir espinacas lixiviadas para fibra extra.",
+          "APLV": "Sin riesgo lácteo; receta segura."
+        },
+        "cross_contamination_alert": "Si hay alergia al huevo, usar sustituto comercial libre de trazas[cite: 628]."
+      }
+    ]
+  }
+]

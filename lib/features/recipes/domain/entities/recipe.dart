@@ -13,6 +13,7 @@ class Recipe extends Equatable {
   final List<String> ingredients;
   final List<RecipeStep> steps;
   final List<String> tags; // e.g. ['Vegan', 'Keto', 'Gluten-Free']
+  final List<String> dietTags; // System calculated diets
 
   const Recipe({
     required this.id,
@@ -26,8 +27,9 @@ class Recipe extends Equatable {
     this.ingredients = const [],
     this.steps = const [],
     this.tags = const [],
+    this.dietTags = const [],
   });
 
   @override
-  List<Object?> get props => [id, authorId, originId, isFork, title, description, isPublic, createdAt, ingredients, steps, tags];
+  List<Object?> get props => [id, authorId, originId, isFork, title, description, isPublic, createdAt, ingredients, steps, tags, dietTags];
 }

@@ -31,12 +31,15 @@ class RecipeModel extends Recipe {
   @override
   @JsonKey(name: 'tags')
   final List<String> tags;
+  @override
+  @JsonKey(name: 'diet_tags')
+  final List<String> dietTags;
 
   const RecipeModel({
     required String id,
     required this.authorId,
     this.originId,
-    required this.isFork,
+    this.isFork = false,
     required String title,
     String? description,
     required this.isPublic,
@@ -44,11 +47,12 @@ class RecipeModel extends Recipe {
     this.ingredients = const [],
     this.steps = const [],
     this.tags = const [],
+    this.dietTags = const [],
   }) : super(
           id: id,
           authorId: authorId,
           originId: originId,
-          isFork: isFork,
+          isFork: isFork ?? false,
           title: title,
           description: description,
           isPublic: isPublic,
@@ -56,6 +60,7 @@ class RecipeModel extends Recipe {
           ingredients: ingredients,
           steps: steps,
           tags: tags,
+          dietTags: dietTags,
         );
 
   RecipeModel copyWith({
@@ -70,6 +75,7 @@ class RecipeModel extends Recipe {
     List<String>? ingredients,
     List<RecipeStep>? steps,
     List<String>? tags,
+    List<String>? dietTags,
   }) {
     return RecipeModel(
       id: id ?? this.id,
@@ -83,6 +89,7 @@ class RecipeModel extends Recipe {
       ingredients: ingredients ?? this.ingredients,
       steps: steps ?? this.steps,
       tags: tags ?? this.tags,
+      dietTags: dietTags ?? this.dietTags,
     );
   }
 

@@ -9,6 +9,7 @@ abstract class RecipeEvent extends Equatable {
 }
 
 class LoadRecipes extends RecipeEvent {}
+class LoadMoreRecipes extends RecipeEvent {}
 
 class CreateRecipe extends RecipeEvent {
   final Recipe recipe;

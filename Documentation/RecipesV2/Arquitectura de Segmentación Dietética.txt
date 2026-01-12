@@ -1,0 +1,103 @@
+﻿Este documento técnico ha sido diseñado para servir como la Arquitectura de Segmentación Dietética de "Gastronomic OS". Define la separación lógica entre los Estilos de Vida (preferencias de consumo y objetivos metabólicos) y las Restricciones Clínicas (seguridad inmunológica y patologías), permitiendo que el motor algorítmico superponga ambas capas para cada usuario1111.
++1
+
+
+________________
+1. Categoría: Estilos de Vida (Lifestyles)
+Esta capa define el "perfil base" de la dieta. Determina la distribución de macronutrientes y los grupos de alimentos permitidos por elección ética, rendimiento o preferencia personal.
+A. Perfiles de Exclusión Ética y Vegetal
+* Omnivore (Omnívoro): Perfil base sin restricciones de origen; consume todos los grupos de alimentos2222.
++1
+
+* Vegetarian (Vegetariano): Excluye carnes rojas, blancas y pescados; permite lácteos y huevos.
+* Vegan (Vegano): Exclusión total de productos animales3. Requiere vigilancia de ingredientes ocultos como el carmín (E120), gelatina e isinglass444444444.
++3
+
+* Pescetarian (Pescetariano): Dieta vegetal que incluye pescados y mariscos, pero excluye aves y carnes terrestres.
+B. Perfiles Metabólicos y Evolutivos
+   * Keto (Cetogénica): Objetivo de cetosis mediante carbohidratos netos mínimos ($<20-50~g/día$)5555. Restringe cereales, tubérculos y la mayoría de las frutas6.
++2
+
+   * Paleo: Elimina alimentos neolíticos como granos, legumbres y lácteos7777. Prioriza carnes, pescados, vegetales y grasas naturales8.
++2
+
+   * Whole30: Protocolo de eliminación estricta de 30 días9. Prohíbe todo azúcar añadido (incluida miel), alcohol y legumbres10.
++1
+
+   * Low-Carb: Reducción de carbohidratos refinados y azúcares sin los límites extremos de la cetosis.
+C. Perfiles de Optimización y Rendimiento
+      * Mediterranean (Mediterránea): Basada en el estudio PREDIMED11. Prioriza AOVE, vegetales, granos enteros y legumbres; limita carnes rojas y dulces12121212.
++2
+
+      * High Performance (Deportista): Centrada en carbohidratos complejos de absorción lenta y alta densidad proteica para recuperación muscular.
+________________
+2. Categoría: Restricciones Clínicas (Overlays)
+Esta capa actúa como un filtro de seguridad de "tolerancia cero". Sus reglas deben prevalecer sobre cualquier estilo de vida elegido13131313.
++1
+
+
+A. Alergias IgE-Mediadas (Seguridad Crítica)
+         * APLV (Alergia a Proteína de Leche): Reacción inmunológica a caseína y suero14. Prohibido usar productos "sin lactosa", ya que conservan las proteínas peligrosas15.
++1
+
+         * Alergia al Huevo: Exclusión de huevo entero16. Vigilancia en ingredientes técnicos como lisozima (conservante), albúmina y lecitina no especificada17171717.
++2
+
+         * Alergia a la Soja: Excluye derivados directos e industriales como TVP o aislado de soja18.
+
+         * Alergia a Frutos Secos / Cacahuete: Bloquea todas las variedades (nuez, pistacho, anacardo, etc.)19. Alerta en extractos naturales y licores20202020.
++2
+
+         * Alergia a Mariscos: Distingue entre crustáceos y moluscos, pero gestiona la reactividad cruzada de la tropomiosina21.
+
+B. Intolerancias y Trastornos Digestivos
+            * Enfermedad Celíaca (Sin Gluten): Tolerancia cero a trigo (espelta, kamut), cebada y centeno22222222. Solo permite avena certificada23.
++2
+
+            * Low FODMAP (SII): Fase de eliminación de carbohidratos fermentables24. Controla cebolla, ajo sólido, lactosa, exceso de fructosa y polioles252525252525252525.
++3
+
+            * Intolerancia a la Histamina: Protocolo SIGHI de frescura extrema26. Excluye alimentos madurados (quesos viejos, embutidos), conservas, tomates y espinacas2727272727272727.
++4
+
+C. Patologías Metabólicas y Órganos
+               * Diabetes Tipo 1 y 2: Control glucémico mediante vegetales no feculentos y granos enteros con fibra28282828. Minimiza azúcares añadidos29.
++2
+
+               * Dieta Renal (Potasio/Hiperkalemia): Restringe $<2000~mg/día$30. Requiere lixiviación de patatas, zanahorias y espinacas31313131.
++2
+
+               * Dieta Renal (Fósforo): Bloquea estrictamente el fósforo inorgánico (aditivos "PHOS") en carnes inyectadas y refrescos oscuros323232323232323232.
++2
+
+________________
+3. Matriz de Interacción Lógica
+El sistema debe resolver conflictos de ingredientes mediante la siguiente jerarquía de seguridad:
+Si el Usuario es...
+	Y su Restricción es...
+	El Algoritmo DEBE:
+	Keto
+	Alergia al Huevo
+	Bloquear la fuente principal de proteína keto (huevo) y sustituir por carnes frescas o tofu firme33333333.
++1
+
+
+	Vegano
+	Low FODMAP
+	Sustituir legumbres enteras por lentejas en conserva enjuagadas ($<1/2$ taza) para eliminar GOS34343434.
++1
+
+
+	Paleo
+	Renal (Potasio)
+	Permitir carnes, pero obligar a la lixiviación de todos los tubérculos permitidos (batata, zanahoria)35353535.
++1
+
+
+	Omnívoro
+	Histamina
+	Bloquear el uso de sobras y prohibir el marinado de carnes o el uso de pescados de conserva36363636.
++1
+
+
+	¿Te gustaría que desarrollemos ahora el diccionario de ingredientes prohibidos detallado para cada una de las alergias de la lista?

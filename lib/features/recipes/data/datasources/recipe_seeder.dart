@@ -19,6 +19,7 @@ class RecipeSeeder {
       'Documentation/test_recipes/json/recipes_11_15.json',
       'Documentation/test_recipes/json/recipes_16_30.json',
       'Documentation/test_recipes/json/recipes_31_45.json',
+      'Documentation/test_recipes/json/recetas_procesadas_batch_1.json',
     ];
 
     for (final file in files) {

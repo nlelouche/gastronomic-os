@@ -32,11 +32,32 @@ class RecipesView extends StatefulWidget {
 
 class _RecipesViewState extends State<RecipesView> {
   final TextEditingController _searchController = TextEditingController();
+  final ScrollController _scrollController = ScrollController();
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController.addListener(_onScroll);
+  }
 
   @override
   void dispose() {
     _searchController.dispose();
+    _scrollController.dispose();
     super.dispose();
+  }
+
+  void _onScroll() {
+    if (_isBottom) {
+       context.read<RecipeBloc>().add(LoadMoreRecipes());
+    }
+  }
+
+  bool get _isBottom {
+    if (!_scrollController.hasClients) return false;
+    final maxScroll = _scrollController.position.maxScrollExtent;
+    final currentScroll = _scrollController.offset;
+    return currentScroll >= (maxScroll * 0.9);
   }
 
   void _dispatchFilter(BuildContext context, RecipeLoaded state, {
@@ -189,7 +210,7 @@ class _RecipesViewState extends State<RecipesView> {
                             Icon(Icons.search_off, size: 64, color: theme.colorScheme.outline),
                             const SizedBox(height: 16),
                             Text('No matching recipes found', style: theme.textTheme.titleMedium),
-                            if (state.allRecipes.isNotEmpty)
+                            if (state.query.isNotEmpty || state.isFamilySafe || state.isPantryReady || state.requiredIngredients.isNotEmpty)
                               TextButton(
                                 onPressed: () {
                                   // Clear filters
@@ -209,21 +230,32 @@ class _RecipesViewState extends State<RecipesView> {
                           
                           if (constraints.maxWidth < 450) {
                              return ListView.separated(
+                               controller: _scrollController,
                                padding: const EdgeInsets.all(16),
-                               itemCount: state.recipes.length + 1,
+                               itemCount: state.hasReachedMax 
+                                  ? state.recipes.length 
+                                  : state.recipes.length + 1,
                                separatorBuilder: (_, __) => const SizedBox(height: 16),
                                itemBuilder: (context, index) {
-                                 if (index == state.recipes.length) return const SizedBox(height: 80);
-                                 final recipe = state.recipes[index];
-                                 return RecipeCard(
-                                   recipe: recipe,
-                                   onTap: () => _navigateToDetail(context, recipe),
-                                 );
+                                  if (index >= state.recipes.length) {
+                                     return const Center(
+                                       child: Padding(
+                                         padding: EdgeInsets.all(16.0),
+                                         child: CircularProgressIndicator(),
+                                       )
+                                     );
+                                  }
+                                  final recipe = state.recipes[index];
+                                  return RecipeCard(
+                                    recipe: recipe,
+                                    onTap: () => _navigateToDetail(context, recipe),
+                                  );
                                },
                              );
                           }
 
                           return GridView.builder(
+                            controller: _scrollController,
                             padding: const EdgeInsets.all(16),
                             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                               crossAxisCount: crossAxisCount,
@@ -231,8 +263,14 @@ class _RecipesViewState extends State<RecipesView> {
                               crossAxisSpacing: 16,
                               mainAxisSpacing: 16,
                             ),
-                            itemCount: state.recipes.length,
+                            itemCount: state.hasReachedMax 
+                                ? state.recipes.length 
+                                : state.recipes.length + 1,
                             itemBuilder: (context, index) {
+                              if (index >= state.recipes.length) {
+                                 // Loading Indicator for Grid
+                                 return const Center(child: CircularProgressIndicator());
+                              }
                               final recipe = state.recipes[index];
                               return RecipeCard(
                                 recipe: recipe,

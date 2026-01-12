@@ -8,13 +8,14 @@ import 'package:gastronomic_os/features/recipes/data/models/recipe_step_model.da
 import 'package:gastronomic_os/features/recipes/domain/entities/recipe.dart'; 
 
 abstract class RecipeRemoteDataSource {
-  Future<List<RecipeModel>> getRecipes();
-  Future<List<RecipeModel>> getRecipeHeaders();
+  Future<List<RecipeModel>> getRecipes({int limit = 20, int offset = 0, String? query});
+  // Future<List<RecipeModel>> getRecipeHeaders(); // DEPRECATED: use getRecipes()
   Future<RecipeModel> createRecipe(Recipe recipe);
   Future<RecipeModel> forkRecipe(String originalRecipeId, String newTitle, String authorId);
   Future<List<CommitModel>> getCommits(String recipeId);
   Future<CommitModel> addCommit(CommitModel commit);
   Future<RecipeModel> getRecipeDetails(String recipeId);
+  Future<List<RecipeModel>> getDashboardSuggestions({int limit = 10});
   Future<void> clearAllRecipes(); // For development: clear all recipes
 }
 
@@ -24,58 +25,27 @@ class RecipeRemoteDataSourceImpl implements RecipeRemoteDataSource {
   RecipeRemoteDataSourceImpl({required this.supabaseClient});
 
   @override
-  Future<List<RecipeModel>> getRecipes() async {
-    // Legacy implementation - still useful if we need full dump, but generally inefficient.
-    // Consider using getRecipeHeaders() + getRecipeDetails() instead.
+  Future<List<RecipeModel>> getRecipes({int limit = 20, int offset = 0, String? query}) async {
     try {
-      final response = await supabaseClient.from('recipes').select();
-      final List<RecipeModel> recipes = [];
-
-      for (final recipeData in response) {
-        // ... (legacy logic) ...
-        // Re-using getRecipeDetails logic would be cleaner but let's keep it isolated for now.
-        // Actually, let's just make getRecipes call getRecipeHeaders and then populate? 
-        // No, that's N+1. 
-        // Let's leave this as is for backward compatibility if needed, 
-        // but the Repository will switch to getRecipeHeaders.
-        final recipeId = recipeData['id'] as String;
-        final recipeModel = RecipeModel.fromJson(recipeData);
-
-        final snapshotResponse = await supabaseClient
-            .from('recipe_snapshots')
-            .select()
-            .eq('recipe_id', recipeId)
-            .order('created_at', ascending: false)
-            .limit(1)
-            .maybeSingle();
-
-        if (snapshotResponse != null) {
-          final snapshot = RecipeSnapshotModel.fromJson(snapshotResponse);
-          recipes.add(recipeModel.copyWith(
-            ingredients: snapshot.ingredients,
-            steps: snapshot.steps,
-          ));
-        } else {
-          recipes.add(recipeModel);
-        }
+      var builder = supabaseClient.from('recipes').select();
+      
+      if (query != null && query.isNotEmpty) {
+        builder = builder.ilike('title', '%$query%');
       }
-      return recipes;
-    } catch (e) {
-      throw const ServerFailure();
-    }
-  }
 
-  @override
-  Future<List<RecipeModel>> getRecipeHeaders() async {
-    try {
-      // Optimized query: Only fetch recipe table data, no snapshots/joins.
-      final response = await supabaseClient.from('recipes').select();
+      final response = await builder
+          .order('created_at', ascending: false)
+          .range(offset, offset + limit - 1);
       
       return (response as List).map((data) => RecipeModel.fromJson(data)).toList();
     } catch (e) {
+      print('Error fetching recipes: $e');
       throw const ServerFailure();
     }
   }
+
+  // @override
+  // Future<List<RecipeModel>> getRecipeHeaders() async ... // REMOVED
 
   @override
   Future<RecipeModel> createRecipe(Recipe recipe) async {
@@ -255,6 +225,22 @@ class RecipeRemoteDataSourceImpl implements RecipeRemoteDataSource {
       return (response as List).map((e) => CommitModel.fromJson(e)).toList();
     } catch (e) {
       throw const ServerFailure();
+    }
+  }
+
+  @override
+  Future<List<RecipeModel>> getDashboardSuggestions({int limit = 10}) async {
+    try {
+      final response = await supabaseClient.rpc('get_dashboard_suggestions', params: {'limit_count': limit});
+      
+      if (response == null) return [];
+      
+      // Response is a List of Maps (recipes)
+      return (response as List).map((data) => RecipeModel.fromJson(data)).toList();
+    } catch (e) {
+      // If RPC fails (e.g. not applied yet), fallback to getRecipes
+      print('⚠️ RPC get_dashboard_suggestions failed: $e. Falling back to simple getRecipes.');
+      return getRecipes(limit: limit);
     }
   }
 

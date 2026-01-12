@@ -1,0 +1,105 @@
+﻿Como Chief Gastronomic Architect, he sistematizado el Diccionario de Ingredientes Críticos para Gastronomic OS. Este recurso permite al algoritmo escanear bases de datos de ingredientes y etiquetas nutricionales para ejecutar exclusiones automáticas con precisión clínica.
+________________
+1. Dominio de Alergias (Exclusión de "Tolerancia Cero")
+Alergia a la Proteína de Leche (APLV)
+* Ingredientes Prohibidos: Leche de cualquier mamífero (vaca, cabra, oveja), queso, yogurt, mantequilla, nata1111.
++1
+
+* Identificadores Técnicos: Caseína, caseinatos (amónico, cálcico, magnésico, potásico, sódico), lactoalbúmina, lactoglobulina, lactoferrina, suero o whey, hidrolizados de proteína láctea222222222.
++2
+
+* Aditivos y Ocultos: Recaldent, nisina (conservante), cuajo (rennet), saborizante artificial de mantequilla, diacetilo y tagatosa3.
+
+* Riesgo Semántico: Cremas para café etiquetadas como "Non-dairy" (suelen contener caseinato de sodio)4.
+
+Alergia al Huevo
+   * Ingredientes Prohibidos: Huevo entero, claras y yemas5.
+
+   * Identificadores Técnicos: Albúmina, globulina, livetina, lisozima (frecuente en quesos duros), ovalbúmina, ovomucina, ovomucoide y vitelina6.
+
+   * Fuentes Ocultas: Surimi, brillo en panadería (egg wash), pastas frescas, sustitutos comerciales como Egg Beaters y lecitina si no se especifica origen vegetal777777777.
++2
+
+Alergia a la Soja
+      * Ingredientes Prohibidos: Edamame, miso, natto, shoyu, salsa de soja, tamari, tempeh, tofu y yuba8.
+
+      * Derivados Industriales: Proteína vegetal texturizada (TVP), aislado de proteína de soja, harina de soja y aceite de soja prensado en frío9999.
++1
+
+      * Ocultos: Caldo vegetal genérico, vitamina E (extraída a menudo de soja) y lecitina de soja (marcar como precaución)101010101010101010.
++2
+
+Alergia a Frutos Secos y Cacahuete
+         * Ingredientes Prohibidos: Almendras, nueces (de Brasil, Macadamia, Pecanas), anacardos, avellanas, piñones, pistachos y cacahuetes11.
+
+         * Ocultos: Extractos naturales de nuez, aceites prensados en frío (almendra, nogal), licores (Amaretto, Frangelico), pesto y mortadela (pistacho)12121212121212121212121212121212121212121212121212.
++4
+
+________________
+2. Intolerancias y Trastornos Digestivos
+Enfermedad Celíaca (Gluten)
+            * Cereales Prohibidos: Trigo (espelta, kamut, farro, durum, sémola, bulgur), cebada, centeno y triticale13.
+
+            * Ingredientes Críticos: Malta (vinagre, jarabe), levadura de cerveza (si es subproducto de cebada), seitan y regaliz14141414.
++1
+
+            * Excepción Controlada: Solo se permite avena con certificación "Gluten-Free"15.
+
+Baja en FODMAPs
+               * Oligosacáridos: Cebolla, ajo (en polvo o sal), alcachofas, espárragos y remolacha16.
+
+               * Exceso de Fructosa: Miel, jarabe de maíz de alta fructosa (HFCS), agave, manzanas, peras y mango17.
+
+               * Polioles: Champiñones, coliflor, aguacate (en dosis $>1/8$) y edulcorantes terminados en "-ol" (xilitol, sorbitol)18181818.
++1
+
+Intolerancia a la Histamina
+                  * Ricos en Histamina: Quesos curados (Parmesano, Roquefort), embutidos, conservas de pescado, chucrut, kimchi y vino tinto19191919.
++1
+
+                  * Liberadores de Histamina: Cítricos, fresas, kiwi, tomate, espinacas, chocolate/cacao y clara de huevo20.
+
+                  * Bloqueadores DAO: Alcohol, té negro, té verde y mate21.
+
+________________
+3. Patologías Metabólicas y Renales
+Dieta Renal: Control de Potasio y Fósforo
+                     * Potasio ($>200~mg/porción$): Plátano, melón, naranja, kiwi, patata blanca/dulce, tomate, espinaca cocida y acelgas222222222222222222.
++2
+
+                     * Sustitutos Letales: Bloqueo total de sales que usen cloruro de potasio (KCl)23.
+
+                     * Fósforo Inorgánico (Aditivos "PHOS"): Ácido fosfórico, hexametafosfato de sodio y polifosfatos presentes en refrescos oscuros, carnes inyectadas y polvos para hornear24.
+
+Diabetes Mellitus (Control Glucémico)
+                        * Restricción Estricta: Bebidas azucaradas, granos refinados (pan blanco, arroz blanco), harinas refinadas y grasas trans25.
+
+                        * Edulcorantes de Riesgo: Fructosa y agave (afectan la glucemia directamente)26.
+
+________________
+Resumen de Seguridad de Aditivos
+Condición
+	Aditivo Prohibido
+	Motivo Clínico
+	APLV
+	Diacetilo
+	Saborizante lácteo oculto27.
+
+
+	Celiaquía
+	Malta
+	Derivado de cebada con gluten28.
+
+
+	Renal
+	PHOS
+	Fósforo inorgánico (absorción 90-100%)29292929.
++1
+
+
+	Vegano
+	Carmín (E120)
+	Derivado de insectos30.
+
+
+	¿Deseas que transforme este diccionario en una tabla de sustitutos seguros (por ejemplo, qué usar en lugar del huevo para aglutinar en una dieta High Performance)?
