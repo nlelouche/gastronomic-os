@@ -40,7 +40,11 @@ Future<void> init() async {
 
   // ! Presentation
   sl.registerFactory(() => InventoryBloc(repository: sl()));
-  sl.registerFactory(() => RecipeBloc(repository: sl()));
+  sl.registerFactory(() => RecipeBloc(
+    repository: sl(),
+    inventoryRepository: sl(),
+    onboardingRepository: sl(),
+  ));
   sl.registerFactory(() => OnboardingBloc(repository: sl()));
 
   // Onboarding Feature

@@ -104,3 +104,40 @@ class AppCard extends StatelessWidget {
     );
   }
 }
+
+class AppTextField extends StatelessWidget {
+  final TextEditingController? controller;
+  final String? hint;
+  final String? label;
+  final IconData? prefixIcon;
+  final ValueChanged<String>? onChanged;
+
+  const AppTextField({
+    super.key,
+    this.controller,
+    this.hint,
+    this.label,
+    this.prefixIcon,
+    this.onChanged,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+      controller: controller,
+      onChanged: onChanged,
+      decoration: InputDecoration(
+        labelText: label,
+        hintText: hint,
+        prefixIcon: prefixIcon != null ? Icon(prefixIcon) : null,
+        filled: true,
+        fillColor: Theme.of(context).colorScheme.surfaceContainerHighest.withOpacity(0.3),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide.none,
+        ),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+      ),
+    );
+  }
+}

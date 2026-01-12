@@ -47,3 +47,20 @@ class SeedDatabase extends RecipeEvent {
   List<Object> get props => [if (filterTitle != null) filterTitle!];
 }
 
+class FilterRecipes extends RecipeEvent {
+  final String query;
+  final bool isFamilySafe;
+  final bool isPantryReady;
+  final List<String> requiredIngredients;
+
+  const FilterRecipes({
+    this.query = '',
+    this.isFamilySafe = false,
+    this.isPantryReady = false,
+    this.requiredIngredients = const [],
+  });
+
+  @override
+  List<Object> get props => [query, isFamilySafe, isPantryReady, requiredIngredients];
+}
+

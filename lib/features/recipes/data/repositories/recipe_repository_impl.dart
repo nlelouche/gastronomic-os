@@ -28,9 +28,9 @@ class RecipeRepositoryImpl implements IRecipeRepository {
     }
 
     try {
-      // 2. Fetch Lightweight Headers only (Optimization Phase 3)
-      // This avoids downloading heavy snapshot JSONs for the list view
-      final result = await remoteDataSource.getRecipeHeaders();
+      // 2. Fetch Full Recipes (Reverting Header-only optimization to allowing filtering)
+      // The optimization prevented ingredients from being loaded, breaking client-side logic.
+      final result = await remoteDataSource.getRecipes(); // Was getRecipeHeaders()
       
       // 3. Update Cache
       _cachedRecipes = result;

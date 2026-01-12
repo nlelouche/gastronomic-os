@@ -33,7 +33,7 @@ void main() {
       final step = RecipeStep(instruction: 'Boil Water', isBranchPoint: false);
       final recipe = createRecipeWithSteps([step]);
       
-      final resolved = await resolver.resolve(recipe, [dad, son]);
+      final resolved = resolver.resolve(recipe, [dad, son]);
       
       expect(resolved.length, 1);
       expect(resolved.first.targetMembers.length, 2); // Both
@@ -48,7 +48,7 @@ void main() {
       );
       final recipe = createRecipeWithSteps([step]);
       
-      final resolved = await resolver.resolve(recipe, [dad, son]);
+      final resolved = resolver.resolve(recipe, [dad, son]);
       
       expect(resolved.length, 1);
       expect(resolved.first.targetMembers, contains('Dad'));
@@ -64,7 +64,7 @@ void main() {
       );
       final recipe = createRecipeWithSteps([step]);
       
-      final resolved = await resolver.resolve(recipe, [dad, son]);
+      final resolved = resolver.resolve(recipe, [dad, son]);
       
       // Since Dad gets "Add Egg" and Son gets "Add Tofu",
       // The resolver should produce 2 resolved steps.
