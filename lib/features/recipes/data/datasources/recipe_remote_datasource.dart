@@ -108,40 +108,39 @@ class RecipeRemoteDataSourceImpl implements RecipeRemoteDataSource {
           .eq('title', recipe.title)
           .maybeSingle();
       
+      String recipeId;
+
       if (existingRecipe != null) {
-        print('⚠️ Recipe "${recipe.title}" already exists. Updating Tags & Skipping creation.');
+        print('⚠️ Recipe "${recipe.title}" already exists. Updating Tags & Creating new Snapshot.');
+        print('   Original Tags: ${recipe.tags}');
+        print('   Enriched Tags to Update: $enrichedTags');
+        
+        recipeId = existingRecipe['id'];
         
         // SELF-HEALING: Ensure tags are up to date!
         await supabaseClient
             .from('recipes')
             .update({'tags': enrichedTags})
-            .eq('id', existingRecipe['id']);
+            .eq('id', recipeId);
+        print('   ✅ Tags updated in DB.');
+      } else {
+        // 3. Insert New Recipe (using enrichedTags)
+        final recipeData = {
+          'title': recipe.title,
+          'description': recipe.description,
+          'tags': enrichedTags, // ✅ Save enriched tags
+          'is_public': recipe.isPublic,
+          'author_id': currentUserId,
+        };
 
-        // Return existing recipe
-        final fullRecipe = await supabaseClient
+        final recipeResponse = await supabaseClient
             .from('recipes')
+            .insert(recipeData)
             .select()
-            .eq('id', existingRecipe['id'])
             .single();
-        return RecipeModel.fromJson(fullRecipe);
+        
+        recipeId = recipeResponse['id'];
       }
-      
-      // 3. Insert New Recipe (using enrichedTags)
-      final recipeData = {
-        'title': recipe.title,
-        'description': recipe.description,
-        'tags': enrichedTags, // ✅ Save enriched tags
-        'is_public': recipe.isPublic,
-        'author_id': currentUserId,
-      };
-
-      final recipeResponse = await supabaseClient
-          .from('recipes')
-          .insert(recipeData)
-          .select()
-          .single();
-      
-      final recipeId = recipeResponse['id'];
 
       // 2. Insert Initial Commit
       final commitData = {
@@ -198,8 +197,14 @@ class RecipeRemoteDataSourceImpl implements RecipeRemoteDataSource {
           .from('recipe_snapshots')
           .insert(snapshotData);
 
-      // Return the created model (header only, ingredients loaded separately if needed)
-      return RecipeModel.fromJson(recipeResponse);
+      // Return the created/updated model
+      final finalRecipeResponse = await supabaseClient
+          .from('recipes')
+          .select()
+          .eq('id', recipeId)
+          .single();
+          
+      return RecipeModel.fromJson(finalRecipeResponse);
     } catch (e) {
       // In a real app we would rollback/delete created items if a step fails
       print('Error creating recipe: $e'); 

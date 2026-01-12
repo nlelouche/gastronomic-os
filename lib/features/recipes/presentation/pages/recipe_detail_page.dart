@@ -136,10 +136,8 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
                            newTitle: '${fullRecipe.title} (Fork)',
                          ));
                          ScaffoldMessenger.of(context).showSnackBar(
-                           SnackBar(content: Text('Forking "${fullRecipe.title}"... check the list!')),
+                           const SnackBar(content: Text('Forking Recipe...')),
                          );
-                         // Don't pop immediately; let the user see the confirmation.
-                         // Or better: Listen to BlocListener for success and then navigate.
                        },
                      ),
                   ],

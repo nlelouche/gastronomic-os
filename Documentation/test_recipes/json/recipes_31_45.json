@@ -1,0 +1,455 @@
+[
+    {
+        "id": "GOS-31",
+        "title": "Stir-fry de Cerdo y Repollo Keto",
+        "description": "Keto. Carbohidratos netos < 5g.",
+        "tags": [
+            "Keto",
+            "High-Fat",
+            "Low-Carb"
+        ],
+        "ingredients": [
+            "Cerdo magro",
+            "Repollo",
+            "Pimiento rojo",
+            "Aceite de girasol",
+            "Sal"
+        ],
+        "steps": [
+            {
+                "instruction": "Cortar el cerdo en tiras finas y el repollo en juliana.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Saltear el cerdo en aceite de girasol hasta dorar.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Añadir repollo y pimiento. Cocinar a fuego alto.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Sazonar con sal y servir.",
+                "is_branch_point": false
+            }
+        ]
+    },
+    {
+        "id": "GOS-32",
+        "title": "Salteado 'Low-FODMAP' de Cerdo",
+        "description": "Baja en FODMAPs (Eliminación). Sin Ajo/Cebolla.",
+        "tags": [
+            "Low FODMAP",
+            "IBS",
+            "Digestive"
+        ],
+        "ingredients": [
+            "Cerdo magro",
+            "Repollo",
+            "Pimiento rojo",
+            "Aceite infusionado en ajo"
+        ],
+        "steps": [
+            {
+                "instruction": "Usar solo la parte verde de la cebolleta (si se tiene) o nada.",
+                "is_branch_point": false,
+                "cross_contamination_alert": "Evitar ajo y cebolla sólidos."
+            },
+            {
+                "instruction": "Cocinar cerdo en aceite infusionado en ajo para dar sabor.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Añadir repollo (máximo 75g por persona) y pimiento.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Servir.",
+                "is_branch_point": false
+            }
+        ]
+    },
+    {
+        "id": "GOS-33",
+        "title": "Cerdo al Wok 'Soy-Free'",
+        "description": "Alergia a la Soja. Aceite refinado seguro.",
+        "tags": [
+            "Soy-Free",
+            "Allergen-Safe"
+        ],
+        "ingredients": [
+            "Cerdo magro",
+            "Repollo",
+            "Pimiento rojo",
+            "Aceite de girasol",
+            "Sal"
+        ],
+        "steps": [
+            {
+                "instruction": "Verificar que el aceite de girasol no contenga mezclas de soja.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Saltear cerdo y vegetales.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Sazonar con sal.",
+                "is_branch_point": false
+            }
+        ]
+    },
+    {
+        "id": "GOS-34",
+        "title": "Cerdo Mediterráneo con Repollo",
+        "description": "Mediterránea. Prioriza AOVE.",
+        "tags": [
+            "Mediterranean",
+            "Balanced",
+            "Healthy-Fats"
+        ],
+        "ingredients": [
+            "Cerdo magro",
+            "Repollo",
+            "Pimiento rojo",
+            "Aceite de oliva",
+            "Hierbas"
+        ],
+        "steps": [
+            {
+                "instruction": "Sustituir aceite de girasol por Aceite de Oliva virgen extra.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Saltear cerdo con hierbas mediterráneas (orégano, tomillo).",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Añadir vegetales y cocinar al dente.",
+                "is_branch_point": false
+            }
+        ]
+    },
+    {
+        "id": "GOS-35",
+        "title": "Estofado de Alubias Vegano",
+        "description": "Vegana Estricta. Sin Vitamina D3 animal.",
+        "tags": [
+            "Vegan",
+            "Plant-Based",
+            "Legumes"
+        ],
+        "ingredients": [
+            "Alubias blancas",
+            "Espinacas",
+            "Ajo",
+            "Caldo vegetal"
+        ],
+        "steps": [
+            {
+                "instruction": "Remojar alubias la noche anterior.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Cocer alubias con ajo y caldo vegetal (sin E120/Carmín).",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Añadir espinacas al final.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Servir.",
+                "is_branch_point": false
+            }
+        ]
+    },
+    {
+        "id": "GOS-36",
+        "title": "Alubias 'Phos-Safe' Renal",
+        "description": "Renal. Gestión de Fósforo.",
+        "tags": [
+            "Renal",
+            "Low Phosphorus"
+        ],
+        "ingredients": [
+            "Alubias blancas",
+            "Espinacas",
+            "Ajo"
+        ],
+        "steps": [
+            {
+                "instruction": "Hervir alubias (usar secas, no de lata con conservantes).",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Escurrir el agua de cocción (reduce potasio/fósforo solubles).",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Rehogar con espinacas previamente lixiviadas (hervidas y escurridas).",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Servir porción pequeña (fósforo vegetal se absorbe menos, pero vigilar).",
+                "is_branch_point": false
+            }
+        ]
+    },
+    {
+        "id": "GOS-37",
+        "title": "Alubias Blancas MNT Diabetes",
+        "description": "Diabetes. Fibra y bajo IG.",
+        "tags": [
+            "Diabetes",
+            "MNT",
+            "High-Fiber"
+        ],
+        "ingredients": [
+            "Alubias blancas",
+            "Espinacas",
+            "Ajo",
+            "Caldo vegetal"
+        ],
+        "steps": [
+            {
+                "instruction": "Cocer alubias hasta que estén tiernas pero firmes (menor IG que puré).",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Mezclar con espinacas.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Servir.",
+                "is_branch_point": false
+            }
+        ]
+    },
+    {
+        "id": "GOS-38",
+        "title": "Merluza al Horno 'Anti-APLV'",
+        "description": "APLV. Sin lácteos.",
+        "tags": [
+            "APLV",
+            "Dairy-Free"
+        ],
+        "ingredients": [
+            "Merluza",
+            "Patatas",
+            "Cebolla",
+            "Perejil",
+            "Aceite de oliva"
+        ],
+        "steps": [
+            {
+                "instruction": "Hornear patatas y cebolla en rodajas con aceite.",
+                "is_branch_point": false,
+                "cross_contamination_alert": "NO usar mantequilla."
+            },
+            {
+                "instruction": "Añadir merluza y cocinar.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Terminar con perejil fresco.",
+                "is_branch_point": false
+            }
+        ]
+    },
+    {
+        "id": "GOS-39",
+        "title": "Merluza con Patatas 'Gluten-Free'",
+        "description": "Celíaca. Sin harinas.",
+        "tags": [
+            "Celiac",
+            "Gluten-Free"
+        ],
+        "ingredients": [
+            "Merluza",
+            "Patatas",
+            "Cebolla",
+            "Perejil",
+            "Aceite de oliva"
+        ],
+        "steps": [
+            {
+                "instruction": "Hornear todo junto.",
+                "is_branch_point": false,
+                "cross_contamination_alert": "Si se reboza el pescado, usar harina de maíz o arroz, NUNCA trigo."
+            }
+        ]
+    },
+    {
+        "id": "GOS-40",
+        "title": "Pescado Blanco 'Histamine-Zero'",
+        "description": "Histamine Intolerance. Frescura extrema.",
+        "tags": [
+            "Histamine",
+            "Low-Reactant"
+        ],
+        "ingredients": [
+            "Merluza (congelada)",
+            "Patatas",
+            "Perejil",
+            "Aceite de oliva"
+        ],
+        "steps": [
+            {
+                "instruction": "Cocinar patatas hervidas.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Cocinar pescado SIN descongelar o recién comprado.",
+                "is_branch_point": false,
+                "cross_contamination_alert": "NO usar limón ni cebolla."
+            },
+            {
+                "instruction": "Servir con aceite y perejil fresco.",
+                "is_branch_point": false
+            }
+        ]
+    },
+    {
+        "id": "GOS-41",
+        "title": "Pastel de Carne 'Potassium-Controlled'",
+        "description": "Renal. Lixiviación de vegetales.",
+        "tags": [
+            "Renal",
+            "Low Potassium"
+        ],
+        "ingredients": [
+            "Res fresca",
+            "Zanahoria",
+            "Calabaza"
+        ],
+        "steps": [
+            {
+                "instruction": "Lixiviar zanahoria y calabaza (picar y remojar 4h).",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Sofreír carne picada y mezclar con vegetales.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Hornear como pastel.",
+                "is_branch_point": false
+            }
+        ]
+    },
+    {
+        "id": "GOS-42",
+        "title": "Res con Vegetales 'Paleo-Style'",
+        "description": "Paleo. Comida real.",
+        "tags": [
+            "Paleo",
+            "Grain-Free"
+        ],
+        "ingredients": [
+            "Res",
+            "Zanahoria",
+            "Calabaza",
+            "Aceite de oliva"
+        ],
+        "steps": [
+            {
+                "instruction": "Asar vegetales y carne con aceite de oliva y sal marina.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Evitar aceites de semillas.",
+                "is_branch_point": false
+            }
+        ]
+    },
+    {
+        "id": "GOS-43",
+        "title": "Salsa Boloñesa 'Whole30'",
+        "description": "Whole30. Sin azúcar/alcohol.",
+        "tags": [
+            "Whole30",
+            "Paleo"
+        ],
+        "ingredients": [
+            "Res picada",
+            "Tomate triturado",
+            "Zanahoria"
+        ],
+        "steps": [
+            {
+                "instruction": "Sofreír carne y zanahoria.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Añadir tomate 100% natural (leer etiqueta, sin azúcar).",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Cocinar 30 min.",
+                "is_branch_point": false
+            }
+        ]
+    },
+    {
+        "id": "GOS-44",
+        "title": "Frittata de Vegetales Keto",
+        "description": "Keto. Huevos y grasa.",
+        "tags": [
+            "Keto",
+            "High-Fat",
+            "Low-Carb"
+        ],
+        "ingredients": [
+            "Huevos",
+            "Calabacín",
+            "Champiñones",
+            "Mantequilla",
+            "Queso curado"
+        ],
+        "steps": [
+            {
+                "instruction": "Batir huevos con sal.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Sofreír vegetales en mucha mantequilla.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Añadir huevos y queso. Cuajar a fuego lento.",
+                "is_branch_point": false
+            }
+        ]
+    },
+    {
+        "id": "GOS-45",
+        "title": "Revuelto de Claras 'Low-Histamine'",
+        "description": "Histamine (SIGHI). Solo yemas.",
+        "tags": [
+            "Histamine",
+            "Low-Reactant"
+        ],
+        "ingredients": [
+            "Yemas de huevo",
+            "Calabacín",
+            "Champiñones",
+            "AOVE"
+        ],
+        "steps": [
+            {
+                "instruction": "Separar claras y desechar (son liberadoras de histamina).",
+                "is_branch_point": false,
+                "cross_contamination_alert": "Usar solo la YEMA."
+            },
+            {
+                "instruction": "Saltear vegetales.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Añadir yemas batidas y cocinar suavemente.",
+                "is_branch_point": false
+            }
+        ]
+    }
+]

@@ -66,6 +66,7 @@ Future<void> init() async {
   sl.registerFactory(() => PlannerBloc(
     getMealSuggestions: sl(),
     mealPlanRepository: sl(),
+    inventoryRepository: sl(),
     shoppingEngine: sl(),
   ));
 

@@ -145,82 +145,120 @@ class InventoryView extends StatelessWidget {
     final quantityController = TextEditingController(text: item?.quantity.toString() ?? '');
     final isEditing = item != null;
 
+    String selectedUnit = item?.unit ?? 'unit';
+    // Validate unit exists in list, else default to 'unit' or add it?
+    // For MVP, lets ensure we support the common ones.
+    final units = ['unit', 'kg', 'g', 'L', 'ml', 'cup', 'tbsp', 'tsp'];
+    if (!units.contains(selectedUnit)) {
+      selectedUnit = 'unit'; // Fallback
+    }
+
     showDialog(
       context: context,
       builder: (dialogContext) {
-        return AlertDialog(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
-          title: Text(isEditing ? 'Edit Item' : 'Add Item', style: GoogleFonts.outfit(fontWeight: FontWeight.bold)),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              TextField(
-                controller: nameController,
-                decoration: InputDecoration(
-                  labelText: 'Name',
-                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
-                  prefixIcon: const Icon(Icons.label_outline),
+        return StatefulBuilder(
+          builder: (context, setState) {
+            return AlertDialog(
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
+              title: Text(isEditing ? 'Edit Item' : 'Add Item', style: GoogleFonts.outfit(fontWeight: FontWeight.bold)),
+              content: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  TextField(
+                    controller: nameController,
+                    decoration: InputDecoration(
+                      labelText: 'Name',
+                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+                      prefixIcon: const Icon(Icons.label_outline),
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: TextField(
+                          controller: quantityController,
+                          decoration: InputDecoration(
+                            labelText: 'Quantity',
+                            border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+                            prefixIcon: const Icon(Icons.numbers),
+                          ),
+                          keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                        ),
+                      ),
+                      const SizedBox(width: 12),
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.grey.shade400),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: DropdownButtonHideUnderline(
+                          child: DropdownButton<String>(
+                            value: selectedUnit,
+                            icon: const Icon(Icons.arrow_drop_down_rounded),
+                            items: units.map((u) => DropdownMenuItem(value: u, child: Text(u))).toList(),
+                            onChanged: (val) {
+                              if (val != null) {
+                                setState(() => selectedUnit = val);
+                              }
+                            },
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              actionsPadding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
+              actions: [
+                if (isEditing)
+                  TextButton(
+                    style: TextButton.styleFrom(foregroundColor: Colors.red),
+                    onPressed: () {
+                      bloc.add(DeleteInventoryItem(item.id));
+                      Navigator.pop(dialogContext);
+                    },
+                    child: const Text('Delete'),
+                  ),
+                TextButton(
+                  onPressed: () => Navigator.pop(dialogContext),
+                  child: const Text('Cancel'),
                 ),
-              ),
-              const SizedBox(height: 16),
-              TextField(
-                controller: quantityController,
-                decoration: InputDecoration(
-                  labelText: 'Quantity',
-                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
-                  prefixIcon: const Icon(Icons.numbers),
+                FilledButton(
+                  onPressed: () {
+                     final name = nameController.text;
+                     final quantity = double.tryParse(quantityController.text) ?? 1.0;
+                     if (name.isNotEmpty) {
+                       if (isEditing) {
+                         final updatedItem = InventoryItem(
+                           id: item!.id,
+                           name: name,
+                           quantity: quantity,
+                           unit: selectedUnit,
+                           expirationDate: item.expirationDate,
+                           category: item.category,
+                           metadata: item.metadata,
+                         );
+                         bloc.add(UpdateInventoryItem(updatedItem));
+                       } else {
+                         bloc.add(AddInventoryItem(
+                           InventoryItem(id: '', name: name, quantity: quantity, unit: selectedUnit)
+                         ));
+                       }
+                       Navigator.pop(dialogContext);
+                     }
+                  }, 
+                  style: FilledButton.styleFrom(
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                  ),
+                  child: Text(isEditing ? 'Update' : 'Add')
                 ),
-                keyboardType: TextInputType.numberWithOptions(decimal: true),
-              ),
-            ],
-          ),
-          actionsPadding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
-          actions: [
-            if (isEditing)
-              TextButton(
-                style: TextButton.styleFrom(foregroundColor: Colors.red),
-                onPressed: () {
-                  bloc.add(DeleteInventoryItem(item.id));
-                  Navigator.pop(dialogContext);
-                },
-                child: const Text('Delete'),
-              ),
-            TextButton(
-              onPressed: () => Navigator.pop(dialogContext),
-              child: const Text('Cancel'),
-            ),
-            FilledButton(
-              onPressed: () {
-                 final name = nameController.text;
-                 final quantity = double.tryParse(quantityController.text) ?? 1.0;
-                 if (name.isNotEmpty) {
-                   if (isEditing) {
-                     final updatedItem = InventoryItem(
-                       id: item!.id,
-                       name: name,
-                       quantity: quantity,
-                       unit: item.unit,
-                       expirationDate: item.expirationDate,
-                       category: item.category,
-                       metadata: item.metadata,
-                     );
-                     bloc.add(UpdateInventoryItem(updatedItem));
-                   } else {
-                     bloc.add(AddInventoryItem(
-                       InventoryItem(id: '', name: name, quantity: quantity, unit: 'unit')
-                     ));
-                   }
-                   Navigator.pop(dialogContext);
-                 }
-              }, 
-              style: FilledButton.styleFrom(
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-              ),
-              child: Text(isEditing ? 'Update' : 'Add')
-            ),
-          ],
-        ).animate().scale(duration: 300.ms, curve: Curves.easeOutBack);
+              ],
+            ).animate().scale(duration: 300.ms, curve: Curves.easeOutBack);
+          }
+        );
       },
     );
   }

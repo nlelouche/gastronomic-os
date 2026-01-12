@@ -8,24 +8,36 @@ class IngredientNormalizer {
 
     final clean = raw.trim().toLowerCase();
     
-    // 1. Extract Quantity (Simple Heuristic: First word is number?)
+    // 1. Extract Quantity
     final parts = clean.split(' ');
-    double qty = 1.0; // Default
+    double qty = 1.0;
     String unit = '';
-    String name = clean;
+    String name = clean; // Placeholder, will be rebuilt
     
-    // Check if first part is a number
+    // Regex for "1kg", "500g", "1.5L" (Number attached to text)
+    final attachedRegex = RegExp(r'^([0-9]+(\.[0-9]+)?)([a-z]+)$');
     final numberRegex = RegExp(r'^[0-9]+(\.[0-9]+)?$');
-    if (parts.isNotEmpty && numberRegex.hasMatch(parts.first)) {
-       qty = double.tryParse(parts.first) ?? 1.0;
-       // Remove quantity from name
-       parts.removeAt(0); 
-    } else {
-      // Logic for "1/2" or fractions here (MVP: ignore complex fractions)
-      if (parts.isNotEmpty && parts.first.contains('/')) {
-         // handle fraction ?
-         // MVP: Keep as 1.0, just remove it from name
-         // Actually, let's keep it simple.
+
+    if (parts.isNotEmpty) {
+      final first = parts.first;
+      
+      if (numberRegex.hasMatch(first)) {
+         // Case: "1 kg"
+         qty = double.tryParse(first) ?? 1.0;
+         parts.removeAt(0);
+      } else if (attachedRegex.hasMatch(first)) {
+         // Case: "1kg"
+         final match = attachedRegex.firstMatch(first)!;
+         qty = double.tryParse(match.group(1)!) ?? 1.0;
+         String potentialUnit = match.group(3)!;
+         
+         // If the suffix is a known unit, treat it as unit.
+         // Otherwise, it might be "1st" or "2nd" (ignore for now)
+         // We'll let the unit checker below handle the "unit" part if we just split it?
+         // Simpler: Just put the unit back into parts[0] to be caught by Step 2.
+         parts[0] = potentialUnit; 
+         // BUT wait, we removed the number. 
+         // So "1kg rice" -> qty=1, parts=["kg", "rice"]
       }
     }
     
@@ -58,5 +70,13 @@ class IngredientNormalizer {
     }
 
     return (qty, unit, baseName);
+  }
+
+  /// Extracts just the normalized name from a raw string, ignoring quantity/unit.
+  /// Useful for matching inventory items where qty/unit are separate fields.
+  String normalizeNameOnly(String raw) {
+    if (raw.isEmpty) return '';
+    final (_, _, name) = normalize(raw);
+    return name;
   }
 }

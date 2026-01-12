@@ -1,0 +1,510 @@
+[
+    {
+        "id": "GOS-16",
+        "title": "Steak Paleo con Batata Asada",
+        "description": "Cumple con la exclusión de alimentos neolíticos (granos/lácteos).",
+        "tags": [
+            "Paleo",
+            "Grain-Free",
+            "Dairy-Free"
+        ],
+        "ingredients": [
+            "Ternera magra",
+            "Batata",
+            "Brócoli",
+            "Aceite de coco",
+            "Sal"
+        ],
+        "steps": [
+            {
+                "instruction": "Pelar y cortar la batata en cubos.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Asar batata con aceite de coco a 200°C hasta tierna.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Cocinar ternera magra a la plancha con aceite de coco.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Servir con brócoli al vapor.",
+                "is_branch_point": false
+            }
+        ]
+    },
+    {
+        "id": "GOS-17",
+        "title": "Ternera 'Renal-Leaching'",
+        "description": "Reduce potasio mediante técnica de lixiviación de la batata.",
+        "tags": [
+            "Renal",
+            "Low Potassium",
+            "Leaching"
+        ],
+        "ingredients": [
+            "Ternera magra fresca",
+            "Batata",
+            "Brócoli",
+            "Aceite de coco"
+        ],
+        "steps": [
+            {
+                "instruction": "Pelar y cortar batata. REMOJAR en agua abundante por 4 horas (Lixiviación).",
+                "is_branch_point": false,
+                "cross_contamination_alert": "La lixiviación es CRÍTICA para reducir la carga de potasio."
+            },
+            {
+                "instruction": "Desechar el agua de remojo y cocer la batata en agua fresca.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Cocinar ternera fresca (sin aditivos) a la plancha.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Servir con una porción pequeña de brócoli (<1/2 taza).",
+                "is_branch_point": false
+            }
+        ]
+    },
+    {
+        "id": "GOS-18",
+        "title": "Stir-fry de Ternera para Diabéticos",
+        "description": "Minimiza carbohidratos refinados y prioriza fibra.",
+        "tags": [
+            "Diabetes",
+            "Low-GI",
+            "MNT"
+        ],
+        "ingredients": [
+            "Ternera magra",
+            "Brócoli",
+            "Aceite de coco",
+            "Semillas de sésamo"
+        ],
+        "steps": [
+            {
+                "instruction": "Cortar ternera y brócoli en tiras.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Saltear brócoli en aceite de coco hasta que esté 'al dente'.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Añadir ternera y cocinar rápidamente.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Terminar con semillas de sésamo (grasa saludable).",
+                "is_branch_point": false
+            }
+        ]
+    },
+    {
+        "id": "GOS-19",
+        "title": "Salmón al Vapor 'SIGHI-Safe'",
+        "description": "Protocolo Frescura para Intolerancia a la Histamine.",
+        "tags": [
+            "Histamine",
+            "Low-Reactant",
+            "Fresh"
+        ],
+        "ingredients": [
+            "Salmón (fresco congelado)",
+            "Espárragos frescos",
+            "Quinoa",
+            "AOVE"
+        ],
+        "steps": [
+            {
+                "instruction": "Descongelar salmón rápidamente en agua fría (si estaba congelado) o usar pescado del día.",
+                "is_branch_point": false,
+                "cross_contamination_alert": "EVITAR pescado refrigerado por más de 12 horas."
+            },
+            {
+                "instruction": "Cocer quinoa con sal.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Cocinar salmón y espárragos al vapor.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Aderezar con AOVE y servir inmediatamente.",
+                "is_branch_point": false
+            }
+        ]
+    },
+    {
+        "id": "GOS-20",
+        "title": "Quinoa Marina 'FODMAP-Low'",
+        "description": "Baja en FODMAPs (Fase Eliminación). Control de fructanos.",
+        "tags": [
+            "Low FODMAP",
+            "IBS",
+            "Digestive"
+        ],
+        "ingredients": [
+            "Quinoa",
+            "Salmón",
+            "Espárragos (puntas)",
+            "Aceite infusionado en ajo"
+        ],
+        "steps": [
+            {
+                "instruction": "Cocer quinoa.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Usar SOLO las puntas de los espárragos (menos de 3 unidades grandes o 5 pequeñas).",
+                "is_branch_point": false,
+                "cross_contamination_alert": "Los tallos del espárrago son altos en fructosa/fructanos."
+            },
+            {
+                "instruction": "Cocinar salmón en aceite infusionado en ajo.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Servir caliente.",
+                "is_branch_point": false
+            }
+        ]
+    },
+    {
+        "id": "GOS-21",
+        "title": "Salmón Atlántico 'Heart-Healthy'",
+        "description": "Dieta Mediterránea. Alta en Omega-3.",
+        "tags": [
+            "Mediterranean",
+            "Heart-Healthy",
+            "Omega-3"
+        ],
+        "ingredients": [
+            "Salmón",
+            "Quinoa integral",
+            "Espárragos",
+            "AOVE",
+            "Limón",
+            "Hierbas frescas"
+        ],
+        "steps": [
+            {
+                "instruction": "Cocer quinoa.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Hornear salmón con rodajas de limón y hierbas.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Saltear espárragos con AOVE.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Servir todo junto.",
+                "is_branch_point": false
+            }
+        ]
+    },
+    {
+        "id": "GOS-22",
+        "title": "Curry de Lentejas Vegano",
+        "description": "Vegana Estricta. Sin aditivos animales.",
+        "tags": [
+            "Vegan",
+            "Plant-Based",
+            "Dairy-Free"
+        ],
+        "ingredients": [
+            "Lentejas rojas",
+            "Calabaza",
+            "Espinacas",
+            "Leche de coco",
+            "Cúrcuma",
+            "Comino"
+        ],
+        "steps": [
+            {
+                "instruction": "Sofreír especias (cúrcuma, comino) para activar aroma.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Añadir calabaza en cubos y lentejas rojas.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Cubrir con leche de coco y agua. Cocinar hasta que las lentejas se deshagan.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Añadir espinacas al final para que marchiten.",
+                "is_branch_point": false
+            }
+        ]
+    },
+    {
+        "id": "GOS-23",
+        "title": "Guiso de Lentejas 'Gluten-Free'",
+        "description": "Celíaca. Sin trigo ni espesantes contaminados.",
+        "tags": [
+            "Celiac",
+            "Gluten-Free",
+            "Safe"
+        ],
+        "ingredients": [
+            "Lentejas rojas",
+            "Calabaza",
+            "Espinacas",
+            "Leche de coco",
+            "Tamari"
+        ],
+        "steps": [
+            {
+                "instruction": "Verificar certificación GF de las lentejas.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Cocinar lentejas y calabaza en agua/caldo GF.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Añadir leche de coco y Tamari (Salsa de soja sin trigo).",
+                "is_branch_point": false,
+                "cross_contamination_alert": "NO usar salsa de soja convencional."
+            },
+            {
+                "instruction": "Incorporar espinacas antes de servir.",
+                "is_branch_point": false
+            }
+        ]
+    },
+    {
+        "id": "GOS-24",
+        "title": "Sopa de Lentejas 'Low-Phos'",
+        "description": "Renal. Gestión de Fósforo Orgánico.",
+        "tags": [
+            "Renal",
+            "Low Phosphorus"
+        ],
+        "ingredients": [
+            "Lentejas rojas",
+            "Calabaza",
+            "Espinacas",
+            "Leche de coco"
+        ],
+        "steps": [
+            {
+                "instruction": "Enjuagar MUY bien las lentejas antes de cocinar.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Cocer lentejas y calabaza.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Añadir leche de coco natural (sin aditivos de fosfato).",
+                "is_branch_point": false,
+                "cross_contamination_alert": "Evitar leche de coco con aditivos E-338 a E-343 (Fosfatos)."
+            },
+            {
+                "instruction": "Servir porción moderada.",
+                "is_branch_point": false
+            }
+        ]
+    },
+    {
+        "id": "GOS-25",
+        "title": "Albóndigas de Pavo 'Egg-Free'",
+        "description": "Alergia al Huevo. Usa 'huevo de chía'.",
+        "tags": [
+            "Egg-Free",
+            "Allergen-Safe"
+        ],
+        "ingredients": [
+            "Pavo picado",
+            "Calabacín",
+            "Semillas de chía",
+            "Sal"
+        ],
+        "steps": [
+            {
+                "instruction": "Mezclar semillas de chía con agua tibia (1 cda chía + 3 cdas agua) y reposar 5 min.",
+                "is_branch_point": false,
+                "cross_contamination_alert": "Esto crea el 'huevo de chía' aglutinante."
+            },
+            {
+                "instruction": "Mezclar pavo, calabacín rallado (escurrido) y el gel de chía.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Formar albóndigas y hornear a 180°C.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Asegurar cocción completa del pavo.",
+                "is_branch_point": false
+            }
+        ]
+    },
+    {
+        "id": "GOS-26",
+        "title": "Salteado de Pavo 'No-Soy'",
+        "description": "Alergia a la Soja. Sin lecitina ni aditivos.",
+        "tags": [
+            "Soy-Free",
+            "Allergen-Safe"
+        ],
+        "ingredients": [
+            "Pavo picado",
+            "Calabacín",
+            "Champiñones",
+            "Aceite de canola",
+            "Sal"
+        ],
+        "steps": [
+            {
+                "instruction": "Dorar pavo picado en aceite de canola (libre de soja).",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Añadir champiñones y calabacín.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Sazonar solo con sal (evitar salsas comerciales).",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Servir.",
+                "is_branch_point": false
+            }
+        ]
+    },
+    {
+        "id": "GOS-27",
+        "title": "Pavo y Champiñones Keto",
+        "description": "Keto. Carbohidratos netos ultra-bajos.",
+        "tags": [
+            "Keto",
+            "Low-Carb",
+            "High-Fat"
+        ],
+        "ingredients": [
+            "Pavo picado",
+            "Calabacín",
+            "Champiñones",
+            "Mantequilla (Ghee)",
+            "Sal"
+        ],
+        "steps": [
+            {
+                "instruction": "Derretir abundante mantequilla o Ghee en la sartén.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Sofreír champiñones hasta dorar.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Añadir pavo y calabacín.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Cocinar hasta que esté hecho. No escurrir la grasa.",
+                "is_branch_point": false
+            }
+        ]
+    },
+    {
+        "id": "GOS-28",
+        "title": "Porridge de Avena 'Milk-Free'",
+        "description": "APLV. Sin lácteos.",
+        "tags": [
+            "APLV",
+            "Dairy-Free"
+        ],
+        "ingredients": [
+            "Avena",
+            "Manzana",
+            "Canela",
+            "Leche de arroz"
+        ],
+        "steps": [
+            {
+                "instruction": "Cocer avena con leche de arroz.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Añadir manzana en cubos y canela.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Cocinar a fuego lento hasta espesar.",
+                "is_branch_point": false,
+                "cross_contamination_alert": "Asegurar que la leche de arroz NO sea procesada en líneas de leche."
+            }
+        ]
+    },
+    {
+        "id": "GOS-29",
+        "title": "Avena con Manzana para Celíacos",
+        "description": "Celíaca. Avena certificada.",
+        "tags": [
+            "Celiac",
+            "Gluten-Free"
+        ],
+        "ingredients": [
+            "Avena (Certificada GF)",
+            "Manzana",
+            "Canela",
+            "Leche de arroz"
+        ],
+        "steps": [
+            {
+                "instruction": "USAR SOLO AVENA CERTIFICADA SIN GLUTEN.",
+                "is_branch_point": false,
+                "cross_contamination_alert": "La avena común está casi siempre contaminada con trigo."
+            },
+            {
+                "instruction": "Preparar porridge con leche de arroz.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Añadir canela y manzana.",
+                "is_branch_point": false
+            }
+        ]
+    },
+    {
+        "id": "GOS-30",
+        "title": "Snack de Manzana 'Whole30'",
+        "description": "Whole30. Sin cereales ni azúcares.",
+        "tags": [
+            "Whole30",
+            "Paleo",
+            "Grain-Free"
+        ],
+        "ingredients": [
+            "Manzana",
+            "Canela",
+            "Agua"
+        ],
+        "steps": [
+            {
+                "instruction": "Cocer compota de manzana con poca agua.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Añadir canela.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Servir tibio o frío. Sin endulzantes.",
+                "is_branch_point": false
+            }
+        ]
+    }
+]

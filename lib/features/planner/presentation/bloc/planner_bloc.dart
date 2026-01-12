@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gastronomic_os/features/inventory/domain/repositories/i_inventory_repository.dart';
 import 'package:gastronomic_os/features/planner/domain/entities/meal_plan.dart';
 import 'package:gastronomic_os/features/planner/domain/repositories/i_meal_plan_repository.dart';
 import 'package:gastronomic_os/features/planner/domain/usecases/get_meal_suggestions.dart';
@@ -12,11 +13,13 @@ import 'package:gastronomic_os/features/planner/domain/logic/shopping_engine.dar
 class PlannerBloc extends Bloc<PlannerEvent, PlannerState> {
   final GetMealSuggestions getMealSuggestions;
   final IMealPlanRepository mealPlanRepository;
+  final IInventoryRepository inventoryRepository;
   final ShoppingEngine shoppingEngine;
 
   PlannerBloc({
     required this.getMealSuggestions,
     required this.mealPlanRepository,
+    required this.inventoryRepository,
     required this.shoppingEngine,
   }) : super(PlannerInitial()) {
     on<LoadPlannerSuggestions>(_onLoadSuggestions);
@@ -33,8 +36,14 @@ class PlannerBloc extends Bloc<PlannerEvent, PlannerState> {
     if (state is PlannerLoaded) {
       final current = (state as PlannerLoaded);
       try {
-        // Use existing scheduled meals to generate list
-        final list = shoppingEngine.generateList(current.scheduledMeals);
+        // Fetch inventory to check stock
+        // Note: Using Dart 3 Records handling
+        final stockResult = await inventoryRepository.getInventory();
+        final stock = stockResult.$2 ?? []; // If error, assume empty stock for safety? Or show warning?
+
+        // Generate list with inventory awareness
+        final list = shoppingEngine.generateList(current.scheduledMeals, inventory: stock);
+        
         emit(current.copyWith(shoppingList: list));
       } catch (e) {
         emit(PlannerError("Failed to generate list: $e"));

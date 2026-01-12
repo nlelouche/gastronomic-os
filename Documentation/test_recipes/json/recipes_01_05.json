@@ -21,7 +21,10 @@
     "steps": [
       {
         "instruction": "Cocer el arroz integral con una pizca de sal marina.",
-        "is_branch_point": false
+        "is_branch_point": true,
+        "variant_logic": {
+          "Keto": "Sustituir Arroz por Arroz de Coliflor salteado (200g)."
+        }
       },
       {
         "instruction": "Cortar el pollo en dados y las verduras en juliana.",

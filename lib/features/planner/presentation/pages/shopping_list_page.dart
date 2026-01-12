@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gastronomic_os/features/planner/presentation/bloc/planner_bloc.dart';
 import 'package:gastronomic_os/features/planner/presentation/bloc/planner_state.dart';
+import 'package:gastronomic_os/core/logic/unit_converter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ShoppingListPage extends StatelessWidget {
@@ -28,10 +29,26 @@ class ShoppingListPage extends StatelessWidget {
               separatorBuilder: (_, __) => const Divider(),
               itemBuilder: (context, index) {
                 final item = items[index];
+                // Use singleton converter for display (or inject it)
+                // For MVP, instantiation is fine as it's stateless logic, 
+                // but cleaner to get from sl or bloc state if available.
+                // Let's instantiate locally for now to fix the UI quickly.
+                final converter = UnitConverter(); 
+                final (displayQty, displayUnit) = converter.formatForDisplay(item.quantity, item.unit, item.name);
+                
+                String label;
+                if (displayQty == -1.0) {
+                  // Smart Purchase: Just the name (e.g. "Olive Oil")
+                  label = item.name.trim(); // Capitalize?
+                  if (label.isNotEmpty) label = label[0].toUpperCase() + label.substring(1);
+                } else {
+                  label = '$displayQty $displayUnit ${item.name}'.trim();
+                }
+
                 return ListTile(
-                  leading: Checkbox(value: false, onChanged: (v) {}), // Todo: Implement Toggle
+                  leading: Checkbox(value: false, onChanged: (v) {}),
                   title: Text(
-                    '${item.quantity} ${item.unit} ${item.name}'.trim(),
+                    label,
                     style: GoogleFonts.outfit(fontSize: 16),
                   ),
                   trailing: item.isVariant 

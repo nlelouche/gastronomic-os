@@ -95,12 +95,18 @@ class RecipeResolver {
         
         // Create one ResolvedStep per unique instruction
         // IMPORTANT: None of these are "universal" because they're branch variants
+        // Check if all members converged to a single instruction (Functional Universality)
+        // This prevents showing "For dad and mom" chips when everyone shares the same step.
+        bool isFunctionallyUniversal = instructionToMembers.length == 1 && 
+                                       instructionToMembers.values.first.length == family.length;
+
+        // Create ResolvedSteps
         for (var entry in instructionToMembers.entries) {
           resolvedSteps.add(ResolvedStep(
             index: stepCounter++,
             instruction: entry.key,
             targetMembers: entry.value,
-            isUniversal: false, // ✅ Branch variants are NEVER universal
+            isUniversal: isFunctionallyUniversal, // ✅ Hide chip if everyone sees the same
             crossContaminationAlert: step.crossContaminationAlert,
           ));
         }

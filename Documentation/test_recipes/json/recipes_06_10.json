@@ -124,7 +124,10 @@
         "steps": [
             {
                 "instruction": "Cocer quinoa según indicaciones del paquete.",
-                "is_branch_point": false
+                "is_branch_point": true,
+                "variant_logic": {
+                    "Keto": "Sustituir Quinoa por 'Arroz de Coliflor' o Corazones de Cáñamo (Hemp Hearts)."
+                }
             },
             {
                 "instruction": "Cortar tofu en cubos y saltear en aceite de oliva hasta dorar.",

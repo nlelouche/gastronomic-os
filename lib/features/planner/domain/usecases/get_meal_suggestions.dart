@@ -88,6 +88,6 @@ class GetMealSuggestions {
     // 4. Sort
     suggestions.sort((a, b) => b.score.compareTo(a.score));
 
-    return (null, suggestions.take(5).toList());
+    return (null, suggestions.take(20).toList());
   }
 }

@@ -13,13 +13,6 @@ class MealPlanModel extends MealPlan {
   });
 
   factory MealPlanModel.fromJson(Map<String, dynamic> json) {
-    // Debug Raw Recipe
-    if (json['recipes'] != null) {
-      print('📦 DEBUG RAW RECIPE: ${json['recipes']['title']}');
-      print('   -> Ingredients Raw: ${json['recipes']['ingredients']}');
-      print('   -> Type: ${json['recipes']['ingredients'].runtimeType}');
-    }
-    
     return MealPlanModel(
       id: json['id'] as String,
       userId: json['user_id'] as String,
