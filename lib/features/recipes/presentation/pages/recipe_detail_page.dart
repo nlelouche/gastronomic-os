@@ -12,6 +12,11 @@ import 'package:gastronomic_os/features/recipes/presentation/bloc/recipe_state.d
 import 'package:gastronomic_os/features/onboarding/domain/repositories/i_onboarding_repository.dart';
 import 'package:gastronomic_os/init/injection_container.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:gastronomic_os/features/planner/presentation/bloc/planner_bloc.dart';
+import 'package:gastronomic_os/features/planner/presentation/bloc/planner_event.dart';
+import 'package:gastronomic_os/features/planner/domain/entities/meal_plan.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:uuid/uuid.dart';
 
 class RecipeDetailPage extends StatelessWidget {
   final Recipe recipe;
@@ -118,6 +123,11 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
                   ),
                   actions: [
                      IconButton(
+                       icon: const Icon(Icons.calendar_today),
+                       tooltip: 'Add to Plan',
+                       onPressed: () => _showAddToPlanDialog(context, fullRecipe),
+                     ),
+                     IconButton(
                        icon: const Icon(Icons.fork_right),
                        tooltip: 'Fork Recipe',
                        onPressed: () {
@@ -125,7 +135,11 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
                            originalRecipeId: fullRecipe.id,
                            newTitle: '${fullRecipe.title} (Fork)',
                          ));
-                         Navigator.pop(context);
+                         ScaffoldMessenger.of(context).showSnackBar(
+                           SnackBar(content: Text('Forking "${fullRecipe.title}"... check the list!')),
+                         );
+                         // Don't pop immediately; let the user see the confirmation.
+                         // Or better: Listen to BlocListener for success and then navigate.
                        },
                      ),
                   ],
@@ -342,5 +356,41 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
         );
       }).toList(),
     );
+  }
+
+  Future<void> _showAddToPlanDialog(BuildContext context, Recipe recipe) async {
+    final now = DateTime.now();
+    final date = await showDatePicker(
+      context: context,
+      initialDate: now,
+      firstDate: now.subtract(const Duration(days: 1)),
+      lastDate: now.add(const Duration(days: 365)),
+    );
+
+    if (date != null && context.mounted) {
+      final userId = Supabase.instance.client.auth.currentUser?.id;
+      if (userId == null) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Please log in to plan meals.')),
+        );
+        return;
+      }
+
+      final plan = MealPlan(
+        id: const Uuid().v4(),
+        userId: userId,
+        recipeId: recipe.id,
+        scheduledDate: date,
+        mealType: 'Dinner',
+        createdAt: DateTime.now(),
+        recipe: recipe,
+      );
+
+      context.read<PlannerBloc>().add(AddMealToPlan(plan));
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Added "${recipe.title}" to ${date.day}/${date.month}')),
+      );
+    }
   }
 }

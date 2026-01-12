@@ -405,6 +405,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.1.2"
+  inflection3:
+    dependency: "direct main"
+    description:
+      name: inflection3
+      sha256: cb54689bcfe3c0168a6979ee3191df584dcef4f870c5ef41c798bcb35ff5aca3
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.5.3+2"
   intl:
     dependency: transitive
     description:

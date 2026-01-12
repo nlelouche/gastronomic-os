@@ -5,12 +5,11 @@ import 'package:gastronomic_os/core/widgets/ui_kit.dart';
 import 'package:gastronomic_os/features/inventory/presentation/pages/inventory_page.dart';
 import 'package:gastronomic_os/features/planner/presentation/bloc/planner_bloc.dart';
 import 'package:gastronomic_os/features/planner/presentation/bloc/planner_event.dart';
-import 'package:gastronomic_os/features/planner/presentation/bloc/planner_state.dart';
 import 'package:gastronomic_os/features/planner/presentation/widgets/chefs_suggestions.dart';
 import 'package:gastronomic_os/features/recipes/presentation/pages/recipes_page.dart';
 import 'package:gastronomic_os/features/settings/presentation/pages/settings_page.dart';
-import 'package:gastronomic_os/init/injection_container.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:gastronomic_os/features/planner/presentation/pages/planner_page.dart';
 
 class DashboardPage extends StatelessWidget {
   const DashboardPage({super.key});
@@ -20,9 +19,7 @@ class DashboardPage extends StatelessWidget {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
 
-    return BlocProvider(
-      create: (_) => sl<PlannerBloc>()..add(LoadPlannerSuggestions()),
-      child: Builder(
+    return Builder(
         builder: (context) {
           return Scaffold(
             backgroundColor: theme.scaffoldBackgroundColor,
@@ -48,13 +45,10 @@ class DashboardPage extends StatelessWidget {
               child: RefreshIndicator(
                 onRefresh: () async {
                   context.read<PlannerBloc>().add(LoadPlannerSuggestions());
-                  // Simple delay to let the UI show the refresh spinner briefly or wait for state?
-                  // Since Bloc is async, we can just await a small delay or future from bloc if designed.
-                  // For now, fire and forget. 
                   await Future.delayed(const Duration(seconds: 1));
                 },
                 child: SingleChildScrollView(
-                  physics: const AlwaysScrollableScrollPhysics(), // Ensure scroll even if content is short
+                  physics: const AlwaysScrollableScrollPhysics(),
                   padding: const EdgeInsets.all(24.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -93,7 +87,7 @@ class DashboardPage extends StatelessWidget {
                           MaterialPageRoute(builder: (context) => const InventoryPage()),
                         ),
                       ),
-                      // ... rest of cards
+                      
                       const SizedBox(height: 16),
                       _buildFeatureCard(
                         context,
@@ -106,6 +100,27 @@ class DashboardPage extends StatelessWidget {
                           MaterialPageRoute(builder: (context) => const RecipesPage()),
                         ),
                       ),
+                      
+                      const SizedBox(height: 16),
+                      
+                      // Planner Card
+                      _buildFeatureCard(
+                        context,
+                        title: 'Weekly Bridge',
+                        subtitle: 'Plan your meals',
+                        icon: Icons.calendar_month_rounded,
+                        color: Colors.purpleAccent,
+                        delay: 450.ms,
+                        onTap: () => Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (ctx) => BlocProvider.value(
+                              value: context.read<PlannerBloc>(),
+                              child: const PlannerPage(),
+                            ),
+                          ),
+                        ),
+                      ),
+                      
                       const SizedBox(height: 16),
                       _buildFeatureCard(
                         context,
@@ -127,8 +142,7 @@ class DashboardPage extends StatelessWidget {
             ),
           );
         }
-      ),
-    );
+      );
   }
 
   Widget _buildFeatureCard(
@@ -192,7 +206,7 @@ class DashboardPage extends StatelessWidget {
                           fontSize: 22,
                           fontWeight: FontWeight.bold,
                           color: theme.colorScheme.onSurface,
-                        ),
+                          ),
                       ),
                       Text(
                         subtitle,

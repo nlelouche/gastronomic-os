@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gastronomic_os/init/supabase_init.dart';
+import 'package:gastronomic_os/features/planner/presentation/bloc/planner_bloc.dart';
+import 'package:gastronomic_os/features/planner/presentation/bloc/planner_event.dart';
 import 'package:gastronomic_os/init/injection_container.dart' as di;
 import 'package:gastronomic_os/features/onboarding/presentation/pages/onboarding_page.dart';
 import 'package:gastronomic_os/features/home/presentation/pages/dashboard_page.dart';
@@ -17,26 +20,34 @@ void main() async {
   runApp(const GastronomicOSApp());
 }
 
+
 class GastronomicOSApp extends StatelessWidget {
   const GastronomicOSApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Gastronomic OS',
-      theme: AppTheme.light,
-      darkTheme: AppTheme.dark,
-      themeMode: ThemeMode.system, // or User preference later
-      builder: (context, child) => ResponsiveBreakpoints.builder(
-        child: child!,
-        breakpoints: [
-          const Breakpoint(start: 0, end: 450, name: MOBILE),
-          const Breakpoint(start: 451, end: 800, name: TABLET),
-          const Breakpoint(start: 801, end: 1920, name: DESKTOP),
-          const Breakpoint(start: 1921, end: double.infinity, name: '4K'),
-        ],
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<PlannerBloc>(
+          create: (_) => di.sl<PlannerBloc>()..add(LoadPlannerSuggestions()),
+        ),
+      ],
+      child: MaterialApp(
+        title: 'Gastronomic OS',
+        theme: AppTheme.light,
+        darkTheme: AppTheme.dark,
+        themeMode: ThemeMode.system,
+        builder: (context, child) => ResponsiveBreakpoints.builder(
+          child: child!,
+          breakpoints: [
+            const Breakpoint(start: 0, end: 450, name: MOBILE),
+            const Breakpoint(start: 451, end: 800, name: TABLET),
+            const Breakpoint(start: 801, end: 1920, name: DESKTOP),
+            const Breakpoint(start: 1921, end: double.infinity, name: '4K'),
+          ],
+        ),
+        home: const AuthWrapper(),
       ),
-      home: const AuthWrapper(),
     );
   }
 }

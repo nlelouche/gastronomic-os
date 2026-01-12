@@ -13,7 +13,10 @@ import 'package:gastronomic_os/features/onboarding/data/repositories/onboarding_
 import 'package:gastronomic_os/features/onboarding/domain/repositories/i_onboarding_repository.dart';
 import 'package:gastronomic_os/features/onboarding/presentation/bloc/onboarding_bloc.dart';
 import 'package:gastronomic_os/features/planner/domain/usecases/get_meal_suggestions.dart';
+import 'package:gastronomic_os/features/planner/domain/repositories/i_meal_plan_repository.dart';
+import 'package:gastronomic_os/features/planner/data/repositories/meal_plan_repository_impl.dart';
 import 'package:gastronomic_os/features/planner/presentation/bloc/planner_bloc.dart';
+import 'package:gastronomic_os/features/planner/domain/logic/shopping_engine.dart';
 
 final sl = GetIt.instance;
 
@@ -54,8 +57,17 @@ Future<void> init() async {
     inventoryRepository: sl(),
     onboardingRepository: sl(),
   ));
+
+  sl.registerLazySingleton<IMealPlanRepository>(
+      () => MealPlanRepositoryImpl(sl()));
+
+  sl.registerLazySingleton(() => ShoppingEngine());
   
-  sl.registerFactory(() => PlannerBloc(getMealSuggestions: sl()));
+  sl.registerFactory(() => PlannerBloc(
+    getMealSuggestions: sl(),
+    mealPlanRepository: sl(),
+    shoppingEngine: sl(),
+  ));
 
   // ! External
   sl.registerLazySingleton(() => Supabase.instance.client);

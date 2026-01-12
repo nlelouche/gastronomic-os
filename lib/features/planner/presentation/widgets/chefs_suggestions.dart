@@ -39,12 +39,24 @@ class _ChefsSuggestionsView extends StatelessWidget {
                 child: CircularProgressIndicator(),
               ));
             } else if (state is PlannerError) {
+              final isDbError = state.message.contains('PGRST205') || state.message.contains('meal_plans');
               return AppCard(
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
-                  child: Text(
-                    "Couldn't generate plan: ${state.message}",
-                    style: const TextStyle(color: Colors.red),
+                  child: Row(
+                    children: [
+                      Icon(isDbError ? Icons.table_chart_outlined : Icons.error_outline, 
+                           color: isDbError ? Colors.orange : Colors.red),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: Text(
+                          isDbError 
+                            ? "Setup Required: Database table 'meal_plans' missing."
+                            : "Couldn't generate plan: ${state.message}",
+                          style: TextStyle(color: isDbError ? Colors.orange[800] : Colors.red),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               );

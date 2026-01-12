@@ -21,6 +21,7 @@ dependencies:
   responsive_framework: ^1.4.0
   skeletonizer: ^1.4.1
   uuid: ^4.5.1
+  inflection3: ^0.5.3+2
 
 dev_dependencies:
   flutter_test:
