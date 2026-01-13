@@ -95,8 +95,7 @@ class FamilyMemberCard extends StatelessWidget {
                 if (member.medicalConditions.isNotEmpty) ...[
                   const SizedBox(height: AppDimens.spaceXS),
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2), // Keep slightly smaller/custom for pill
-                    decoration: BoxDecoration(
+                    padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
                     decoration: BoxDecoration(
                       color: colorScheme.errorContainer,
                       borderRadius: BorderRadius.circular(AppDimens.radiusS),

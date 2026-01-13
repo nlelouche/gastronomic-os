@@ -1,6 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:gastronomic_os/core/enums/diet_enums.dart';
 import 'package:gastronomic_os/features/onboarding/domain/entities/family_member.dart';
+import 'package:gastronomic_os/core/enums/family_role.dart';
 import 'package:gastronomic_os/features/recipes/domain/entities/recipe.dart';
 import 'package:gastronomic_os/features/recipes/domain/entities/recipe_step.dart';
 import 'package:gastronomic_os/features/planner/domain/logic/diet_engine.dart';
@@ -48,7 +49,7 @@ void main() {
     return FamilyMember(
       id: 'user-1',
       name: name,
-      role: 'Tester',
+      role: FamilyRole.dad,
       primaryDiet: diet,
       medicalConditions: conditions,
     );

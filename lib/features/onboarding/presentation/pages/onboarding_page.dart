@@ -329,7 +329,6 @@ class OnboardingView extends StatelessWidget {
                   child: Text(l10n.onboardingSave),
                 ),
               ],
-               ],
             ).animate().scale(duration: AppDimens.durationMediumMs.ms, curve: Curves.easeOutBack);
           },
         );

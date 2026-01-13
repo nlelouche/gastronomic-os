@@ -113,10 +113,12 @@ class _CitationBadge extends StatelessWidget {
     final List<Map<String, String>> citations = [];
 
     for (final id in ids) {
-      if (ClinicalCitations.data.containsKey(id)) {
+      final citationText = ClinicalCitations.get(context, id);
+      // Si no es el fallback "Citation #id", agregarlo
+      if (!citationText.startsWith('Citation #')) {
         citations.add({
           'id': id.toString(),
-          'text': ClinicalCitations.data[id]!,
+          'text': citationText,
         });
       }
     }

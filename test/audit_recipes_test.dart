@@ -6,6 +6,7 @@ import 'package:gastronomic_os/features/planner/domain/logic/diet_engine.dart';
 import 'package:gastronomic_os/features/recipes/domain/entities/recipe.dart';
 import 'package:gastronomic_os/features/recipes/domain/entities/recipe_step.dart';
 import 'package:gastronomic_os/features/onboarding/domain/entities/family_member.dart';
+import 'package:gastronomic_os/core/enums/family_role.dart';
 
 void main() {
   final dietEngine = DietEngine();
@@ -61,7 +62,7 @@ void main() {
              final member = FamilyMember(
                id: 'audit-user',
                name: 'AuditBot', 
-               role: 'Tester',
+               role: FamilyRole.dad, // Using enum instead of String
                primaryDiet: DietLifestyle.omnivore, 
                medicalConditions: [condition]
              );
