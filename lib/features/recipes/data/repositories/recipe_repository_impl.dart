@@ -3,6 +3,7 @@ import 'package:gastronomic_os/core/error/error_context.dart';
 import 'package:gastronomic_os/core/error/exception_handler.dart';
 import 'package:gastronomic_os/core/error/error_reporter.dart';
 import 'package:gastronomic_os/core/util/app_logger.dart';
+import 'package:gastronomic_os/features/recipes/data/datasources/recipe_cache_service.dart'; // NEW IMPORT
 import 'package:gastronomic_os/features/recipes/data/datasources/recipe_seeder.dart';
 import 'package:gastronomic_os/features/recipes/data/datasources/recipe_remote_datasource.dart';
 import 'package:gastronomic_os/features/recipes/data/models/recipe_model.dart';
@@ -15,12 +16,12 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 class RecipeRepositoryImpl implements IRecipeRepository {
   final RecipeRemoteDataSource remoteDataSource;
   final SupabaseClient supabaseClient; 
-
-  List<Recipe>? _cachedRecipes;
+  final RecipeCacheService cacheService; // NEW
 
   RecipeRepositoryImpl({
     required this.remoteDataSource,
     required this.supabaseClient,
+    required this.cacheService,
   });
 
   @override
@@ -63,29 +64,21 @@ class RecipeRepositoryImpl implements IRecipeRepository {
 
   @override
   Future<(Failure?, Recipe?)> getRecipeDetails(String id) async {
-    if (_cachedRecipes != null) {
-      try {
-        final cached = _cachedRecipes!.firstWhere((r) => r.id == id);
-        if (cached.steps.isNotEmpty) {
-           AppLogger.d('📦 Returning cached details for: ${cached.title}');
-           return (null, cached);
-        }
-      } catch (_) {
-        // Not in cache
-      }
+    // 1. Check Cache
+    final cached = cacheService.getRecipeDetails(id);
+    if (cached != null) {
+       AppLogger.d('📦 Returning cached details for: ${cached.title}');
+       return (null, cached);
     }
 
+    // 2. Fetch Remote
     try {
       AppLogger.d('🌍 Fetching details from remote for: $id');
       final result = await remoteDataSource.getRecipeDetails(id);
       
-      if (_cachedRecipes != null) {
-         final index = _cachedRecipes!.indexWhere((r) => r.id == id);
-         if (index != -1) {
-           _cachedRecipes![index] = result;
-         } else {
-           _cachedRecipes!.add(result);
-         }
+      // 3. Update Cache
+      if (result != null) {
+        cacheService.cacheRecipeDetails(result);
       }
       return (null, result);
     } catch (e, stackTrace) {
@@ -105,7 +98,7 @@ class RecipeRepositoryImpl implements IRecipeRepository {
   Future<(Failure?, Recipe?)> createRecipe(Recipe recipe) async {
     try {
       final result = await remoteDataSource.createRecipe(recipe);
-      _cachedRecipes = null;
+      cacheService.invalidate(); // Clear cache on mutation
       return (null, result);
     } catch (e, stackTrace) {
       final failure = ExceptionHandler.handle(
@@ -132,7 +125,7 @@ class RecipeRepositoryImpl implements IRecipeRepository {
       }
 
       final result = await remoteDataSource.forkRecipe(originalRecipeId, newTitle, userId);
-      _cachedRecipes = null;
+      cacheService.invalidate(); // Clear cache
       return (null, result);
     } catch (e, stackTrace) {
       final failure = ExceptionHandler.handle(

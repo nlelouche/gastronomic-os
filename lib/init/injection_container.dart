@@ -20,6 +20,7 @@ import 'package:gastronomic_os/features/planner/presentation/bloc/planner_bloc.d
 import 'package:gastronomic_os/features/planner/domain/logic/shopping_engine.dart';
 import 'package:gastronomic_os/core/bloc/localization_bloc.dart';
 import 'package:gastronomic_os/features/recipes/domain/logic/recipe_debug_service.dart';
+import 'package:gastronomic_os/features/recipes/data/datasources/recipe_cache_service.dart'; // NEW
 
 final sl = GetIt.instance;
 
@@ -30,10 +31,11 @@ Future<void> init() async {
     () => InventoryRepositoryImpl(remoteDataSource: sl()),
   );
   sl.registerLazySingleton<IRecipeRepository>(
-    () => RecipeRepositoryImpl(remoteDataSource: sl(), supabaseClient: sl()),
+    () => RecipeRepositoryImpl(remoteDataSource: sl(), supabaseClient: sl(), cacheService: sl()),
   );
 
   // Data sources
+  sl.registerLazySingleton(() => RecipeCacheService()); // NEW
   sl.registerLazySingleton<InventoryRemoteDataSource>(
     () => InventoryRemoteDataSourceImpl(supabaseClient: sl()),
   );
