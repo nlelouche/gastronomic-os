@@ -21,22 +21,24 @@ import 'package:gastronomic_os/features/recipes/presentation/widgets/formatted_r
 
 class RecipeDetailPage extends StatelessWidget {
   final Recipe recipe;
+  final bool isModal;
 
-  const RecipeDetailPage({super.key, required this.recipe});
+  const RecipeDetailPage({super.key, required this.recipe, this.isModal = false});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => sl<RecipeBloc>()..add(LoadRecipeDetails(recipe.id)),
-      child: RecipeDetailView(recipe: recipe),
+      child: RecipeDetailView(recipe: recipe, isModal: isModal),
     );
   }
 }
 
 class RecipeDetailView extends StatefulWidget {
   final Recipe recipe;
+  final bool isModal;
 
-  const RecipeDetailView({super.key, required this.recipe});
+  const RecipeDetailView({super.key, required this.recipe, this.isModal = false});
 
   @override
   State<RecipeDetailView> createState() => _RecipeDetailViewState();
@@ -100,7 +102,8 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
             return CustomScrollView(
               slivers: [
                 // Immersive App Bar with "Header"
-                SliverAppBar(
+                if (!widget.isModal)
+                  SliverAppBar(
                   expandedHeight: 200.0,
                   pinned: true,
                   flexibleSpace: FlexibleSpaceBar(

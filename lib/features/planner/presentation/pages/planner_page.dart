@@ -7,6 +7,7 @@ import 'package:gastronomic_os/features/planner/presentation/widgets/meal_plan_c
 import 'package:gastronomic_os/features/planner/presentation/pages/shopping_list_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:gastronomic_os/features/recipes/presentation/pages/recipe_detail_page.dart';
 
 class PlannerPage extends StatefulWidget {
   const PlannerPage({super.key});
@@ -107,7 +108,7 @@ class _PlannerPageState extends State<PlannerPage> {
                 final plan = plans[index];
                 return MealPlanCard(
                   plan: plan,
-                  onTap: () async {
+                  onDateTap: () async {
                     // Reschedule Feature
                     final picked = await showDatePicker(
                       context: context,
@@ -118,6 +119,42 @@ class _PlannerPageState extends State<PlannerPage> {
                     if (picked != null) {
                       context.read<PlannerBloc>().add(UpdateMealPlan(plan.copyWith(scheduledDate: picked)));
                     } 
+                  },
+                  onContentTap: () {
+                    if (plan.recipe != null) {
+                      // Quick Review Modal
+                      showModalBottomSheet(
+                        context: context,
+                        isScrollControlled: true,
+                        useSafeArea: true,
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+                        ),
+                        builder: (ctx) => DraggableScrollableSheet(
+                          initialChildSize: 0.85,
+                          minChildSize: 0.5,
+                          maxChildSize: 0.95,
+                          expand: false,
+                          builder: (_, scrollController) => ClipRRect(
+                            borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
+                            child: Scaffold(
+                              appBar: AppBar(
+                                centerTitle: true,
+                                title: Text('Quick Review', style: GoogleFonts.outfit(fontWeight: FontWeight.bold)),
+                                automaticallyImplyLeading: false,
+                                actions: [
+                                  IconButton(onPressed: () => Navigator.pop(ctx), icon: const Icon(Icons.close))
+                                ],
+                              ),
+                              body: RecipeDetailPage(
+                                recipe: plan.recipe!,
+                                isModal: true, // Optional: Pass flag if we want slight UI variations for modal
+                              ),
+                            ),
+                          ),
+                        ),
+                      );
+                    }
                   },
                   onDelete: () {
                      context.read<PlannerBloc>().add(DeleteMealPlan(plan.id));
