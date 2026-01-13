@@ -8,6 +8,8 @@ import 'package:gastronomic_os/features/inventory/domain/entities/inventory_item
 import 'package:gastronomic_os/features/inventory/presentation/widgets/inventory_item_card.dart';
 import 'package:gastronomic_os/features/recipes/presentation/pages/recipes_page.dart';
 import 'package:gastronomic_os/features/settings/presentation/pages/settings_page.dart';
+import 'package:gastronomic_os/l10n/generated/app_localizations.dart';
+import 'package:gastronomic_os/core/theme/app_dimens.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class InventoryPage extends StatelessWidget {
@@ -35,8 +37,8 @@ class InventoryView extends StatelessWidget {
       // Custom concise app bar
       appBar: AppBar(
         title: Text(
-          'My Fridge', 
-          style: GoogleFonts.outfit(fontWeight: FontWeight.bold, fontSize: 24)
+          AppLocalizations.of(context)!.inventoryTitle, 
+          style: GoogleFonts.outfit(fontWeight: FontWeight.bold, fontSize: AppDimens.fontSizeTitle)
         ),
         centerTitle: false,
         backgroundColor: Colors.transparent,
@@ -51,12 +53,12 @@ class InventoryView extends StatelessWidget {
           ),
           IconButton(
             icon: const Icon(Icons.settings_rounded),
-            tooltip: 'Settings',
+            tooltip: AppLocalizations.of(context)!.settingsTitle,
             onPressed: () => Navigator.of(context).push(
               MaterialPageRoute(builder: (context) => const SettingsPage()),
             ),
           ),
-          const SizedBox(width: 8),
+          const SizedBox(width: AppDimens.spaceS),
         ],
       ),
       body: BlocBuilder<InventoryBloc, InventoryState>(
@@ -69,15 +71,15 @@ class InventoryView extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(Icons.kitchen_outlined, size: 64, color: theme.colorScheme.outline),
-                    const SizedBox(height: 16),
+                    Icon(Icons.kitchen_outlined, size: AppDimens.iconSize2XL, color: theme.colorScheme.outline),
+                    const SizedBox(height: AppDimens.spaceL),
                     Text(
-                      'Fridge is empty!',
+                      AppLocalizations.of(context)!.inventoryEmptyState,
                       style: theme.textTheme.headlineSmall?.copyWith(color: theme.colorScheme.outline),
                     ),
-                    const SizedBox(height: 24),
+                    const SizedBox(height: AppDimens.spaceXL),
                     PrimaryButton(
-                      label: 'Add First Item',
+                      label: AppLocalizations.of(context)!.inventoryAddFirstItem,
                       icon: Icons.add,
                       onPressed: () => _showItemDialog(context, null),
                     ),
@@ -87,9 +89,9 @@ class InventoryView extends StatelessWidget {
             }
             
             return ListView.separated(
-              padding: const EdgeInsets.all(16),
+              padding: const EdgeInsets.all(AppDimens.paddingPage),
               itemCount: state.items.length + 1, // Add space at bottom for FAB
-              separatorBuilder: (context, index) => const SizedBox(height: 12),
+              separatorBuilder: (context, index) => const SizedBox(height: AppDimens.spaceM),
               itemBuilder: (context, index) {
                 if (index == state.items.length) {
                   return const SizedBox(height: 80); // Bottom padding
@@ -108,9 +110,9 @@ class InventoryView extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Icon(Icons.error_outline, size: 48, color: Colors.red),
-                  const SizedBox(height: 16),
-                  Text('Error: ${state.message}'),
+                  const Icon(Icons.error_outline, size: 48, color: Colors.red), // TODO: Theme
+                  const SizedBox(height: AppDimens.spaceL),
+                  Text(AppLocalizations.of(context)!.commonError(state.message)),
                 ],
               ),
             );
@@ -120,7 +122,7 @@ class InventoryView extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () => _showItemDialog(context, null),
-        label: Text('Add Item', style: GoogleFonts.outfit(fontWeight: FontWeight.w600)),
+        label: Text(AppLocalizations.of(context)!.inventoryAddItem, style: GoogleFonts.outfit(fontWeight: FontWeight.w600)),
         icon: const Icon(Icons.add_rounded),
         elevation: 4,
         highlightElevation: 8,
@@ -159,28 +161,28 @@ class InventoryView extends StatelessWidget {
         return StatefulBuilder(
           builder: (context, setState) {
             return AlertDialog(
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
-              title: Text(isEditing ? 'Edit Item' : 'Add Item', style: GoogleFonts.outfit(fontWeight: FontWeight.bold)),
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppDimens.radiusXL)),
+              title: Text(isEditing ? AppLocalizations.of(context)!.inventoryEditItem : AppLocalizations.of(context)!.inventoryAddItem, style: GoogleFonts.outfit(fontWeight: FontWeight.bold)),
               content: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   TextField(
                     controller: nameController,
                     decoration: InputDecoration(
-                      labelText: 'Name',
-                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+                      labelText: AppLocalizations.of(context)!.inventoryNameLabel,
+                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(AppDimens.radiusM)),
                       prefixIcon: const Icon(Icons.label_outline),
                     ),
                   ),
-                  const SizedBox(height: 16),
+                  const SizedBox(height: AppDimens.spaceL),
                   Row(
                     children: [
                       Expanded(
                         child: TextField(
                           controller: quantityController,
                           decoration: InputDecoration(
-                            labelText: 'Quantity',
-                            border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+                            labelText: AppLocalizations.of(context)!.inventoryQuantityLabel,
+                            border: OutlineInputBorder(borderRadius: BorderRadius.circular(AppDimens.radiusM)),
                             prefixIcon: const Icon(Icons.numbers),
                           ),
                           keyboardType: const TextInputType.numberWithOptions(decimal: true),
@@ -190,8 +192,8 @@ class InventoryView extends StatelessWidget {
                       Container(
                         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
                         decoration: BoxDecoration(
-                          border: Border.all(color: Colors.grey.shade400),
-                          borderRadius: BorderRadius.circular(12),
+                          border: Border.all(color: Theme.of(context).colorScheme.outline),
+                          borderRadius: BorderRadius.circular(AppDimens.radiusM),
                         ),
                         child: DropdownButtonHideUnderline(
                           child: DropdownButton<String>(
@@ -210,20 +212,20 @@ class InventoryView extends StatelessWidget {
                   ),
                 ],
               ),
-              actionsPadding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
+              actionsPadding: const EdgeInsets.symmetric(horizontal: AppDimens.paddingPage, vertical: AppDimens.paddingPage),
               actions: [
                 if (isEditing)
                   TextButton(
-                    style: TextButton.styleFrom(foregroundColor: Colors.red),
+                    style: TextButton.styleFrom(foregroundColor: Theme.of(context).colorScheme.error),
                     onPressed: () {
                       bloc.add(DeleteInventoryItem(item.id));
                       Navigator.pop(dialogContext);
                     },
-                    child: const Text('Delete'),
+                    child: Text(AppLocalizations.of(context)!.inventoryDelete),
                   ),
                 TextButton(
                   onPressed: () => Navigator.pop(dialogContext),
-                  child: const Text('Cancel'),
+                  child: Text(AppLocalizations.of(context)!.inventoryCancel),
                 ),
                 FilledButton(
                   onPressed: () {
@@ -250,10 +252,10 @@ class InventoryView extends StatelessWidget {
                      }
                   }, 
                   style: FilledButton.styleFrom(
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppDimens.radiusM)),
+                    padding: const EdgeInsets.symmetric(horizontal: AppDimens.spaceXL, vertical: AppDimens.spaceM),
                   ),
-                  child: Text(isEditing ? 'Update' : 'Add')
+                  child: Text(isEditing ? AppLocalizations.of(context)!.inventoryUpdate : AppLocalizations.of(context)!.inventoryAdd)
                 ),
               ],
             ).animate().scale(duration: 300.ms, curve: Curves.easeOutBack);

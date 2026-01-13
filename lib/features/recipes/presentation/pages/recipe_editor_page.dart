@@ -6,6 +6,8 @@ import 'package:gastronomic_os/features/recipes/data/models/recipe_step_model.da
 import 'package:gastronomic_os/features/recipes/presentation/bloc/recipe_bloc.dart';
 import 'package:gastronomic_os/features/recipes/presentation/bloc/recipe_event.dart';
 import 'package:gastronomic_os/l10n/generated/app_localizations.dart';
+import 'package:gastronomic_os/core/theme/app_dimens.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class RecipeEditorPage extends StatefulWidget {
   final Recipe? initialRecipe; // If null, creating new
@@ -119,6 +121,8 @@ class _RecipeEditorPageState extends State<RecipeEditorPage> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.initialRecipe == null ? AppLocalizations.of(context)!.editorNewTitle : AppLocalizations.of(context)!.editorEditTitle),
@@ -132,7 +136,7 @@ class _RecipeEditorPageState extends State<RecipeEditorPage> {
       body: Form(
         key: _formKey,
         child: SingleChildScrollView(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(AppDimens.paddingPage),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -142,20 +146,20 @@ class _RecipeEditorPageState extends State<RecipeEditorPage> {
                 decoration: InputDecoration(labelText: AppLocalizations.of(context)!.editorTitleLabel, border: const OutlineInputBorder()),
                 validator: (v) => v == null || v.isEmpty ? AppLocalizations.of(context)!.editorTitleRequired : null,
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: AppDimens.spaceL),
               TextFormField(
                 controller: _descController,
                 decoration: InputDecoration(labelText: AppLocalizations.of(context)!.editorDescriptionLabel, border: const OutlineInputBorder()),
                 maxLines: 3,
               ),
-              const SizedBox(height: 24),
+              const SizedBox(height: AppDimens.spaceXL),
               
               // Ingredients Section
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(AppLocalizations.of(context)!.editorIngredientsSection, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-                  IconButton(icon: const Icon(Icons.add_circle, color: Colors.green), onPressed: _addIngredient),
+                  Text(AppLocalizations.of(context)!.editorIngredientsSection, style: GoogleFonts.outfit(fontSize: AppDimens.fontSizeHeader, fontWeight: FontWeight.bold)),
+                  IconButton(icon: Icon(Icons.add_circle, color: colorScheme.primary), onPressed: _addIngredient),
                 ],
               ),
               ..._ingredientsControllers.asMap().entries.map((entry) {
@@ -175,7 +179,7 @@ class _RecipeEditorPageState extends State<RecipeEditorPage> {
                         ),
                       ),
                       IconButton(
-                        icon: const Icon(Icons.remove_circle_outline, color: Colors.red),
+                        icon: Icon(Icons.remove_circle_outline, color: colorScheme.error),
                         onPressed: () => _removeIngredient(index),
                       ),
                     ],
@@ -183,14 +187,14 @@ class _RecipeEditorPageState extends State<RecipeEditorPage> {
                 );
               }),
 
-              const SizedBox(height: 24),
+              const SizedBox(height: AppDimens.spaceXL),
 
               // Steps Section
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(AppLocalizations.of(context)!.editorInstructionsSection, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-                  IconButton(icon: const Icon(Icons.add_circle, color: Colors.green), onPressed: _addStep),
+                  Text(AppLocalizations.of(context)!.editorInstructionsSection, style: GoogleFonts.outfit(fontSize: AppDimens.fontSizeHeader, fontWeight: FontWeight.bold)),
+                  IconButton(icon: Icon(Icons.add_circle, color: colorScheme.primary), onPressed: _addStep),
                 ],
               ),
               ..._stepsControllers.asMap().entries.map((entry) {
@@ -215,14 +219,14 @@ class _RecipeEditorPageState extends State<RecipeEditorPage> {
                         ),
                       ),
                       IconButton(
-                        icon: const Icon(Icons.remove_circle_outline, color: Colors.red),
+                        icon: Icon(Icons.remove_circle_outline, color: colorScheme.error),
                         onPressed: () => _removeStep(index),
                       ),
                     ],
                   ),
                 );
               }),
-              const SizedBox(height: 40),
+              const SizedBox(height: AppDimens.space3XL),
             ],
           ),
         ),

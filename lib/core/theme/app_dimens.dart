@@ -12,6 +12,7 @@ class AppDimens {
   static const double paddingCard = 16.0;
 
   // BorderRadius
+  static const double radiusXS = 4.0;
   static const double radiusS = 8.0;
   static const double radiusM = 12.0;
   static const double radiusL = 16.0;
@@ -22,6 +23,7 @@ class AppDimens {
   static const double iconSizeM = 24.0;
   static const double iconSizeL = 32.0;
   static const double iconSizeXL = 48.0;
+  static const double iconSize2XL = 64.0;
 
   // Component Specific
   static const double avatarSizeL = 56.0;

@@ -3,6 +3,8 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:gastronomic_os/core/widgets/ui_kit.dart';
 import 'package:gastronomic_os/features/inventory/domain/entities/inventory_item.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:gastronomic_os/l10n/generated/app_localizations.dart';
+import 'package:gastronomic_os/core/theme/app_dimens.dart';
 
 class InventoryItemCard extends StatelessWidget {
   final InventoryItem item;
@@ -29,13 +31,13 @@ class InventoryItemCard extends StatelessWidget {
       final daysUntil = item.expirationDate!.difference(DateTime.now()).inDays;
       if (daysUntil < 0) {
         statusColor = colorScheme.error;
-        statusText = 'Expired';
+        statusText = AppLocalizations.of(context)!.inventoryExpired;
       } else if (daysUntil <= 3) {
         statusColor = Colors.orange;
-        statusText = 'Expiring soon';
+        statusText = AppLocalizations.of(context)!.inventoryExpiringSoon;
       } else {
         statusColor = Colors.green;
-        statusText = '${daysUntil}d left';
+        statusText = AppLocalizations.of(context)!.inventoryDaysLeft(daysUntil);
       }
     }
 
@@ -44,7 +46,7 @@ class InventoryItemCard extends StatelessWidget {
       padding: EdgeInsets.zero, // We'll handle padding inside for better layout control
       child: Container(
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(AppDimens.radiusL),
           // Subtle gradient for "glassmorphism" feel if supported, otherwise solid surface
           gradient: LinearGradient(
             begin: Alignment.topLeft,
@@ -56,16 +58,16 @@ class InventoryItemCard extends StatelessWidget {
           ),
         ),
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(AppDimens.paddingCard),
           child: Row(
             children: [
               // Icon Container
               Container(
-                width: 48,
-                height: 48,
+                width: AppDimens.iconSizeXL,
+                height: AppDimens.iconSizeXL,
                 decoration: BoxDecoration(
                   color: colorScheme.primaryContainer.withOpacity(0.3),
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(AppDimens.radiusM),
                 ),
                 child: Center(
                   child: Icon(
@@ -74,7 +76,7 @@ class InventoryItemCard extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(width: 16),
+              const SizedBox(width: AppDimens.spaceM),
               
               // Content
               Expanded(
@@ -92,10 +94,10 @@ class InventoryItemCard extends StatelessWidget {
                     Row(
                       children: [
                         Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                          padding: const EdgeInsets.symmetric(horizontal: AppDimens.spaceS, vertical: 2),
                           decoration: BoxDecoration(
                             color: colorScheme.surfaceDim,
-                            borderRadius: BorderRadius.circular(4),
+                            borderRadius: BorderRadius.circular(AppDimens.radiusXS),
                           ),
                           child: Text(
                             '${item.quantity} ${item.unit}',
@@ -105,7 +107,7 @@ class InventoryItemCard extends StatelessWidget {
                           ),
                         ),
                         if (statusText.isNotEmpty) ...[
-                          const SizedBox(width: 8),
+                          const SizedBox(width: AppDimens.spaceS),
                           Text(
                             '•  $statusText',
                             style: theme.textTheme.bodySmall?.copyWith(
