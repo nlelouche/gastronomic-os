@@ -86,7 +86,7 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
   }
 
   Future<void> _onFilterRecipes(FilterRecipes event, Emitter<RecipeState> emit) async {
-    emit(RecipeLoading());
+    // emit(RecipeLoading()); // Removed to prevent UI focus loss during search
     
     // Server-Side Search for Text Query
     // We reset pagination (offset 0)
@@ -115,7 +115,7 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
           final familyResult = await onboardingRepository.getFamilyMembers();
           if (familyResult.$2 != null) {
               final family = familyResult.$2!;
-              filtered = filtered.where((r) => _dietEngine.areRecipesCompatible(r, family)).toList();
+              filtered = filtered.where((r) => _dietEngine.isRecipeCompatible(r, family)).toList();
           }
       }
 

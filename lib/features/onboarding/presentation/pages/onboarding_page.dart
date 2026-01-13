@@ -8,6 +8,7 @@ import 'package:gastronomic_os/features/home/presentation/pages/dashboard_page.d
 import 'package:gastronomic_os/features/onboarding/presentation/widgets/family_member_card.dart';
 import 'package:gastronomic_os/features/onboarding/domain/entities/family_member.dart';
 import 'package:gastronomic_os/init/injection_container.dart';
+import 'package:gastronomic_os/core/enums/diet_enums.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class OnboardingPage extends StatelessWidget {
@@ -106,7 +107,7 @@ class OnboardingView extends StatelessWidget {
                             crossAxisCount: crossAxisCount,
                             crossAxisSpacing: 16,
                             mainAxisSpacing: 16,
-                            childAspectRatio: 0.85,
+                            childAspectRatio: 0.75,
                           ),
                           itemCount: state.members.length + 1,
                           itemBuilder: (context, index) {
@@ -174,10 +175,12 @@ class OnboardingView extends StatelessWidget {
     final bloc = context.read<OnboardingBloc>(); // Capture bloc
     final nameController = TextEditingController(text: member?.name ?? '');
     String selectedRole = member?.role ?? 'Dad';
-    String selectedDiet = member?.diet ?? 'Omnivore';
+    
+    // Initialize Enums
+    DietLifestyle selectedPrimaryDiet = member?.primaryDiet ?? DietLifestyle.omnivore;
+    List<MedicalCondition> selectedConditions = List.from(member?.medicalConditions ?? []);
     
     final roles = ['Dad', 'Mom', 'Son', 'Daughter', 'Grandparent', 'Roommate', 'Other'];
-    final diets = ['Omnivore', 'Vegetarian', 'Vegan', 'Keto', 'Paleo', 'Gluten-Free'];
 
     showDialog(
       context: context,
@@ -187,42 +190,95 @@ class OnboardingView extends StatelessWidget {
             return AlertDialog(
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
               title: Text(member == null ? 'Add Family Member' : 'Edit Member', style: GoogleFonts.outfit(fontWeight: FontWeight.bold)),
-              content: SingleChildScrollView(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    TextField(
-                      controller: nameController,
-                      decoration: InputDecoration(
-                        labelText: 'Name',
-                        hintText: 'e.g. John',
-                        border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
-                        prefixIcon: const Icon(Icons.person_outline),
+              content: SizedBox(
+                width: double.maxFinite,
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      // --- Field 1: Name ---
+                      TextField(
+                        controller: nameController,
+                        decoration: InputDecoration(
+                          labelText: 'Name',
+                          hintText: 'e.g. John',
+                          border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+                          prefixIcon: const Icon(Icons.person_outline),
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 16),
-                    DropdownButtonFormField<String>(
-                      value: selectedRole,
-                      decoration: InputDecoration(
-                        labelText: 'Role',
-                        border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
-                        prefixIcon: const Icon(Icons.badge_outlined),
+                      const SizedBox(height: 16),
+                      
+                      // --- Field 2: Role ---
+                      DropdownButtonFormField<String>(
+                        value: selectedRole,
+                        decoration: InputDecoration(
+                          labelText: 'Role',
+                          border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+                          prefixIcon: const Icon(Icons.badge_outlined),
+                        ),
+                        items: roles.map((r) => DropdownMenuItem(value: r, child: Text(r))).toList(),
+                        onChanged: (val) => setState(() => selectedRole = val!),
                       ),
-                      items: roles.map((r) => DropdownMenuItem(value: r, child: Text(r))).toList(),
-                      onChanged: (val) => setState(() => selectedRole = val!),
-                    ),
-                    const SizedBox(height: 16),
-                    DropdownButtonFormField<String>(
-                      value: selectedDiet,
-                      decoration: InputDecoration(
-                        labelText: 'Dietary Preference',
-                        border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
-                        prefixIcon: const Icon(Icons.restaurant_menu),
+                      const SizedBox(height: 24),
+
+                      // --- Section 3: Lifestyle (Primary Diet) ---
+                      Text('Lifestyle (Base Diet)', style: TextStyle(
+                        fontWeight: FontWeight.bold, 
+                        color: Theme.of(context).colorScheme.primary)
                       ),
-                      items: diets.map((d) => DropdownMenuItem(value: d, child: Text(d))).toList(),
-                      onChanged: (val) => setState(() => selectedDiet = val!),
-                    ),
-                  ],
+                      const SizedBox(height: 8),
+                      DropdownButtonFormField<DietLifestyle>(
+                        value: selectedPrimaryDiet,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+                          prefixIcon: const Icon(Icons.restaurant_menu),
+                          helperText: 'Select the main eating pattern.',
+                        ),
+                        items: DietLifestyle.values.map((d) => DropdownMenuItem(
+                          value: d, 
+                          child: Text(d.displayName),
+                        )).toList(),
+                        onChanged: (val) => setState(() => selectedPrimaryDiet = val!),
+                      ),
+                      
+                      const SizedBox(height: 24),
+
+                      // --- Section 4: Clinical Overlays (Medical) ---
+                      Text('Clinical Profile (Safety Overlays)', style: TextStyle(
+                        fontWeight: FontWeight.bold, 
+                        color: Theme.of(context).colorScheme.error)
+                      ),
+                      const SizedBox(height: 4),
+                      Text('Select all that apply. These rules will override the lifestyle choice.', 
+                        style: TextStyle(fontSize: 12, color: Colors.grey[600])
+                      ),
+                      const SizedBox(height: 8),
+                      
+                      Wrap(
+                        spacing: 8.0,
+                        runSpacing: 4.0,
+                        children: MedicalCondition.values.map((condition) {
+                          final isSelected = selectedConditions.contains(condition);
+                          return FilterChip(
+                            label: Text(condition.displayName, style: const TextStyle(fontSize: 12)),
+                            selected: isSelected,
+                            selectedColor: Theme.of(context).colorScheme.errorContainer,
+                            checkmarkColor: Theme.of(context).colorScheme.error,
+                            onSelected: (bool selected) {
+                              setState(() {
+                                if (selected) {
+                                  selectedConditions.add(condition);
+                                } else {
+                                  selectedConditions.remove(condition);
+                                }
+                              });
+                            },
+                          );
+                        }).toList(),
+                      ),
+                    ],
+                  ),
                 ),
               ),
               actionsPadding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
@@ -251,7 +307,8 @@ class OnboardingView extends StatelessWidget {
                         id: member?.id ?? DateTime.now().toIso8601String(), 
                         name: nameController.text,
                         role: selectedRole,
-                        diet: selectedDiet,
+                        primaryDiet: selectedPrimaryDiet,
+                        medicalConditions: selectedConditions,
                       );
                       
                       if (member != null) {

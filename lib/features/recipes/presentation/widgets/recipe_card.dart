@@ -51,6 +51,7 @@ class RecipeCard extends StatelessWidget {
                     color: colorScheme.primary.withOpacity(0.5),
                   ),
                 ),
+                // Fork Badge (Top Right)
                 if (recipe.isFork)
                   Positioned(
                     top: 8,
@@ -77,6 +78,43 @@ class RecipeCard extends StatelessWidget {
                       ),
                     ),
                   ),
+
+                // Ingredients Ribbon (Top Left)
+                Positioned(
+                  top: 0,
+                  left: 0,
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                    decoration: BoxDecoration(
+                      color: colorScheme.primary,
+                      borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(16),
+                        bottomRight: Radius.circular(16),
+                      ),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.2),
+                          blurRadius: 4,
+                          offset: const Offset(2, 2),
+                        ),
+                      ],
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(Icons.format_list_bulleted, size: 14, color: colorScheme.onPrimary),
+                        const SizedBox(width: 4),
+                        Text(
+                          '${recipe.ingredients.length}',
+                          style: theme.textTheme.labelSmall?.copyWith(
+                            color: colorScheme.onPrimary,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
@@ -88,7 +126,7 @@ class RecipeCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  recipe.title,
+                  recipe.title.replaceAll(RegExp(r'\[GOS-\d+\]\s*'), ''),
                   style: theme.textTheme.titleMedium?.copyWith(
                     fontFamily: GoogleFonts.outfit().fontFamily,
                     fontWeight: FontWeight.bold,
@@ -105,26 +143,35 @@ class RecipeCard extends StatelessWidget {
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),
-                const SizedBox(height: 16),
+                const SizedBox(height: 12),
                 
-                // Footer / Tags
-                Row(
-                  children: [
-                    Icon(Icons.list_alt, size: 16, color: colorScheme.outline),
-                    const SizedBox(width: 4),
-                    Text(
-                      '${recipe.ingredients.length} Ingredients',
-                      style: theme.textTheme.labelSmall?.copyWith(color: colorScheme.outline),
-                    ),
-                    const Spacer(),
-                    Icon(Icons.access_time, size: 16, color: colorScheme.outline),
-                    const SizedBox(width: 4),
-                    Text(
-                      '${recipe.steps.length} Steps', // Could be prep time if available
-                      style: theme.textTheme.labelSmall?.copyWith(color: colorScheme.outline),
-                    ),
-                  ],
-                ),
+                // Clinical Tags Row
+                if (recipe.tags.isNotEmpty)
+                  Wrap(
+                    spacing: 4,
+                    runSpacing: 4,
+                    children: recipe.tags.take(3).map((tag) {
+                       final isClinical = ['renal', 'keto', 'diabetes', 'celiac', 'aplv', 'histamine', 'low fodmap']
+                          .contains(tag.toLowerCase());
+                       if (!isClinical) return const SizedBox.shrink(); // Only show clinical tags on card to save space
+
+                       return Container(
+                         padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                         decoration: BoxDecoration(
+                           color: colorScheme.primaryContainer,
+                           borderRadius: BorderRadius.circular(4),
+                         ),
+                         child: Text(
+                           tag,
+                           style: theme.textTheme.labelSmall?.copyWith(
+                             color: colorScheme.onPrimaryContainer,
+                             fontWeight: FontWeight.bold,
+                             fontSize: 10,
+                           ),
+                         ),
+                       );
+                    }).toList(),
+                  ),
               ],
             ),
           ),

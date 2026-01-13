@@ -26,13 +26,13 @@ class FamilyMemberCard extends StatelessWidget {
 
     return AppCard(
       onTap: onTap,
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(12), // Reduced from 16
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Container(
-            width: 64,
-            height: 64,
+            width: 56, // Reduced from 64
+            height: 56,
             decoration: BoxDecoration(
               color: avatarColor.withOpacity(0.2),
               shape: BoxShape.circle,
@@ -42,14 +42,14 @@ class FamilyMemberCard extends StatelessWidget {
               child: Text(
                 member.name.isNotEmpty ? member.name[0].toUpperCase() : '?',
                 style: GoogleFonts.outfit(
-                  fontSize: 28,
+                  fontSize: 24, // Reduced from 28
                   fontWeight: FontWeight.bold,
                   color: avatarColor,
                 ),
               ),
             ),
           ),
-          const SizedBox(height: 12),
+          const SizedBox(height: 8), // Reduced from 12
           Text(
             member.name,
             style: theme.textTheme.titleMedium?.copyWith(
@@ -67,19 +67,42 @@ class FamilyMemberCard extends StatelessWidget {
               color: colorScheme.onSurfaceVariant,
             ),
           ),
-          const SizedBox(height: 12),
+          const SizedBox(height: 8), // Reduced from 12
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
             decoration: BoxDecoration(
               color: colorScheme.secondaryContainer,
               borderRadius: BorderRadius.circular(12),
             ),
-            child: Text(
-              member.diet,
-              style: theme.textTheme.labelSmall?.copyWith(
-                color: colorScheme.onSecondaryContainer,
-                fontWeight: FontWeight.w600,
-              ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  member.primaryDiet.displayName,
+                  style: theme.textTheme.labelSmall?.copyWith(
+                    color: colorScheme.onSecondaryContainer,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                if (member.medicalConditions.isNotEmpty) ...[
+                  const SizedBox(height: 4),
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                    decoration: BoxDecoration(
+                      color: colorScheme.errorContainer,
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Text(
+                      '${member.medicalConditions.length} Medical Tags',
+                      style: theme.textTheme.labelSmall?.copyWith(
+                        color: colorScheme.onErrorContainer,
+                        fontSize: 10,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ]
+              ],
             ),
           ),
         ],

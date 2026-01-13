@@ -1,0 +1,35 @@
+﻿Instrucción para Antigravity: "Utiliza este listado para mapear cada etiqueta `` encontrada en el recetario JSON a un tooltip dinámico en la UI. Las explicaciones deben mostrarse cuando el usuario pase el cursor o toque el icono de advertencia."
+I. Dominio: Intolerancia a la Histamina (Protocolo SIGHI)
+* Cita 518 (Riesgo de Fermentación): El tofu y otros derivados de la soja son productos procesados o fermentados que acumulan niveles elevados de aminas biógenas (histamina) durante su maduración, lo que puede saturar la enzima DAO en pacientes sensibles.
+
+* Cita 520 (Sustitución de Proteína Fresca): En dietas bajas en histamina, la frescura es el factor crítico. Se sustituyen productos madurados por carnes blancas o pescados sacrificados en el día o ultracongelados para evitar la degradación bacteriana de la proteína.
+
+* Cita 246 (Seguridad de Sobras): Las bacterias transforman la histidina en histamina en cuestión de horas, incluso en refrigeración. Consumir platos recién cocinados es una medida de seguridad vital para evitar crisis alérgicas o digestivas.
+
+* Cita 261 (Liberadores de Histamina): Ciertos alimentos, como el limón o la clara de huevo, no contienen histamina en sí, pero estimulan al cuerpo a liberarla de forma endógena, agravando los síntomas de la intolerancia.
+
+II. Dominio: Nefropatía y Salud Renal
+   * Cita 281 (Técnica de Lixiviación): El remojo prolongado de tubérculos y hortalizas (4 horas) extrae hasta el 50% del potasio soluble hacia el agua. Esta técnica reduce el riesgo de hiperkalemia y arritmias en pacientes con función renal reducida.
+
+   * Cita 24 (Fósforo Inorgánico - PHOS): Los aditivos de fósforo inorgánico presentes en carnes inyectadas y refrescos se absorben al 90-100%, a diferencia del fósforo orgánico vegetal. Su control es crítico para prevenir el daño óseo y vascular.
+
+   * Cita 491 (Control de Fósforo en Cereales): El arroz blanco es preferible al integral en dietas renales porque se le ha retirado el salvado, donde reside la mayor parte del fósforo orgánico, permitiendo un mejor manejo de los minerales.
+
+   * Cita 19 (Sustitutos Letales de Sal): Las sales "bajas en sodio" suelen sustituir el cloruro de sodio por cloruro de potasio (KCl), el cual es letal para pacientes renales, ya que sus riñones no pueden filtrar el exceso de potasio.
+
+III. Dominio: Alergias Críticas (APLV, Huevo, Soja)
+      * Cita 98 (Alérgenos Ocultos en Carnes): Muchas carnes industriales son inyectadas con salmueras que contienen caseinatos (proteína de leche) para retener humedad. Validar la pureza de la carne es indispensable para evitar el shock anafiláctico en perfiles APLV.
+
+      * Cita 97 (Contaminación Cruzada Física): Las tablas de madera y utensilios porosos pueden retener trazas microscópicas de lácteos o harinas. Se exige el uso de utensilios de metal o plástico para garantizar la seguridad total del alérgico.
+
+
+         * Cita 1 (Trampas Semánticas Lácteas): Los productos etiquetados como "No Lácteos" (Non-dairy) a menudo contienen caseinato de sodio, una proteína derivada de la leche que desencadena reacciones graves en alérgicos, a diferencia de los productos veganos.
+
+         * Cita 26 (Lecitina e Incertidumbre): Si el origen de la lecitina no está especificado en la etiqueta, el sistema la bloquea preventivamente, ya que puede derivar tanto de la soja como del huevo, representando un riesgo de reactividad cruzada.
+
+IV. Dominio: Trastornos Metabólicos (Diabetes y FODMAP)
+            * Cita 225 (Fructanos y Aceites Infusionados): Los fructanos (carbohidratos fermentables) del ajo son solubles en agua pero no en aceite. Usar aceite infusionado permite capturar el sabor sin los azúcares que causan distensión abdominal en el SII.
+
+            * Cita 304 (Almidón Resistente): Enfriar cereales o tubérculos cocidos durante 12-24h transforma sus almidones en "resistentes". Esto reduce el índice glucémico del plato, evitando picos de insulina en pacientes diabéticos.
+
+            * Cita 232 (Efecto Stacking de FODMAPs): Alimentos como el aguacate o la calabaza son seguros en porciones pequeñas, pero su acumulación excesiva en una sola comida dispara la carga de polioles, causando crisis de colon irritable.

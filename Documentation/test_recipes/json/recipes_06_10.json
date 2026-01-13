@@ -18,7 +18,11 @@
         "steps": [
             {
                 "instruction": "Saltear espinacas en aceite de oliva.",
-                "is_branch_point": false
+                "is_branch_point": true,
+                "variant_logic": {
+                    "Renal": "Lixiviar (4h remojo) patatas/vegetales. Evitar sal y fosfatos. Controlar potasio.",
+                    "Histamine": "Usar ingredientes muy frescos. Evitar tomate, espinacas, fermentados y sobras."
+                }
             },
             {
                 "instruction": "Cocinar ternera magra al término deseado.",
@@ -56,7 +60,11 @@
         "steps": [
             {
                 "instruction": "Saltear espinaca en AOVE.",
-                "is_branch_point": false
+                "is_branch_point": true,
+                "variant_logic": {
+                    "Renal": "Lixiviar (4h remojo) patatas/vegetales. Evitar sal y fosfatos. Controlar potasio.",
+                    "Histamine": "Usar ingredientes muy frescos. Evitar tomate, espinacas, fermentados y sobras."
+                }
             },
             {
                 "instruction": "Cocinar ternera sin azúcar ni edulcorantes.",
@@ -87,8 +95,12 @@
         "steps": [
             {
                 "instruction": "Verificar que la ternera NO sea procesada ni inyectada con caldo.",
-                "is_branch_point": false,
-                "cross_contamination_alert": "Carne procesada puede contener caseinatos ocultos como aglutinante."
+                "is_branch_point": true,
+                "cross_contamination_alert": "Carne procesada puede contener caseinatos ocultos como aglutinante.",
+                "variant_logic": {
+                    "Renal": "Lixiviar (4h remojo) patatas/vegetales. Evitar sal y fosfatos. Controlar potasio.",
+                    "Histamine": "Usar ingredientes muy frescos. Evitar tomate, espinacas, fermentados y sobras."
+                }
             },
             {
                 "instruction": "Cocer arroz integral.",

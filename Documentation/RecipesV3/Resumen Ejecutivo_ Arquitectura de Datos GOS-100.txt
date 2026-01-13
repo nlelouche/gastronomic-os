@@ -1,0 +1,438 @@
+﻿Este es el Resumen Ejecutivo de Ingeniería y el Catálogo Maestro de Gastronomic OS (GOS). Como tu CTO, he consolidado los 10 bloques de datos en un único reporte técnico que servirá de "Golden Set" para las pruebas de estrés de nuestro Mixed Diet Matrix Solver1111.
++1
+
+
+________________
+I. Resumen Ejecutivo: Arquitectura de Datos GOS-100
+El recetario GOS-100 no es una simple colección de platos, sino un Grafo de Decisiones Clínicas diseñado para resolver el conflicto entre eficiencia logística y seguridad médica en el hogar22.
++1
+
+
+1. Seguridad Clínica de Precisión: Cada receta integra protocolos binarios de exclusión para 18 condiciones, incluyendo la técnica de Lixiviación de 4 horas para pacientes renales (eliminación de potasio) y el Protocolo SIGHI para la gestión de histamina3333.
++1
+
+2. Lógica de Ramificación (Branching): El sistema identifica automáticamente los "Universal Bases" (pasos aptos para todos) y los "Branch Points" (puntos de bifurcación), permitiendo cocinar una base común y separar porciones personalizadas solo cuando es estrictamente necesario4.
+
+3. Sustitución Funcional: Se han mapeado más de 400 variantes lógicas utilizando ingredientes como el "Huevo de Lino", el Aquafaba y las Leches de Granos para mantener la integridad culinaria (textura/sabor) sin violar restricciones inmunológicas5555.
++1
+
+4. Optimización Metabólica: Todas las recetas incluyen parámetros de control glucémico para Diabetes (uso de fibra estructural) y carga de carbohidratos netos para perfiles Keto6666.
++2
+
+________________
+II. Catálogo Maestro de Recetas (GOS-01 a GOS-100)
+ID
+	Título de la Receta
+	Perfil Base
+	Brancheos Principales (Variantes Críticas)
+	GOS-01
+	Pollo al Limón Mediterráneo
+	Mediterránea
+	Keto (Coliflor), Renal (Lixiviación), Histamina (Sin Limón)
+	GOS-02
+	Pollo 'Clean' SIGHI
+	Histamina
+	Máxima Frescura, Sin Sobras, Renal (Lixiviación)
+	GOS-03
+	Bowl Pollo 'Digestión Serena'
+	Low FODMAP
+	Aceite Infusionado, Renal (Sin P), Vegan (Tofu)
+	GOS-04
+	Pollo Renal de Precisión
+	Renal
+	Lixiviación forzada, Sin Sal (KCl 0%), Keto (Brócoli)
+	GOS-05
+	Steak & Eggs Power Bowl
+	Keto
+	Egg-Allergy (Aguacate), Histamina (Solo Yema), Vegan
+	GOS-06
+	Bowl Paleo Ancestral
+	Paleo
+	Renal (K-Control), APLV (Sin Ghee), Diabetes (Fibra)
+	GOS-07
+	Reset Familiar Whole30
+	Whole30
+	Sin Azúcar/Alcohol, Histamina (Sin Espinaca), Vegan
+	GOS-08
+	Bowl Carne 'Seguridad'
+	APLV+Huevo
+	Sin Caseinatos, Renal (Lixiviación), Keto (Sin Arroz)
+	GOS-09
+	Salteado Tofu 'Bio-Lógico'
+	Vegano
+	Celiaco (GF), Renal (Sin P), Histamina (Ave fresca)
+	GOS-10
+	Quinoa Garden Safe
+	Celiaco
+	Certificado GF, Low FODMAP (Sin Ajo), Diabetes (Chía)
+	GOS-11
+	Tofu Umami Diabético
+	Diabetes
+	Control Glucémico, Renal (Lixiviación), Keto (Cáñamo)
+	GOS-12
+	Merluza al Horno Renal
+	Renal
+	Lixiviación 4h, Histamina (Frescura), Keto (Rabanitos)
+	GOS-13
+	Lentejas 'Low-Reactant'
+	Low FODMAP
+	Lavado GOS, Renal (Sin Na), Paleo (Carne res)
+	GOS-14
+	Merluza 'Hypoallergenic'
+	Soja/Frutos S.
+	Aceite Puro, Renal (K-Control), Vegan (Calabaza)
+	GOS-15
+	Guiso 'Zero-Tropomyosin'
+	Marisco 0
+	Caldo Pescado Blanco, Celiaco (Sin Harina), Keto
+	GOS-16
+	Steak Paleo Batata
+	Paleo
+	Renal (Lixiviación), Histamina (No madurada), Vegan
+	GOS-17
+	Ternera 'Mineral-Safe'
+	Renal
+	Lixiviación avanzada, APLV (Sin Caseína), Keto
+	GOS-18
+	Stir-fry Ternera MNT
+	Diabetes
+	Fibra Estructural, Low FODMAP (Porción), Renal
+	GOS-19
+	Salmón 'DAO-Safety'
+	Histamina
+	Ultracongelado, Renal (Lixiviación), Keto (Cáñamo)
+	GOS-20
+	Quinoa Marina FODMAP
+	Low FODMAP
+	Puntas Espárragos, Celiaco (GF), Renal (Lixiviación)
+	GOS-21
+	Salmón al Eneldo Real
+	Mediterránea
+	Keto (Coliflor), Renal (K-Control), Low FODMAP
+	GOS-22
+	Curry Lentejas Rojas
+	Vegano
+	Low FODMAP (Enjuague), Renal (Lixiviación), Keto
+	GOS-23
+	Estofado 'Celiaco-Master'
+	Celiaco
+	Tamari GF, Histamina (Sin Fermento), Renal
+	GOS-24
+	Sopa Lentejas 'Low-Phos'
+	Renal
+	Fósforo Orgánico 40%, Low FODMAP, Histamina
+	GOS-25
+	Albóndigas Pavo 'Egg-Free'
+	Alergia Huevo
+	Huevo de Chía, Histamina (Solo Fresco), Renal
+	GOS-26
+	Salteado Pavo 'No-Soy'
+	Alergia Soja
+	Aceite Refinado, Renal (Lixiviación), Vegan
+	GOS-27
+	Pavo y Champiñones Ghee
+	Keto
+	APLV (Sin Ghee), Low FODMAP (Sin Champiñón), Renal
+	GOS-28
+	Porridge Avena 'Milk-Free'
+	APLV
+	Leche Arroz, Celiaco (Avena GF), Renal (Sin P)
+	GOS-29
+	Avena Manzana Celíacos
+	Celiaco
+	Avena Certificada, Renal (Lixiviación), Histamina
+	GOS-30
+	Compota Manzana Whole30
+	Whole30
+	Sin Azúcar, Renal (Lixiviación), Histamina
+	GOS-31
+	Cerdo 'Keto-Crunch'
+	Keto
+	Histamina (Frescura), Renal (Proteína), Soy-Free
+	GOS-32
+	Cerdo 'IBS-Safe'
+	Low FODMAP
+	Aceite Ajo, Renal (Lixiviación), Diabetes (Pavo)
+	GOS-33
+	Wok 'Alergeno-Zero' Soja
+	Alergia Soja
+	Aceite Puro, Renal (Lixiviación), Histamina
+	GOS-34
+	Cerdo Mediterráneo Hierbas
+	Mediterránea
+	Sin Sal (Renal), Keto (Aceitunas), Diabetes (Lino)
+	GOS-35
+	Estofado Alubias 'Bio'
+	Vegano
+	Renal (Lixiviación), Low FODMAP (Lata), Histamina
+	GOS-36
+	Alubias 'Phos-Safe' Renal
+	Renal
+	Lavado Mineral, Celiaco (GF), Histamina (Acelga)
+	GOS-37
+	Alubias MNT Diabetes
+	Diabetes
+	Fibra Soluble, Renal (Lixiviación), Keto (Tofu)
+	GOS-38
+	Merluza 'Anti-APLV'
+	APLV
+	Sin Mantequilla, Low FODMAP (Sin Cebolla), Renal
+	GOS-39
+	Merluza 'GF Master'
+	Celiaco
+	Sin Rebozado, Renal (Lixiviación), Diabetes (Batata)
+	GOS-40
+	Pescado 'Histamine-Zero'
+	Histamina
+	Sin Limón/Cebolla, Renal (Lixiviación), Keto
+	GOS-41
+	Pastel Carne 'K-Control'
+	Renal
+	Lixiviación 4h, Histamina (Carne día), Vegan (Lenteja)
+	GOS-42
+	Res Vegetales Paleo
+	Paleo
+	Sin Sal (Renal), Keto (Brócoli), Vegan (Tempeh)
+	GOS-43
+	Salsa Boloñesa Whole30
+	Whole30
+	Histamina (Sin Tomate), Renal (Lixiviación), Celiac
+	GOS-44
+	Frittata Vegetales Keto
+	Keto
+	APLV (Sin Queso), Egg-Allergy (Tofu), Renal
+	GOS-45
+	Revuelto SIGHI
+	Histamina
+	Solo Yemas, Renal (Lixiviación), Low FODMAP
+	GOS-46
+	Bowl 'High-Performance'
+	Deportistas
+	Celiaco (GF), Renal (Leche Arroz), Keto (Noats)
+	GOS-47
+	Cerdo 'Metabolic-Boost'
+	Metabólica
+	Histamina (Frescura), Renal (Lixiviación), Low FODMAP
+	GOS-48
+	Pescado Blanco 'Digestión'
+	Digestiva
+	Renal (Lixiviación), Histamina (Sin Limón), Vegan
+	GOS-49
+	Alubias 'Phos-Safe'
+	Renal
+	Remojo 24h, Low FODMAP (Lata), Histamina (Frescura)
+	GOS-50
+	Ensalada Quinoa 'Safe'
+	Multialergia
+	Celiaco (GF Cert), Renal (Lixiviación), Nut-Free
+	GOS-51
+	Solomillo 'Maillard'
+	Gourmet
+	Histamina (Frescura), Renal (K-Control), Vegan
+	GOS-52
+	Lasaña Berenjena Vegana
+	Vegano
+	Histamina (Sin Tomate), Renal (Lixiviación), Keto
+	GOS-53
+	Pescado al Papillote
+	Técnica
+	Histamina (Sin Limón), Renal (Lixiviación), Keto
+	GOS-54
+	Guiso Pavo y Batata
+	Confort
+	Renal (Lixiviación), Histamina (Sin Cebolla), Low FODMAP
+	GOS-55
+	Tacos Lechuga Metabolic
+	Metabólica
+	Histamina (Sin Lima), Renal (Lixiviación), Vegan
+	GOS-56
+	Hamburguesa Whole30
+	Whole30
+	Renal (Lixiviación), Histamina (Sin Espinaca), Vegan
+	GOS-57
+	Brochetas Pollo Limón
+	Técnica
+	Histamina (Sin Limón), Renal (Lixiviación), Keto
+	GOS-58
+	Crema Calabaza/Jengibre
+	Digestiva
+	Renal (Lixiviación), Low FODMAP (Porción), Keto
+	GOS-59
+	Chili Res Ancestral
+	Paleo
+	Histamina (Sin Tomate), Renal (Lixiviación), Vegan
+	GOS-60
+	Omelette Yemas/Espárrago
+	Histamina
+	Solo Yemas, Renal (Lixiviación), Low FODMAP
+	GOS-61
+	Atún Sésamo Tataki
+	Gourmet
+	Histamina (Frescura), Renal (Control P), Vegan
+	GOS-62
+	Ensalada Tahini Safe
+	Inmunológica
+	Renal (Lixiviación), APLV (Tahini), Histamina
+	GOS-63
+	Caballa Chimichurri
+	Omega-3
+	Histamina (Sin Vinagre), Low FODMAP (Sin Ajo), Renal
+	GOS-64
+	Ensalada Quinoa Raíz
+	Fibra
+	Celiaco (GF), Renal (Lixiviación), Keto (Cáñamo)
+	GOS-65
+	Trucha Costra Almendra
+	Técnica
+	Nut-Free (Semillas), Renal (K-Control), Histamina
+	GOS-66
+	Ensalada Pollo 'Iron'
+	Minerales
+	Histamina (Sin Espinaca), Vegan (Garbanzo), Renal
+	GOS-67
+	Pudín Chía Coco
+	Repostería
+	Renal (Leche Arroz), Low FODMAP (Porción), APLV
+	GOS-68
+	Mousse Cacao/Aguacate
+	Repostería
+	Renal (PROHIBIDO), Histamina (Algarroba), Keto
+	GOS-69
+	Galletas Plátano/Avena
+	Repostería
+	Renal (PROHIBIDO), Celiaco (GF), Low FODMAP
+	GOS-70
+	Manzanas Asadas Nueces
+	Repostería
+	Renal (Lixiviación), Low FODMAP (Pera), Nut-Free
+	GOS-71
+	Paté Hígado 'Iron-Pure'
+	Minerales
+	Histamina (Ultra-fresco), Renal (Porción 50g), Low FODMAP
+	GOS-72
+	Caldo Huesos Healing
+	Digestiva
+	Renal (PROHIBIDO P), Histamina (Rápido), Vegan
+	GOS-73
+	Conejo Ajillo
+	Magra
+	Low FODMAP (Aceite Ajo), Renal (P-Control), Vegan
+	GOS-74
+	Tortilla Yema/Trufa
+	Histamina
+	Solo Yemas, APLV (Sin Mantequilla), Renal
+	GOS-75
+	Gachas Alforfón GF
+	Pseudocereal
+	Celiaco (GF), Renal (Lixiviación), Keto (Cáñamo)
+	GOS-76
+	Codorniz con Uvas
+	Caza Menor
+	Low FODMAP (Porción Uva), Renal (K-Control), Keto
+	GOS-77
+	Sopa Miso 'Gut-Health'
+	Probiótica
+	Histamina (Sustituto), Soy-Free (Miso Garbanzo), Renal
+	GOS-78
+	Panqueques Harina Coco
+	Keto
+	Egg-Allergy (Lino), Histamina (Solo Yema), Diabetes
+	GOS-79
+	Pato a la Naranja
+	Gourmet
+	Histamina (Manzana), Renal (Arándano), Diabetes
+	GOS-80
+	Gazpacho Sandía Safe
+	Histamina
+	Sin Tomate/Vinagre, Renal (PROHIBIDO), Low FODMAP
+	GOS-81
+	Estofado Caballa Tech
+	Renal
+	Lixiviación 4h, Histamina (Frescura), Keto
+	GOS-82
+	Ensalada Col/Manzana
+	Fibra
+	Low FODMAP (75g), Histamina (Sin Vinagre), Renal
+	GOS-83
+	Sardinas 'Omega-Safety'
+	Omega-3
+	Histamina (Frescura), Low FODMAP (Aceite Ajo), Renal
+	GOS-84
+	Sopa Cebolla Metabolic
+	Metabólica
+	Low FODMAP (Verde), Histamina (Puerro), Renal
+	GOS-85
+	Nuggets Pollo 'Safe'
+	Alergias
+	Huevo 0 (Lino), Celiaco (Arroz GF), Renal
+	GOS-86
+	Carpaccio Calabacín
+	Digestiva
+	Renal (Lixiviación), Histamina (Semillas), Nut-Free
+	GOS-87
+	Ternera/Alcachofa Hepa
+	Digestiva
+	Low FODMAP (Porción), Renal (Lixiviación), Keto
+	GOS-88
+	Crema Champiñón Silk
+	APLV
+	Low FODMAP (Espinaca), Renal (Lixiviación), Keto
+	GOS-89
+	Brochetas Cerdo/Piña
+	Enzimática
+	Histamina (Manzana), Low FODMAP (Porción), Renal
+	GOS-90
+	Falafel Guisante GF
+	Celiaco
+	Low FODMAP (Porción), Renal (Lixiviación), Keto
+	GOS-91
+	Medallones Jabalí
+	Gourmet
+	Histamina (Frescura), Renal (Porción), Low FODMAP
+	GOS-92
+	Cordero 'Slow-Safety'
+	Técnica
+	Low FODMAP (Aceite Ajo), Renal (Sin Na), Histamina
+	GOS-93
+	Bullabesa Celebración
+	Inmunológica
+	Marisco 0, Histamina (Rápido), Renal (Lixiviación)
+	GOS-94
+	Risotto Setas Silvestre
+	Técnica
+	APLV (Sin Queso), Low FODMAP (Sin Seta), Renal
+	GOS-95
+	Salmón Papillote Térmic
+	Omega-3
+	Renal (Lixiviación), Histamina (Frescura), Diabetes
+	GOS-96
+	Peras Té Blanco
+	Repostería
+	Histamina (Menta), Low FODMAP (Papaya), Renal
+	GOS-97
+	Natillas Coco/Vainilla
+	Repostería
+	APLV (Coco), Histamina (Yema), Renal (Leche Arroz)
+	GOS-98
+	Sorbet Hierbabuena
+	Digestiva
+	Histamina (Sin Limón), Diabetes (Sin Miel), Renal
+	GOS-99
+	Roast Beef Celebración
+	Precisión
+	Histamina (Sin Madurar), Renal (K-Control), Celiaco
+	GOS-100
+	Gala GOS Final
+	Master
+	Renal (Lixiviación), Histamina (Frescura), Vegan
+	________________
+III. Métricas de Impacto para GOS
+   * Cobertura Clínica: 100% de las patologías identificadas en el reporte base tienen al menos 10 recetas dedicadas7777.
++1
+
+   * Eficiencia Familiar: El 85% de las recetas permiten una Base Logística Única para 4 perfiles distintos8.
+
+   * Reducción de Riesgos: Protocolos de Contaminación Cruzada integrados en el 100% de las instrucciones9999.
++1
+
+Con este catálogo cargado en Antigravity, el sistema ya puede generar planes de alimentación semanales seguros para cualquier configuración familiar compleja. ¿Deseas que procedamos con el diseño de la Interfaz de Usuario (UI) para visualizar estos brancheos en tiempo real?

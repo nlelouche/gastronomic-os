@@ -1,0 +1,188 @@
+Cita 1 : Lectura de etiquetas: los productos procesados pueden ocultar ingredientes peligrosos bajo nombres técnicos.
+Cita 2 : Alergia a la leche: reacción inmunológica grave a las proteínas y no debe confundirse con intolerancia a la lactosa.
+Cita 3 : Sustitutos no lácteos: productos etiquetados como non-dairy suelen contener caseinato de sodio.
+Cita 4 : Riesgo en embutidos: máquinas cortadoras compartidas y uso de caseína contaminan fiambres con proteínas lácteas.
+Cita 5 : Fuentes ocultas: el atún en lata y snacks procesados pueden utilizar suero o caseína como potenciadores.
+Cita 6 : Sustitución funcional: la leche de soja y avena son los mejores reemplazos para mantener la estructura.
+Cita 7 : Alergia alimentaria: guía básica para sustituir ingredientes lácteos sin comprometer la seguridad.
+Cita 8 : Repostería segura: existen alternativas vegetales que replican la textura de la nata y el queso crema.
+Cita 9 : Alergia al huevo: exclusión total necesaria por la imposibilidad de separar clara y yema sin contaminación.
+Cita 10 : Identificadores de huevo: la albúmina y lisozima son proteínas del huevo que aparecen con nombres técnicos.
+Cita 11 : Aglutinantes ocultos: panes brillantes y albóndigas industriales suelen utilizar huevo para dar color.
+Cita 12 : Riesgo de lecitina: si el origen no está especificado, debe evitarse por riesgo de ser derivada del huevo.
+Cita 14 : Límites de sustitución: las recetas que requieren más de 3 huevos son difíciles de adaptar sin perder la estructura.
+Cita 15 : Aquafaba: el agua de cocción de garbanzos es el sustituto capaz de crear espumas estables tipo merengue.
+Cita 17 : Derivados de soja: el miso, tofu y salsa de soja deben excluirse estrictamente en perfiles alérgicos.
+Cita 19 : Vectores de soja y trigo: la vitamina E industrial y las salsas asiáticas suelen contener trazas no declaradas.
+Cita 20 : Alergia al marisco: la proteína tropomiosina genera una fuerte reactividad cruzada entre crustáceos y moluscos.
+Cita 21 : Frutos secos: exclusión total de nueces y almendras por el alto riesgo de anafilaxia.
+Cita 22 : Salsas de riesgo: el pesto y los moles mexicanos son fuentes comunes de frutos secos ocultos.
+Cita 23 : Aceites de nuez: suelen prensarse en frío y conservan proteínas que causan alergia.
+Cita 24 : Fósforo inorgánico PHOS: aditivos que se absorben al 100 por ciento dañando vasos sanguíneos en pacientes renales.
+Cita 25 : Riesgo de sales: las sales bajas en sodio con cloruro de potasio KCl son letales para pacientes renales.
+Cita 26 : Contaminación por marisco: el surimi y las salsas de pescado contienen extractos reales de marisco.
+Cita 27 : Suplementos de riesgo: la glucosamina suele derivar de caparazones de crustáceos.
+Cita 28 : Celiaquía: enfermedad autoinmune donde el umbral de daño exige cero gluten detectable.
+Cita 161 : Vegetales FODMAP: la cebolla y el ajo concentran fructanos que disparan la inflamación intestinal.
+Cita 169 : Polioles: el aguacate y los champiñones contienen azúcares que causan distensión en personas sensibles.
+Cita 173 : Gramos seguros: el arroz y la quinoa son carbohidratos de baja fermentación ideales para colon irritable.
+Cita 174 : Proteínas seguras: las carnes y pescados frescos son naturalmente libres de FODMAPs.
+Cita 368 : Guía de histamina: principios de Johns Hopkins para reducción de aminas mediante alimentos frescos.
+Cita 424 : Omnívoro: perfil base sin restricciones de origen animal.
+Cita 426 : Veganismo: exclusión total de productos animales; requiere vigilar colorantes ocultos.
+Cita 428 : Keto: objetivo metabólico de cetosis mediante la restricción severa de carbohidratos netos.
+Cita 429 : Exclusión de granos: eliminación de cereales en dietas cetogénicas para forzar el uso de grasas.
+Cita 430 : Paleo: alimentación basada en productos pre agrícolas eliminando granos y legumbres.
+Cita 431 : Whole30: protocolo de eliminación estricta de 30 días para identificar alimentos inflamatorios.
+Cita 432 : Dieta Mediterránea: patrón basado en estudio PREDIMED priorizando aceite de oliva y fibra.
+Cita 433 : Restricción mediterránea: limitación de carnes rojas y azúcares refinados para salud cardiovascular.
+Cita 434 : Deportistas: enfoque en carbohidratos complejos y proteínas de alta biodisponibilidad muscular.
+Cita 437 : Alergia Láctea APLV: reacción a la caseína que prohíbe terminantemente el uso de deslactosados.
+Cita 438 : Falsa seguridad: los productos sin lactosa mantienen las proteínas alergénicas intactas.
+Cita 439 : Filtro de Huevo: bloqueo de huevo entero y sus derivados técnicos en toda la matriz del sistema.
+Cita 441 : Alergia a Soja: exclusión de aislados de soja y proteína vegetal texturizada industrial.
+Cita 443 : Riesgo en Licores: bebidas que pueden contener proteínas de frutos secos ocultas.
+Cita 444 : Tropomiosina: proteína responsable de alergias cruzadas severas en el consumo de marisco.
+Cita 445 : Celiaquía Estricta: tolerancia cero a variantes del trigo y granos como cebada y centeno.
+Cita 446 : Protocolo FODMAP: gestión de azúcares fermentables para reducir la presión osmótica intestinal.
+Cita 447 : Histamina SIGHI: regla de frescura extrema que excluye alimentos madurados o fermentados.
+Cita 448 : Liberadores DAO: alimentos que, aunque frescos, activan la liberación de histamina interna.
+Cita 449 : Diabetes: control glucémico mediante vegetales no feculentos y fibra estructural.
+Cita 450 : Control de Azúcares: minimización de endulzantes añadidos para estabilizar la glucosa en sangre.
+Cita 451 : Nefropatía: restricción de potasio y uso obligatorio de técnicas de lixiviación de tubérculos.
+Cita 467 : Fisiopatología APLV: distinción clínica entre reacción al azúcar lácteo y a la proteína.
+Cita 468 : Diferenciación médica: el algoritmo separa intolerancias metabólicas de alergias inmunológicas.
+Cita 469 : Peligro deslactosado: aviso crítico sobre la presencia de proteínas en lácteos procesados.
+Cita 470 : Reactividad láctea: alta probabilidad de reacción a leche de cabra y oveja en pacientes con alergia a la vaca.
+Cita 471 : Aglutinantes Lácteos: uso de caseinatos para dar textura a carnes procesadas de baja calidad.
+Cita 472 : Hidrolizados: proteínas fragmentadas que aún pueden ser reconocidas por el sistema inmune.
+Cita 474 : Aditivos lácteos: el conservante nisin y el saborizante diacetilo son derivados lácteos ocultos.
+Cita 475 : Higiene de charcutería: las máquinas cortadoras son vectores de contaminación cruzada láctea.
+Cita 476 : Química de leches: la soja es el sustituto más cercano a la leche animal por su contenido proteico.
+Cita 477 : Contaminación doméstica: es imposible separar la clara de la yema sin transferir alérgenos.
+Cita 480 : Pasta segura: las pastas secas italianas de sémola de trigo duro suelen estar libres de huevo.
+Cita 481 : Sustitución de huevo: el puré de plátano o lino hidratado sustituyen la función de unión.
+Cita 485 : Aceites Refinados: el refinado elimina la proteína alergénica haciendo el aceite de soja tolerable.
+Cita 486 : Prensado en frío: los aceites vírgenes de soja no son seguros porque conservan proteínas.
+Cita 488 : Precaución con lecitina: aditivo común que requiere validación de origen vegetal.
+Cita 489 : Soja industrial: el aislado de proteína de soja es un ingrediente base en productos ultraprocesados.
+Cita 490 : Caldos vegetales: suelen ocultar extractos de soja o gluten como potenciadores de sabor.
+Cita 491 : Manufactura de nueces: riesgo extremo de contaminación cruzada en plantas compartidas.
+Cita 492 : Extractos de repostería: los aromas naturales de almendra suelen contener proteínas reales.
+Cita 494 : Embutidos con nueces: fiambres como la mortadela utilizan pistachos, representando un riesgo oculto.
+Cita 495 : Mecanismo IgE: la alergia al marisco es una respuesta rápida que puede derivar en anafilaxia.
+Cita 496 : Reactividad ambiental: pacientes alérgicos pueden reaccionar al vapor de cocción del marisco.
+Cita 497 : Salsas de Pescado: condimentos asiáticos que suelen derivar de anchoas o mariscos madurados.
+Cita 498 : Fritura compartida: el aceite usado para freír pescado contamina irremediablemente otros alimentos.
+Cita 500 : Estándar Celíaco: exclusión de cualquier traza; las dietas bajas en gluten no son aptas.
+Cita 501 : Granos prohibidos: la cebada y el centeno contienen gluten y deben ser bloqueados.
+Cita 502 : Avena Genérica: riesgo de contaminación cruzada en molino; exige certificación Gluten Free.
+Cita 503 : Tamari: variedad de salsa de soja fermentada sin trigo, indispensable para celíacos.
+Cita 505 : Quesos azules: riesgo de trazas microscópicas de gluten por mohos cultivados en pan.
+Cita 506 : Regaliz: el dulce de regaliz tradicional utiliza harina de trigo como base estructural.
+Cita 507 : Harina aérea: el polvo de trigo en suspensión puede contaminar platos hasta horas después.
+Cita 508 : Utensilios porosos: la madera retiene gluten; se requiere acero para seguridad clínica.
+Cita 509 : Fermentación Intestinal: los FODMAPs atraen agua y producen gas al ser consumidos por bacterias.
+Cita 510 : Efecto Stacking: la acumulación de dosis de FODMAPs puede superar el umbral de tolerancia.
+Cita 511 : Lógica de Infusión: los fructanos del ajo son solubles en agua pero no pasan al aceite caliente.
+Cita 512 : Legumbres enteras: ricas en GOS, causan fuerte distensión en colon irritable.
+Cita 513 : Enjuague de legumbres: el lavado de lentejas de lata elimina azúcares fermentables solubles.
+Cita 514 : Edulcorantes '-ol': el xilitol y sorbitol actúan como laxantes osmóticos en dietas digestivas.
+Cita 515 : Déficit de DAO: insuficiencia enzimática que impide degradar la histamina.
+Cita 516 : Factor tiempo: en la intolerancia a la histamina, la edad del alimento es crítica.
+Cita 517 : Acción bacteriana: microorganismos transforman la histidina en histamina al contacto.
+Cita 518 : Riesgo de Sobras: la comida guardada acumula aminas rápidamente que el calor no elimina.
+Cita 519 : Pescado viejo: las conservas son los mayores disparadores de crisis de histamina.
+Cita 520 : Seguridad marina: el pescado congelado en alta mar detiene la producción de histamina.
+Cita 521 : Lista segura SIGHI: carnes blancas recién sacrificadas tienen los niveles de aminas más bajos.
+Cita 522 : Hiperkalemia: el exceso de potasio por fallo renal puede provocar arritmias cardíacas.
+Cita 523 : Trampa del Potasio: sustitutos de sal con cloruro de potasio peligrosos para el filtrado renal.
+Cita 524 : Lixiviación técnica: pelar y remojar tubérculos 4h reduce el potasio a la mitad.
+Cita 525 : Fósforo natural: presente en carnes, se absorbe solo parcialmente (40-60%).
+Cita 526 : Fósforo Químico: aditivos procesados que se absorben al 100 por ciento representando riesgo renal.
+Cita 527 : Filtro PHOS: escaneo de etiquetas buscando polifosfatos en carnes y refrescos.
+Cita 528 : Fibra estructural: vegetales crudos ralentizan la entrada de azúcar al torrente sanguíneo.
+Cita 529 : Restricción Keto: eliminación de azúcar y harinas para mantener la quema de grasa.
+Cita 530 : Especias ocultas: ajo y cebolla en polvo concentran carbohidratos netos en dietas Keto.
+Cita 531 : Rellenos Keto: maltodextrina y dextrosa en edulcorantes que disparan la insulina y rompen cetosis.
+Cita 532 : Whole30 SWPO: regla que prohíbe recrear comida chatarra con ingredientes sanos.
+Cita 533 : Eliminación de alcohol: prohibido en protocolos Whole30 por su efecto inflamatorio.
+Cita 534 : Aditivos inflamatorios: la carragenina y el MSG están prohibidos por irritación intestinal.
+Cita 535 : Colorante Animal E120: derivado de insectos triturados no apto para el perfil vegano estricto.
+Cita 536 : Origen de Vitaminas: la D3 suele venir de lanolina; los veganos requieren fuentes de liquen.
+Cita 537 : Estructura PREDIMED: base de aceite de oliva como escudo contra enfermedades.
+Cita 538 : Reducción de pro-inflamatorios: limitación de carnes procesadas en el patrón mediterráneo.
+Cita 540 : Fritura cruzada: un aceite se vuelve tóxico si ha procesado previamente gluten o marisco.
+Cita 541 : Gestión de Trazas: etiquetas de advertencia tratadas como prohibición absoluta en anafilaxia.
+Cita 545 : Precisión molecular: el sistema distingue entre clara y yema para maximizar la seguridad.
+Cita 550 : Evitación de soja: protocolo terapéutico para eliminar todas las fuentes de soja.
+Cita 552 : Riesgo de surimi: imitación de marisco que utiliza extractos reales, vector de alergia.
+Cita 561 : Aditivos no veganos: vigilancia de ingredientes animales ocultos en procesados.
+Cita 562 : Ingredientes ocultos: la gelatina es un derivado animal frecuente en dulces y snacks.
+Cita 566 : Mantenimiento de integridad: la matriz asegura que el plato mantenga textura sin riesgos.
+Cita 567 : Aglutinante frutal: el plátano pisado une ingredientes pero añade carga glucémica.
+Cita 568 : Huevo de Lino: semillas hidratadas para unir masas en dietas veganas o sin huevo.
+Cita 570 : Espumas técnicas: el aquafaba permite hacer mousses veganos al atrapar aire.
+Cita 571 : Reacción de Maillard: la soja permite el dorado de masas gracias a su proteína vegetal.
+Cita 572 : Texturas densas: el tofu sedoso replica la sensación de las natas lácteas.
+Cita 575 : Sustitución de sodio: el uso de hierbas y especias frescas elimina la necesidad de sal.
+Cita 576 : Umami sin Trigo: Salsa Tamari como sustituto seguro de la salsa de soja tradicional con trigo.
+Cita 577 : Dulzura Whole30: el jugo de fruta natural es la única forma permitida de endulzar.
+Cita 578 : Optimización de recuperación: elegir soja para un perfil completo de aminoácidos.
+Cita 582 : Modo estándar de soja: permite el uso de aceites refinados donde la proteína se eliminó.
+Cita 583 : Sustitución de método: la lixiviación permite consumir tubérculos antes prohibidos.
+Cita 584 : Automatización de reglas: integración de lógica clínica para evitar errores humanos.
+Cita 587 : Seguridad absoluta: dominio de alergias donde trazas pueden causar reacciones graves.
+Cita 588 : Exclusión láctea: prohibición total de secreciones mamarias y sus grasas.
+Cita 589 : Aditivos lácteos: vigilancia de nisina, derivado lácteo usado como conservante.
+Cita 590 : Trampas de etiquetado: los productos Non-dairy pueden contener proteínas lácteas.
+Cita 591 : Proteínas del Huevo: exclusión de ovoalbúmina responsable de la mayoría de reacciones IgE.
+Cita 593 : Fuentes de huevo: el brillo de la bollería es un vector de huevo no declarado.
+Cita 594 : Derivados de soja: bloqueo de miso y tempeh en perfiles con sensibilidad.
+Cita 595 : Texturizados industriales: la soja se oculta frecuentemente en rellenos de carnes.
+Cita 596 : Contaminación por caldo: saborizantes suelen ser derivados de soja o trigo.
+Cita 597 : Bloqueo de frutos secos: exclusión de anacardos por alérgenos estables al calor.
+Cita 598 : Mortadela y Pesto: platos que ocultan frutos secos y requieren alerta automática.
+Cita 599 : Identificación de marisco: gestión de la reactividad a la tropomiosina.
+Cita 600 : Sustitutos de carne peligrosos: el seitan es gluten puro y riesgo para celíacos.
+Cita 601 : Levadura de cebada: la levadura de cerveza suele estar contaminada con gluten.
+Cita 602 : Certificación GF: requisito indispensable para el consumo de avena segura.
+Cita 603 : Fructosa libre: el exceso de fructosa en miel causa dolor en dietas FODMAP.
+Cita 604 : Control de polioles: raciones limitadas de champiñones para evitar distensión.
+Cita 605 : Alimentos madurados: jamón y quesos viejos concentran histamina prohibida.
+Cita 606 : Degranulación de mastocitos: alimentos que fuerzan la liberación de histamina propia.
+Cita 608 : Densidad de potasio: el plátano es riesgoso para riñones con filtrado comprometido.
+Cita 609 : Bloqueo de KCl: exclusión de sales que usan potasio por riesgo cardíaco.
+Cita 610 : Aditivos PHOS: el fósforo inorgánico calcifica arterias en pacientes con fallo renal crónico.
+Cita 611 : Carga glicémica: eliminación de harinas para evitar picos de insulina y daño.
+Cita 613 : Diacetilo: saborizante de mantequilla con trazas lácteas, prohibido en APLV estricto.
+Cita 625 : Proteínas inyectadas: aves industriales tratadas con suero lácteo para textura.
+Cita 630 : Técnicas anti-AGEs: el huevo escalfado es preferible al frito en diabéticos.
+Cita 634 : Oligosacáridos solubles: el lavado de legumbres elimina azúcares que producen gas.
+Cita 635 : Trampas en coco: leches vegetales procesadas suelen usar caseinatos de leche.
+Cita 636 : Cochinilla: colorante rojo animal que debe evitarse en el perfil vegano.
+Cita 638 : Personalización Clínica: permite omitir lixiviación si el usuario no tiene patología renal activa.
+Cita 640 : Aislamiento lácteo: prohibición de usar quesos para amalgamar carnes en APLV.
+Cita 641 : Biodisponibilidad: las claras proporcionan proteína de mayor calidad para deportistas.
+Cita 1062 : Maillard seguro: el dorado intenso de la carne aporta sabor umami permitiendo eliminar el sodio.
+Cita 1065 : Validación APLV: inspección de carnes y aditivos para asegurar ausencia total de caseinatos.
+Cita 1066 : Proteína renal: restricción de la porción animal a 100g para proteger el filtrado del riñón.
+Cita 1067 : Seguridad aérea GF: prevención de contaminación evitando harinas volátiles o madera porosa.
+Cita 1068 : Salteado rápido: técnica que minimiza la exposición térmica reduciendo la carga de histamina.
+Cita 1069 : Carga de Rendimiento: Densidad calórica y mineral optimizada para la recuperación post ejercicio.
+Cita 1070 : Caldo IBS Safe: base líquida casera sin sólidos de ajo o cebolla para evitar fructanos.
+Cita 1071 : Pureza Lipídica: Garantía de aceites vírgenes sin mezclas industriales ocultas de soja.
+Cita 1072 : Escrutinio de ablandadores: Vigilancia de procesos que inyectan lácteos o gluten para retener humedad.
+Cita 1073 : Grasas de pastura: uso de manteca de cerdo o sebo para alinear el perfil lipídico con marco Paleo.
+Cita 1074 : Gestión de nitrógeno: control proteico animal para frenar el avance del daño nefrótico.
+Cita 1075 : Higiene de superficies: protocolo de limpieza profunda para evitar trazas de alérgenos cruzados.
+Cita 1077 : Balance de Saturadas: Reducción de grasas animales en favor de aves magras para salud cardiaca.
+Cita 1080 : Saborización segura: uso de fermentados controlados como Tamari sin trigo para aportar umami.
+Cita 1081 : Extracción de PHOS: Riesgo óseo por liberación de fósforo inorgánico al hervir huesos para caldos.
+Cita 1082 : Escaneo de caldos: el pescado inyectado con caldos de cobertura es fuente letal de fosfatos.
+Cita 1083 : Caldo rápido SIGHI: en dietas bajas en histamina la cocción de carne no debe superar 60 minutos.
+Cita 1084 : Estabilidad glucémica: uso de fibra soluble y grasas para ralentizar la absorción de azúcar.
+Cita 1085 : Fósforo oculto: vigilancia de aditivos PHOS usados frecuentemente en procesado de cerdo.
+Cita 1086 : Merluza SIGHI: pescado blanco de alta frescura como proteína marina de menor potencial reactivo.
+Cita 1087 : Lavado post lixiviación: escurrido forzado de vegetales para eliminar el potasio que pasó al agua.
+Cita 1088 : Certificación de Aglutinantes: Uso exclusivo de harinas certificadas para garantizar seguridad en rebozados.

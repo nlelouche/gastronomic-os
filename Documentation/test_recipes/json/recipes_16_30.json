@@ -229,7 +229,12 @@
         "steps": [
             {
                 "instruction": "Sofreír especias (cúrcuma, comino) para activar aroma.",
-                "is_branch_point": false
+                "is_branch_point": true,
+                "variant_logic": {
+                    "Renal": "Lixiviar (4h remojo) patatas/vegetales. Evitar sal y fosfatos. Controlar potasio.",
+                    "Low FODMAP": "Eliminar Ajo/Cebolla/Trigo. Usar Aceite de Ajo y parte verde de cebolleta.",
+                    "Histamine": "Usar ingredientes muy frescos. Evitar tomate, espinacas, fermentados y sobras."
+                }
             },
             {
                 "instruction": "Añadir calabaza en cubos y lentejas rojas.",
@@ -264,7 +269,13 @@
         "steps": [
             {
                 "instruction": "Verificar certificación GF de las lentejas.",
-                "is_branch_point": false
+                "is_branch_point": true,
+                "variant_logic": {
+                    "APLV": "Sustituir lácteos/mantequilla por versiones vegetales (Soja/Aceite) o eliminar.",
+                    "Renal": "Lixiviar (4h remojo) patatas/vegetales. Evitar sal y fosfatos. Controlar potasio.",
+                    "Low FODMAP": "Eliminar Ajo/Cebolla/Trigo. Usar Aceite de Ajo y parte verde de cebolleta.",
+                    "Histamine": "Usar ingredientes muy frescos. Evitar tomate, espinacas, fermentados y sobras."
+                }
             },
             {
                 "instruction": "Cocinar lentejas y calabaza en agua/caldo GF.",
@@ -298,7 +309,12 @@
         "steps": [
             {
                 "instruction": "Enjuagar MUY bien las lentejas antes de cocinar.",
-                "is_branch_point": false
+                "is_branch_point": true,
+                "variant_logic": {
+                    "APLV": "Sustituir lácteos/mantequilla por versiones vegetales (Soja/Aceite) o eliminar.",
+                    "Low FODMAP": "Eliminar Ajo/Cebolla/Trigo. Usar Aceite de Ajo y parte verde de cebolleta.",
+                    "Histamine": "Usar ingredientes muy frescos. Evitar tomate, espinacas, fermentados y sobras."
+                }
             },
             {
                 "instruction": "Cocer lentejas y calabaza.",
@@ -402,7 +418,10 @@
         "steps": [
             {
                 "instruction": "Derretir abundante mantequilla o Ghee en la sartén.",
-                "is_branch_point": false
+                "is_branch_point": true,
+                "variant_logic": {
+                    "APLV": "Sustituir lácteos/mantequilla por versiones vegetales (Soja/Aceite) o eliminar."
+                }
             },
             {
                 "instruction": "Sofreír champiñones hasta dorar.",
@@ -435,7 +454,10 @@
         "steps": [
             {
                 "instruction": "Cocer avena con leche de arroz.",
-                "is_branch_point": false
+                "is_branch_point": true,
+                "variant_logic": {
+                    "Low FODMAP": "Eliminar Ajo/Cebolla/Trigo. Usar Aceite de Ajo y parte verde de cebolleta."
+                }
             },
             {
                 "instruction": "Añadir manzana en cubos y canela.",
@@ -465,8 +487,12 @@
         "steps": [
             {
                 "instruction": "USAR SOLO AVENA CERTIFICADA SIN GLUTEN.",
-                "is_branch_point": false,
-                "cross_contamination_alert": "La avena común está casi siempre contaminada con trigo."
+                "is_branch_point": true,
+                "cross_contamination_alert": "La avena común está casi siempre contaminada con trigo.",
+                "variant_logic": {
+                    "APLV": "Sustituir lácteos/mantequilla por versiones vegetales (Soja/Aceite) o eliminar.",
+                    "Low FODMAP": "Eliminar Ajo/Cebolla/Trigo. Usar Aceite de Ajo y parte verde de cebolleta."
+                }
             },
             {
                 "instruction": "Preparar porridge con leche de arroz.",
@@ -495,7 +521,10 @@
         "steps": [
             {
                 "instruction": "Cocer compota de manzana con poca agua.",
-                "is_branch_point": false
+                "is_branch_point": true,
+                "variant_logic": {
+                    "Low FODMAP": "Eliminar Ajo/Cebolla/Trigo. Usar Aceite de Ajo y parte verde de cebolleta."
+                }
             },
             {
                 "instruction": "Añadir canela.",

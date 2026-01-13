@@ -1,0 +1,440 @@
+﻿Entendido, Senior Engineer. Procedemos con el Batch #09 (GOS-81 a GOS-90). Siguiendo la hoja de ruta técnica, este bloque se especializa en Guisos de Pesca Azul (Omega-3), Ensaladas Técnicas de Invierno (Fibra Estructural) y Estrategias de Picoteo Clínico.
+He aplicado las directrices de "Chef Quality" para las descripciones y el rigor de la Matriz de Sustitución Funcional y el Diccionario de Ingredientes Críticos para garantizar la seguridad clínica en cada punto de ramificación (branch point)1111.
++1
+
+
+________________
+📄 Documento de Ingeniería: GOS_Master_Recipes_Batch_09
+
+
+JSON
+
+
+
+
+[
+ {
+   "id": "GOS-81",
+   "title": "Estofado de Caballa y Patatas 'Leaching-Tech'",
+   "description": "Un guiso reconfortante de pescado azul rico en ácidos grasos poliinsaturados, optimizado con técnicas de remoción de potasio para seguridad renal.",
+   "prep_time": "4h (Remojo) + 15 min",
+   "cook_time": "30 min",
+   "servings": 2,
+   "ingredients": ["Caballa fresca", "Patatas", "Pimiento verde", "AOVE de primera presión", "Pimentón dulce", "Agua pura"],
+   "steps": [
+     {
+       "step": 1,
+       "instruction": "TÉCNICA DE LIXIVIACIÓN: Pelar y laminar las patatas en rodajas de 2mm. Sumergir en agua abundante durante 4 horas, renovando el líquido cada hora. Este proceso es imperativo para reducir el potasio mineral y prevenir riesgos de hiperkalemia[cite: 4, 23].",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Omnivore": "Saltar el remojo de 4h; utilizar patatas enteras con piel para maximizar la ingesta de fibra y potasio natural[cite: 24].",
+         "Keto": "Sustituir patatas por 200g de coliflor troceada; aporta textura sin la carga de carbohidratos netos[cite: 8].",
+         "Low FODMAP": "Sin cambios; la patata blanca es un carbohidrato seguro. Asegurar que el pimiento sea verde por su menor contenido de fructanos[cite: 17, 20].",
+         "Diabetes": "Enfriar las patatas tras la cocción para generar almidón resistente y mejorar la sensibilidad a la insulina[cite: 25]."
+       }
+     },
+     {
+       "step": 2,
+       "instruction": "Limpia la caballa retirando vísceras y sangre, focos principales de degradación enzimática. Sella ligeramente en AOVE y retira. El pescado azul debe ser procesado con rapidez para evitar la oxidación de sus aceites.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Histamine": "CRÍTICO: Consumir caballa recién pescada o ultracongelada. PROHIBIDO el uso de conservantes o pescado refrigerado >12h por acumulación de aminas[cite: 6, 20].",
+         "APLV": "Asegurar que el pescado no tenga glaseados con caseinatos lácteos usados para retener humedad en piezas industriales[cite: 3, 4].",
+         "Vegan": "Sustituir caballa por 200g de Tofu Firme marinado en algas y pimentón para replicar el perfil marino y proteico[cite: 15].",
+         "Soy-Free": "Garantizar que el AOVE sea virgen y no una mezcla con aceites refinados de soja[cite: 21]."
+       }
+     },
+     {
+       "step": 3,
+       "instruction": "Cocer las patatas lixiviadas con el pimiento y pimentón. Al final, reincorporar la caballa para un hervor rápido. La cocción suave protege los Omega-3 de la desnaturalización térmica.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Renal": "Desechar el agua de la primera ebullición para un segundo filtrado de minerales. Omitir sal; usar pimentón para el sabor[cite: 4].",
+         "Whole30": "Validar que el pimentón sea 100% puro, sin agentes químicos o harinas de cereales añadidas[cite: 5].",
+         "Celiac": "Garantizar que el área de preparación esté libre de harinas volátiles que contaminen el pescado abierto[cite: 5].",
+         "Paleo": "Sin cambios; ingredientes naturales alineados con el protocolo ancestral."
+       }
+     }
+   ]
+ },
+ {
+   "id": "GOS-82",
+   "title": "Ensalada de Col y Manzana 'Winter-Fiber'",
+   "description": "Estructura crujiente de invierno diseñada para la salud colorrectal, utilizando fibra insoluble y polifenoles de la manzana fresca.",
+   "prep_time": "20 min",
+   "cook_time": "0 min",
+   "ingredients": ["Col blanca (Repollo)", "Manzana verde", "Semillas de girasol", "AOVE", "Vinagre de sidra de manzana"],
+   "steps": [
+     {
+       "step": 1,
+       "instruction": "Corta la col en una juliana extra fina y masajea con una pizca de sal para romper la estructura de la celulosa, facilitando su digestión posterior y suavizando su textura.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Low FODMAP": "Límite estricto: máximo 75g de col por ración para evitar el exceso de sorbitol. El exceso disparará síntomas de SII.",
+         "Diabetes": "La fibra del repollo es ideal para ralentizar la absorción de los azúcares naturales de la manzana[cite: 25, 28].",
+         "Renal": "OBLIGATORIO: Remojar la col picada 4h (Lixiviación) para reducir el potasio mineral antes del consumo[cite: 4].",
+         "APLV": "Sin cambios; receta vegetal pura. Asegurar que no se usen salsas cremosas con suero de leche[cite: 4]."
+       }
+     },
+     {
+       "step": 2,
+       "instruction": "Añade la manzana verde con piel (bien lavada) cortada en bastones. La pectina de la manzana actúa como un prebiótico esencial para la microbiota intestinal.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Histamine": "Asegurar que la manzana sea muy fresca; evitar piezas sobremaduradas. PROHIBIDO el vinagre de sidra (fermentado)[cite: 6, 20].",
+         "Keto": "Sustituir la manzana por pepino para minimizar carbohidratos netos y mantener la cetosis metabólica[cite: 8].",
+         "Whole30": "Utilizar solo ingredientes frescos; prohibido el uso de vinagres con azúcares añadidos.",
+         "Vegan": "Validar que las semillas de girasol no tengan recubrimientos de origen animal."
+       }
+     },
+     {
+       "step": 3,
+       "instruction": "Aliña con AOVE y vinagre de sidra. Añade las semillas de girasol para aportar vitamina E y ácidos grasos que ayudan a absorber las vitaminas de los vegetales.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Celiac": "Verificar que las semillas de girasol tengan certificado GF; riesgo de molienda compartida con cereales[cite: 5].",
+         "Paleo": "Sin cambios; el uso de vegetales crudos y semillas es un pilar del marco evolutivo.",
+         "Soy-Free": "Garantizar que el aceite no sea una mezcla industrial con soja refinada[cite: 21].",
+         "High-Performance": "Añadir una ración de pasas de uva para carga energética rápida (si no es Keto/FODMAP)."
+       }
+     }
+   ]
+ },
+ {
+   "id": "GOS-83",
+   "title": "Sardinas al Horno con Hierbas 'Omega-Safety'",
+   "description": "Pescado azul pequeño de baja acumulación de metales pesados, asado rápidamente para preservar su integridad molecular y lipídica.",
+   "ingredients": ["Sardinas frescas", "Perejil fresco", "Ajo", "AOVE", "Limón"],
+   "steps": [
+     {
+       "step": 1,
+       "instruction": "Limpia las sardinas retirando escamas y vísceras. La sardina es la mejor fuente de Omega-3 biodisponible con el menor riesgo de toxicidad por mercurio.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Histamine": "CRÍTICO: La sardina desarrolla histamina a gran velocidad. Usar solo piezas compradas y cocinadas en el mismo día[cite: 6, 20].",
+         "Renal": "Limitar ración a 100g. Omitir sal; usar perejil para potenciar el sabor natural[cite: 4].",
+         "APLV": "Asegurar que el pescado no haya tenido contacto con mantequilla en el mostrador del mercado[cite: 14].",
+         "Vegan": "Sustituir sardinas por 200g de Berenjena asada con algas para un sabor marino ético[cite: 15]."
+       }
+     },
+     {
+       "step": 2,
+       "instruction": "Dispón las sardinas en una fuente de horno. Cubre con un picado de perejil y ajo en AOVE. El ajo aporta compuestos azufrados que benefician la salud endotelial.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Low FODMAP": "PROHIBIDO ajo sólido. Usar aceite infusionado en ajo filtrado para el aroma sin fructanos[cite: 9, 20].",
+         "Diabetes": "El consumo de pescado azul mejora la sensibilidad a la insulina y reduce la inflamación sistémica[cite: 25].",
+         "Keto": "Receta ideal por su alto contenido en grasas saludables y proteínas de absorción moderada[cite: 5].",
+         "Soy-Free": "Garantizar que el aceite sea de oliva puro de primera presión[cite: 21]."
+       }
+     },
+     {
+       "step": 3,
+       "instruction": "Hornea a 200°C por solo 8-10 min. Termina con zumo de limón fresco para facilitar la digestión de las grasas y aportar vitamina C.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Histamine": "PROHIBIDO el limón (liberador). Sustituir por una pizca de ácido ascórbico puro[cite: 20].",
+         "Celiac": "Asegurar que el perejil y ajo no se procesen en áreas con harinas volátiles[cite: 5].",
+         "Paleo": "Sin cambios; la sardina es un alimento pilar de la dieta evolutiva.",
+         "High-Performance": "Servir con una ración de arroz integral para recuperación de glucógeno muscular."
+       }
+     }
+   ]
+ },
+ {
+   "id": "GOS-84",
+   "title": "Sopa de Cebolla 'Metabolic-Balance'",
+   "description": "Una versión técnica de la sopa clásica, enfocada en los beneficios prebióticos de la cebolla con ajustes para la carga de carbohidratos.",
+   "ingredients": ["Cebolla blanca", "Caldo vegetal puro", "AOVE", "Tomillo", "Sal marina"],
+   "steps": [
+     {
+       "step": 1,
+       "instruction": "Corta la cebolla en plumas finas y carameliza a fuego muy lento en AOVE. La cocción lenta transforma la inulina, mejorando su tolerancia digestiva.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Low FODMAP": "CRÍTICO: La cebolla es alta en fructanos. SUSTITUIR por la parte verde de 4 cebolletas frescas picadas finas[cite: 9].",
+         "Keto": "Limitar ración de cebolla; añadir 50g de queso curado (si no es APLV) para aumentar grasas.",
+         "Renal": "OBLIGATORIO: Lixiviar la cebolla picada (4h remojo) antes de la cocción para reducir potasio[cite: 23].",
+         "Histamine": "PROHIBIDO la cebolla (liberador). Sustituir por puerro muy fresco (solo parte verde)[cite: 20]."
+       }
+     },
+     {
+       "step": 2,
+       "instruction": "Añade el caldo vegetal y el tomillo. Cocina 20 min para amalgamar los sabores. El caldo debe ser natural, sin aditivos de glutamato o sulfitos.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "APLV": "Validar que el caldo vegetal no contenga caseinato de sodio como portador de aromas[cite: 3, 4].",
+         "Diabetes": "La cebolla caramelizada al natural aporta dulzor biológico sin elevar bruscamente la glucemia[cite: 10, 25].",
+         "Whole30": "Asegurar que el caldo sea casero, sin azúcares ni agentes químicos prohibidos.",
+         "Vegan": "Validar que el caldo no tenga colorante E120 (Carmín de insectos)."
+       }
+     },
+     {
+       "step": 3,
+       "instruction": "Sirve caliente. Esta sopa es un tónico para la microbiota intestinal gracias a su riqueza en fibras prebióticas solubles.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Celiac": "No usar pan para gratinar; sustituir por láminas de calabacín asado si se busca textura.",
+         "Paleo": "Sin cambios; ingredientes naturales alineados con el protocolo evolutivo.",
+         "Soy-Free": "Garantizar que el aceite sea de oliva puro[cite: 21].",
+         "High-Performance": "Añadir 1 clara de huevo (si no es alérgico) para aumentar la densidad proteica post-ejercicio[cite: 27]."
+       }
+     }
+   ]
+ },
+ {
+   "id": "GOS-85",
+   "title": "Nuggets de Pollo 'Allergen-Safe' (GF/EF/DF)",
+   "description": "Proteína de ave con un rebozado técnico basado en semillas y harinas de granos antiguos, libre de los 3 alérgenos mayores.",
+   "ingredients": ["Pechuga de pollo", "Harina de arroz integral", "Semillas de lino molidas", "AOVE", "Especias"],
+   "steps": [
+     {
+       "step": 1,
+       "instruction": "Corta el pollo en trozos pequeños. Prepara el rebozado: mezcla harina de arroz con lino molido. El lino actúa como aglutinante (Binding) al hidratarse.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Celiac": "OBLIGATORIO: Usar harina de arroz con sello certificado GF para evitar trazas de trigo[cite: 5, 10].",
+         "Keto": "Sustituir harina de arroz por harina de almendras (si no hay alergia) para bajar carbos netos[cite: 26].",
+         "Renal": "Limitar ración de pollo a 100g. Omitir sal; usar especias para sabor[cite: 4].",
+         "Histamine": "Asegurar pollo muy fresco. Evitar especias picantes que actúen como liberadores[cite: 20]."
+       }
+     },
+     {
+       "step": 2,
+       "instruction": "Pasa el pollo por agua mineral y luego por la mezcla de harinas. Presiona bien. Esta técnica elimina la necesidad de huevo para la adhesión.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Egg-Allergy": "Receta ideal; el lino sustituye perfectamente la función del huevo en el rebozado.",
+         "APLV": "Validar que no haya contaminación cruzada con lácteos en el área de empanado[cite: 4].",
+         "Diabetes": "La harina de arroz integral aporta más fibra que la blanca, mejorando el control glucémico[cite: 25].",
+         "Vegan": "Sustituir pollo por 200g de Tofu Firme prensado para una versión vegetal segura[cite: 9]."
+       }
+     },
+     {
+       "step": 3,
+       "instruction": "Hornea a 200°C con un hilo de AOVE hasta que estén crujientes. El horneado reduce la formación de grasas trans y compuestos pro-inflamatorios[cite: 25].",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Low FODMAP": "Asegurar que el mix de especias no contenga ajo ni cebolla en polvo[cite: 9].",
+         "Paleo": "Sustituir harina de arroz por coco rallado o semillas de sésamo molidas.",
+         "Soy-Free": "Garantizar que el aceite sea de oliva puro[cite: 21].",
+         "Whole30": "Validar que la harina de arroz no sea permitida; usar puré de batata lixiviada si es necesario."
+       }
+     }
+   ]
+ },
+ {
+   "id": "GOS-86",
+   "title": "Carpaccio de Calabacín y Nueces 'Clinical-Snack'",
+   "description": "Una preparación técnica de vegetales crudos marinados, enfocada en la densidad de fitonutrientes y grasas poliinsaturadas.",
+   "ingredients": ["Calabacín joven", "Nueces picadas", "Limón", "AOVE", "Hierbas frescas"],
+   "steps": [
+     {
+       "step": 1,
+       "instruction": "Lamina el calabacín muy fino (tipo carpaccio). El calabacín crudo es una fuente excelente de agua biológica y fibra soluble muy tolerable.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Renal": "OBLIGATORIO: Remojar las láminas 4h (Lixiviación) antes de marinar para extraer el potasio[cite: 4].",
+         "Low FODMAP": "Límite: máximo 65g de calabacín por ración para evitar la carga de polioles.",
+         "Diabetes": "La fibra del calabacín crudo mantiene su estructura intacta, optimizando la saciedad[cite: 11].",
+         "Celiac": "Asegurar que el calabacín se procese en tablas libres de restos de harinas[cite: 5]."
+       }
+     },
+     {
+       "step": 2,
+       "instruction": "Añade las nueces picadas por encima. Las nueces aportan Omega-3 y una textura crujiente que satisface el apetito sensorial.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Nut-Free": "PROHIBIDO nueces. Sustituir por semillas de girasol tostadas (validar certificación GF).",
+         "Histamine": "CRÍTICO: Las nueces son liberadoras de histamina. SUSTITUIR por semillas de calabaza muy frescas[cite: 20].",
+         "APLV": "Sin cambios; alternativa perfecta a carpaccios con queso parmesano[cite: 4].",
+         "Keto": "Receta ideal; alta en grasas saludables y bajísima en carbohidratos netos[cite: 5]."
+       }
+     },
+     {
+       "step": 3,
+       "instruction": "Aliña con AOVE y zumo de limón. Sirve frío. El ácido cítrico ayuda a la digestión enzimática de los vegetales crudos.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Histamine": "PROHIBIDO limón. Sustituir por pizca de ácido ascórbico puro[cite: 20].",
+         "Paleo": "Sin cambios; todos los ingredientes son biológicamente ancestrales.",
+         "Whole30": "Validar que las nueces sean naturales, sin aceites vegetales genéricos añadidos.",
+         "Soy-Free": "Garantizar que el aceite sea de oliva puro[cite: 21]."
+       }
+     }
+   ]
+ },
+ {
+   "id": "GOS-87",
+   "title": "Guiso de Ternera y Alcachofas 'Hepatic-Care'",
+   "description": "Proteína magra combinada con el poder depurativo de la alcachofa, diseñado para la salud digestiva y el control biliar.",
+   "ingredients": ["Ternera magra", "Alcachofas frescas", "Zanahoria", "AOVE", "Caldo vegetal"],
+   "steps": [
+     {
+       "step": 1,
+       "instruction": "Limpia las alcachofas dejando solo el corazón tierno. El corazón concentra la cinarina, que facilita la digestión de las grasas y protege el hígado.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Low FODMAP": "Límite: máximo 1 corazón de alcachofa (conserva enjuagada preferible) por la carga de fructanos.",
+         "Renal": "OBLIGATORIO: Lixiviar alcachofas y zanahoria (4h remojo) para reducir potasio[cite: 4].",
+         "Diabetes": "La fibra de la alcachofa es una de las más potentes para el control de la glucosa post-prandial[cite: 25].",
+         "Histamine": "Asegurar ternera muy fresca picada en el momento; evitar alcachofas en conserva si tienen aditivos[cite: 20]."
+       }
+     },
+     {
+       "step": 2,
+       "instruction": "Sella la ternera en AOVE y añade los vegetales. Cubre con caldo vegetal natural. El caldo no debe contener glutamato ni colorante carmín E120.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "APLV": "Validar que el caldo vegetal no tenga trazas lácteas de suero o caseinatos[cite: 3, 4].",
+         "Keto": "Sustituir alcachofas por calabacín para mantener los carbohidratos netos bajo control[cite: 8].",
+         "Whole30": "Asegurar que el caldo sea casero, sin azúcares ni sulfitos añadidos.",
+         "Vegan": "Sustituir ternera por 200g de Lentejas rojas (si no es Renal/FODMAP)[cite: 22]."
+       }
+     },
+     {
+       "step": 3,
+       "instruction": "Cocina a fuego lento hasta que la carne esté tierna. Servir caliente. La alcachofa aporta una textura melosa que espesa el caldo naturalmente.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Celiac": "Verificar certificación GF del caldo vegetal industrial[cite: 5].",
+         "Paleo": "Sin cambios; ingredientes naturales permitidos por el protocolo evolutivo.",
+         "Soy-Free": "Garantizar que el aceite sea de oliva puro[cite: 21].",
+         "High-Performance": "Añadir una ración de patata hervida (lixiviada si es renal) para carga energética[cite: 12]."
+       }
+     }
+   ]
+ },
+ {
+   "id": "GOS-88",
+   "title": "Crema de Champiñones 'Dairy-Free' Silk",
+   "description": "Una crema sedosa que sustituye la nata por una emulsión de aceite y vegetales, logrando untuosidad sin alérgenos lácteos.",
+   "ingredients": ["Champiñones frescos", "Patata", "AOVE", "Caldo vegetal", "Perejil"],
+   "steps": [
+     {
+       "step": 1,
+       "instruction": "Limpia y corta los champiñones. Saltéalos en AOVE hasta que doren intensamente. El dorado aporta el sabor umami que sustituye a los lácteos.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Low FODMAP": "CRÍTICO: Los champiñones son altos en manitol. SUSTITUIR por 150g de Gohan (Seitán picado si no es GF) o espinacas.",
+         "Renal": "OBLIGATORIO: Lixiviar champiñones y patata (4h remojo) para reducir potasio[cite: 4].",
+         "Histamine": "Asegurar frescura máxima de los champiñones; evitar si presentan manchas oscuras[cite: 20].",
+         "APLV": "Receta ideal; el AOVE emulsionado con el almidón de la patata crea la textura de crema láctea[cite: 4]."
+       }
+     },
+     {
+       "step": 2,
+       "instruction": "Añade la patata troceada y el caldo. Cocina hasta que la patata esté tierna. Tritura todo con un chorro extra de AOVE en crudo.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Diabetes": "Sustituir patata por coliflor al vapor para un índice glucémico mucho menor[cite: 25].",
+         "Keto": "Sustituir patata por coliflor y añadir 1 cda de aceite de coco para más grasas saludables[cite: 8].",
+         "Whole30": "Validar que el caldo vegetal no tenga azúcares ni MSG añadidos.",
+         "Vegan": "Validar que el caldo no tenga colorante E120 derivado de insectos."
+       }
+     },
+     {
+       "step": 3,
+       "instruction": "Sirve con perejil fresco por encima. El perejil aporta una nota cítrica que equilibra la densidad de la crema.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Celiac": "Verificar certificación GF del caldo vegetal; evitar espesantes con trigo[cite: 5].",
+         "Paleo": "Sustituir patata por puré de calabaza (porción moderada) para evitar granos/féculas refinadas.",
+         "Soy-Free": "Garantizar que el aceite sea de oliva puro[cite: 21].",
+         "High-Performance": "Añadir semillas de calabaza tostadas para un aporte extra de zinc y magnesio."
+       }
+     }
+   ]
+ },
+ {
+   "id": "GOS-89",
+   "title": "Brochetas de Cerdo y Piña 'Enzyme-Boost'",
+   "description": "Combinación clásica que aprovecha la bromelina de la piña para facilitar la digestión de las proteínas animales.",
+   "ingredients": ["Lomo de cerdo magro", "Piña natural fresca", "AOVE", "Sal marina"],
+   "steps": [
+     {
+       "step": 1,
+       "instruction": "Corta el cerdo y la piña en cubos de 2cm. Marínalos juntos 15 min. La bromelina de la piña empieza a romper las fibras del cerdo, ablandándolo naturalmente.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Histamine": "CRÍTICO: La piña es un potente liberador de histamina. SUSTITUIR por dados de manzana verde fresca[cite: 6, 20].",
+         "Renal": "Limitar ración de cerdo a 100g. Omitir sal. Lixiviar la piña picada (4h) para reducir potasio[cite: 4].",
+         "APLV": "Asegurar que el cerdo sea natural, libre de suero o lactosa de procesamiento[cite: 4].",
+         "Vegan": "Sustituir cerdo por 200g de Tofu Firme prensado para una versión vegetal enzimática[cite: 9]."
+       }
+     },
+     {
+       "step": 2,
+       "instruction": "Ensarta en brochetas alternando los ingredientes. Cocina a la plancha con AOVE a fuego medio-alto hasta que el cerdo esté dorado.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Low FODMAP": "Límite: máximo 1 rodaja (40g) de piña por ración por el contenido de fructosa.",
+         "Diabetes": "La fibra de la piña entera es preferible al jugo, pero controlar ración por el azúcar natural[cite: 25].",
+         "Keto": "ELIMINAR piña. Sustituir por aceitunas rellenas para mantener grasas altas y carbos bajos[cite: 5].",
+         "Soy-Free": "Garantizar que el aceite sea de oliva puro[cite: 21]."
+       }
+     },
+     {
+       "step": 3,
+       "instruction": "Servir calientes. La piña asada intensifica su dulzor, creando un perfil agridulce natural sin necesidad de jarabes.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Celiac": "Verificar que el área de preparación esté libre de contaminación por harinas[cite: 5].",
+         "Paleo": "Sin cambios; la fruta fresca y la carne magra son alimentos reales ancestrales.",
+         "Whole30": "Validar que la sal sea pura, sin aditivos prohibidos.",
+         "High-Performance": "Acompañar con una ración de arroz blanco para absorber los jugos y dar energía."
+       }
+     }
+   ]
+ },
+ {
+   "id": "GOS-90",
+   "title": "Falafel de Guisantes 'GF-Safety'",
+   "description": "Una versión de la receta clásica sustituyendo el garbanzo por guisantes y harina de arroz para garantizar la seguridad celíaca total.",
+   "ingredients": ["Guisantes frescos", "Harina de arroz integral", "Perejil", "Cebollino (parte verde)", "Especias"],
+   "steps": [
+     {
+       "step": 1,
+       "instruction": "Tritura los guisantes con el perejil y la parte verde del cebollino. Los guisantes aportan una textura más ligera y un color verde vibrante.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Low FODMAP": "Límite: máximo 1/4 taza (15g) de guisantes por ración (riesgo de GOS). El cebollino es seguro.",
+         "Renal": "Remojar guisantes 4h (lixiviación). Usar harina de arroz blanca para menor fósforo orgánico[cite: 4].",
+         "Histamine": "Guisantes muy frescos únicamente; evitar fermentados o procesados asociados[cite: 20].",
+         "Celiac": "OBLIGATORIO: Usar harina de arroz integral con sello certificado GF[cite: 5, 10]."
+       }
+     },
+     {
+       "step": 2,
+       "instruction": "Añade la harina de arroz y forma pequeñas bolas. La harina de arroz integral aporta fibra extra y estabilidad sin necesidad de gluten[cite: 25].",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Diabetes": "La combinación de legumbre y grano integral proporciona una liberación de azúcar muy lenta[cite: 25, 28].",
+         "Keto": "Sustituir guisantes y harina por Mix de Semillas (chía/lino) y Tofu picado[cite: 8].",
+         "APLV": "Asegurar que no haya contaminación con lácteos en la zona de molienda de las harinas[cite: 4].",
+         "Soy-Free": "Garantizar que el aceite para freír sea de oliva puro, no mezclas con soja[cite: 21]."
+       }
+     },
+     {
+       "step": 3,
+       "instruction": "Hornea a 190°C con un hilo de AOVE. El horneado los mantiene crujientes por fuera y jugosos por dentro con mucha menos grasa que la fritura.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Whole30": "PROHIBIDO: Las recreaciones de legumbres y harinas están restringidas en el reset de 30 días.",
+         "Paleo": "Sustituir por albóndigas de res picada con especias (legumbres prohibidas).",
+         "Vegan": "Sin cambios; receta vegetal y ética por naturaleza[cite: 4].",
+         "High-Performance": "Acompañar con una salsa de yogur de soja (si no es APLV) para más proteína[cite: 24]."
+       }
+     }
+   ]
+ }
+]
+
+________________
+👨‍🏫 Perspectiva de CTO: Evaluación del Batch #09
+Este bloque consolida el motor de GOS mediante:
+1. Diferenciación de Fibras y FODMAPs: Hemos implementado controles estrictos de ración para ingredientes como el Repollo (GOS-82), los Champiñones (GOS-88) y los Guisantes (GOS-90), protegiendo la integridad intestinal del usuario2.
+
+2. Seguridad en Rebozados: La receta GOS-85 establece el estándar de oro para el "Binding" (aglutinación) sin huevo mediante el uso de Lino Molido e Hidratado, una técnica de ingeniería culinaria vital para hogares multialérgicos.
+3. Gestión de Enzimas Digestivas: La receta GOS-89 demuestra cómo el sistema utiliza la interacción Bromelina-Proteína para mejorar la digestibilidad, un valor añadido de alta gama técnica.
+¿Este bloque completa satisfactoriamente tu visión para el penúltimo batch? Si es así, envíame el OK para proceder con el Batch #10 (GOS-91 a GOS-100), donde cerraremos la base de datos con Cortes de Caza Mayor, Infusiones Técnicas y Platos de Celebración Clínica.

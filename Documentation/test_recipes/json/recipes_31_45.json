@@ -148,7 +148,12 @@
         "steps": [
             {
                 "instruction": "Remojar alubias la noche anterior.",
-                "is_branch_point": false
+                "is_branch_point": true,
+                "variant_logic": {
+                    "Renal": "Lixiviar (4h remojo) patatas/vegetales. Evitar sal y fosfatos. Controlar potasio.",
+                    "Low FODMAP": "Eliminar Ajo/Cebolla/Trigo. Usar Aceite de Ajo y parte verde de cebolleta.",
+                    "Histamine": "Usar ingredientes muy frescos. Evitar tomate, espinacas, fermentados y sobras."
+                }
             },
             {
                 "instruction": "Cocer alubias con ajo y caldo vegetal (sin E120/Carmín).",
@@ -180,7 +185,11 @@
         "steps": [
             {
                 "instruction": "Hervir alubias (usar secas, no de lata con conservantes).",
-                "is_branch_point": false
+                "is_branch_point": true,
+                "variant_logic": {
+                    "Low FODMAP": "Eliminar Ajo/Cebolla/Trigo. Usar Aceite de Ajo y parte verde de cebolleta.",
+                    "Histamine": "Usar ingredientes muy frescos. Evitar tomate, espinacas, fermentados y sobras."
+                }
             },
             {
                 "instruction": "Escurrir el agua de cocción (reduce potasio/fósforo solubles).",
@@ -214,7 +223,12 @@
         "steps": [
             {
                 "instruction": "Cocer alubias hasta que estén tiernas pero firmes (menor IG que puré).",
-                "is_branch_point": false
+                "is_branch_point": true,
+                "variant_logic": {
+                    "Renal": "Lixiviar (4h remojo) patatas/vegetales. Evitar sal y fosfatos. Controlar potasio.",
+                    "Low FODMAP": "Eliminar Ajo/Cebolla/Trigo. Usar Aceite de Ajo y parte verde de cebolleta.",
+                    "Histamine": "Usar ingredientes muy frescos. Evitar tomate, espinacas, fermentados y sobras."
+                }
             },
             {
                 "instruction": "Mezclar con espinacas.",
@@ -244,8 +258,12 @@
         "steps": [
             {
                 "instruction": "Hornear patatas y cebolla en rodajas con aceite.",
-                "is_branch_point": false,
-                "cross_contamination_alert": "NO usar mantequilla."
+                "is_branch_point": true,
+                "cross_contamination_alert": "NO usar mantequilla.",
+                "variant_logic": {
+                    "Low FODMAP": "Eliminar Cebolla.",
+                    "Renal": "Lixiviar (4h remojo) patatas/vegetales. Evitar sal y fosfatos. Controlar potasio."
+                }
             },
             {
                 "instruction": "Añadir merluza y cocinar.",
@@ -275,8 +293,12 @@
         "steps": [
             {
                 "instruction": "Hornear todo junto.",
-                "is_branch_point": false,
-                "cross_contamination_alert": "Si se reboza el pescado, usar harina de maíz o arroz, NUNCA trigo."
+                "is_branch_point": true,
+                "cross_contamination_alert": "Si se reboza el pescado, usar harina de maíz o arroz, NUNCA trigo.",
+                "variant_logic": {
+                    "Low FODMAP": "Eliminar Cebolla.",
+                    "Renal": "Lixiviar (4h remojo) patatas/vegetales. Evitar sal y fosfatos. Controlar potasio."
+                }
             }
         ]
     },
@@ -297,7 +319,10 @@
         "steps": [
             {
                 "instruction": "Cocinar patatas hervidas.",
-                "is_branch_point": false
+                "is_branch_point": true,
+                "variant_logic": {
+                    "Renal": "Lixiviar (4h remojo) patatas/vegetales. Evitar sal y fosfatos. Controlar potasio."
+                }
             },
             {
                 "instruction": "Cocinar pescado SIN descongelar o recién comprado.",
@@ -379,7 +404,11 @@
         "steps": [
             {
                 "instruction": "Sofreír carne y zanahoria.",
-                "is_branch_point": false
+                "is_branch_point": true,
+                "variant_logic": {
+                    "Renal": "Lixiviar (4h remojo) patatas/vegetales. Evitar sal y fosfatos. Controlar potasio.",
+                    "Histamine": "Usar ingredientes muy frescos. Evitar tomate, espinacas, fermentados y sobras."
+                }
             },
             {
                 "instruction": "Añadir tomate 100% natural (leer etiqueta, sin azúcar).",
@@ -410,7 +439,12 @@
         "steps": [
             {
                 "instruction": "Batir huevos con sal.",
-                "is_branch_point": false
+                "is_branch_point": true,
+                "variant_logic": {
+                    "APLV": "Sustituir lácteos/mantequilla por versiones vegetales (Soja/Aceite) o eliminar.",
+                    "Low FODMAP": "Eliminar Ajo/Cebolla/Trigo. Usar Aceite de Ajo y parte verde de cebolleta.",
+                    "Histamine": "Usar ingredientes muy frescos. Evitar tomate, espinacas, fermentados y sobras."
+                }
             },
             {
                 "instruction": "Sofreír vegetales en mucha mantequilla.",

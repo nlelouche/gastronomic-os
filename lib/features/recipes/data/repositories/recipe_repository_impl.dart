@@ -31,7 +31,7 @@ class RecipeRepositoryImpl implements IRecipeRepository {
       // We can still update the detail cache with these lightweight headers if we want,
       // but strictly speaking, they might be incomplete? 
       // Actually, they ARE headers (lightweight). getRecipeDetails fetches full.
-      // So let's NOT polute the detail cache with headers, unless we carefully merge.
+      // So let's NOT pollution the detail cache with headers, unless we carefully merge.
       // For now: Clean pass-through.
       return (null, result);
     } catch (e) {

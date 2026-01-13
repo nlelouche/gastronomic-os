@@ -127,7 +127,7 @@ class _SuggestionCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    recipe.title,
+                    recipe.title.replaceAll(RegExp(r'\[GOS-\d+\]\s*'), ''),
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: GoogleFonts.outfit(
@@ -160,6 +160,38 @@ class _SuggestionCard extends StatelessWidget {
                     ),
                   
                   const SizedBox(height: 8),
+                  
+                  // Clinical Tags
+                  if (recipe.tags.isNotEmpty)
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 8.0),
+                      child: Wrap(
+                        spacing: 4,
+                        runSpacing: 4,
+                        children: (recipe.tags as List).take(3).map<Widget>((tag) {
+                           final isClinical = ['renal', 'keto', 'diabetes', 'celiac', 'aplv', 'histamine', 'low fodmap']
+                              .contains(tag.toString().toLowerCase());
+                           if (!isClinical) return const SizedBox.shrink();
+
+                           return Container(
+                             padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                             decoration: BoxDecoration(
+                               color: theme.colorScheme.secondaryContainer,
+                               borderRadius: BorderRadius.circular(4),
+                             ),
+                             child: Text(
+                               tag.toString(),
+                               style: theme.textTheme.labelSmall?.copyWith(
+                                 color: theme.colorScheme.onSecondaryContainer,
+                                 fontWeight: FontWeight.bold,
+                                 fontSize: 10,
+                               ),
+                             ),
+                           );
+                        }).toList(),
+                      ),
+                    ),
+
                   // Reasons
                   if (reasons.isNotEmpty)
                     Text(

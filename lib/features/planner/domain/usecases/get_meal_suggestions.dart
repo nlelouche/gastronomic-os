@@ -61,7 +61,7 @@ class GetMealSuggestions {
     for (final recipe in candidateRecipes) {
       // Client-Side Diet Check (Safety Net)
       if (familyList.isNotEmpty) {
-          if (!_dietEngine.areRecipesCompatible(recipe, familyList)) {
+          if (!_dietEngine.isRecipeCompatible(recipe, familyList)) {
             continue; 
           }
       }

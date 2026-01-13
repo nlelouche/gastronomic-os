@@ -121,7 +121,9 @@ class RecipeResolver {
     Map<String, List<String>> groups = {};
     
     for (final member in family) {
-      final diet = member.diet;
+      // Use Primary Diet Display Name for grouping
+      // TODO: Future enhancement could consider complex keys (Primary + Overlay)
+      final diet = member.primaryDiet.displayName;
       if (!groups.containsKey(diet)) {
         groups[diet] = [];
       }
@@ -146,7 +148,7 @@ class RecipeResolver {
     }
     
     // Handle diet aliases (e.g., Omnivore can use base instruction)
-    if (diet.toLowerCase() == 'omnivore' || diet.toLowerCase() == 'omnívoro') {
+    if (diet.toLowerCase() == 'omnivore' || diet.toLowerCase() == 'normal') {
       return step.instruction;
     }
     

@@ -1,0 +1,444 @@
+﻿Entendido, Senior Engineer. Iniciamos el Batch #07 (GOS-61 a GOS-70), centrado en Pescados Azules, Ensaladas Técnicas y Repostería Clínica.
+Este bloque es fundamental para demostrar la versatilidad del sistema en la gestión de Ácidos Grasos Omega-3, Fibra Estructural y Dulces de Seguridad Clínica. He integrado la lógica de ramificación basada en la Arquitectura de Segmentación Dietética 11y el Diccionario de Ingredientes Críticos 22 para garantizar que cada paso sea un punto de control de seguridad.
++3
+
+
+________________
+📄 Documento de Ingeniería: GOS_Master_Recipes_Batch_07
+
+
+JSON
+
+
+
+
+[
+ {
+   "id": "GOS-61",
+   "title": "Atún Sellado con Costra de Sésamo y Jengibre",
+   "description": "Lomo de atún rojo de alta frescura, sellado brevemente para preservar sus aceites esenciales y servido con una nota cítrica oriental.",
+   "prep_time": "10 min",
+   "cook_time": "5 min",
+   "servings": 2,
+   "ingredients": ["Lomo de atún fresco", "Semillas de sésamo", "AOVE", "Jengibre fresco", "Wasabi (opcional)"],
+   "steps": [
+     {
+       "step": 1,
+       "instruction": "Seca el lomo de atún con papel absorbente. Cubre la superficie con semillas de sésamo presionando ligeramente para que se adhieran. El atún debe presentar un color rojo vibrante y olor neutro.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Histamine": "CRÍTICO: El atún es un escómbrido de alto riesgo. Usar solo si es recién pescado o ultracongelado (-20°C). PROHIBIDO el atún en conserva o refrigerado >12h.",
+         "Renal": "Limitar ración a 100g. El atún es rico en fósforo orgánico; se recomienda acompañar con vegetales lixiviados.",
+         "Vegan": "Sustituir por 'Filete de Sandía Asada' marinado en algas para replicar la textura y el sabor marino.",
+         "APLV": "Asegurar que el atún no tenga glaseados industriales que contengan caseinatos lácteos."
+       }
+     },
+     {
+       "step": 2,
+       "instruction": "Calienta una sartén antiadherente con un hilo de AOVE. Sella el atún por solo 1 minuto por lado. El centro debe quedar crudo (Tataki) para evitar la oxidación de las grasas poliinsaturadas.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Keto": "Añadir una cucharada de AOVE en crudo al servir para elevar el ratio de grasas saludables.",
+         "Diabetes": "El sellado rápido minimiza la formación de productos de glicación avanzada (AGEs)[cite: 5].",
+         "Paleo": "Garantizar que las semillas de sésamo sean naturales, sin aceites vegetales refinados añadidos.",
+         "Soy-Free": "PROHIBIDO usar salsa de soja para marinar; usar Tamari certificado o sal marina pura[cite: 6]."
+       }
+     },
+     {
+       "step": 3,
+       "instruction": "Corta en láminas de 1cm y sirve con jengibre rallado. El jengibre actúa como un digestivo natural y modulador de la respuesta inflamatoria.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Low FODMAP": "El jengibre es seguro. Evitar acompañamientos con cebolla o ajo sólido.",
+         "Celiac": "Asegurar que el wasabi o especias no contengan almidón de trigo como espesante oculto.",
+         "Whole30": "Validar que la sal marina sea pura y no contenga agentes antiaglomerantes[cite: 1].",
+         "High-Performance": "Acompañar con una ración de arroz blanco para proporcionar carbohidratos de rápida absorción."
+       }
+     }
+   ]
+ },
+ {
+   "id": "GOS-62",
+   "title": "Ensalada Técnica de Verano con Aliño de Tahini",
+   "description": "Una estructura de hojas verdes, rabanitos y pepino, unificada por un aderezo cremoso de sésamo libre de lácteos y huevo.",
+   "prep_time": "15 min",
+   "cook_time": "0 min",
+   "ingredients": ["Hojas de lechuga", "Pepino", "Rabanitos", "Tahini (Pasta de sésamo)", "Limón", "AOVE"],
+   "steps": [
+     {
+       "step": 1,
+       "instruction": "Lava y seca las hojas verdes. Corta el pepino y los rabanitos en rodajas traslúcidas. El rabanito aporta un toque picante natural sin necesidad de especias procesadas.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Renal": "OBLIGATORIO: Remojar pepino y rabanitos (4h) para reducir el potasio. Usar porciones controladas.",
+         "Histamine": "Asegurar frescura máxima; evitar vegetales que lleven días cortados en la heladera.",
+         "Low FODMAP": "Limitar el pepino a 75g si se detecta sensibilidad individual. El rabanito es seguro.",
+         "Diabetes": "Mantener la piel del pepino (bien lavada) para maximizar el aporte de fibra insoluble."
+       }
+     },
+     {
+       "step": 2,
+       "instruction": "Prepara el aderezo emulsionando el tahini con zumo de limón, AOVE y un poco de agua hasta obtener una textura de crema ligera. El tahini es una fuente excelente de calcio vegetal.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "APLV": "El tahini es el sustituto ideal para cremas lácteas, aportando untuosidad sin caseína.",
+         "Egg-Allergy": "Este aderezo sustituye a la mayonesa tradicional, eliminando el riesgo de albúmina[cite: 4, 6].",
+         "Histamine": "PROHIBIDO el limón (liberador). Usar solo AOVE y tahini fresco; el sésamo es tolerado según SIGHI.",
+         "Vegan": "Validar que el tahini sea 100% sésamo, sin aditivos de origen animal."
+       }
+     },
+     {
+       "step": 3,
+       "instruction": "Vierte el aliño sobre los vegetales justo antes de servir para mantener la turgencia de las hojas. La emulsión de grasas del sésamo facilita la absorción de vitaminas liposolubles.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Celiac": "Verificar que el tahini no se procese en plantas que manejen trigo o cebada.",
+         "Keto": "Añadir semillas de calabaza tostadas para aumentar el ratio de grasa y proteínas.",
+         "Paleo": "Sin cambios; el sésamo y los vegetales frescos son pilares del protocolo evolutivo.",
+         "Whole30": "Asegurar que el tahini no contenga azúcares añadidos o aceites vegetales de semillas[cite: 1]."
+       }
+     }
+   ]
+ },
+ {
+   "id": "GOS-63",
+   "title": "Caballa al Horno con Chimichurri de Hierbas Frescas",
+   "description": "Pescado azul rico en Omega-3 asado a fuego medio para preservar su jugosidad, acompañado de una emulsión de perejil y orégano.",
+   "ingredients": ["Caballa fresca", "Perejil", "Orégano fresco", "Ajo", "AOVE", "Vinagre de manzana"],
+   "steps": [
+     {
+       "step": 1,
+       "instruction": "Limpia la caballa y ábrela en mariposa. El pescado azul debe ser muy fresco; su alto contenido graso lo hace propenso a la oxidación rápida.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Histamine": "CRÍTICO: Consumir inmediatamente tras la compra. Omitir el vinagre (fermentado) y usar solo hierbas y AOVE.",
+         "Renal": "Limitar ración a 100g. Omitir el ajo si se desea; priorizar el AOVE para densidad calórica[cite: 1].",
+         "APLV": "Asegurar que el pescado no tenga conservantes lácteos usados en barcos factoría.",
+         "Vegan": "Sustituir caballa por un 'Bistec de Coliflor' asado con el mismo chimichurri."
+       }
+     },
+     {
+       "step": 2,
+       "instruction": "Prepara el chimichurri picando finamente las hierbas y el ajo, mezclando con AOVE y vinagre. Deja reposar 10 min para que los sabores se integren.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Low FODMAP": "PROHIBIDO el ajo sólido. Usar aceite infusionado en ajo filtrado para el chimichurri.",
+         "Diabetes": "El vinagre de manzana puede ayudar a mejorar la sensibilidad a la insulina si se consume con la comida.",
+         "Keto": "Añadir una porción extra de AOVE al chimichurri para cumplir con los macros cetogénicos.",
+         "Soy-Free": "Validar que el vinagre sea de manzana puro, sin colorantes de caramelo derivados de soja."
+       }
+     },
+     {
+       "step": 3,
+       "instruction": "Hornea la caballa a 180°C durante 12-15 min. Sirve con el chimichurri por encima. Las hierbas frescas aportan antioxidantes que protegen los ácidos grasos del pescado.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Celiac": "Asegurar que el orégano seco (si se usa) no tenga harinas como antiapelmazante.",
+         "Paleo": "Sin cambios; la caballa y las grasas naturales son esenciales en la dieta ancestral.",
+         "Whole30": "Validar que el vinagre sea compatible (sin azúcar añadido)[cite: 1].",
+         "High-Performance": "Acompañar con patatas asadas (lixiviadas si es renal) para reposición de glucógeno."
+       }
+     }
+   ]
+ },
+ {
+   "id": "GOS-64",
+   "title": "Ensalada Técnica de Quinoa y Vegetales de Raíz",
+   "description": "Un balance de granos antiguos y vegetales asados, optimizado para una liberación lenta de energía y saciedad prolongada.",
+   "ingredients": ["Quinoa real", "Zanahoria", "Calabaza", "Espinacas", "AOVE"],
+   "steps": [
+     {
+       "step": 1,
+       "instruction": "Lava la quinoa y cocínala en agua (2:1). La quinoa aporta todos los aminoácidos esenciales y una carga glucémica moderada.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Celiac": "OBLIGATORIO: Usar quinoa con certificado GF para evitar contaminación cruzada.",
+         "Keto": "Sustituir quinoa por 200g de corazones de cáñamo hidratados (Hemp Hearts).",
+         "Renal": "Remojar la quinoa y vegetales 4h (lixiviación) para reducir potasio y fósforo.",
+         "Low FODMAP": "Asegurar que la ración de calabaza no exceda los 45g por persona."
+       }
+     },
+     {
+       "step": 2,
+       "instruction": "Asa la zanahoria y la calabaza en dados con AOVE hasta que caramelicen ligeramente. El asado transforma los almidones, mejorando su palatabilidad.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Diabetes": "No sobrecocer los vegetales; mantener una textura firme para no elevar el índice glucémico.",
+         "Histamine": "PROHIBIDO usar espinacas (liberador). Sustituir por canónigos o acelga joven[cite: 4, 7].",
+         "Vegan": "Asegurar que los vegetales sean frescos y no procesados con aditivos de origen animal.",
+         "Whole30": "Sustituir la quinoa por una base extra de vegetales de hoja verde (granos prohibidos)[cite: 1]."
+       }
+     },
+     {
+       "step": 3,
+       "instruction": "Mezcla la quinoa con los vegetales asados y las espinacas frescas. Aliña con AOVE. Esta combinación maximiza la absorción de hierro vegetal gracias al betacaroteno.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "APLV": "Asegurar que no haya contacto con quesos o lácteos en la tabla de preparación.",
+         "Paleo": "Sustituir la quinoa por semillas de calabaza y girasol para evitar granos neolíticos.",
+         "Soy-Free": "Garantizar que el aceite sea de oliva puro, sin refinados de soja.",
+         "High-Performance": "Doblar la ración de quinoa para asegurar la carga energética necesaria."
+       }
+     }
+   ]
+ },
+ {
+   "id": "GOS-65",
+   "title": "Trucha al Horno con Costra de Almendras",
+   "description": "Filete de trucha asalmonada cubierto con almendras laminadas, horneado para un contraste crujiente y nutritivo.",
+   "ingredients": ["Trucha fresca", "Almendras laminadas", "AOVE", "Perejil", "Pizca de sal"],
+   "steps": [
+     {
+       "step": 1,
+       "instruction": "Limpia la trucha y retira las espinas. La trucha es una fuente excelente de proteínas de fácil digestión y ácidos grasos beneficiosos.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Nut-Free": "Sustituir almendras por semillas de calabaza trituradas para el efecto crujiente[cite: 6].",
+         "Renal": "Limitar ración a 100g. Omitir sal; las almendras aportan potasio, vigilar porción.",
+         "Histamine": "Pescado de máxima frescura; evitar si ha estado refrigerado >12h.",
+         "Vegan": "Sustituir trucha por una lámina gruesa de Tofu Firme prensado."
+       }
+     },
+     {
+       "step": 2,
+       "instruction": "Cubre el filete con las almendras laminadas mezcladas con un poco de AOVE y perejil picado. Presiona suavemente para que la costra se mantenga durante la cocción.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "APLV": "Validar que las almendras no tengan recubrimientos lácteos o suero en el empaque.",
+         "Keto": "Receta ideal; las almendras aportan grasas saludables y fibra con pocos carbohidratos netos.",
+         "Diabetes": "Las almendras ayudan a mitigar la respuesta glucémica de la comida completa.",
+         "Celiac": "Asegurar que las almendras no estén contaminadas con harinas de trigo en la planta."
+       }
+     },
+     {
+       "step": 3,
+       "instruction": "Hornea a 190°C por 10-12 min. El tostado de la almendra aporta notas de nuez que complementan la delicadeza del pescado.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Low FODMAP": "Las almendras son seguras en porciones de hasta 12 unidades por ración.",
+         "Paleo": "Sin cambios; la combinación de pescado y frutos secos es un estándar evolutivo.",
+         "Whole30": "Asegurar que las almendras sean naturales, sin aceites vegetales genéricos añadidos[cite: 1].",
+         "High-Performance": "Servir con una ración de arroz integral para completar el aporte calórico."
+       }
+     }
+   ]
+ },
+ {
+   "id": "GOS-66",
+   "title": "Ensalada de Pollo y Espinacas 'Iron-Boost'",
+   "description": "Una ensalada densa en micronutrientes: pollo de pastoreo sobre una base de espinacas tiernas y semillas de calabaza.",
+   "ingredients": ["Pechuga de pollo", "Espinacas frescas", "Semillas de calabaza", "AOVE", "Vinagre de manzana"],
+   "steps": [
+     {
+       "step": 1,
+       "instruction": "Cocina el pollo a la plancha con AOVE hasta que esté dorado. Córtalo en tiras. El pollo de pastoreo garantiza un mejor perfil de ácidos grasos.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Vegan": "Sustituir pollo por 150g de Garbanzos cocidos y enjuagados.",
+         "APLV": "Asegurar que el pollo no tenga 'brine' con caseinatos lácteos.",
+         "Histamine": "PROHIBIDO espinacas (liberador). Sustituir por lechuga o canónigos frescos[cite: 4, 7].",
+         "Renal": "Lixiviar las espinacas (4h remojo) si se deciden usar cocidas; de lo contrario, limitar ración cruda."
+       }
+     },
+     {
+       "step": 2,
+       "instruction": "Lava y seca bien las espinacas. Mézclalas con las semillas de calabaza. Las semillas aportan zinc y magnesio esenciales para el sistema inmune.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Low FODMAP": "La espinaca es segura; limitar las semillas de calabaza a 2 cdas por ración.",
+         "Diabetes": "La espinaca cruda maximiza el aporte de fibra estructural necesaria para el control glucémico.",
+         "Keto": "Añadir 1/4 de aguacate para aumentar la carga de grasas saludables.",
+         "Paleo": "Sin cambios; ingredientes ancestrales permitidos."
+       }
+     },
+     {
+       "step": 3,
+       "instruction": "Aliña con AOVE y vinagre de manzana. El ácido del vinagre ayuda a la biodisponibilidad del hierro presente en la espinaca.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Histamine": "PROHIBIDO vinagre (fermentado). Usar solo AOVE fresco.",
+         "Celiac": "Verificar que las semillas de calabaza no tengan trazas de gluten por procesamiento compartido.",
+         "Whole30": "Validar que el vinagre sea compatible (sin azúcar añadido)[cite: 1].",
+         "High-Performance": "Añadir una ración de quinoa para recuperación de glucógeno."
+       }
+     }
+   ]
+ },
+ {
+   "id": "GOS-67",
+   "title": "Pudín de Chía y Frutos Rojos (Repostería Clínica)",
+   "description": "Un desayuno o postre de alta densidad en fibra y Omega-3, utilizando leches vegetales para una seguridad digestiva total.",
+   "ingredients": ["Semillas de chía", "Leche de coco (sin azúcar)", "Arándanos", "Canela"],
+   "steps": [
+     {
+       "step": 1,
+       "instruction": "Mezcla las semillas de chía con la leche de coco y una pizca de canela. Reposa en la heladera al menos 4 horas hasta que se forme un gel firme.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Renal": "Usar leche de arroz NO enriquecida para evitar fosfatos inorgánicos peligrosos.",
+         "Low FODMAP": "Asegurar que la ración de chía no supere las 2 cdas (riesgo de distensión por fibra).",
+         "APLV": "Validar que la leche vegetal no contenga caseinato de sodio como espesante.",
+         "Keto": "Sin cambios; la chía y el coco son ideales por su bajo contenido en carbohidratos netos."
+       }
+     },
+     {
+       "step": 2,
+       "instruction": "Añade los arándanos frescos por encima. Los arándanos aportan antioxidantes sin una carga glucémica excesiva.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Histamine": "Asegurar que los arándanos sean muy frescos; evitar si presentan signos de sobremaduración.",
+         "Diabetes": "No añadir miel ni jarabes; el dulzor biológico de la fruta es suficiente.",
+         "Whole30": "Preparar solo con agua o leche de coco natural; prohibidas leches de granos[cite: 1].",
+         "Paleo": "Sin cambios; ingredientes alineados con la alimentación ancestral."
+       }
+     },
+     {
+       "step": 3,
+       "instruction": "Sirve frío. Este pudín es una herramienta excelente para mejorar el tránsito intestinal gracias a su fibra mucilaginosa.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Celiac": "Asegurar que la chía y canela no tengan contaminación cruzada con harinas.",
+         "Vegan": "Sin cambios; receta vegetal y ética por naturaleza.",
+         "Soy-Free": "Garantizar que la leche de coco no use lecitina de soja como emulsionante.",
+         "High-Performance": "Añadir una cucharada de mantequilla de almendras para mayor densidad calórica."
+       }
+     }
+   ]
+ },
+ {
+   "id": "GOS-68",
+   "title": "Mousse de Cacao y Aguacate 'Indulgencia Segura'",
+   "description": "Una crema sedosa que utiliza la grasa del aguacate para replicar la textura de la mousse tradicional, libre de lácteos y huevo.",
+   "ingredients": ["Aguacate maduro", "Cacao puro en polvo (sin azúcar)", "Jugo de fruta (para endulzar)", "Canela"],
+   "steps": [
+     {
+       "step": 1,
+       "instruction": "Tritura la pulpa del aguacate hasta que esté completamente lisa. El aguacate aporta grasas monoinsaturadas y una textura untuosa inigualable.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Renal": "PROHIBIDO el aguacate por su altísimo contenido en potasio.",
+         "Low FODMAP": "Limitar ración a 30g (1/8 de pieza) por contenido de sorbitol.",
+         "Histamine": "CRÍTICO: El aguacate y el cacao son liberadores de histamina. SUSTITUIR por puré de pera y algarroba[cite: 4, 7].",
+         "APLV": "Sustituto perfecto de mousses lácteas; asegurar que el cacao no tenga trazas de leche."
+       }
+     },
+     {
+       "step": 2,
+       "instruction": "Incorpora el cacao en polvo, la canela y un poco de jugo de fruta para endulzar. Bate hasta que la mezcla sea homogénea y aireada.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Diabetes": "Omitir el jugo de fruta; usar una pizca de estevia natural o nada para control glucémico.",
+         "Keto": "No usar jugo de fruta; el cacao puro es bajo en carbos y el aguacate aporta grasas saludables.",
+         "Whole30": "Usar jugo de fruta solo como ingrediente endulzante, nunca como bebida principal[cite: 1, 6].",
+         "Celiac": "Validar que el cacao en polvo tenga certificación Gluten-Free."
+       }
+     },
+     {
+       "step": 3,
+       "instruction": "Enfría 1 hora antes de servir. Este postre es una bomba de nutrientes y antioxidantes sin los riesgos de los procesados industriales.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Vegan": "Sin cambios; receta 100% vegetal.",
+         "Paleo": "Sin cambios; todos los ingredientes son alimentos reales permitidos.",
+         "Soy-Free": "Garantizar que el cacao sea 100% puro, sin lecitina de soja.",
+         "High-Performance": "Añadir trozos de nueces para aportar crujiente y ácidos grasos extra."
+       }
+     }
+   ]
+ },
+ {
+   "id": "GOS-69",
+   "title": "Galletas de Plátano y Avena 'Safe-Fiber'",
+   "description": "Galletas de dos ingredientes (plátano y avena) que proporcionan una textura masticable y energía de liberación sostenida.",
+   "ingredients": ["Plátano maduro", "Avena certificada GF", "Canela", "Pizca de sal"],
+   "steps": [
+     {
+       "step": 1,
+       "instruction": "Pisa el plátano hasta obtener un puré suave. El plátano actúa como aglutinante natural sustituyendo al huevo y al azúcar[cite: 6].",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Renal": "PROHIBIDO el plátano por potasio. Sustituir por puré de manzana lixiviada y espesada.",
+         "Low FODMAP": "Usar plátano firme (no maduro) para minimizar los niveles de fructosa/polioles.",
+         "Keto": "Sustituir plátano por huevo y harina de almendras para bajar carbohidratos netos.",
+         "Diabetes": "Limitar ración; el plátano maduro eleva el índice glucémico."
+       }
+     },
+     {
+       "step": 2,
+       "instruction": "Mezcla con la avena certificada y la canela. La avena aporta fibra betaglucano, excelente para la salud cardiovascular.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Celiac": "OBLIGATORIO: Usar avena con sello certificado 'Gluten-Free'[cite: 4, 5].",
+         "Whole30": "PROHIBIDO: Las 'recreaciones' de galletas están restringidas; sustituir por fruta fresca[cite: 1].",
+         "Paleo": "Sustituir avena por semillas de calabaza y coco rallado (granos prohibidos).",
+         "APLV": "Asegurar que la avena no se procese en líneas que manejen suero de leche."
+       }
+     },
+     {
+       "step": 3,
+       "instruction": "Forma galletas en una placa de horno y cocina a 180°C por 15 min. Ideales como snack pre-entrenamiento o merienda saludable.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Histamine": "Asegurar que el plátano no esté excesivamente maduro (liberador).",
+         "Vegan": "Sin cambios; receta vegetal pura.",
+         "Soy-Free": "Sin cambios; libre de soja.",
+         "High-Performance": "Añadir pasas de uva para mayor densidad energética rápida."
+       }
+     }
+   ]
+ },
+ {
+   "id": "GOS-70",
+   "title": "Manzanas Asadas con Nueces y Canela",
+   "description": "Un postre clásico reconfortante: manzanas rellenas de frutos secos y especias, horneadas hasta su punto de máxima dulzura natural.",
+   "ingredients": ["Manzanas (Granny Smith)", "Nueces picadas", "Canela en rama", "AOVE"],
+   "steps": [
+     {
+       "step": 1,
+       "instruction": "Descorazona las manzanas y rellena el hueco con las nueces picadas y canela. La manzana cocida es muy amable con el sistema digestivo.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Nut-Free": "Sustituir nueces por semillas de girasol o lino molidas[cite: 6].",
+         "Renal": "Obligatorio: Lixiviar la manzana picada (4h remojo) para reducir potasio.",
+         "Low FODMAP": "Sustituir manzana por pera madura o papaya (mejor tolerancia a fructosa).",
+         "APLV": "Asegurar que no se use mantequilla para dar brillo; el AOVE es la grasa segura."
+       }
+     },
+     {
+       "step": 2,
+       "instruction": "Coloca en una fuente con un poco de agua y hornea a 180°C hasta que estén tiernas. La cocción descompone la pectina, facilitando su paso por el colon.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Diabetes": "Utilizar manzanas verdes por su menor contenido de azúcares naturales.",
+         "Histamine": "Asegurar frescura de la manzana y las nueces; evitar si llevan mucho tiempo almacenadas.",
+         "Whole30": "Postre permitido como forma de consumir fruta, sin azúcares añadidos[cite: 1].",
+         "Keto": "Sustituir manzana por frutos del bosque salteados con las nueces."
+       }
+     },
+     {
+       "step": 3,
+       "instruction": "Sirve tibio. Este plato es el epítome de la repostería clínica: simple, nutritivo y universalmente seguro.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Celiac": "Garantizar que la canela no sea una mezcla comercial con harinas.",
+         "Vegan": "Sin cambios; receta 100% vegetal.",
+         "Soy-Free": "Sin cambios; libre de soja.",
+         "High-Performance": "Añadir una cucharada de yogur de coco para mayor aporte calórico."
+       }
+     }
+   ]
+ }
+]
+
+________________
+👨‍🏫 Perspectiva de CTO: Control de Calidad del Batch #07
+Este bloque consolida la capacidad del sistema para gestionar preparaciones de alta complejidad nutricional:
+1. Seguridad en Escómbridos: La receta GOS-61 aplica protocolos críticos de frescura para el atún, mitigando el riesgo de intoxicación por histamina3333.
++2
+
+2. Repostería sin Riesgo: Hemos introducido opciones de dulces (GOS-67 a GOS-70) que utilizan el Dulzura Biológica (fruta y canela) y aglutinantes vegetales (Huevo de Lino/Plátano) para proteger a usuarios diabéticos y multialérgicos4.
+
+3. Lógica de Potasio y Fósforo: Se mantiene la rigurosidad de la Lixiviación de 4 horas en vegetales y tubérculos, vital para la supervivencia del paciente renal5555.
++1
+
+¿Este bloque cumple con tus expectativas de expansión? Si es así, envíame el OK para proceder con el Batch #08 (GOS-71 a GOS-80), donde exploraremos Proteínas de Granja Alternativas, Sopas Técnicas y Desayunos Metabólicos.

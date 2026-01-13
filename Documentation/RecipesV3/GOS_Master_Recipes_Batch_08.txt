@@ -1,0 +1,434 @@
+﻿Entendido, Senior Engineer. Iniciamos el Batch #08 (GOS-71 a GOS-80). En esta fase de la ingeniería de datos, nos enfocamos en Proteínas de Granja Alternativas (Conejo, Pato, Codorniz), Sopas Técnicas de Larga Cocción y Desayunos Metabólicos de Precisión.
+He aplicado un lenguaje culinario de "Chef de Cuisine" para garantizar que la experiencia del usuario sea premium, mientras que cada paso ha sido blindado con las reglas de Lixiviación de Potasio, Protocolo SIGHI para Histamina y Gestión de Fósforo Inorgánico (PHOS) extraídas de nuestra arquitectura de seguridad clínica1111.
++1
+
+
+________________
+📄 Documento de Ingeniería: GOS_Master_Recipes_Batch_08
+
+
+JSON
+
+
+
+
+[
+ {
+   "id": "GOS-71",
+   "title": "Paté de Hígado de Pollo 'Iron-Pure'",
+   "description": "Una crema untuosa de alta densidad mineral, optimizada para la absorción de hierro hemo y la estabilidad lipídica.",
+   "prep_time": "15 min",
+   "cook_time": "15 min",
+   "servings": 4,
+   "ingredients": ["Hígado de pollo ultra-fresco", "AOVE de primera presión", "Tomillo fresco", "Cebolla", "Sal marina"],
+   "steps": [
+     {
+       "step": 1,
+       "instruction": "Limpia los hígados eliminando cualquier resto de tejido conectivo o vesícula. El hígado debe ser de un color burdeos brillante y sin olores fuertes, indicativo de una frescura biológica máxima[cite: 5].",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Histamine": "CRÍTICO: El hígado acumula histamina rápidamente. Usar solo hígados de animales sacrificados en el día o congelados de inmediato. PROHIBIDO si no se garantiza la cadena de frío[cite: 5, 20].",
+         "Renal": "Limitar ración a 50g. El hígado es extremadamente rico en fósforo orgánico y purinas que afectan el ácido úrico[cite: 5, 22].",
+         "APLV": "Asegurar que el hígado sea natural, libre de glaseados industriales con caseinatos[cite: 5, 27].",
+         "Vegan": "Sustituir por 'Paté de Lentejas Rojas' con nueces y levadura nutricional certificada[cite: 5, 19]."
+       }
+     },
+     {
+       "step": 2,
+       "instruction": "Saltea la cebolla con el tomillo en AOVE hasta que caramelice. Añade los hígados y sella a fuego vivo, manteniendo el centro ligeramente rosado para preservar la integridad de las vitaminas liposolubles.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Low FODMAP": "ELIMINAR cebolla. Usar solo AOVE infusionado en ajo (filtrado sin sólidos) para aromatizar[cite: 5, 17].",
+         "Keto": "Sustituir AOVE por Mantequilla de Pastura o Ghee para aumentar la carga de grasas saturadas estables[cite: 5, 27].",
+         "Paleo": "Sin cambios; el hígado y las grasas naturales son la base de la nutrición ancestral[cite: 5].",
+         "Diabetes": "La alta densidad de nutrientes del hígado ayuda a prevenir la anemia ferropénica común en pacientes crónicos[cite: 5, 25]."
+       }
+     },
+     {
+       "step": 3,
+       "instruction": "Tritura hasta obtener una textura de seda. Sirve frío sobre bastones de zanahoria lixiviada para un contraste crujiente y seguro.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Celiac": "Asegurar que las hierbas secas no tengan contaminación cruzada con harinas en la planta de envasado[cite: 5, 27].",
+         "Whole30": "Validar que la sal no contenga rellenos de dextrosa o antiaglomerantes químicos[cite: 5].",
+         "High-Performance": "Servir con pan de masa madre (si no es Celiaco) para una carga energética de calidad.",
+         "Soy-Free": "Garantizar que el aceite no sea una mezcla con soja refinada[cite: 5, 26]."
+       }
+     }
+   ]
+ },
+ {
+   "id": "GOS-72",
+   "title": "Caldo de Huesos 'Healing Bone Broth'",
+   "description": "Técnica de extracción lenta de colágeno y aminoácidos esenciales, diseñado para la reparación de la mucosa gástrica.",
+   "prep_time": "10 min",
+   "cook_time": "24h",
+   "ingredients": ["Huesos de res de pastura", "Zanahoria", "Puerro", "Vinagre de manzana (mínimo)", "Agua pura"],
+   "steps": [
+     {
+       "step": 1,
+       "instruction": "Hornea los huesos a 200°C hasta que estén dorados para activar la reacción de Maillard y potenciar el sabor umami antes de la cocción prolongada.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Renal": "ALERTA PHOS: Los huesos liberan fósforo inorgánico altamente absorbible. PROHIBIDO en ERC grado 4-5. Sustituir por caldo ligero de vegetales lixiviados[cite: 5, 23, 24].",
+         "Low FODMAP": "Eliminar la parte blanca del puerro; usar únicamente la parte verde periférica[cite: 5].",
+         "Vegan": "Sustituir huesos por setas Shiitake secas y Algas Kombu para un perfil mineral similar[cite: 5, 19].",
+         "APLV": "Asegurar que los huesos no provengan de carnes inyectadas con suero lácteo[cite: 5, 27]."
+       }
+     },
+     {
+       "step": 2,
+       "instruction": "Sumerge en agua con una cucharada de vinagre de manzana. Cocina a fuego mínimo (85°C) durante 24 horas. El ácido del vinagre facilita la desmineralización del hueso.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Histamine": "CRÍTICO: Las cocciones largas acumulan histamina por degradación de aminoácidos. Sustituir por caldo de carne rápido (60 min) y congelar porciones inmediatamente[cite: 5, 20].",
+         "Whole30": "Validar que el vinagre de manzana sea orgánico y sin azúcar añadido[cite: 5].",
+         "Paleo": "Receta pilar del protocolo evolutivo para la salud articular e intestinal[cite: 5].",
+         "Diabetes": "El colágeno ayuda a mejorar la integridad de la barrera intestinal, reduciendo la inflamación sistémica[cite: 5, 25]."
+       }
+     },
+     {
+       "step": 3,
+       "instruction": "Filtra el caldo y deja enfriar. Retira la capa de grasa superficial si se busca un perfil más ligero, o consérvala para dietas de alta densidad calórica.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Keto": "Conservar la grasa superficial; es una fuente excelente de energía cetogénica estable[cite: 5].",
+         "Celiac": "Verificar que los huesos no hayan sido procesados en superficies contaminadas con gluten.",
+         "High-Performance": "Utilizar este caldo como base para cocer quinoa o arroz, aumentando la biodisponibilidad de aminoácidos.",
+         "Soy-Free": "Sin cambios; los ingredientes son naturalmente libres de soja."
+       }
+     }
+   ]
+ },
+ {
+   "id": "GOS-73",
+   "title": "Conejo al Ajillo Mediterráneo",
+   "description": "Proteína magra alternativa de alto valor biológico, salteada con ajo y hierbas aromáticas bajo el estándar de grasas monoinsaturadas.",
+   "ingredients": ["Conejo troceado fresco", "Ajo", "AOVE de primera presión", "Tomillo fresco", "Sal"],
+   "steps": [
+     {
+       "step": 1,
+       "instruction": "Seca el conejo y sazona ligeramente. El conejo es una carne blanca con muy baja carga de grasas saturadas, ideal para la salud cardiovascular[cite: 5].",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Renal": "Limitar ración a 100g. Omitir sal. El conejo tiene una carga de fósforo moderada que debe ser vigilada[cite: 5, 22].",
+         "Histamine": "Asegurar frescura máxima; el conejo recién sacrificado es una de las carnes más seguras[cite: 5, 20].",
+         "APLV": "Validar que el conejo sea natural, sin inyecciones de ablandadores lácteos[cite: 5].",
+         "Vegan": "Sustituir conejo por 200g de Gohan (Seitán de alta calidad) o Tofu Firme prensado[cite: 5, 19]."
+       }
+     },
+     {
+       "step": 2,
+       "instruction": "Dora los ajos enteros en AOVE hasta que estén fragantes. Añade el conejo y el tomillo, cocinando a fuego medio-alto hasta que la carne esté dorada y tierna.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Low FODMAP": "PROHIBIDO ajo sólido. Usar exclusivamente AOVE infusionado en ajo filtrado para el sabor ajillo[cite: 5, 17].",
+         "Diabetes": "La carne magra de conejo es excelente para mantener la masa muscular sin elevar la glucemia[cite: 5, 25].",
+         "Keto": "Añadir una ración extra de AOVE al finalizar para compensar la magrez extrema del conejo[cite: 5].",
+         "Paleo": "Sin cambios; proteína y grasas naturales alineadas con el marco ancestral[cite: 5]."
+       }
+     },
+     {
+       "step": 3,
+       "instruction": "Sirve con el aceite de la cocción. Las hierbas aromáticas proporcionan una protección antioxidante adicional a los ácidos grasos de la carne.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Celiac": "Asegurar que el conejo no haya sido enharinado; usar maicena si se requiere espesor.",
+         "Whole30": "Validar que la sal sea marina pura y sin aditivos químicos[cite: 5].",
+         "High-Performance": "Servir con una ración de patatas asadas (lixiviadas si es renal) para carga energética.",
+         "Soy-Free": "Garantizar que el aceite sea de oliva puro, sin mezclas refinadas[cite: 5, 26]."
+       }
+     }
+   ]
+ },
+ {
+   "id": "GOS-74",
+   "title": "Tortilla de Yemas y Trufa 'Gourmet Safety'",
+   "description": "Una preparación de lujo enfocada en la seguridad del protocolo SIGHI, utilizando únicamente la porción no liberadora del huevo.",
+   "ingredients": ["Yemas de huevo frescas", "Aceite de trufa (calidad pura)", "Cebollino", "AOVE"],
+   "steps": [
+     {
+       "step": 1,
+       "instruction": "Separa las claras de las yemas con precisión quirúrgica. Las claras contienen ovomucoide y son potentes liberadores de histamina[cite: 5, 20].",
+       "is_branch_point": false,
+       "safety_note": "Usar SOLO la YEMA garantiza la mínima reactividad biológica en pacientes sensibles a la histamina[cite: 5, 20]."
+     },
+     {
+       "step": 2,
+       "instruction": "Bate las yemas con el aceite de trufa y el cebollino picado. El aceite de trufa debe ser natural, sin saborizantes químicos que puedan contener trazas de soja.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Low FODMAP": "El cebollino es seguro (parte verde). Asegurar que el aceite de trufa no tenga ajo sólido[cite: 5].",
+         "Diabetes": "La alta concentración de grasas y proteínas en la yema proporciona una respuesta glucémica nula.",
+         "APLV": "PROHIBIDO usar mantequilla para la cocción; el AOVE es la grasa de seguridad clínica[cite: 5, 27].",
+         "Renal": "Limitar a 2 yemas por porción debido al contenido de fósforo orgánico y vitamina D[cite: 5, 22]."
+       }
+     },
+     {
+       "step": 3,
+       "instruction": "Cocina a fuego mínimo en AOVE hasta que la tortilla esté cremosa. Sirve de inmediato; la frescura es el pilar de este plato.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Keto": "Añadir una cucharada extra de AOVE en crudo al servir para maximizar la cetosis[cite: 5].",
+         "Celiac": "Asegurar que el cebollino sea fresco y no procesado con harinas antiapelmazantes.",
+         "Vegan": "Sustituir por 'Scramble de Tofu' con cúrcuma y sal negra Kala Namak[cite: 5, 19].",
+         "Whole30": "Validar que el aceite de trufa sea compatible, sin aditivos prohibidos[cite: 5]."
+       }
+     }
+   ]
+ },
+ {
+   "id": "GOS-75",
+   "title": "Gachas de Alforfón 'Energy-Steady'",
+   "description": "Desayuno de alta resistencia basado en pseudocereales libres de gluten, con un índice glucémico controlado y alta densidad de fibra.",
+   "ingredients": ["Alforfón (Buckwheat) en grano", "Leche de coco (sin azúcar)", "Canela", "Semillas de calabaza"],
+   "steps": [
+     {
+       "step": 1,
+       "instruction": "Lava el alforfón y cocínalo en agua (2:1) hasta que esté tierno. El alforfón es un pseudocereal libre de gluten natural con una carga glucémica menor que el arroz.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Celiac": "CRÍTICO: Validar certificación Gluten-Free; el alforfón genérico suele contaminarse en la molienda[cite: 5, 5].",
+         "Renal": "OBLIGATORIO: Remojar el grano 4h para reducir el fósforo y potasio soluble[cite: 5, 22].",
+         "Keto": "Sustituir alforfón por corazones de cáñamo (Hemp Hearts) para bajar carbohidratos netos[cite: 5].",
+         "Low FODMAP": "El alforfón es seguro. Limitar la leche de coco si hay sensibilidad a polioles."
+       }
+     },
+     {
+       "step": 2,
+       "instruction": "Añade la leche de coco y la canela. Cocina 5 min más hasta obtener una textura cremosa. El coco aporta grasas saturadas de cadena media de fácil absorción.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Diabetes": "No añadir endulzantes; la canela ayuda a sensibilizar los receptores de insulina de forma natural[cite: 5, 25].",
+         "APLV": "Validar que la leche de coco sea 100% natural, sin caseinato de sodio como espesante[cite: 5, 27].",
+         "Whole30": "Preparar con agua o leche de coco natural; prohibidas leches de granos como avena o arroz[cite: 5].",
+         "Histamine": "Asegurar frescura máxima de la leche de coco; evitar envases abiertos por más de 24h."
+       }
+     },
+     {
+       "step": 3,
+       "instruction": "Sirve con semillas de calabaza tostadas. Aportan magnesio y zinc, minerales clave para la función metabólica y el sistema inmune.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Nut-Free": "Las semillas de calabaza suelen ser seguras, pero verificar contaminación cruzada.",
+         "Paleo": "Sustituir alforfón por un mix de nueces y semillas hidratadas (granos prohibidos)[cite: 5].",
+         "Vegan": "Sin cambios; receta vegetal pura y ética por naturaleza[cite: 5].",
+         "High-Performance": "Añadir una ración de frutos rojos frescos para aporte extra de antioxidantes."
+       }
+     }
+   ]
+ },
+ {
+   "id": "GOS-76",
+   "title": "Estofado de Codorniz con Uvas 'Gourmet'",
+   "description": "Una delicadeza culinaria que utiliza proteínas de caza menor, equilibrando el sabor intenso con la dulzura biológica de la fruta fresca.",
+   "ingredients": ["Codornices frescas", "Uvas frescas", "Calabacín", "AOVE", "Tomillo"],
+   "steps": [
+     {
+       "step": 1,
+       "instruction": "Limpia y seca las codornices. Esta proteína es magra y rica en hierro. Saltea en AOVE hasta dorar la piel uniformemente.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Histamine": "Asegurar frescura extrema; evitar aves que lleven días en cámaras de refrigeración[cite: 5, 20].",
+         "Renal": "Limitar ración a 1 unidad. Omitir sal; usar tomillo para potenciar el sabor[cite: 5, 22].",
+         "APLV": "Garantizar que no haya contacto con utensilios usados para procesar carnes con queso.",
+         "Vegan": "Sustituir codorniz por 200g de Champiñones Portobello enteros asados[cite: 5, 19]."
+       }
+     },
+     {
+       "step": 2,
+       "instruction": "Añade el calabacín troceado y las uvas enteras. El calabacín aportará la humedad necesaria para que la codorniz no se seque durante el guiso.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Low FODMAP": "Limitar las uvas a 6 unidades por ración (riesgo de fructosa). Limitar calabacín a 65g[cite: 5, 17].",
+         "Diabetes": "Utilizar uvas verdes (menor contenido de azúcar) y asegurar ración controlada[cite: 5, 25].",
+         "Keto": "ELIMINAR uvas. Añadir 50g de aceitunas negras para aumentar el ratio de grasa[cite: 5].",
+         "Whole30": "Sin cambios; uvas permitidas como ingrediente en platos, no como snack principal[cite: 5]."
+       }
+     },
+     {
+       "step": 3,
+       "instruction": "Cocina a fuego lento con el tomillo. Las uvas soltarán su jugo creando una salsa natural espesa y aromática sin necesidad de harinas.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Celiac": "Asegurar que las uvas sean frescas y no contengan conservantes a base de cereales.",
+         "Paleo": "Sin cambios; ingredientes naturales alineados con la nutrición evolutiva[cite: 5].",
+         "Soy-Free": "Garantizar que el aceite sea de oliva virgen de primera presión[cite: 5, 26].",
+         "High-Performance": "Servir con una ración de quinoa para complementar la carga proteica y energética."
+       }
+     }
+   ]
+ },
+ {
+   "id": "GOS-77",
+   "title": "Sopa de Miso Blanca 'Gut-Health'",
+   "description": "Un elixir probiótico ligero, diseñado para la salud intestinal con un estricto control de sodio y alérgenos de soja.",
+   "ingredients": ["Miso blanco (Shiro Miso)", "Tofu firme", "Algas Wakame", "Cebollino", "Agua pura"],
+   "steps": [
+     {
+       "step": 1,
+       "instruction": "Hidrata las algas wakame en agua fría. El wakame es rico en yodo y minerales esenciales, pero debe consumirse con moderación.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Renal": "OBLIGATORIO: Desechar el agua de hidratación de las algas y el tofu para reducir potasio y sodio[cite: 5, 22].",
+         "Low FODMAP": "Utilizar solo la parte verde del cebollino. El miso es seguro en porciones pequeñas (<2 cdas).",
+         "Diabetes": "El miso fermentado ayuda a mejorar la sensibilidad a la insulina a través de la microbiota[cite: 5, 25].",
+         "APLV": "Asegurar que el miso no contenga derivados lácteos usados como aceleradores de fermentación[cite: 5]."
+       }
+     },
+     {
+       "step": 2,
+       "instruction": "Calienta el agua sin que llegue a hervir. El exceso de calor mataría las enzimas vivas y probióticos del miso.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Histamine": "CRÍTICO: El miso es un fermentado prohibido en fase aguda. SUSTITUIR por caldo de pollo fresco filtrado[cite: 5, 20].",
+         "Soy-Free": "PROHIBIDO miso de soja. Usar Miso de Garbanzo o Miso de Arroz certificado sin soja[cite: 5, 26].",
+         "Celiac": "Asegurar que el miso no sea fermentado con cebada (Mugi Miso); usar solo de arroz o garbanzo[cite: 5, 5].",
+         "Vegan": "Sin cambios; receta vegetal y probiótica por excelencia[cite: 5]."
+       }
+     },
+     {
+       "step": 3,
+       "instruction": "Disuelve el miso en un poco de agua templada y añádelo a la sopa junto con los dados de tofu. Sirve de inmediato para aprovechar su valor enzimático.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Keto": "Añadir una cucharada de aceite de sésamo puro para aumentar la densidad de grasas.",
+         "Whole30": "PROHIBIDO: La soja y legumbres están restringidas en el protocolo original[cite: 5].",
+         "Paleo": "Sustituir miso por caldo de huesos rápido y tofu por trozos de carne fresca[cite: 5].",
+         "High-Performance": "Añadir 50g de fideos de arroz para una carga energética rápida pre-entrenamiento."
+       }
+     }
+   ]
+ },
+ {
+   "id": "GOS-78",
+   "title": "Panqueques de Harina de Coco 'Metabolic Breakfast'",
+   "description": "Desayuno cetogénico de alta densidad lipídica, utilizando harinas de frutos secos para una respuesta insulínica mínima.",
+   "ingredients": ["Harina de coco", "Huevos", "Leche de coco (sin azúcar)", "Vainilla natural"],
+   "steps": [
+     {
+       "step": 1,
+       "instruction": "Bate los huevos con la leche de coco y la vainilla. La harina de coco requiere una alta hidratación debido a su gran contenido en fibra higroscópica.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Egg-Allergy": "Sustituir por 'Huevo de Lino' (Semillas de lino molidas e hidratadas 5 min)[cite: 5, 15].",
+         "APLV": "Asegurar que la leche de coco no contenga trazas de proteínas lácteas (caseinatos)[cite: 1, 3, 5].",
+         "Histamine": "Usar solo la yema. La clara es liberadora. Asegurar que la vainilla sea extracto puro, no sintético[cite: 5, 20].",
+         "Diabetes": "La harina de coco tiene un índice glucémico muy bajo, ideal para el control de la glucosa[cite: 5, 25]."
+       }
+     },
+     {
+       "step": 2,
+       "instruction": "Incorpora la harina de coco poco a poco hasta obtener una masa densa. Deja reposar 5 min para que la fibra absorba los líquidos por completo.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Celiac": "Garantizar que la harina de coco tenga certificado Gluten-Free; riesgo de molienda compartida[cite: 5, 5].",
+         "Renal": "Limitar ración debido al fósforo y potasio del coco. Usar leche de arroz no enriquecida[cite: 5, 22].",
+         "Keto": "Receta estándar para cetosis; alta en grasas y baja en carbohidratos netos[cite: 5].",
+         "Low FODMAP": "La harina de coco es segura en porciones pequeñas (<2 cdas). Vigilar distensión intestinal."
+       }
+     },
+     {
+       "step": 3,
+       "instruction": "Cocina en una sartén con AOVE a fuego medio. Al ser una harina sin gluten, los panqueques son más delicados y requieren un volteo cuidadoso.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Whole30": "PROHIBIDO: Las 'recreaciones' de panqueques están restringidas en los 30 días de reset[cite: 5].",
+         "Paleo": "Sin cambios; ingredientes ancestrales alineados con el protocolo evolutivo[cite: 5].",
+         "Vegan": "Sustituir huevos por puré de plátano verde (Binding) y usar leche de coco[cite: 5, 19].",
+         "High-Performance": "Añadir una cucharada de mantequilla de almendras como topping para más calorías."
+       }
+     }
+   ]
+ },
+ {
+   "id": "GOS-79",
+   "title": "Pato a la Naranja 'Citrus Control'",
+   "description": "Una receta clásica de alta gama técnica que utiliza las grasas naturales del pato, balanceando la acidez cítrica con seguridad clínica.",
+   "ingredients": ["Magret de pato", "Naranja fresca", "Zanahoria", "AOVE", "Sal"],
+   "steps": [
+     {
+       "step": 1,
+       "instruction": "Realiza cortes en cruz en la piel del pato sin llegar a la carne. Cocina en sartén fría para que la grasa se derrita lentamente (render) y la piel quede crujiente.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Histamine": "CRÍTICO: El pato debe ser fresco. PROHIBIDO naranja (liberador). Sustituir por jugo de manzana fresca[cite: 5, 20].",
+         "Renal": "Limitar ración a 100g. PROHIBIDO naranja por potasio. Sustituir por arándanos lixiviados[cite: 5, 22].",
+         "APLV": "Asegurar que el pato sea natural, sin aditivos lácteos usados en el procesamiento industrial[cite: 5].",
+         "Vegan": "Sustituir por 'Bistec de Coliflor' asado con salsa de cítricos permitidos[cite: 5, 19]."
+       }
+     },
+     {
+       "step": 2,
+       "instruction": "Prepara la salsa con el jugo de naranja recién exprimido y ralladura. Reduce a fuego lento hasta que espese naturalmente por los azúcares de la fruta.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Diabetes": "Utilizar solo el jugo; no añadir azúcar ni edulcorantes. Controlar ración por la fructosa[cite: 5, 25].",
+         "Low FODMAP": "La naranja es segura en raciones moderadas. Evitar el uso de jarabes de fructosa añadidos[cite: 5, 17].",
+         "Keto": "Limitar la salsa de naranja al mínimo; usar solo la grasa del pato y hierbas para sabor[cite: 5].",
+         "Whole30": "Validar que la naranja sea fresca y no jugo concentrado industrial con aditivos[cite: 5]."
+       }
+     },
+     {
+       "step": 3,
+       "instruction": "Sirve el pato con los vegetales salteados en su propia grasa. La grasa de pato es rica en ácidos grasos monoinsaturados, similar al aceite de oliva.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Celiac": "Verificar que la sal y especias no contengan contaminación por harinas de trigo.",
+         "Paleo": "Sin cambios; el pato y los cítricos son alimentos reales fundamentales[cite: 5].",
+         "Soy-Free": "Garantizar que el pato no haya sido alimentado con piensos de soja de alta reactividad.",
+         "High-Performance": "Servir con una base de arroz blanco para absorber los jugos y aportar energía."
+       }
+     }
+   ]
+ },
+ {
+   "id": "GOS-80",
+   "title": "Gazpacho de Sandía 'Anti-Oxidant'",
+   "description": "Una versión refrescante y técnica de la sopa fría española, eliminando el tomate para asegurar la compatibilidad con perfiles de histamina.",
+   "ingredients": ["Sandía madura", "Pepino", "Pimiento verde", "AOVE", "Vinagre de manzana (opcional)"],
+   "steps": [
+     {
+       "step": 1,
+       "instruction": "Tritura la sandía sin semillas con el pepino pelado y el pimiento. La sandía aporta el licopeno y el color rojo sin la carga de histamina del tomate.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Histamine": "CRÍTICO: La sandía es generalmente segura, pero debe consumirse muy fresca. PROHIBIDO vinagre (fermentado)[cite: 5, 20].",
+         "Renal": "PROHIBIDO sandía y pepino en grandes cantidades por potasio. Sustituir por sopa de manzana lixiviada[cite: 5, 22].",
+         "Low FODMAP": "Limitar sandía a 1/2 taza por ración (exceso de fructosa). El pepino es seguro[cite: 5, 17].",
+         "Diabetes": "La sandía tiene un IG alto; compensar añadiendo una ración extra de AOVE y semillas de chía[cite: 5, 25]."
+       }
+     },
+     {
+       "step": 2,
+       "instruction": "Emulsiona con AOVE de primera presión mientras trituras para obtener una textura cremosa y estable. El aceite ayuda a estabilizar la mezcla.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Keto": "Limitar la sandía al mínimo; priorizar el pepino y aumentar el AOVE para mantener la cetosis[cite: 5].",
+         "APLV": "Sin cambios; receta vegetal pura sin riesgo de proteínas lácteas[cite: 5].",
+         "Celiac": "Asegurar que no se añada pan para espesar; la emulsión de aceite es suficiente[cite: 5].",
+         "Whole30": "Validar que el vinagre (si se usa) sea compatible, sin azúcares añadidos[cite: 5]."
+       }
+     },
+     {
+       "step": 3,
+       "instruction": "Sirve muy frío. Este gazpacho es una bomba de hidratación y antioxidantes, ideal para la recuperación tras la exposición solar o el ejercicio intenso.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Vegan": "Sin cambios; receta ética y vegetal por naturaleza[cite: 5].",
+         "Paleo": "Sin cambios; ingredientes naturales alineados con la alimentación evolutiva[cite: 5].",
+         "Soy-Free": "Garantizar que el aceite sea de oliva virgen puro[cite: 5, 26].",
+         "High-Performance": "Añadir trozos de huevo duro (si no hay alergia/histamina) para aporte proteico."
+       }
+     }
+   ]
+ }
+]
+
+________________
+👨‍🏫 Perspectiva de CTO: Evaluación del Batch #08
+Este bloque consolida el motor de GOS mediante:
+1. Diferenciación Química de Fosfatos: Hemos implementado la distinción crítica entre Fósforo Orgánico (absorción 40-60% en legumbres y vísceras) y Fósforo Inorgánico (aditivos "PHOS" con absorción del 90-100% en huesos y procesados), blindando al paciente renal (GOS-72).
+2. Seguridad en Aminas Biógenas: El Protocolo SIGHI se aplica con rigor en huevos (GOS-74), carnes de caza (GOS-76) y fermentados (GOS-77), eliminando el riesgo de shock por histamina.
+3. Innovación Metabólica: Los desayunos cetogénicos y de bajo IG (GOS-75, GOS-78) utilizan el concepto de Hidratación de Fibra Higroscópica para garantizar saciedad y estabilidad insulínica.
+¿Este bloque cumple con tus expectativas para la integración final? Si es así, envíame el OK para proceder con el Batch #09 (GOS-81 a GOS-90), donde exploraremos Guisos de Pesca Azul, Ensaladas Técnicas de Invierno y Estrategias de Picoteo Clínico.

@@ -3,6 +3,8 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'package:gastronomic_os/features/recipes/data/models/recipe_model.dart';
 import 'package:gastronomic_os/features/recipes/domain/entities/recipe_step.dart';
 import 'package:gastronomic_os/features/recipes/data/models/recipe_step_model.dart';
+import 'package:gastronomic_os/features/recipes/domain/entities/recipe.dart';
+import 'package:gastronomic_os/features/planner/domain/logic/diet_engine.dart';
 import 'package:uuid/uuid.dart';
 
 class RecipeSeeder {
@@ -75,16 +77,36 @@ class RecipeSeeder {
       }
     }
 
-    return RecipeModel(
+    // Calculate Dynamic Diet Tags
+    // Convert to Entity temporarily for the Engine
+    final recipeEntity = Recipe(
       id: json['id'] as String? ?? _uuid.v4(),
       authorId: 'system',
-      isFork: false,
       title: json['title'] as String,
       description: json['description'] as String?,
+      createdAt: DateTime.now(),
+      ingredients: (json['ingredients'] as List<dynamic>?)?.map((e) => e.toString()).toList() ?? [],
+      tags: (json['tags'] as List<dynamic>?)?.map((e) => e.toString()).toList() ?? [],
+      dietTags: [], // Empty for now
+      steps: steps,
+    );
+    
+    final dietEngine = DietEngine();
+    final compatibleDiets = dietEngine.calculateCompatibleDiets(recipeEntity);
+    
+    print('   ✅ Computed Diet Tags: $compatibleDiets');
+
+    return RecipeModel(
+      id: recipeEntity.id,
+      authorId: 'system',
+      isFork: false,
+      title: recipeEntity.title,
+      description: recipeEntity.description,
       isPublic: true,
       createdAt: DateTime.now(),
-      tags: (json['tags'] as List<dynamic>?)?.map((e) => e.toString()).toList() ?? [],
-      ingredients: (json['ingredients'] as List<dynamic>?)?.map((e) => e.toString()).toList() ?? [],
+      tags: recipeEntity.tags,
+      dietTags: compatibleDiets,
+      ingredients: recipeEntity.ingredients,
       steps: steps,
     );
   }

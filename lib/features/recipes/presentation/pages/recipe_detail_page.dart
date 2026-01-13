@@ -17,6 +17,7 @@ import 'package:gastronomic_os/features/planner/presentation/bloc/planner_event.
 import 'package:gastronomic_os/features/planner/domain/entities/meal_plan.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:uuid/uuid.dart';
+import 'package:gastronomic_os/features/recipes/presentation/widgets/formatted_recipe_text.dart';
 
 class RecipeDetailPage extends StatelessWidget {
   final Recipe recipe;
@@ -152,13 +153,19 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
                       children: [
                         // Description
                         if (fullRecipe.description != null) ...[
-                          Text(
-                            fullRecipe.description!,
+                          FormattedRecipeText(
+                            text: fullRecipe.description!,
                             style: theme.textTheme.bodyLarge?.copyWith(
                               color: colorScheme.onSurfaceVariant,
                               fontStyle: FontStyle.italic,
                             ),
                           ),
+                          const SizedBox(height: 32),
+                        ],
+
+                        // Clinical Tags
+                        if (fullRecipe.tags.isNotEmpty) ...[
+                          _buildTagsSection(context, fullRecipe.tags),
                           const SizedBox(height: 32),
                         ],
 
@@ -314,8 +321,8 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
                          ),
                        
                        // Main Instruction
-                       Text(
-                         resolvedStep.instruction,
+                       FormattedRecipeText(
+                         text: resolvedStep.instruction,
                          style: Theme.of(context).textTheme.bodyMedium?.copyWith(height: 1.5),
                        ),
 
@@ -351,6 +358,29 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
               ),
             ],
           ),
+        );
+      }).toList(),
+    );
+  }
+
+  Widget _buildTagsSection(BuildContext context, List<String> tags) {
+    return Wrap(
+      spacing: 8.0,
+      runSpacing: 8.0,
+      children: tags.map((tag) {
+        final isClinical = ['renal', 'keto', 'diabetes', 'celiac', 'aplv', 'histamine', 'low fodmap']
+            .contains(tag.toLowerCase());
+        final colorScheme = Theme.of(context).colorScheme;
+        
+        return Chip(
+          label: Text(tag),
+          labelStyle: TextStyle(
+            color: isClinical ? colorScheme.onPrimary : colorScheme.onSecondaryContainer,
+            fontWeight: isClinical ? FontWeight.bold : FontWeight.normal,
+          ),
+          backgroundColor: isClinical ? colorScheme.primary : colorScheme.secondaryContainer,
+          padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 0),
+          materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
         );
       }).toList(),
     );

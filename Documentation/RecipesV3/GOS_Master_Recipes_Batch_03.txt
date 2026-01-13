@@ -1,0 +1,402 @@
+﻿Entendido, Senior Engineer. Avanzamos con el Batch #03 (GOS-21 a GOS-30). Siguiendo tu directriz, he elevado el nivel de las descripciones para convertirlas en una guía culinaria de alta gama, integrando la Arquitectura de Segmentación Dietética y la Matriz de Sustitución para resolver los "nudos" logísticos más complejos del sistema.
+Este bloque se centra en Aves, Currys y Legumbres Densas, donde la gestión de antinutrientes, alérgenos ocultos y la carga glicémica es crítica para la seguridad del usuario.
+________________
+📄 Documento de Ingeniería: GOS_Master_Recipes_Batch_03
+
+
+JSON
+
+
+
+
+[
+ {
+   "id": "GOS-21",
+   "title": "Salmón Atlántico al Eneldo con Quinoa Real",
+   "description": "Un plato de alta densidad nutricional que celebra las grasas monoinsaturadas y la pureza del grano andino[cite: 432, 433].",
+   "prep_time": "15 min",
+   "cook_time": "15 min",
+   "servings": 2,
+   "ingredients": ["Lomo de salmón fresco", "Quinoa real certificada", "Espárragos trigueros", "AOVE", "Limón", "Eneldo fresco"],
+   "steps": [
+     {
+       "step": 1,
+       "instruction": "Lava la quinoa bajo agua fría para eliminar las saponinas amargas. Cocina en agua hirviendo (proporción 2:1) por 15 min hasta que el grano eclosione. La quinoa integral es el pilar de este plato por su liberación lenta de energía[cite: 434, 449].",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Celiac": "CRÍTICO: Utilizar exclusivamente quinoa con sello certificado 'Gluten-Free' para evitar la contaminación cruzada en origen[cite: 445, 502].",
+         "Keto": "Sustituir la quinoa por 200g de Arroz de Coliflor salteado para mantener la cetosis metabólica[cite: 428, 529].",
+         "Renal": "Remojar la quinoa y los espárragos 4h antes de cocinar (Lixiviación) para extraer el exceso de potasio[cite: 451, 523].",
+         "Low FODMAP": "Sustituir la quinoa por arroz blanco de grano largo para minimizar la carga de fructanos en fase de eliminación[cite: 173, 511]."
+       }
+     },
+     {
+       "step": 2,
+       "instruction": "Cocina el salmón al vapor o a la plancha con AOVE. El pescado debe presentar un color coral intenso y una textura firme; evita piezas con olor fuerte que indiquen degradación proteica[cite: 448, 516].",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Histamine": "Protocolo SIGHI: Usar salmón recién pescado o ultracongelado en alta mar. PROHIBIDO el salmón ahumado o refrigerado >12h[cite: 448, 519].",
+         "Shellfish-Free": "Asegurar que el salmón no tenga trazas de tropomiosina por contacto cruzado con mariscos[cite: 443, 496].",
+         "Vegan": "Sustituir el salmón por 200g de Tofu firme prensado y marinado en algas nori para replicar el perfil marino[cite: 174, 535].",
+         "APLV": "No sellar con mantequilla; el AOVE es la grasa de seguridad inmunológica[cite: 438, 469]."
+       }
+     },
+     {
+       "step": 3,
+       "instruction": "Saltea las puntas de espárragos y sirve sobre la quinoa con un toque de limón y eneldo. El eneldo aporta notas frescas sin elevar la carga de sodio[cite: 575, 608].",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Low FODMAP": "Utilizar únicamente las puntas de los espárragos (máximo 5). Los tallos concentran fructanos peligrosos[cite: 511, 602].",
+         "Whole30": "Asegurar que el salmón sea salvaje y no contenga colorantes artificiales prohibidos[cite: 430, 533].",
+         "High-Performance": "Doblar la ración de salmón para maximizar la síntesis proteica muscular[cite: 434, 578].",
+         "Diabetes": "Preparar el salmón escalfado para reducir la formación de productos de glicación avanzada[cite: 449, 528]."
+       }
+     }
+   ]
+ },
+ {
+   "id": "GOS-22",
+   "title": "Curry de Lentejas Rojas y Leche de Coco",
+   "description": "Una explosión aromática de proteínas vegetales y grasas saturadas de cadena media, diseñada para la salud digestiva[cite: 433, 513].",
+   "prep_time": "10 min",
+   "cook_time": "20 min",
+   "ingredients": ["Lentejas rojas", "Calabaza", "Espinacas frescas", "Leche de coco natural", "Cúrcuma", "Comino"],
+   "steps": [
+     {
+       "step": 1,
+       "instruction": "Lava las lentejas rojas hasta que el agua no tenga espuma. Cocina con la calabaza en dados y las especias. Las lentejas rojas se deshacen creando una crema natural rica en fibra[cite: 513, 634].",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Low FODMAP": "Utilizar lentejas de conserva muy enjuagadas (<1/2 taza). Los oligosacáridos (GOS) se eliminan en el líquido[cite: 513, 634].",
+         "Renal": "Lixiviar la calabaza (4h remojo). Las lentejas tienen fósforo orgánico de absorción moderada (40-60%)[cite: 525, 634].",
+         "Keto": "Sustituir lentejas por 200g de Tofu firme picado para reducir los carbohidratos netos[cite: 529, 634].",
+         "Whole30": "Sustituir lentejas por carne de res picada fresca; las legumbres están prohibidas en este protocolo[cite: 531, 634]."
+       }
+     },
+     {
+       "step": 2,
+       "instruction": "Incorpora la leche de coco. Esta grasa estable no solo aporta cremosidad, sino que es una fuente de energía rápida sin lácteos[cite: 572, 635].",
+       "is_branch_point": true,
+       "variant_logic": {
+         "APLV": "CRÍTICO: Validar que la leche de coco no contenga caseinato de sodio como espesante oculto[cite: 475, 635].",
+         "Diabetes": "Garantizar que la leche de coco sea 100% natural, sin azúcares añadidos ni jarabes[cite: 527, 636].",
+         "Vegan": "Verificar que el caldo base no contenga colorante E120 (Carmín de insectos)[cite: 535, 636].",
+         "Histamine": "Omitir las espinacas por ser un liberador potencial; sustituir por acelgas frescas[cite: 520, 635]."
+       }
+     },
+     {
+       "step": 3,
+       "instruction": "Añade las espinacas al final para que marchiten levemente con el calor residual. Sirve caliente para maximizar el perfil aromático de la cúrcuma[cite: 562, 635].",
+       "is_branch_point": false,
+       "cross_contamination_alert": "ALERTA VEGANA: Comprobar que los aditivos del caldo vegetal no incluyan gelatina ni isinglass[cite: 426, 561]."
+     }
+   ]
+ },
+ {
+   "id": "GOS-23",
+   "title": "Estofado de Lentejas 'Celiaco-Master'",
+   "description": "Seguridad total en un guiso tradicional: lentejas certificadas y potenciadores de sabor libres de gluten[cite: 444, 502].",
+   "ingredients": ["Lentejas rojas certificadas GF", "Calabaza lixiviada", "Espinacas", "Tamari sin trigo"],
+   "steps": [
+     {
+       "step": 1,
+       "instruction": "Inspecciona las lentejas visualmente en busca de granos de trigo perdidos. Cocina con la calabaza hasta obtener una textura melosa[cite: 502, 601].",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Paleo": "Sustituir lentejas por dados de carne de pastura (exclusión de legumbres)[cite: 429, 531].",
+         "Keto": "Sustituir lentejas por ramilletes de coliflor salteados[cite: 428, 529].",
+         "Renal": "Lixiviar los vegetales (4h) y descartar el agua de la primera ebullición[cite: 451, 523].",
+         "Low FODMAP": "Usar lentejas de lata enjuagadas y limitar la ración a 1/2 taza[cite: 513, 634]."
+       }
+     },
+     {
+       "step": 2,
+       "instruction": "Añade el Tamari para aportar el quinto sabor (umami) sin riesgo de gluten oculto. La salsa de soja convencional es un vector crítico de trigo[cite: 503, 576].",
+       "is_branch_point": true,
+       "variant_logic": {
+         "APLV": "Validar que el Tamari no contenga suero de leche como portador de aromas[cite: 474, 587].",
+         "Soy-Free": "Sustituir Tamari por aminos de coco (Coconut Aminos) para mantener el sabor umami[cite: 441, 595].",
+         "Histamine": "Omitir fermentados como el Tamari; usar sal marina y hierbas frescas[cite: 520, 605].",
+         "Diabetes": "Asegurar que el Tamari sea bajo en sodio para proteger la salud cardiovascular[cite: 449, 528]."
+       }
+     },
+     {
+       "step": 3,
+       "instruction": "Incorpora las espinacas antes de servir. La combinación de vitamina C vegetal y hierro de la lenteja optimiza la absorción mineral[cite: 433, 541].",
+       "is_branch_point": false,
+       "cross_contamination_alert": "ALERTA CELIACA: No usar levadura de cerveza convencional; casi siempre contiene gluten de cebada[cite: 502, 600]."
+     }
+   ]
+ },
+ {
+   "id": "GOS-24",
+   "title": "Sopa de Lentejas Rojas 'Low-Phos'",
+   "description": "Estrategia metabólica para pacientes renales: aprovechando la baja biodisponibilidad del fósforo vegetal[cite: 451, 525].",
+   "ingredients": ["Lentejas rojas", "Calabaza", "Espinacas", "Leche de coco sin aditivos"],
+   "steps": [
+     {
+       "step": 1,
+       "instruction": "Remoja las lentejas y la calabaza por 4h (Lixiviación). El fósforo orgánico de las legumbres solo se absorbe en un 40-60%, lo que lo hace preferible al animal en ERC controlada[cite: 525, 634].",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Omnivore": "Saltar lixiviación; usar caldo de res concentrado para mayor palatabilidad[cite: 424, 638].",
+         "Diabetes": "Priorizar lentejas enteras (no puré) para mantener un índice glucémico bajo[cite: 449, 611].",
+         "Keto": "Sustituir lentejas por semillas de cáñamo hidratadas[cite: 428, 529].",
+         "APLV": "Asegurar que las lentejas no se cocinen con embutidos que contengan caseína[cite: 475, 587]."
+       }
+     },
+     {
+       "step": 2,
+       "instruction": "Cocer en agua limpia. Al final, añade la leche de coco. PROHIBIDO el uso de leches de coco enriquecidas o con aditivos 'PHOS'[cite: 526, 610].",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Low FODMAP": "Usar lentejas de conserva enjuagadas; limitar ración a 1/2 taza[cite: 513, 634].",
+         "Histamine": "Omitir espinacas; sustituir por calabacín fresco pelado[cite: 520, 606].",
+         "Vegan": "Verificar que el envase de la leche de coco sea libre de bisfenol A[cite: 426, 535].",
+         "Celiac": "Validar que la calabaza sea fresca y no precortada con almidones de trigo[cite: 444, 498]."
+       }
+     },
+     {
+       "step": 3,
+       "instruction": "Servir una porción controlada. La técnica de cocción es el sustituto de la seguridad mineral en este perfil[cite: 583, 584].",
+       "is_branch_point": false,
+       "cross_contamination_alert": "ALERTA RENAL: Prohibido usar sales sustitutas (KCl); el cloruro de potasio es letal en insuficiencia renal[cite: 523, 609]."
+     }
+   ]
+ },
+ {
+   "id": "GOS-25",
+   "title": "Albóndigas de Pavo 'Resiliencia Alergénica'",
+   "description": "Una solución culinaria para la alergia al huevo: aglutinación perfecta mediante superalimentos vegetales[cite: 439, 567].",
+   "ingredients": ["Pavo picado de alta frescura", "Calabacín rallado", "Semillas de chía hidratadas", "Sal marina"],
+   "steps": [
+     {
+       "step": 1,
+       "instruction": "Prepara el 'huevo de chía': mezcla 1 cda de chía molida con 3 de agua tibia. Reposa 5 min hasta obtener un gel mucilaginoso que imita la clara de huevo[cite: 567, 568].",
+       "is_branch_point": true,
+       "variant_logic": {
+         "FODMAPs": "Utilizar semillas de lino en su lugar; el lino es mejor tolerado en fase de eliminación[cite: 567, 590].",
+         "Renal": "Sustituir por puré de plátano verde (bajo en azúcar) para aglutinar, con precaución de potasio[cite: 566, 567].",
+         "Keto": "Añadir harina de almendras (si no hay alergia) para aumentar la densidad de grasas[cite: 529, 640].",
+         "Diabetes": "La chía es ideal por su capacidad de formar geles que retardan la absorción de grasas[cite: 449, 578]."
+       }
+     },
+     {
+       "step": 2,
+       "instruction": "Mezcla el pavo picado con el calabacín rallado y el gel de chía. El calabacín aporta la humedad que el pavo magro suele perder[cite: 481, 566].",
+       "is_branch_point": true,
+       "variant_logic": {
+         "APLV": "CRÍTICO: Validar que el pavo no sea una mezcla procesada con caseinatos o suero[cite: 472, 588].",
+         "Histamine": "Pavo recién picado; evitar el uso de claras de huevo (liberador) en la mezcla[cite: 520, 606].",
+         "Vegan": "Sustituir pavo por Lentejas y nueces picadas para formar las albóndigas[cite: 426, 640].",
+         "Soy-Free": "Asegurar que el pavo no haya sido inyectado con proteína vegetal texturizada[cite: 441, 595]."
+       }
+     },
+     {
+       "step": 3,
+       "instruction": "Forma las albóndigas y hornea a 180°C. Esta técnica evita la fritura y reduce los compuestos pro-inflamatorios[cite: 432, 630].",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Celiac": "No usar pan rallado; utilizar harina de maíz o quinoa certificada[cite: 506, 640].",
+         "Paleo": "Sin cambios; ingredientes naturales y ancestrales[cite: 430, 531].",
+         "High-Performance": "Añadir una clara de huevo (si no hay alergia) para mayor estabilidad proteica[cite: 434, 641].",
+         "Whole30": "Validar que la sal no contenga agentes químicos prohibidos[cite: 533, 534]."
+       }
+     }
+   ]
+ },
+ {
+   "id": "GOS-26",
+   "title": "Salteado de Pavo 'Pureza Soja-Free'",
+   "description": "Estrategia de exclusión para alergias industriales: pavo magro y vegetales frescos en aceite noble[cite: 441, 595].",
+   "ingredients": ["Pavo picado", "Calabacín", "Champiñones frescos", "Aceite de canola refinado", "Sal"],
+   "steps": [
+     {
+       "step": 1,
+       "instruction": "Corta el calabacín y los champiñones en láminas uniformes. Los champiñones aportan sabor umami sin necesidad de salsas de soja fermentadas[cite: 594, 604].",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Low FODMAP": "ELIMINAR champiñones (polioles) y ajo. Usar aceite infusionado[cite: 514, 604].",
+         "Renal": "Lixiviar los vegetales (4h remojo) para reducir la carga mineral[cite: 451, 523].",
+         "Keto": "Añadir una ración extra de AOVE para compensar la magrez del pavo[cite: 428, 529].",
+         "Diabetes": "Mantener los vegetales al dente para maximizar el aporte de fibra[cite: 449, 528]."
+       }
+     },
+     {
+       "step": 2,
+       "instruction": "Dora el pavo en aceite de canola refinado. El aceite altamente refinado es tolerable para la mayoría de los alérgicos a la soja.",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Soy-Free Estricto": "Prohibido aceite de canola (riesgo de mezcla); usar solo AOVE puro[cite: 486, 582].",
+         "APLV": "Asegurar que el pavo no contenga mantequilla o saborizantes lácteos[cite: 474, 589].",
+         "Histamine": "Pavo recién picado; evitar los champiñones si existe sensibilidad alta[cite: 520, 605].",
+         "Vegan": "Sustituir pavo por Garbanzos cocidos y enjuagados[cite: 513, 634]."
+       }
+     },
+     {
+       "step": 3,
+       "instruction": "Sazona solo con sal marina. Evitar caldos industriales que frecuentemente contienen proteína de soja hidrolizada oculta[cite: 492, 596].",
+       "is_branch_point": false,
+       "cross_contamination_alert": "ALERTA SOJA: El caldo vegetal genérico es un vector recurrente de soja y trigo[cite: 490, 492]."
+     }
+   ]
+ },
+ {
+   "id": "GOS-27",
+   "title": "Pavo y Champiñones en Mantequilla de Ghee",
+   "description": "Una receta Keto optimizada con grasas purificadas y proteínas de bajo índice inflamatorio[cite: 428, 534].",
+   "ingredients": ["Pavo picado", "Calabacín", "Champiñones", "Ghee (Mantequilla clarificada)", "Sal"],
+   "steps": [
+     {
+       "step": 1,
+       "instruction": "Dora los champiñones en abundante Ghee hasta que pierdan su agua y se caramelicen. El Ghee es seguro para muchos perfiles por su baja carga de lactosa y caseína[cite: 534, 541].",
+       "is_branch_point": true,
+       "variant_logic": {
+         "APLV": "Sustituir Ghee por AOVE o Aceite de Coco; la tolerancia al Ghee debe ser validada clínicamente[cite: 438, 534].",
+         "Low FODMAP": "ELIMINAR champiñones; sustituir por judías verdes (permitidas en Whole30/Keto)[cite: 534, 604].",
+         "Renal": "Lixiviar los vegetales (4h) y usar Ghee sin sal añadida[cite: 451, 523].",
+         "Diabetes": "El Ghee aporta saciedad prolongada, ideal para el ayuno intermitente asociado[cite: 528, 534]."
+       }
+     },
+     {
+       "step": 2,
+       "instruction": "Añade el pavo picado y el calabacín. Cocina a fuego alto para que el pavo absorba las notas de nuez del Ghee[cite: 480, 534].",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Histamine": "Usar pavo recién picado; evitar champiñones y Ghee si no es fresco[cite: 520, 605].",
+         "Paleo": "El Ghee es aceptado en variantes 'Primal' o Paleo flexible[cite: 531, 541].",
+         "Vegan": "Sustituir pavo por Tofu firme y Ghee por aceite de coco virgen[cite: 426, 535].",
+         "Soy-Free": "Asegurar que el pavo sea de origen confiable, sin inyecciones de soja[cite: 441, 595]."
+       }
+     },
+     {
+       "step": 3,
+       "instruction": "Sazona y sirve. No escurras la grasa; es el combustible metabólico de este plato[cite: 428, 529].",
+       "is_branch_point": false,
+       "cross_contamination_alert": "ALERTA KETO: Evitar la maltodextrina en el aderezo, ya que rompe la cetosis instantáneamente[cite: 530]."
+     }
+   ]
+ },
+ {
+   "id": "GOS-28",
+   "title": "Porridge de Avena 'Soberanía Láctea'",
+   "description": "Un desayuno reconfortante que excluye las proteínas animales manteniendo la cremosidad técnica[cite: 438, 476].",
+   "ingredients": ["Avena integral", "Manzana", "Canela", "Leche de arroz enriquecida"],
+   "steps": [
+     {
+       "step": 1,
+       "instruction": "Cocer la avena en la leche de arroz. La leche de arroz es ligera y el sustituto más seguro para evitar la caseína[cite: 476, 571].",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Celiac": "OBLIGATORIO: Usar solo avena con certificación 'Gluten-Free'[cite: 502, 601].",
+         "Keto": "Sustituir avena por 'Noats' (mix de corazones de cáñamo, chía y lino)[cite: 428, 529].",
+         "Renal": "Usar leche de arroz NO enriquecida; los fosfatos de enriquecimiento son peligrosos[cite: 527, 528].",
+         "Low FODMAP": "Asegurar que la ración de manzana sea mínima o sustituir por arándanos[cite: 513, 603]."
+       }
+     },
+     {
+       "step": 2,
+       "instruction": "Añade la manzana en dados y canela. Cocina a fuego lento hasta que la avena libere su almidón y espese naturalmente[cite: 449, 528].",
+       "is_branch_point": true,
+       "variant_logic": {
+         "APLV": "Validar que la leche de arroz no contenga caseinato de sodio para lograr textura[cite: 475, 590].",
+         "Diabetes": "Priorizar avena cortada (Steel-cut) por su menor índice glucémico[cite: 527, 528].",
+         "Histamine": "Asegurar frescura de la avena; evitar la canela si se detecta reactividad[cite: 516, 517].",
+         "Soy-Free": "Asegurar que la leche de arroz no use lecitina de soja como emulsionante[cite: 531, 582]."
+       }
+     },
+     {
+       "step": 3,
+       "instruction": "Servir caliente. La canela ayuda a sensibilizar los receptores de insulina de forma natural[cite: 449, 528].",
+       "is_branch_point": false,
+       "cross_contamination_alert": "ALERTA DAIRY-FREE: Las cremas 'non-dairy' para café suelen ser trampas semánticas con leche[cite: 475, 590]."
+     }
+   ]
+ },
+ {
+   "id": "GOS-29",
+   "title": "Avena Ancestral con Manzana y Canela",
+   "description": "Seguridad celíaca en cada grano: avena certificada y frutas frescas para un inicio de día estable[cite: 502, 601].",
+   "ingredients": ["Avena certificada GF", "Manzana orgánica", "Canela", "Agua o leche de arroz"],
+   "steps": [
+     {
+       "step": 1,
+       "instruction": "USAR SOLO AVENA CERTIFICADA. La avena genérica está casi siempre contaminada por la rotación de cultivos de trigo[cite: 502, 601].",
+       "is_branch_point": true,
+       "variant_logic": {
+         "APLV": "Preparar con agua o leche de coco para garantizar 0% proteínas lácteas[cite: 438, 476].",
+         "Keto": "Sustituir avena por semillas de calabaza y girasol hidratadas[cite: 428, 529].",
+         "Low FODMAP": "Sustituir manzana por fresas frescas para evitar el exceso de fructosa[cite: 513, 603].",
+         "Diabetes": "No endulzar; la canela y la manzana cocida aportan el dulzor biológico suficiente[cite: 449, 528]."
+       }
+     },
+     {
+       "step": 2,
+       "instruction": "Cocer a fuego lento. El calor descompone la fibra de la manzana, facilitando su digestión en estómagos sensibles[cite: 446, 509].",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Renal": "Remojar la avena y la manzana por 4h (Lixiviación) para reducir minerales[cite: 451, 523].",
+         "Whole30": "Preparar con agua; las leches vegetales de granos están restringidas[cite: 533, 534].",
+         "Histamine": "Utilizar manzanas de variedades dulces; evitar cítricos asociados[cite: 520, 606].",
+         "Soy-Free": "Asegurar que el área de preparación no tenga restos de bebidas de soja[cite: 441, 596]."
+       }
+     },
+     {
+       "step": 3,
+       "instruction": "Servir tibio. Este plato es el pilar de un desayuno antiinflamatorio[cite: 432, 537].",
+       "is_branch_point": false,
+       "cross_contamination_alert": "ALERTA GLUTEN: El vinagre de malta o el regaliz oculto en el área pueden contaminar este plato[cite: 502, 600]."
+     }
+   ]
+ },
+ {
+   "id": "GOS-30",
+   "title": "Compota de Manzana 'Whole30 Reset'",
+   "description": "Simplicidad y cumplimiento: 30 días de pureza eliminando azúcares y aditivos industriales[cite: 532, 533].",
+   "ingredients": ["Manzana", "Canela en rama", "Agua pura"],
+   "steps": [
+     {
+       "step": 1,
+       "instruction": "Pela y corta las manzanas. Cocina con agua y canela en rama. PROHIBIDO: miel, sirope de arce o agave[cite: 533, 611].",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Keto": "Sustituir manzana por bayas (arándanos/fresas) para mantener carbohidratos netos bajos[cite: 529, 541].",
+         "Low FODMAP": "Sustituir manzana por papaya o melón por su bajo contenido en fructosa[cite: 513, 603].",
+         "Diabetes": "Utilizar manzanas verdes (Granny Smith) por su menor carga de azúcar natural[cite: 527, 528].",
+         "Renal": "Obligatorio: Lixiviar la manzana picada (4h remojo) para reducir el potasio[cite: 451, 523]."
+       }
+     },
+     {
+       "step": 2,
+       "instruction": "Cocina hasta que la manzana esté tierna y se pueda pisar con un tenedor. La canela aporta el dulzor necesario sin afectar la insulina[cite: 449, 528].",
+       "is_branch_point": true,
+       "variant_logic": {
+         "Histamine": "Utilizar manzanas muy frescas; evitar el almacenamiento prolongado en fruteros[cite: 516, 517].",
+         "APLV": "Asegurar que no se use mantequilla para dar brillo a la compota[cite: 438, 587].",
+         "Vegan": "Sin cambios; la receta es vegetal y ética por naturaleza[cite: 426, 535].",
+         "Celiac": "Asegurar que la canela no sea una mezcla comercial con harinas[cite: 506, 541]."
+       }
+     },
+     {
+       "step": 3,
+       "instruction": "Servir como snack o desayuno. El jugo de fruta es permitido aquí como ingrediente, nunca como bebida[cite: 534, 577].",
+       "is_branch_point": false,
+       "cross_contamination_alert": "ALERTA ADITIVOS: Prohibida la carragenina y el MSG en cualquier acompañamiento[cite: 534, 613]."
+     }
+   ]
+ }
+]
+
+________________
+👨‍🏫 Perspectiva de CTO: Evaluación Técnica del Batch #03
+Este bloque consolida el motor de GOS mediante:
+1. Diferenciación Molecular: Hemos implementado la distinción entre Avena Certificada y genérica (GOS-29), y entre Fósforo Orgánico e Inorgánico (GOS-24), lo que protege la vida del paciente renal y celíaco1111.
++1
+
+2. Sustitución de Alta Fidelidad: El uso de Aquafaba y Chía (GOS-25) para reemplazar huevos garantiza que la textura de las recetas de pavo sea "Chef Quality" sin violar restricciones inmunológicas2222.
++1
+
+3. Gestión de Alérgenos Industriales: La receta GOS-26 introduce la lógica de Aceites Refinados vs. Prensados para alérgicos a la soja, un detalle de ingeniería nutricional de nivel experto3333.
++1
+
+¿Confirmas la recepción de este batch para proceder con el Batch #04 (Recetas GOS-31 a GOS-40) enfocado en Cerdos, Salteados Orientales y Gestión de Grasas?

@@ -1,237 +1,240 @@
 [
-  {
-    "id": "GOS-01",
-    "title": "Pollo al Limón con Arroz y Vegetales",
-    "description": "Estándar de oro antiinflamatorio. Dieta Mediterránea.",
-    "tags": [
-      "Mediterranean",
-      "Anti-Inflammatory"
-    ],
-    "ingredients": [
-      "Pechuga de pollo",
-      "Arroz integral",
-      "Zanahoria",
-      "Calabacín",
-      "AOVE",
-      "Limón",
-      "Ajo",
-      "Cebolla",
-      "Sal marina"
-    ],
-    "steps": [
-      {
-        "instruction": "Cocer el arroz integral con una pizca de sal marina.",
-        "is_branch_point": true,
-        "variant_logic": {
-          "Keto": "Sustituir Arroz por Arroz de Coliflor salteado (200g)."
-        }
-      },
-      {
-        "instruction": "Cortar el pollo en dados y las verduras en juliana.",
-        "is_branch_point": false
-      },
-      {
-        "instruction": "Sofreír ajo y cebolla en AOVE hasta que estén dorados.",
-        "is_branch_point": true,
-        "variant_logic": {
-          "Low FODMAP": "Usar Aceite Infusionado en Ajo (sin sólidos). NO usar cebolla ni ajo sólido.",
-          "Histamine": "Saltar sofrito de ajo/cebolla. Usar solo AOVE fresco directamente."
-        }
-      },
-      {
-        "instruction": "Añadir el pollo y dorar hasta que esté completamente cocido.",
-        "is_branch_point": false
-      },
-      {
-        "instruction": "Incorporar zanahoria y calabacín. Cocinar 5-7 minutos.",
-        "is_branch_point": true,
-        "variant_logic": {
-          "Low FODMAP": "Limitar calabacín a máximo 65g (riesgo de polioles)."
-        }
-      },
-      {
-        "instruction": "Añadir zumo de limón fresco y cocinar 3 minutos más.",
-        "is_branch_point": true,
-        "variant_logic": {
-          "Histamine": "NO usar limón (liberador de histamina). Usar pizca de ácido ascórbico o nada."
-        }
-      },
-      {
-        "instruction": "Servir sobre arroz integral.",
-        "is_branch_point": false
-      }
-    ]
-  },
-  {
-    "id": "GOS-02",
-    "title": "Pollo 'Clean' de 20 Minutos",
-    "description": "Protocolo SIGHI para intolerancia a histamina. Máxima frescura.",
-    "tags": [
-      "Histamine",
-      "Low-Reactant",
-      "Clean"
-    ],
-    "ingredients": [
-      "Pechuga de pollo (Extremadamente fresca)",
-      "Arroz",
-      "Calabacín fresco",
-      "Zanahoria fresca",
-      "AOVE",
-      "Sal"
-    ],
-    "steps": [
-      {
-        "instruction": "Verificar frescura absoluta del pollo (comprado hoy, nunca congelado).",
-        "is_branch_point": false,
-        "cross_contamination_alert": "ALERTA HISTAMINA CRÍTICA: Si el pollo no es fresco o fue descongelado, DESCARTAR receta. Riesgo de acumulación de histamina y shock anafiláctico."
-      },
-      {
-        "instruction": "Cocer arroz en agua pura sin aditivos.",
-        "is_branch_point": false
-      },
-      {
-        "instruction": "Saltear pollo cortado en cubos en AOVE fresco durante 8-10 minutos.",
-        "is_branch_point": false
-      },
-      {
-        "instruction": "Añadir zanahoria y calabacín frescos. Cocinar 5 minutos.",
-        "is_branch_point": false
-      },
-      {
-        "instruction": "Servir INMEDIATAMENTE. NO refrigerar ni guardar sobras.",
-        "is_branch_point": false,
-        "cross_contamination_alert": "Prohibido guardar sobras (las sobras acumulan histamina con bacteria)."
-      }
-    ]
-  },
-  {
-    "id": "GOS-03",
-    "title": "Bowl de Pollo y Arroz 'FODMAP-Safe'",
-    "description": "Bajo en FODMAPs para Síndrome de Intestino Irritable (Fase Eliminación).",
-    "tags": [
-      "Low FODMAP",
-      "IBS",
-      "Digestive"
-    ],
-    "ingredients": [
-      "Pechuga de pollo",
-      "Arroz",
-      "Zanahoria",
-      "Aceite infusionado en ajo (sin sólidos)",
-      "Sal"
-    ],
-    "steps": [
-      {
-        "instruction": "Cocer arroz blanco (bajo FODMAP) con sal.",
-        "is_branch_point": false
-      },
-      {
-        "instruction": "Cocinar pollo en aceite infusionado en ajo.",
-        "is_branch_point": false,
-        "cross_contamination_alert": "CRÍTICO: El aceite debe ser INFUSIONADO (los fructanos del ajo NO son solubles en aceite). NO usar ajo sólido ni cebolla."
-      },
-      {
-        "instruction": "Añadir zanahoria cortada en rodajas finas.",
-        "is_branch_point": false
-      },
-      {
-        "instruction": "Servir sobre arroz.",
-        "is_branch_point": false
-      }
-    ]
-  },
-  {
-    "id": "GOS-04",
-    "title": "Pollo Renal con Arroz (Control K/P)",
-    "description": "Dieta renal: Control de Potasio e Hiperkalemia, Fósforo bajo.",
-    "tags": [
-      "Renal",
-      "Low Potassium",
-      "Low Phosphorus"
-    ],
-    "ingredients": [
-      "Pollo fresco (no inyectado)",
-      "Arroz blanco (bajo P)",
-      "Zanahoria (Lixiviada)",
-      "Aceite de oliva"
-    ],
-    "steps": [
-      {
-        "instruction": "Verificar que el pollo NO sea inyectado con caldo/lactosa.",
-        "is_branch_point": false,
-        "cross_contamination_alert": "Pollo inyectado contiene fosfatos inorgánicos (absorción 90-100%). Letal para pacientes renales."
-      },
-      {
-        "instruction": "Pelar y cortar z anahoria en rodajas finas. Remojar en agua abundante durante 4 horas (lixiviación).",
-        "is_branch_point": false
-      },
-      {
-        "instruction": "Cocer arroz blanco (NO integral, el integral es alto en fósforo).",
-        "is_branch_point": false
-      },
-      {
-        "instruction": "Cocinar pollo en aceite de oliva sin sal.",
-        "is_branch_point": false,
-        "cross_contamination_alert": "NO usar sustitutos de sal (KCl). Contienen Cloruro de Potasio y son LETALES para pacientes renales."
-      },
-      {
-        "instruction": "Escurrir zanahoria lixiviada y saltear brevemente.",
-        "is_branch_point": false
-      },
-      {
-        "instruction": "Servir porción controlada (limitar proteína si GFR<30ml/min).",
-        "is_branch_point": false
-      }
-    ]
-  },
-  {
-    "id": "GOS-05",
-    "title": "Steak & Eggs Power Bowl",
-    "description": "Keto Powerhouse. Carbohidratos netos < 5g.",
-    "tags": [
-      "Keto",
-      "High-Protein",
-      "Low-Carb"
-    ],
-    "ingredients": [
-      "Ternera magra",
-      "Huevo entero",
-      "Aguacate",
-      "Espinaca cocida",
-      "AOVE",
-      "Sal"
-    ],
-    "steps": [
-      {
-        "instruction": "Cocinar espinacas en AOVE hasta que estén marchitas.",
-        "is_branch_point": false
-      },
-      {
-        "instruction": "Cocinar filete de ternera al punto deseado en la misma sartén.",
-        "is_branch_point": false,
-        "skipped_for_diets": [
-          "Vegan",
-          "Vegetarian"
+    {
+        "id": "GOS-01",
+        "title": "Pollo al Limón con Arroz y Vegetales",
+        "description": "Estándar de oro antiinflamatorio. Dieta Mediterránea.",
+        "tags": [
+            "Mediterranean",
+            "Anti-Inflammatory"
         ],
-        "cross_contamination_alert": "Para APLV: Asegurar que la sartén NO tenga residuos de mantequilla (caseína)."
-      },
-      {
-        "instruction": "Freír huevo en la grasa residual del filete.",
-        "is_branch_point": true,
-        "variant_logic": {
-          "Egg Allergy": "Saltar huevo. Aumentar porción de aguacate por 1/2 unidad más.",
-          "Histamine": "Usar solo la YEMA (la clara puede ser liberadora). Separar clara y descartarla.",
-          "Vegan": "Sustituir Huevo por Tofu Scramble (150g) y Ternera por Tempeh (200g)."
-        }
-      },
-      {
-        "instruction": "Servir con aguacate laminado.",
-        "is_branch_point": true,
-        "variant_logic": {
-          "Renal": "Limitar aguacate a 1/8 de unidad (alto en potasio y sorbitol).",
-          "Low FODMAP": "Limitar aguacate a 1/8 de unidad (alto en sorbitol poliol)."
-        }
-      }
-    ]
-  }
+        "ingredients": [
+            "Pechuga de pollo",
+            "Arroz integral",
+            "Zanahoria",
+            "Calabacín",
+            "AOVE",
+            "Limón",
+            "Ajo",
+            "Cebolla",
+            "Sal marina"
+        ],
+        "steps": [
+            {
+                "instruction": "Cocer el arroz integral con una pizca de sal marina.",
+                "is_branch_point": true,
+                "variant_logic": {
+                    "Keto": "Sustituir Arroz por Arroz de Coliflor salteado (200g)."
+                }
+            },
+            {
+                "instruction": "Cortar el pollo en dados y las verduras en juliana.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Sofreír ajo y cebolla en AOVE hasta que estén dorados.",
+                "is_branch_point": true,
+                "variant_logic": {
+                    "Low FODMAP": "Usar Aceite Infusionado en Ajo (sin sólidos). NO usar cebolla ni ajo sólido.",
+                    "Histamine": "Saltar sofrito de ajo/cebolla. Usar solo AOVE fresco directamente."
+                }
+            },
+            {
+                "instruction": "Añadir el pollo y dorar hasta que esté completamente cocido.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Incorporar zanahoria y calabacín. Cocinar 5-7 minutos.",
+                "is_branch_point": true,
+                "variant_logic": {
+                    "Low FODMAP": "Limitar calabacín a máximo 65g (riesgo de polioles)."
+                }
+            },
+            {
+                "instruction": "Añadir zumo de limón fresco y cocinar 3 minutos más.",
+                "is_branch_point": true,
+                "variant_logic": {
+                    "Histamine": "NO usar limón (liberador de histamina). Usar pizca de ácido ascórbico o nada."
+                }
+            },
+            {
+                "instruction": "Servir sobre arroz integral.",
+                "is_branch_point": false
+            }
+        ]
+    },
+    {
+        "id": "GOS-02",
+        "title": "Pollo 'Clean' de 20 Minutos",
+        "description": "Protocolo SIGHI para intolerancia a histamina. Máxima frescura.",
+        "tags": [
+            "Histamine",
+            "Low-Reactant",
+            "Clean"
+        ],
+        "ingredients": [
+            "Pechuga de pollo (Extremadamente fresca)",
+            "Arroz",
+            "Calabacín fresco",
+            "Zanahoria fresca",
+            "AOVE",
+            "Sal"
+        ],
+        "steps": [
+            {
+                "instruction": "Verificar frescura absoluta del pollo (comprado hoy, nunca congelado).",
+                "is_branch_point": false,
+                "cross_contamination_alert": "ALERTA HISTAMINA CRÍTICA: Si el pollo no es fresco o fue descongelado, DESCARTAR receta. Riesgo de acumulación de histamina y shock anafiláctico."
+            },
+            {
+                "instruction": "Cocer arroz en agua pura sin aditivos.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Saltear pollo cortado en cubos en AOVE fresco durante 8-10 minutos.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Añadir zanahoria y calabacín frescos. Cocinar 5 minutos.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Servir INMEDIATAMENTE. NO refrigerar ni guardar sobras.",
+                "is_branch_point": false,
+                "cross_contamination_alert": "Prohibido guardar sobras (las sobras acumulan histamina con bacteria)."
+            }
+        ]
+    },
+    {
+        "id": "GOS-03",
+        "title": "Bowl de Pollo y Arroz 'FODMAP-Safe'",
+        "description": "Bajo en FODMAPs para Síndrome de Intestino Irritable (Fase Eliminación).",
+        "tags": [
+            "Low FODMAP",
+            "IBS",
+            "Digestive"
+        ],
+        "ingredients": [
+            "Pechuga de pollo",
+            "Arroz",
+            "Zanahoria",
+            "Aceite infusionado en ajo (sin sólidos)",
+            "Sal"
+        ],
+        "steps": [
+            {
+                "instruction": "Cocer arroz blanco (bajo FODMAP) con sal.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Cocinar pollo en aceite infusionado en ajo.",
+                "is_branch_point": false,
+                "cross_contamination_alert": "CRÍTICO: El aceite debe ser INFUSIONADO (los fructanos del ajo NO son solubles en aceite). NO usar ajo sólido ni cebolla."
+            },
+            {
+                "instruction": "Añadir zanahoria cortada en rodajas finas.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Servir sobre arroz.",
+                "is_branch_point": false
+            }
+        ]
+    },
+    {
+        "id": "GOS-04",
+        "title": "Pollo Renal con Arroz (Control K/P)",
+        "description": "Dieta renal: Control de Potasio e Hiperkalemia, Fósforo bajo.",
+        "tags": [
+            "Renal",
+            "Low Potassium",
+            "Low Phosphorus"
+        ],
+        "ingredients": [
+            "Pollo fresco (no inyectado)",
+            "Arroz blanco (bajo P)",
+            "Zanahoria (Lixiviada)",
+            "Aceite de oliva"
+        ],
+        "steps": [
+            {
+                "instruction": "Verificar que el pollo NO sea inyectado con caldo/lactosa.",
+                "is_branch_point": true,
+                "cross_contamination_alert": "Pollo inyectado contiene fosfatos inorgánicos (absorción 90-100%). Letal para pacientes renales.",
+                "variant_logic": {
+                    "Low FODMAP": "Eliminar Ajo/Cebolla/Trigo. Usar Aceite de Ajo y parte verde de cebolleta."
+                }
+            },
+            {
+                "instruction": "Pelar y cortar z anahoria en rodajas finas. Remojar en agua abundante durante 4 horas (lixiviación).",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Cocer arroz blanco (NO integral, el integral es alto en fósforo).",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Cocinar pollo en aceite de oliva sin sal.",
+                "is_branch_point": false,
+                "cross_contamination_alert": "NO usar sustitutos de sal (KCl). Contienen Cloruro de Potasio y son LETALES para pacientes renales."
+            },
+            {
+                "instruction": "Escurrir zanahoria lixiviada y saltear brevemente.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Servir porción controlada (limitar proteína si GFR<30ml/min).",
+                "is_branch_point": false
+            }
+        ]
+    },
+    {
+        "id": "GOS-05",
+        "title": "Steak & Eggs Power Bowl",
+        "description": "Keto Powerhouse. Carbohidratos netos < 5g.",
+        "tags": [
+            "Keto",
+            "High-Protein",
+            "Low-Carb"
+        ],
+        "ingredients": [
+            "Ternera magra",
+            "Huevo entero",
+            "Aguacate",
+            "Espinaca cocida",
+            "AOVE",
+            "Sal"
+        ],
+        "steps": [
+            {
+                "instruction": "Cocinar espinacas en AOVE hasta que estén marchitas.",
+                "is_branch_point": false
+            },
+            {
+                "instruction": "Cocinar filete de ternera al punto deseado en la misma sartén.",
+                "is_branch_point": false,
+                "skipped_for_diets": [
+                    "Vegan",
+                    "Vegetarian"
+                ],
+                "cross_contamination_alert": "Para APLV: Asegurar que la sartén NO tenga residuos de mantequilla (caseína)."
+            },
+            {
+                "instruction": "Freír huevo en la grasa residual del filete.",
+                "is_branch_point": true,
+                "variant_logic": {
+                    "Egg Allergy": "Saltar huevo. Aumentar porción de aguacate por 1/2 unidad más.",
+                    "Histamine": "Usar solo la YEMA (la clara puede ser liberadora). Separar clara y descartarla.",
+                    "Vegan": "Sustituir Huevo por Tofu Scramble (150g) y Ternera por Tempeh (200g)."
+                }
+            },
+            {
+                "instruction": "Servir con aguacate laminado.",
+                "is_branch_point": true,
+                "variant_logic": {
+                    "Renal": "Limitar aguacate a 1/8 de unidad (alto en potasio y sorbitol).",
+                    "Low FODMAP": "Limitar aguacate a 1/8 de unidad (alto en sorbitol poliol)."
+                }
+            }
+        ]
+    }
 ]

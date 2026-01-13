@@ -126,8 +126,11 @@
         "steps": [
             {
                 "instruction": "Verificar que el aceite de oliva NO sea refinado de soja.",
-                "is_branch_point": false,
-                "cross_contamination_alert": "Aceite de soja refinado es común en mezclas genéricas. Leer etiqueta."
+                "is_branch_point": true,
+                "cross_contamination_alert": "Aceite de soja refinado es común en mezclas genéricas. Leer etiqueta.",
+                "variant_logic": {
+                    "Renal": "Lixiviar (4h remojo) patatas/vegetales. Evitar sal y fosfatos. Controlar potasio."
+                }
             },
             {
                 "instruction": "Cocer patatas hasta que estén tiernas.",
@@ -162,7 +165,10 @@
         "steps": [
             {
                 "instruction": "Cortar merluza en trozos medianos.",
-                "is_branch_point": false
+                "is_branch_point": true,
+                "variant_logic": {
+                    "Renal": "Lixiviar (4h remojo) patatas/vegetales. Evitar sal y fosfatos. Controlar potasio."
+                }
             },
             {
                 "instruction": "Hervir patata y zanahoria hasta que estén tiernas.",

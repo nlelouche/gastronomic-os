@@ -4,6 +4,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:gastronomic_os/core/widgets/ui_kit.dart';
 import 'package:gastronomic_os/features/onboarding/presentation/pages/onboarding_page.dart';
 import 'package:gastronomic_os/features/onboarding/presentation/bloc/onboarding_bloc.dart';
+import 'package:gastronomic_os/features/settings/presentation/pages/glossary_page.dart';
 import 'package:gastronomic_os/features/onboarding/presentation/bloc/onboarding_state_event.dart';
 import 'package:gastronomic_os/features/recipes/presentation/bloc/recipe_bloc.dart';
 import 'package:gastronomic_os/features/recipes/presentation/bloc/recipe_event.dart';
@@ -144,6 +145,19 @@ class SettingsView extends StatelessWidget {
                         // TODO: Implement theme switching dialog
                         ScaffoldMessenger.of(context).showSnackBar(
                            const SnackBar(content: Text('Theme switching coming soon (Locked to System for now)'))
+                        );
+                      },
+                    ),
+                    const SizedBox(height: 12),
+                    _buildSettingsTile(
+                      context,
+                      title: 'Glossary of Terms',
+                      subtitle: 'Learn about APLV, Keto, and other tags.',
+                      icon: Icons.menu_book_rounded,
+                      iconColor: Colors.teal,
+                      onTap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(builder: (_) => const GlossaryPage()),
                         );
                       },
                     ),
