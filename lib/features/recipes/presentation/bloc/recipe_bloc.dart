@@ -7,11 +7,13 @@ import 'package:gastronomic_os/features/planner/domain/logic/scoring_engine.dart
 import 'package:gastronomic_os/features/recipes/domain/entities/recipe.dart';
 import 'package:gastronomic_os/features/recipes/presentation/bloc/recipe_event.dart';
 import 'package:gastronomic_os/features/recipes/presentation/bloc/recipe_state.dart';
+import 'package:gastronomic_os/features/recipes/domain/logic/recipe_debug_service.dart';
 
 class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
   final IRecipeRepository repository;
   final IInventoryRepository inventoryRepository;
   final IOnboardingRepository onboardingRepository;
+  final RecipeDebugService debugService;
 
   final DietEngine _dietEngine = DietEngine();
   final ScoringEngine _scoringEngine = ScoringEngine();
@@ -20,6 +22,7 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
     required this.repository,
     required this.inventoryRepository,
     required this.onboardingRepository,
+    required this.debugService,
   }) : super(RecipeInitial()) {
     on<LoadRecipes>(_onLoadRecipes);
     on<LoadMoreRecipes>(_onLoadMoreRecipes);
@@ -86,57 +89,68 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
   }
 
   Future<void> _onFilterRecipes(FilterRecipes event, Emitter<RecipeState> emit) async {
-    // emit(RecipeLoading()); // Removed to prevent UI focus loss during search
+    // 1. Prepare Server-Side Filters
+    List<String>? excludedTags;
     
-    // Server-Side Search for Text Query
-    // We reset pagination (offset 0)
+    if (event.isFamilySafe) {
+        final familyResult = await onboardingRepository.getFamilyMembers();
+        if (familyResult.$2 != null) {
+            final family = familyResult.$2!;
+            // Simple mapping for Server-Side Exclusion (Optimization)
+            // Complex logic still happens in DietEngine, but this reduces "Definite No's"
+            excludedTags = [];
+            for (var member in family) {
+                for (var condition in member.medicalConditions) {
+                    // Map MedicalCondition to approximate excluded tags
+                    // NOTE: This assumes we tag unsafe recipes.
+                    // Ideally, we'd filter by "Allowed Tags", but exclusionary is safer for now.
+                    // This is a placeholder for the Audit Fix.
+                    // if (condition == MedicalCondition.celiac) excludedTags.add('Gluten'); 
+                    // if (condition == MedicalCondition.nutAllergy) excludedTags.add('Peanuts');
+                    // For now, let's keep it null safe as the DB tags aren't fully standardized.
+                }
+            }
+        }
+    }
+
+    // 2. Fetch from Repo with Filters
     final result = await repository.getRecipes(
       limit: 20, 
       offset: 0,
-      query: event.query
+      query: event.query,
+      excludedTags: excludedTags,
     );
 
     if (result.$1 != null) {
       emit(RecipeError(result.$1!.message));
     } else {
-      final list = result.$2!;
-      // Client-side filtering for other flags (Family/Pantry) on this page?
-      // Plan Phase 2 says: "Filter Implications... server-side search" for text.
-      // It doesn't explicitly solve Family/Pantry for the whole DB.
-      // So we apply it to the returned page for now, or ignore it?
-      // If we apply it to the page, we might get 0 results on Page 1 even if Page 2 has them.
-      // This is a known limitation until Phase 3 (Scoring Engine).
-      // Let's apply it simply to the current fetched batch so features don't look broken.
+      var list = result.$2!;
       
-      var filtered = list;
-
-      // 3. Family Safe
-      if (event.isFamilySafe) {
-          final familyResult = await onboardingRepository.getFamilyMembers();
-          if (familyResult.$2 != null) {
-              final family = familyResult.$2!;
-              filtered = filtered.where((r) => _dietEngine.isRecipeCompatible(r, family)).toList();
-          }
+      // 3. Apply Strict Client-Side Filtering (DietEngine)
+      // We still need this because Tags are coarse, but DietEngine is precise.
+      if (event.isFamilySafe && event.isFamilySafe) { // Redundant check for clarity
+           final familyResult = await onboardingRepository.getFamilyMembers();
+           if (familyResult.$2 != null) {
+               list = list.where((r) => _dietEngine.isRecipeCompatible(r, familyResult.$2!)).toList();
+           }
       }
 
-      // 4. Pantry Ready
-      // ... (Same limitation, applied to batch)
+      // 4. Pantry Ready Sort
        if (event.isPantryReady) {
           final invResult = await inventoryRepository.getInventory();
           if (invResult.$2 != null) {
               final inventory = invResult.$2!;
-              // Sort batch by score
-              filtered.sort((a, b) {
+              list.sort((a, b) {
                   final scoreA = _scoringEngine.calculateScore(a, inventory);
                   final scoreB = _scoringEngine.calculateScore(b, inventory);
-                  return scoreB.compareTo(scoreA); // Descending
+                  return scoreB.compareTo(scoreA); 
               });
           }
       }
 
       emit(RecipeLoaded(
-        recipes: filtered,
-        hasReachedMax: list.length < 20, // Based on FETCHED count, not filtered count
+        recipes: list,
+        hasReachedMax: list.length < 20, 
         query: event.query,
         isFamilySafe: event.isFamilySafe,
         isPantryReady: event.isPantryReady,
@@ -170,7 +184,7 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
   Future<void> _onSeedDatabase(SeedDatabase event, Emitter<RecipeState> emit) async {
     emit(RecipeLoading());
     try {
-      await repository.seedDatabase(filterTitle: event.filterTitle);
+      await debugService.seedDatabase(filterTitle: event.filterTitle);
       add(LoadRecipes());
     } catch (e) {
       emit(RecipeError('Failed to seed database: $e'));

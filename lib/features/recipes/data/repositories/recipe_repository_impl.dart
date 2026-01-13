@@ -24,9 +24,9 @@ class RecipeRepositoryImpl implements IRecipeRepository {
   });
 
   @override
-  Future<(Failure?, List<Recipe>?)> getRecipes({int limit = 20, int offset = 0, String? query}) async {
+  Future<(Failure?, List<Recipe>?)> getRecipes({int limit = 20, int offset = 0, String? query, List<String>? excludedTags}) async {
     try {
-      final result = await remoteDataSource.getRecipes(limit: limit, offset: offset, query: query);
+      final result = await remoteDataSource.getRecipes(limit: limit, offset: offset, query: query, excludedTags: excludedTags);
       return (null, result);
     } catch (e, stackTrace) {
       final failure = ExceptionHandler.handle(
@@ -194,34 +194,5 @@ class RecipeRepositoryImpl implements IRecipeRepository {
     }
   }
 
-  @override
-  Future<void> seedDatabase({String? filterTitle}) async {
-    AppLogger.w('🧹 Clearing existing recipes...');
-    
-    try {
-      if (filterTitle == null) {
-         await remoteDataSource.clearAllRecipes();
-         AppLogger.i('✅ Database cleared');
-      } else {
-        AppLogger.i('ℹ️ Single recipe seed mode - Skipping full database clear');
-      }
 
-    } catch (e, stackTrace) {
-      AppLogger.e('⚠️ Error clearing database', e, stackTrace);
-    }
-
-    AppLogger.i('🌱 Seeding recipes${filterTitle != null ? ' (Filter: $filterTitle)' : ''}...');
-    final recipes = await RecipeSeeder.loadFromAssets(filterTitle: filterTitle);
-    
-    for (final recipe in recipes) {
-      try {
-        await remoteDataSource.createRecipe(recipe);
-        AppLogger.i('✓ Seeded: ${recipe.title}');
-      } catch (e) {
-        AppLogger.e('✗ Error seeding recipe ${recipe.title}', e);
-      }
-    }
-    AppLogger.i('🎉 Seeding complete!');
-    _cachedRecipes = null;
-  }
 }

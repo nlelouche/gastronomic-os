@@ -19,6 +19,7 @@ import 'package:gastronomic_os/features/planner/data/repositories/meal_plan_repo
 import 'package:gastronomic_os/features/planner/presentation/bloc/planner_bloc.dart';
 import 'package:gastronomic_os/features/planner/domain/logic/shopping_engine.dart';
 import 'package:gastronomic_os/core/bloc/localization_bloc.dart';
+import 'package:gastronomic_os/features/recipes/domain/logic/recipe_debug_service.dart';
 
 final sl = GetIt.instance;
 
@@ -46,6 +47,7 @@ Future<void> init() async {
     repository: sl(),
     inventoryRepository: sl(),
     onboardingRepository: sl(),
+    debugService: sl(),
   ));
   sl.registerFactory(() => OnboardingBloc(repository: sl()));
 
@@ -68,6 +70,7 @@ Future<void> init() async {
       () => MealPlanRepositoryImpl(sl()));
 
   sl.registerLazySingleton(() => ShoppingEngine());
+  sl.registerLazySingleton(() => RecipeDebugService(remoteDataSource: sl()));
   
   sl.registerFactory(() => PlannerBloc(
     getMealSuggestions: sl(),

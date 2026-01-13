@@ -9,7 +9,7 @@ import 'package:gastronomic_os/features/recipes/data/models/recipe_step_model.da
 import 'package:gastronomic_os/features/recipes/domain/entities/recipe.dart'; 
 
 abstract class RecipeRemoteDataSource {
-  Future<List<RecipeModel>> getRecipes({int limit = 20, int offset = 0, String? query});
+  Future<List<RecipeModel>> getRecipes({int limit = 20, int offset = 0, String? query, List<String>? excludedTags});
   Future<RecipeModel> createRecipe(Recipe recipe);
   Future<RecipeModel> forkRecipe(String originalRecipeId, String newTitle, String authorId);
   Future<List<CommitModel>> getCommits(String recipeId);
@@ -25,12 +25,16 @@ class RecipeRemoteDataSourceImpl implements RecipeRemoteDataSource {
   RecipeRemoteDataSourceImpl({required this.supabaseClient});
 
   @override
-  Future<List<RecipeModel>> getRecipes({int limit = 20, int offset = 0, String? query}) async {
+  Future<List<RecipeModel>> getRecipes({int limit = 20, int offset = 0, String? query, List<String>? excludedTags}) async {
     try {
       var builder = supabaseClient.from('recipes').select();
       
       if (query != null && query.isNotEmpty) {
         builder = builder.ilike('title', '%$query%');
+      }
+
+      if (excludedTags != null && excludedTags.isNotEmpty) {
+         builder = builder.not('tags', 'ov', excludedTags);
       }
 
       final response = await builder
