@@ -1,5 +1,6 @@
 import 'package:get_it/get_it.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:gastronomic_os/core/bloc/theme_cubit.dart';
 import 'package:gastronomic_os/features/inventory/data/datasources/inventory_remote_datasource.dart';
 import 'package:gastronomic_os/features/inventory/data/repositories/inventory_repository_impl.dart';
 import 'package:gastronomic_os/features/inventory/domain/repositories/i_inventory_repository.dart';
@@ -75,6 +76,7 @@ Future<void> init() async {
     shoppingEngine: sl(),
   ));
   sl.registerFactory(() => LocalizationBloc());
+  sl.registerFactory(() => ThemeCubit());
 
   // ! External
   sl.registerLazySingleton(() => Supabase.instance.client);

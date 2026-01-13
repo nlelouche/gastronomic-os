@@ -82,7 +82,7 @@ class DashboardPage extends StatelessWidget {
                         title: AppLocalizations.of(context)!.dashboardFridgeTitle,
                         subtitle: AppLocalizations.of(context)!.dashboardFridgeSubtitle,
                         icon: Icons.kitchen,
-                        color: Colors.blueAccent,
+                        color: colorScheme.secondary,
                         delay: 400.ms,
                         onTap: () => Navigator.of(context).push(
                           MaterialPageRoute(builder: (context) => const InventoryPage()),
@@ -95,7 +95,7 @@ class DashboardPage extends StatelessWidget {
                         title: AppLocalizations.of(context)!.dashboardCookbookTitle,
                         subtitle: AppLocalizations.of(context)!.dashboardCookbookSubtitle,
                         icon: Icons.menu_book_rounded,
-                        color: Colors.orangeAccent,
+                        color: colorScheme.tertiary,
                         delay: 500.ms,
                         onTap: () => Navigator.of(context).push(
                           MaterialPageRoute(builder: (context) => const RecipesPage()),
@@ -110,7 +110,7 @@ class DashboardPage extends StatelessWidget {
                         title: AppLocalizations.of(context)!.dashboardPlannerTitle,
                         subtitle: AppLocalizations.of(context)!.dashboardPlannerSubtitle,
                         icon: Icons.calendar_month_rounded,
-                        color: Colors.purpleAccent,
+                        color: colorScheme.primary,
                         delay: 450.ms,
                         onTap: () => Navigator.of(context).push(
                           MaterialPageRoute(
@@ -128,7 +128,7 @@ class DashboardPage extends StatelessWidget {
                         title: AppLocalizations.of(context)!.dashboardSocialTitle,
                         subtitle: AppLocalizations.of(context)!.dashboardSocialSubtitle,
                         icon: Icons.people_outline,
-                        color: Colors.pinkAccent,
+                        color: colorScheme.error, // or another slot like surfaceTint if defined
                         delay: 600.ms,
                         onTap: () {
                           ScaffoldMessenger.of(context).showSnackBar(

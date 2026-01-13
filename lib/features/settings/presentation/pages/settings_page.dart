@@ -5,6 +5,7 @@ import 'package:gastronomic_os/core/widgets/ui_kit.dart';
 import 'package:gastronomic_os/features/onboarding/presentation/pages/onboarding_page.dart';
 import 'package:gastronomic_os/features/onboarding/presentation/bloc/onboarding_bloc.dart';
 import 'package:gastronomic_os/features/settings/presentation/pages/glossary_page.dart';
+import 'package:gastronomic_os/features/settings/presentation/pages/appearance_page.dart';
 import 'package:gastronomic_os/features/onboarding/presentation/bloc/onboarding_state_event.dart';
 import 'package:gastronomic_os/features/recipes/presentation/bloc/recipe_bloc.dart';
 import 'package:gastronomic_os/features/recipes/presentation/bloc/recipe_event.dart';
@@ -22,8 +23,8 @@ class SettingsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => sl<OnboardingBloc>()),
-        BlocProvider(create: (context) => sl<RecipeBloc>()),
+        BlocProvider<OnboardingBloc>(create: (context) => sl<OnboardingBloc>()),
+        BlocProvider<RecipeBloc>(create: (context) => sl<RecipeBloc>()),
       ],
       child: const SettingsView(),
     );
@@ -105,7 +106,7 @@ class SettingsView extends StatelessWidget {
                       title: AppLocalizations.of(context)!.resetDataTitle,
                       subtitle: AppLocalizations.of(context)!.resetDataSubtitle,
                       icon: Icons.restore,
-                      iconColor: Colors.orange,
+                      iconColor: colorScheme.error,
                       onTap: () => _confirmReset(context),
                       isDestructive: true,
                     ),
@@ -116,7 +117,7 @@ class SettingsView extends StatelessWidget {
                       title: 'Seed Test Recipes',
                       subtitle: 'Dev: Populate Graph DB with Matrix Recipes',
                       icon: Icons.science,
-                      iconColor: Colors.deepPurple,
+                      iconColor: colorScheme.tertiary,
                       onTap: () {
                         context.read<RecipeBloc>().add(const SeedDatabase());
                         ScaffoldMessenger.of(context).showSnackBar(
@@ -137,7 +138,7 @@ class SettingsView extends StatelessWidget {
                           title: isEnglish ? 'English' : 'Español',
                           subtitle: isEnglish ? 'Tap to switch to Spanish' : 'Toca para cambiar a Inglés',
                           icon: Icons.language,
-                          iconColor: Colors.blue,
+                          iconColor: colorScheme.primary,
                           onTap: () {
                             final newLocale = isEnglish ? const Locale('es') : const Locale('en');
                             context.read<LocalizationBloc>().add(ChangeLocale(newLocale));
@@ -156,8 +157,8 @@ class SettingsView extends StatelessWidget {
                       subtitle: AppLocalizations.of(context)!.appearanceSubtitle,
                       icon: Icons.palette_outlined,
                       onTap: () {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                           const SnackBar(content: Text('Theme switching coming soon (Locked to System for now)'))
+                        Navigator.of(context).push(
+                          MaterialPageRoute(builder: (_) => const AppearancePage()),
                         );
                       },
                     ),
@@ -167,7 +168,7 @@ class SettingsView extends StatelessWidget {
                       title: AppLocalizations.of(context)!.glossaryTitle,
                       subtitle: AppLocalizations.of(context)!.glossarySubtitle,
                       icon: Icons.menu_book_rounded,
-                      iconColor: Colors.teal,
+                      iconColor: colorScheme.secondary,
                       onTap: () {
                         Navigator.of(context).push(
                           MaterialPageRoute(builder: (_) => const GlossaryPage()),

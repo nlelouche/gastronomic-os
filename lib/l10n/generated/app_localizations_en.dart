@@ -188,4 +188,138 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get editorInstructionsHint => 'Describe the step...';
+
+  @override
+  String get onboardingTitle => 'Who eats here?';
+
+  @override
+  String get onboardingSubtitle =>
+      'Build your household profile for personalized diet advice.';
+
+  @override
+  String get onboardingAddMember => 'Add Member';
+
+  @override
+  String get onboardingEditMember => 'Edit Member';
+
+  @override
+  String get onboardingNameLabel => 'Name';
+
+  @override
+  String get onboardingNameHint => 'e.g., John';
+
+  @override
+  String get onboardingRoleLabel => 'Role';
+
+  @override
+  String get onboardingLifestyleTitle => 'Lifestyle (Base Diet)';
+
+  @override
+  String get onboardingLifestyleHint => 'Select the main eating pattern.';
+
+  @override
+  String get onboardingMedicalTitle => 'Clinical Profile';
+
+  @override
+  String get onboardingMedicalHint =>
+      'Select all that apply. These rules override lifestyle.';
+
+  @override
+  String get onboardingSave => 'Save';
+
+  @override
+  String get onboardingFinish => 'Finish Setup';
+
+  @override
+  String get onboardingSaveChanges => 'Save Changes';
+
+  @override
+  String get onboardingSuccess => 'Family profile updated!';
+
+  @override
+  String get onboardingDelete => 'Delete';
+
+  @override
+  String get roleDad => 'Dad';
+
+  @override
+  String get roleMom => 'Mom';
+
+  @override
+  String get roleSon => 'Son';
+
+  @override
+  String get roleDaughter => 'Daughter';
+
+  @override
+  String get roleGrandparent => 'Grandparent';
+
+  @override
+  String get roleRoommate => 'Roommate';
+
+  @override
+  String get roleOther => 'Other';
+
+  @override
+  String get dietOmnivore => 'Omnivore';
+
+  @override
+  String get dietVegetarian => 'Vegetarian';
+
+  @override
+  String get dietVegan => 'Vegan';
+
+  @override
+  String get dietPescatarian => 'Pescatarian';
+
+  @override
+  String get dietKeto => 'Keto';
+
+  @override
+  String get dietPaleo => 'Paleo';
+
+  @override
+  String get dietWhole30 => 'Whole30';
+
+  @override
+  String get dietMediterranean => 'Mediterranean';
+
+  @override
+  String get dietHighPerformance => 'High Performance';
+
+  @override
+  String get dietLowCarb => 'Low Carb';
+
+  @override
+  String get conditionAplv => 'APLV (Milk Allergy)';
+
+  @override
+  String get conditionEggAllergy => 'Egg Allergy';
+
+  @override
+  String get conditionSoyAllergy => 'Soy Allergy';
+
+  @override
+  String get conditionNutAllergy => 'Nut/Peanut Allergy';
+
+  @override
+  String get conditionShellfishAllergy => 'Shellfish Allergy';
+
+  @override
+  String get conditionCeliac => 'Celiac (Gluten Free)';
+
+  @override
+  String get conditionLowFodmap => 'Low FODMAP (IBS)';
+
+  @override
+  String get conditionHistamine => 'Histamine Intolerance';
+
+  @override
+  String get conditionDiabetes => 'Diabetes';
+
+  @override
+  String get conditionRenal => 'Renal (Kidney Safe)';
+
+  @override
+  String get medicalTags => 'Medical Tags';
 }

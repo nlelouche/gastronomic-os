@@ -144,18 +144,18 @@ class _SuggestionCard extends StatelessWidget {
                     Container(
                       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                       decoration: BoxDecoration(
-                        color: Colors.green.withOpacity(0.1),
+                        color: theme.colorScheme.primaryContainer,
                         borderRadius: BorderRadius.circular(8),
-                        border: Border.all(color: Colors.green),
+                        border: Border.all(color: theme.colorScheme.primary),
                       ),
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          const Icon(Icons.stars, size: 12, color: Colors.green),
+                          Icon(Icons.stars, size: 12, color: theme.colorScheme.primary),
                           const SizedBox(width: 4),
                           Text(
                             score > 40 ? AppLocalizations.of(context)!.matchGreatValue : AppLocalizations.of(context)!.matchGoodMatch, 
-                            style: const TextStyle(fontSize: 10, color: Colors.green, fontWeight: FontWeight.bold)
+                            style: TextStyle(fontSize: 10, color: theme.colorScheme.primary, fontWeight: FontWeight.bold)
                           ),
                         ],
                       ),

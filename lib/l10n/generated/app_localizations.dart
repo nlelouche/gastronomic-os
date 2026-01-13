@@ -457,6 +457,270 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Describe the step...'**
   String get editorInstructionsHint;
+
+  /// No description provided for @onboardingTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Who eats here?'**
+  String get onboardingTitle;
+
+  /// No description provided for @onboardingSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Build your household profile for personalized diet advice.'**
+  String get onboardingSubtitle;
+
+  /// No description provided for @onboardingAddMember.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Member'**
+  String get onboardingAddMember;
+
+  /// No description provided for @onboardingEditMember.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Member'**
+  String get onboardingEditMember;
+
+  /// No description provided for @onboardingNameLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get onboardingNameLabel;
+
+  /// No description provided for @onboardingNameHint.
+  ///
+  /// In en, this message translates to:
+  /// **'e.g., John'**
+  String get onboardingNameHint;
+
+  /// No description provided for @onboardingRoleLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Role'**
+  String get onboardingRoleLabel;
+
+  /// No description provided for @onboardingLifestyleTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Lifestyle (Base Diet)'**
+  String get onboardingLifestyleTitle;
+
+  /// No description provided for @onboardingLifestyleHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Select the main eating pattern.'**
+  String get onboardingLifestyleHint;
+
+  /// No description provided for @onboardingMedicalTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Clinical Profile'**
+  String get onboardingMedicalTitle;
+
+  /// No description provided for @onboardingMedicalHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Select all that apply. These rules override lifestyle.'**
+  String get onboardingMedicalHint;
+
+  /// No description provided for @onboardingSave.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get onboardingSave;
+
+  /// No description provided for @onboardingFinish.
+  ///
+  /// In en, this message translates to:
+  /// **'Finish Setup'**
+  String get onboardingFinish;
+
+  /// No description provided for @onboardingSaveChanges.
+  ///
+  /// In en, this message translates to:
+  /// **'Save Changes'**
+  String get onboardingSaveChanges;
+
+  /// No description provided for @onboardingSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Family profile updated!'**
+  String get onboardingSuccess;
+
+  /// No description provided for @onboardingDelete.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get onboardingDelete;
+
+  /// No description provided for @roleDad.
+  ///
+  /// In en, this message translates to:
+  /// **'Dad'**
+  String get roleDad;
+
+  /// No description provided for @roleMom.
+  ///
+  /// In en, this message translates to:
+  /// **'Mom'**
+  String get roleMom;
+
+  /// No description provided for @roleSon.
+  ///
+  /// In en, this message translates to:
+  /// **'Son'**
+  String get roleSon;
+
+  /// No description provided for @roleDaughter.
+  ///
+  /// In en, this message translates to:
+  /// **'Daughter'**
+  String get roleDaughter;
+
+  /// No description provided for @roleGrandparent.
+  ///
+  /// In en, this message translates to:
+  /// **'Grandparent'**
+  String get roleGrandparent;
+
+  /// No description provided for @roleRoommate.
+  ///
+  /// In en, this message translates to:
+  /// **'Roommate'**
+  String get roleRoommate;
+
+  /// No description provided for @roleOther.
+  ///
+  /// In en, this message translates to:
+  /// **'Other'**
+  String get roleOther;
+
+  /// No description provided for @dietOmnivore.
+  ///
+  /// In en, this message translates to:
+  /// **'Omnivore'**
+  String get dietOmnivore;
+
+  /// No description provided for @dietVegetarian.
+  ///
+  /// In en, this message translates to:
+  /// **'Vegetarian'**
+  String get dietVegetarian;
+
+  /// No description provided for @dietVegan.
+  ///
+  /// In en, this message translates to:
+  /// **'Vegan'**
+  String get dietVegan;
+
+  /// No description provided for @dietPescatarian.
+  ///
+  /// In en, this message translates to:
+  /// **'Pescatarian'**
+  String get dietPescatarian;
+
+  /// No description provided for @dietKeto.
+  ///
+  /// In en, this message translates to:
+  /// **'Keto'**
+  String get dietKeto;
+
+  /// No description provided for @dietPaleo.
+  ///
+  /// In en, this message translates to:
+  /// **'Paleo'**
+  String get dietPaleo;
+
+  /// No description provided for @dietWhole30.
+  ///
+  /// In en, this message translates to:
+  /// **'Whole30'**
+  String get dietWhole30;
+
+  /// No description provided for @dietMediterranean.
+  ///
+  /// In en, this message translates to:
+  /// **'Mediterranean'**
+  String get dietMediterranean;
+
+  /// No description provided for @dietHighPerformance.
+  ///
+  /// In en, this message translates to:
+  /// **'High Performance'**
+  String get dietHighPerformance;
+
+  /// No description provided for @dietLowCarb.
+  ///
+  /// In en, this message translates to:
+  /// **'Low Carb'**
+  String get dietLowCarb;
+
+  /// No description provided for @conditionAplv.
+  ///
+  /// In en, this message translates to:
+  /// **'APLV (Milk Allergy)'**
+  String get conditionAplv;
+
+  /// No description provided for @conditionEggAllergy.
+  ///
+  /// In en, this message translates to:
+  /// **'Egg Allergy'**
+  String get conditionEggAllergy;
+
+  /// No description provided for @conditionSoyAllergy.
+  ///
+  /// In en, this message translates to:
+  /// **'Soy Allergy'**
+  String get conditionSoyAllergy;
+
+  /// No description provided for @conditionNutAllergy.
+  ///
+  /// In en, this message translates to:
+  /// **'Nut/Peanut Allergy'**
+  String get conditionNutAllergy;
+
+  /// No description provided for @conditionShellfishAllergy.
+  ///
+  /// In en, this message translates to:
+  /// **'Shellfish Allergy'**
+  String get conditionShellfishAllergy;
+
+  /// No description provided for @conditionCeliac.
+  ///
+  /// In en, this message translates to:
+  /// **'Celiac (Gluten Free)'**
+  String get conditionCeliac;
+
+  /// No description provided for @conditionLowFodmap.
+  ///
+  /// In en, this message translates to:
+  /// **'Low FODMAP (IBS)'**
+  String get conditionLowFodmap;
+
+  /// No description provided for @conditionHistamine.
+  ///
+  /// In en, this message translates to:
+  /// **'Histamine Intolerance'**
+  String get conditionHistamine;
+
+  /// No description provided for @conditionDiabetes.
+  ///
+  /// In en, this message translates to:
+  /// **'Diabetes'**
+  String get conditionDiabetes;
+
+  /// No description provided for @conditionRenal.
+  ///
+  /// In en, this message translates to:
+  /// **'Renal (Kidney Safe)'**
+  String get conditionRenal;
+
+  /// No description provided for @medicalTags.
+  ///
+  /// In en, this message translates to:
+  /// **'Medical Tags'**
+  String get medicalTags;
 }
 
 class _AppLocalizationsDelegate

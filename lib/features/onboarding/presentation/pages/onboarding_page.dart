@@ -10,6 +10,8 @@ import 'package:gastronomic_os/features/onboarding/domain/entities/family_member
 import 'package:gastronomic_os/init/injection_container.dart';
 import 'package:gastronomic_os/core/enums/diet_enums.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:gastronomic_os/l10n/generated/app_localizations.dart';
+import 'package:gastronomic_os/core/util/localized_enums.dart';
 
 class OnboardingPage extends StatelessWidget {
   final bool isEditing;
@@ -18,7 +20,7 @@ class OnboardingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
+    return BlocProvider<OnboardingBloc>(
       create: (context) {
         final bloc = sl<OnboardingBloc>();
         if (isEditing) {
@@ -39,6 +41,7 @@ class OnboardingView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final l10n = AppLocalizations.of(context)!;
     
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
@@ -49,7 +52,7 @@ class OnboardingView extends StatelessWidget {
             if (state is OnboardingSuccess) {
               if (isEditing) {
                 Navigator.of(context).pop();
-                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Family profile updated!')));
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(l10n.onboardingSuccess)));
               } else {
                 Navigator.pushReplacement(
                   context,
@@ -74,7 +77,7 @@ class OnboardingView extends StatelessWidget {
                   Icon(Icons.family_restroom, size: 48, color: theme.colorScheme.primary).animate().scale(),
                   const SizedBox(height: 16),
                   Text(
-                    'Who eats here?',
+                    l10n.onboardingTitle,
                     style: GoogleFonts.outfit(
                       fontSize: 32,
                       fontWeight: FontWeight.bold,
@@ -85,7 +88,7 @@ class OnboardingView extends StatelessWidget {
                   
                   const SizedBox(height: 8),
                   Text(
-                    'Build your household profile for personalized diet advice.',
+                    l10n.onboardingSubtitle,
                     style: theme.textTheme.bodyLarge?.copyWith(
                       color: theme.colorScheme.onSurfaceVariant,
                     ),
@@ -129,7 +132,7 @@ class OnboardingView extends StatelessWidget {
                   const SizedBox(height: 24),
                   
                   PrimaryButton(
-                    label: isEditing ? 'Save Changes' : 'Finish Setup',
+                    label: isEditing ? l10n.onboardingSaveChanges : l10n.onboardingFinish,
                     icon: Icons.check,
                     onPressed: state.members.isNotEmpty 
                         ? () => context.read<OnboardingBloc>().add(SubmitOnboarding())
@@ -160,7 +163,7 @@ class OnboardingView extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           Text(
-            'Add Member',
+            AppLocalizations.of(context)!.onboardingAddMember,
             style: TextStyle(
               color: Theme.of(context).colorScheme.primary,
               fontWeight: FontWeight.bold,
@@ -175,6 +178,7 @@ class OnboardingView extends StatelessWidget {
     final bloc = context.read<OnboardingBloc>(); // Capture bloc
     final nameController = TextEditingController(text: member?.name ?? '');
     String selectedRole = member?.role ?? 'Dad';
+    final l10n = AppLocalizations.of(context)!;
     
     // Initialize Enums
     DietLifestyle selectedPrimaryDiet = member?.primaryDiet ?? DietLifestyle.omnivore;
@@ -189,7 +193,7 @@ class OnboardingView extends StatelessWidget {
           builder: (context, setState) {
             return AlertDialog(
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
-              title: Text(member == null ? 'Add Family Member' : 'Edit Member', style: GoogleFonts.outfit(fontWeight: FontWeight.bold)),
+              title: Text(member == null ? l10n.onboardingAddMember : l10n.onboardingEditMember, style: GoogleFonts.outfit(fontWeight: FontWeight.bold)),
               content: SizedBox(
                 width: double.maxFinite,
                 child: SingleChildScrollView(
@@ -201,8 +205,8 @@ class OnboardingView extends StatelessWidget {
                       TextField(
                         controller: nameController,
                         decoration: InputDecoration(
-                          labelText: 'Name',
-                          hintText: 'e.g. John',
+                          labelText: l10n.onboardingNameLabel,
+                          hintText: l10n.onboardingNameHint,
                           border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
                           prefixIcon: const Icon(Icons.person_outline),
                         ),
@@ -213,17 +217,20 @@ class OnboardingView extends StatelessWidget {
                       DropdownButtonFormField<String>(
                         value: selectedRole,
                         decoration: InputDecoration(
-                          labelText: 'Role',
+                          labelText: l10n.onboardingRoleLabel,
                           border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
                           prefixIcon: const Icon(Icons.badge_outlined),
                         ),
-                        items: roles.map((r) => DropdownMenuItem(value: r, child: Text(r))).toList(),
+                        items: roles.map((r) => DropdownMenuItem(
+                          value: r, 
+                          child: Text(_getLocalizedRole(context, r))
+                        )).toList(),
                         onChanged: (val) => setState(() => selectedRole = val!),
                       ),
                       const SizedBox(height: 24),
 
                       // --- Section 3: Lifestyle (Primary Diet) ---
-                      Text('Lifestyle (Base Diet)', style: TextStyle(
+                      Text(l10n.onboardingLifestyleTitle, style: TextStyle(
                         fontWeight: FontWeight.bold, 
                         color: Theme.of(context).colorScheme.primary)
                       ),
@@ -233,11 +240,11 @@ class OnboardingView extends StatelessWidget {
                         decoration: InputDecoration(
                           border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
                           prefixIcon: const Icon(Icons.restaurant_menu),
-                          helperText: 'Select the main eating pattern.',
+                          helperText: l10n.onboardingLifestyleHint,
                         ),
                         items: DietLifestyle.values.map((d) => DropdownMenuItem(
                           value: d, 
-                          child: Text(d.displayName),
+                          child: Text(d.localized(context)),
                         )).toList(),
                         onChanged: (val) => setState(() => selectedPrimaryDiet = val!),
                       ),
@@ -245,12 +252,12 @@ class OnboardingView extends StatelessWidget {
                       const SizedBox(height: 24),
 
                       // --- Section 4: Clinical Overlays (Medical) ---
-                      Text('Clinical Profile (Safety Overlays)', style: TextStyle(
+                      Text(l10n.onboardingMedicalTitle, style: TextStyle(
                         fontWeight: FontWeight.bold, 
                         color: Theme.of(context).colorScheme.error)
                       ),
                       const SizedBox(height: 4),
-                      Text('Select all that apply. These rules will override the lifestyle choice.', 
+                      Text(l10n.onboardingMedicalHint, 
                         style: TextStyle(fontSize: 12, color: Colors.grey[600])
                       ),
                       const SizedBox(height: 8),
@@ -261,7 +268,7 @@ class OnboardingView extends StatelessWidget {
                         children: MedicalCondition.values.map((condition) {
                           final isSelected = selectedConditions.contains(condition);
                           return FilterChip(
-                            label: Text(condition.displayName, style: const TextStyle(fontSize: 12)),
+                            label: Text(condition.localized(context), style: const TextStyle(fontSize: 12)),
                             selected: isSelected,
                             selectedColor: Theme.of(context).colorScheme.errorContainer,
                             checkmarkColor: Theme.of(context).colorScheme.error,
@@ -290,11 +297,11 @@ class OnboardingView extends StatelessWidget {
                         bloc.add(RemoveFamilyMember(member.id));
                         Navigator.pop(dialogContext);
                      },
-                     child: const Text('Delete'),
+                     child: Text(l10n.onboardingDelete),
                    ),
                 TextButton(
                   onPressed: () => Navigator.pop(dialogContext), 
-                  child: const Text('Cancel')
+                  child: Text(l10n.dialogCancel)
                 ),
                 FilledButton(
                   style: FilledButton.styleFrom(
@@ -319,7 +326,7 @@ class OnboardingView extends StatelessWidget {
                       Navigator.pop(dialogContext);
                     }
                   },
-                  child: const Text('Save'),
+                  child: Text(l10n.onboardingSave),
                 ),
               ],
             ).animate().scale(duration: 300.ms, curve: Curves.easeOutBack);
@@ -327,5 +334,19 @@ class OnboardingView extends StatelessWidget {
         );
       },
     );
+  }
+
+  String _getLocalizedRole(BuildContext context, String roleKey) {
+    final l10n = AppLocalizations.of(context)!;
+    switch (roleKey) {
+      case 'Dad': return l10n.roleDad;
+      case 'Mom': return l10n.roleMom;
+      case 'Son': return l10n.roleSon;
+      case 'Daughter': return l10n.roleDaughter;
+      case 'Grandparent': return l10n.roleGrandparent;
+      case 'Roommate': return l10n.roleRoommate;
+      case 'Other': return l10n.roleOther;
+      default: return roleKey;
+    }
   }
 }

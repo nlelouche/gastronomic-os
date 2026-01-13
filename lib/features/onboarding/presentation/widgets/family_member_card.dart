@@ -3,6 +3,8 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:gastronomic_os/core/widgets/ui_kit.dart';
 import 'package:gastronomic_os/features/onboarding/domain/entities/family_member.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:gastronomic_os/l10n/generated/app_localizations.dart';
+import 'package:gastronomic_os/core/util/localized_enums.dart';
 
 class FamilyMemberCard extends StatelessWidget {
   final FamilyMember member;
@@ -20,9 +22,11 @@ class FamilyMemberCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
+    final l10n = AppLocalizations.of(context)!;
     
     // Determine avatar color based on role (could be dynamic or random)
     final avatarColor = _getColorForRole(member.role, colorScheme);
+    final localizedRole = _getLocalizedRole(context, member.role);
 
     return AppCard(
       onTap: onTap,
@@ -62,7 +66,7 @@ class FamilyMemberCard extends StatelessWidget {
           ),
           const SizedBox(height: 4),
           Text(
-            member.role,
+            localizedRole,
             style: theme.textTheme.bodySmall?.copyWith(
               color: colorScheme.onSurfaceVariant,
             ),
@@ -78,7 +82,7 @@ class FamilyMemberCard extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  member.primaryDiet.displayName,
+                  member.primaryDiet.localized(context),
                   style: theme.textTheme.labelSmall?.copyWith(
                     color: colorScheme.onSecondaryContainer,
                     fontWeight: FontWeight.w600,
@@ -93,7 +97,7 @@ class FamilyMemberCard extends StatelessWidget {
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: Text(
-                      '${member.medicalConditions.length} Medical Tags',
+                      '${member.medicalConditions.length} ${l10n.medicalTags}',
                       style: theme.textTheme.labelSmall?.copyWith(
                         color: colorScheme.onErrorContainer,
                         fontSize: 10,
@@ -118,6 +122,20 @@ class FamilyMemberCard extends StatelessWidget {
       case 'daughter': return Colors.purple;
       case 'grandparent': return Colors.orange;
       default: return scheme.primary;
+    }
+  }
+
+  String _getLocalizedRole(BuildContext context, String roleKey) {
+    final l10n = AppLocalizations.of(context)!;
+    switch (roleKey) {
+      case 'Dad': return l10n.roleDad;
+      case 'Mom': return l10n.roleMom;
+      case 'Son': return l10n.roleSon;
+      case 'Daughter': return l10n.roleDaughter;
+      case 'Grandparent': return l10n.roleGrandparent;
+      case 'Roommate': return l10n.roleRoommate;
+      case 'Other': return l10n.roleOther;
+      default: return roleKey;
     }
   }
 }

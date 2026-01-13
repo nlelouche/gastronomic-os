@@ -17,7 +17,7 @@ class RecipesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
+    return BlocProvider<RecipeBloc>(
       create: (context) => sl<RecipeBloc>()..add(LoadRecipes()),
       child: const RecipesView(),
     );

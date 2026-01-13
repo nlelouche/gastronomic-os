@@ -12,6 +12,8 @@ import 'package:responsive_framework/responsive_framework.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:gastronomic_os/l10n/generated/app_localizations.dart';
 import 'package:gastronomic_os/core/bloc/localization_bloc.dart';
+import 'package:gastronomic_os/core/bloc/theme_cubit.dart';
+import 'package:gastronomic_os/core/bloc/theme_state.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -37,35 +39,42 @@ class GastronomicOSApp extends StatelessWidget {
         BlocProvider<LocalizationBloc>(
           create: (_) => di.sl<LocalizationBloc>(),
         ),
+        BlocProvider<ThemeCubit>(
+          create: (_) => di.sl<ThemeCubit>(),
+        ),
       ],
-      child: BlocBuilder<LocalizationBloc, LocalizationState>(
-        builder: (context, localeState) {
-          return MaterialApp(
-            title: 'Gastronomic OS',
-            theme: AppTheme.light,
-            darkTheme: AppTheme.dark,
-            themeMode: ThemeMode.system,
-            locale: localeState.locale,
-            localizationsDelegates: const [
-              AppLocalizations.delegate,
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-            ],
-            supportedLocales: const [
-              Locale('en'),
-              Locale('es'),
-            ],
-            builder: (context, child) => ResponsiveBreakpoints.builder(
-              child: child!,
-              breakpoints: [
-                const Breakpoint(start: 0, end: 450, name: MOBILE),
-                const Breakpoint(start: 451, end: 800, name: TABLET),
-                const Breakpoint(start: 801, end: 1920, name: DESKTOP),
-                const Breakpoint(start: 1921, end: double.infinity, name: '4K'),
-              ],
-            ),
-            home: const AuthWrapper(),
+      child: BlocBuilder<ThemeCubit, ThemeState>(
+        builder: (context, themeState) {
+          return BlocBuilder<LocalizationBloc, LocalizationState>(
+            builder: (context, localeState) {
+              return MaterialApp(
+                title: 'Gastronomic OS',
+                theme: themeState.lightTheme,
+                darkTheme: themeState.darkTheme,
+                themeMode: themeState.themeMode,
+                locale: localeState.locale,
+                localizationsDelegates: const [
+                  AppLocalizations.delegate,
+                  GlobalMaterialLocalizations.delegate,
+                  GlobalWidgetsLocalizations.delegate,
+                  GlobalCupertinoLocalizations.delegate,
+                ],
+                supportedLocales: const [
+                  Locale('en'),
+                  Locale('es'),
+                ],
+                builder: (context, child) => ResponsiveBreakpoints.builder(
+                  child: child!,
+                  breakpoints: [
+                    const Breakpoint(start: 0, end: 450, name: MOBILE),
+                    const Breakpoint(start: 451, end: 800, name: TABLET),
+                    const Breakpoint(start: 801, end: 1920, name: DESKTOP),
+                    const Breakpoint(start: 1921, end: double.infinity, name: '4K'),
+                  ],
+                ),
+                home: const AuthWrapper(),
+              );
+            },
           );
         },
       ),
