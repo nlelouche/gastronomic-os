@@ -1,3 +1,4 @@
+import 'package:gastronomic_os/core/util/app_logger.dart';
 import 'package:gastronomic_os/features/recipes/domain/entities/recipe.dart';
 import 'package:gastronomic_os/features/recipes/domain/entities/recipe_step.dart';
 import 'package:gastronomic_os/features/recipes/domain/entities/resolved_step.dart';
@@ -34,7 +35,7 @@ class RecipeResolver {
     int stepCounter = 1;
     
     for (final step in recipe.steps) {
-      print('🔍 Resolver Step: "${step.instruction.length > 30 ? step.instruction.substring(0, 30) : step.instruction}..." - isBranch: ${step.isBranchPoint}, skippedForDiets: ${step.skippedForDiets}');
+      AppLogger.d('🔍 Resolver Step: "${step.instruction.length > 30 ? step.instruction.substring(0, 30) : step.instruction}..." - isBranch: ${step.isBranchPoint}, skippedForDiets: ${step.skippedForDiets}');
       
       // Check which diet groups should see this step
       Map<String, List<String>> applicableDietToMembers = {};
@@ -46,18 +47,18 @@ class RecipeResolver {
         // Skip this step for diets listed in skippedForDiets
         if (step.skippedForDiets != null && 
             step.skippedForDiets!.any((d) => d.toLowerCase() == diet.toLowerCase())) {
-          print('   ⏭️ Skipping for diet: $diet (members: $members)');
+          AppLogger.d('   ⏭️ Skipping for diet: $diet (members: $members)');
           continue; // Skip this diet group
         }
         
         applicableDietToMembers[diet] = members;
       }
       
-      print('   ✅ Applicable diets: ${applicableDietToMembers.keys.toList()}');
+      AppLogger.d('   ✅ Applicable diets: ${applicableDietToMembers.keys.toList()}');
       
       // If no one should see this step, skip it entirely
       if (applicableDietToMembers.isEmpty) {
-        print('   ❌ No one can see this step, skipping entirely');
+        AppLogger.d('   ❌ No one can see this step, skipping entirely');
         continue;
       }
       
@@ -67,7 +68,7 @@ class RecipeResolver {
             .expand((members) => members)
             .toList();
         
-        print('   📝 Creating universal step for: $allApplicableMembers');
+        AppLogger.d('   📝 Creating universal step for: $allApplicableMembers');
         
         resolvedSteps.add(ResolvedStep(
           index: stepCounter++,
@@ -121,9 +122,8 @@ class RecipeResolver {
     Map<String, List<String>> groups = {};
     
     for (final member in family) {
-      // Use Primary Diet Display Name for grouping
-      // TODO: Future enhancement could consider complex keys (Primary + Overlay)
-      final diet = member.primaryDiet.displayName;
+      // Use Primary Diet KEY for grouping (Stable matching with Recipe Logic)
+      final diet = member.primaryDiet.key;
       if (!groups.containsKey(diet)) {
         groups[diet] = [];
       }

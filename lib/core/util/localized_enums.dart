@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:gastronomic_os/core/enums/diet_enums.dart';
+import 'package:gastronomic_os/core/enums/family_role.dart';
 import 'package:gastronomic_os/l10n/generated/app_localizations.dart';
 
 extension LocalizedDiet on DietLifestyle {
@@ -34,6 +35,21 @@ extension LocalizedMedicalCondition on MedicalCondition {
       case MedicalCondition.histamine: return l10n.conditionHistamine;
       case MedicalCondition.diabetes: return l10n.conditionDiabetes;
       case MedicalCondition.renal: return l10n.conditionRenal;
+    }
+  }
+}
+
+extension LocalizedFamilyRole on FamilyRole {
+  String localized(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    switch (this) {
+      case FamilyRole.dad: return l10n.roleDad;
+      case FamilyRole.mom: return l10n.roleMom;
+      case FamilyRole.son: return l10n.roleSon;
+      case FamilyRole.daughter: return l10n.roleDaughter;
+      case FamilyRole.grandparent: return l10n.roleGrandparent;
+      case FamilyRole.roommate: return l10n.roleRoommate;
+      case FamilyRole.other: return l10n.roleOther;
     }
   }
 }

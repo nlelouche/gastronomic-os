@@ -2,8 +2,8 @@ import 'package:gastronomic_os/core/error/failures.dart';
 import 'package:gastronomic_os/features/onboarding/data/datasources/onboarding_remote_datasource.dart';
 import 'package:gastronomic_os/features/onboarding/domain/repositories/i_onboarding_repository.dart';
 import 'package:gastronomic_os/features/onboarding/domain/entities/family_member.dart';
-
 import 'package:gastronomic_os/core/enums/diet_enums.dart';
+import 'package:gastronomic_os/core/enums/family_role.dart'; // Import this
 
 class OnboardingRepositoryImpl implements IOnboardingRepository {
   final OnboardingRemoteDataSource remoteDataSource;
@@ -17,7 +17,7 @@ class OnboardingRepositoryImpl implements IOnboardingRepository {
         'members': members.map((m) => {
           'id': m.id,
           'name': m.name,
-          'role': m.role,
+          'role': m.role.name, // Use .name for serialization (simple string)
           'primary_diet': _dietEnumToString(m.primaryDiet),
           'medical_conditions': m.medicalConditions.map((e) => _conditionEnumToString(e)).toList(),
         }).toList(),
@@ -63,7 +63,7 @@ class OnboardingRepositoryImpl implements IOnboardingRepository {
         final members = membersList.map((m) => FamilyMember(
           id: m['id'] ?? '',
           name: m['name'] ?? '',
-          role: m['role'] ?? '',
+          role: _stringToRoleEnum(m['role']),
           primaryDiet: _stringToDietEnum(m['primary_diet']),
           medicalConditions: (m['medical_conditions'] as List?)
               ?.map((e) => _stringToMedicalEnum(e.toString()))
@@ -79,6 +79,29 @@ class OnboardingRepositoryImpl implements IOnboardingRepository {
   }
 
   // --- Helper Helpers ---
+
+  // Helper for Role Enum
+  FamilyRole _stringToRoleEnum(String? value) {
+    // If value is null or not found, default to 'Dad' or handle gracefully.
+    // Assuming simple .name matching or custom keys.
+    if (value == null) return FamilyRole.other;
+    
+    // Check match by name (case insensitive for safety?)
+    try {
+      return FamilyRole.values.firstWhere((e) => e.name.toLowerCase() == value.toLowerCase());
+    } catch (_) {
+      // Legacy fallback map for strings "Dad", "Mom" etc if they were capitalized in DB
+      switch (value) {
+        case 'Dad': return FamilyRole.dad;
+        case 'Mom': return FamilyRole.mom;
+        case 'Son': return FamilyRole.son;
+        case 'Daughter': return FamilyRole.daughter;
+        case 'Grandparent': return FamilyRole.grandparent;
+        case 'Roommate': return FamilyRole.roommate;
+        default: return FamilyRole.other;
+      }
+    }
+  }
 
   String _dietEnumToString(DietLifestyle diet) {
     switch (diet) {
@@ -142,6 +165,4 @@ class OnboardingRepositoryImpl implements IOnboardingRepository {
       default: return null;
     }
   }
-
-
 }

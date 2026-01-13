@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:gastronomic_os/core/util/app_logger.dart';
 import 'package:gastronomic_os/core/widgets/ui_kit.dart';
 import 'package:gastronomic_os/features/recipes/domain/entities/recipe.dart';
 import 'package:gastronomic_os/features/recipes/domain/entities/recipe_step.dart';
@@ -18,6 +19,8 @@ import 'package:gastronomic_os/features/planner/domain/entities/meal_plan.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:uuid/uuid.dart';
 import 'package:gastronomic_os/features/recipes/presentation/widgets/formatted_recipe_text.dart';
+import 'package:gastronomic_os/l10n/generated/app_localizations.dart';
+import 'package:gastronomic_os/core/theme/app_dimens.dart';
 
 class RecipeDetailPage extends StatelessWidget {
   final Recipe recipe;
@@ -51,7 +54,7 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
   @override
   void initState() {
     super.initState();
-    _resolveSteps();
+    // Do not call _resolveSteps() here as it depends on InheritedWidgets (Locale)
   }
 
   @override
@@ -95,8 +98,7 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
         });
       }
     } catch (e, stack) {
-      print('🔥 Error resolving steps: $e');
-      print(stack);
+      AppLogger.e('🔥 Error resolving steps', e, stack);
       if (mounted) setState(() => _isResolvingSteps = false);
     }
   }
@@ -105,6 +107,7 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
+    final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
       body: BlocConsumer<RecipeBloc, RecipeState>(
@@ -162,19 +165,19 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
                   actions: [
                      IconButton(
                        icon: const Icon(Icons.calendar_today),
-                       tooltip: 'Add to Plan',
+                       tooltip: l10n.recipeAddToPlanTooltip,
                        onPressed: () => _showAddToPlanDialog(context, fullRecipe),
                      ),
                      IconButton(
                        icon: const Icon(Icons.fork_right),
-                       tooltip: 'Fork Recipe',
+                       tooltip: l10n.recipeForkTooltip,
                        onPressed: () {
                          context.read<RecipeBloc>().add(ForkRecipe(
                            originalRecipeId: fullRecipe.id,
                            newTitle: '${fullRecipe.title} (Fork)',
                          ));
                          ScaffoldMessenger.of(context).showSnackBar(
-                           const SnackBar(content: Text('Forking Recipe...')),
+                           SnackBar(content: Text(l10n.recipeForking)),
                          );
                        },
                      ),
@@ -184,7 +187,7 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
                 // Content
                 SliverToBoxAdapter(
                   child: Padding(
-                    padding: const EdgeInsets.all(24.0),
+                    padding: const EdgeInsets.all(AppDimens.paddingPage),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -197,7 +200,7 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
                               fontStyle: FontStyle.italic,
                             ),
                           ),
-                          const SizedBox(height: 32),
+                          const SizedBox(height: AppDimens.space2XL),
                         ],
 
                         // Clinical Tags
@@ -207,24 +210,24 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
                         ],
 
                         // Ingredients Section
-                        SectionHeader(title: 'Ingredients', subtitle: '${fullRecipe.ingredients.length} items'),
-                        const SizedBox(height: 16),
+                        SectionHeader(title: l10n.recipeIngredientsTitle, subtitle: l10n.recipeIngredientsCount(fullRecipe.ingredients.length)),
+                        const SizedBox(height: AppDimens.spaceL),
                         _buildIngredientsList(context, fullRecipe.ingredients),
                         
-                        const SizedBox(height: 32),
+                        const SizedBox(height: AppDimens.space2XL),
 
                         // Steps Section
-                        SectionHeader(title: 'Instructions', subtitle: '${fullRecipe.steps.length} steps'),
-                        const SizedBox(height: 16),
+                        SectionHeader(title: l10n.recipeInstructionsTitle, subtitle: l10n.recipeInstructionsCount(fullRecipe.steps.length)),
+                        const SizedBox(height: AppDimens.spaceL),
                         _buildStepsTimeline(context, fullRecipe.steps),
                         
-                        const SizedBox(height: 48),
+                        const SizedBox(height: AppDimens.space3XL),
                         
                         // Metadata Footer
                         Center(
                           child: Chip(
-                            label: Text('Recipe ID: ${fullRecipe.id.substring(0, 8)}...'),
-                            avatar: const Icon(Icons.fingerprint, size: 16),
+                            label: Text(l10n.recipeIdLabel(fullRecipe.id.substring(0, 8))),
+                            avatar: const Icon(Icons.fingerprint, size: AppDimens.iconSizeS),
                           ),
                         ),
                       ],
@@ -244,7 +247,7 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
 
   Widget _buildIngredientsList(BuildContext context, List<String> ingredients) {
     if (ingredients.isEmpty) {
-      return const Text('No ingredients listed.');
+      return Text(AppLocalizations.of(context)!.recipeIngredientsEmpty);
     }
     
     return Column(
@@ -269,7 +272,7 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
     }
 
     if (_resolvedSteps == null || _resolvedSteps!.isEmpty) {
-      return const Text('No instructions listed.');
+      return Text(AppLocalizations.of(context)!.recipeInstructionsEmpty);
     }
 
     return Column(
@@ -436,7 +439,7 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
       final userId = Supabase.instance.client.auth.currentUser?.id;
       if (userId == null) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Please log in to plan meals.')),
+          SnackBar(content: Text(AppLocalizations.of(context)!.recipeLoginRequired)),
         );
         return;
       }
@@ -454,7 +457,7 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
       context.read<PlannerBloc>().add(AddMealToPlan(plan));
 
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Added "${recipe.title}" to ${date.day}/${date.month}')),
+        SnackBar(content: Text(AppLocalizations.of(context)!.recipeAddedToPlan('${date.day}/${date.month}', recipe.title))),
       );
     }
   }

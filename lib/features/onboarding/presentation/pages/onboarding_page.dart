@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:gastronomic_os/core/widgets/ui_kit.dart';
+import 'package:gastronomic_os/core/theme/app_dimens.dart';
 import 'package:gastronomic_os/features/onboarding/presentation/bloc/onboarding_bloc.dart';
 import 'package:gastronomic_os/features/onboarding/presentation/bloc/onboarding_state_event.dart';
 import 'package:gastronomic_os/features/home/presentation/pages/dashboard_page.dart';
@@ -9,6 +10,7 @@ import 'package:gastronomic_os/features/onboarding/presentation/widgets/family_m
 import 'package:gastronomic_os/features/onboarding/domain/entities/family_member.dart';
 import 'package:gastronomic_os/init/injection_container.dart';
 import 'package:gastronomic_os/core/enums/diet_enums.dart';
+import 'package:gastronomic_os/core/enums/family_role.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:gastronomic_os/l10n/generated/app_localizations.dart';
 import 'package:gastronomic_os/core/util/localized_enums.dart';
@@ -69,47 +71,47 @@ class OnboardingView extends StatelessWidget {
             }
 
             return Padding(
-              padding: const EdgeInsets.all(24.0),
+              padding: const EdgeInsets.all(AppDimens.paddingPage),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  const SizedBox(height: 24),
-                  Icon(Icons.family_restroom, size: 48, color: theme.colorScheme.primary).animate().scale(),
-                  const SizedBox(height: 16),
+                  const SizedBox(height: AppDimens.spaceXL),
+                  Icon(Icons.family_restroom, size: AppDimens.iconSizeXL, color: theme.colorScheme.primary).animate().scale(),
+                  const SizedBox(height: AppDimens.spaceL),
                   Text(
                     l10n.onboardingTitle,
                     style: GoogleFonts.outfit(
-                      fontSize: 32,
+                      fontSize: AppDimens.fontSizeTitle,
                       fontWeight: FontWeight.bold,
                       color: theme.colorScheme.onSurface,
                     ),
                     textAlign: TextAlign.center,
-                  ).animate().fadeIn(delay: 200.ms).slideY(begin: 0.2, curve: Curves.easeOut),
+                  ).animate().fadeIn(delay: AppDimens.durationShortMs.ms).slideY(begin: 0.2, curve: Curves.easeOut),
                   
-                  const SizedBox(height: 8),
+                  const SizedBox(height: AppDimens.spaceS),
                   Text(
                     l10n.onboardingSubtitle,
                     style: theme.textTheme.bodyLarge?.copyWith(
                       color: theme.colorScheme.onSurfaceVariant,
                     ),
                     textAlign: TextAlign.center,
-                  ).animate().fadeIn(delay: 300.ms),
+                  ).animate().fadeIn(delay: AppDimens.durationMediumMs.ms),
                   
-                  const SizedBox(height: 32),
+                  const SizedBox(height: AppDimens.space2XL),
                   
                   Expanded(
                     child: LayoutBuilder(
                       builder: (context, constraints) {
                         int crossAxisCount = 2;
                         double width = constraints.maxWidth;
-                        if (width > 600) crossAxisCount = 3;
-                        if (width > 900) crossAxisCount = 4;
+                        if (width > AppDimens.breakpointTablet) crossAxisCount = 3;
+                        if (width > AppDimens.breakpointDesktop) crossAxisCount = 4;
 
                         return GridView.builder(
                           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: crossAxisCount,
-                            crossAxisSpacing: 16,
-                            mainAxisSpacing: 16,
+                            crossAxisSpacing: AppDimens.spaceL,
+                            mainAxisSpacing: AppDimens.spaceL,
                             childAspectRatio: 0.75,
                           ),
                           itemCount: state.members.length + 1,
@@ -129,7 +131,7 @@ class OnboardingView extends StatelessWidget {
                     ),
                   ),
                   
-                  const SizedBox(height: 24),
+                  const SizedBox(height: AppDimens.spaceXL),
                   
                   PrimaryButton(
                     label: isEditing ? l10n.onboardingSaveChanges : l10n.onboardingFinish,
@@ -137,7 +139,7 @@ class OnboardingView extends StatelessWidget {
                     onPressed: state.members.isNotEmpty 
                         ? () => context.read<OnboardingBloc>().add(SubmitOnboarding())
                         : null,
-                  ).animate().fadeIn(delay: 600.ms).slideY(begin: 1),
+                  ).animate().fadeIn(delay: AppDimens.durationLongMs.ms).slideY(begin: 1),
                 ],
               ),
             );
@@ -154,14 +156,14 @@ class OnboardingView extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Container(
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.all(AppDimens.spaceL),
             decoration: BoxDecoration(
               color: Theme.of(context).colorScheme.primaryContainer.withOpacity(0.5),
               shape: BoxShape.circle,
             ),
-            child: Icon(Icons.add, size: 32, color: Theme.of(context).colorScheme.primary),
+            child: Icon(Icons.add, size: AppDimens.iconSizeL, color: Theme.of(context).colorScheme.primary),
           ),
-          const SizedBox(height: 16),
+          const SizedBox(height: AppDimens.spaceL),
           Text(
             AppLocalizations.of(context)!.onboardingAddMember,
             style: TextStyle(
@@ -175,24 +177,22 @@ class OnboardingView extends StatelessWidget {
   }
 
   void _showAddMemberDialog(BuildContext context, {FamilyMember? member}) {
-    final bloc = context.read<OnboardingBloc>(); // Capture bloc
+    final bloc = context.read<OnboardingBloc>(); 
     final nameController = TextEditingController(text: member?.name ?? '');
-    String selectedRole = member?.role ?? 'Dad';
+    FamilyRole selectedRole = member?.role ?? FamilyRole.dad;
     final l10n = AppLocalizations.of(context)!;
     
     // Initialize Enums
     DietLifestyle selectedPrimaryDiet = member?.primaryDiet ?? DietLifestyle.omnivore;
     List<MedicalCondition> selectedConditions = List.from(member?.medicalConditions ?? []);
     
-    final roles = ['Dad', 'Mom', 'Son', 'Daughter', 'Grandparent', 'Roommate', 'Other'];
-
     showDialog(
       context: context,
       builder: (dialogContext) {
         return StatefulBuilder(
           builder: (context, setState) {
             return AlertDialog(
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppDimens.radiusXL)),
               title: Text(member == null ? l10n.onboardingAddMember : l10n.onboardingEditMember, style: GoogleFonts.outfit(fontWeight: FontWeight.bold)),
               content: SizedBox(
                 width: double.maxFinite,
@@ -207,38 +207,38 @@ class OnboardingView extends StatelessWidget {
                         decoration: InputDecoration(
                           labelText: l10n.onboardingNameLabel,
                           hintText: l10n.onboardingNameHint,
-                          border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+                          border: OutlineInputBorder(borderRadius: BorderRadius.circular(AppDimens.radiusM)),
                           prefixIcon: const Icon(Icons.person_outline),
                         ),
                       ),
-                      const SizedBox(height: 16),
+                      const SizedBox(height: AppDimens.spaceL),
                       
                       // --- Field 2: Role ---
-                      DropdownButtonFormField<String>(
+                      DropdownButtonFormField<FamilyRole>(
                         value: selectedRole,
                         decoration: InputDecoration(
                           labelText: l10n.onboardingRoleLabel,
-                          border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+                          border: OutlineInputBorder(borderRadius: BorderRadius.circular(AppDimens.radiusM)),
                           prefixIcon: const Icon(Icons.badge_outlined),
                         ),
-                        items: roles.map((r) => DropdownMenuItem(
+                        items: FamilyRole.values.map((r) => DropdownMenuItem(
                           value: r, 
-                          child: Text(_getLocalizedRole(context, r))
+                          child: Text(r.localized(context))
                         )).toList(),
                         onChanged: (val) => setState(() => selectedRole = val!),
                       ),
-                      const SizedBox(height: 24),
+                      const SizedBox(height: AppDimens.spaceXL),
 
                       // --- Section 3: Lifestyle (Primary Diet) ---
                       Text(l10n.onboardingLifestyleTitle, style: TextStyle(
                         fontWeight: FontWeight.bold, 
                         color: Theme.of(context).colorScheme.primary)
                       ),
-                      const SizedBox(height: 8),
+                      const SizedBox(height: AppDimens.spaceS),
                       DropdownButtonFormField<DietLifestyle>(
                         value: selectedPrimaryDiet,
                         decoration: InputDecoration(
-                          border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+                          border: OutlineInputBorder(borderRadius: BorderRadius.circular(AppDimens.radiusM)),
                           prefixIcon: const Icon(Icons.restaurant_menu),
                           helperText: l10n.onboardingLifestyleHint,
                         ),
@@ -249,26 +249,26 @@ class OnboardingView extends StatelessWidget {
                         onChanged: (val) => setState(() => selectedPrimaryDiet = val!),
                       ),
                       
-                      const SizedBox(height: 24),
+                      const SizedBox(height: AppDimens.spaceXL),
 
                       // --- Section 4: Clinical Overlays (Medical) ---
                       Text(l10n.onboardingMedicalTitle, style: TextStyle(
                         fontWeight: FontWeight.bold, 
                         color: Theme.of(context).colorScheme.error)
                       ),
-                      const SizedBox(height: 4),
+                      const SizedBox(height: AppDimens.spaceXS),
                       Text(l10n.onboardingMedicalHint, 
-                        style: TextStyle(fontSize: 12, color: Colors.grey[600])
+                        style: TextStyle(fontSize: AppDimens.fontSizeSmall, color: Theme.of(context).colorScheme.onSurfaceVariant)
                       ),
-                      const SizedBox(height: 8),
+                      const SizedBox(height: AppDimens.spaceS),
                       
                       Wrap(
-                        spacing: 8.0,
-                        runSpacing: 4.0,
+                        spacing: AppDimens.spaceS,
+                        runSpacing: AppDimens.spaceXS,
                         children: MedicalCondition.values.map((condition) {
                           final isSelected = selectedConditions.contains(condition);
                           return FilterChip(
-                            label: Text(condition.localized(context), style: const TextStyle(fontSize: 12)),
+                            label: Text(condition.localized(context), style: const TextStyle(fontSize: AppDimens.fontSizeSmall)),
                             selected: isSelected,
                             selectedColor: Theme.of(context).colorScheme.errorContainer,
                             checkmarkColor: Theme.of(context).colorScheme.error,
@@ -288,11 +288,11 @@ class OnboardingView extends StatelessWidget {
                   ),
                 ),
               ),
-              actionsPadding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
+              actionsPadding: const EdgeInsets.symmetric(horizontal: AppDimens.paddingPage, vertical: AppDimens.paddingPage),
               actions: [
                 if (member != null)
                    TextButton(
-                     style: TextButton.styleFrom(foregroundColor: Colors.red),
+                     style: TextButton.styleFrom(foregroundColor: Theme.of(context).colorScheme.error),
                      onPressed: () {
                         bloc.add(RemoveFamilyMember(member.id));
                         Navigator.pop(dialogContext);
@@ -305,8 +305,8 @@ class OnboardingView extends StatelessWidget {
                 ),
                 FilledButton(
                   style: FilledButton.styleFrom(
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppDimens.radiusM)),
+                    padding: const EdgeInsets.symmetric(horizontal: AppDimens.spaceXL, vertical: AppDimens.spaceM),
                   ),
                   onPressed: () {
                     if (nameController.text.isNotEmpty) {
@@ -329,24 +329,11 @@ class OnboardingView extends StatelessWidget {
                   child: Text(l10n.onboardingSave),
                 ),
               ],
-            ).animate().scale(duration: 300.ms, curve: Curves.easeOutBack);
+               ],
+            ).animate().scale(duration: AppDimens.durationMediumMs.ms, curve: Curves.easeOutBack);
           },
         );
       },
     );
-  }
-
-  String _getLocalizedRole(BuildContext context, String roleKey) {
-    final l10n = AppLocalizations.of(context)!;
-    switch (roleKey) {
-      case 'Dad': return l10n.roleDad;
-      case 'Mom': return l10n.roleMom;
-      case 'Son': return l10n.roleSon;
-      case 'Daughter': return l10n.roleDaughter;
-      case 'Grandparent': return l10n.roleGrandparent;
-      case 'Roommate': return l10n.roleRoommate;
-      case 'Other': return l10n.roleOther;
-      default: return roleKey;
-    }
   }
 }

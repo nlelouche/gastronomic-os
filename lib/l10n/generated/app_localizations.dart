@@ -721,6 +721,204 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Medical Tags'**
   String get medicalTags;
+
+  /// No description provided for @recipeIngredientsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Ingredients'**
+  String get recipeIngredientsTitle;
+
+  /// No description provided for @recipeIngredientsCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} items'**
+  String recipeIngredientsCount(Object count);
+
+  /// No description provided for @recipeIngredientsEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No ingredients listed.'**
+  String get recipeIngredientsEmpty;
+
+  /// No description provided for @recipeInstructionsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Instructions'**
+  String get recipeInstructionsTitle;
+
+  /// No description provided for @recipeInstructionsCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} steps'**
+  String recipeInstructionsCount(Object count);
+
+  /// No description provided for @recipeInstructionsEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No instructions listed.'**
+  String get recipeInstructionsEmpty;
+
+  /// No description provided for @recipeIdLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Recipe ID: {id}'**
+  String recipeIdLabel(Object id);
+
+  /// No description provided for @recipeForking.
+  ///
+  /// In en, this message translates to:
+  /// **'Forking Recipe...'**
+  String get recipeForking;
+
+  /// No description provided for @recipeAddToPlanTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Add to Plan'**
+  String get recipeAddToPlanTooltip;
+
+  /// No description provided for @recipeForkTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Fork Recipe'**
+  String get recipeForkTooltip;
+
+  /// No description provided for @recipeLoginRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Please log in to plan meals.'**
+  String get recipeLoginRequired;
+
+  /// No description provided for @recipeAddedToPlan.
+  ///
+  /// In en, this message translates to:
+  /// **'Added \"{title}\" to {date}'**
+  String recipeAddedToPlan(Object date, Object title);
+
+  /// No description provided for @themeModeSystem.
+  ///
+  /// In en, this message translates to:
+  /// **'System'**
+  String get themeModeSystem;
+
+  /// No description provided for @themeModeLight.
+  ///
+  /// In en, this message translates to:
+  /// **'Light'**
+  String get themeModeLight;
+
+  /// No description provided for @themeModeDark.
+  ///
+  /// In en, this message translates to:
+  /// **'Dark'**
+  String get themeModeDark;
+
+  /// No description provided for @themeNameEmerald.
+  ///
+  /// In en, this message translates to:
+  /// **'Emerald Tech'**
+  String get themeNameEmerald;
+
+  /// No description provided for @themeNameBlue.
+  ///
+  /// In en, this message translates to:
+  /// **'Deep Blue'**
+  String get themeNameBlue;
+
+  /// No description provided for @themeNameSunset.
+  ///
+  /// In en, this message translates to:
+  /// **'Sunset Haze'**
+  String get themeNameSunset;
+
+  /// No description provided for @themeNameForest.
+  ///
+  /// In en, this message translates to:
+  /// **'Forest Green'**
+  String get themeNameForest;
+
+  /// No description provided for @themeNameSlate.
+  ///
+  /// In en, this message translates to:
+  /// **'Elegant Slate'**
+  String get themeNameSlate;
+
+  /// No description provided for @appearanceThemeMode.
+  ///
+  /// In en, this message translates to:
+  /// **'Theme Mode'**
+  String get appearanceThemeMode;
+
+  /// No description provided for @appearanceColorTheme.
+  ///
+  /// In en, this message translates to:
+  /// **'Color Theme'**
+  String get appearanceColorTheme;
+
+  /// No description provided for @settingsDataPrivacy.
+  ///
+  /// In en, this message translates to:
+  /// **'Data & Privacy'**
+  String get settingsDataPrivacy;
+
+  /// No description provided for @settingsLanguage.
+  ///
+  /// In en, this message translates to:
+  /// **'Language'**
+  String get settingsLanguage;
+
+  /// No description provided for @settingsApplication.
+  ///
+  /// In en, this message translates to:
+  /// **'Application'**
+  String get settingsApplication;
+
+  /// No description provided for @settingsDebugZone.
+  ///
+  /// In en, this message translates to:
+  /// **'Debug Zone'**
+  String get settingsDebugZone;
+
+  /// No description provided for @settingsEnableLogs.
+  ///
+  /// In en, this message translates to:
+  /// **'Enable Application Logs'**
+  String get settingsEnableLogs;
+
+  /// No description provided for @settingsEnableLogsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Toggle detailed console logging.'**
+  String get settingsEnableLogsSubtitle;
+
+  /// No description provided for @settingsSeedTestRecipes.
+  ///
+  /// In en, this message translates to:
+  /// **'Seed Test Recipes'**
+  String get settingsSeedTestRecipes;
+
+  /// No description provided for @settingsSeedTestRecipesSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Populate Graph DB with Matrix Recipes'**
+  String get settingsSeedTestRecipesSubtitle;
+
+  /// No description provided for @settingsResetDialogTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset Everything?'**
+  String get settingsResetDialogTitle;
+
+  /// No description provided for @settingsResetDialogContent.
+  ///
+  /// In en, this message translates to:
+  /// **'This action is irreversible. It will delete your family members, inventory, recipes, and reset the onboarding flow to the beginning.'**
+  String get settingsResetDialogContent;
+
+  /// No description provided for @settingsResetDialogConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete & Reset'**
+  String get settingsResetDialogConfirm;
 }
 
 class _AppLocalizationsDelegate

@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/services.dart' show rootBundle;
+import 'package:gastronomic_os/core/util/app_logger.dart';
 import 'package:gastronomic_os/features/recipes/data/models/recipe_model.dart';
 import 'package:gastronomic_os/features/recipes/domain/entities/recipe_step.dart';
 import 'package:gastronomic_os/features/recipes/data/models/recipe_step_model.dart';
@@ -39,8 +40,8 @@ class RecipeSeeder {
           
           allRecipes.add(recipe);
         }
-      } catch (e) {
-        print ('Error loading $file: $e');
+      } catch (e, stack) {
+        AppLogger.e('Error loading $file', e, stack);
       }
     }
 
@@ -59,7 +60,7 @@ class RecipeSeeder {
               ?.map((e) => e.toString())
               .toList();
           
-          print('📦 Seeder parsing step: "${stepData['instruction']}" - skipped_for_diets from JSON: $skippedDiets');
+          AppLogger.d('📦 Seeder parsing step: "${stepData['instruction']}" - skipped_for_diets from JSON: $skippedDiets');
           
           final createdStep = RecipeStepModel(
             instruction: stepData['instruction'] as String,
@@ -70,7 +71,7 @@ class RecipeSeeder {
             skippedForDiets: skippedDiets,
           );
           
-          print('   ✅ Created model - skippedForDiets field value: ${createdStep.skippedForDiets}');
+          AppLogger.d('   ✅ Created model - skippedForDiets field value: ${createdStep.skippedForDiets}');
           
           steps.add(createdStep);
         }
@@ -94,7 +95,7 @@ class RecipeSeeder {
     final dietEngine = DietEngine();
     final compatibleDiets = dietEngine.calculateCompatibleDiets(recipeEntity);
     
-    print('   ✅ Computed Diet Tags: $compatibleDiets');
+    AppLogger.d('   ✅ Computed Diet Tags: $compatibleDiets');
 
     return RecipeModel(
       id: recipeEntity.id,
@@ -111,4 +112,3 @@ class RecipeSeeder {
     );
   }
 }
-

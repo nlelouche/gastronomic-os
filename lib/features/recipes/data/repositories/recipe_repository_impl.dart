@@ -1,4 +1,5 @@
 import 'package:gastronomic_os/core/error/failures.dart';
+import 'package:gastronomic_os/core/util/app_logger.dart';
 import 'package:gastronomic_os/features/recipes/data/datasources/recipe_seeder.dart';
 import 'package:gastronomic_os/features/recipes/data/datasources/recipe_remote_datasource.dart';
 import 'package:gastronomic_os/features/recipes/data/models/recipe_model.dart';
@@ -6,11 +7,11 @@ import 'package:gastronomic_os/features/recipes/data/models/commit_model.dart';
 import 'package:gastronomic_os/features/recipes/domain/entities/recipe.dart';
 import 'package:gastronomic_os/features/recipes/domain/entities/commit.dart';
 import 'package:gastronomic_os/features/recipes/domain/repositories/i_recipe_repository.dart';
-import 'package:supabase_flutter/supabase_flutter.dart'; // For accessing current user ID from Supabase Auth
+import 'package:supabase_flutter/supabase_flutter.dart'; 
 
 class RecipeRepositoryImpl implements IRecipeRepository {
   final RecipeRemoteDataSource remoteDataSource;
-  final SupabaseClient supabaseClient; // To get current user
+  final SupabaseClient supabaseClient; 
 
   List<Recipe>? _cachedRecipes;
 
@@ -21,21 +22,12 @@ class RecipeRepositoryImpl implements IRecipeRepository {
 
   @override
   Future<(Failure?, List<Recipe>?)> getRecipes({int limit = 20, int offset = 0, String? query}) async {
-    // For infinite scroll & search, we bypass the simple list cache.
-    // The Bloc will manage the accumulated list.
-    // We could implement a more complex Page Cache later if needed.
-    
     try {
       final result = await remoteDataSource.getRecipes(limit: limit, offset: offset, query: query);
-      
-      // We can still update the detail cache with these lightweight headers if we want,
-      // but strictly speaking, they might be incomplete? 
-      // Actually, they ARE headers (lightweight). getRecipeDetails fetches full.
-      // So let's NOT pollution the detail cache with headers, unless we carefully merge.
-      // For now: Clean pass-through.
       return (null, result);
-    } catch (e) {
-      return (const ServerFailure(), null);
+    } catch (e, stackTrace) {
+      AppLogger.e('Error fetching recipes', e, stackTrace);
+      return (ServerFailure(e.toString()), null);
     }
   }
 
@@ -44,36 +36,30 @@ class RecipeRepositoryImpl implements IRecipeRepository {
     try {
       final result = await remoteDataSource.getDashboardSuggestions(limit: limit);
       return (null, result);
-    } catch (e) {
-      // Logic: If failure, maybe return fallback empty list? Or propagate error?
-      // Since it's suggestions, empty list is safer for UI.
-      return (const ServerFailure(), null);
+    } catch (e, stackTrace) {
+      AppLogger.e('Error fetching dashboard suggestions', e, stackTrace);
+      return (ServerFailure(e.toString()), null);
     }
   }
 
   @override
   Future<(Failure?, Recipe?)> getRecipeDetails(String id) async {
-    // 1. Check Cache
     if (_cachedRecipes != null) {
       try {
         final cached = _cachedRecipes!.firstWhere((r) => r.id == id);
-        // Optimization: If cached recipe already has steps, assume details are loaded.
-        // NOTE: This assumes a recipe without steps is "incomplete" or just a header.
-        // If a valid recipe truly has no steps, this will cause a redundant fetch, which is acceptable.
         if (cached.steps.isNotEmpty) {
-           print('📦 Returning cached details for: ${cached.title}');
+           AppLogger.d('📦 Returning cached details for: ${cached.title}');
            return (null, cached);
         }
       } catch (_) {
-        // Not in cache, proceed to remote
+        // Not in cache
       }
     }
 
     try {
-      print('🌍 Fetching details from remote for: $id');
+      AppLogger.d('🌍 Fetching details from remote for: $id');
       final result = await remoteDataSource.getRecipeDetails(id);
       
-      // Update Cache with full details
       if (_cachedRecipes != null) {
          final index = _cachedRecipes!.indexWhere((r) => r.id == id);
          if (index != -1) {
@@ -83,8 +69,9 @@ class RecipeRepositoryImpl implements IRecipeRepository {
          }
       }
       return (null, result);
-    } catch (e) {
-      return (const ServerFailure(), null);
+    } catch (e, stackTrace) {
+      AppLogger.e('Error fetching recipe details for $id', e, stackTrace);
+      return (ServerFailure(e.toString()), null);
     }
   }
 
@@ -92,11 +79,11 @@ class RecipeRepositoryImpl implements IRecipeRepository {
   Future<(Failure?, Recipe?)> createRecipe(Recipe recipe) async {
     try {
       final result = await remoteDataSource.createRecipe(recipe);
-      // Invalidate cache to force refresh list
       _cachedRecipes = null;
       return (null, result);
-    } catch (e) {
-      return (const ServerFailure(), null);
+    } catch (e, stackTrace) {
+      AppLogger.e('Error creating recipe', e, stackTrace);
+      return (ServerFailure(e.toString()), null);
     }
   }
 
@@ -107,10 +94,11 @@ class RecipeRepositoryImpl implements IRecipeRepository {
       if (userId == null) return (const ServerFailure("User not logged in"), null);
 
       final result = await remoteDataSource.forkRecipe(originalRecipeId, newTitle, userId);
-      _cachedRecipes = null; // Invalidate cache
+      _cachedRecipes = null;
       return (null, result);
-    } catch (e) {
-      return (const ServerFailure(), null);
+    } catch (e, stackTrace) {
+      AppLogger.e('Error forking recipe', e, stackTrace);
+      return (ServerFailure(e.toString()), null);
     }
   }
 
@@ -119,8 +107,9 @@ class RecipeRepositoryImpl implements IRecipeRepository {
     try {
       final result = await remoteDataSource.getCommits(recipeId);
       return (null, result);
-    } catch (e) {
-      return (const ServerFailure(), null);
+    } catch (e, stackTrace) {
+      AppLogger.e('Error fetching commits', e, stackTrace);
+      return (ServerFailure(e.toString()), null);
     }
   }
 
@@ -138,53 +127,40 @@ class RecipeRepositoryImpl implements IRecipeRepository {
       );
       final result = await remoteDataSource.addCommit(model);
       return (null, result);
-    } catch (e) {
-      return (const ServerFailure(), null);
+    } catch (e, stackTrace) {
+      AppLogger.e('Error adding commit', e, stackTrace);
+      return (ServerFailure(e.toString()), null);
     }
   }
 
   @override
   Future<void> seedDatabase({String? filterTitle}) async {
-    print('🧹 Clearing existing recipes...');
+    AppLogger.w('🧹 Clearing existing recipes...');
     
-    // DEVELOPMENT MODE: Clear all recipes before seeding
     try {
       if (filterTitle == null) {
-        // Only clear all if doing a full seed or explicitly requested
-        // If seeding single recipe, we rely on upsert to not duplicate, 
-        // but user requested "seed ONLY steak", implying clean slate or just adding/updating that one.
-        // For debugging safety, let's NOT clear all if filtering, unless we want to isolate.
-        // User asked: "seedear unicamente la receta de steak"
-        // Let's assume we keep others but just ensure this one is fresh/present.
-        // actually existing clearAllRecipes nukes EVERYTHING.
-        // So if we key filter, we should probably NOT nuke everything.
-        // But the previous implementation nuked everything.
-        
-        // Let's modify behavior: 
-        // If filter is present -> DO NOT CLEAR, just UPSERT that specific recipe.
-        // If no filter -> CLEAR ALL and SEED ALL.
          await remoteDataSource.clearAllRecipes();
-         print('✅ Database cleared');
+         AppLogger.i('✅ Database cleared');
       } else {
-        print('ℹ️ Single recipe seed mode - Skipping full database clear');
+        AppLogger.i('ℹ️ Single recipe seed mode - Skipping full database clear');
       }
 
-    } catch (e) {
-      print('⚠️ Error clearing database: $e');
+    } catch (e, stackTrace) {
+      AppLogger.e('⚠️ Error clearing database', e, stackTrace);
     }
 
-    print('🌱 Seeding recipes${filterTitle != null ? ' (Filter: $filterTitle)' : ''}...');
+    AppLogger.i('🌱 Seeding recipes${filterTitle != null ? ' (Filter: $filterTitle)' : ''}...');
     final recipes = await RecipeSeeder.loadFromAssets(filterTitle: filterTitle);
     
     for (final recipe in recipes) {
       try {
         await remoteDataSource.createRecipe(recipe);
-        print('✓ Seeded: ${recipe.title}');
+        AppLogger.i('✓ Seeded: ${recipe.title}');
       } catch (e) {
-        print('✗ Error seeding recipe ${recipe.title}: $e');
+        AppLogger.e('✗ Error seeding recipe ${recipe.title}', e);
       }
     }
-    print('🎉 Seeding complete!');
-    _cachedRecipes = null; // Invalidate cache
+    AppLogger.i('🎉 Seeding complete!');
+    _cachedRecipes = null;
   }
 }

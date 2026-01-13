@@ -322,4 +322,114 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get medicalTags => 'Etiquetas Médicas';
+
+  @override
+  String get recipeIngredientsTitle => 'Ingredientes';
+
+  @override
+  String recipeIngredientsCount(Object count) {
+    return '$count ítems';
+  }
+
+  @override
+  String get recipeIngredientsEmpty => 'Sin ingredientes listados.';
+
+  @override
+  String get recipeInstructionsTitle => 'Instrucciones';
+
+  @override
+  String recipeInstructionsCount(Object count) {
+    return '$count pasos';
+  }
+
+  @override
+  String get recipeInstructionsEmpty => 'Sin instrucciones listadas.';
+
+  @override
+  String recipeIdLabel(Object id) {
+    return 'ID Receta: $id';
+  }
+
+  @override
+  String get recipeForking => 'Bifurcando Receta...';
+
+  @override
+  String get recipeAddToPlanTooltip => 'Añadir al Plan';
+
+  @override
+  String get recipeForkTooltip => 'Clonar Receta';
+
+  @override
+  String get recipeLoginRequired => 'Inicia sesión para planificar.';
+
+  @override
+  String recipeAddedToPlan(Object date, Object title) {
+    return 'Se añadió \"$title\" al $date';
+  }
+
+  @override
+  String get themeModeSystem => 'Sistema';
+
+  @override
+  String get themeModeLight => 'Claro';
+
+  @override
+  String get themeModeDark => 'Oscuro';
+
+  @override
+  String get themeNameEmerald => 'Esmeralda Tech';
+
+  @override
+  String get themeNameBlue => 'Azul Profundo';
+
+  @override
+  String get themeNameSunset => 'Atardecer';
+
+  @override
+  String get themeNameForest => 'Bosque Verde';
+
+  @override
+  String get themeNameSlate => 'Pizarra Elegante';
+
+  @override
+  String get appearanceThemeMode => 'Modo de Tema';
+
+  @override
+  String get appearanceColorTheme => 'Color del Tema';
+
+  @override
+  String get settingsDataPrivacy => 'Datos y Privacidad';
+
+  @override
+  String get settingsLanguage => 'Idioma';
+
+  @override
+  String get settingsApplication => 'Aplicación';
+
+  @override
+  String get settingsDebugZone => 'Zona de Depuración';
+
+  @override
+  String get settingsEnableLogs => 'Habilitar registros';
+
+  @override
+  String get settingsEnableLogsSubtitle =>
+      'Activa el registro detallado en consola.';
+
+  @override
+  String get settingsSeedTestRecipes => 'Sembrar Recetas de Prueba';
+
+  @override
+  String get settingsSeedTestRecipesSubtitle =>
+      'Llenar Graph DB con recetas de Matrix';
+
+  @override
+  String get settingsResetDialogTitle => '¿Restablecer Todo?';
+
+  @override
+  String get settingsResetDialogContent =>
+      'Esta acción es irreversible. Eliminará miembros de la familia, inventario, recetas y reiniciará el flujo de bienvenida.';
+
+  @override
+  String get settingsResetDialogConfirm => 'Eliminar y Restablecer';
 }

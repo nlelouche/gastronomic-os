@@ -322,4 +322,113 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get medicalTags => 'Medical Tags';
+
+  @override
+  String get recipeIngredientsTitle => 'Ingredients';
+
+  @override
+  String recipeIngredientsCount(Object count) {
+    return '$count items';
+  }
+
+  @override
+  String get recipeIngredientsEmpty => 'No ingredients listed.';
+
+  @override
+  String get recipeInstructionsTitle => 'Instructions';
+
+  @override
+  String recipeInstructionsCount(Object count) {
+    return '$count steps';
+  }
+
+  @override
+  String get recipeInstructionsEmpty => 'No instructions listed.';
+
+  @override
+  String recipeIdLabel(Object id) {
+    return 'Recipe ID: $id';
+  }
+
+  @override
+  String get recipeForking => 'Forking Recipe...';
+
+  @override
+  String get recipeAddToPlanTooltip => 'Add to Plan';
+
+  @override
+  String get recipeForkTooltip => 'Fork Recipe';
+
+  @override
+  String get recipeLoginRequired => 'Please log in to plan meals.';
+
+  @override
+  String recipeAddedToPlan(Object date, Object title) {
+    return 'Added \"$title\" to $date';
+  }
+
+  @override
+  String get themeModeSystem => 'System';
+
+  @override
+  String get themeModeLight => 'Light';
+
+  @override
+  String get themeModeDark => 'Dark';
+
+  @override
+  String get themeNameEmerald => 'Emerald Tech';
+
+  @override
+  String get themeNameBlue => 'Deep Blue';
+
+  @override
+  String get themeNameSunset => 'Sunset Haze';
+
+  @override
+  String get themeNameForest => 'Forest Green';
+
+  @override
+  String get themeNameSlate => 'Elegant Slate';
+
+  @override
+  String get appearanceThemeMode => 'Theme Mode';
+
+  @override
+  String get appearanceColorTheme => 'Color Theme';
+
+  @override
+  String get settingsDataPrivacy => 'Data & Privacy';
+
+  @override
+  String get settingsLanguage => 'Language';
+
+  @override
+  String get settingsApplication => 'Application';
+
+  @override
+  String get settingsDebugZone => 'Debug Zone';
+
+  @override
+  String get settingsEnableLogs => 'Enable Application Logs';
+
+  @override
+  String get settingsEnableLogsSubtitle => 'Toggle detailed console logging.';
+
+  @override
+  String get settingsSeedTestRecipes => 'Seed Test Recipes';
+
+  @override
+  String get settingsSeedTestRecipesSubtitle =>
+      'Populate Graph DB with Matrix Recipes';
+
+  @override
+  String get settingsResetDialogTitle => 'Reset Everything?';
+
+  @override
+  String get settingsResetDialogContent =>
+      'This action is irreversible. It will delete your family members, inventory, recipes, and reset the onboarding flow to the beginning.';
+
+  @override
+  String get settingsResetDialogConfirm => 'Delete & Reset';
 }

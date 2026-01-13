@@ -4,6 +4,7 @@ import 'package:gastronomic_os/core/bloc/theme_cubit.dart';
 import 'package:gastronomic_os/core/bloc/theme_event.dart';
 import 'package:gastronomic_os/core/bloc/theme_state.dart';
 import 'package:gastronomic_os/core/theme/app_theme.dart';
+import 'package:gastronomic_os/core/theme/app_dimens.dart';
 import 'package:gastronomic_os/l10n/generated/app_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -19,32 +20,32 @@ class AppearancePage extends StatelessWidget {
       body: BlocBuilder<ThemeCubit, ThemeState>(
         builder: (context, state) {
           return ListView(
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.all(AppDimens.paddingPage),
             children: [
-              _buildSectionHeader(context, 'Theme Mode'),
-              const SizedBox(height: 16),
+              _buildSectionHeader(context, AppLocalizations.of(context)!.appearanceThemeMode),
+              const SizedBox(height: AppDimens.spaceL),
               SegmentedButton<ThemeMode>(
-                segments: const [
-                  ButtonSegment(value: ThemeMode.system, label: Text('System'), icon: Icon(Icons.brightness_auto)),
-                  ButtonSegment(value: ThemeMode.light, label: Text('Light'), icon: Icon(Icons.light_mode)),
-                  ButtonSegment(value: ThemeMode.dark, label: Text('Dark'), icon: Icon(Icons.dark_mode)),
+                segments: [
+                  ButtonSegment(value: ThemeMode.system, label: Text(AppLocalizations.of(context)!.themeModeSystem), icon: const Icon(Icons.brightness_auto)),
+                  ButtonSegment(value: ThemeMode.light, label: Text(AppLocalizations.of(context)!.themeModeLight), icon: const Icon(Icons.light_mode)),
+                  ButtonSegment(value: ThemeMode.dark, label: Text(AppLocalizations.of(context)!.themeModeDark), icon: const Icon(Icons.dark_mode)),
                 ],
                 selected: {state.themeMode},
                 onSelectionChanged: (Set<ThemeMode> newSelection) {
                   context.read<ThemeCubit>().changeThemeMode(newSelection.first);
                 },
               ),
-              const SizedBox(height: 32),
-              _buildSectionHeader(context, 'Color Theme'),
-              const SizedBox(height: 16),
+              const SizedBox(height: AppDimens.space2XL),
+              _buildSectionHeader(context, AppLocalizations.of(context)!.appearanceColorTheme),
+              const SizedBox(height: AppDimens.spaceL),
               GridView.builder(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                   childAspectRatio: 3 / 2,
-                  crossAxisSpacing: 16,
-                  mainAxisSpacing: 16,
+                  crossAxisSpacing: AppDimens.spaceL,
+                  mainAxisSpacing: AppDimens.spaceL,
                 ),
                 itemCount: AppThemeType.values.length,
                 itemBuilder: (context, index) {
@@ -55,21 +56,23 @@ class AppearancePage extends StatelessWidget {
                   // We know the seeds: 
                   Color seedColor;
                   String label;
+                  final l10n = AppLocalizations.of(context)!;
+                  
                   switch (themeType) {
-                    case AppThemeType.emeraldTech: seedColor = const Color(0xFF009688); label = "Emerald Tech"; break;
-                    case AppThemeType.deepBlue: seedColor = const Color(0xFF1565C0); label = "Deep Blue"; break;
-                    case AppThemeType.sunsetHaze: seedColor = const Color(0xFFFF5722); label = "Sunset Haze"; break;
-                    case AppThemeType.forestGreen: seedColor = const Color(0xFF2E7D32); label = "Forest Green"; break;
-                    case AppThemeType.elegantSlate: seedColor = const Color(0xFF455A64); label = "Elegant Slate"; break;
+                    case AppThemeType.emeraldTech: seedColor = const Color(0xFF009688); label = l10n.themeNameEmerald; break;
+                    case AppThemeType.deepBlue: seedColor = const Color(0xFF1565C0); label = l10n.themeNameBlue; break;
+                    case AppThemeType.sunsetHaze: seedColor = const Color(0xFFFF5722); label = l10n.themeNameSunset; break;
+                    case AppThemeType.forestGreen: seedColor = const Color(0xFF2E7D32); label = l10n.themeNameForest; break;
+                    case AppThemeType.elegantSlate: seedColor = const Color(0xFF455A64); label = l10n.themeNameSlate; break;
                   }
 
                   return InkWell(
                     onTap: () => context.read<ThemeCubit>().changeTheme(themeType),
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(AppDimens.radiusM),
                     child: Container(
                       decoration: BoxDecoration(
                         color: seedColor.withOpacity(0.1),
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(AppDimens.radiusM),
                         border: Border.all(
                           color: isSelected ? seedColor : Colors.transparent,
                           width: 2,
@@ -78,8 +81,8 @@ class AppearancePage extends StatelessWidget {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          CircleAvatar(backgroundColor: seedColor, radius: 20),
-                          const SizedBox(height: 8),
+                          CircleAvatar(backgroundColor: seedColor, radius: AppDimens.iconSizeM),
+                          const SizedBox(height: AppDimens.spaceS),
                           Text(
                             label,
                             style: GoogleFonts.outfit(
@@ -89,8 +92,8 @@ class AppearancePage extends StatelessWidget {
                           ),
                           if (isSelected) 
                             Padding(
-                              padding: const EdgeInsets.only(top: 4.0),
-                              child: Icon(Icons.check_circle, size: 16, color: seedColor),
+                              padding: const EdgeInsets.only(top: AppDimens.spaceXS),
+                              child: Icon(Icons.check_circle, size: AppDimens.iconSizeS, color: seedColor),
                             ),
                         ],
                       ),
@@ -109,7 +112,7 @@ class AppearancePage extends StatelessWidget {
     return Text(
       title,
       style: GoogleFonts.outfit(
-        fontSize: 18,
+        fontSize: AppDimens.fontSizeHeader,
         fontWeight: FontWeight.bold,
         color: Theme.of(context).colorScheme.primary,
       ),

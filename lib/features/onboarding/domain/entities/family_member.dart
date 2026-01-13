@@ -1,10 +1,11 @@
 import 'package:equatable/equatable.dart';
 import 'package:gastronomic_os/core/enums/diet_enums.dart';
+import 'package:gastronomic_os/core/enums/family_role.dart';
 
 class FamilyMember extends Equatable {
   final String id;
   final String name;
-  final String role; // 'Dad', 'Mom', 'Son', 'Daughter', 'Roommate', etc.
+  final FamilyRole role;
   final DietLifestyle primaryDiet; 
   final List<MedicalCondition> medicalConditions;
 
@@ -18,7 +19,7 @@ class FamilyMember extends Equatable {
 
   FamilyMember copyWith({
     String? name,
-    String? role,
+    FamilyRole? role,
     DietLifestyle? primaryDiet,
     List<MedicalCondition>? medicalConditions,
   }) {
@@ -30,12 +31,6 @@ class FamilyMember extends Equatable {
       medicalConditions: medicalConditions ?? this.medicalConditions,
     );
   }
-
-  // toJson is moved to Model ideally, but Entity had it. We can keep a basic one or deprecate.
-  // Ideally, Clean Architecture prefers Models to handle Json.
-  // Removing Entity.toJson to force Model usage is aggressive but correct.
-  // However, for safety in this refactor step, I will leave it assuming simple usage,
-  // but better to rely on Model. Let's start by modifying the props.
 
   @override
   List<Object> get props => [id, name, role, primaryDiet, medicalConditions];

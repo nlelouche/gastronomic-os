@@ -1,6 +1,7 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'dart:math';
 import 'package:gastronomic_os/core/error/failures.dart';
+import 'package:gastronomic_os/core/util/app_logger.dart'; // Import AppLogger
 import 'package:gastronomic_os/features/recipes/data/models/recipe_snapshot_model.dart';
 import 'package:gastronomic_os/features/recipes/data/models/recipe_model.dart';
 import 'package:gastronomic_os/features/recipes/data/models/commit_model.dart';
@@ -9,7 +10,6 @@ import 'package:gastronomic_os/features/recipes/domain/entities/recipe.dart';
 
 abstract class RecipeRemoteDataSource {
   Future<List<RecipeModel>> getRecipes({int limit = 20, int offset = 0, String? query});
-  // Future<List<RecipeModel>> getRecipeHeaders(); // DEPRECATED: use getRecipes()
   Future<RecipeModel> createRecipe(Recipe recipe);
   Future<RecipeModel> forkRecipe(String originalRecipeId, String newTitle, String authorId);
   Future<List<CommitModel>> getCommits(String recipeId);
@@ -38,14 +38,11 @@ class RecipeRemoteDataSourceImpl implements RecipeRemoteDataSource {
           .range(offset, offset + limit - 1);
       
       return (response as List).map((data) => RecipeModel.fromJson(data)).toList();
-    } catch (e) {
-      print('Error fetching recipes: $e');
+    } catch (e, s) {
+      AppLogger.e('Error fetching recipes', e, s);
       throw const ServerFailure();
     }
   }
-
-  // @override
-  // Future<List<RecipeModel>> getRecipeHeaders() async ... // REMOVED
 
   @override
   Future<RecipeModel> createRecipe(Recipe recipe) async {
@@ -54,21 +51,21 @@ class RecipeRemoteDataSourceImpl implements RecipeRemoteDataSource {
 
       // 1. Calculate Enriched Tags (Move logic to top)
       final enrichedTags = List<String>.from(recipe.tags);
-      print('🔍 Enriching tags for "${recipe.title}". Initial tags: $enrichedTags');
+      AppLogger.d('🔍 Enriching tags for "${recipe.title}". Initial tags: $enrichedTags');
       
       for (final step in recipe.steps) {
         if (step.isBranchPoint && step.variantLogic != null) {
-          print('   Found variant step: ${step.variantLogic!.keys}');
+          AppLogger.d('   Found variant step: ${step.variantLogic!.keys}');
           for (final diet in step.variantLogic!.keys) {
             final normalizedDiet = diet; 
             if (!enrichedTags.any((t) => t.toLowerCase() == normalizedDiet.toLowerCase())) {
               enrichedTags.add(normalizedDiet);
-              print('   ✅ Added enriched tag: $normalizedDiet');
+              AppLogger.d('   ✅ Added enriched tag: $normalizedDiet');
             }
           }
         }
       }
-      print('🏁 Final enriched tags: $enrichedTags');
+      AppLogger.d('🏁 Final enriched tags: $enrichedTags');
       
       // 2. Check Existence
       final existingRecipe = await supabaseClient
@@ -81,9 +78,9 @@ class RecipeRemoteDataSourceImpl implements RecipeRemoteDataSource {
       String recipeId;
 
       if (existingRecipe != null) {
-        print('⚠️ Recipe "${recipe.title}" already exists. Updating Tags & Creating new Snapshot.');
-        print('   Original Tags: ${recipe.tags}');
-        print('   Enriched Tags to Update: $enrichedTags');
+        AppLogger.w('⚠️ Recipe "${recipe.title}" already exists. Updating Tags & Creating new Snapshot.');
+        AppLogger.d('   Original Tags: ${recipe.tags}');
+        AppLogger.d('   Enriched Tags to Update: $enrichedTags');
         
         recipeId = existingRecipe['id'];
         
@@ -92,7 +89,7 @@ class RecipeRemoteDataSourceImpl implements RecipeRemoteDataSource {
             .from('recipes')
             .update({'tags': enrichedTags})
             .eq('id', recipeId);
-        print('   ✅ Tags updated in DB.');
+        AppLogger.d('   ✅ Tags updated in DB.');
       } else {
         // 3. Insert New Recipe (using enrichedTags)
         final recipeData = {
@@ -134,7 +131,7 @@ class RecipeRemoteDataSourceImpl implements RecipeRemoteDataSource {
       final stepsJson = recipe.steps.map((step) {
         if (step is RecipeStepModel) {
           final json = step.toJson();
-          print('💾 Serializing step: "${step.instruction.substring(0, min(30, step.instruction.length))}..." - toJson: $json');
+          AppLogger.d('💾 Serializing step: "${step.instruction.substring(0, min(30, step.instruction.length))}..." - toJson: $json');
           return json;
         }
         return {
@@ -157,11 +154,11 @@ class RecipeRemoteDataSourceImpl implements RecipeRemoteDataSource {
         'full_structure': fullStructureJson,
       };
 
-      print('🚀 About to insert snapshot to Supabase. Full payload:');
-      print('   Steps count: ${stepsJson.length}');
-      print('   Step 2 JSON: ${stepsJson.length > 1 ? stepsJson[1] : "N/A"}');
-      print('   full_structure type: ${fullStructureJson.runtimeType}');
-      print('   full_structure JSON: $fullStructureJson');
+      AppLogger.d('🚀 About to insert snapshot to Supabase. Full payload:');
+      AppLogger.d('   Steps count: ${stepsJson.length}');
+      AppLogger.d('   Step 2 JSON: ${stepsJson.length > 1 ? stepsJson[1] : "N/A"}');
+      AppLogger.d('   full_structure type: ${fullStructureJson.runtimeType}');
+      AppLogger.d('   full_structure JSON: $fullStructureJson');
 
       await supabaseClient
           .from('recipe_snapshots')
@@ -175,7 +172,7 @@ class RecipeRemoteDataSourceImpl implements RecipeRemoteDataSource {
           .single();
           
       return RecipeModel.fromJson(finalRecipeResponse);
-    } catch (e) {
+    } catch (e, s) {
       // Rollback: Delete the header if snapshot failed to prevent "Shell" recipes
       // Only rollback if we were creating a NEW recipe (not updating existing)
       // Actually, checking if existingRecipe was null variable is tricky here due to scope.
@@ -183,8 +180,8 @@ class RecipeRemoteDataSourceImpl implements RecipeRemoteDataSource {
       // Simplified robustness: just log loudly. 
       // Real rollback requires knowing if we inserted.
       
-      print('❌ CRITICAL ERROR creating recipe "${recipe.title}": $e'); 
-      print('   👉 Suggestion: Purge Database and Retry Seeding.');
+      AppLogger.e('❌ CRITICAL ERROR creating recipe "${recipe.title}"', e, s); 
+      AppLogger.e('   👉 Suggestion: Purge Database and Retry Seeding.');
       throw const ServerFailure();
     }
   }
@@ -239,7 +236,7 @@ class RecipeRemoteDataSourceImpl implements RecipeRemoteDataSource {
       return (response as List).map((data) => RecipeModel.fromJson(data)).toList();
     } catch (e) {
       // If RPC fails (e.g. not applied yet), fallback to getRecipes
-      print('⚠️ RPC get_dashboard_suggestions failed: $e. Falling back to simple getRecipes.');
+      AppLogger.w('⚠️ RPC get_dashboard_suggestions failed: $e. Falling back to simple getRecipes.');
       return getRecipes(limit: limit);
     }
   }
@@ -304,8 +301,8 @@ class RecipeRemoteDataSourceImpl implements RecipeRemoteDataSource {
       }
       
       return recipeModel; // Return header only if no snapshot found
-    } catch (e) {
-      print('Error fetching details: $e');
+    } catch (e, s) {
+      AppLogger.e('Error fetching details', e, s);
       throw const ServerFailure();
     }
   }

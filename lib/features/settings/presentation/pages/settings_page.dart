@@ -1,6 +1,8 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:gastronomic_os/core/util/app_logger.dart';
 import 'package:gastronomic_os/core/widgets/ui_kit.dart';
 import 'package:gastronomic_os/features/onboarding/presentation/pages/onboarding_page.dart';
 import 'package:gastronomic_os/features/onboarding/presentation/bloc/onboarding_bloc.dart';
@@ -11,6 +13,7 @@ import 'package:gastronomic_os/features/recipes/presentation/bloc/recipe_bloc.da
 import 'package:gastronomic_os/features/recipes/presentation/bloc/recipe_event.dart';
 import 'package:gastronomic_os/main.dart';
 import 'package:gastronomic_os/init/injection_container.dart';
+import 'package:gastronomic_os/core/theme/app_dimens.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:gastronomic_os/l10n/generated/app_localizations.dart';
@@ -31,8 +34,15 @@ class SettingsPage extends StatelessWidget {
   }
 }
 
-class SettingsView extends StatelessWidget {
+class SettingsView extends StatefulWidget {
   const SettingsView({super.key});
+
+  @override
+  State<SettingsView> createState() => _SettingsViewState();
+}
+
+class _SettingsViewState extends State<SettingsView> {
+  bool _logsEnabled = AppLogger.isEnabled;
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +54,7 @@ class SettingsView extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           AppLocalizations.of(context)!.settingsTitle,
-          style: GoogleFonts.outfit(fontWeight: FontWeight.bold, fontSize: 24),
+          style: GoogleFonts.outfit(fontWeight: FontWeight.bold, fontSize: AppDimens.avatarFontSize),
         ),
         centerTitle: false,
         backgroundColor: Colors.transparent,
@@ -63,7 +73,7 @@ class SettingsView extends StatelessWidget {
                  content: Text(state.message), 
                  backgroundColor: colorScheme.error,
                  behavior: SnackBarBehavior.floating,
-                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppDimens.radiusS)),
                )
              );
            }
@@ -76,17 +86,13 @@ class SettingsView extends StatelessWidget {
           return CustomScrollView(
             slivers: [
               SliverPadding(
-                padding: const EdgeInsets.all(16.0),
+                padding: const EdgeInsets.all(AppDimens.paddingPage),
                 sliver: SliverList(
                   delegate: SliverChildListDelegate([
                     
                     // --- Data Management Section ---
-                    SectionHeader(title: AppLocalizations.of(context)!.manageFamilyTitle.toUpperCase().split(' ').last), // 'Data' part hack or just hardcode 'Family & Data' for now?
-                    // Let's stick to using the L10n keys we defined, assuming 'Family & Data' wasn't exactly defined.
-                    // Actually, let's use the defined keys or keep structure.
-                    // Wait, I defined specific keys in arb. Let's use them.
-                    const SectionHeader(title: 'DATA & PRIVACY'), 
-                    const SizedBox(height: 12),
+                    SectionHeader(title: AppLocalizations.of(context)!.settingsDataPrivacy.toUpperCase()), 
+                    const SizedBox(height: AppDimens.spaceM),
                     
                     _buildSettingsTile(
                       context,
@@ -99,7 +105,7 @@ class SettingsView extends StatelessWidget {
                          );
                       },
                     ),
-                    const SizedBox(height: 12),
+                    const SizedBox(height: AppDimens.spaceM),
 
                     _buildSettingsTile(
                       context,
@@ -110,26 +116,11 @@ class SettingsView extends StatelessWidget {
                       onTap: () => _confirmReset(context),
                       isDestructive: true,
                     ),
-                    const SizedBox(height: 12),
-
-                    _buildSettingsTile(
-                      context,
-                      title: 'Seed Test Recipes',
-                      subtitle: 'Dev: Populate Graph DB with Matrix Recipes',
-                      icon: Icons.science,
-                      iconColor: colorScheme.tertiary,
-                      onTap: () {
-                        context.read<RecipeBloc>().add(const SeedDatabase());
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text('Seeding Database with Graph Recipes... Check Dashboard shortly.'))
-                        );
-                      },
-                    ),
-                    const SizedBox(height: 12),
+                    const SizedBox(height: AppDimens.spaceM),
                     
                     // --- Localization Section ---
-                    const SectionHeader(title: 'LANGUAGE'),
-                    const SizedBox(height: 12),
+                    SectionHeader(title: AppLocalizations.of(context)!.settingsLanguage.toUpperCase()),
+                    const SizedBox(height: AppDimens.spaceM),
                     BlocBuilder<LocalizationBloc, LocalizationState>(
                       builder: (context, localeState) {
                         final isEnglish = localeState.locale.languageCode == 'en';
@@ -146,11 +137,11 @@ class SettingsView extends StatelessWidget {
                         );
                       },
                     ),
-                    const SizedBox(height: 12),
+                    const SizedBox(height: AppDimens.spaceM),
 
                     // --- Application Section ---
-                    const SectionHeader(title: 'APPLICATION'),
-                    const SizedBox(height: 12),
+                    SectionHeader(title: AppLocalizations.of(context)!.settingsApplication.toUpperCase()),
+                    const SizedBox(height: AppDimens.spaceM),
                     _buildSettingsTile(
                       context,
                       title: AppLocalizations.of(context)!.appearanceTitle,
@@ -162,7 +153,7 @@ class SettingsView extends StatelessWidget {
                         );
                       },
                     ),
-                    const SizedBox(height: 12),
+                    const SizedBox(height: AppDimens.spaceM),
                     _buildSettingsTile(
                       context,
                       title: AppLocalizations.of(context)!.glossaryTitle,
@@ -175,7 +166,7 @@ class SettingsView extends StatelessWidget {
                         );
                       },
                     ),
-                    const SizedBox(height: 12),
+                    const SizedBox(height: AppDimens.spaceM),
                     _buildSettingsTile(
                       context,
                       title: AppLocalizations.of(context)!.aboutTitle,
@@ -183,11 +174,56 @@ class SettingsView extends StatelessWidget {
                       icon: Icons.info_outline,
                       onTap: () {}, 
                     ),
+
+                    // --- Debug Zone (Visible only in Debug Mode) ---
+                    if (kDebugMode) ...[
+                      const SizedBox(height: AppDimens.space2XL),
+                      SectionHeader(title: AppLocalizations.of(context)!.settingsDebugZone.toUpperCase()),
+                      const SizedBox(height: AppDimens.spaceM),
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Colors.amber.withOpacity(0.1),
+                          border: Border.all(color: Colors.amber.withOpacity(0.5)),
+                          borderRadius: BorderRadius.circular(AppDimens.radiusM),
+                        ),
+                        child: Column(
+                          children: [
+                            SwitchListTile(
+                              title: Text(AppLocalizations.of(context)!.settingsEnableLogs, style: const TextStyle(fontWeight: FontWeight.bold)),
+                              subtitle: Text(AppLocalizations.of(context)!.settingsEnableLogsSubtitle),
+                              value: _logsEnabled,
+                              activeColor: Colors.amber,
+                              onChanged: (bool value) {
+                                AppLogger.enableLogs(value);
+                                setState(() {
+                                  _logsEnabled = value;
+                                });
+                              },
+                            ),
+                            const Divider(height: 1),
+                            _buildSettingsTile(
+                              context,
+                              title: AppLocalizations.of(context)!.settingsSeedTestRecipes,
+                              subtitle: AppLocalizations.of(context)!.settingsSeedTestRecipesSubtitle,
+                              icon: Icons.science,
+                              iconColor: Colors.amber,
+                              onTap: () {
+                                context.read<RecipeBloc>().add(const SeedDatabase());
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(content: Text('Seeding Database... Check logs.'))
+                                );
+                              },
+                              isDestructive: false, // Override
+                            ),
+                          ],
+                        ),
+                      ).animate().fadeIn(),
+                    ],
                     
-                    const SizedBox(height: 48),
+                    const SizedBox(height: AppDimens.space3XL),
                     Center(
                       child: Text(
-                        'Gastronomic OS',
+                        'Gastronomic OS ${kDebugMode ? '(Debug Build)' : ''}',
                         style: GoogleFonts.outfit(
                           color: colorScheme.outline.withOpacity(0.5),
                           fontWeight: FontWeight.bold,
@@ -219,18 +255,18 @@ class SettingsView extends StatelessWidget {
     
     return AppCard(
       onTap: onTap,
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      padding: const EdgeInsets.symmetric(horizontal: AppDimens.paddingCard, vertical: AppDimens.spaceM),
       child: Row(
         children: [
           Container(
-            padding: const EdgeInsets.all(10),
+            padding: const EdgeInsets.all(AppDimens.spaceS + 2),
             decoration: BoxDecoration(
               color: (iconColor ?? colorScheme.primary).withOpacity(0.1),
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(AppDimens.radiusS + 2),
             ),
             child: Icon(icon, color: iconColor ?? colorScheme.primary, size: 22),
           ),
-          const SizedBox(width: 16),
+          const SizedBox(width: AppDimens.spaceL),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -261,36 +297,34 @@ class SettingsView extends StatelessWidget {
     showDialog(
       context: context,
       builder: (dialogContext) => AlertDialog(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppDimens.radiusXL)),
         title: Row(
           children: [
             const Icon(Icons.warning_amber_rounded, color: Colors.orange, size: 28),
-            const SizedBox(width: 12),
-            Text('Reset Everything?', style: GoogleFonts.outfit(fontWeight: FontWeight.bold)),
+            const SizedBox(width: AppDimens.spaceM),
+            Text(AppLocalizations.of(context)!.settingsResetDialogTitle, style: GoogleFonts.outfit(fontWeight: FontWeight.bold)),
           ],
         ),
-        content: const Text(
-          'This action is irreversible. It will delete your family members, inventory, recipes, and reset the onboarding flow to the beginning.',
-          style: TextStyle(height: 1.5),
+        content: Text(
+          AppLocalizations.of(context)!.settingsResetDialogContent,
+          style: const TextStyle(height: 1.5),
         ),
-        actionsPadding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
+        actionsPadding: const EdgeInsets.symmetric(horizontal: AppDimens.paddingPage, vertical: AppDimens.paddingPage),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(dialogContext),
-            child: const Text('Cancel'),
+            child: Text(AppLocalizations.of(context)!.dialogCancel),
           ),
           FilledButton(
-             style: FilledButton.styleFrom(
-               backgroundColor: Theme.of(context).colorScheme.error,
-               foregroundColor: Theme.of(context).colorScheme.onError,
-             ),
+            style: FilledButton.styleFrom(
+              backgroundColor: Theme.of(context).colorScheme.error,
+              foregroundColor: Theme.of(context).colorScheme.onError,
+            ),
             onPressed: () {
               Navigator.pop(dialogContext);
-              // Dispatch reset event via the context from the PARENT widget (SettingsView)
-              // We need to capture the Bloc provided in SettingsPage
               context.read<OnboardingBloc>().add(ResetOnboarding());
             },
-            child: const Text('Delete & Reset'),
+            child: Text(AppLocalizations.of(context)!.settingsResetDialogConfirm),
           ),
         ],
       ).animate().scale(duration: 300.ms, curve: Curves.easeOutBack),

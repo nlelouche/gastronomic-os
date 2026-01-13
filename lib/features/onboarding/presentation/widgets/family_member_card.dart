@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:gastronomic_os/core/widgets/ui_kit.dart';
+import 'package:gastronomic_os/core/theme/app_dimens.dart';
 import 'package:gastronomic_os/features/onboarding/domain/entities/family_member.dart';
+import 'package:gastronomic_os/core/enums/family_role.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:gastronomic_os/l10n/generated/app_localizations.dart';
 import 'package:gastronomic_os/core/util/localized_enums.dart';
@@ -24,19 +26,21 @@ class FamilyMemberCard extends StatelessWidget {
     final colorScheme = theme.colorScheme;
     final l10n = AppLocalizations.of(context)!;
     
-    // Determine avatar color based on role (could be dynamic or random)
+    // Determine avatar color based on role
     final avatarColor = _getColorForRole(member.role, colorScheme);
-    final localizedRole = _getLocalizedRole(context, member.role);
+    
+    // Use the extension endpoint we created in localized_enums.dart
+    final localizedRole = member.role.localized(context);
 
     return AppCard(
       onTap: onTap,
-      padding: const EdgeInsets.all(12), // Reduced from 16
+      padding: const EdgeInsets.all(AppDimens.spaceM), 
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Container(
-            width: 56, // Reduced from 64
-            height: 56,
+            width: AppDimens.avatarSizeL, 
+            height: AppDimens.avatarSizeL,
             decoration: BoxDecoration(
               color: avatarColor.withOpacity(0.2),
               shape: BoxShape.circle,
@@ -46,14 +50,14 @@ class FamilyMemberCard extends StatelessWidget {
               child: Text(
                 member.name.isNotEmpty ? member.name[0].toUpperCase() : '?',
                 style: GoogleFonts.outfit(
-                  fontSize: 24, // Reduced from 28
+                  fontSize: AppDimens.avatarFontSize, 
                   fontWeight: FontWeight.bold,
                   color: avatarColor,
                 ),
               ),
             ),
           ),
-          const SizedBox(height: 8), // Reduced from 12
+          const SizedBox(height: AppDimens.spaceS), 
           Text(
             member.name,
             style: theme.textTheme.titleMedium?.copyWith(
@@ -64,19 +68,19 @@ class FamilyMemberCard extends StatelessWidget {
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
           ),
-          const SizedBox(height: 4),
+          const SizedBox(height: AppDimens.spaceXS),
           Text(
             localizedRole,
             style: theme.textTheme.bodySmall?.copyWith(
               color: colorScheme.onSurfaceVariant,
             ),
           ),
-          const SizedBox(height: 8), // Reduced from 12
+          const SizedBox(height: AppDimens.spaceS), 
           Container(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+            padding: const EdgeInsets.symmetric(horizontal: AppDimens.spaceS + 2, vertical: AppDimens.spaceXS),
             decoration: BoxDecoration(
               color: colorScheme.secondaryContainer,
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(AppDimens.radiusM),
             ),
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -89,18 +93,19 @@ class FamilyMemberCard extends StatelessWidget {
                   ),
                 ),
                 if (member.medicalConditions.isNotEmpty) ...[
-                  const SizedBox(height: 4),
+                  const SizedBox(height: AppDimens.spaceXS),
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                    padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2), // Keep slightly smaller/custom for pill
+                    decoration: BoxDecoration(
                     decoration: BoxDecoration(
                       color: colorScheme.errorContainer,
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(AppDimens.radiusS),
                     ),
                     child: Text(
                       '${member.medicalConditions.length} ${l10n.medicalTags}',
                       style: theme.textTheme.labelSmall?.copyWith(
                         color: colorScheme.onErrorContainer,
-                        fontSize: 10,
+                        fontSize: AppDimens.fontSizeTiny,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -111,31 +116,17 @@ class FamilyMemberCard extends StatelessWidget {
           ),
         ],
       ),
-    ).animate().scale(duration: 300.ms, curve: Curves.easeOutBack);
+    ).animate().scale(duration: AppDimens.durationMediumMs.ms, curve: Curves.easeOutBack);
   }
 
-  Color _getColorForRole(String role, ColorScheme scheme) {
-    switch (role.toLowerCase()) {
-      case 'dad': return Colors.blue;
-      case 'mom': return Colors.pink;
-      case 'son': return Colors.green;
-      case 'daughter': return Colors.purple;
-      case 'grandparent': return Colors.orange;
+  Color _getColorForRole(FamilyRole role, ColorScheme scheme) {
+    switch (role) {
+      case FamilyRole.dad: return Colors.blue;
+      case FamilyRole.mom: return Colors.pink;
+      case FamilyRole.son: return Colors.green;
+      case FamilyRole.daughter: return Colors.purple;
+      case FamilyRole.grandparent: return Colors.orange;
       default: return scheme.primary;
-    }
-  }
-
-  String _getLocalizedRole(BuildContext context, String roleKey) {
-    final l10n = AppLocalizations.of(context)!;
-    switch (roleKey) {
-      case 'Dad': return l10n.roleDad;
-      case 'Mom': return l10n.roleMom;
-      case 'Son': return l10n.roleSon;
-      case 'Daughter': return l10n.roleDaughter;
-      case 'Grandparent': return l10n.roleGrandparent;
-      case 'Roommate': return l10n.roleRoommate;
-      case 'Other': return l10n.roleOther;
-      default: return roleKey;
     }
   }
 }
