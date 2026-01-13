@@ -314,6 +314,18 @@ abstract class AppLocalizations {
   /// **'Optimized for your fridge & family'**
   String get chefsSuggestionsSubtitle;
 
+  /// No description provided for @chefsSuggestionsEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No suggestions right now'**
+  String get chefsSuggestionsEmpty;
+
+  /// No description provided for @chefsSuggestionsEmptyHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Add ingredients to your fridge or update your family profile'**
+  String get chefsSuggestionsEmptyHint;
+
   /// No description provided for @matchGreatValue.
   ///
   /// In en, this message translates to:

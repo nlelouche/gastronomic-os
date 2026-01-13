@@ -22,93 +22,68 @@ class RecipeResolver {
   
   /// Resolves a recipe for a specific family.
   /// Returns a flat list of ResolvedStep objects with personalized instructions.
+  /// Resolves a recipe for a specific family.
+  /// Returns a flat list of ResolvedStep objects with personalized instructions.
   List<ResolvedStep> resolve(Recipe recipe, List<FamilyMember> family) {
     if (family.isEmpty) {
       // No family context: return universal steps
       return _resolveUniversal(recipe);
     }
 
-    // Group family members by their effective diet path
-    Map<String, List<String>> dietToMembers = _groupMembersByDiet(family);
-    
     List<ResolvedStep> resolvedSteps = [];
     int stepCounter = 1;
     
     for (final step in recipe.steps) {
       AppLogger.d('🔍 Resolver Step: "${step.instruction.length > 30 ? step.instruction.substring(0, 30) : step.instruction}..." - isBranch: ${step.isBranchPoint}, skippedForDiets: ${step.skippedForDiets}');
       
-      // Check which diet groups should see this step
-      Map<String, List<String>> applicableDietToMembers = {};
-      
-      for (var entry in dietToMembers.entries) {
-        final diet = entry.key;
-        final members = entry.value;
-        
-        // Skip this step for diets listed in skippedForDiets
-        if (step.skippedForDiets != null && 
-            step.skippedForDiets!.any((d) => d.toLowerCase() == diet.toLowerCase())) {
-          AppLogger.d('   ⏭️ Skipping for diet: $diet (members: $members)');
-          continue; // Skip this diet group
-        }
-        
-        applicableDietToMembers[diet] = members;
-      }
-      
-      AppLogger.d('   ✅ Applicable diets: ${applicableDietToMembers.keys.toList()}');
-      
-      // If no one should see this step, skip it entirely
-      if (applicableDietToMembers.isEmpty) {
-        AppLogger.d('   ❌ No one can see this step, skipping entirely');
-        continue;
-      }
-      
+      int originalIndex = recipe.steps.indexOf(step) + 1;
+
       if (!step.isBranchPoint || step.variantLogic == null || step.variantLogic!.isEmpty) {
-        // Universal step: everyone (who can see it) follows the same instruction
-        final allApplicableMembers = applicableDietToMembers.values
-            .expand((members) => members)
-            .toList();
-        
-        AppLogger.d('   📝 Creating universal step for: $allApplicableMembers');
-        
+        // Universal step: everyone follows the same instruction
         resolvedSteps.add(ResolvedStep(
-          index: stepCounter++,
+          index: originalIndex,
           instruction: step.instruction,
-          targetMembers: allApplicableMembers,
-          isUniversal: allApplicableMembers.length == family.length, // Universal only if ALL can see it
+          targetMembers: family.map((m) => m.name).toList(),
+          isUniversal: true,
           crossContaminationAlert: step.crossContaminationAlert,
         ));
       } else {
-        // Branch point: resolve for each diet group
-        Map<String, List<String>> instructionToMembers = {};
+        // Branch point: resolve for each member individually
+        // Map<Instruction, (List<MemberName>, Set<Reason>)>
+        Map<String, (List<String>, Set<String>)> instructionToGroup = {};
         
-        for (var entry in dietToMembers.entries) {
-          final diet = entry.key;
-          final members = entry.value;
+        for (final member in family) {
+          final resolution = _resolveInstructionForMember(step, member);
+          final instruction = resolution.$1;
+          final reason = resolution.$2;
           
-          String instruction = _resolveInstructionForDiet(step, diet);
-          
-          // Group members with same instruction
-          if (!instructionToMembers.containsKey(instruction)) {
-            instructionToMembers[instruction] = [];
+          if (!instructionToGroup.containsKey(instruction)) {
+            instructionToGroup[instruction] = ([], {});
           }
-          instructionToMembers[instruction]!.addAll(members);
+          
+          instructionToGroup[instruction]!.$1.add(member.name);
+          if (reason != null) {
+            instructionToGroup[instruction]!.$2.add(reason);
+          }
         }
         
-        // Create one ResolvedStep per unique instruction
-        // IMPORTANT: None of these are "universal" because they're branch variants
-        // Check if all members converged to a single instruction (Functional Universality)
-        // This prevents showing "For dad and mom" chips when everyone shares the same step.
-        bool isFunctionallyUniversal = instructionToMembers.length == 1 && 
-                                       instructionToMembers.values.first.length == family.length;
+        // Check if everyone converged to same instruction (Functional Universality)
+        bool isFunctionallyUniversal = instructionToGroup.length == 1 && 
+                                       instructionToGroup.values.first.$1.length == family.length;
 
         // Create ResolvedSteps
-        for (var entry in instructionToMembers.entries) {
+        for (var entry in instructionToGroup.entries) {
+          final members = entry.value.$1;
+          final reasons = entry.value.$2.toList()..sort();
+          final reasonString = reasons.isEmpty ? null : reasons.join(', ');
+
           resolvedSteps.add(ResolvedStep(
-            index: stepCounter++,
+            index: originalIndex,
             instruction: entry.key,
-            targetMembers: entry.value,
-            isUniversal: isFunctionallyUniversal, // ✅ Hide chip if everyone sees the same
+            targetMembers: members,
+            isUniversal: isFunctionallyUniversal,
             crossContaminationAlert: step.crossContaminationAlert,
+            substitutionReason: reasonString,
           ));
         }
       }
@@ -117,43 +92,48 @@ class RecipeResolver {
     return resolvedSteps;
   }
   
-  /// Groups family members by their diet, returning a map of diet -> list of member names
-  Map<String, List<String>> _groupMembersByDiet(List<FamilyMember> family) {
-    Map<String, List<String>> groups = {};
-    
-    for (final member in family) {
-      // Use Primary Diet KEY for grouping (Stable matching with Recipe Logic)
-      final diet = member.primaryDiet.key;
-      if (!groups.containsKey(diet)) {
-        groups[diet] = [];
-      }
-      groups[diet]!.add(member.name);
-    }
-    
-    return groups;
-  }
+  // ... _groupMembersByDiet ...
+
+  // ... _resolveInstructionForDiet ...
   
-  /// Resolves a step's instruction for a specific diet.
-  /// Returns the variant instruction if available, otherwise the universal instruction.
-  String _resolveInstructionForDiet(RecipeStep step, String diet) {
-    if (step.variantLogic == null) {
-      return step.instruction;
+  /// Resolves a step's instruction for a SPECIFIC FAMILY MEMBER.
+  /// Checks BOTH their primaryDiet AND medicalConditions.
+  /// Returns (Instruction, SubstitutionReason?)
+  /// 
+  /// **Priority:**
+  /// 1. Medical Condition variant (highest priority - safety!)
+  /// 2. Primary Diet variant
+  /// 3. Universal/base instruction
+  (String, String?) _resolveInstructionForMember(RecipeStep step, FamilyMember member) {
+    if (step.variantLogic == null || step.variantLogic!.isEmpty) {
+      return (step.instruction, null);
     }
     
-    // Try exact match first (case-insensitive)
-    for (var entry in step.variantLogic!.entries) {
-      if (entry.key.toLowerCase() == diet.toLowerCase()) {
-        return entry.value;
+    // 1. Check Medical Conditions FIRST (highest priority for safety)
+    for (final condition in member.medicalConditions) {
+      final conditionKey = condition.key;
+      for (var entry in step.variantLogic!.entries) {
+        if (entry.key.toLowerCase() == conditionKey.toLowerCase()) {
+          final val = entry.value;
+          AppLogger.d('   🚨 MEDICAL MATCH: ${member.name} has $conditionKey → "${val.length > 30 ? val.substring(0, 30) : val}..."');
+          return (val, conditionKey);
+        }
       }
     }
     
-    // Handle diet aliases (e.g., Omnivore can use base instruction)
-    if (diet.toLowerCase() == 'omnivore' || diet.toLowerCase() == 'normal') {
-      return step.instruction;
+    // 2. Check Primary Diet
+    final dietKey = member.primaryDiet.key;
+    for (var entry in step.variantLogic!.entries) {
+      if (entry.key.toLowerCase() == dietKey.toLowerCase()) {
+        final val = entry.value;
+        AppLogger.d('   🥗 DIET MATCH: ${member.name} is $dietKey → "${val.length > 30 ? val.substring(0, 30) : val}..."');
+        return (val, dietKey);
+      }
     }
     
-    // Fallback: use universal instruction
-    return step.instruction;
+    // 3. Fallback to universal
+    AppLogger.d('   ⚪ NO MATCH: ${member.name} gets base instruction');
+    return (step.instruction, null);
   }
   
   /// Resolves a recipe without family context (returns universal steps only)

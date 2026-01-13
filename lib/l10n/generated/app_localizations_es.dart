@@ -118,6 +118,13 @@ class AppLocalizationsEs extends AppLocalizations {
       'Optimizado para tu refrigerador y familia';
 
   @override
+  String get chefsSuggestionsEmpty => 'No hay sugerencias ahora';
+
+  @override
+  String get chefsSuggestionsEmptyHint =>
+      'Agrega ingredientes a tu nevera o actualiza tu perfil familiar';
+
+  @override
   String get matchGreatValue => 'Gran Valor';
 
   @override

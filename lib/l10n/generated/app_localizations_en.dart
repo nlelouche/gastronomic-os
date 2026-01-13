@@ -118,6 +118,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get chefsSuggestionsSubtitle => 'Optimized for your fridge & family';
 
   @override
+  String get chefsSuggestionsEmpty => 'No suggestions right now';
+
+  @override
+  String get chefsSuggestionsEmptyHint =>
+      'Add ingredients to your fridge or update your family profile';
+
+  @override
   String get matchGreatValue => 'Great Value';
 
   @override

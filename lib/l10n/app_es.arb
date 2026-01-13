@@ -35,6 +35,8 @@
   "mealTypeSnack": "Merienda",
   "chefsSuggestionsTitle": "Sugerencias del Chef",
   "chefsSuggestionsSubtitle": "Optimizado para tu refrigerador y familia",
+  "chefsSuggestionsEmpty": "No hay sugerencias ahora",
+  "chefsSuggestionsEmptyHint": "Agrega ingredientes a tu nevera o actualiza tu perfil familiar",
   "matchGreatValue": "Gran Valor",
   "matchGoodMatch": "Buena Coincidencia",
   "recipesTitle": "Recetas",

@@ -1,0 +1,155 @@
+{
+  "id": "GOS-MASTER-UNIVERSAL-001",
+  "title": "Bol Universal de Alto Rendimiento",
+  "titleEn": "Universal High-Performance Bowl",
+  "description": "Receta maestra diseñada para adaptarse a CUALQUIER combinación familiar. Incluye variantes para 10 condiciones médicas y 10 estilos de vida.",
+  "tags": [
+    "Master Recipe",
+    "Stress Test",
+    "Universal",
+    "Bowl",
+    "Balanced"
+  ],
+  "ingredients": [
+    "Pechuga de Pollo Orgánica (150g/persona) [Base, Paleo, Whole30, High-Performance]",
+    "Tofu Firme (150g/persona) [Vegan, Vegetarian]",
+    "Pescado Blanco (Merluza/Bacalao) (150g/persona) [Pescatarian, Histamine]",
+    "Arroz Integral (80g en seco/persona) [Base, Vegan, Vegetarian, Gluten-Free]",
+    "Arroz de Coliflor (200g/persona) [Keto, Paleo, Low-Carb, Whole30, Diabetes]",
+    "Quinoa Tricolor (80g en seco/persona) [Celiac, High-Performance]",
+    "Calabacín (100g/persona) [Base]",
+    "Calabacín (60g máx/persona) [Low FODMAP]",
+    "Zanahoria (100g/persona) [Base]",
+    "Zanahoria Lixiviada (remojo 4h) (80g/persona) [Renal]",
+    "Espinaca Baby (puñado) [Base, Keto]",
+    "Acelga o Rúcula (puñado) [Histamine, Renal]",
+    "AOVE (Aceite de Oliva Virgen Extra) (15ml) [Base]",
+    "Aceite de Coco o Aguacate (15ml) [Histamine]",
+    "Aceite Infusionado en Ajo (sin sólidos) (15ml) [Low FODMAP]",
+    "Ajo Fresco (1 diente) [Base]",
+    "Cebolla Morada (1/4 unidad) [Base]",
+    "Cebollino (parte verde) (1 cda) [Low FODMAP]",
+    "Salsa de Soja (10ml) [Base]",
+    "Tamari (10ml) [Celiac, Gluten-Free]",
+    "Coconut Aminos (10ml) [Soy Allergy, Paleo, Whole30]",
+    "Sal Marina (al gusto) [Base]",
+    "Sal Sin Sodio / Hierbas (al gusto) [Renal]",
+    "Anacardos/Nueces (10g) [Base, Keto, High-Performance]",
+    "Semillas de Calabaza/Girasol (10g) [Nut Allergy, Histamine]",
+    "Aguacate (1/4 unidad) [Base, Keto, Paleo]",
+    "Aguacate (1/8 unidad o omitir) [Renal, Low FODMAP, Histamine]"
+  ],
+  "steps": [
+    {
+      "instruction": "Preparar la base de carbohidratos: Cocer el arroz integral en agua con sal/hierbas por 20-40 min según instrucciones.",
+      "is_branch_point": true,
+      "variant_logic": {
+        "Keto": "Preparar 'Arroz de Coliflor': Rallar la coliflor. Saltear en sartén con un poco de aceite por 5-7 min hasta que esté tierna pero no pastosa.",
+        "Paleo": "Igual que Keto: Usar arroz de coliflor.",
+        "Whole30": "Igual que Keto: Usar arroz de coliflor.",
+        "Low-Carb": "Igual que Keto: Usar arroz de coliflor.",
+        "Diabetes": "Preferir Arroz de Coliflor para control glucémico estricto, o Quinoa si se permiten carbohidratos complejos.",
+        "Celiac": "Usar Quinoa certificada SIN GLUTEN. Lavar bien antes de cocer para eliminar saponinas.",
+        "Renal": "Usar Arroz BLANCO (lavado) o Cuscús (si no es celíaco) en lugar de integral para reducir fósforo/potasio."
+      }
+    },
+    {
+      "instruction": "Preparación de Proteína: Cortar la pechuga de pollo en cubos de 2-3 cm.",
+      "is_branch_point": true,
+      "variant_logic": {
+        "Vegan": "Usar Tofu Firme. Prensar por 15 min para sacar agua. Cortar en cubos.",
+        "Vegetarian": "Igual que Vegan (o usar Queso Halloumi si no hay restricción de grasa).",
+        "Pescatarian": "Usar lomos de Pescado Blanco (Merluza). Cortar en trozos grandes.",
+        "Histamine": "⚠️ CRÍTICO: El pollo o pescado debe ser FRESCO (comprado hoy/ayer). Si es congelado/descongelado, NO USAR. Riesgo alto de histamina.",
+        "Renal": "Controlar la porción de proteína a 100-120g según restricción médica."
+      },
+      "cross_contamination_alert": "Histamine: La frescura es la única garantía de seguridad. Ante la duda, descartar."
+    },
+    {
+      "instruction": "Preparar Vegetales: Cortar calabacín y zanahoria en medias lunas o bastones.",
+      "is_branch_point": true,
+      "variant_logic": {
+        "Renal": "Zanahoria: Debe haber sido pelada, cortada y remojada en agua (lixiviación) mínimo 4h. Desechar el agua de remojo.",
+        "Low FODMAP": "Calabacín: Máximo 60-65g por persona. Zanahoria: Libre consumo.",
+        "Histamine": "Vegetales frescos. Evitar espinacas o tomates si se añadieran extra."
+      }
+    },
+    {
+      "instruction": "Condimentos Base: Picar finamente ajo y cebolla.",
+      "is_branch_point": true,
+      "variant_logic": {
+        "Low FODMAP": "🚫 OMITIR ajo y cebolla sólidos. Usaremos Aceite Infusionado en Ajo más adelante. Usar parte verde del cebollino para sabor a cebolla.",
+        "Histamine": "Omitir si hay sensibilidad severa a liberadores, o usar cebolla dulce fresca. El ajo cocinado suele tolerarse bien."
+      }
+    },
+    {
+      "instruction": "Cocción (Sartén): Calentar AOVE en sartén grande. Sofreír ajo/cebolla 2 min.",
+      "is_branch_point": true,
+      "variant_logic": {
+        "Low FODMAP": "Usar Aceite Infusionado en Ajo. NO poner sólidos de ajo. Añadir parte verde de cebollino al final.",
+        "Nut Allergy": "⚠️ Verificar que el aceite no sea de frutos secos ni mezcla contaminada.",
+        "APLV": "⚠️ Asegurar sartén limpia sin trazas de mantequilla anterior."
+      },
+      "cross_contamination_alert": "APLV/Soy/Nut Allergy: La contaminación cruzada en sartenes porosas o de hierro fundido es un riesgo real. Usar acero inoxidable lavado a fondo."
+    },
+    {
+      "instruction": "Añadir Proteína: Incorporar pollo a la sartén y sellar por todos lados (6-8 min).",
+      "is_branch_point": true,
+      "variant_logic": {
+        "Vegan": "Cocinar cubos de Tofu hasta que doren (8-10 min).",
+        "Pescatarian": "Cocinar pescado delicadamente (4-5 min) para no deshacerlo.",
+        "Histamine": "Cocción rápida y servir inmediato. No dejar reposar caliente."
+      }
+    },
+    {
+      "instruction": "Añadir Vegetales: Incorporar zanahoria y calabacín a la sartén. Saltear junto a la proteína 5-7 min al dente.",
+      "is_branch_point": true,
+      "variant_logic": {
+        "Al dente": "Mantener crujiente conserva nutrientes y reduce índice glucémico.",
+        "Renal": "Asegurar que verduras estén bien cocidas (reduce potasio) si no se lixiviaron, aunque lixiviado es preferible."
+      }
+    },
+    {
+      "instruction": "Sazonar: Añadir salsa de soja.",
+      "is_branch_point": true,
+      "variant_logic": {
+        "Celiac": "⚠️ USAR TAMARI CERTIFICADO SIN GLUTEN. La soja normal tiene trigo.",
+        "Soy Allergy": "🚫 PROHIBIDO SOJA/TAMARI. Usar 'Coconut Aminos' o solo sal y limón.",
+        "Paleo": "Usar Coconut Aminos (la soja es legumbre).",
+        "Whole30": "Usar Coconut Aminos.",
+        "Low FODMAP": "Salsa de soja: Máximo 2 cdas (40g) es seguro. Tamari mejor.",
+        "Histamine": "🚫 OMITIR SOJA/TAMARI (Fermentados = Histamina). Usar solo sal marina y hierbas frescas.",
+        "Renal": "🚫 OMITIR SOJA (altísimo sodio). Usar hierbas, pimienta, limón."
+      },
+      "cross_contamination_alert": "Celiac/Soy Allergy: Verificar etiquetas de salsas. Error común."
+    },
+    {
+      "instruction": "Emplatado: Servir base (arroz/coliflor/quinoa) y cubrir con el salteado.",
+      "is_branch_point": true,
+      "variant_logic": {
+        "Keto": "Base generosa de Arroz de Coliflor.",
+        "High-Performance": "Si día de entreno: Doble base de Arroz/Quinoa. Si descanso: Base normal."
+      }
+    },
+    {
+      "instruction": "Toppings: Añadir aguacate laminado y nueces troceadas.",
+      "is_branch_point": true,
+      "variant_logic": {
+        "Nut Allergy": "🚫 NO NUECES/ANACARDOS. Usar Semillas de Girasol o Calabaza.",
+        "Renal": "🥑 OMITIR o limitar AGUACATE a 1/8 unidad (muy alto potasio). Omitir frutos secos (alto fósforo).",
+        "Low FODMAP": "Limitar Aguacate a 1/8 unidad (poliol sorbitol). Nueces (Walnuts) max 30g seguro.",
+        "Histamine": "🚫 OMITIR AGUACATE (liberador histamina). Omitir Nueces (Walnuts) y Anacardos. Usar semillas de Calabaza o macadamias.",
+        "Keto": "Abundante aguacate y nueces (fuente de grasa principal)."
+      }
+    },
+    {
+      "instruction": "Añadir espinacas frescas al momento de servir.",
+      "is_branch_point": true,
+      "variant_logic": {
+        "Histamine": "🚫 NO ESPINACAS (altas en histamina). Usar Rúcula o Acelga bebé.",
+        "Renal": "Preferible Rúcula o Lechuga (menos potasio/oxalatos que espinaca cruda massiva)."
+      },
+      "skipped_for_diets": []
+    }
+  ]
+}

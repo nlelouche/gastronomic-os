@@ -29,7 +29,7 @@ class InventoryRemoteDataSourceImpl implements InventoryRemoteDataSource {
           .single();
       return InventoryModel.fromJson(response);
     } catch (e) {
-      throw const ServerFailure();
+      throw Exception('Datasource operation failed');
     }
   }
 
@@ -39,7 +39,7 @@ class InventoryRemoteDataSourceImpl implements InventoryRemoteDataSource {
       final response = await supabaseClient.from('inventory_items').select();
       return (response as List).map((e) => InventoryModel.fromJson(e)).toList();
     } catch (e) {
-      throw const ServerFailure();
+      throw Exception('Datasource operation failed');
     }
   }
 
@@ -48,7 +48,7 @@ class InventoryRemoteDataSourceImpl implements InventoryRemoteDataSource {
     try {
       await supabaseClient.from('inventory_items').delete().eq('id', id);
     } catch (e) {
-      throw const ServerFailure();
+      throw Exception('Datasource operation failed');
     }
   }
 
@@ -63,7 +63,7 @@ class InventoryRemoteDataSourceImpl implements InventoryRemoteDataSource {
           .single();
       return InventoryModel.fromJson(response);
     } catch (e) {
-      throw const ServerFailure();
+      throw Exception('Datasource operation failed');
     }
   }
 }

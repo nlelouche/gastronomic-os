@@ -63,8 +63,44 @@ class _ChefsSuggestionsView extends StatelessWidget {
                 ),
               );
             } else if (state is PlannerLoaded) {
+              // Empty state
+              if (state.suggestions.isEmpty) {
+                return AppCard(
+                  child: Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Column(
+                      children: [
+                        Icon(
+                          Icons.restaurant_outlined,
+                          size: 48,
+                          color: Theme.of(context).colorScheme.outline,
+                        ),
+                        const SizedBox(height: 12),
+                        Text(
+                          AppLocalizations.of(context)!.chefsSuggestionsEmpty,
+                          style: GoogleFonts.outfit(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                            color: Theme.of(context).colorScheme.onSurfaceVariant,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                        const SizedBox(height: 8),
+                        Text(
+                          AppLocalizations.of(context)!.chefsSuggestionsEmptyHint,
+                          style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                            color: Theme.of(context).colorScheme.onSurfaceVariant,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
+                    ),
+                  ),
+                ).animate().fadeIn();
+              }
+
               return SizedBox(
-                height: 280, // Fixed height for horizontal list
+                height: 280,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: state.suggestions.length,

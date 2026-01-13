@@ -17,14 +17,14 @@ class OnboardingRemoteDataSourceImpl implements OnboardingRemoteDataSource {
   Future<void> updateProfileConfig(Map<String, dynamic> config) async {
     try {
       final user = supabaseClient.auth.currentUser;
-      if (user == null) throw const ServerFailure();
+      if (user == null) throw Exception('Datasource operation failed');
 
       await supabaseClient
           .from('profiles')
           .update({'family_config': config})
           .eq('id', user.id);
     } catch (e) {
-      throw const ServerFailure();
+      throw Exception('Datasource operation failed');
     }
   }
 
@@ -50,14 +50,14 @@ class OnboardingRemoteDataSourceImpl implements OnboardingRemoteDataSource {
   Future<void> resetProfileConfig() async {
     try {
       final user = supabaseClient.auth.currentUser;
-      if (user == null) throw const ServerFailure();
+      if (user == null) throw Exception('Datasource operation failed');
 
       await supabaseClient
           .from('profiles')
           .update({'family_config': {'onboarding_completed': false, 'members': []}})
           .eq('id', user.id);
     } catch (e) {
-      throw const ServerFailure();
+      throw Exception('Datasource operation failed');
     }
   }
 }

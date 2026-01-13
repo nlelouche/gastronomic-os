@@ -1,4 +1,7 @@
 import 'package:gastronomic_os/core/error/failures.dart';
+import 'package:gastronomic_os/core/error/error_context.dart';
+import 'package:gastronomic_os/core/error/exception_handler.dart';
+import 'package:gastronomic_os/core/error/error_reporter.dart';
 import 'package:gastronomic_os/features/inventory/data/datasources/inventory_remote_datasource.dart';
 import 'package:gastronomic_os/features/inventory/data/models/inventory_model.dart';
 import 'package:gastronomic_os/features/inventory/domain/entities/inventory_item.dart';
@@ -14,10 +17,14 @@ class InventoryRepositoryImpl implements IInventoryRepository {
     try {
       final remoteInventory = await remoteDataSource.getInventory();
       return (null, remoteInventory);
-    } on Failure catch (failure) {
+    } catch (e, stackTrace) {
+      final failure = ExceptionHandler.handle(
+        e,
+        stackTrace: stackTrace,
+        context: ErrorContext.repository('getInventory'),
+      );
+      await ErrorReporter.instance.reportError(failure);
       return (failure, null);
-    } catch (e) {
-      return (const ServerFailure(), null);
     }
   }
 
@@ -35,10 +42,16 @@ class InventoryRepositoryImpl implements IInventoryRepository {
       );
       final result = await remoteDataSource.addItem(model);
       return (null, result);
-    } on Failure catch (failure) {
+    } catch (e, stackTrace) {
+      final failure = ExceptionHandler.handle(
+        e,
+        stackTrace: stackTrace,
+        context: ErrorContext.repository('addItem', extra: {
+          'itemName': item.name,
+        }),
+      );
+      await ErrorReporter.instance.reportError(failure);
       return (failure, null);
-    } catch (e) {
-      return (const ServerFailure(), null);
     }
   }
 
@@ -47,10 +60,16 @@ class InventoryRepositoryImpl implements IInventoryRepository {
     try {
       await remoteDataSource.deleteItem(id);
       return (null, null);
-    } on Failure catch (failure) {
+    } catch (e, stackTrace) {
+      final failure = ExceptionHandler.handle(
+        e,
+        stackTrace: stackTrace,
+        context: ErrorContext.repository('deleteItem', extra: {
+          'itemId': id,
+        }),
+      );
+      await ErrorReporter.instance.reportError(failure);
       return (failure, null);
-    } catch (e) {
-      return (const ServerFailure(), null);
     }
   }
 
@@ -68,10 +87,17 @@ class InventoryRepositoryImpl implements IInventoryRepository {
       );
       final result = await remoteDataSource.updateItem(model);
       return (null, result);
-    } on Failure catch (failure) {
+    } catch (e, stackTrace) {
+      final failure = ExceptionHandler.handle(
+        e,
+        stackTrace: stackTrace,
+        context: ErrorContext.repository('updateItem', extra: {
+          'itemId': item.id,
+          'itemName': item.name,
+        }),
+      );
+      await ErrorReporter.instance.reportError(failure);
       return (failure, null);
-    } catch (e) {
-      return (const ServerFailure(), null);
     }
   }
 }

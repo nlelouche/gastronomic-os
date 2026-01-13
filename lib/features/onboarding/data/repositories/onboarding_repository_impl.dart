@@ -1,9 +1,12 @@
 import 'package:gastronomic_os/core/error/failures.dart';
+import 'package:gastronomic_os/core/error/error_context.dart';
+import 'package:gastronomic_os/core/error/exception_handler.dart';
+import 'package:gastronomic_os/core/error/error_reporter.dart';
 import 'package:gastronomic_os/features/onboarding/data/datasources/onboarding_remote_datasource.dart';
 import 'package:gastronomic_os/features/onboarding/domain/repositories/i_onboarding_repository.dart';
 import 'package:gastronomic_os/features/onboarding/domain/entities/family_member.dart';
 import 'package:gastronomic_os/core/enums/diet_enums.dart';
-import 'package:gastronomic_os/core/enums/family_role.dart'; // Import this
+import 'package:gastronomic_os/core/enums/family_role.dart';
 
 class OnboardingRepositoryImpl implements IOnboardingRepository {
   final OnboardingRemoteDataSource remoteDataSource;
@@ -17,7 +20,7 @@ class OnboardingRepositoryImpl implements IOnboardingRepository {
         'members': members.map((m) => {
           'id': m.id,
           'name': m.name,
-          'role': m.role.name, // Use .name for serialization (simple string)
+          'role': m.role.name,
           'primary_diet': _dietEnumToString(m.primaryDiet),
           'medical_conditions': m.medicalConditions.map((e) => _conditionEnumToString(e)).toList(),
         }).toList(),
@@ -25,8 +28,16 @@ class OnboardingRepositoryImpl implements IOnboardingRepository {
       };
       await remoteDataSource.updateProfileConfig(config);
       return (null, null);
-    } catch (e) {
-      return (const ServerFailure(), null);
+    } catch (e, stackTrace) {
+      final failure = ExceptionHandler.handle(
+        e,
+        stackTrace: stackTrace,
+        context: ErrorContext.repository('saveFamilyConfig', extra: {
+          'memberCount': members.length,
+        }),
+      );
+      await ErrorReporter.instance.reportError(failure);
+      return (failure, null);
     }
   }
 
@@ -39,7 +50,7 @@ class OnboardingRepositoryImpl implements IOnboardingRepository {
       }
       return (null, false);
     } catch (e) {
-      // If error, assume false to be safe
+      // If error, assume false to be safe (non-critical)
       return (null, false);
     }
   }
@@ -49,8 +60,14 @@ class OnboardingRepositoryImpl implements IOnboardingRepository {
     try {
       await remoteDataSource.resetProfileConfig();
       return (null, null);
-    } catch (e) {
-      return (const ServerFailure(), null);
+    } catch (e, stackTrace) {
+      final failure = ExceptionHandler.handle(
+        e,
+        stackTrace: stackTrace,
+        context: ErrorContext.repository('resetOnboarding'),
+      );
+      await ErrorReporter.instance.reportError(failure);
+      return (failure, null);
     }
   }
 
@@ -73,24 +90,25 @@ class OnboardingRepositoryImpl implements IOnboardingRepository {
         return (null, members);
       }
       return (null, <FamilyMember>[]);
-    } catch (e) {
-      return (const ServerFailure(), null);
+    } catch (e, stackTrace) {
+      final failure = ExceptionHandler.handle(
+        e,
+        stackTrace: stackTrace,
+        context: ErrorContext.repository('getFamilyMembers'),
+      );
+      await ErrorReporter.instance.reportError(failure);
+      return (failure, null);
     }
   }
 
-  // --- Helper Helpers ---
+  // --- Helper Methods ---
 
-  // Helper for Role Enum
   FamilyRole _stringToRoleEnum(String? value) {
-    // If value is null or not found, default to 'Dad' or handle gracefully.
-    // Assuming simple .name matching or custom keys.
     if (value == null) return FamilyRole.other;
     
-    // Check match by name (case insensitive for safety?)
     try {
       return FamilyRole.values.firstWhere((e) => e.name.toLowerCase() == value.toLowerCase());
     } catch (_) {
-      // Legacy fallback map for strings "Dad", "Mom" etc if they were capitalized in DB
       switch (value) {
         case 'Dad': return FamilyRole.dad;
         case 'Mom': return FamilyRole.mom;
@@ -133,7 +151,6 @@ class OnboardingRepositoryImpl implements IOnboardingRepository {
       default: return DietLifestyle.omnivore;
     }
   }
-
 
   String _conditionEnumToString(MedicalCondition condition) {
     switch (condition) {

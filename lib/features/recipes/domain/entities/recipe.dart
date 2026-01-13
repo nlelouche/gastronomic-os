@@ -56,6 +56,48 @@ class Recipe extends Equatable {
     return this;
   }
 
+  /// Filters ingredients based on user profile tags.
+  /// Used for the "Master Recipe" adaptive system.
+  /// 
+  /// **Filtering Logic:**
+  /// 1. Direct Match: If ingredient has a tag matching user -> KEEP
+  /// 2. Base Tag: If ingredient has [Base] -> KEEP (it's a safe default)
+  /// 3. Universal/No Tags: Always KEEP
+  /// 4. Otherwise -> HIDE
+  /// 
+  /// **Why Base items always show:**
+  /// Base ingredients are referenced in default recipe steps. Even if a user
+  /// has a specific diet (Keto), they might see base instructions like
+  /// "Cocer arroz integral" if no variant applies to them specifically.
+  /// It's better to show the item and let the user decide than to hide it
+  /// and create confusion between ingredients and steps.
+  List<String> getIngredientsForProfile(List<String> userTags) {
+    if (ingredients.isEmpty) return [];
+    
+    // Normalize user tags
+    final normalizedUserTags = userTags.map((t) => t.toLowerCase()).toSet();
+    
+    return ingredients.where((ingredient) {
+      final match = RegExp(r'\[(.*?)\]').firstMatch(ingredient);
+      if (match == null) return true; // No tags = Universal
+      
+      final tagsStr = match.group(1)!;
+      final ingTags = tagsStr.split(',').map((t) => t.trim().toLowerCase()).toSet();
+      
+      // 1. Universal
+      if (ingTags.contains('universal')) return true;
+      
+      // 2. Direct Match - ingredient matches user's diet/condition
+      if (ingTags.any((t) => normalizedUserTags.contains(t))) return true;
+      
+      // 3. Base - ALWAYS show (safe default, will be in recipe steps)
+      if (ingTags.contains('base')) return true;
+      
+      // 4. No match -> HIDE
+      return false;
+    }).toList();
+  }
+
   Recipe copyWith({
     String? id,
     String? authorId,

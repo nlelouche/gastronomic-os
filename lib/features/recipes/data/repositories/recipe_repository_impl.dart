@@ -1,4 +1,7 @@
 import 'package:gastronomic_os/core/error/failures.dart';
+import 'package:gastronomic_os/core/error/error_context.dart';
+import 'package:gastronomic_os/core/error/exception_handler.dart';
+import 'package:gastronomic_os/core/error/error_reporter.dart';
 import 'package:gastronomic_os/core/util/app_logger.dart';
 import 'package:gastronomic_os/features/recipes/data/datasources/recipe_seeder.dart';
 import 'package:gastronomic_os/features/recipes/data/datasources/recipe_remote_datasource.dart';
@@ -26,8 +29,17 @@ class RecipeRepositoryImpl implements IRecipeRepository {
       final result = await remoteDataSource.getRecipes(limit: limit, offset: offset, query: query);
       return (null, result);
     } catch (e, stackTrace) {
-      AppLogger.e('Error fetching recipes', e, stackTrace);
-      return (ServerFailure(e.toString()), null);
+      final failure = ExceptionHandler.handle(
+        e,
+        stackTrace: stackTrace,
+        context: ErrorContext.repository('getRecipes', extra: {
+          'limit': limit,
+          'offset': offset,
+          'query': query,
+        }),
+      );
+      await ErrorReporter.instance.reportError(failure);
+      return (failure, null);
     }
   }
 
@@ -37,8 +49,15 @@ class RecipeRepositoryImpl implements IRecipeRepository {
       final result = await remoteDataSource.getDashboardSuggestions(limit: limit);
       return (null, result);
     } catch (e, stackTrace) {
-      AppLogger.e('Error fetching dashboard suggestions', e, stackTrace);
-      return (ServerFailure(e.toString()), null);
+      final failure = ExceptionHandler.handle(
+        e,
+        stackTrace: stackTrace,
+        context: ErrorContext.repository('getDashboardSuggestions', extra: {
+          'limit': limit,
+        }),
+      );
+      await ErrorReporter.instance.reportError(failure);
+      return (failure, null);
     }
   }
 
@@ -70,8 +89,15 @@ class RecipeRepositoryImpl implements IRecipeRepository {
       }
       return (null, result);
     } catch (e, stackTrace) {
-      AppLogger.e('Error fetching recipe details for $id', e, stackTrace);
-      return (ServerFailure(e.toString()), null);
+      final failure = ExceptionHandler.handle(
+        e,
+        stackTrace: stackTrace,
+        context: ErrorContext.repository('getRecipeDetails', extra: {
+          'recipeId': id,
+        }),
+      );
+      await ErrorReporter.instance.reportError(failure);
+      return (failure, null);
     }
   }
 
@@ -82,8 +108,15 @@ class RecipeRepositoryImpl implements IRecipeRepository {
       _cachedRecipes = null;
       return (null, result);
     } catch (e, stackTrace) {
-      AppLogger.e('Error creating recipe', e, stackTrace);
-      return (ServerFailure(e.toString()), null);
+      final failure = ExceptionHandler.handle(
+        e,
+        stackTrace: stackTrace,
+        context: ErrorContext.repository('createRecipe', extra: {
+          'recipeName': recipe.title,
+        }),
+      );
+      await ErrorReporter.instance.reportError(failure);
+      return (failure, null);
     }
   }
 
@@ -91,14 +124,27 @@ class RecipeRepositoryImpl implements IRecipeRepository {
   Future<(Failure?, Recipe?)> forkRecipe(String originalRecipeId, String newTitle) async {
     try {
       final userId = supabaseClient.auth.currentUser?.id;
-      if (userId == null) return (const ServerFailure("User not logged in"), null);
+      if (userId == null) {
+        return (AuthFailure(
+          'User not logged in',
+          context: ErrorContext.repository('forkRecipe'),
+        ), null);
+      }
 
       final result = await remoteDataSource.forkRecipe(originalRecipeId, newTitle, userId);
       _cachedRecipes = null;
       return (null, result);
     } catch (e, stackTrace) {
-      AppLogger.e('Error forking recipe', e, stackTrace);
-      return (ServerFailure(e.toString()), null);
+      final failure = ExceptionHandler.handle(
+        e,
+        stackTrace: stackTrace,
+        context: ErrorContext.repository('forkRecipe', extra: {
+          'originalRecipeId': originalRecipeId,
+          'newTitle': newTitle,
+        }),
+      );
+      await ErrorReporter.instance.reportError(failure);
+      return (failure, null);
     }
   }
 
@@ -108,8 +154,15 @@ class RecipeRepositoryImpl implements IRecipeRepository {
       final result = await remoteDataSource.getCommits(recipeId);
       return (null, result);
     } catch (e, stackTrace) {
-      AppLogger.e('Error fetching commits', e, stackTrace);
-      return (ServerFailure(e.toString()), null);
+      final failure = ExceptionHandler.handle(
+        e,
+        stackTrace: stackTrace,
+        context: ErrorContext.repository('getCommits', extra: {
+          'recipeId': recipeId,
+        }),
+      );
+      await ErrorReporter.instance.reportError(failure);
+      return (failure, null);
     }
   }
 
@@ -128,8 +181,16 @@ class RecipeRepositoryImpl implements IRecipeRepository {
       final result = await remoteDataSource.addCommit(model);
       return (null, result);
     } catch (e, stackTrace) {
-      AppLogger.e('Error adding commit', e, stackTrace);
-      return (ServerFailure(e.toString()), null);
+      final failure = ExceptionHandler.handle(
+        e,
+        stackTrace: stackTrace,
+        context: ErrorContext.repository('addCommit', extra: {
+          'recipeId': commit.recipeId,
+          'message': commit.message,
+        }),
+      );
+      await ErrorReporter.instance.reportError(failure);
+      return (failure, null);
     }
   }
 

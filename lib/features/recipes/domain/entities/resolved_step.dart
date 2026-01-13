@@ -9,6 +9,7 @@ class ResolvedStep extends Equatable {
   final List<String> targetMembers; // Names of family members this step applies to
   final bool isUniversal; // True if applies to everyone
   final String? crossContaminationAlert;
+  final String? substitutionReason; // e.g., "Keto", "Celiac"
   
   const ResolvedStep({
     required this.index,
@@ -16,6 +17,7 @@ class ResolvedStep extends Equatable {
     required this.targetMembers,
     this.isUniversal = false,
     this.crossContaminationAlert,
+    this.substitutionReason,
   });
 
   /// Formatted string for display: "For Juan, María and Pedro"
@@ -39,5 +41,5 @@ class ResolvedStep extends Equatable {
   }
   
   @override
-  List<Object?> get props => [index, instruction, targetMembers, isUniversal, crossContaminationAlert];
+  List<Object?> get props => [index, instruction, targetMembers, isUniversal, crossContaminationAlert, substitutionReason];
 }

@@ -11,8 +11,9 @@ import 'package:gastronomic_os/features/recipes/presentation/bloc/recipe_bloc.da
 import 'package:gastronomic_os/features/recipes/presentation/bloc/recipe_event.dart';
 import 'package:gastronomic_os/features/recipes/presentation/bloc/recipe_state.dart';
 import 'package:gastronomic_os/features/onboarding/domain/repositories/i_onboarding_repository.dart';
+import 'package:gastronomic_os/features/onboarding/domain/entities/family_member.dart';
 import 'package:gastronomic_os/init/injection_container.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 import 'package:gastronomic_os/features/planner/presentation/bloc/planner_bloc.dart';
 import 'package:gastronomic_os/features/planner/presentation/bloc/planner_event.dart';
 import 'package:gastronomic_os/features/planner/domain/entities/meal_plan.dart';
@@ -49,32 +50,27 @@ class RecipeDetailView extends StatefulWidget {
 
 class _RecipeDetailViewState extends State<RecipeDetailView> {
   List<ResolvedStep>? _resolvedSteps;
+  List<FamilyMember> _familyMembers = []; // Store family for ingredient filtering
   bool _isResolvingSteps = false;
 
   @override
   void initState() {
     super.initState();
-    // Do not call _resolveSteps() here as it depends on InheritedWidgets (Locale)
   }
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    // Re-resolve steps when dependencies (like Locale) change
-    // This ensures that if language switches, we re-run logic on the localized recipe steps
     final blocState = context.read<RecipeBloc>().state;
     if (blocState is RecipeDetailLoaded) {
        _resolveSteps(blocState.recipe);
     } else {
-       // If no bloc state yet, use widget.recipe (though it might be minimal)
        _resolveSteps(widget.recipe); 
     }
   }
 
   Future<void> _resolveSteps([Recipe? recipe]) async {
-    // If resolving a new recipe (from Bloc), don't show loading if we already have partial data?
-    // Actually, resolving is fast, but let's keep the spinner logic for initState.
-    if (recipe == null) setState(() => _isResolvingSteps = true); // Only show loading on initial
+    if (recipe == null) setState(() => _isResolvingSteps = true);
     
     try {
       final rawRecipe = recipe ?? (context.read<RecipeBloc>().state is RecipeDetailLoaded 
@@ -94,6 +90,7 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
       if (mounted) {
         setState(() {
           _resolvedSteps = resolved;
+          _familyMembers = family; // Store for ingredients
           _isResolvingSteps = false;
         });
       }
@@ -120,122 +117,134 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
           if (state is RecipeLoading) {
             return const Center(child: CircularProgressIndicator());
           } else if (state is RecipeDetailLoaded) {
-            // Apply Localization
             final currentLocale = Localizations.localeOf(context);
             final fullRecipe = state.recipe.localize(currentLocale);
             
-            // Re-resolve steps if the language changed or recipe loaded
-            // Note: _resolveSteps is usually called in listener, but that's only on state change.
-            // If the user switches language in Settings and comes back, `build` runs but state didn't change.
-            // A simple check: if fullRecipe steps differ from what we have resolved (conceptually), we assume we need to re-resolve?
-            // Actually, `_resolveSteps` updates `_resolvedSteps` state.
-            // We should probably call `_resolveSteps` here if needed, or rely on a `key` change?
-            // Better: Trigger a re-resolve if we detect a locale mismatch?
-            // For now, let's keep it simple: relying on `build` to show the correct Text is easy.
-            // But `_resolvedSteps` is stateful.
-            // IF we want steps to switch language dynamically without re-fetching, we need to call `_resolveSteps` again.
-            // Let's do it in `didChangeDependencies` or just check in build.
+            // Filter Ingredients based on Family Profile
+            final Set<String> familyTags = {};
+            for (final member in _familyMembers) {
+              familyTags.add(member.primaryDiet.key);
+              for (final condition in member.medicalConditions) {
+                familyTags.add(condition.key);
+              }
+            }
+            final filteredIngredients = fullRecipe.getIngredientsForProfile(familyTags.toList());
             
-            return CustomScrollView(
-              slivers: [
-                // Immersive App Bar with "Header"
-                if (!widget.isModal)
+            return DefaultTabController(
+              length: 2,
+              child: NestedScrollView(
+                headerSliverBuilder: (context, innerBoxIsScrolled) => [
                   SliverAppBar(
-                  expandedHeight: 200.0,
-                  pinned: true,
-                  flexibleSpace: FlexibleSpaceBar(
-                    title: Text(
-                      fullRecipe.title,
-                      style: GoogleFonts.outfit(
-                        fontWeight: FontWeight.bold,
-                        color: colorScheme.onPrimaryContainer,
-                      ),
-                    ),
-                    background: Container(
-                      color: colorScheme.primaryContainer,
-                      child: Center(
-                        child: Icon(
-                          Icons.restaurant,
-                          size: 80,
-                          color: colorScheme.onPrimaryContainer.withOpacity(0.2),
+                    expandedHeight: 200.0,
+                    pinned: true,
+                    forceElevated: innerBoxIsScrolled,
+                    scrolledUnderElevation: 4.0,
+                    backgroundColor: colorScheme.surface,
+                    surfaceTintColor: colorScheme.surfaceTint,
+                    flexibleSpace: FlexibleSpaceBar(
+                      titlePadding: const EdgeInsetsDirectional.only(start: 72, end: 96, bottom: 48), // Added bottom padding for TabBar
+                      expandedTitleScale: 1.3,
+                      title: Text(
+                        fullRecipe.title,
+                        style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                          color: colorScheme.onSurface,
+                          fontWeight: FontWeight.bold,
                         ),
+                        textAlign: TextAlign.center,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
                       ),
-                    ),
-                  ),
-                  actions: [
-                     IconButton(
-                       icon: const Icon(Icons.calendar_today),
-                       tooltip: l10n.recipeAddToPlanTooltip,
-                       onPressed: () => _showAddToPlanDialog(context, fullRecipe),
-                     ),
-                     IconButton(
-                       icon: const Icon(Icons.fork_right),
-                       tooltip: l10n.recipeForkTooltip,
-                       onPressed: () {
-                         context.read<RecipeBloc>().add(ForkRecipe(
-                           originalRecipeId: fullRecipe.id,
-                           newTitle: '${fullRecipe.title} (Fork)',
-                         ));
-                         ScaffoldMessenger.of(context).showSnackBar(
-                           SnackBar(content: Text(l10n.recipeForking)),
-                         );
-                       },
-                     ),
-                  ],
-                ),
-                
-                // Content
-                SliverToBoxAdapter(
-                  child: Padding(
-                    padding: const EdgeInsets.all(AppDimens.paddingPage),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        // Description
-                        if (fullRecipe.description != null) ...[
-                          FormattedRecipeText(
-                            text: fullRecipe.description!,
-                            style: theme.textTheme.bodyLarge?.copyWith(
-                              color: colorScheme.onSurfaceVariant,
-                              fontStyle: FontStyle.italic,
-                            ),
-                          ),
-                          const SizedBox(height: AppDimens.space2XL),
-                        ],
-
-                        // Clinical Tags
-                        if (fullRecipe.tags.isNotEmpty) ...[
-                          _buildTagsSection(context, fullRecipe.tags),
-                          const SizedBox(height: 32),
-                        ],
-
-                        // Ingredients Section
-                        SectionHeader(title: l10n.recipeIngredientsTitle, subtitle: l10n.recipeIngredientsCount(fullRecipe.ingredients.length)),
-                        const SizedBox(height: AppDimens.spaceL),
-                        _buildIngredientsList(context, fullRecipe.ingredients),
-                        
-                        const SizedBox(height: AppDimens.space2XL),
-
-                        // Steps Section
-                        SectionHeader(title: l10n.recipeInstructionsTitle, subtitle: l10n.recipeInstructionsCount(fullRecipe.steps.length)),
-                        const SizedBox(height: AppDimens.spaceL),
-                        _buildStepsTimeline(context, fullRecipe.steps),
-                        
-                        const SizedBox(height: AppDimens.space3XL),
-                        
-                        // Metadata Footer
-                        Center(
-                          child: Chip(
-                            label: Text(l10n.recipeIdLabel(fullRecipe.id.substring(0, 8))),
-                            avatar: const Icon(Icons.fingerprint, size: AppDimens.iconSizeS),
+                      centerTitle: true,
+                      background: Container(
+                        color: colorScheme.primaryContainer,
+                        child: Center(
+                          child: Icon(
+                            Icons.restaurant,
+                            size: 80,
+                            color: colorScheme.onPrimaryContainer.withOpacity(0.2),
                           ),
                         ),
+                      ),
+                    ),
+                    bottom: TabBar(
+                      labelColor: colorScheme.primary,
+                      unselectedLabelColor: colorScheme.onSurfaceVariant,
+                      indicatorColor: colorScheme.primary,
+                      tabs: [
+                        Tab(text: l10n.recipeIngredientsTitle), // Use localized "Ingredients"
+                        Tab(text: l10n.recipeInstructionsTitle), // Use localized "Instructions"
                       ],
                     ),
-                  ).animate().fadeIn(duration: 500.ms).slideY(begin: 0.1, curve: Curves.easeOutQuad),
+                    actions: [
+                       IconButton(
+                         icon: const Icon(Icons.calendar_today),
+                         tooltip: l10n.recipeAddToPlanTooltip,
+                         onPressed: () => _showAddToPlanDialog(context, fullRecipe),
+                       ),
+                       IconButton(
+                         icon: const Icon(Icons.fork_right),
+                         tooltip: l10n.recipeForkTooltip,
+                         onPressed: () {
+                           context.read<RecipeBloc>().add(ForkRecipe(
+                             originalRecipeId: fullRecipe.id,
+                             newTitle: '${fullRecipe.title} (Fork)',
+                           ));
+                           ScaffoldMessenger.of(context).showSnackBar(
+                             SnackBar(content: Text(l10n.recipeForking)),
+                           );
+                         },
+                       ),
+                    ],
+                  ),
+                ],
+                body: TabBarView(
+                  children: [
+                    // Tab 1: Ingredients
+                    SingleChildScrollView(
+                      padding: const EdgeInsets.all(AppDimens.paddingPage),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          if (fullRecipe.description != null) ...[
+                            FormattedRecipeText(
+                              text: fullRecipe.description!,
+                              style: theme.textTheme.bodyLarge?.copyWith(
+                                color: colorScheme.onSurfaceVariant,
+                                fontStyle: FontStyle.italic,
+                              ),
+                            ),
+                            const SizedBox(height: AppDimens.space2XL),
+                          ],
+                          
+                          if (fullRecipe.tags.isNotEmpty) ...[
+                             _buildTagsSection(context, fullRecipe.tags),
+                             const SizedBox(height: 32),
+                          ],
+                         
+                          SectionHeader(title: l10n.recipeIngredientsTitle, subtitle: l10n.recipeIngredientsCount(filteredIngredients.length)),
+                          const SizedBox(height: AppDimens.spaceL),
+                          _buildIngredientsList(context, filteredIngredients),
+                          const SizedBox(height: 80), // Bottom padding
+                        ],
+                      ),
+                    ),
+
+                    // Tab 2: Instructions (Grouped)
+                    SingleChildScrollView(
+                      padding: const EdgeInsets.all(AppDimens.paddingPage),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                           _buildStepsTimeline(context, fullRecipe.steps), // We pass steps but use _resolvedSteps internally
+                           const SizedBox(height: 80), // Bottom padding
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
-              ],
+              ),
             );
+            
           } else if (state is RecipeError) {
             return Center(child: Text(state.message));
           }
@@ -251,18 +260,19 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
     }
     
     return Column(
-      children: ingredients.map((ingredient) => 
-        Padding(
+      children: ingredients.map((ingredient) {
+         return Padding(
           padding: const EdgeInsets.symmetric(vertical: 4.0),
           child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Icon(Icons.check_circle_outline, size: 20, color: Theme.of(context).colorScheme.primary),
               const SizedBox(width: 12),
               Expanded(child: Text(ingredient, style: Theme.of(context).textTheme.bodyMedium)),
             ],
           ),
-        )
-      ).toList(),
+        );
+      }).toList(),
     );
   }
 
@@ -275,42 +285,44 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
       return Text(AppLocalizations.of(context)!.recipeInstructionsEmpty);
     }
 
+    // GROUPING LOGIC: Group ResolvedSteps by their 'index' (Master Step Number)
+    final Map<int, List<ResolvedStep>> groupedSteps = {};
+    for (var step in _resolvedSteps!) {
+      if (!groupedSteps.containsKey(step.index)) {
+        groupedSteps[step.index] = [];
+      }
+      groupedSteps[step.index]!.add(step);
+    }
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: _resolvedSteps!.asMap().entries.map((entry) {
-        final resolvedStep = entry.value;
-        final isLast = entry.key == _resolvedSteps!.length - 1;
-        
+      children: groupedSteps.entries.map((groupEntry) {
+        final stepIndex = groupEntry.key;
+        final variants = groupEntry.value;
+        final isLast = stepIndex == groupedSteps.keys.last;
+
         return IntrinsicHeight(
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Timeline Column
+              // Timeline Column (Simplified: One number per GROUP)
               Column(
                 children: [
                    Container(
-                     width: 28,
-                     height: 28,
+                     width: 32,
+                     height: 32,
                      decoration: BoxDecoration(
-                       color: resolvedStep.isUniversal 
-                           ? Theme.of(context).colorScheme.primaryContainer 
-                           : Theme.of(context).colorScheme.tertiaryContainer,
+                       color: Theme.of(context).colorScheme.primaryContainer,
                        shape: BoxShape.circle,
-                       border: Border.all(
-                           color: resolvedStep.isUniversal 
-                               ? Theme.of(context).colorScheme.primary 
-                               : Theme.of(context).colorScheme.tertiary
-                       )
+                       border: Border.all(color: Theme.of(context).colorScheme.primary, width: 2),
                      ),
                      child: Center(
                        child: Text(
-                         '${resolvedStep.index}',
+                         '$stepIndex',
                          style: TextStyle(
                            fontWeight: FontWeight.bold,
-                           color: resolvedStep.isUniversal 
-                               ? Theme.of(context).colorScheme.primary 
-                               : Theme.of(context).colorScheme.onTertiaryContainer,
-                           fontSize: 12,
+                           color: Theme.of(context).colorScheme.primary,
+                           fontSize: 14,
                          ),
                        ),
                      ),
@@ -327,72 +339,118 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
               ),
               const SizedBox(width: 16),
               
-              // Content Column
+              // Content Column (Display all variants for this step)
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.only(bottom: 24.0),
+                  padding: const EdgeInsets.only(bottom: 32.0),
                   child: Column(
                      crossAxisAlignment: CrossAxisAlignment.start,
-                     children: [
-                       // Target Group Badge (For Juan, María...)
-                       if (!resolvedStep.isUniversal)
-                         Container(
-                           margin: const EdgeInsets.only(bottom: 8),
-                           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-                           decoration: BoxDecoration(
-                             color: Theme.of(context).colorScheme.tertiaryContainer.withOpacity(0.5),
-                             borderRadius: BorderRadius.circular(12),
-                             border: Border.all(color: Theme.of(context).colorScheme.tertiary.withOpacity(0.3)),
-                           ),
-                           child: Row(
-                             mainAxisSize: MainAxisSize.min,
-                             children: [
-                               Icon(Icons.person, size: 14, color: Theme.of(context).colorScheme.tertiary),
-                               const SizedBox(width: 4),
-                               Text(
-                                 resolvedStep.targetGroupLabel,
-                                 style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                                   color: Theme.of(context).colorScheme.onTertiaryContainer,
-                                   fontWeight: FontWeight.bold,
-                                 ),
-                               ),
-                             ],
+                     children: variants.map((resolvedStep) {
+                       // Visual Separation for each variant
+                       return Container(
+                         margin: const EdgeInsets.only(bottom: 12),
+                         padding: const EdgeInsets.all(12),
+                         decoration: BoxDecoration(
+                           color: resolvedStep.isUniversal 
+                               ? Theme.of(context).colorScheme.surface 
+                               : Theme.of(context).colorScheme.surfaceContainerLow,
+                           borderRadius: BorderRadius.circular(12),
+                           border: Border.all(
+                             color: resolvedStep.isUniversal 
+                                 ? Colors.transparent 
+                                 : Theme.of(context).colorScheme.outlineVariant.withOpacity(0.5),
                            ),
                          ),
-                       
-                       // Main Instruction
-                       FormattedRecipeText(
-                         text: resolvedStep.instruction,
-                         style: Theme.of(context).textTheme.bodyMedium?.copyWith(height: 1.5),
-                       ),
+                         child: Column(
+                           crossAxisAlignment: CrossAxisAlignment.start,
+                           children: [
+                             // Badges Row
+                             Wrap(
+                               spacing: 8,
+                               runSpacing: 4,
+                               children: [
+                                 // Target Group Badge
+                                 if (!resolvedStep.isUniversal)
+                                   Container(
+                                     padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                                     decoration: BoxDecoration(
+                                       color: Theme.of(context).colorScheme.tertiaryContainer,
+                                       borderRadius: BorderRadius.circular(6),
+                                     ),
+                                     child: Row(
+                                       mainAxisSize: MainAxisSize.min,
+                                       children: [
+                                         Icon(Icons.person, size: 12, color: Theme.of(context).colorScheme.onTertiaryContainer),
+                                         const SizedBox(width: 4),
+                                         Text(
+                                           resolvedStep.targetGroupLabel,
+                                           style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                                             color: Theme.of(context).colorScheme.onTertiaryContainer,
+                                             fontWeight: FontWeight.bold,
+                                           ),
+                                         ),
+                                       ],
+                                     ),
+                                   ),
 
-                       // Cross Contamination Alert
-                       if (resolvedStep.crossContaminationAlert != null)
-                        Container(
-                          margin: const EdgeInsets.only(top: 8),
-                          padding: const EdgeInsets.all(8),
-                          decoration: BoxDecoration(
-                            color: Theme.of(context).colorScheme.errorContainer.withOpacity(0.5),
-                            borderRadius: BorderRadius.circular(8),
-                            border: Border.all(color: Theme.of(context).colorScheme.error.withOpacity(0.5)),
-                          ),
-                          child: Row(
-                            children: [
-                              Icon(Icons.warning_amber, size: 16, color: Theme.of(context).colorScheme.error),
-                              const SizedBox(width: 8),
-                               Expanded(
-                                 child: Text(
-                                   resolvedStep.crossContaminationAlert!,
-                                   style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                                     color: Theme.of(context).colorScheme.onErrorContainer,
-                                     fontWeight: FontWeight.bold,
-                                  ),
+                                 // Reason Badge
+                                 if (resolvedStep.substitutionReason != null)
+                                   Container(
+                                     padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                                     decoration: BoxDecoration(
+                                       color: Theme.of(context).colorScheme.secondaryContainer,
+                                       borderRadius: BorderRadius.circular(6),
+                                     ),
+                                     child: Text(
+                                       resolvedStep.substitutionReason!,
+                                       style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                                         color: Theme.of(context).colorScheme.onSecondaryContainer,
+                                         fontWeight: FontWeight.bold,
+                                       ),
+                                     ),
+                                   ),
+                               ],
+                             ),
+                             
+                             if (!resolvedStep.isUniversal) const SizedBox(height: 8),
+
+                             // Instruction Text
+                             FormattedRecipeText(
+                               text: resolvedStep.instruction,
+                               style: Theme.of(context).textTheme.bodyMedium?.copyWith(height: 1.5),
+                             ),
+
+                             // Cross Contamination Alert
+                             if (resolvedStep.crossContaminationAlert != null)
+                              Container(
+                                margin: const EdgeInsets.only(top: 8),
+                                padding: const EdgeInsets.all(8),
+                                decoration: BoxDecoration(
+                                  color: Theme.of(context).colorScheme.errorContainer.withOpacity(0.5),
+                                  borderRadius: BorderRadius.circular(8),
+                                  border: Border.all(color: Theme.of(context).colorScheme.error.withOpacity(0.3)),
+                                ),
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Icon(Icons.warning_amber, size: 16, color: Theme.of(context).colorScheme.error),
+                                    const SizedBox(width: 8),
+                                     Expanded(
+                                       child: Text(
+                                         resolvedStep.crossContaminationAlert!,
+                                         style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                                           color: Theme.of(context).colorScheme.onErrorContainer,
+                                           fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
-                            ],
-                          ),
-                        ),
-                    ],
+                           ],
+                         ),
+                       );
+                     }).toList(),
                   ),
                 ),
               ),

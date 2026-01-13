@@ -105,7 +105,7 @@ class RecipeCard extends StatelessWidget {
                         Icon(Icons.format_list_bulleted, size: 14, color: colorScheme.onPrimary),
                         const SizedBox(width: 4),
                         Text(
-                          '${recipe.ingredients.length}',
+                          '${recipe.getIngredientsForProfile([]).length}',
                           style: theme.textTheme.labelSmall?.copyWith(
                             color: colorScheme.onPrimary,
                             fontWeight: FontWeight.bold,

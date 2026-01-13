@@ -40,7 +40,7 @@ class RecipeRemoteDataSourceImpl implements RecipeRemoteDataSource {
       return (response as List).map((data) => RecipeModel.fromJson(data)).toList();
     } catch (e, s) {
       AppLogger.e('Error fetching recipes', e, s);
-      throw const ServerFailure();
+      throw Exception('Datasource operation failed');
     }
   }
 
@@ -182,7 +182,7 @@ class RecipeRemoteDataSourceImpl implements RecipeRemoteDataSource {
       
       AppLogger.e('❌ CRITICAL ERROR creating recipe "${recipe.title}"', e, s); 
       AppLogger.e('   👉 Suggestion: Purge Database and Retry Seeding.');
-      throw const ServerFailure();
+      throw Exception('Datasource operation failed');
     }
   }
 
@@ -207,7 +207,7 @@ class RecipeRemoteDataSourceImpl implements RecipeRemoteDataSource {
           
       return RecipeModel.fromJson(response);
     } catch (e) {
-      throw const ServerFailure();
+      throw Exception('Datasource operation failed');
     }
   }
 
@@ -221,7 +221,7 @@ class RecipeRemoteDataSourceImpl implements RecipeRemoteDataSource {
           .order('created_at', ascending: false);
       return (response as List).map((e) => CommitModel.fromJson(e)).toList();
     } catch (e) {
-      throw const ServerFailure();
+      throw Exception('Datasource operation failed');
     }
   }
 
@@ -251,7 +251,7 @@ class RecipeRemoteDataSourceImpl implements RecipeRemoteDataSource {
           .single();
       return CommitModel.fromJson(response);
     } catch (e) {
-      throw const ServerFailure();
+      throw Exception('Datasource operation failed');
     }
   }
 
@@ -303,7 +303,7 @@ class RecipeRemoteDataSourceImpl implements RecipeRemoteDataSource {
       return recipeModel; // Return header only if no snapshot found
     } catch (e, s) {
       AppLogger.e('Error fetching details', e, s);
-      throw const ServerFailure();
+      throw Exception('Datasource operation failed');
     }
   }
 
@@ -315,7 +315,7 @@ class RecipeRemoteDataSourceImpl implements RecipeRemoteDataSource {
       await supabaseClient.from('commits').delete().neq('id', '00000000-0000-0000-0000-000000000000');
       await supabaseClient.from('recipes').delete().neq('id', '00000000-0000-0000-0000-000000000000');
     } catch (e) {
-      throw const ServerFailure();
+      throw Exception('Datasource operation failed');
     }
   }
 }

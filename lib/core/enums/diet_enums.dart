@@ -26,6 +26,7 @@ enum DietLifestyle {
   }
 
   /// The strict key used in Recipe JSONs and Logic checks
+  /// CRITICAL: These MUST match Master Recipe variant_logic tags EXACTLY (case-sensitive)
   String get key {
     switch (this) {
       case DietLifestyle.omnivore: return 'Omnivore';
@@ -36,8 +37,8 @@ enum DietLifestyle {
       case DietLifestyle.paleo: return 'Paleo';
       case DietLifestyle.whole30: return 'Whole30';
       case DietLifestyle.mediterranean: return 'Mediterranean';
-      case DietLifestyle.highPerformance: return 'High Performance';
-      case DietLifestyle.lowCarb: return 'Low Carb';
+      case DietLifestyle.highPerformance: return 'High-Performance'; // FIXED: was "High Performance"
+      case DietLifestyle.lowCarb: return 'Low-Carb'; // FIXED: was "Low Carb"
     }
   }
 }
@@ -73,10 +74,10 @@ enum MedicalCondition {
   String get key {
     switch (this) {
       case MedicalCondition.aplv: return 'APLV';
-      case MedicalCondition.eggAllergy: return 'Egg-Free'; // Matches "Egg-Free" variant tag often used vs "Egg Allergy"
-      case MedicalCondition.soyAllergy: return 'Soy-Free';
-      case MedicalCondition.nutAllergy: return 'Nut-Free';
-      case MedicalCondition.shellfishAllergy: return 'Shellfish-Free';
+      case MedicalCondition.eggAllergy: return 'Egg Allergy'; // FIXED: Master Recipe uses "Egg Allergy"
+      case MedicalCondition.soyAllergy: return 'Soy Allergy'; // FIXED: was "Soy-Free"
+      case MedicalCondition.nutAllergy: return 'Nut Allergy'; // FIXED: was "Nut-Free"
+      case MedicalCondition.shellfishAllergy: return 'Shellfish Allergy'; // FIXED: was "Shellfish-Free"
       case MedicalCondition.celiac: return 'Celiac';
       case MedicalCondition.lowFodmap: return 'Low FODMAP';
       case MedicalCondition.histamine: return 'Histamine';

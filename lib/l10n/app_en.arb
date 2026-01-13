@@ -35,6 +35,8 @@
   "mealTypeSnack": "Snack",
   "chefsSuggestionsTitle": "Chef's Suggestions",
   "chefsSuggestionsSubtitle": "Optimized for your fridge & family",
+  "chefsSuggestionsEmpty": "No suggestions right now",
+  "chefsSuggestionsEmptyHint": "Add ingredients to your fridge or update your family profile",
   "matchGreatValue": "Great Value",
   "matchGoodMatch": "Good Match",
   "recipesTitle": "Recipes",
