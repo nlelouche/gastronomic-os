@@ -294,6 +294,12 @@ class RecipeRemoteDataSourceImpl implements RecipeRemoteDataSource {
           createdAt: recipeModel.createdAt,
           ingredients: snapshot.ingredients,
           steps: snapshot.steps,
+          tags: recipeModel.tags, // Populate tags too
+          dietTags: recipeModel.dietTags,
+          titleEn: recipeModel.titleEn,
+          descriptionEn: recipeModel.descriptionEn,
+          ingredientsEn: recipeModel.ingredientsEn,
+          stepsEn: recipeModel.stepsEn,
         );
       }
       

@@ -4,6 +4,7 @@ import 'package:gastronomic_os/features/planner/presentation/bloc/planner_bloc.d
 import 'package:gastronomic_os/features/planner/presentation/bloc/planner_state.dart';
 import 'package:gastronomic_os/core/logic/unit_converter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:gastronomic_os/l10n/generated/app_localizations.dart';
 
 class ShoppingListPage extends StatelessWidget {
   const ShoppingListPage({super.key});
@@ -12,7 +13,7 @@ class ShoppingListPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Shopping List', style: GoogleFonts.outfit(fontWeight: FontWeight.bold)),
+        title: Text(AppLocalizations.of(context)!.shoppingListTitle, style: GoogleFonts.outfit(fontWeight: FontWeight.bold)),
       ),
       body: BlocBuilder<PlannerBloc, PlannerState>(
         builder: (context, state) {
@@ -20,7 +21,7 @@ class ShoppingListPage extends StatelessWidget {
             final items = state.shoppingList;
             if (items.isEmpty) {
               return Center(
-                child: Text('List is empty. Plan some meals!', style: GoogleFonts.outfit(fontSize: 18)),
+                child: Text(AppLocalizations.of(context)!.shoppingListEmpty, style: GoogleFonts.outfit(fontSize: 18)),
               );
             }
 
@@ -52,7 +53,7 @@ class ShoppingListPage extends StatelessWidget {
                     style: GoogleFonts.outfit(fontSize: 16),
                   ),
                   trailing: item.isVariant 
-                      ? const Chip(label: Text('Variant'), backgroundColor: Colors.greenAccent)
+                      ? Chip(label: Text(AppLocalizations.of(context)!.shoppingListVariant), backgroundColor: Colors.greenAccent)
                       : null,
                 );
               },

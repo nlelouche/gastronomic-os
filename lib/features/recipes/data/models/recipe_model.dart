@@ -32,8 +32,24 @@ class RecipeModel extends Recipe {
   @JsonKey(name: 'tags')
   final List<String> tags;
   @override
+  @override
   @JsonKey(name: 'diet_tags')
   final List<String> dietTags;
+  
+  // Translations
+  @override
+  @JsonKey(name: 'title_en')
+  final String? titleEn;
+  @override
+  @JsonKey(name: 'description_en')
+  final String? descriptionEn;
+  @override
+  @JsonKey(name: 'ingredients_en')
+  final List<String>? ingredientsEn;
+  @override
+  @JsonKey(name: 'steps_en')
+  @_RecipeStepListConverter()
+  final List<RecipeStep>? stepsEn;
 
   const RecipeModel({
     required String id,
@@ -48,6 +64,10 @@ class RecipeModel extends Recipe {
     this.steps = const [],
     this.tags = const [],
     this.dietTags = const [],
+    this.titleEn,
+    this.descriptionEn,
+    this.ingredientsEn,
+    this.stepsEn,
   }) : super(
           id: id,
           authorId: authorId,
@@ -61,6 +81,10 @@ class RecipeModel extends Recipe {
           steps: steps,
           tags: tags,
           dietTags: dietTags,
+          titleEn: titleEn,
+          descriptionEn: descriptionEn,
+          ingredientsEn: ingredientsEn,
+          stepsEn: stepsEn,
         );
 
   RecipeModel copyWith({
@@ -76,6 +100,10 @@ class RecipeModel extends Recipe {
     List<RecipeStep>? steps,
     List<String>? tags,
     List<String>? dietTags,
+    String? titleEn,
+    String? descriptionEn,
+    List<String>? ingredientsEn,
+    List<RecipeStep>? stepsEn,
   }) {
     return RecipeModel(
       id: id ?? this.id,
@@ -90,6 +118,10 @@ class RecipeModel extends Recipe {
       steps: steps ?? this.steps,
       tags: tags ?? this.tags,
       dietTags: dietTags ?? this.dietTags,
+      titleEn: titleEn ?? this.titleEn,
+      descriptionEn: descriptionEn ?? this.descriptionEn,
+      ingredientsEn: ingredientsEn ?? this.ingredientsEn,
+      stepsEn: stepsEn ?? this.stepsEn,
     );
   }
 

@@ -54,13 +54,32 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
     _resolveSteps();
   }
 
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // Re-resolve steps when dependencies (like Locale) change
+    // This ensures that if language switches, we re-run logic on the localized recipe steps
+    final blocState = context.read<RecipeBloc>().state;
+    if (blocState is RecipeDetailLoaded) {
+       _resolveSteps(blocState.recipe);
+    } else {
+       // If no bloc state yet, use widget.recipe (though it might be minimal)
+       _resolveSteps(widget.recipe); 
+    }
+  }
+
   Future<void> _resolveSteps([Recipe? recipe]) async {
     // If resolving a new recipe (from Bloc), don't show loading if we already have partial data?
     // Actually, resolving is fast, but let's keep the spinner logic for initState.
     if (recipe == null) setState(() => _isResolvingSteps = true); // Only show loading on initial
     
     try {
-      final targetRecipe = recipe ?? widget.recipe;
+      final rawRecipe = recipe ?? (context.read<RecipeBloc>().state is RecipeDetailLoaded 
+           ? (context.read<RecipeBloc>().state as RecipeDetailLoaded).recipe 
+           : widget.recipe);
+           
+      final currentLocale = Localizations.localeOf(context);
+      final targetRecipe = rawRecipe.localize(currentLocale);
 
       final onboardingRepo = sl<IOnboardingRepository>();
       final familyResult = await onboardingRepo.getFamilyMembers();
@@ -98,7 +117,22 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
           if (state is RecipeLoading) {
             return const Center(child: CircularProgressIndicator());
           } else if (state is RecipeDetailLoaded) {
-            final fullRecipe = state.recipe;
+            // Apply Localization
+            final currentLocale = Localizations.localeOf(context);
+            final fullRecipe = state.recipe.localize(currentLocale);
+            
+            // Re-resolve steps if the language changed or recipe loaded
+            // Note: _resolveSteps is usually called in listener, but that's only on state change.
+            // If the user switches language in Settings and comes back, `build` runs but state didn't change.
+            // A simple check: if fullRecipe steps differ from what we have resolved (conceptually), we assume we need to re-resolve?
+            // Actually, `_resolveSteps` updates `_resolvedSteps` state.
+            // We should probably call `_resolveSteps` here if needed, or rely on a `key` change?
+            // Better: Trigger a re-resolve if we detect a locale mismatch?
+            // For now, let's keep it simple: relying on `build` to show the correct Text is easy.
+            // But `_resolvedSteps` is stateful.
+            // IF we want steps to switch language dynamically without re-fetching, we need to call `_resolveSteps` again.
+            // Let's do it in `didChangeDependencies` or just check in build.
+            
             return CustomScrollView(
               slivers: [
                 // Immersive App Bar with "Header"

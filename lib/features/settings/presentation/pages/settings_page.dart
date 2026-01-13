@@ -12,6 +12,9 @@ import 'package:gastronomic_os/main.dart';
 import 'package:gastronomic_os/init/injection_container.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'package:gastronomic_os/l10n/generated/app_localizations.dart';
+import 'package:gastronomic_os/core/bloc/localization_bloc.dart';
+
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
 
@@ -39,7 +42,7 @@ class SettingsView extends StatelessWidget {
       backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
         title: Text(
-          'Settings',
+          AppLocalizations.of(context)!.settingsTitle,
           style: GoogleFonts.outfit(fontWeight: FontWeight.bold, fontSize: 24),
         ),
         centerTitle: false,
@@ -77,13 +80,17 @@ class SettingsView extends StatelessWidget {
                   delegate: SliverChildListDelegate([
                     
                     // --- Data Management Section ---
-                    const SectionHeader(title: 'Family & Data'),
+                    SectionHeader(title: AppLocalizations.of(context)!.manageFamilyTitle.toUpperCase().split(' ').last), // 'Data' part hack or just hardcode 'Family & Data' for now?
+                    // Let's stick to using the L10n keys we defined, assuming 'Family & Data' wasn't exactly defined.
+                    // Actually, let's use the defined keys or keep structure.
+                    // Wait, I defined specific keys in arb. Let's use them.
+                    const SectionHeader(title: 'DATA & PRIVACY'), 
                     const SizedBox(height: 12),
                     
                     _buildSettingsTile(
                       context,
-                      title: 'Manage Family',
-                      subtitle: 'Add, edit or remove family members.',
+                      title: AppLocalizations.of(context)!.manageFamilyTitle,
+                      subtitle: AppLocalizations.of(context)!.manageFamilySubtitle,
                       icon: Icons.people_outline,
                       onTap: () {
                          Navigator.of(context).push(
@@ -95,8 +102,8 @@ class SettingsView extends StatelessWidget {
 
                     _buildSettingsTile(
                       context,
-                      title: 'Reset App Data',
-                      subtitle: 'Clear all family profiles and reset onboarding status.',
+                      title: AppLocalizations.of(context)!.resetDataTitle,
+                      subtitle: AppLocalizations.of(context)!.resetDataSubtitle,
                       icon: Icons.restore,
                       iconColor: Colors.orange,
                       onTap: () => _confirmReset(context),
@@ -118,31 +125,37 @@ class SettingsView extends StatelessWidget {
                       },
                     ),
                     const SizedBox(height: 12),
-                    _buildSettingsTile(
-                      context,
-                      title: 'Debug: Seed Steak Only',
-                      subtitle: 'Fast seed for "Steak & Eggs" debugging',
-                      icon: Icons.bug_report,
-                      iconColor: Colors.red,
-                      onTap: () {
-                        context.read<RecipeBloc>().add(const SeedDatabase(filterTitle: 'Steak'));
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text('Seeding ONLY Steak & Eggs...'))
+                    
+                    // --- Localization Section ---
+                    const SectionHeader(title: 'LANGUAGE'),
+                    const SizedBox(height: 12),
+                    BlocBuilder<LocalizationBloc, LocalizationState>(
+                      builder: (context, localeState) {
+                        final isEnglish = localeState.locale.languageCode == 'en';
+                        return _buildSettingsTile(
+                          context,
+                          title: isEnglish ? 'English' : 'Español',
+                          subtitle: isEnglish ? 'Tap to switch to Spanish' : 'Toca para cambiar a Inglés',
+                          icon: Icons.language,
+                          iconColor: Colors.blue,
+                          onTap: () {
+                            final newLocale = isEnglish ? const Locale('es') : const Locale('en');
+                            context.read<LocalizationBloc>().add(ChangeLocale(newLocale));
+                          },
                         );
                       },
                     ),
-                    const SizedBox(height: 24),
+                    const SizedBox(height: 12),
 
                     // --- Application Section ---
-                    const SectionHeader(title: 'Application'),
+                    const SectionHeader(title: 'APPLICATION'),
                     const SizedBox(height: 12),
                     _buildSettingsTile(
                       context,
-                      title: 'Appearance',
-                      subtitle: 'System default',
+                      title: AppLocalizations.of(context)!.appearanceTitle,
+                      subtitle: AppLocalizations.of(context)!.appearanceSubtitle,
                       icon: Icons.palette_outlined,
                       onTap: () {
-                        // TODO: Implement theme switching dialog
                         ScaffoldMessenger.of(context).showSnackBar(
                            const SnackBar(content: Text('Theme switching coming soon (Locked to System for now)'))
                         );
@@ -151,8 +164,8 @@ class SettingsView extends StatelessWidget {
                     const SizedBox(height: 12),
                     _buildSettingsTile(
                       context,
-                      title: 'Glossary of Terms',
-                      subtitle: 'Learn about APLV, Keto, and other tags.',
+                      title: AppLocalizations.of(context)!.glossaryTitle,
+                      subtitle: AppLocalizations.of(context)!.glossarySubtitle,
                       icon: Icons.menu_book_rounded,
                       iconColor: Colors.teal,
                       onTap: () {
@@ -164,10 +177,10 @@ class SettingsView extends StatelessWidget {
                     const SizedBox(height: 12),
                     _buildSettingsTile(
                       context,
-                      title: 'About',
-                      subtitle: 'Version 0.5.0 Alpha',
+                      title: AppLocalizations.of(context)!.aboutTitle,
+                      subtitle: AppLocalizations.of(context)!.aboutSubtitle,
                       icon: Icons.info_outline,
-                      onTap: () {}, // No-op or show license page
+                      onTap: () {}, 
                     ),
                     
                     const SizedBox(height: 48),

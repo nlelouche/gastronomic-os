@@ -17,6 +17,7 @@ import 'package:gastronomic_os/features/planner/domain/repositories/i_meal_plan_
 import 'package:gastronomic_os/features/planner/data/repositories/meal_plan_repository_impl.dart';
 import 'package:gastronomic_os/features/planner/presentation/bloc/planner_bloc.dart';
 import 'package:gastronomic_os/features/planner/domain/logic/shopping_engine.dart';
+import 'package:gastronomic_os/core/bloc/localization_bloc.dart';
 
 final sl = GetIt.instance;
 
@@ -73,6 +74,7 @@ Future<void> init() async {
     inventoryRepository: sl(),
     shoppingEngine: sl(),
   ));
+  sl.registerFactory(() => LocalizationBloc());
 
   // ! External
   sl.registerLazySingleton(() => Supabase.instance.client);

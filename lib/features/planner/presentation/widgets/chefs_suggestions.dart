@@ -7,7 +7,9 @@ import 'package:gastronomic_os/features/planner/presentation/bloc/planner_state.
 import 'package:gastronomic_os/features/planner/presentation/bloc/planner_event.dart';
 import 'package:gastronomic_os/features/recipes/presentation/pages/recipe_detail_page.dart';
 import 'package:gastronomic_os/init/injection_container.dart';
+import 'package:gastronomic_os/init/injection_container.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:gastronomic_os/l10n/generated/app_localizations.dart';
 
 class ChefsSuggestions extends StatelessWidget {
   const ChefsSuggestions({super.key});
@@ -27,8 +29,8 @@ class _ChefsSuggestionsView extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SectionHeader(
-          title: "Chef's Suggestions", 
-          subtitle: "Optimized for your fridge & family"
+          title: AppLocalizations.of(context)!.chefsSuggestionsTitle, 
+          subtitle: AppLocalizations.of(context)!.chefsSuggestionsSubtitle
         ),
         const SizedBox(height: 16),
         BlocBuilder<PlannerBloc, PlannerState>(
@@ -152,7 +154,7 @@ class _SuggestionCard extends StatelessWidget {
                           const Icon(Icons.stars, size: 12, color: Colors.green),
                           const SizedBox(width: 4),
                           Text(
-                            score > 40 ? "Great Value" : "Good Match", 
+                            score > 40 ? AppLocalizations.of(context)!.matchGreatValue : AppLocalizations.of(context)!.matchGoodMatch, 
                             style: const TextStyle(fontSize: 10, color: Colors.green, fontWeight: FontWeight.bold)
                           ),
                         ],

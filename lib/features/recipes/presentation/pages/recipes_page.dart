@@ -10,6 +10,7 @@ import 'package:gastronomic_os/features/recipes/presentation/pages/recipe_editor
 import 'package:gastronomic_os/features/recipes/presentation/widgets/recipe_card.dart';
 import 'package:gastronomic_os/init/injection_container.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:gastronomic_os/l10n/generated/app_localizations.dart';
 
 class RecipesPage extends StatelessWidget {
   const RecipesPage({super.key});
@@ -79,14 +80,14 @@ class _RecipesViewState extends State<RecipesView> {
     showDialog(
       context: context,
       builder: (ctx) => AlertDialog(
-        title: const Text('Add Ingredient'),
+        title: Text(AppLocalizations.of(context)!.dialogAddIngredientTitle),
         content: AppTextField(
           controller: controller,
-          hint: 'E.g., Chicken',
-          label: 'Ingredient',
+          hint: AppLocalizations.of(context)!.dialogIngredientHint,
+          label: AppLocalizations.of(context)!.dialogIngredientLabel,
         ),
         actions: [
-          TextButton(onPressed: () => Navigator.pop(ctx), child: const Text('Cancel')),
+          TextButton(onPressed: () => Navigator.pop(ctx), child: Text(AppLocalizations.of(context)!.dialogCancel)),
           FilledButton(
             onPressed: () {
               if (controller.text.isNotEmpty) {
@@ -95,7 +96,7 @@ class _RecipesViewState extends State<RecipesView> {
                 Navigator.pop(ctx);
               }
             },
-            child: const Text('Add'),
+            child: Text(AppLocalizations.of(context)!.dialogAdd),
           ),
         ],
       ),
@@ -110,7 +111,7 @@ class _RecipesViewState extends State<RecipesView> {
       backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
         title: Text(
-          'Recipes',
+          AppLocalizations.of(context)!.recipesTitle,
           style: GoogleFonts.outfit(fontWeight: FontWeight.bold, fontSize: 24),
         ),
         centerTitle: false,
@@ -140,7 +141,7 @@ class _RecipesViewState extends State<RecipesView> {
                       // Search
                       AppTextField(
                         controller: _searchController,
-                        hint: 'Search recipes...',
+                        hint: AppLocalizations.of(context)!.searchRecipesHint,
                         prefixIcon: Icons.search,
                         onChanged: (val) {
                           _dispatchFilter(context, state, query: val);
@@ -155,7 +156,7 @@ class _RecipesViewState extends State<RecipesView> {
                           children: [
                             // Family Safe Toggle
                             FilterChip(
-                              label: const Text('Family Safe'),
+                              label: Text(AppLocalizations.of(context)!.filterFamilySafe),
                               selected: state.isFamilySafe,
                               avatar: const Icon(Icons.people_outline, size: 18),
                               onSelected: (val) => _dispatchFilter(context, state, isFamilySafe: val),
@@ -164,7 +165,7 @@ class _RecipesViewState extends State<RecipesView> {
 
                             // Best Match Toggle
                             FilterChip(
-                              label: const Text('Best Match (Available)'),
+                              label: Text(AppLocalizations.of(context)!.filterBestMatch),
                               selected: state.isPantryReady,
                               avatar: const Icon(Icons.kitchen, size: 18),
                               onSelected: (val) => _dispatchFilter(context, state, isPantryReady: val),
@@ -173,7 +174,7 @@ class _RecipesViewState extends State<RecipesView> {
 
                             // Add Ingredient Button
                             ActionChip(
-                               label: const Text('Add Ingredient'),
+                               label: Text(AppLocalizations.of(context)!.filterAddIngredient),
                                avatar: const Icon(Icons.add_circle_outline, size: 18),
                                onPressed: () => _showAddIngredientDialog(context, state),
                             ),
@@ -209,7 +210,7 @@ class _RecipesViewState extends State<RecipesView> {
                           children: [
                             Icon(Icons.search_off, size: 64, color: theme.colorScheme.outline),
                             const SizedBox(height: 16),
-                            Text('No matching recipes found', style: theme.textTheme.titleMedium),
+                            Text(AppLocalizations.of(context)!.recipesEmptyTitle, style: theme.textTheme.titleMedium),
                             if (state.query.isNotEmpty || state.isFamilySafe || state.isPantryReady || state.requiredIngredients.isNotEmpty)
                               TextButton(
                                 onPressed: () {
@@ -217,7 +218,7 @@ class _RecipesViewState extends State<RecipesView> {
                                   context.read<RecipeBloc>().add(const FilterRecipes());
                                   _searchController.clear();
                                 }, 
-                                child: const Text('Clear Filters')
+                                child: Text(AppLocalizations.of(context)!.recipesClearFilters)
                               ),
                           ],
                         ),
@@ -289,7 +290,7 @@ class _RecipesViewState extends State<RecipesView> {
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () => _navigateToEditor(context),
-        label: Text('New Recipe', style: GoogleFonts.outfit(fontWeight: FontWeight.w600)),
+        label: Text(AppLocalizations.of(context)!.recipesNewRecipeButton, style: GoogleFonts.outfit(fontWeight: FontWeight.w600)),
         icon: const Icon(Icons.add),
       ).animate().scale(delay: 500.ms, curve: Curves.easeOutBack),
     );

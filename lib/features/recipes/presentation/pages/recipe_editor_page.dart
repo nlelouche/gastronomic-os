@@ -5,6 +5,7 @@ import 'package:gastronomic_os/features/recipes/domain/entities/recipe_step.dart
 import 'package:gastronomic_os/features/recipes/data/models/recipe_step_model.dart';
 import 'package:gastronomic_os/features/recipes/presentation/bloc/recipe_bloc.dart';
 import 'package:gastronomic_os/features/recipes/presentation/bloc/recipe_event.dart';
+import 'package:gastronomic_os/l10n/generated/app_localizations.dart';
 
 class RecipeEditorPage extends StatefulWidget {
   final Recipe? initialRecipe; // If null, creating new
@@ -120,7 +121,7 @@ class _RecipeEditorPageState extends State<RecipeEditorPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.initialRecipe == null ? 'New Recipe' : 'Edit Recipe'),
+        title: Text(widget.initialRecipe == null ? AppLocalizations.of(context)!.editorNewTitle : AppLocalizations.of(context)!.editorEditTitle),
         actions: [
           IconButton(
             icon: const Icon(Icons.save),
@@ -138,13 +139,13 @@ class _RecipeEditorPageState extends State<RecipeEditorPage> {
               // Meta Info
               TextFormField(
                 controller: _titleController,
-                decoration: const InputDecoration(labelText: 'Title', border: OutlineInputBorder()),
-                validator: (v) => v == null || v.isEmpty ? 'Title is required' : null,
+                decoration: InputDecoration(labelText: AppLocalizations.of(context)!.editorTitleLabel, border: const OutlineInputBorder()),
+                validator: (v) => v == null || v.isEmpty ? AppLocalizations.of(context)!.editorTitleRequired : null,
               ),
               const SizedBox(height: 16),
               TextFormField(
                 controller: _descController,
-                decoration: const InputDecoration(labelText: 'Description', border: OutlineInputBorder()),
+                decoration: InputDecoration(labelText: AppLocalizations.of(context)!.editorDescriptionLabel, border: const OutlineInputBorder()),
                 maxLines: 3,
               ),
               const SizedBox(height: 24),
@@ -153,7 +154,7 @@ class _RecipeEditorPageState extends State<RecipeEditorPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text('Ingredients', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                  Text(AppLocalizations.of(context)!.editorIngredientsSection, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                   IconButton(icon: const Icon(Icons.add_circle, color: Colors.green), onPressed: _addIngredient),
                 ],
               ),
@@ -168,7 +169,7 @@ class _RecipeEditorPageState extends State<RecipeEditorPage> {
                         child: TextFormField(
                           controller: controller,
                           decoration: InputDecoration(
-                            hintText: 'e.g., 200g Flour',
+                            hintText: AppLocalizations.of(context)!.editorIngredientsHint,
                             prefixIcon: const Icon(Icons.restaurant, size: 16),
                           ),
                         ),
@@ -188,7 +189,7 @@ class _RecipeEditorPageState extends State<RecipeEditorPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text('Instructions', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                  Text(AppLocalizations.of(context)!.editorInstructionsSection, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                   IconButton(icon: const Icon(Icons.add_circle, color: Colors.green), onPressed: _addStep),
                 ],
               ),
@@ -209,7 +210,7 @@ class _RecipeEditorPageState extends State<RecipeEditorPage> {
                           controller: controller,
                           maxLines: null,
                           decoration: InputDecoration(
-                            hintText: 'Describe the step...',
+                            hintText: AppLocalizations.of(context)!.editorInstructionsHint,
                           ),
                         ),
                       ),

@@ -8,6 +8,7 @@ import 'package:gastronomic_os/features/planner/presentation/pages/shopping_list
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:gastronomic_os/features/recipes/presentation/pages/recipe_detail_page.dart';
+import 'package:gastronomic_os/l10n/generated/app_localizations.dart';
 
 class PlannerPage extends StatefulWidget {
   const PlannerPage({super.key});
@@ -34,7 +35,7 @@ class _PlannerPageState extends State<PlannerPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Weekly Bridge',
+          AppLocalizations.of(context)!.dashboardPlannerTitle,
           style: GoogleFonts.outfit(fontWeight: FontWeight.bold),
         ),
         actions: [
@@ -93,8 +94,8 @@ class _PlannerPageState extends State<PlannerPage> {
                    children: [
                      Icon(Icons.calendar_today_outlined, size: 64, color: theme.colorScheme.outline),
                      const SizedBox(height: 16),
-                     Text('No meals planned yet.', style: GoogleFonts.outfit(fontSize: 18)),
-                     Text('Add recipes from the Cookbook!', style: theme.textTheme.bodyMedium),
+                     Text(AppLocalizations.of(context)!.plannerEmptyTitle, style: GoogleFonts.outfit(fontSize: 18)),
+                     Text(AppLocalizations.of(context)!.plannerEmptySubtitle, style: theme.textTheme.bodyMedium),
                    ],
                  ),
                );
@@ -177,7 +178,7 @@ class _PlannerPageState extends State<PlannerPage> {
              ),
            );
         },
-        label: const Text('Shopping List'),
+        label: Text(AppLocalizations.of(context)!.shoppingListButton),
         icon: const Icon(Icons.list_alt),
       ),
     );

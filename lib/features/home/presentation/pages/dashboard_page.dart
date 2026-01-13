@@ -10,6 +10,7 @@ import 'package:gastronomic_os/features/recipes/presentation/pages/recipes_page.
 import 'package:gastronomic_os/features/settings/presentation/pages/settings_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:gastronomic_os/features/planner/presentation/pages/planner_page.dart';
+import 'package:gastronomic_os/l10n/generated/app_localizations.dart';
 
 class DashboardPage extends StatelessWidget {
   const DashboardPage({super.key});
@@ -54,14 +55,14 @@ class DashboardPage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Good Morning!',
+                        AppLocalizations.of(context)!.dashboardGreeting,
                         style: GoogleFonts.outfit(
                           fontSize: 16,
                           color: colorScheme.onSurfaceVariant,
                         ),
                       ).animate().fadeIn().slideX(begin: -0.1),
                       Text(
-                        'What are we cooking?',
+                        AppLocalizations.of(context)!.dashboardTitle,
                         style: GoogleFonts.outfit(
                           fontSize: 32,
                           fontWeight: FontWeight.bold,
@@ -78,8 +79,8 @@ class DashboardPage extends StatelessWidget {
 
                       _buildFeatureCard(
                         context,
-                        title: 'My Fridge',
-                        subtitle: 'Manage your supplies',
+                        title: AppLocalizations.of(context)!.dashboardFridgeTitle,
+                        subtitle: AppLocalizations.of(context)!.dashboardFridgeSubtitle,
                         icon: Icons.kitchen,
                         color: Colors.blueAccent,
                         delay: 400.ms,
@@ -91,8 +92,8 @@ class DashboardPage extends StatelessWidget {
                       const SizedBox(height: 16),
                       _buildFeatureCard(
                         context,
-                        title: 'Cookbook',
-                        subtitle: 'Explore recipes',
+                        title: AppLocalizations.of(context)!.dashboardCookbookTitle,
+                        subtitle: AppLocalizations.of(context)!.dashboardCookbookSubtitle,
                         icon: Icons.menu_book_rounded,
                         color: Colors.orangeAccent,
                         delay: 500.ms,
@@ -106,8 +107,8 @@ class DashboardPage extends StatelessWidget {
                       // Planner Card
                       _buildFeatureCard(
                         context,
-                        title: 'Weekly Bridge',
-                        subtitle: 'Plan your meals',
+                        title: AppLocalizations.of(context)!.dashboardPlannerTitle,
+                        subtitle: AppLocalizations.of(context)!.dashboardPlannerSubtitle,
                         icon: Icons.calendar_month_rounded,
                         color: Colors.purpleAccent,
                         delay: 450.ms,
@@ -124,14 +125,14 @@ class DashboardPage extends StatelessWidget {
                       const SizedBox(height: 16),
                       _buildFeatureCard(
                         context,
-                        title: 'Social',
-                        subtitle: 'Share & Discover (Coming Soon)',
+                        title: AppLocalizations.of(context)!.dashboardSocialTitle,
+                        subtitle: AppLocalizations.of(context)!.dashboardSocialSubtitle,
                         icon: Icons.people_outline,
                         color: Colors.pinkAccent,
                         delay: 600.ms,
                         onTap: () {
                           ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text('Social features coming soon!')),
+                            SnackBar(content: Text(AppLocalizations.of(context)!.socialComingSoon)),
                           );
                         },
                       ),

@@ -3,6 +3,7 @@ import 'package:gastronomic_os/core/widgets/ui_kit.dart';
 import 'package:gastronomic_os/features/planner/domain/entities/meal_plan.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:gastronomic_os/l10n/generated/app_localizations.dart';
 
 class MealPlanCard extends StatelessWidget {
   final MealPlan plan;
@@ -44,7 +45,7 @@ class MealPlanCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      DateFormat('E').format(plan.scheduledDate).toUpperCase(),
+                      DateFormat('E', Localizations.localeOf(context).toString()).format(plan.scheduledDate).toUpperCase(),
                       style: GoogleFonts.outfit(
                         fontWeight: FontWeight.bold,
                         color: colorScheme.primary,
@@ -76,7 +77,7 @@ class MealPlanCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        plan.mealType.toUpperCase(),
+                        _getLocalizedMealType(context, plan.mealType),
                         style: theme.textTheme.labelSmall?.copyWith(
                           color: colorScheme.primary,
                           fontWeight: FontWeight.bold,
@@ -112,5 +113,16 @@ class MealPlanCard extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  String _getLocalizedMealType(BuildContext context, String type) {
+    final l10n = AppLocalizations.of(context)!;
+    switch (type.toLowerCase()) {
+      case 'dinner': return l10n.mealTypeDinner.toUpperCase();
+      case 'lunch': return l10n.mealTypeLunch.toUpperCase();
+      case 'breakfast': return l10n.mealTypeBreakfast.toUpperCase();
+      case 'snack': return l10n.mealTypeSnack.toUpperCase();
+      default: return type.toUpperCase();
+    }
   }
 }
