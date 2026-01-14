@@ -210,6 +210,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get onboardingEditMember => 'Editar Miembro';
 
   @override
+  String get onboardingAvatarTitle => 'Elige un Avatar';
+
+  @override
   String get onboardingNameLabel => 'Nombre';
 
   @override
@@ -1240,4 +1243,27 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get citation_1088 =>
       'Certificación de Aglutinantes: Uso exclusivo de harinas certificadas para garantizar seguridad en rebozados.';
+
+  @override
+  String get legalTermsTitle => 'Términos y Condiciones';
+
+  @override
+  String get legalPrivacyTitle => 'Política de Privacidad';
+
+  @override
+  String get legalAccept => 'Acepto';
+
+  @override
+  String get legalWelcome => 'Bienvenido a Gastronomic OS';
+
+  @override
+  String get legalSummary =>
+      'Para continuar, revisa y acepta nuestros Términos y Política de Privacidad. Tu confianza y seguridad son nuestra prioridad.';
+
+  @override
+  String get legalDisclaimerTitle => 'Aviso Médico';
+
+  @override
+  String get legalDisclaimerContent =>
+      'Gastronomic OS ofrece sugerencias nutricionales pero NO sustituye el consejo médico profesional. Consulte siempre a su médico antes de realizar cambios importantes en su dieta.';
 }

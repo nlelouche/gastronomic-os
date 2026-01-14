@@ -8,6 +8,7 @@ class FamilyMember extends Equatable {
   final FamilyRole role;
   final DietLifestyle primaryDiet; 
   final List<MedicalCondition> medicalConditions;
+  final String? avatarPath;
 
   const FamilyMember({
     required this.id,
@@ -15,6 +16,7 @@ class FamilyMember extends Equatable {
     required this.role,
     this.primaryDiet = DietLifestyle.omnivore,
     this.medicalConditions = const [],
+    this.avatarPath,
   });
 
   FamilyMember copyWith({
@@ -22,6 +24,7 @@ class FamilyMember extends Equatable {
     FamilyRole? role,
     DietLifestyle? primaryDiet,
     List<MedicalCondition>? medicalConditions,
+    String? avatarPath,
   }) {
     return FamilyMember(
       id: id,
@@ -29,9 +32,10 @@ class FamilyMember extends Equatable {
       role: role ?? this.role,
       primaryDiet: primaryDiet ?? this.primaryDiet,
       medicalConditions: medicalConditions ?? this.medicalConditions,
+      avatarPath: avatarPath ?? this.avatarPath,
     );
   }
 
   @override
-  List<Object> get props => [id, name, role, primaryDiet, medicalConditions];
+  List<Object?> get props => [id, name, role, primaryDiet, medicalConditions, avatarPath];
 }

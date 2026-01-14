@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:gastronomic_os/features/onboarding/domain/entities/family_member.dart';
 
 /// Represents a resolved step in a recipe for a specific group of family members.
 /// After resolution, branch points are transformed into linear instructions
@@ -6,7 +7,7 @@ import 'package:equatable/equatable.dart';
 class ResolvedStep extends Equatable {
   final int index;
   final String instruction;
-  final List<String> targetMembers; // Names of family members this step applies to
+  final List<FamilyMember> targetMembers; // Full Member objects for Avatar display
   final bool isUniversal; // True if applies to everyone
   final String? crossContaminationAlert;
   final String? substitutionReason; // e.g., "Keto", "Celiac"
@@ -26,17 +27,19 @@ class ResolvedStep extends Equatable {
       return 'For Everyone';
     }
     
-    if (targetMembers.length == 1) {
-      return 'For ${targetMembers[0]}';
+    final names = targetMembers.map((m) => m.name).toList();
+    
+    if (names.length == 1) {
+      return 'For ${names[0]}';
     }
     
-    if (targetMembers.length == 2) {
-      return 'For ${targetMembers[0]} and ${targetMembers[1]}';
+    if (names.length == 2) {
+      return 'For ${names[0]} and ${names[1]}';
     }
     
     // For 3+ members: "For Juan, María and Pedro"
-    final allButLast = targetMembers.sublist(0, targetMembers.length - 1).join(', ');
-    final last = targetMembers.last;
+    final allButLast = names.sublist(0, names.length - 1).join(', ');
+    final last = names.last;
     return 'For $allButLast and $last';
   }
   

@@ -65,6 +65,7 @@
   "onboardingSubtitle": "Build your household profile for personalized diet advice.",
   "onboardingAddMember": "Add Member",
   "onboardingEditMember": "Edit Member",
+  "onboardingAvatarTitle": "Choose Avatar",
   "onboardingNameLabel": "Name",
   "onboardingNameHint": "e.g., John",
   "onboardingRoleLabel": "Role",
@@ -354,5 +355,12 @@
   "citation_1085": "Hidden phosphorus: surveillance of PHOS additives frequently used in pork processing.",
   "citation_1086": "SIGHI Hake: high freshness white fish as marine protein of lowest reactive potential.",
   "citation_1087": "Post-leaching wash: forced draining of vegetables to eliminate potassium passed to water.",
-  "citation_1088": "Binder Certification: Exclusive use of certified flours to guarantee safety in batters."
+  "citation_1088": "Binder Certification: Exclusive use of certified flours to guarantee safety in batters.",
+  "legalTermsTitle": "Terms & Conditions",
+  "legalPrivacyTitle": "Privacy Policy",
+  "legalAccept": "I Accept",
+  "legalWelcome": "Welcome to Gastronomic OS",
+  "legalSummary": "To continue, please review and accept our Terms and Privacy Policy. Your trust and safety are our priority.",
+  "legalDisclaimerTitle": "Medical Disclaimer",
+  "legalDisclaimerContent": "Gastronomic OS provides nutritional suggestions but is NOT a substitute for professional medical advice. Always consult your physician or Dietitian before making significant changes to your diet, especially if you have a medical condition."
 }

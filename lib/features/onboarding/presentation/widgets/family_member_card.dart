@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:gastronomic_os/core/widgets/ui_kit.dart';
@@ -38,25 +39,7 @@ class FamilyMemberCard extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Container(
-            width: AppDimens.avatarSizeL, 
-            height: AppDimens.avatarSizeL,
-            decoration: BoxDecoration(
-              color: avatarColor.withOpacity(0.2),
-              shape: BoxShape.circle,
-              border: Border.all(color: avatarColor, width: 2),
-            ),
-            child: Center(
-              child: Text(
-                member.name.isNotEmpty ? member.name[0].toUpperCase() : '?',
-                style: GoogleFonts.outfit(
-                  fontSize: AppDimens.avatarFontSize, 
-                  fontWeight: FontWeight.bold,
-                  color: avatarColor,
-                ),
-              ),
-            ),
-          ),
+          _buildAvatar(context),
           const SizedBox(height: AppDimens.spaceS), 
           Text(
             member.name,
@@ -127,5 +110,69 @@ class FamilyMemberCard extends StatelessWidget {
       case FamilyRole.grandparent: return Colors.orange;
       default: return scheme.primary;
     }
+  }
+
+  Widget _buildAvatar(BuildContext context) {
+    final avatarColor = _getColorForRole(member.role, Theme.of(context).colorScheme);
+    final path = member.avatarPath;
+
+    if (path == null) {
+      return Container(
+        width: AppDimens.avatarSizeL,
+        height: AppDimens.avatarSizeL,
+        decoration: BoxDecoration(
+          color: avatarColor.withOpacity(0.2),
+          shape: BoxShape.circle,
+          border: Border.all(color: avatarColor, width: 2),
+        ),
+        child: Center(
+          child: Text(
+            member.name.isNotEmpty ? member.name[0].toUpperCase() : '?',
+            style: GoogleFonts.outfit(
+              fontSize: AppDimens.avatarFontSize,
+              fontWeight: FontWeight.bold,
+              color: avatarColor,
+            ),
+          ),
+        ),
+      );
+    }
+
+    Widget imageContent;
+
+    if (path.startsWith('preset_')) {
+      IconData icon;
+      Color color;
+      switch(path) {
+        case 'preset_dad': icon = Icons.man; color = Colors.blue.shade200; break;
+        case 'preset_mom': icon = Icons.woman; color = Colors.pink.shade200; break;
+        case 'preset_boy': icon = Icons.boy; color = Colors.blue.shade100; break;
+        case 'preset_girl': icon = Icons.girl; color = Colors.pink.shade100; break;
+        case 'preset_grandpa': icon = Icons.elderly; color = Colors.grey.shade400; break;
+        case 'preset_grandma': icon = Icons.elderly_woman; color = Colors.purple.shade200; break;
+        default: icon = Icons.face; color = Colors.grey;
+      }
+      imageContent = CircleAvatar(
+        radius: AppDimens.avatarSizeL / 2,
+        backgroundColor: color,
+        child: Icon(icon, size: AppDimens.avatarSizeL * 0.6, color: Colors.white),
+      );
+    } else {
+      imageContent = CircleAvatar(
+        radius: AppDimens.avatarSizeL / 2,
+        backgroundImage: FileImage(File(path)),
+        backgroundColor: Colors.transparent,
+      );
+    }
+
+    return Container(
+      width: AppDimens.avatarSizeL,
+      height: AppDimens.avatarSizeL,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        border: Border.all(color: avatarColor, width: 2),
+      ),
+      child: ClipOval(child: imageContent),
+    );
   }
 }

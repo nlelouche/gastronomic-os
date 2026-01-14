@@ -23,6 +23,7 @@ class OnboardingRepositoryImpl implements IOnboardingRepository {
           'role': m.role.name,
           'primary_diet': _dietEnumToString(m.primaryDiet),
           'medical_conditions': m.medicalConditions.map((e) => _conditionEnumToString(e)).toList(),
+          'avatar_path': m.avatarPath,
         }).toList(),
         'onboarding_completed': true,
       };
@@ -86,6 +87,7 @@ class OnboardingRepositoryImpl implements IOnboardingRepository {
               ?.map((e) => _stringToMedicalEnum(e.toString()))
               .whereType<MedicalCondition>()
               .toList() ?? [],
+          avatarPath: m['avatar_path'],
         )).toList();
         return (null, members);
       }

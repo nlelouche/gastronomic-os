@@ -210,6 +210,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get onboardingEditMember => 'Edit Member';
 
   @override
+  String get onboardingAvatarTitle => 'Choose Avatar';
+
+  @override
   String get onboardingNameLabel => 'Name';
 
   @override
@@ -1239,4 +1242,27 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get citation_1088 =>
       'Binder Certification: Exclusive use of certified flours to guarantee safety in batters.';
+
+  @override
+  String get legalTermsTitle => 'Terms & Conditions';
+
+  @override
+  String get legalPrivacyTitle => 'Privacy Policy';
+
+  @override
+  String get legalAccept => 'I Accept';
+
+  @override
+  String get legalWelcome => 'Welcome to Gastronomic OS';
+
+  @override
+  String get legalSummary =>
+      'To continue, please review and accept our Terms and Privacy Policy. Your trust and safety are our priority.';
+
+  @override
+  String get legalDisclaimerTitle => 'Medical Disclaimer';
+
+  @override
+  String get legalDisclaimerContent =>
+      'Gastronomic OS provides nutritional suggestions but is NOT a substitute for professional medical advice. Always consult your physician or Dietitian before making significant changes to your diet, especially if you have a medical condition.';
 }

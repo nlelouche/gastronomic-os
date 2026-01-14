@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -370,23 +371,30 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
                                runSpacing: 4,
                                children: [
                                  // Target Group Badge
-                                 if (!resolvedStep.isUniversal)
                                    Container(
-                                     padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                                     padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                                      decoration: BoxDecoration(
                                        color: Theme.of(context).colorScheme.tertiaryContainer,
-                                       borderRadius: BorderRadius.circular(6),
+                                       borderRadius: BorderRadius.circular(20), // Pill shape for avatars
                                      ),
                                      child: Row(
                                        mainAxisSize: MainAxisSize.min,
                                        children: [
-                                         Icon(Icons.person, size: 12, color: Theme.of(context).colorScheme.onTertiaryContainer),
+                                         // Micro Avatars for Target Members
+                                         if (resolvedStep.targetMembers.isNotEmpty)
+                                           ...resolvedStep.targetMembers.map((member) => Padding(
+                                             padding: const EdgeInsets.only(right: 6),
+                                             child: _buildMicroAvatar(context, member, 20),
+                                           )),
+                                         
+                                         if (resolvedStep.targetMembers.isEmpty) 
+                                            Icon(Icons.person, size: 16, color: Theme.of(context).colorScheme.onTertiaryContainer),
+
                                          const SizedBox(width: 4),
                                          Text(
                                            resolvedStep.targetGroupLabel,
                                            style: Theme.of(context).textTheme.labelSmall?.copyWith(
                                              color: Theme.of(context).colorScheme.onTertiaryContainer,
-                                             fontWeight: FontWeight.bold,
                                            ),
                                          ),
                                        ],
@@ -518,5 +526,59 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
         SnackBar(content: Text(AppLocalizations.of(context)!.recipeAddedToPlan('${date.day}/${date.month}', recipe.title))),
       );
     }
+
+  }
+
+  Widget _buildMicroAvatar(BuildContext context, FamilyMember member, double size) {
+    final path = member.avatarPath;
+    Color color = Theme.of(context).colorScheme.primary;
+    Widget? content;
+
+    if (path != null) {
+      if (path.startsWith('preset_')) {
+        IconData icon;
+        switch(path) {
+          case 'preset_dad': icon = Icons.man; color = Colors.blue.shade200; break;
+          case 'preset_mom': icon = Icons.woman; color = Colors.pink.shade200; break;
+          case 'preset_boy': icon = Icons.boy; color = Colors.blue.shade100; break;
+          case 'preset_girl': icon = Icons.girl; color = Colors.pink.shade100; break;
+          case 'preset_grandpa': icon = Icons.elderly; color = Colors.grey.shade400; break;
+          case 'preset_grandma': icon = Icons.elderly_woman; color = Colors.purple.shade200; break;
+          default: icon = Icons.face; color = Colors.grey;
+        }
+        content = Icon(icon, size: size * 0.7, color: Colors.white);
+      } else {
+        return Container(
+          width: size,
+          height: size,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            image: DecorationImage(image: FileImage(File(path)), fit: BoxFit.cover),
+            border: Border.all(color: Colors.white, width: 1.5),
+          ),
+        );
+      }
+    } else {
+       // Fallback for no avatar
+       content = Text(
+         member.name.isNotEmpty ? member.name[0].toUpperCase() : '?',
+         style: TextStyle(
+           fontSize: size * 0.5,
+           fontWeight: FontWeight.bold,
+           color: Colors.white,
+         ),
+       );
+    }
+
+    return Container(
+      width: size,
+      height: size,
+      decoration: BoxDecoration(
+        color: color,
+        shape: BoxShape.circle,
+        border: Border.all(color: Colors.white, width: 1.5),
+      ),
+      child: Center(child: content),
+    );
   }
 }

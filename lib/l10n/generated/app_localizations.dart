@@ -494,6 +494,12 @@ abstract class AppLocalizations {
   /// **'Edit Member'**
   String get onboardingEditMember;
 
+  /// No description provided for @onboardingAvatarTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose Avatar'**
+  String get onboardingAvatarTitle;
+
   /// No description provided for @onboardingNameLabel.
   ///
   /// In en, this message translates to:
@@ -2149,6 +2155,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Binder Certification: Exclusive use of certified flours to guarantee safety in batters.'**
   String get citation_1088;
+
+  /// No description provided for @legalTermsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Terms & Conditions'**
+  String get legalTermsTitle;
+
+  /// No description provided for @legalPrivacyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy Policy'**
+  String get legalPrivacyTitle;
+
+  /// No description provided for @legalAccept.
+  ///
+  /// In en, this message translates to:
+  /// **'I Accept'**
+  String get legalAccept;
+
+  /// No description provided for @legalWelcome.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome to Gastronomic OS'**
+  String get legalWelcome;
+
+  /// No description provided for @legalSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'To continue, please review and accept our Terms and Privacy Policy. Your trust and safety are our priority.'**
+  String get legalSummary;
+
+  /// No description provided for @legalDisclaimerTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Medical Disclaimer'**
+  String get legalDisclaimerTitle;
+
+  /// No description provided for @legalDisclaimerContent.
+  ///
+  /// In en, this message translates to:
+  /// **'Gastronomic OS provides nutritional suggestions but is NOT a substitute for professional medical advice. Always consult your physician or Dietitian before making significant changes to your diet, especially if you have a medical condition.'**
+  String get legalDisclaimerContent;
 }
 
 class _AppLocalizationsDelegate

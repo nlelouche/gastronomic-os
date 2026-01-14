@@ -65,6 +65,7 @@
   "onboardingSubtitle": "Configura el perfil de tu hogar para consejos personalizados.",
   "onboardingAddMember": "Añadir Miembro",
   "onboardingEditMember": "Editar Miembro",
+  "onboardingAvatarTitle": "Elige un Avatar",
   "onboardingNameLabel": "Nombre",
   "onboardingNameHint": "ej., Juan",
   "onboardingRoleLabel": "Rol",
@@ -354,5 +355,12 @@
   "citation_1085": "Fósforo oculto: vigilancia de aditivos PHOS usados frecuentemente en procesado de cerdo.",
   "citation_1086": "Merluza SIGHI: pescado blanco de alta frescura como proteína marina de menor potencial reactivo.",
   "citation_1087": "Lavado post lixiviación: escurrido forzado de vegetales para eliminar el potasio que pasó al agua.",
-  "citation_1088": "Certificación de Aglutinantes: Uso exclusivo de harinas certificadas para garantizar seguridad en rebozados."
+  "citation_1088": "Certificación de Aglutinantes: Uso exclusivo de harinas certificadas para garantizar seguridad en rebozados.",
+  "legalTermsTitle": "Términos y Condiciones",
+  "legalPrivacyTitle": "Política de Privacidad",
+  "legalAccept": "Acepto",
+  "legalWelcome": "Bienvenido a Gastronomic OS",
+  "legalSummary": "Para continuar, revisa y acepta nuestros Términos y Política de Privacidad. Tu confianza y seguridad son nuestra prioridad.",
+  "legalDisclaimerTitle": "Aviso Médico",
+  "legalDisclaimerContent": "Gastronomic OS ofrece sugerencias nutricionales pero NO sustituye el consejo médico profesional. Consulte siempre a su médico antes de realizar cambios importantes en su dieta."
 }

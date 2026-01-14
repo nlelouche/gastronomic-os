@@ -43,14 +43,14 @@ class RecipeResolver {
         resolvedSteps.add(ResolvedStep(
           index: originalIndex,
           instruction: step.instruction,
-          targetMembers: family.map((m) => m.name).toList(),
+          targetMembers: family,
           isUniversal: true,
           crossContaminationAlert: step.crossContaminationAlert,
         ));
       } else {
         // Branch point: resolve for each member individually
-        // Map<Instruction, (List<MemberName>, Set<Reason>)>
-        Map<String, (List<String>, Set<String>)> instructionToGroup = {};
+        // Map<Instruction, (List<FamilyMember>, Set<Reason>)>
+        Map<String, (List<FamilyMember>, Set<String>)> instructionToGroup = {};
         
         for (final member in family) {
           final resolution = _resolveInstructionForMember(step, member);
@@ -61,7 +61,7 @@ class RecipeResolver {
             instructionToGroup[instruction] = ([], {});
           }
           
-          instructionToGroup[instruction]!.$1.add(member.name);
+          instructionToGroup[instruction]!.$1.add(member);
           if (reason != null) {
             instructionToGroup[instruction]!.$2.add(reason);
           }
@@ -142,7 +142,7 @@ class RecipeResolver {
       return ResolvedStep(
         index: entry.key + 1,
         instruction: entry.value.instruction,
-        targetMembers: [],
+        targetMembers: const <FamilyMember>[],
         isUniversal: true,
         crossContaminationAlert: entry.value.crossContaminationAlert,
       );
