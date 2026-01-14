@@ -28,8 +28,25 @@ class ForkRecipe extends RecipeEvent {
 
   @override
   List<Object> get props => [originalRecipeId, newTitle];
+
+
 }
 
+class DeleteRecipe extends RecipeEvent {
+  final String recipeId;
+  const DeleteRecipe(this.recipeId);
+  @override
+  List<Object> get props => [recipeId];
+}
+
+
+
+class UpdateRecipe extends RecipeEvent {
+  final Recipe recipe;
+  const UpdateRecipe(this.recipe);
+  @override
+  List<Object> get props => [recipe];
+}
 
 class LoadRecipeDetails extends RecipeEvent {
   final String recipeId;

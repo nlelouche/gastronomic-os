@@ -188,4 +188,41 @@ class RecipeRepositoryImpl implements IRecipeRepository {
   }
 
 
+  @override
+  Future<(Failure?, void)> deleteRecipe(String id) async {
+    try {
+      await remoteDataSource.deleteRecipe(id);
+      cacheService.invalidate(); // Clear cache
+      return (null, null);
+    } catch (e, stackTrace) {
+      final failure = ExceptionHandler.handle(
+        e,
+        stackTrace: stackTrace,
+        context: ErrorContext.repository('deleteRecipe', extra: {
+          'recipeId': id,
+        }),
+      );
+      await ErrorReporter.instance.reportError(failure);
+      return (failure, null);
+    }
+  }
+
+  @override
+  Future<(Failure?, Recipe?)> updateRecipe(Recipe recipe) async {
+    try {
+      final result = await remoteDataSource.updateRecipe(recipe);
+      cacheService.invalidate(); // Clear cache
+      return (null, result);
+    } catch (e, stackTrace) {
+      final failure = ExceptionHandler.handle(
+        e,
+        stackTrace: stackTrace,
+        context: ErrorContext.repository('updateRecipe', extra: {
+          'recipeName': recipe.title,
+        }),
+      );
+      await ErrorReporter.instance.reportError(failure);
+      return (failure, null);
+    }
+  }
 }

@@ -27,11 +27,27 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
     on<LoadRecipes>(_onLoadRecipes);
     on<LoadMoreRecipes>(_onLoadMoreRecipes);
     on<CreateRecipe>(_onCreateRecipe);
+    on<UpdateRecipe>(_onUpdateRecipe);
     on<ForkRecipe>(_onForkRecipe);
     on<LoadRecipeDetails>(_onLoadRecipeDetails);
     on<SeedDatabase>(_onSeedDatabase);
     on<FilterRecipes>(_onFilterRecipes);
+    on<DeleteRecipe>(_onDeleteRecipe);
   }
+
+  Future<void> _onDeleteRecipe(DeleteRecipe event, Emitter<RecipeState> emit) async {
+    emit(RecipeLoading());
+    final result = await repository.deleteRecipe(event.recipeId);
+    
+    if (result.$1 != null) {
+      emit(RecipeError(result.$1!.message));
+    } else {
+      emit(RecipeDeleted());
+      // Optionally reload list if we were on list view, but usually we pop details
+      add(LoadRecipes()); 
+    }
+  }
+
 
   Future<void> _onLoadRecipeDetails(LoadRecipeDetails event, Emitter<RecipeState> emit) async {
     // Keep state if possible, or just emit loading
@@ -167,6 +183,23 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
       emit(RecipeError(result.$1!.message));
     } else {
       add(LoadRecipes());
+    }
+  }
+
+  Future<void> _onUpdateRecipe(UpdateRecipe event, Emitter<RecipeState> emit) async {
+    emit(RecipeLoading());
+    final result = await repository.updateRecipe(event.recipe);
+    
+    if (result.$1 != null) {
+      emit(RecipeError(result.$1!.message));
+    } else {
+      // Don't trigger LoadRecipes() here as it switches state to RecipeLoaded (List)
+      // causing the Detail Page to lose context and show "Initializing..."
+      // Just emit DetailLoaded with the updated recipe.
+      // add(LoadRecipes()); // REMOVED
+      
+      // Update details to show new data immediately
+      emit(RecipeDetailLoaded(event.recipe)); 
     }
   }
 

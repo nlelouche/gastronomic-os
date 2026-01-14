@@ -12,6 +12,9 @@ class RecipeInitial extends RecipeState {}
 
 class RecipeLoading extends RecipeState {}
 
+class RecipeDeleted extends RecipeState {}
+
+
 class RecipeLoaded extends RecipeState {
   final List<Recipe> recipes;
   final bool hasReachedMax;

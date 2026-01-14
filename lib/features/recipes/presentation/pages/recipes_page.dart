@@ -318,10 +318,11 @@ class _RecipesViewState extends State<RecipesView> {
       MaterialPageRoute(
         builder: (context) => RecipeDetailPage(recipe: recipe),
       ),
-    );
-    // Removed .then(LoadRecipes) because generally we don't need to reload unless edit happened.
-    // If edit happened... we might need to Refresh.
-    // But RecipeDetails is read-only unless we go to valid Edit.
+    ).then((result) {
+      if ((result == true) && context.mounted) {
+         bloc.add(LoadRecipes()); // Reload if deleted
+      }
+    });
   }
 
   void _navigateToEditor(BuildContext context) {

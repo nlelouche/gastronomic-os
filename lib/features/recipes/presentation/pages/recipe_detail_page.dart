@@ -21,6 +21,7 @@ import 'package:gastronomic_os/features/planner/domain/entities/meal_plan.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:uuid/uuid.dart';
 import 'package:gastronomic_os/features/recipes/presentation/widgets/formatted_recipe_text.dart';
+import 'package:gastronomic_os/features/recipes/presentation/pages/recipe_editor_page.dart';
 import 'package:gastronomic_os/l10n/generated/app_localizations.dart';
 import 'package:gastronomic_os/core/theme/app_dimens.dart';
 
@@ -112,6 +113,15 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
         listener: (context, state) {
           if (state is RecipeDetailLoaded) {
             _resolveSteps(state.recipe);
+          } else if (state is RecipeDeleted) {
+            Navigator.of(context).pop(true); // Exit Detail Page and signal deletion
+            ScaffoldMessenger.of(context).showSnackBar(
+               const SnackBar(content: Text('Recipe deleted successfully')),
+            );
+          } else if (state is RecipeError) {
+             ScaffoldMessenger.of(context).showSnackBar(
+               SnackBar(content: Text('Error: ${state.message}'), backgroundColor: colorScheme.error),
+             );
           }
         },
         builder: (context, state) {
@@ -195,6 +205,51 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
                            );
                          },
                        ),
+                       // Edit/Delete Menu (only if author)
+                       // Assuming simplistic "Show Always" for MVP phase or check ID
+                       if (fullRecipe.authorId == Supabase.instance.client.auth.currentUser?.id)
+                          PopupMenuButton<String>(
+                            onSelected: (value) {
+                              if (value == 'delete') {
+                                _showDeleteConfirmation(context, fullRecipe.id);
+                              } else if (value == 'edit') {
+                                // Navigate to Edit
+                                final recipeBloc = context.read<RecipeBloc>();
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (_) => BlocProvider.value(
+                                      value: recipeBloc,
+                                      child: RecipeEditorPage(initialRecipe: fullRecipe),
+                                    ),
+                                  ),
+                                );
+                              }
+                            },
+                            itemBuilder: (BuildContext context) {
+                              return [
+                                PopupMenuItem<String>(
+                                  value: 'edit',
+                                  child: Row(
+                                    children: [
+                                      Icon(Icons.edit, color: colorScheme.onSurface),
+                                      const SizedBox(width: 8),
+                                      const Text('Edit'),
+                                    ],
+                                  ),
+                                ),
+                                PopupMenuItem<String>(
+                                  value: 'delete',
+                                  child: Row(
+                                    children: [
+                                      Icon(Icons.delete, color: colorScheme.error),
+                                      const SizedBox(width: 8),
+                                      Text('Delete', style: TextStyle(color: colorScheme.error)),
+                                    ],
+                                  ),
+                                ),
+                              ];
+                            },
+                          ),
                     ],
                   ),
                 ],
@@ -527,6 +582,31 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
       );
     }
 
+  }
+
+  Future<void> _showDeleteConfirmation(BuildContext context, String recipeId) async {
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Delete Recipe?'),
+        content: const Text('This action cannot be undone. Are you sure you want to delete this recipe?'),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(false),
+            child: const Text('Cancel'),
+          ),
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(true),
+            style: TextButton.styleFrom(foregroundColor: Theme.of(context).colorScheme.error),
+            child: const Text('Delete'),
+          ),
+        ],
+      ),
+    );
+
+    if (confirmed == true && context.mounted) {
+      context.read<RecipeBloc>().add(DeleteRecipe(recipeId));
+    }
   }
 
   Widget _buildMicroAvatar(BuildContext context, FamilyMember member, double size) {

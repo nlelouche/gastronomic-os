@@ -16,8 +16,14 @@ abstract class RecipeRemoteDataSource {
   Future<CommitModel> addCommit(CommitModel commit);
   Future<RecipeModel> getRecipeDetails(String recipeId);
   Future<List<RecipeModel>> getDashboardSuggestions({int limit = 10});
+
   Future<void> clearAllRecipes(); // For development: clear all recipes
+
+  // Phase 3: Edit/Delete
+  Future<void> deleteRecipe(String id);
+  Future<RecipeModel> updateRecipe(Recipe recipe);
 }
+
 
 class RecipeRemoteDataSourceImpl implements RecipeRemoteDataSource {
   final SupabaseClient supabaseClient;
@@ -319,6 +325,123 @@ class RecipeRemoteDataSourceImpl implements RecipeRemoteDataSource {
       await supabaseClient.from('commits').delete().neq('id', '00000000-0000-0000-0000-000000000000');
       await supabaseClient.from('recipes').delete().neq('id', '00000000-0000-0000-0000-000000000000');
     } catch (e) {
+      throw Exception('Datasource operation failed');
+    }
+  }
+
+  @override
+  Future<void> deleteRecipe(String id) async {
+    try {
+      AppLogger.d('🗑️ Attempting to delete recipe: $id');
+      
+      // Manual Cascade Delete
+      
+      // 0. Delete Meal Plans (FK Constraint Check)
+      await supabaseClient.from('meal_plans').delete().eq('recipe_id', id);
+
+      // 1. Delete Snapshots
+      await supabaseClient.from('recipe_snapshots').delete().eq('recipe_id', id);
+      
+      // 2. Delete Commits
+      await supabaseClient.from('commits').delete().eq('recipe_id', id);
+      
+      // 3. Delete Recipe & Verify
+      final response = await supabaseClient
+          .from('recipes')
+          .delete()
+          .eq('id', id)
+          .select(); // Select returns the deleted rows
+      
+      if (response.isEmpty) {
+        AppLogger.w('⚠️ Delete operation returned 0 rows for recipe $id. Possible causes: RLS blocking or ID not found.');
+        throw Exception('Delete failed: Permission denied or Recipe not found.');
+      } else {
+        AppLogger.d('✅ Successfully deleted recipe: $id');
+      }
+
+    } catch (e, s) {
+      AppLogger.e('Error deleting recipe $id', e, s);
+      // Re-throw so the UI knows it failed
+      throw Exception('Datasource delete operation failed: $e');
+    }
+  }
+
+  @override
+  Future<RecipeModel> updateRecipe(Recipe recipe) async {
+    try {
+      final currentUserId = supabaseClient.auth.currentUser!.id;
+
+      // 1. Calculate Enriched Tags
+      final enrichedTags = List<String>.from(recipe.tags);
+      for (final step in recipe.steps) {
+        if (step.isBranchPoint && step.variantLogic != null) {
+          for (final diet in step.variantLogic!.keys) {
+            final normalizedDiet = diet; 
+            if (!enrichedTags.any((t) => t.toLowerCase() == normalizedDiet.toLowerCase())) {
+              enrichedTags.add(normalizedDiet);
+            }
+          }
+        }
+      }
+
+      // 2. Update Recipe Header
+      final recipeData = {
+        'title': recipe.title,
+        'description': recipe.description,
+        'tags': enrichedTags,
+        'is_public': recipe.isPublic,
+      };
+
+      await supabaseClient
+          .from('recipes')
+          .update(recipeData)
+          .eq('id', recipe.id)
+          .eq('author_id', currentUserId); // Security check
+
+      // 3. Insert Commit
+      final commitData = {
+        'recipe_id': recipe.id,
+        'author_id': currentUserId,
+        'message': 'Updated via Editor', // detailed diff could be added here
+        'diff': {'action': 'update'}, 
+      };
+
+      final commitResponse = await supabaseClient
+          .from('commits')
+          .insert(commitData)
+          .select()
+          .single();
+      
+      final commitId = commitResponse['id'];
+
+      // 4. Insert Snapshot
+      final stepsJson = recipe.steps.map((step) {
+        if (step is RecipeStepModel) return step.toJson();
+        return {
+          'instruction': step.instruction,
+          'is_branch_point': step.isBranchPoint,
+          'variant_logic': step.variantLogic,
+          'cross_contamination_alert': step.crossContaminationAlert,
+        };
+      }).toList();
+
+      final fullStructureJson = {
+        'ingredients': recipe.ingredients,
+        'steps': stepsJson,
+      };
+      
+      final snapshotData = {
+        'commit_id': commitId,
+        'recipe_id': recipe.id,
+        'full_structure': fullStructureJson,
+      };
+
+      await supabaseClient.from('recipe_snapshots').insert(snapshotData);
+
+      // Return updated model
+      return getRecipeDetails(recipe.id);
+    } catch (e, s) {
+      AppLogger.e('Error updating recipe', e, s);
       throw Exception('Datasource operation failed');
     }
   }

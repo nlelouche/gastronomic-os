@@ -102,19 +102,27 @@ class _RecipeEditorPageState extends State<RecipeEditorPage> {
           .where((s) => s.instruction.isNotEmpty)
           .toList();
 
-      final newRecipe = Recipe(
-        id: widget.initialRecipe?.id ?? '', // Will be ignored by DB or generated
-        authorId: '', // Handled by datasource
-        title: _titleController.text.trim(),
-        description: _descController.text.trim(),
-        createdAt: widget.initialRecipe?.createdAt ?? DateTime.now(),
-        ingredients: ingredients,
-        steps: steps,
-      );
-
-      // We only support creating new recipes for now via this UI
-      // Updating would require a different event or logic (create Commit)
-      context.read<RecipeBloc>().add(CreateRecipe(newRecipe));
+      if (widget.initialRecipe != null) {
+          final updatedRecipe = widget.initialRecipe!.copyWith(
+            title: _titleController.text.trim(),
+            description: _descController.text.trim(),
+            ingredients: ingredients,
+            steps: steps,
+          );
+          context.read<RecipeBloc>().add(UpdateRecipe(updatedRecipe));
+      } else {
+        // Create Logic
+        final newRecipe = Recipe(
+          id: '', // Will be ignored by DB or generated
+          authorId: '', // Handled by datasource
+          title: _titleController.text.trim(),
+          description: _descController.text.trim(),
+          createdAt: DateTime.now(),
+          ingredients: ingredients,
+          steps: steps,
+        );
+        context.read<RecipeBloc>().add(CreateRecipe(newRecipe));
+      }
       Navigator.pop(context);
     }
   }

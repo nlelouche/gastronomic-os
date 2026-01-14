@@ -13,6 +13,10 @@ abstract class IRecipeRepository {
   // Commits
   Future<(Failure?, List<Commit>?)> getCommits(String recipeId);
   Future<(Failure?, Commit?)> addCommit(Commit commit);
+
+  // Edit & Delete (Phase 3)
+  Future<(Failure?, void)> deleteRecipe(String id);
+  Future<(Failure?, Recipe?)> updateRecipe(Recipe recipe);
   
   // Advanced: Get the resolved recipe state at a specific commit (Snapshot)
   // Future<(Failure?, RecipeSnapshot?)> getRecipeSnapshot(String commitId); 
