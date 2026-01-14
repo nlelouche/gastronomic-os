@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gastronomic_os/l10n/generated/app_localizations.dart';
 import 'package:gastronomic_os/core/widgets/ui_kit.dart';
 
 class SmartForkDialog extends StatefulWidget {
@@ -13,26 +14,38 @@ class SmartForkDialog extends StatefulWidget {
 class _SmartForkDialogState extends State<SmartForkDialog> {
   final TextEditingController _customController = TextEditingController();
   String? _selectedIntent;
-  
-  final List<String> _intents = [
-    'Make it Vegan',
-    'Make it Gluten-Free',
-    'Low Carb Adaptation',
-    'Spicier Version',
-    'Kid-Friendly',
-    'Just Experimenting',
-  ];
+  List<String> _intents = [];
+  bool _initialized = false;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (!_initialized) {
+      final l10n = AppLocalizations.of(context)!;
+      _intents = [
+        l10n.forkIntentVegan,
+        l10n.forkIntentGlutenFree,
+        l10n.forkIntentLowCarb,
+        l10n.forkIntentSpicy,
+        l10n.forkIntentKids,
+        l10n.forkIntentExperiment,
+      ];
+      _initialized = true;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    
     return AlertDialog(
-      title: const Text('Fork Recipe'),
+      title: Text(l10n.forkTitle),
       content: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Why are you forking "${widget.originalTitle}"?', style: Theme.of(context).textTheme.bodyMedium),
+            Text(l10n.smartForkPrompt(widget.originalTitle), style: Theme.of(context).textTheme.bodyMedium),
             const SizedBox(height: 16),
             Wrap(
               spacing: 8,
@@ -47,8 +60,8 @@ class _SmartForkDialogState extends State<SmartForkDialog> {
                       _selectedIntent = selected ? intent : null;
                       if (selected) {
                          // Auto-generate title based on intent
-                         if (intent == 'Just Experimenting') {
-                            _customController.text = '${widget.originalTitle} (Remix)';
+                         if (intent == l10n.forkIntentExperiment) {
+                            _customController.text = '${widget.originalTitle} ${l10n.forkRemixSuffix}';
                          } else {
                             _customController.text = '$intent ${widget.originalTitle}';
                          }
@@ -61,10 +74,10 @@ class _SmartForkDialogState extends State<SmartForkDialog> {
             const SizedBox(height: 16),
             TextField(
               controller: _customController,
-              decoration: const InputDecoration(
-                labelText: 'New Recipe Title',
-                hintText: 'e.g. Grandma\'s Secret Version',
-                border: OutlineInputBorder(),
+              decoration: InputDecoration(
+                labelText: l10n.smartForkNewTitleLabel,
+                hintText: l10n.smartForkTitleHint, // Replaced placeholder hint usage for simplicity or generic
+                border: const OutlineInputBorder(),
               ),
             ),
           ],
@@ -73,10 +86,10 @@ class _SmartForkDialogState extends State<SmartForkDialog> {
       actions: [
         TextButton(
           onPressed: () => Navigator.pop(context),
-          child: const Text('Cancel'),
+          child: Text(l10n.btnCancel),
         ),
         PrimaryButton(
-          label: 'Fork Recipe',
+          label: l10n.smartForkBtn,
           onPressed: () {
             if (_customController.text.isNotEmpty) {
               Navigator.pop(context, _customController.text);

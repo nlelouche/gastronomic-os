@@ -344,15 +344,25 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
                             const SizedBox(height: AppDimens.spaceL),
                           ],
                           
-                          RecipeTreeWidget(
-                            currentRecipe: fullRecipe,
-                            parentRecipe: parentRecipe,
-                            forks: forks,
-                            onRecipeTap: (id) {
-                               context.read<RecipeBloc>().add(LoadRecipeDetails(id));
-                            },
-                          ),
-                          const SizedBox(height: AppDimens.space2XL),
+                          if (parentRecipe != null || forks.isNotEmpty) 
+                            ExpansionTile(
+                              title: Text(l10n.recipeLineageTitle, style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold)),
+                              leading: const Icon(Icons.account_tree_outlined),
+                              childrenPadding: const EdgeInsets.all(16),
+                              initiallyExpanded: false,
+                              children: [
+                                RecipeTreeWidget(
+                                  currentRecipe: fullRecipe,
+                                  parentRecipe: parentRecipe,
+                                  forks: forks,
+                                  onRecipeTap: (id) {
+                                     context.read<RecipeBloc>().add(LoadRecipeDetails(id));
+                                  },
+                                ),
+                              ],
+                            ),
+                          if (parentRecipe != null || forks.isNotEmpty) 
+                             const SizedBox(height: AppDimens.spaceL),
                           
                           if (fullRecipe.tags.isNotEmpty) ...[
                              _buildTagsSection(context, fullRecipe.tags),

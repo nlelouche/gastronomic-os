@@ -61,7 +61,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get dashboardCookbookTitle => 'Cookbook';
 
   @override
-  String get dashboardCookbookSubtitle => 'Explore recipes';
+  String get dashboardCookbookSubtitle => 'Browse global recipes';
+
+  @override
+  String get dashboardMyRecipesTitle => 'My Recipes';
+
+  @override
+  String get dashboardMyRecipesSubtitle => 'Created, Forked, Saved';
 
   @override
   String get dashboardPlannerTitle => 'Weekly Bridge';
@@ -332,6 +338,18 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get medicalTags => 'Medical Tags';
+
+  @override
+  String get recipeLineageTitle => 'Recipe Lineage';
+
+  @override
+  String get recipeLineageParent => 'Parent';
+
+  @override
+  String get recipeLineageCurrent => 'Current';
+
+  @override
+  String get recipeLineageVariation => 'Variation';
 
   @override
   String get recipeIngredientsTitle => 'Ingredients';
@@ -1265,4 +1283,98 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get legalDisclaimerContent =>
       'Gastronomic OS provides nutritional suggestions but is NOT a substitute for professional medical advice. Always consult your physician or Dietitian before making significant changes to your diet, especially if you have a medical condition.';
+
+  @override
+  String get tabCreated => 'Created';
+
+  @override
+  String get tabForked => 'Forked';
+
+  @override
+  String get tabSaved => 'Saved';
+
+  @override
+  String get tabCollections => 'Collections';
+
+  @override
+  String get myRecipesEmptyCreated => 'No user recipes yet.';
+
+  @override
+  String get myRecipesEmptyForked => 'You haven\'t forked any recipes yet.';
+
+  @override
+  String get myRecipesEmptySaved => 'No saved recipes.';
+
+  @override
+  String get collectionsEmpty => 'No collections yet.';
+
+  @override
+  String get collectionDialogTitle => 'New Collection';
+
+  @override
+  String get collectionDialogLabel => 'Collection Name';
+
+  @override
+  String get btnCreate => 'Create';
+
+  @override
+  String get btnCancel => 'Cancel';
+
+  @override
+  String recipesCount(int count) {
+    return '$count recipes';
+  }
+
+  @override
+  String get collectionEmptyDetail => 'Empty Collection';
+
+  @override
+  String get addToCollectionTitle => 'Add to Collection';
+
+  @override
+  String get btnNewCollection => 'New Collection';
+
+  @override
+  String get createCollectionHeader => 'Create New Collection';
+
+  @override
+  String get labelName => 'Name';
+
+  @override
+  String get forkTitle => 'Fork Recipe';
+
+  @override
+  String smartForkPrompt(String title) {
+    return 'Why are you forking \"$title\"?';
+  }
+
+  @override
+  String get forkIntentVegan => 'Make it Vegan';
+
+  @override
+  String get forkIntentGlutenFree => 'Make it Gluten-Free';
+
+  @override
+  String get forkIntentLowCarb => 'Low Carb Adaptation';
+
+  @override
+  String get forkIntentSpicy => 'Spicier Version';
+
+  @override
+  String get forkIntentKids => 'Kid-Friendly';
+
+  @override
+  String get forkIntentExperiment => 'Just Experimenting';
+
+  @override
+  String get forkRemixSuffix => '(Remix)';
+
+  @override
+  String get smartForkNewTitleLabel => 'New Recipe Title';
+
+  @override
+  String get smartForkTitleHint => 'e.g. Grandma\'s Secret Version';
+
+  @override
+  String get smartForkBtn => 'Fork Recipe';
 }

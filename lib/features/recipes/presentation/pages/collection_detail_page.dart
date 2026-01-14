@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gastronomic_os/l10n/generated/app_localizations.dart';
 import 'package:gastronomic_os/core/widgets/ui_kit.dart';
 import 'package:gastronomic_os/features/recipes/domain/entities/recipe.dart';
 import 'package:gastronomic_os/features/recipes/domain/entities/recipe_collection.dart';
@@ -17,6 +18,7 @@ class CollectionDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return BlocProvider(
       create: (_) => sl<RecipeBloc>()..add(LoadRecipes(collectionId: collection.id)),
       child: Scaffold(
@@ -36,7 +38,7 @@ class CollectionDetailPage extends StatelessWidget {
               final recipes = state.recipes;
               
               if (recipes.isEmpty) {
-                 return const Center(child: Text('Empty Collection'));
+                 return Center(child: Text(l10n.collectionEmptyDetail));
               }
 
               return GridView.builder(
@@ -63,7 +65,7 @@ class CollectionDetailPage extends StatelessWidget {
             }
 
             if (state is RecipeError) {
-              return Center(child: Text('Error: ${state.message}'));
+              return Center(child: Text(l10n.commonError(state.message)));
             }
 
             return const SizedBox.shrink();

@@ -16,7 +16,9 @@
   "dashboardFridgeTitle": "My Fridge",
   "dashboardFridgeSubtitle": "Manage your supplies",
   "dashboardCookbookTitle": "Cookbook",
-  "dashboardCookbookSubtitle": "Explore recipes",
+  "dashboardCookbookSubtitle": "Browse global recipes",
+  "dashboardMyRecipesTitle": "My Recipes",
+  "dashboardMyRecipesSubtitle": "Created, Forked, Saved",
   "dashboardPlannerTitle": "Weekly Bridge",
   "dashboardPlannerSubtitle": "Plan your meals",
   "dashboardSocialTitle": "Social",
@@ -106,6 +108,10 @@
   "conditionDiabetes": "Diabetes",
   "conditionRenal": "Renal (Kidney Safe)",
   "medicalTags": "Medical Tags",
+  "recipeLineageTitle": "Recipe Lineage",
+  "recipeLineageParent": "Parent",
+  "recipeLineageCurrent": "Current",
+  "recipeLineageVariation": "Variation",
   "recipeIngredientsTitle": "Ingredients",
   "recipeIngredientsCount": "{count} items",
   "recipeIngredientsEmpty": "No ingredients listed.",
@@ -362,5 +368,49 @@
   "legalWelcome": "Welcome to Gastronomic OS",
   "legalSummary": "To continue, please review and accept our Terms and Privacy Policy. Your trust and safety are our priority.",
   "legalDisclaimerTitle": "Medical Disclaimer",
-  "legalDisclaimerContent": "Gastronomic OS provides nutritional suggestions but is NOT a substitute for professional medical advice. Always consult your physician or Dietitian before making significant changes to your diet, especially if you have a medical condition."
+  "legalDisclaimerContent": "Gastronomic OS provides nutritional suggestions but is NOT a substitute for professional medical advice. Always consult your physician or Dietitian before making significant changes to your diet, especially if you have a medical condition.",
+  "tabCreated": "Created",
+  "tabForked": "Forked",
+  "tabSaved": "Saved",
+  "tabCollections": "Collections",
+  "myRecipesEmptyCreated": "No user recipes yet.",
+  "myRecipesEmptyForked": "You haven't forked any recipes yet.",
+  "myRecipesEmptySaved": "No saved recipes.",
+  "collectionsEmpty": "No collections yet.",
+  "collectionDialogTitle": "New Collection",
+  "collectionDialogLabel": "Collection Name",
+  "btnCreate": "Create",
+  "btnCancel": "Cancel",
+  "recipesCount": "{count} recipes",
+  "@recipesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "collectionEmptyDetail": "Empty Collection",
+  "addToCollectionTitle": "Add to Collection",
+  "btnNewCollection": "New Collection",
+  "createCollectionHeader": "Create New Collection",
+  "labelName": "Name",
+  "forkTitle": "Fork Recipe",
+  "smartForkPrompt": "Why are you forking \"{title}\"?",
+  "@smartForkPrompt": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "forkIntentVegan": "Make it Vegan",
+  "forkIntentGlutenFree": "Make it Gluten-Free",
+  "forkIntentLowCarb": "Low Carb Adaptation",
+  "forkIntentSpicy": "Spicier Version",
+  "forkIntentKids": "Kid-Friendly",
+  "forkIntentExperiment": "Just Experimenting",
+  "forkRemixSuffix": "(Remix)",
+  "smartForkNewTitleLabel": "New Recipe Title",
+  "smartForkTitleHint": "e.g. Grandma's Secret Version",
+  "smartForkBtn": "Fork Recipe"
 }

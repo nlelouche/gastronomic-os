@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gastronomic_os/l10n/generated/app_localizations.dart';
 import 'package:gastronomic_os/core/widgets/ui_kit.dart';
 import 'package:gastronomic_os/features/recipes/presentation/bloc/collections/collections_bloc.dart';
 import 'package:gastronomic_os/features/recipes/presentation/bloc/collections/collections_state.dart';
@@ -12,20 +13,21 @@ class AddToCollectionSheet extends StatelessWidget {
   const AddToCollectionSheet({super.key, required this.recipeId});
 
   void _showCreateDialog(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final controller = TextEditingController();
     showDialog(
       context: context, 
       builder: (ctx) => AlertDialog(
-        title: const Text('New Collection'),
+        title: Text(l10n.collectionDialogTitle),
         content: TextField(
           controller: controller,
-          decoration: const InputDecoration(labelText: 'Collection Name'),
+          decoration: InputDecoration(labelText: l10n.collectionDialogLabel),
           autofocus: true,
         ),
         actions: [
-          TextButton(onPressed: () => Navigator.pop(ctx), child: const Text('Cancel')),
+          TextButton(onPressed: () => Navigator.pop(ctx), child: Text(l10n.btnCancel)),
           PrimaryButton(
-            label: 'Create', 
+            label: l10n.btnCreate, 
             onPressed: () {
               if (controller.text.isNotEmpty) {
                 // Use the Bloc provided to the sheet or global?
@@ -44,6 +46,7 @@ class AddToCollectionSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return BlocProvider(
       create: (context) => sl<CollectionsBloc>()..add(LoadCollections()),
       child: Container( // Wrap in Container for safe sizing if needed
@@ -57,10 +60,10 @@ class AddToCollectionSheet extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text('Add to Collection', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                  Text(l10n.addToCollectionTitle, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
                   IconButton(
                     icon: const Icon(Icons.add),
-                    tooltip: 'Create New',
+                    tooltip: l10n.btnNewCollection,
                     onPressed: () => _showCreateDialog(context),
                   )
                 ],
@@ -80,7 +83,7 @@ class AddToCollectionSheet extends StatelessWidget {
                         child: TextButton.icon(
                           onPressed: () => _showCreateDialog(context),
                           icon: const Icon(Icons.add),
-                          label: const Text('Create your first collection'),
+                          label: Text(l10n.createCollectionHeader),
                         ),
                       );
                     }
@@ -107,7 +110,7 @@ class AddToCollectionSheet extends StatelessWidget {
                                collectionId: collection.id
                              ));
                              ScaffoldMessenger.of(context).showSnackBar(
-                               SnackBar(content: Text('Added to ${collection.name}'))
+                               SnackBar(content: Text('Added to ${collection.name}')) // TODO: Localize feedback
                              );
                              Navigator.pop(context);
                           },

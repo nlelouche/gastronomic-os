@@ -139,8 +139,8 @@ class DashboardPage extends StatelessWidget {
                       // My Recipes (New)
                       _buildFeatureCard(
                         context,
-                        title: 'My Recipes', // TODO: Localize
-                        subtitle: 'Created, Forked, Saved', // TODO: Localize
+                        title: AppLocalizations.of(context)!.dashboardMyRecipesTitle,
+                        subtitle: AppLocalizations.of(context)!.dashboardMyRecipesSubtitle,
                         icon: Icons.bookmarks_rounded,
                         color: Colors.amber, // Distinct color
                         delay: 550.ms,
@@ -244,27 +244,33 @@ class DashboardPage extends StatelessWidget {
                     child: Icon(icon, color: color, size: 32),
                   ),
                   const SizedBox(width: 24),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        title,
-                        style: GoogleFonts.outfit(
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold,
-                          color: theme.colorScheme.onSurface,
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          title,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: GoogleFonts.outfit(
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                            color: theme.colorScheme.onSurface,
                           ),
-                      ),
-                      Text(
-                        subtitle,
-                        style: theme.textTheme.bodyMedium?.copyWith(
-                          color: theme.colorScheme.onSurfaceVariant,
                         ),
-                      ),
-                    ],
+                        Text(
+                          subtitle,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: theme.textTheme.bodyMedium?.copyWith(
+                            color: theme.colorScheme.onSurfaceVariant,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                  const Spacer(),
+                  const SizedBox(width: 8),
                   Icon(Icons.chevron_right, color: theme.colorScheme.onSurfaceVariant),
                 ],
               ),

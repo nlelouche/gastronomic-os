@@ -60,7 +60,13 @@ class AppLocalizationsEs extends AppLocalizations {
   String get dashboardCookbookTitle => 'Recetario';
 
   @override
-  String get dashboardCookbookSubtitle => 'Explora recetas';
+  String get dashboardCookbookSubtitle => 'Explora recetas del mundo';
+
+  @override
+  String get dashboardMyRecipesTitle => 'Mis Recetas';
+
+  @override
+  String get dashboardMyRecipesSubtitle => 'Creadas, Derivadas, Guardadas';
 
   @override
   String get dashboardPlannerTitle => 'Puente Semanal';
@@ -332,6 +338,18 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get medicalTags => 'Etiquetas Médicas';
+
+  @override
+  String get recipeLineageTitle => 'Linaje de Receta';
+
+  @override
+  String get recipeLineageParent => 'Padre';
+
+  @override
+  String get recipeLineageCurrent => 'Actual';
+
+  @override
+  String get recipeLineageVariation => 'Variante';
 
   @override
   String get recipeIngredientsTitle => 'Ingredientes';
@@ -1266,4 +1284,98 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get legalDisclaimerContent =>
       'Gastronomic OS ofrece sugerencias nutricionales pero NO sustituye el consejo médico profesional. Consulte siempre a su médico antes de realizar cambios importantes en su dieta.';
+
+  @override
+  String get tabCreated => 'Creadas';
+
+  @override
+  String get tabForked => 'Derivadas';
+
+  @override
+  String get tabSaved => 'Guardadas';
+
+  @override
+  String get tabCollections => 'Colecciones';
+
+  @override
+  String get myRecipesEmptyCreated => 'No has creado recetas aún.';
+
+  @override
+  String get myRecipesEmptyForked => 'Aún no has derivado ninguna receta.';
+
+  @override
+  String get myRecipesEmptySaved => 'No hay recetas guardadas.';
+
+  @override
+  String get collectionsEmpty => 'No hay colecciones.';
+
+  @override
+  String get collectionDialogTitle => 'Nueva Colección';
+
+  @override
+  String get collectionDialogLabel => 'Nombre de la Colección';
+
+  @override
+  String get btnCreate => 'Crear';
+
+  @override
+  String get btnCancel => 'Cancelar';
+
+  @override
+  String recipesCount(int count) {
+    return '$count recetas';
+  }
+
+  @override
+  String get collectionEmptyDetail => 'Colección Vacía';
+
+  @override
+  String get addToCollectionTitle => 'Añadir a Colección';
+
+  @override
+  String get btnNewCollection => 'Nueva Colección';
+
+  @override
+  String get createCollectionHeader => 'Crear Nueva Colección';
+
+  @override
+  String get labelName => 'Nombre';
+
+  @override
+  String get forkTitle => 'Derivar Receta';
+
+  @override
+  String smartForkPrompt(String title) {
+    return '¿Por qué derivas \"$title\"?';
+  }
+
+  @override
+  String get forkIntentVegan => 'Versión Vegana';
+
+  @override
+  String get forkIntentGlutenFree => 'Sin Gluten';
+
+  @override
+  String get forkIntentLowCarb => 'Adaptación Low Carb';
+
+  @override
+  String get forkIntentSpicy => 'Más Picante';
+
+  @override
+  String get forkIntentKids => 'Para Niños';
+
+  @override
+  String get forkIntentExperiment => 'Experimento';
+
+  @override
+  String get forkRemixSuffix => '(Remix)';
+
+  @override
+  String get smartForkNewTitleLabel => 'Nuevo Título';
+
+  @override
+  String get smartForkTitleHint => 'ej. Versión Secreta de la Abuela';
+
+  @override
+  String get smartForkBtn => 'Derivar Receta';
 }

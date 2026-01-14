@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gastronomic_os/l10n/generated/app_localizations.dart';
 import 'package:gastronomic_os/core/widgets/ui_kit.dart';
 import 'package:gastronomic_os/features/recipes/presentation/bloc/my_recipes_cubit.dart';
 import 'package:gastronomic_os/features/recipes/presentation/bloc/my_recipes_state.dart';
@@ -19,6 +20,7 @@ class MyRecipesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => sl<MyRecipesCubit>()..loadMyRecipes()),
@@ -29,16 +31,16 @@ class MyRecipesPage extends StatelessWidget {
         child: Scaffold(
           appBar: AppBar(
             title: Text(
-              'My Recipes', // TODO: Localize
+              l10n.recipesTitle, 
               style: GoogleFonts.outfit(fontWeight: FontWeight.bold),
             ),
-            bottom: const TabBar(
+            bottom: TabBar(
               isScrollable: true,
               tabs: [
-                Tab(text: 'Created'), // TODO: Localize
-                Tab(text: 'Forked'),  // TODO: Localize
-                Tab(text: 'Saved'),   // TODO: Localize
-                Tab(text: 'Collections'), // TODO: Localize
+                Tab(text: l10n.tabCreated),
+                Tab(text: l10n.tabForked),
+                Tab(text: l10n.tabSaved),
+                Tab(text: l10n.tabCollections),
               ],
             ),
           ),
@@ -47,19 +49,19 @@ class MyRecipesPage extends StatelessWidget {
               // Created
               BlocBuilder<MyRecipesCubit, MyRecipesState>(
                 builder: (context, state) => state is MyRecipesLoaded 
-                  ? _RecipeList(recipes: state.createdRecipes, emptyMessage: 'No user recipes yet.')
+                  ? _RecipeList(recipes: state.createdRecipes, emptyMessage: l10n.myRecipesEmptyCreated)
                   : const Center(child: CircularProgressIndicator()),
               ),
               // Forked
               BlocBuilder<MyRecipesCubit, MyRecipesState>(
                 builder: (context, state) => state is MyRecipesLoaded 
-                  ? _RecipeList(recipes: state.forkedRecipes, emptyMessage: 'You haven\'t forked any recipes yet.')
+                  ? _RecipeList(recipes: state.forkedRecipes, emptyMessage: l10n.myRecipesEmptyForked)
                   : const Center(child: CircularProgressIndicator()),
               ),
               // Saved
               BlocBuilder<MyRecipesCubit, MyRecipesState>(
                 builder: (context, state) => state is MyRecipesLoaded 
-                  ? _RecipeList(recipes: state.savedRecipes, emptyMessage: 'No saved recipes.')
+                  ? _RecipeList(recipes: state.savedRecipes, emptyMessage: l10n.myRecipesEmptySaved)
                   : const Center(child: CircularProgressIndicator()),
               ),
               // Collections
@@ -76,20 +78,21 @@ class _CollectionsView extends StatelessWidget {
   const _CollectionsView();
 
   void _showCreateDialog(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final controller = TextEditingController();
     showDialog(
       context: context, 
       builder: (ctx) => AlertDialog(
-        title: const Text('New Collection'),
+        title: Text(l10n.collectionDialogTitle),
         content: TextField(
           controller: controller,
-          decoration: const InputDecoration(labelText: 'Collection Name'),
+          decoration: InputDecoration(labelText: l10n.collectionDialogLabel),
           autofocus: true,
         ),
         actions: [
-          TextButton(onPressed: () => Navigator.pop(ctx), child: const Text('Cancel')),
+          TextButton(onPressed: () => Navigator.pop(ctx), child: Text(l10n.btnCancel)),
           PrimaryButton(
-            label: 'Create', 
+            label: l10n.btnCreate, 
             onPressed: () {
               if (controller.text.isNotEmpty) {
                 context.read<CollectionsBloc>().add(CreateCollectionEvent(controller.text));
@@ -104,6 +107,7 @@ class _CollectionsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return BlocBuilder<CollectionsBloc, CollectionsState>(
       builder: (context, state) {
         if (state is CollectionsLoading) {
@@ -118,10 +122,10 @@ class _CollectionsView extends StatelessWidget {
                  children: [
                    const Icon(Icons.folder_open, size: 64, color: Colors.grey),
                    const SizedBox(height: 16),
-                   const Text('No collections yet.'),
+                   Text(l10n.collectionsEmpty),
                    const SizedBox(height: 16),
                    PrimaryButton(
-                     label: 'Create Collection', 
+                     label: l10n.btnNewCollection, 
                      onPressed: () => _showCreateDialog(context)
                    ),
                  ],
@@ -167,7 +171,7 @@ class _CollectionsView extends StatelessWidget {
                              overflow: TextOverflow.ellipsis,
                            ),
                            Text(
-                             '${collection.recipeCount} recipes',
+                             l10n.recipesCount(collection.recipeCount),
                              style: const TextStyle(color: Colors.grey),
                            ),
                          ],
@@ -181,7 +185,7 @@ class _CollectionsView extends StatelessWidget {
         }
         
         if (state is CollectionsError) {
-          return Center(child: Text('Error: ${state.message}'));
+          return Center(child: Text(l10n.commonError(state.message)));
         }
 
         return const SizedBox.shrink();

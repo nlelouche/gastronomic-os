@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gastronomic_os/features/recipes/domain/entities/recipe.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:gastronomic_os/l10n/generated/app_localizations.dart';
 
 class RecipeTreeWidget extends StatelessWidget {
   final Recipe currentRecipe;
@@ -18,50 +18,35 @@ class RecipeTreeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // If isolated, don't show anything (or maybe show "Original - No Forks")
     if (parentRecipe == null && forks.isEmpty) {
         return const SizedBox.shrink();
     }
+    
+    final l10n = AppLocalizations.of(context)!;
 
-    return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.surface.withOpacity(0.5),
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: Theme.of(context).colorScheme.outlineVariant),
-      ),
-      child: Column(
+    return Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text(
-            'Recipe Interactive Tree', 
-            style: GoogleFonts.outfit(fontWeight: FontWeight.bold, fontSize: 16)
-          ),
-          const SizedBox(height: 16),
-          
           // Parent Node
           if (parentRecipe != null) ...[
-            _buildNode(context, parentRecipe!, isCurrent: false, label: 'Parent'),
+            _buildNode(context, parentRecipe!, isCurrent: false, label: l10n.recipeLineageParent),
             _buildConnector(context),
           ],
 
           // Current Node
-          _buildNode(context, currentRecipe, isCurrent: true, label: 'Current'),
+          _buildNode(context, currentRecipe, isCurrent: true, label: l10n.recipeLineageCurrent),
 
           // Forks
           if (forks.isNotEmpty) ...[
             _buildConnector(context),
-            // Branching Lines Implementation could be complex, for now simple stack
             Wrap(
               spacing: 12,
               runSpacing: 12,
               alignment: WrapAlignment.center,
-              children: forks.map((f) => _buildNode(context, f, isCurrent: false, label: 'Variation')).toList(),
+              children: forks.map((f) => _buildNode(context, f, isCurrent: false, label: l10n.recipeLineageVariation)).toList(),
             ),
           ],
         ],
-      ),
     );
   }
 

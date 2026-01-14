@@ -203,8 +203,20 @@ abstract class AppLocalizations {
   /// No description provided for @dashboardCookbookSubtitle.
   ///
   /// In en, this message translates to:
-  /// **'Explore recipes'**
+  /// **'Browse global recipes'**
   String get dashboardCookbookSubtitle;
+
+  /// No description provided for @dashboardMyRecipesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'My Recipes'**
+  String get dashboardMyRecipesTitle;
+
+  /// No description provided for @dashboardMyRecipesSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Created, Forked, Saved'**
+  String get dashboardMyRecipesSubtitle;
 
   /// No description provided for @dashboardPlannerTitle.
   ///
@@ -739,6 +751,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Medical Tags'**
   String get medicalTags;
+
+  /// No description provided for @recipeLineageTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Recipe Lineage'**
+  String get recipeLineageTitle;
+
+  /// No description provided for @recipeLineageParent.
+  ///
+  /// In en, this message translates to:
+  /// **'Parent'**
+  String get recipeLineageParent;
+
+  /// No description provided for @recipeLineageCurrent.
+  ///
+  /// In en, this message translates to:
+  /// **'Current'**
+  String get recipeLineageCurrent;
+
+  /// No description provided for @recipeLineageVariation.
+  ///
+  /// In en, this message translates to:
+  /// **'Variation'**
+  String get recipeLineageVariation;
 
   /// No description provided for @recipeIngredientsTitle.
   ///
@@ -2197,6 +2233,186 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Gastronomic OS provides nutritional suggestions but is NOT a substitute for professional medical advice. Always consult your physician or Dietitian before making significant changes to your diet, especially if you have a medical condition.'**
   String get legalDisclaimerContent;
+
+  /// No description provided for @tabCreated.
+  ///
+  /// In en, this message translates to:
+  /// **'Created'**
+  String get tabCreated;
+
+  /// No description provided for @tabForked.
+  ///
+  /// In en, this message translates to:
+  /// **'Forked'**
+  String get tabForked;
+
+  /// No description provided for @tabSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Saved'**
+  String get tabSaved;
+
+  /// No description provided for @tabCollections.
+  ///
+  /// In en, this message translates to:
+  /// **'Collections'**
+  String get tabCollections;
+
+  /// No description provided for @myRecipesEmptyCreated.
+  ///
+  /// In en, this message translates to:
+  /// **'No user recipes yet.'**
+  String get myRecipesEmptyCreated;
+
+  /// No description provided for @myRecipesEmptyForked.
+  ///
+  /// In en, this message translates to:
+  /// **'You haven\'t forked any recipes yet.'**
+  String get myRecipesEmptyForked;
+
+  /// No description provided for @myRecipesEmptySaved.
+  ///
+  /// In en, this message translates to:
+  /// **'No saved recipes.'**
+  String get myRecipesEmptySaved;
+
+  /// No description provided for @collectionsEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No collections yet.'**
+  String get collectionsEmpty;
+
+  /// No description provided for @collectionDialogTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'New Collection'**
+  String get collectionDialogTitle;
+
+  /// No description provided for @collectionDialogLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Collection Name'**
+  String get collectionDialogLabel;
+
+  /// No description provided for @btnCreate.
+  ///
+  /// In en, this message translates to:
+  /// **'Create'**
+  String get btnCreate;
+
+  /// No description provided for @btnCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get btnCancel;
+
+  /// No description provided for @recipesCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} recipes'**
+  String recipesCount(int count);
+
+  /// No description provided for @collectionEmptyDetail.
+  ///
+  /// In en, this message translates to:
+  /// **'Empty Collection'**
+  String get collectionEmptyDetail;
+
+  /// No description provided for @addToCollectionTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Add to Collection'**
+  String get addToCollectionTitle;
+
+  /// No description provided for @btnNewCollection.
+  ///
+  /// In en, this message translates to:
+  /// **'New Collection'**
+  String get btnNewCollection;
+
+  /// No description provided for @createCollectionHeader.
+  ///
+  /// In en, this message translates to:
+  /// **'Create New Collection'**
+  String get createCollectionHeader;
+
+  /// No description provided for @labelName.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get labelName;
+
+  /// No description provided for @forkTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Fork Recipe'**
+  String get forkTitle;
+
+  /// No description provided for @smartForkPrompt.
+  ///
+  /// In en, this message translates to:
+  /// **'Why are you forking \"{title}\"?'**
+  String smartForkPrompt(String title);
+
+  /// No description provided for @forkIntentVegan.
+  ///
+  /// In en, this message translates to:
+  /// **'Make it Vegan'**
+  String get forkIntentVegan;
+
+  /// No description provided for @forkIntentGlutenFree.
+  ///
+  /// In en, this message translates to:
+  /// **'Make it Gluten-Free'**
+  String get forkIntentGlutenFree;
+
+  /// No description provided for @forkIntentLowCarb.
+  ///
+  /// In en, this message translates to:
+  /// **'Low Carb Adaptation'**
+  String get forkIntentLowCarb;
+
+  /// No description provided for @forkIntentSpicy.
+  ///
+  /// In en, this message translates to:
+  /// **'Spicier Version'**
+  String get forkIntentSpicy;
+
+  /// No description provided for @forkIntentKids.
+  ///
+  /// In en, this message translates to:
+  /// **'Kid-Friendly'**
+  String get forkIntentKids;
+
+  /// No description provided for @forkIntentExperiment.
+  ///
+  /// In en, this message translates to:
+  /// **'Just Experimenting'**
+  String get forkIntentExperiment;
+
+  /// No description provided for @forkRemixSuffix.
+  ///
+  /// In en, this message translates to:
+  /// **'(Remix)'**
+  String get forkRemixSuffix;
+
+  /// No description provided for @smartForkNewTitleLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'New Recipe Title'**
+  String get smartForkNewTitleLabel;
+
+  /// No description provided for @smartForkTitleHint.
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. Grandma\'s Secret Version'**
+  String get smartForkTitleHint;
+
+  /// No description provided for @smartForkBtn.
+  ///
+  /// In en, this message translates to:
+  /// **'Fork Recipe'**
+  String get smartForkBtn;
 }
 
 class _AppLocalizationsDelegate
