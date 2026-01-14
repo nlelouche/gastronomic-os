@@ -138,10 +138,17 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
           } 
           
           Recipe? recipeToShow;
+          bool isSaved = false;
+          
           if (state is RecipeDetailLoaded) {
             recipeToShow = state.recipe;
+            isSaved = state.isSaved; // Extract saved status
           } else if (state is RecipeForked) {
             recipeToShow = state.originalRecipe;
+            // RecipeForked doesn't track Saved yet, default false or fetch?
+            // Usually forks are NEW, so not saved. Originals viewed? 
+            // For now default false.
+            isSaved = false; 
           }
 
           if (recipeToShow != null) {
@@ -208,6 +215,14 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
                          icon: const Icon(Icons.calendar_today),
                          tooltip: l10n.recipeAddToPlanTooltip,
                          onPressed: () => _showAddToPlanDialog(context, fullRecipe),
+                       ),
+                       IconButton(
+                         icon: Icon(isSaved ? Icons.bookmark : Icons.bookmark_border),
+                         color: isSaved ? colorScheme.primary : null,
+                         tooltip: isSaved ? 'Unsave Recipe' : 'Save Recipe',
+                         onPressed: () {
+                           context.read<RecipeBloc>().add(ToggleSaveRecipe(fullRecipe.id));
+                         },
                        ),
                        IconButton(
                          icon: const Icon(Icons.fork_right),

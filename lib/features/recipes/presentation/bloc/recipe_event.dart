@@ -57,6 +57,13 @@ class LoadRecipeDetails extends RecipeEvent {
   List<Object> get props => [recipeId];
 }
 
+class ToggleSaveRecipe extends RecipeEvent {
+  final String recipeId;
+  const ToggleSaveRecipe(this.recipeId);
+  @override
+  List<Object> get props => [recipeId];
+}
+
 class SeedDatabase extends RecipeEvent {
   final String? filterTitle;
   const SeedDatabase({this.filterTitle});

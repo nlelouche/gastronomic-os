@@ -33,6 +33,7 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
     on<SeedDatabase>(_onSeedDatabase);
     on<FilterRecipes>(_onFilterRecipes);
     on<DeleteRecipe>(_onDeleteRecipe);
+    on<ToggleSaveRecipe>(_onToggleSaveRecipe);
   }
 
   Future<void> _onDeleteRecipe(DeleteRecipe event, Emitter<RecipeState> emit) async {
@@ -50,14 +51,34 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
 
 
   Future<void> _onLoadRecipeDetails(LoadRecipeDetails event, Emitter<RecipeState> emit) async {
-    // Keep state if possible, or just emit loading
-    emit(RecipeLoading()); // Simplification for now
+    emit(RecipeLoading());
     final result = await repository.getRecipeDetails(event.recipeId);
     
+    // Check if recipe is saved by current user
+    final isSavedResult = await repository.isRecipeSaved(event.recipeId);
+    final bool isSaved = isSavedResult.$2 ?? false;
+
     if (result.$1 != null) {
       emit(RecipeError(result.$1!.message));
     } else {
-      emit(RecipeDetailLoaded(result.$2!));
+      emit(RecipeDetailLoaded(result.$2!, isSaved: isSaved));
+    }
+  }
+
+  Future<void> _onToggleSaveRecipe(ToggleSaveRecipe event, Emitter<RecipeState> emit) async {
+    if (state is RecipeDetailLoaded) {
+      final currentState = state as RecipeDetailLoaded;
+      
+      // Optimistic update
+      emit(RecipeDetailLoaded(currentState.recipe, isSaved: !currentState.isSaved));
+      
+      final result = await repository.toggleSaveRecipe(event.recipeId);
+      
+      if (result.$1 != null) {
+        // Revert on failure
+        emit(RecipeDetailLoaded(currentState.recipe, isSaved: currentState.isSaved));
+        emit(RecipeError(result.$1!.message));
+      }
     }
   }
 

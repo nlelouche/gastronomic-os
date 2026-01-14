@@ -77,9 +77,10 @@ class RecipeForked extends RecipeState {
 
 class RecipeDetailLoaded extends RecipeState {
   final Recipe recipe;
+  final bool isSaved;
 
-  const RecipeDetailLoaded(this.recipe);
+  const RecipeDetailLoaded(this.recipe, {this.isSaved = false});
 
   @override
-  List<Object> get props => [recipe];
+  List<Object> get props => [recipe, isSaved];
 }
