@@ -10,6 +10,8 @@ import 'package:gastronomic_os/features/recipes/data/repositories/recipe_reposit
 import 'package:gastronomic_os/features/recipes/domain/repositories/i_recipe_repository.dart';
 import 'package:gastronomic_os/features/recipes/presentation/bloc/recipe_bloc.dart';
 import 'package:gastronomic_os/features/recipes/presentation/bloc/my_recipes_cubit.dart';
+import 'package:gastronomic_os/features/recipes/presentation/bloc/collections/collections_bloc.dart';
+import 'package:gastronomic_os/features/recipes/domain/usecases/manage_collections.dart';
 import 'package:gastronomic_os/features/onboarding/data/datasources/onboarding_remote_datasource.dart';
 import 'package:gastronomic_os/features/onboarding/data/repositories/onboarding_repository_impl.dart';
 import 'package:gastronomic_os/features/onboarding/domain/repositories/i_onboarding_repository.dart';
@@ -35,6 +37,13 @@ Future<void> init() async {
     () => RecipeRepositoryImpl(remoteDataSource: sl(), supabaseClient: sl(), cacheService: sl()),
   );
 
+  // Features - Collections (Phase 3.4)
+  sl.registerLazySingleton(() => CreateCollection(sl()));
+  sl.registerLazySingleton(() => GetUserCollections(sl()));
+  sl.registerLazySingleton(() => AddToCollection(sl()));
+  sl.registerLazySingleton(() => RemoveFromCollection(sl()));
+  sl.registerLazySingleton(() => DeleteCollection(sl()));
+
   // Data sources
   sl.registerLazySingleton(() => RecipeCacheService()); // NEW
   sl.registerLazySingleton<InventoryRemoteDataSource>(
@@ -52,7 +61,14 @@ Future<void> init() async {
     onboardingRepository: sl(),
     debugService: sl(),
   ));
-  sl.registerFactory(() => MyRecipesCubit(sl())); // Phase 3.2
+  sl.registerFactory(() => MyRecipesCubit(sl())); 
+  sl.registerFactory(() => CollectionsBloc(
+    getUserCollections: sl(),
+    createCollection: sl(),
+    addToCollection: sl(),
+    removeFromCollection: sl(),
+    deleteCollection: sl(),
+  ));
   sl.registerFactory(() => OnboardingBloc(repository: sl()));
 
   // Onboarding Feature

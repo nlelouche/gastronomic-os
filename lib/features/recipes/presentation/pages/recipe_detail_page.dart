@@ -23,7 +23,9 @@ import 'package:gastronomic_os/features/planner/domain/entities/meal_plan.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:uuid/uuid.dart';
 import 'package:gastronomic_os/features/recipes/presentation/widgets/formatted_recipe_text.dart';
+import 'package:gastronomic_os/features/recipes/presentation/widgets/smart_fork_dialog.dart';
 import 'package:gastronomic_os/features/recipes/presentation/pages/recipe_editor_page.dart';
+import 'package:gastronomic_os/features/recipes/presentation/widgets/add_to_collection_sheet.dart';
 import 'package:gastronomic_os/l10n/generated/app_localizations.dart';
 import 'package:gastronomic_os/core/theme/app_dimens.dart';
 
@@ -237,6 +239,17 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
                          onPressed: () => _showAddToPlanDialog(context, fullRecipe),
                        ),
                        IconButton(
+                         icon: const Icon(Icons.playlist_add),
+                         tooltip: 'Add to Collection',
+                         onPressed: () {
+                           showModalBottomSheet(
+                             context: context,
+                             builder: (ctx) => AddToCollectionSheet(recipeId: fullRecipe.id),
+                             isScrollControlled: true,
+                           );
+                         },
+                       ),
+                       IconButton(
                          icon: Icon(isSaved ? Icons.bookmark : Icons.bookmark_border),
                          color: isSaved ? colorScheme.primary : null,
                          tooltip: isSaved ? 'Unsave Recipe' : 'Save Recipe',
@@ -247,14 +260,21 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
                        IconButton(
                          icon: const Icon(Icons.fork_right),
                          tooltip: l10n.recipeForkTooltip,
-                         onPressed: () {
-                           context.read<RecipeBloc>().add(ForkRecipe(
-                             originalRecipeId: fullRecipe.id,
-                             newTitle: '${fullRecipe.title} (Fork)',
-                           ));
-                           ScaffoldMessenger.of(context).showSnackBar(
-                             SnackBar(content: Text(l10n.recipeForking)),
+                         onPressed: () async {
+                           final newTitle = await showDialog<String>(
+                             context: context,
+                             builder: (_) => SmartForkDialog(originalTitle: fullRecipe.title),
                            );
+
+                           if (newTitle != null && context.mounted) {
+                              context.read<RecipeBloc>().add(ForkRecipe(
+                                originalRecipeId: fullRecipe.id,
+                                newTitle: newTitle,
+                              ));
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(content: Text(l10n.recipeForking)),
+                              );
+                           }
                          },
                        ),
                        // Edit/Delete Menu (only if author)

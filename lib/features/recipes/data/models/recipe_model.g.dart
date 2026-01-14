@@ -37,6 +37,7 @@ RecipeModel _$RecipeModelFromJson(Map<String, dynamic> json) => RecipeModel(
           .toList(),
       stepsEn: _$JsonConverterFromJson<List<dynamic>, List<RecipeStep>>(
           json['steps_en'], const _RecipeStepListConverter().fromJson),
+      matchScore: (json['matchScore'] as num?)?.toDouble(),
     );
 
 Map<String, dynamic> _$RecipeModelToJson(RecipeModel instance) =>
@@ -44,6 +45,7 @@ Map<String, dynamic> _$RecipeModelToJson(RecipeModel instance) =>
       'id': instance.id,
       'title': instance.title,
       'description': instance.description,
+      'matchScore': instance.matchScore,
       'author_id': instance.authorId,
       'cover_photo_url': instance.coverPhotoUrl,
       'origin_id': instance.originId,

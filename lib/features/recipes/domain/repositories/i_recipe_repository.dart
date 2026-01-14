@@ -1,6 +1,7 @@
 import 'package:gastronomic_os/core/error/failures.dart';
 import 'package:gastronomic_os/features/recipes/domain/entities/recipe.dart';
 import 'package:gastronomic_os/features/recipes/domain/entities/commit.dart';
+import 'package:gastronomic_os/features/recipes/domain/entities/recipe_collection.dart';
 
 abstract class IRecipeRepository {
   // Recipes
@@ -10,6 +11,7 @@ abstract class IRecipeRepository {
     String? query, 
     List<String>? excludedTags,
     List<String>? pantryItems, // New: For Pantry Matching
+    String? collectionId, // New: Filter by Collection
   });
   Future<(Failure?, Recipe?)> getRecipeDetails(String id);
   Future<(Failure?, List<Recipe>?)> getDashboardSuggestions({int limit = 10});
@@ -36,4 +38,11 @@ abstract class IRecipeRepository {
 
   Future<(Failure?, List<Recipe>?)> getForks(String recipeId);
   Future<(Failure?, String?)> uploadRecipeImage(dynamic imageFile);
+
+  // Collections (Phase 3.4)
+  Future<(Failure?, RecipeCollection?)> createCollection(String name);
+  Future<(Failure?, List<RecipeCollection>?)> getUserCollections();
+  Future<(Failure?, void)> addToCollection(String recipeId, String collectionId);
+  Future<(Failure?, void)> removeFromCollection(String recipeId, String collectionId);
+  Future<(Failure?, void)> deleteCollection(String collectionId);
 }

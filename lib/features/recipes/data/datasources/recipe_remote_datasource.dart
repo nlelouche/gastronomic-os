@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:gastronomic_os/core/error/failures.dart';
 import 'package:gastronomic_os/core/util/app_logger.dart'; // Import AppLogger
 import 'package:gastronomic_os/features/recipes/data/models/recipe_snapshot_model.dart';
+import 'package:gastronomic_os/features/recipes/data/models/recipe_collection_model.dart';
 import 'package:gastronomic_os/features/recipes/data/models/recipe_model.dart';
 import 'package:gastronomic_os/features/recipes/data/models/commit_model.dart';
 import 'package:gastronomic_os/features/recipes/data/models/recipe_step_model.dart';
@@ -17,6 +18,7 @@ abstract class RecipeRemoteDataSource {
     String? authorId,
     bool? isFork,
     bool onlySaved = false,
+    String? collectionId,
   });
   Future<void> toggleSaveRecipe(String recipeId);
   Future<bool> isRecipeSaved(String recipeId);
@@ -36,6 +38,13 @@ abstract class RecipeRemoteDataSource {
   
   // Phase 3.2: Image Upload
   Future<String> uploadRecipeImage(dynamic imageFile, String userId); 
+
+  // Phase 3.4: Collections
+  Future<RecipeCollectionModel> createCollection(String name);
+  Future<List<RecipeCollectionModel>> getUserCollections();
+  Future<void> addToCollection(String recipeId, String collectionId);
+  Future<void> removeFromCollection(String recipeId, String collectionId);
+  Future<void> deleteCollection(String collectionId);
 }
 
 
@@ -50,9 +59,10 @@ class RecipeRemoteDataSourceImpl implements RecipeRemoteDataSource {
     int offset = 0, 
     String? query, 
     List<String>? excludedTags,
-    String? authorId,      // New Parameter
-    bool? isFork,          // New Parameter
-    bool onlySaved = false // New Parameter
+    String? authorId,      
+    bool? isFork,          
+    bool onlySaved = false,
+    String? collectionId, // New Parameter
   }) async {
     try {
       var builder = supabaseClient.from('recipes').select();
@@ -60,6 +70,20 @@ class RecipeRemoteDataSourceImpl implements RecipeRemoteDataSource {
       // Filter by Author (for Created/Forked tabs)
       if (authorId != null) {
         builder = builder.eq('author_id', authorId);
+      }
+
+      // Filter by Collection (Two-step)
+      if (collectionId != null) {
+         final collectionItems = await supabaseClient
+             .from('collection_items')
+             .select('recipe_id')
+             .eq('collection_id', collectionId);
+             
+         final recipeIds = (collectionItems as List).map((e) => e['recipe_id'] as String).toList();
+         
+         if (recipeIds.isEmpty) return [];
+         
+         builder = builder.filter('id', 'in', recipeIds);
       }
 
       // Filter by Fork Status
@@ -640,6 +664,105 @@ class RecipeRemoteDataSourceImpl implements RecipeRemoteDataSource {
     } catch (e) {
       AppLogger.e('Error uploading image', e);
       throw Exception('Image upload failed');
+    }
+  }
+
+  // Phase 3.4: Collections Implementation
+  @override
+  Future<RecipeCollectionModel> createCollection(String name) async {
+    try {
+      final userId = supabaseClient.auth.currentUser!.id;
+      final response = await supabaseClient
+          .from('recipe_collections')
+          .insert({
+            'name': name,
+            'owner_id': userId,
+          })
+          .select()
+          .single();
+      
+      return RecipeCollectionModel.fromJson(response);
+    } catch (e, s) {
+      AppLogger.e('Error creating collection', e, s);
+      throw Exception('Datasource operation failed');
+    }
+  }
+
+  @override
+  Future<List<RecipeCollectionModel>> getUserCollections() async {
+    try {
+      final userId = supabaseClient.auth.currentUser!.id;
+      
+      // Get collections and count items
+      final response = await supabaseClient
+          .from('recipe_collections')
+          .select('*, collection_items(count)') // Subquery count
+          .eq('owner_id', userId)
+          .order('created_at', ascending: false);
+
+      return (response as List).map((data) {
+        // Map count from subquery
+        final countList = data['collection_items'] as List?;
+        final count = (countList != null && countList.isNotEmpty) 
+            ? countList[0]['count'] as int 
+            : 0;
+            
+        // Inject count into data map so fromJson picks it up (if we added logic there)
+        // Or better: Modify Model to accept it, or use copyWith.
+        // For now, let's assume specific parsing or modify the model to handle 'collection_items' logic?
+        // Actually, our model has `recipeCount`, we should map it manually before creating model or update fromJson.
+        // Let's manually map for safety.
+        final map = Map<String, dynamic>.from(data);
+        map['recipeCount'] = count; // This won't work unless we modify Model to look for this or custom constructor.
+        
+        // Easier: Just return Model and rely on a default, implementing count logic properly requires a View or Join.
+        // For MVP: Let's trust the subquery returns `{count: X}` formatted in a way we can parse.
+        // Supabase returns `collection_items: [{count: 1}]`.
+        
+        return RecipeCollectionModel.fromJson(data).copyWith(recipeCount: count);
+      }).toList();
+    } catch (e, s) {
+      AppLogger.e('Error fetching collections', e, s);
+      throw Exception('Datasource operation failed');
+    }
+  }
+
+  @override
+  Future<void> addToCollection(String recipeId, String collectionId) async {
+    try {
+      await supabaseClient.from('collection_items').insert({
+        'collection_id': collectionId,
+        'recipe_id': recipeId,
+      });
+    } catch (e) {
+       // Ignore duplicate key error safely
+       if (e is PostgrestException && e.code == '23505') return;
+       throw Exception('Datasource operation failed: $e');
+    }
+  }
+
+  @override
+  Future<void> removeFromCollection(String recipeId, String collectionId) async {
+    try {
+      await supabaseClient
+          .from('collection_items')
+          .delete()
+          .eq('collection_id', collectionId)
+          .eq('recipe_id', recipeId);
+    } catch (e) {
+      throw Exception('Datasource operation failed');
+    }
+  }
+
+  @override
+  Future<void> deleteCollection(String collectionId) async {
+    try {
+      await supabaseClient
+          .from('recipe_collections')
+          .delete()
+          .eq('id', collectionId);
+    } catch (e) {
+      throw Exception('Datasource operation failed');
     }
   }
 }

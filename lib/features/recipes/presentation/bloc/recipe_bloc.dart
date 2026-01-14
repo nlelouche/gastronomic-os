@@ -106,7 +106,11 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
   Future<void> _onLoadRecipes(LoadRecipes event, Emitter<RecipeState> emit) async {
     emit(RecipeLoading());
     // Initial Load: Offset 0, Limit 20
-    final result = await repository.getRecipes(limit: 20, offset: 0); 
+    final result = await repository.getRecipes(
+      limit: 20, 
+      offset: 0,
+      collectionId: event.collectionId, // Pass optional collectionId
+    ); 
     
     if (result.$1 != null) {
       emit(RecipeError(result.$1!.message));

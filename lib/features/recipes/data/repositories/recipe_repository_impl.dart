@@ -12,6 +12,7 @@ import 'package:gastronomic_os/features/recipes/domain/entities/recipe.dart';
 import 'package:gastronomic_os/features/recipes/domain/entities/commit.dart';
 import 'package:gastronomic_os/features/recipes/domain/repositories/i_recipe_repository.dart';
 import 'package:gastronomic_os/features/recipes/domain/entities/commit.dart';
+import 'package:gastronomic_os/features/recipes/domain/entities/recipe_collection.dart';
 import 'package:gastronomic_os/features/recipes/domain/repositories/i_recipe_repository.dart';
 import 'package:supabase_flutter/supabase_flutter.dart'; 
 import 'package:gastronomic_os/features/planner/domain/logic/scoring_engine.dart'; // NEW 
@@ -91,6 +92,7 @@ class RecipeRepositoryImpl implements IRecipeRepository {
     String? query, 
     List<String>? excludedTags,
     List<String>? pantryItems,
+    String? collectionId,
   }) async {
     try {
       // 1. Fetch from Remote (Raw List)
@@ -98,7 +100,8 @@ class RecipeRepositoryImpl implements IRecipeRepository {
         limit: limit, 
         offset: offset, 
         query: query, 
-        excludedTags: excludedTags
+        excludedTags: excludedTags,
+        collectionId: collectionId,
       );
 
       var recipes = rawResult!; // Assuming non-null if no error throw
@@ -129,6 +132,7 @@ class RecipeRepositoryImpl implements IRecipeRepository {
           'limit': limit,
           'offset': offset,
           'query': query,
+          'collectionId': collectionId,
         }),
       );
       await ErrorReporter.instance.reportError(failure);
@@ -360,6 +364,57 @@ class RecipeRepositoryImpl implements IRecipeRepository {
         context: ErrorContext.repository('uploadRecipeImage'),
       );
       return (failure, null);
+    }
+  }
+
+  // Phase 3.4: Collections
+  @override
+  Future<(Failure?, RecipeCollection?)> createCollection(String name) async {
+    try {
+      final result = await remoteDataSource.createCollection(name);
+      return (null, result);
+    } catch (e, s) {
+      return (ExceptionHandler.handle(e, stackTrace: s, context: ErrorContext.repository('createCollection')), null);
+    }
+  }
+
+  @override
+  Future<(Failure?, List<RecipeCollection>?)> getUserCollections() async {
+    try {
+      final result = await remoteDataSource.getUserCollections();
+      return (null, result);
+    } catch (e, s) {
+      return (ExceptionHandler.handle(e, stackTrace: s, context: ErrorContext.repository('getUserCollections')), null);
+    }
+  }
+
+  @override
+  Future<(Failure?, void)> addToCollection(String recipeId, String collectionId) async {
+    try {
+      await remoteDataSource.addToCollection(recipeId, collectionId);
+      return (null, null);
+    } catch (e, s) {
+      return (ExceptionHandler.handle(e, stackTrace: s, context: ErrorContext.repository('addToCollection')), null);
+    }
+  }
+
+  @override
+  Future<(Failure?, void)> removeFromCollection(String recipeId, String collectionId) async {
+    try {
+      await remoteDataSource.removeFromCollection(recipeId, collectionId);
+      return (null, null);
+    } catch (e, s) {
+      return (ExceptionHandler.handle(e, stackTrace: s, context: ErrorContext.repository('removeFromCollection')), null);
+    }
+  }
+
+  @override
+  Future<(Failure?, void)> deleteCollection(String collectionId) async {
+    try {
+      await remoteDataSource.deleteCollection(collectionId);
+      return (null, null);
+    } catch (e, s) {
+      return (ExceptionHandler.handle(e, stackTrace: s, context: ErrorContext.repository('deleteCollection')), null);
     }
   }
 }
