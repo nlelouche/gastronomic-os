@@ -5,7 +5,7 @@ abstract class RecipeState extends Equatable {
   const RecipeState();
   
   @override
-  List<Object> get props => [];
+  List<Object?> get props => [];
 }
 
 class RecipeInitial extends RecipeState {}
@@ -53,7 +53,7 @@ class RecipeLoaded extends RecipeState {
   }
 
   @override
-  List<Object> get props => [recipes, hasReachedMax, isFamilySafe, isPantryReady, query, requiredIngredients];
+  List<Object?> get props => [recipes, hasReachedMax, isFamilySafe, isPantryReady, query, requiredIngredients];
 }
 
 class RecipeError extends RecipeState {
@@ -62,7 +62,7 @@ class RecipeError extends RecipeState {
   const RecipeError(this.message);
 
   @override
-  List<Object> get props => [message];
+  List<Object?> get props => [message];
 }
 
 class RecipeForked extends RecipeState {
@@ -72,15 +72,22 @@ class RecipeForked extends RecipeState {
   const RecipeForked({required this.newRecipe, required this.originalRecipe});
 
   @override
-  List<Object> get props => [newRecipe, originalRecipe];
+  List<Object?> get props => [newRecipe, originalRecipe];
 }
 
 class RecipeDetailLoaded extends RecipeState {
   final Recipe recipe;
   final bool isSaved;
+  final Recipe? parentRecipe;
+  final List<Recipe> forks;
 
-  const RecipeDetailLoaded(this.recipe, {this.isSaved = false});
+  const RecipeDetailLoaded(
+    this.recipe, {
+    this.isSaved = false,
+    this.parentRecipe,
+    this.forks = const [],
+  });
 
   @override
-  List<Object> get props => [recipe, isSaved];
+  List<Object?> get props => [recipe, isSaved, parentRecipe, forks];
 }

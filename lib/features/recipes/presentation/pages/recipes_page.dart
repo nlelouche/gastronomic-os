@@ -8,24 +8,32 @@ import 'package:gastronomic_os/features/recipes/presentation/bloc/recipe_state.d
 import 'package:gastronomic_os/features/recipes/presentation/pages/recipe_detail_page.dart';
 import 'package:gastronomic_os/features/recipes/presentation/pages/recipe_editor_page.dart';
 import 'package:gastronomic_os/features/recipes/presentation/widgets/recipe_card.dart';
+import 'package:gastronomic_os/features/recipes/presentation/widgets/recipe_filter_sheet.dart'; // NEW
 import 'package:gastronomic_os/init/injection_container.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:gastronomic_os/l10n/generated/app_localizations.dart';
 
 class RecipesPage extends StatelessWidget {
-  const RecipesPage({super.key});
+  final String? initialQuery;
+  final bool autoFocus;
+
+  const RecipesPage({super.key, this.initialQuery, this.autoFocus = false});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider<RecipeBloc>(
-      create: (context) => sl<RecipeBloc>()..add(LoadRecipes()),
-      child: const RecipesView(),
+      create: (context) => sl<RecipeBloc>()..add(initialQuery != null 
+          ? FilterRecipes(query: initialQuery!) 
+          : LoadRecipes()),
+      child: RecipesView(initialQuery: initialQuery, autoFocus: autoFocus),
     );
   }
 }
 
 class RecipesView extends StatefulWidget {
-  const RecipesView({super.key});
+  final String? initialQuery;
+  final bool autoFocus;
+  const RecipesView({super.key, this.initialQuery, this.autoFocus = false});
 
   @override
   State<RecipesView> createState() => _RecipesViewState();
@@ -38,6 +46,9 @@ class _RecipesViewState extends State<RecipesView> {
   @override
   void initState() {
     super.initState();
+    if (widget.initialQuery != null) {
+      _searchController.text = widget.initialQuery!;
+    }
     _scrollController.addListener(_onScroll);
   }
 
@@ -141,8 +152,23 @@ class _RecipesViewState extends State<RecipesView> {
                       // Search
                       AppTextField(
                         controller: _searchController,
+                        autofocus: widget.autoFocus, // Use the propery
                         hint: AppLocalizations.of(context)!.searchRecipesHint,
                         prefixIcon: Icons.search,
+                        suffixIcon: IconButton(
+                          icon: const Icon(Icons.tune), // Filter icon
+                          onPressed: () {
+                             // Open Filter Sheet
+                             showModalBottomSheet(
+                               context: context, 
+                               builder: (_) => BlocProvider.value(
+                                 value: context.read<RecipeBloc>(),
+                                 child: const RecipeFilterSheet(),
+                               ),
+                               isScrollControlled: true,
+                             );
+                          },
+                        ),
                         onChanged: (val) {
                           _dispatchFilter(context, state, query: val);
                         },

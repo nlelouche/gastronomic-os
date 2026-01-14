@@ -115,6 +115,40 @@ class RecipeCard extends StatelessWidget {
                     ),
                   ),
                 ),
+                
+                // Match Score Badge
+                if (recipe.matchScore != null && recipe.matchScore! > 0)
+                  Positioned(
+                    bottom: 8,
+                    right: 8,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                      decoration: BoxDecoration(
+                        color: colorScheme.tertiary, // Use tertiary for "Smart Match"
+                        borderRadius: BorderRadius.circular(12),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.3),
+                            blurRadius: 4,
+                            offset: const Offset(0, 2),
+                          ),
+                        ],
+                      ),
+                      child: Row(
+                        children: [
+                          Icon(Icons.auto_awesome, size: 14, color: colorScheme.onTertiary),
+                          const SizedBox(width: 4),
+                          Text(
+                            '${recipe.matchScore!.round()}',
+                            style: theme.textTheme.labelSmall?.copyWith(
+                              color: colorScheme.onTertiary,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ).animate().scale(curve: Curves.elasticOut),
+                  ),
               ],
             ),
           ),

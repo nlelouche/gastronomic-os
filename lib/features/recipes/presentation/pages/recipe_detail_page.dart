@@ -1,5 +1,7 @@
 import 'dart:io';
+import 'package:gastronomic_os/features/recipes/presentation/widgets/recipe_tree_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart'; // Add SchedulerBinding
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:gastronomic_os/core/util/app_logger.dart';
@@ -72,7 +74,12 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
   }
 
   Future<void> _resolveSteps([Recipe? recipe]) async {
-    if (recipe == null) setState(() => _isResolvingSteps = true);
+    // Safe setState for resolving flag
+    if (mounted && SchedulerBinding.instance.schedulerPhase == SchedulerPhase.idle) {
+        setState(() => _isResolvingSteps = true);
+    } else {
+        // If mid-frame, probably skip setting loading true to avoid flicker/error, or use postFrame
+    }
     
     try {
       final rawRecipe = recipe ?? (context.read<RecipeBloc>().state is RecipeDetailLoaded 
@@ -139,10 +146,14 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
           
           Recipe? recipeToShow;
           bool isSaved = false;
+          Recipe? parentRecipe;
+          List<Recipe> forks = [];
           
           if (state is RecipeDetailLoaded) {
             recipeToShow = state.recipe;
-            isSaved = state.isSaved; // Extract saved status
+            isSaved = state.isSaved; 
+            parentRecipe = state.parentRecipe;
+            forks = state.forks;
           } else if (state is RecipeForked) {
             recipeToShow = state.originalRecipe;
             // RecipeForked doesn't track Saved yet, default false or fetch?
@@ -190,16 +201,25 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
                         overflow: TextOverflow.ellipsis,
                       ),
                       centerTitle: true,
-                      background: Container(
-                        color: colorScheme.primaryContainer,
-                        child: Center(
-                          child: Icon(
-                            Icons.restaurant,
-                            size: 80,
-                            color: colorScheme.onPrimaryContainer.withOpacity(0.2),
+                      background: fullRecipe.coverPhotoUrl != null 
+                          ? Image.network(
+                              fullRecipe.coverPhotoUrl!,
+                              fit: BoxFit.cover,
+                              errorBuilder: (context, error, stackTrace) => Container(
+                                color: colorScheme.surfaceContainerHighest,
+                                child: Center(child: Icon(Icons.broken_image, color: colorScheme.error)),
+                              ),
+                            )
+                          : Container(
+                            color: colorScheme.primaryContainer,
+                            child: Center(
+                              child: Icon(
+                                Icons.restaurant,
+                                size: 80,
+                                color: colorScheme.onPrimaryContainer.withOpacity(0.2),
+                              ),
+                            ),
                           ),
-                        ),
-                      ),
                     ),
                     bottom: TabBar(
                       labelColor: colorScheme.primary,
@@ -301,8 +321,18 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
                                 fontStyle: FontStyle.italic,
                               ),
                             ),
-                            const SizedBox(height: AppDimens.space2XL),
+                            const SizedBox(height: AppDimens.spaceL),
                           ],
+                          
+                          RecipeTreeWidget(
+                            currentRecipe: fullRecipe,
+                            parentRecipe: parentRecipe,
+                            forks: forks,
+                            onRecipeTap: (id) {
+                               context.read<RecipeBloc>().add(LoadRecipeDetails(id));
+                            },
+                          ),
+                          const SizedBox(height: AppDimens.space2XL),
                           
                           if (fullRecipe.tags.isNotEmpty) ...[
                              _buildTagsSection(context, fullRecipe.tags),

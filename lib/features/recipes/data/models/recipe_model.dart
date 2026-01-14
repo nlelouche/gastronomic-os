@@ -11,6 +11,9 @@ class RecipeModel extends Recipe {
   @JsonKey(name: 'author_id')
   final String authorId;
   @override
+  @JsonKey(name: 'cover_photo_url')
+  final String? coverPhotoUrl;
+  @override
   @JsonKey(name: 'origin_id')
   final String? originId;
   @override
@@ -58,6 +61,7 @@ class RecipeModel extends Recipe {
     this.isFork = false,
     required String title,
     String? description,
+    this.coverPhotoUrl,
     required this.isPublic,
     required this.createdAt,
     this.ingredients = const [],
@@ -68,6 +72,7 @@ class RecipeModel extends Recipe {
     this.descriptionEn,
     this.ingredientsEn,
     this.stepsEn,
+    double? matchScore,
   }) : super(
           id: id,
           authorId: authorId,
@@ -75,6 +80,7 @@ class RecipeModel extends Recipe {
           isFork: isFork ?? false,
           title: title,
           description: description,
+          coverPhotoUrl: coverPhotoUrl,
           isPublic: isPublic,
           createdAt: createdAt,
           ingredients: ingredients,
@@ -85,6 +91,7 @@ class RecipeModel extends Recipe {
           descriptionEn: descriptionEn,
           ingredientsEn: ingredientsEn,
           stepsEn: stepsEn,
+          matchScore: matchScore,
         );
 
   RecipeModel copyWith({
@@ -94,6 +101,7 @@ class RecipeModel extends Recipe {
     bool? isFork,
     String? title,
     String? description,
+    String? coverPhotoUrl,
     bool? isPublic,
     DateTime? createdAt,
     List<String>? ingredients,
@@ -104,6 +112,7 @@ class RecipeModel extends Recipe {
     String? descriptionEn,
     List<String>? ingredientsEn,
     List<RecipeStep>? stepsEn,
+    double? matchScore,
   }) {
     return RecipeModel(
       id: id ?? this.id,
@@ -112,6 +121,7 @@ class RecipeModel extends Recipe {
       isFork: isFork ?? this.isFork,
       title: title ?? this.title,
       description: description ?? this.description,
+      coverPhotoUrl: coverPhotoUrl ?? this.coverPhotoUrl,
       isPublic: isPublic ?? this.isPublic,
       createdAt: createdAt ?? this.createdAt,
       ingredients: ingredients ?? this.ingredients,
@@ -122,6 +132,7 @@ class RecipeModel extends Recipe {
       descriptionEn: descriptionEn ?? this.descriptionEn,
       ingredientsEn: ingredientsEn ?? this.ingredientsEn,
       stepsEn: stepsEn ?? this.stepsEn,
+      matchScore: matchScore ?? this.matchScore,
     );
   }
 

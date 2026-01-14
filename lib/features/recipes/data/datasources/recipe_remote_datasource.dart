@@ -33,6 +33,9 @@ abstract class RecipeRemoteDataSource {
   // Phase 3: Edit/Delete
   Future<void> deleteRecipe(String id);
   Future<RecipeModel> updateRecipe(Recipe recipe);
+  
+  // Phase 3.2: Image Upload
+  Future<String> uploadRecipeImage(dynamic imageFile, String userId); 
 }
 
 
@@ -205,6 +208,7 @@ class RecipeRemoteDataSourceImpl implements RecipeRemoteDataSource {
           'description': recipe.description,
           'tags': enrichedTags, // ✅ Save enriched tags
           'is_public': recipe.isPublic,
+          'cover_photo_url': recipe.coverPhotoUrl, // Add field
           'author_id': currentUserId,
         };
 
@@ -309,6 +313,7 @@ class RecipeRemoteDataSourceImpl implements RecipeRemoteDataSource {
         'title': newTitle,
         'description': original.description, // Copy description
         'tags': original.tags, // Copy tags
+        'cover_photo_url': original.coverPhotoUrl, // Copy cover photo
         'is_public': true, 
       };
       
@@ -463,6 +468,7 @@ class RecipeRemoteDataSourceImpl implements RecipeRemoteDataSource {
           isFork: recipeModel.isFork,
           title: recipeModel.title,
           description: recipeModel.description,
+          coverPhotoUrl: recipeModel.coverPhotoUrl, // Fix: Pass cover photo
           isPublic: recipeModel.isPublic,
           createdAt: recipeModel.createdAt,
           ingredients: snapshot.ingredients,
@@ -555,6 +561,7 @@ class RecipeRemoteDataSourceImpl implements RecipeRemoteDataSource {
         'title': recipe.title,
         'description': recipe.description,
         'tags': enrichedTags,
+        'cover_photo_url': recipe.coverPhotoUrl, // Add field
         'is_public': recipe.isPublic,
       };
 
@@ -609,6 +616,30 @@ class RecipeRemoteDataSourceImpl implements RecipeRemoteDataSource {
     } catch (e, s) {
       AppLogger.e('Error updating recipe', e, s);
       throw Exception('Datasource operation failed');
+    }
+  }
+
+  @override
+  Future<String> uploadRecipeImage(dynamic imageFile, String userId) async {
+    try {
+      // Use dynamic to support File (Mobile) and potentially Bytes (Web) later, though effectively File now.
+      // Assuming 'imageFile' is of type File (dart:io)
+      
+      final timestamp = DateTime.now().millisecondsSinceEpoch;
+      // Simple extension extraction or default to jpg
+      final path = 'covers/$userId/$timestamp.jpg'; 
+
+      await supabaseClient.storage.from('recipe_images').upload(
+        path,
+        imageFile,
+        fileOptions: const FileOptions(cacheControl: '3600', upsert: false),
+      );
+
+      final url = supabaseClient.storage.from('recipe_images').getPublicUrl(path);
+      return url;
+    } catch (e) {
+      AppLogger.e('Error uploading image', e);
+      throw Exception('Image upload failed');
     }
   }
 }

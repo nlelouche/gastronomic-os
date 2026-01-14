@@ -13,6 +13,7 @@ RecipeModel _$RecipeModelFromJson(Map<String, dynamic> json) => RecipeModel(
       isFork: json['is_fork'] as bool? ?? false,
       title: json['title'] as String,
       description: json['description'] as String?,
+      coverPhotoUrl: json['cover_photo_url'] as String?,
       isPublic: json['is_public'] as bool,
       createdAt: DateTime.parse(json['created_at'] as String),
       ingredients: (json['ingredients'] as List<dynamic>?)
@@ -44,6 +45,7 @@ Map<String, dynamic> _$RecipeModelToJson(RecipeModel instance) =>
       'title': instance.title,
       'description': instance.description,
       'author_id': instance.authorId,
+      'cover_photo_url': instance.coverPhotoUrl,
       'origin_id': instance.originId,
       'is_fork': instance.isFork,
       'is_public': instance.isPublic,

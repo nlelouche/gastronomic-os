@@ -58,4 +58,30 @@ class ScoringEngine {
 
     return score;
   }
+
+  /// Simplified scoring using only item names (no expiry data)
+  double calculateScoreSimple(Recipe recipe, List<String> inventoryNames) {
+    if (recipe.ingredients.isEmpty) return 0.0;
+    
+    double score = 0.0;
+    int matchedIngredients = 0;
+    
+    final inventorySet = inventoryNames.map((e) => e.toLowerCase()).toSet();
+
+    for (final ingredient in recipe.ingredients) {
+      final normalizedIng = ingredient.toLowerCase();
+      // Simple contains check
+      for (final invItemName in inventorySet) {
+        if (normalizedIng.contains(invItemName)) {
+           matchedIngredients++;
+           score += 10.0; 
+           break;
+        }
+      }
+    }
+    
+    double coverage = matchedIngredients / recipe.ingredients.length;
+    score = score * (0.5 + (coverage * 0.5));
+    return score;
+  }
 }

@@ -8,6 +8,10 @@ import 'package:gastronomic_os/l10n/generated/app_localizations.dart';
 import 'package:gastronomic_os/core/theme/app_dimens.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:gastronomic_os/features/recipes/presentation/widgets/editor/steps_editor.dart';
+import 'package:image_picker/image_picker.dart';
+import 'dart:io';
+import 'package:gastronomic_os/init/injection_container.dart' as di;
+import 'package:gastronomic_os/features/recipes/domain/repositories/i_recipe_repository.dart';
 
 class RecipeEditorPage extends StatefulWidget {
   final Recipe? initialRecipe; 
@@ -24,13 +28,18 @@ class _RecipeEditorPageState extends State<RecipeEditorPage> {
   late TextEditingController _descController;
   
   final List<TextEditingController> _ingredientsControllers = [];
-  final List<StepEditorItem> _stepsItems = []; // Changed to StepEditorItem
+  final List<StepEditorItem> _stepsItems = []; 
+  
+  String? _coverPhotoUrl;
+  bool _isUploadingImage = false;
+  final ImagePicker _picker = ImagePicker();
 
   @override
   void initState() {
     super.initState();
     _titleController = TextEditingController(text: widget.initialRecipe?.title ?? '');
     _descController = TextEditingController(text: widget.initialRecipe?.description ?? '');
+    _coverPhotoUrl = widget.initialRecipe?.coverPhotoUrl;
     
     // Initialize ingredients
     if (widget.initialRecipe != null && widget.initialRecipe!.ingredients.isNotEmpty) {
@@ -105,6 +114,38 @@ class _RecipeEditorPageState extends State<RecipeEditorPage> {
     });
   }
 
+  Future<void> _pickAndUploadImage() async {
+    try {
+      final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
+      if (image == null) return;
+
+      setState(() => _isUploadingImage = true);
+
+      final repo = di.sl<IRecipeRepository>();
+      final result = await repo.uploadRecipeImage(File(image.path));
+      
+      if (result.$1 == null && result.$2 != null) {
+        setState(() {
+          _coverPhotoUrl = result.$2;
+          _isUploadingImage = false;
+        });
+      } else {
+         setState(() => _isUploadingImage = false);
+         if (mounted) {
+           ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Upload failed: ${result.$1?.message}')));
+         }
+      }
+    } catch (e) {
+      if (mounted) setState(() => _isUploadingImage = false);
+    }
+  }
+
+  void _removeCoverPhoto() {
+    setState(() {
+      _coverPhotoUrl = null;
+    });
+  }
+
   void _saveRecipe() {
     if (_formKey.currentState!.validate()) {
       final ingredients = _ingredientsControllers
@@ -138,12 +179,33 @@ class _RecipeEditorPageState extends State<RecipeEditorPage> {
           .toList();
 
       if (widget.initialRecipe != null) {
-          final updatedRecipe = widget.initialRecipe!.copyWith(
-            title: _titleController.text.trim(),
-            description: _descController.text.trim(),
-            ingredients: ingredients,
-            steps: steps,
-          );
+          // Fix: Manually construct if cover photo is null to avoid copyWith(null) ignored behavior
+          Recipe updatedRecipe;
+          if (_coverPhotoUrl == null) {
+             updatedRecipe = Recipe(
+                id: widget.initialRecipe!.id,
+                authorId: widget.initialRecipe!.authorId,
+                originId: widget.initialRecipe!.originId,
+                isFork: widget.initialRecipe!.isFork,
+                title: _titleController.text.trim(),
+                description: _descController.text.trim(),
+                coverPhotoUrl: null, // Explicitly Null
+                isPublic: widget.initialRecipe!.isPublic,
+                createdAt: widget.initialRecipe!.createdAt,
+                ingredients: ingredients,
+                steps: steps,
+                tags: widget.initialRecipe!.tags,
+                dietTags: widget.initialRecipe!.dietTags,
+             );
+          } else {
+             updatedRecipe = widget.initialRecipe!.copyWith(
+                title: _titleController.text.trim(),
+                description: _descController.text.trim(),
+                ingredients: ingredients,
+                steps: steps,
+                coverPhotoUrl: _coverPhotoUrl,
+             );
+          }
           context.read<RecipeBloc>().add(UpdateRecipe(updatedRecipe));
       } else {
         // Create Logic
@@ -155,6 +217,7 @@ class _RecipeEditorPageState extends State<RecipeEditorPage> {
           createdAt: DateTime.now(),
           ingredients: ingredients,
           steps: steps,
+          coverPhotoUrl: _coverPhotoUrl, // Set URL
         );
         context.read<RecipeBloc>().add(CreateRecipe(newRecipe));
       }
@@ -183,6 +246,61 @@ class _RecipeEditorPageState extends State<RecipeEditorPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+
+              // Cover Photo
+              AspectRatio(
+                aspectRatio: 16 / 9,
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: colorScheme.surfaceVariant,
+                    borderRadius: BorderRadius.circular(12),
+                    image: _coverPhotoUrl != null ? DecorationImage(image: NetworkImage(_coverPhotoUrl!), fit: BoxFit.cover) : null,
+                  ),
+                  child: Stack(
+                    children: [
+                      if (_isUploadingImage)
+                        const Center(child: CircularProgressIndicator()),
+                        
+                      if (!_isUploadingImage)
+                        Positioned(
+                          bottom: 8,
+                          right: 8,
+                          child: Row(
+                            children: [
+                               FilledButton.icon(
+                                 onPressed: _pickAndUploadImage,
+                                 icon: const Icon(Icons.camera_alt, size: 16),
+                                 label: Text(_coverPhotoUrl == null ? 'Add Cover' : 'Change'),
+                               ),
+                               if (_coverPhotoUrl != null) ...[
+                                 const SizedBox(width: 8),
+                                 IconButton(
+                                   onPressed: _removeCoverPhoto,
+                                   icon: const Icon(Icons.delete),
+                                   style: IconButton.styleFrom(backgroundColor: colorScheme.errorContainer, foregroundColor: colorScheme.onErrorContainer),
+                                 ),
+                               ]
+                            ],
+                          ),
+                        ),
+                        
+                      if (_coverPhotoUrl == null && !_isUploadingImage)
+                         Center(
+                           child: Column(
+                             mainAxisAlignment: MainAxisAlignment.center,
+                             children: [
+                               Icon(Icons.image, size: 48, color: colorScheme.onSurfaceVariant.withOpacity(0.5)),
+                               const SizedBox(height: 8),
+                               Text('No Cover Photo', style: TextStyle(color: colorScheme.onSurfaceVariant)),
+                             ],
+                           ),
+                         ),
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(height: AppDimens.spaceL),
+
               // Meta Info
               TextFormField(
                 controller: _titleController,

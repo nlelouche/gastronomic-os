@@ -111,6 +111,8 @@ class AppTextField extends StatelessWidget {
   final String? label;
   final IconData? prefixIcon;
   final ValueChanged<String>? onChanged;
+  final bool autofocus;
+  final Widget? suffixIcon;
 
   const AppTextField({
     super.key,
@@ -119,6 +121,8 @@ class AppTextField extends StatelessWidget {
     this.label,
     this.prefixIcon,
     this.onChanged,
+    this.autofocus = false,
+    this.suffixIcon,
   });
 
   @override
@@ -126,10 +130,12 @@ class AppTextField extends StatelessWidget {
     return TextField(
       controller: controller,
       onChanged: onChanged,
+      autofocus: autofocus,
       decoration: InputDecoration(
         labelText: label,
         hintText: hint,
         prefixIcon: prefixIcon != null ? Icon(prefixIcon) : null,
+        suffixIcon: suffixIcon,
         filled: true,
         fillColor: Theme.of(context).colorScheme.surfaceContainerHighest.withOpacity(0.3),
         border: OutlineInputBorder(

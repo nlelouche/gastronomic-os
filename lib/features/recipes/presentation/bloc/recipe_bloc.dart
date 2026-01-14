@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gastronomic_os/core/error/failures.dart'; // Added Import
 import 'package:gastronomic_os/features/recipes/domain/repositories/i_recipe_repository.dart';
 import 'package:gastronomic_os/features/inventory/domain/repositories/i_inventory_repository.dart';
 import 'package:gastronomic_os/features/onboarding/domain/repositories/i_onboarding_repository.dart';
@@ -52,17 +53,37 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
 
   Future<void> _onLoadRecipeDetails(LoadRecipeDetails event, Emitter<RecipeState> emit) async {
     emit(RecipeLoading());
+    // 1. Fetch Main Recipe
     final result = await repository.getRecipeDetails(event.recipeId);
     
-    // Check if recipe is saved by current user
-    final isSavedResult = await repository.isRecipeSaved(event.recipeId);
-    final bool isSaved = isSavedResult.$2 ?? false;
-
     if (result.$1 != null) {
       emit(RecipeError(result.$1!.message));
-    } else {
-      emit(RecipeDetailLoaded(result.$2!, isSaved: isSaved));
+      return;
     }
+    
+    final recipe = result.$2!;
+
+    // 2. Fetch Lineage concurrently
+    // - Is Saved?
+    // - Parent Recipe (if originId exists)
+    // - Forks (Children)
+    
+    final results = await Future.wait([
+      repository.isRecipeSaved(event.recipeId),
+      recipe.originId != null ? repository.getRecipeDetails(recipe.originId!) : Future.value((null, null)),
+      repository.getForks(event.recipeId),
+    ]);
+
+    final isSavedResult = results[0] as (Failure?, bool);
+    final parentResult = results[1] as (Failure?, Recipe?);
+    final forksResult = results[2] as (Failure?, List<Recipe>?);
+
+    emit(RecipeDetailLoaded(
+      recipe, 
+      isSaved: isSavedResult.$2 ?? false,
+      parentRecipe: parentResult.$2, // Null if failure or no origin
+      forks: forksResult.$2 ?? [],
+    ));
   }
 
   Future<void> _onToggleSaveRecipe(ToggleSaveRecipe event, Emitter<RecipeState> emit) async {
@@ -126,36 +147,34 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
   }
 
   Future<void> _onFilterRecipes(FilterRecipes event, Emitter<RecipeState> emit) async {
-    // 1. Prepare Server-Side Filters
+    // 1. Prepare Server-Side Filters (Family Safe)
     List<String>? excludedTags;
     
     if (event.isFamilySafe) {
         final familyResult = await onboardingRepository.getFamilyMembers();
         if (familyResult.$2 != null) {
             final family = familyResult.$2!;
-            // Simple mapping for Server-Side Exclusion (Optimization)
-            // Complex logic still happens in DietEngine, but this reduces "Definite No's"
-            excludedTags = [];
-            for (var member in family) {
-                for (var condition in member.medicalConditions) {
-                    // Map MedicalCondition to approximate excluded tags
-                    // NOTE: This assumes we tag unsafe recipes.
-                    // Ideally, we'd filter by "Allowed Tags", but exclusionary is safer for now.
-                    // This is a placeholder for the Audit Fix.
-                    // if (condition == MedicalCondition.celiac) excludedTags.add('Gluten'); 
-                    // if (condition == MedicalCondition.nutAllergy) excludedTags.add('Peanuts');
-                    // For now, let's keep it null safe as the DB tags aren't fully standardized.
-                }
-            }
+            // TODO: Implement proper tag mapping based on medical conditions
+            // excludedTags = ...
         }
     }
 
-    // 2. Fetch from Repo with Filters
+    // 2. Prepare Pantry Items for Sorting
+    List<String>? pantryItems;
+    if (event.isPantryReady) {
+       final invResult = await inventoryRepository.getInventory();
+       if (invResult.$2 != null) {
+          pantryItems = invResult.$2!.map((e) => e.name).toList();
+       }
+    }
+
+    // 3. Fetch from Repo with Filters & Pantry Sorting
     final result = await repository.getRecipes(
       limit: 20, 
       offset: 0,
       query: event.query,
       excludedTags: excludedTags,
+      pantryItems: pantryItems, // Pass items for sorting
     );
 
     if (result.$1 != null) {
@@ -163,26 +182,12 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
     } else {
       var list = result.$2!;
       
-      // 3. Apply Strict Client-Side Filtering (DietEngine)
-      // We still need this because Tags are coarse, but DietEngine is precise.
-      if (event.isFamilySafe && event.isFamilySafe) { // Redundant check for clarity
+      // 4. Client-Side Strict Diet Filtering (Still needed for precision)
+      if (event.isFamilySafe) { 
            final familyResult = await onboardingRepository.getFamilyMembers();
            if (familyResult.$2 != null) {
                list = list.where((r) => _dietEngine.isRecipeCompatible(r, familyResult.$2!)).toList();
            }
-      }
-
-      // 4. Pantry Ready Sort
-       if (event.isPantryReady) {
-          final invResult = await inventoryRepository.getInventory();
-          if (invResult.$2 != null) {
-              final inventory = invResult.$2!;
-              list.sort((a, b) {
-                  final scoreA = _scoringEngine.calculateScore(a, inventory);
-                  final scoreB = _scoringEngine.calculateScore(b, inventory);
-                  return scoreB.compareTo(scoreA); 
-              });
-          }
       }
 
       emit(RecipeLoaded(

@@ -9,6 +9,7 @@ class Recipe extends Equatable {
   final bool isFork;
   final String title;
   final String? description;
+  final String? coverPhotoUrl;
   final bool isPublic;
   final DateTime createdAt;
   final List<String> ingredients;
@@ -21,6 +22,9 @@ class Recipe extends Equatable {
   final String? descriptionEn;
   final List<String>? ingredientsEn;
   final List<RecipeStep>? stepsEn;
+  
+  // Transient/Calculated Fields
+  final double? matchScore; 
 
   const Recipe({
     required this.id,
@@ -29,6 +33,7 @@ class Recipe extends Equatable {
     this.isFork = false,
     required this.title,
     this.description,
+    this.coverPhotoUrl,
     this.isPublic = true,
     required this.createdAt,
     this.ingredients = const [],
@@ -39,6 +44,7 @@ class Recipe extends Equatable {
     this.descriptionEn,
     this.ingredientsEn,
     this.stepsEn,
+    this.matchScore,
   });
 
   /// Returns a new Recipe with content swapped to the target [locale].
@@ -105,6 +111,7 @@ class Recipe extends Equatable {
     bool? isFork,
     String? title,
     String? description,
+    String? coverPhotoUrl,
     bool? isPublic,
     DateTime? createdAt,
     List<String>? ingredients,
@@ -115,6 +122,7 @@ class Recipe extends Equatable {
     String? descriptionEn,
     List<String>? ingredientsEn,
     List<RecipeStep>? stepsEn,
+    double? matchScore,
   }) {
     return Recipe(
       id: id ?? this.id,
@@ -123,6 +131,7 @@ class Recipe extends Equatable {
       isFork: isFork ?? this.isFork,
       title: title ?? this.title,
       description: description ?? this.description,
+      coverPhotoUrl: coverPhotoUrl ?? this.coverPhotoUrl,
       isPublic: isPublic ?? this.isPublic,
       createdAt: createdAt ?? this.createdAt,
       ingredients: ingredients ?? this.ingredients,
@@ -133,12 +142,13 @@ class Recipe extends Equatable {
       descriptionEn: descriptionEn ?? this.descriptionEn,
       ingredientsEn: ingredientsEn ?? this.ingredientsEn,
       stepsEn: stepsEn ?? this.stepsEn,
+      matchScore: matchScore ?? this.matchScore,
     );
   }
 
   @override
   List<Object?> get props => [
-    id, authorId, originId, isFork, title, description, isPublic, createdAt, 
+    id, authorId, originId, isFork, title, description, coverPhotoUrl, isPublic, createdAt, 
     ingredients, steps, tags, dietTags, titleEn, descriptionEn, ingredientsEn, stepsEn
   ];
 }

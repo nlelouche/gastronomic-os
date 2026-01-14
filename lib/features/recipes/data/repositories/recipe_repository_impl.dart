@@ -11,7 +11,10 @@ import 'package:gastronomic_os/features/recipes/data/models/commit_model.dart';
 import 'package:gastronomic_os/features/recipes/domain/entities/recipe.dart';
 import 'package:gastronomic_os/features/recipes/domain/entities/commit.dart';
 import 'package:gastronomic_os/features/recipes/domain/repositories/i_recipe_repository.dart';
+import 'package:gastronomic_os/features/recipes/domain/entities/commit.dart';
+import 'package:gastronomic_os/features/recipes/domain/repositories/i_recipe_repository.dart';
 import 'package:supabase_flutter/supabase_flutter.dart'; 
+import 'package:gastronomic_os/features/planner/domain/logic/scoring_engine.dart'; // NEW 
 
 class RecipeRepositoryImpl implements IRecipeRepository {
   final RecipeRemoteDataSource remoteDataSource;
@@ -82,10 +85,42 @@ class RecipeRepositoryImpl implements IRecipeRepository {
   }
 
   @override
-  Future<(Failure?, List<Recipe>?)> getRecipes({int limit = 20, int offset = 0, String? query, List<String>? excludedTags}) async {
+  Future<(Failure?, List<Recipe>?)> getRecipes({
+    int limit = 20, 
+    int offset = 0, 
+    String? query, 
+    List<String>? excludedTags,
+    List<String>? pantryItems,
+  }) async {
     try {
-      final result = await remoteDataSource.getRecipes(limit: limit, offset: offset, query: query, excludedTags: excludedTags);
-      return (null, result);
+      // 1. Fetch from Remote (Raw List)
+      final rawResult = await remoteDataSource.getRecipes(
+        limit: limit, 
+        offset: offset, 
+        query: query, 
+        excludedTags: excludedTags
+      );
+
+      var recipes = rawResult!; // Assuming non-null if no error throw
+
+      // 2. Client-Side Processing: Pantry Match Sorting
+      if (pantryItems != null && pantryItems.isNotEmpty) {
+          final engine = ScoringEngine();
+          
+          // Enrich with Scores
+          recipes = recipes.map((r) {
+             final score = engine.calculateScoreSimple(r, pantryItems);
+             // Ensure we don't lose the object type if possible, but copyWith returns Recipe
+             return r.copyWith(matchScore: score);
+          }).toList();
+
+          // Sort by match score (Descending)
+          recipes.sort((a, b) {
+             return (b.matchScore ?? 0).compareTo(a.matchScore ?? 0);
+          });
+      }
+
+      return (null, recipes);
     } catch (e, stackTrace) {
       final failure = ExceptionHandler.handle(
         e,
@@ -307,6 +342,22 @@ class RecipeRepositoryImpl implements IRecipeRepository {
         e,
         stackTrace: stackTrace,
         context: ErrorContext.repository('getForks', extra: {'originId': recipeId}),
+      );
+      return (failure, null);
+    }
+  }
+
+  @override
+  Future<(Failure?, String?)> uploadRecipeImage(dynamic imageFile) async {
+    try {
+      final userId = supabaseClient.auth.currentUser!.id;
+      final url = await remoteDataSource.uploadRecipeImage(imageFile, userId);
+      return (null, url);
+    } catch (e, stackTrace) {
+      final failure = ExceptionHandler.handle(
+        e, 
+        stackTrace: stackTrace, 
+        context: ErrorContext.repository('uploadRecipeImage'),
       );
       return (failure, null);
     }

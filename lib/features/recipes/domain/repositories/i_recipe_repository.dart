@@ -4,7 +4,13 @@ import 'package:gastronomic_os/features/recipes/domain/entities/commit.dart';
 
 abstract class IRecipeRepository {
   // Recipes
-  Future<(Failure?, List<Recipe>?)> getRecipes({int limit = 20, int offset = 0, String? query, List<String>? excludedTags});
+  Future<(Failure?, List<Recipe>?)> getRecipes({
+    int limit = 20, 
+    int offset = 0, 
+    String? query, 
+    List<String>? excludedTags,
+    List<String>? pantryItems, // New: For Pantry Matching
+  });
   Future<(Failure?, Recipe?)> getRecipeDetails(String id);
   Future<(Failure?, List<Recipe>?)> getDashboardSuggestions({int limit = 10});
   Future<(Failure?, Recipe?)> createRecipe(Recipe recipe);
@@ -29,4 +35,5 @@ abstract class IRecipeRepository {
   
 
   Future<(Failure?, List<Recipe>?)> getForks(String recipeId);
+  Future<(Failure?, String?)> uploadRecipeImage(dynamic imageFile);
 }

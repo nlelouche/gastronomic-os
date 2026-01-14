@@ -74,6 +74,36 @@ class DashboardPage extends StatelessWidget {
                       ).animate().fadeIn(delay: 200.ms).slideX(begin: -0.1),
                       
                       const SizedBox(height: 32),
+                      
+                      // Search Bar
+                      GestureDetector(
+                        onTap: () {
+                           Navigator.push(
+                             context,
+                             MaterialPageRoute(builder: (context) => const RecipesPage(autoFocus: true)), 
+                           );
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                          decoration: BoxDecoration(
+                            color: colorScheme.surfaceVariant.withOpacity(0.5),
+                            borderRadius: BorderRadius.circular(12),
+                            border: Border.all(color: colorScheme.outlineVariant.withOpacity(0.5)),
+                          ),
+                          child: Row(
+                            children: [
+                              Icon(Icons.search, color: colorScheme.onSurfaceVariant),
+                              const SizedBox(width: 12),
+                              Text(
+                                AppLocalizations.of(context)!.searchRecipesHint,
+                                style: TextStyle(color: colorScheme.onSurfaceVariant),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ).animate().fadeIn(delay: 300.ms).slideY(begin: 0.1),
+
+                      const SizedBox(height: 32),
 
                       // The Brain (New)
                       const ChefsSuggestions(),
