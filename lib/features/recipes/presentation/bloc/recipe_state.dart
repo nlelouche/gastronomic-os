@@ -65,6 +65,16 @@ class RecipeError extends RecipeState {
   List<Object> get props => [message];
 }
 
+class RecipeForked extends RecipeState {
+  final Recipe newRecipe;
+  final Recipe originalRecipe;
+
+  const RecipeForked({required this.newRecipe, required this.originalRecipe});
+
+  @override
+  List<Object> get props => [newRecipe, originalRecipe];
+}
+
 class RecipeDetailLoaded extends RecipeState {
   final Recipe recipe;
 

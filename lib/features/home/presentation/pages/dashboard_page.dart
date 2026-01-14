@@ -10,6 +10,8 @@ import 'package:gastronomic_os/features/recipes/presentation/pages/recipes_page.
 import 'package:gastronomic_os/features/settings/presentation/pages/settings_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:gastronomic_os/features/planner/presentation/pages/planner_page.dart';
+import 'package:gastronomic_os/features/planner/presentation/pages/planner_page.dart';
+import 'package:gastronomic_os/features/recipes/presentation/pages/my_recipes_page.dart'; // Phase 3.2
 import 'package:gastronomic_os/l10n/generated/app_localizations.dart';
 
 class DashboardPage extends StatelessWidget {
@@ -99,6 +101,21 @@ class DashboardPage extends StatelessWidget {
                         delay: 500.ms,
                         onTap: () => Navigator.of(context).push(
                           MaterialPageRoute(builder: (context) => const RecipesPage()),
+                        ),
+                      ),
+                      
+                      const SizedBox(height: 16),
+
+                      // My Recipes (New)
+                      _buildFeatureCard(
+                        context,
+                        title: 'My Recipes', // TODO: Localize
+                        subtitle: 'Created, Forked, Saved', // TODO: Localize
+                        icon: Icons.bookmarks_rounded,
+                        color: Colors.amber, // Distinct color
+                        delay: 550.ms,
+                        onTap: () => Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) => const MyRecipesPage()),
                         ),
                       ),
                       

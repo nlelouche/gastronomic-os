@@ -204,13 +204,32 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
   }
 
   Future<void> _onForkRecipe(ForkRecipe event, Emitter<RecipeState> emit) async {
+    // Capture current recipe to preserve state
+    Recipe? currentRecipe;
+    if (state is RecipeDetailLoaded) {
+      currentRecipe = (state as RecipeDetailLoaded).recipe;
+    }
+    
     emit(RecipeLoading());
     final result = await repository.forkRecipe(event.originalRecipeId, event.newTitle);
     
     if (result.$1 != null) {
       emit(RecipeError(result.$1!.message));
+      // Restore state if possible
+      if (currentRecipe != null) emit(RecipeDetailLoaded(currentRecipe));
     } else {
-      add(LoadRecipes());
+      // Emit Forked event with BOTH recipes
+      if (currentRecipe != null) {
+         emit(RecipeForked(newRecipe: result.$2!, originalRecipe: currentRecipe));
+         // Optional: Immediately restore Loaded state so "Back" works perfectly without depending on Forked state persistence
+         // emit(RecipeDetailLoaded(currentRecipe)); 
+         // Actually, if we emit Loaded immediately, the Listener might miss 'Forked' if it's too fast? 
+         // Bloc listeners are synchronous stream subscriptions usually.
+         // Safest is to let the UI handle Forked state as a "Loaded" variant.
+      } else {
+         // Fallback if we weren't in Detail view (shouldn't happen in this flow)
+         add(LoadRecipes());
+      }
     }
   }
 

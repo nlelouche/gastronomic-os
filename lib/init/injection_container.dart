@@ -9,6 +9,7 @@ import 'package:gastronomic_os/features/recipes/data/datasources/recipe_remote_d
 import 'package:gastronomic_os/features/recipes/data/repositories/recipe_repository_impl.dart';
 import 'package:gastronomic_os/features/recipes/domain/repositories/i_recipe_repository.dart';
 import 'package:gastronomic_os/features/recipes/presentation/bloc/recipe_bloc.dart';
+import 'package:gastronomic_os/features/recipes/presentation/bloc/my_recipes_cubit.dart';
 import 'package:gastronomic_os/features/onboarding/data/datasources/onboarding_remote_datasource.dart';
 import 'package:gastronomic_os/features/onboarding/data/repositories/onboarding_repository_impl.dart';
 import 'package:gastronomic_os/features/onboarding/domain/repositories/i_onboarding_repository.dart';
@@ -51,6 +52,7 @@ Future<void> init() async {
     onboardingRepository: sl(),
     debugService: sl(),
   ));
+  sl.registerFactory(() => MyRecipesCubit(sl())); // Phase 3.2
   sl.registerFactory(() => OnboardingBloc(repository: sl()));
 
   // Onboarding Feature

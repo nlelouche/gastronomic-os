@@ -118,6 +118,14 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
             ScaffoldMessenger.of(context).showSnackBar(
                const SnackBar(content: Text('Recipe deleted successfully')),
             );
+          } else if (state is RecipeForked) {
+             // Navigate to the newly created recipe
+             Navigator.of(context).push(
+               MaterialPageRoute(builder: (_) => RecipeDetailPage(recipe: state.newRecipe)),
+             );
+             ScaffoldMessenger.of(context).showSnackBar(
+               const SnackBar(content: Text('Recipe forked successfully!')),
+             );
           } else if (state is RecipeError) {
              ScaffoldMessenger.of(context).showSnackBar(
                SnackBar(content: Text('Error: ${state.message}'), backgroundColor: colorScheme.error),
@@ -127,9 +135,18 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
         builder: (context, state) {
           if (state is RecipeLoading) {
             return const Center(child: CircularProgressIndicator());
-          } else if (state is RecipeDetailLoaded) {
+          } 
+          
+          Recipe? recipeToShow;
+          if (state is RecipeDetailLoaded) {
+            recipeToShow = state.recipe;
+          } else if (state is RecipeForked) {
+            recipeToShow = state.originalRecipe;
+          }
+
+          if (recipeToShow != null) {
             final currentLocale = Localizations.localeOf(context);
-            final fullRecipe = state.recipe.localize(currentLocale);
+            final fullRecipe = recipeToShow.localize(currentLocale);
             
             // Filter Ingredients based on Family Profile
             final Set<String> familyTags = {};

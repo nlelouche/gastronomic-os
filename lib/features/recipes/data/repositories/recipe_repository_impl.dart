@@ -24,6 +24,63 @@ class RecipeRepositoryImpl implements IRecipeRepository {
     required this.cacheService,
   });
 
+  // Phase 3.2: My Recipes & Bookmarks Support
+  @override
+  Future<(Failure?, List<Recipe>?)> getMyRecipes({bool isFork = false}) async {
+    try {
+      final userId = supabaseClient.auth.currentUser?.id;
+      if (userId == null) {
+          return (AuthFailure('User not logged in', context: ErrorContext.repository('getMyRecipes')), null);
+      }
+      // Fetch user's recipes (Created or Forked)
+      final result = await remoteDataSource.getRecipes(
+        limit: 100, // Fetch more for personal list
+        authorId: userId,
+        isFork: isFork,
+      );
+      return (null, result);
+    } catch (e, s) {
+      return (ExceptionHandler.handle(e, stackTrace: s, context: ErrorContext.repository('getMyRecipes')), null);
+    }
+  }
+
+  @override
+  Future<(Failure?, List<Recipe>?)> getSavedRecipes() async {
+     try {
+      final userId = supabaseClient.auth.currentUser?.id;
+      if (userId == null) {
+          return (AuthFailure('User not logged in', context: ErrorContext.repository('getSavedRecipes')), null);
+      }
+      final result = await remoteDataSource.getRecipes(
+        limit: 100,
+        onlySaved: true,
+      );
+      return (null, result);
+    } catch (e, s) {
+      return (ExceptionHandler.handle(e, stackTrace: s, context: ErrorContext.repository('getSavedRecipes')), null);
+    }
+  }
+
+  @override
+  Future<(Failure?, void)> toggleSaveRecipe(String recipeId) async {
+    try {
+      await remoteDataSource.toggleSaveRecipe(recipeId);
+      return (null, null);
+    } catch (e, s) {
+       return (ExceptionHandler.handle(e, stackTrace: s, context: ErrorContext.repository('toggleSaveRecipe')), null);
+    }
+  }
+
+  @override
+  Future<(Failure?, bool)> isRecipeSaved(String recipeId) async {
+    try {
+      final result = await remoteDataSource.isRecipeSaved(recipeId);
+      return (null, result);
+    } catch (e, s) {
+       return (ExceptionHandler.handle(e, stackTrace: s, context: ErrorContext.repository('isRecipeSaved')), false);
+    }
+  }
+
   @override
   Future<(Failure?, List<Recipe>?)> getRecipes({int limit = 20, int offset = 0, String? query, List<String>? excludedTags}) async {
     try {

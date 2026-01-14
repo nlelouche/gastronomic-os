@@ -10,6 +10,12 @@ abstract class IRecipeRepository {
   Future<(Failure?, Recipe?)> createRecipe(Recipe recipe);
   Future<(Failure?, Recipe?)> forkRecipe(String originalRecipeId, String newTitle);
   
+  // Phase 3.2: My Recipes & Bookmarks
+  Future<(Failure?, List<Recipe>?)> getMyRecipes({bool isFork = false});
+  Future<(Failure?, List<Recipe>?)> getSavedRecipes();
+  Future<(Failure?, bool)> isRecipeSaved(String recipeId);
+  Future<(Failure?, void)> toggleSaveRecipe(String recipeId);
+  
   // Commits
   Future<(Failure?, List<Commit>?)> getCommits(String recipeId);
   Future<(Failure?, Commit?)> addCommit(Commit commit);

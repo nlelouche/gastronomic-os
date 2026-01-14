@@ -9,7 +9,17 @@ import 'package:gastronomic_os/features/recipes/data/models/recipe_step_model.da
 import 'package:gastronomic_os/features/recipes/domain/entities/recipe.dart'; 
 
 abstract class RecipeRemoteDataSource {
-  Future<List<RecipeModel>> getRecipes({int limit = 20, int offset = 0, String? query, List<String>? excludedTags});
+  Future<List<RecipeModel>> getRecipes({
+    int limit = 20, 
+    int offset = 0, 
+    String? query, 
+    List<String>? excludedTags,
+    String? authorId,
+    bool? isFork,
+    bool onlySaved = false,
+  });
+  Future<void> toggleSaveRecipe(String recipeId);
+  Future<bool> isRecipeSaved(String recipeId);
   Future<RecipeModel> createRecipe(Recipe recipe);
   Future<RecipeModel> forkRecipe(String originalRecipeId, String newTitle, String authorId);
   Future<List<CommitModel>> getCommits(String recipeId);
@@ -31,10 +41,50 @@ class RecipeRemoteDataSourceImpl implements RecipeRemoteDataSource {
   RecipeRemoteDataSourceImpl({required this.supabaseClient});
 
   @override
-  Future<List<RecipeModel>> getRecipes({int limit = 20, int offset = 0, String? query, List<String>? excludedTags}) async {
+  Future<List<RecipeModel>> getRecipes({
+    int limit = 20, 
+    int offset = 0, 
+    String? query, 
+    List<String>? excludedTags,
+    String? authorId,      // New Parameter
+    bool? isFork,          // New Parameter
+    bool onlySaved = false // New Parameter
+  }) async {
     try {
       var builder = supabaseClient.from('recipes').select();
       
+      // Filter by Author (for Created/Forked tabs)
+      if (authorId != null) {
+        builder = builder.eq('author_id', authorId);
+      }
+
+      // Filter by Fork Status
+      if (isFork != null) {
+        builder = builder.eq('is_fork', isFork);
+      }
+
+      // Filter by Saved (Bookmarks) - Two-step approach to avoid PGRST200
+      if (onlySaved) {
+        final userId = supabaseClient.auth.currentUser!.id;
+        
+        // 1. Get IDs from saved_recipes
+        final savedResponse = await supabaseClient
+            .from('saved_recipes')
+            .select('recipe_id')
+            .eq('user_id', userId);
+            
+        final savedIds = (savedResponse as List).map((e) => e['recipe_id'] as String).toList();
+        
+        if (savedIds.isEmpty) {
+          // No saved recipes, return empty list immediately to save query
+          return [];
+        }
+        
+        // 2. Filter main query
+        builder = builder.filter('id', 'in', savedIds);
+      }
+
+      // Standard Filters
       if (query != null && query.isNotEmpty) {
         builder = builder.ilike('title', '%$query%');
       }
@@ -49,8 +99,55 @@ class RecipeRemoteDataSourceImpl implements RecipeRemoteDataSource {
       
       return (response as List).map((data) => RecipeModel.fromJson(data)).toList();
     } catch (e, s) {
-      AppLogger.e('Error fetching recipes', e, s);
+      AppLogger.e('Error fetching recipes (filtered)', e, s);
       throw Exception('Datasource operation failed');
+    }
+  }
+
+  // Helper for Bookmarks
+  @override
+  Future<void> toggleSaveRecipe(String recipeId) async {
+    try {
+      final userId = supabaseClient.auth.currentUser!.id;
+      
+      // Check if exists
+      final existing = await supabaseClient
+          .from('saved_recipes')
+          .select('id')
+          .eq('user_id', userId)
+          .eq('recipe_id', recipeId)
+          .maybeSingle();
+
+      if (existing != null) {
+        // Unsave
+        await supabaseClient
+            .from('saved_recipes')
+            .delete()
+            .eq('id', existing['id']);
+      } else {
+        // Save
+        await supabaseClient
+            .from('saved_recipes')
+            .insert({'user_id': userId, 'recipe_id': recipeId});
+      }
+    } catch (e) {
+      throw Exception('Datasource operation failed');
+    }
+  }
+
+  @override
+  Future<bool> isRecipeSaved(String recipeId) async {
+     try {
+      final userId = supabaseClient.auth.currentUser!.id;
+      final existing = await supabaseClient
+          .from('saved_recipes')
+          .select('id')
+          .eq('user_id', userId)
+          .eq('recipe_id', recipeId)
+          .maybeSingle();
+      return existing != null;
+    } catch (e) {
+      return false;
     }
   }
 
@@ -199,25 +296,77 @@ class RecipeRemoteDataSourceImpl implements RecipeRemoteDataSource {
   @override
   Future<RecipeModel> forkRecipe(String originalRecipeId, String newTitle, String authorId) async {
     try {
-      // 1. Fetch original recipe to copy description/logic if needed (optional)
-      // 2. Insert new recipe pointing to origin
+      // 1. Fetch Original Recipe Details (Header + Latest Snapshot Content)
+      final original = await getRecipeDetails(originalRecipeId);
+      
+      // 2. Insert New Recipe Header
+      // We copy structure-level metadata like tags, but author is new
       final forkData = {
         'author_id': authorId,
         'origin_id': originalRecipeId,
         'is_fork': true,
         'title': newTitle,
-        'is_public': true, // Default
+        'description': original.description, // Copy description
+        'tags': original.tags, // Copy tags
+        'is_public': true, 
       };
       
-      final response = await supabaseClient
+      final recipeResponse = await supabaseClient
           .from('recipes')
           .insert(forkData)
           .select()
           .single();
           
-      return RecipeModel.fromJson(response);
-    } catch (e) {
-      throw Exception('Datasource operation failed');
+      final newRecipeId = recipeResponse['id'];
+
+      // 3. Create Initial Commit for Fork
+      final commitData = {
+        'recipe_id': newRecipeId,
+        'author_id': authorId,
+        'message': 'Forked from ${original.title}',
+        'diff': {'action': 'fork', 'origin': originalRecipeId}, 
+      };
+
+      final commitResponse = await supabaseClient
+          .from('commits')
+          .insert(commitData)
+          .select()
+          .single();
+      
+      final commitId = commitResponse['id'];
+
+      // 4. Copy Snapshot Content
+      // We re-use logic from createRecipe to serialize steps safely
+      // Or since we have the model, we can just serialize it back.
+      
+      final stepsJson = original.steps.map((step) {
+        if (step is RecipeStepModel) return step.toJson();
+         return {
+          'instruction': step.instruction,
+          'is_branch_point': step.isBranchPoint,
+          'variant_logic': step.variantLogic,
+          'cross_contamination_alert': step.crossContaminationAlert,
+        };
+      }).toList();
+
+      final fullStructureJson = {
+        'ingredients': original.ingredients,
+        'steps': stepsJson,
+      };
+
+      final snapshotData = {
+        'commit_id': commitId,
+        'recipe_id': newRecipeId,
+        'full_structure': fullStructureJson,
+      };
+
+      await supabaseClient.from('recipe_snapshots').insert(snapshotData);
+
+      // Return the complete new model
+      return getRecipeDetails(newRecipeId);
+    } catch (e, s) {
+      AppLogger.e('Error forking recipe', e, s);
+      throw Exception('Datasource operation failed: $e');
     }
   }
 
