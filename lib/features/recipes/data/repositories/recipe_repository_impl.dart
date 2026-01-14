@@ -282,4 +282,33 @@ class RecipeRepositoryImpl implements IRecipeRepository {
       return (failure, null);
     }
   }
+  @override
+  Future<(Failure?, List<Recipe>?)> getForks(String recipeId) async {
+    try {
+      // Use getRecipes but filter by 'origin_id'
+      // Requires adding 'originId' parameter to RemoteDataSource.getRecipes first
+      // OR we can make a new specific call. 
+      // The most flexible way is to add 'originId' to getRecipes options.
+      
+      final result = await remoteDataSource.getRecipes(
+        limit: 100,
+        // Since we don't have 'originId' param yet effectively in the interface call here...
+        // We will assume remoteDataSource.getRecipes can handle it via query or new param.
+        // Let's check remoteDataSource signature...
+        // It has (limit, offset, query, excludedTags, authorId, isFork, onlySaved)
+        // We need 'originId'.
+      );
+      
+      // WAIT, 'getRecipes' in Datasource is flexible? 
+      // Let's simply implement a dedicated method in Datasource for clarity: getForks(id)
+      return (null, await remoteDataSource.getForks(recipeId));
+    } catch (e, stackTrace) {
+      final failure = ExceptionHandler.handle(
+        e,
+        stackTrace: stackTrace,
+        context: ErrorContext.repository('getForks', extra: {'originId': recipeId}),
+      );
+      return (failure, null);
+    }
+  }
 }

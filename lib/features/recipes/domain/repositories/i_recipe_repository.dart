@@ -28,4 +28,5 @@ abstract class IRecipeRepository {
   // Future<(Failure?, RecipeSnapshot?)> getRecipeSnapshot(String commitId); 
   
 
+  Future<(Failure?, List<Recipe>?)> getForks(String recipeId);
 }

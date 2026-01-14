@@ -26,6 +26,7 @@ abstract class RecipeRemoteDataSource {
   Future<CommitModel> addCommit(CommitModel commit);
   Future<RecipeModel> getRecipeDetails(String recipeId);
   Future<List<RecipeModel>> getDashboardSuggestions({int limit = 10});
+  Future<List<RecipeModel>> getForks(String recipeId);
 
   Future<void> clearAllRecipes(); // For development: clear all recipes
 
@@ -397,6 +398,22 @@ class RecipeRemoteDataSourceImpl implements RecipeRemoteDataSource {
       // If RPC fails (e.g. not applied yet), fallback to getRecipes
       AppLogger.w('⚠️ RPC get_dashboard_suggestions failed: $e. Falling back to simple getRecipes.');
       return getRecipes(limit: limit);
+    }
+  }
+
+  @override
+  Future<List<RecipeModel>> getForks(String recipeId) async {
+    try {
+      final response = await supabaseClient
+          .from('recipes')
+          .select()
+          .eq('origin_id', recipeId)
+          .order('created_at', ascending: false);
+      
+      return (response as List).map((data) => RecipeModel.fromJson(data)).toList();
+    } catch (e) {
+       AppLogger.e('Error fetching forks for $recipeId', e);
+       return [];
     }
   }
 

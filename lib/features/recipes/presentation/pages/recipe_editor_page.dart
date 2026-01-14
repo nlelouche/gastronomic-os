@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gastronomic_os/features/recipes/domain/entities/recipe.dart';
-import 'package:gastronomic_os/features/recipes/domain/entities/recipe_step.dart';
 import 'package:gastronomic_os/features/recipes/data/models/recipe_step_model.dart';
 import 'package:gastronomic_os/features/recipes/presentation/bloc/recipe_bloc.dart';
 import 'package:gastronomic_os/features/recipes/presentation/bloc/recipe_event.dart';
 import 'package:gastronomic_os/l10n/generated/app_localizations.dart';
 import 'package:gastronomic_os/core/theme/app_dimens.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:gastronomic_os/features/recipes/presentation/widgets/editor/steps_editor.dart';
 
 class RecipeEditorPage extends StatefulWidget {
-  final Recipe? initialRecipe; // If null, creating new
+  final Recipe? initialRecipe; 
 
   const RecipeEditorPage({super.key, this.initialRecipe});
 
@@ -24,7 +24,7 @@ class _RecipeEditorPageState extends State<RecipeEditorPage> {
   late TextEditingController _descController;
   
   final List<TextEditingController> _ingredientsControllers = [];
-  final List<TextEditingController> _stepsControllers = [];
+  final List<StepEditorItem> _stepsItems = []; // Changed to StepEditorItem
 
   @override
   void initState() {
@@ -38,16 +38,21 @@ class _RecipeEditorPageState extends State<RecipeEditorPage> {
         _ingredientsControllers.add(TextEditingController(text: ing));
       }
     } else {
-      _ingredientsControllers.add(TextEditingController()); // Start with one empty
+      _ingredientsControllers.add(TextEditingController()); 
     }
 
-    // Initialize steps
+    // Initialize steps with full variant logic
     if (widget.initialRecipe != null && widget.initialRecipe!.steps.isNotEmpty) {
       for (var step in widget.initialRecipe!.steps) {
-        _stepsControllers.add(TextEditingController(text: step.instruction));
+        final item = StepEditorItem(
+          controller: TextEditingController(text: step.instruction),
+          isBranchPoint: step.isBranchPoint,
+          variantControllers: step.variantLogic?.map((k, v) => MapEntry(k, TextEditingController(text: v)))
+        );
+        _stepsItems.add(item);
       }
     } else {
-      _stepsControllers.add(TextEditingController());
+      _stepsItems.add(StepEditorItem(controller: TextEditingController()));
     }
   }
 
@@ -56,7 +61,7 @@ class _RecipeEditorPageState extends State<RecipeEditorPage> {
     _titleController.dispose();
     _descController.dispose();
     for (var c in _ingredientsControllers) c.dispose();
-    for (var c in _stepsControllers) c.dispose();
+    for (var item in _stepsItems) item.dispose();
     super.dispose();
   }
 
@@ -77,17 +82,27 @@ class _RecipeEditorPageState extends State<RecipeEditorPage> {
 
   void _addStep() {
     setState(() {
-      _stepsControllers.add(TextEditingController());
+      _stepsItems.add(StepEditorItem(controller: TextEditingController()));
     });
   }
 
   void _removeStep(int index) {
-    if (_stepsControllers.length > 1) {
+    if (_stepsItems.length > 1) {
       setState(() {
-        _stepsControllers[index].dispose();
-        _stepsControllers.removeAt(index);
+        _stepsItems[index].dispose();
+        _stepsItems.removeAt(index);
       });
     }
+  }
+
+  void _onReorderSteps(int oldIndex, int newIndex) {
+    setState(() {
+      if (oldIndex < newIndex) {
+        newIndex -= 1;
+      }
+      final item = _stepsItems.removeAt(oldIndex);
+      _stepsItems.insert(newIndex, item);
+    });
   }
 
   void _saveRecipe() {
@@ -97,9 +112,29 @@ class _RecipeEditorPageState extends State<RecipeEditorPage> {
           .where((t) => t.isNotEmpty)
           .toList();
       
-      final steps = _stepsControllers
-          .map((c) => RecipeStepModel(instruction: c.text.trim()))
-          .where((s) => s.instruction.isNotEmpty)
+      final steps = _stepsItems
+          .map((item) {
+             final instruction = item.controller.text.trim();
+             if (instruction.isEmpty) return null;
+             
+             // Serialize Variants
+             Map<String, String>? variants;
+             if (item.isBranchPoint && item.variantControllers.isNotEmpty) {
+               variants = {};
+               for (var entry in item.variantControllers.entries) {
+                 if (entry.value.text.isNotEmpty) {
+                   variants[entry.key] = entry.value.text.trim();
+                 }
+               }
+             }
+
+             return RecipeStepModel(
+               instruction: instruction,
+               isBranchPoint: item.isBranchPoint,
+               variantLogic: variants,
+             );
+          })
+          .whereType<RecipeStepModel>() // Filter nulls
           .toList();
 
       if (widget.initialRecipe != null) {
@@ -113,8 +148,8 @@ class _RecipeEditorPageState extends State<RecipeEditorPage> {
       } else {
         // Create Logic
         final newRecipe = Recipe(
-          id: '', // Will be ignored by DB or generated
-          authorId: '', // Handled by datasource
+          id: '', 
+          authorId: '', 
           title: _titleController.text.trim(),
           description: _descController.text.trim(),
           createdAt: DateTime.now(),
@@ -162,7 +197,7 @@ class _RecipeEditorPageState extends State<RecipeEditorPage> {
               ),
               const SizedBox(height: AppDimens.spaceXL),
               
-              // Ingredients Section
+              // Ingredients Section (Legacy List)
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -197,43 +232,14 @@ class _RecipeEditorPageState extends State<RecipeEditorPage> {
 
               const SizedBox(height: AppDimens.spaceXL),
 
-              // Steps Section
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(AppLocalizations.of(context)!.editorInstructionsSection, style: GoogleFonts.outfit(fontSize: AppDimens.fontSizeHeader, fontWeight: FontWeight.bold)),
-                  IconButton(icon: Icon(Icons.add_circle, color: colorScheme.primary), onPressed: _addStep),
-                ],
+              // Steps Section (New Widget)
+              StepsEditor(
+                items: _stepsItems,
+                onAddStep: _addStep,
+                onRemoveStep: _removeStep,
+                onReorder: _onReorderSteps,
               ),
-              ..._stepsControllers.asMap().entries.map((entry) {
-                final index = entry.key;
-                final controller = entry.value;
-                return Padding(
-                  padding: const EdgeInsets.only(bottom: 8.0),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(top: 12.0, right: 8.0),
-                        child: Text('${index + 1}.', style: const TextStyle(fontWeight: FontWeight.bold)),
-                      ),
-                      Expanded(
-                        child: TextFormField(
-                          controller: controller,
-                          maxLines: null,
-                          decoration: InputDecoration(
-                            hintText: AppLocalizations.of(context)!.editorInstructionsHint,
-                          ),
-                        ),
-                      ),
-                      IconButton(
-                        icon: Icon(Icons.remove_circle_outline, color: colorScheme.error),
-                        onPressed: () => _removeStep(index),
-                      ),
-                    ],
-                  ),
-                );
-              }),
+              
               const SizedBox(height: AppDimens.space3XL),
             ],
           ),
@@ -242,3 +248,4 @@ class _RecipeEditorPageState extends State<RecipeEditorPage> {
     );
   }
 }
+
