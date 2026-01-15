@@ -2,6 +2,9 @@ import 'package:bloc/bloc.dart';
 import 'package:gastronomic_os/features/onboarding/domain/entities/family_member.dart';
 import 'package:gastronomic_os/features/onboarding/domain/repositories/i_onboarding_repository.dart';
 import 'package:gastronomic_os/features/onboarding/presentation/bloc/onboarding_state_event.dart';
+import 'package:gastronomic_os/core/services/remote_config_service.dart';
+import 'package:gastronomic_os/core/services/iap_service.dart';
+import 'package:gastronomic_os/init/injection_container.dart';
 
 class OnboardingBloc extends Bloc<OnboardingEvent, OnboardingState> {
   final IOnboardingRepository repository;
@@ -18,9 +21,20 @@ class OnboardingBloc extends Bloc<OnboardingEvent, OnboardingState> {
       }
     });
 
-    on<AddFamilyMember>((event, emit) {
-      final updatedMembers = List<FamilyMember>.from(state.members)..add(event.member);
-      emit(OnboardingUpdated(members: updatedMembers));
+    on<AddFamilyMember>((event, emit) async {
+      final remoteConfig = sl<RemoteConfigService>();
+      final iapService = sl<IAPService>();
+      
+      final isPremium = await iapService.isUserPremium();
+      final limit = remoteConfig.freeFamilyLimit;
+
+      if (!isPremium && state.members.length >= limit) {
+        emit(OnboardingError('Free limit reached ($limit members). Upgrade to PRO Add more!', members: state.members));
+        // Reset check to avoid stuck error state if needed, or handle in UI
+      } else {
+        final updatedMembers = List<FamilyMember>.from(state.members)..add(event.member);
+        emit(OnboardingUpdated(members: updatedMembers));
+      }
     });
 
     on<UpdateFamilyMember>((event, emit) {

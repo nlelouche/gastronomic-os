@@ -12,6 +12,7 @@ import 'package:gastronomic_os/features/recipes/presentation/widgets/recipe_filt
 import 'package:gastronomic_os/init/injection_container.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:gastronomic_os/l10n/generated/app_localizations.dart';
+import 'package:gastronomic_os/features/recipes/domain/logic/action_guard.dart';
 
 class RecipesPage extends StatelessWidget {
   final String? initialQuery;
@@ -315,7 +316,14 @@ class _RecipesViewState extends State<RecipesView> {
         },
       ),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: () => _navigateToEditor(context),
+        onPressed: () {
+          ActionGuard.guard(
+            context,
+            title: AppLocalizations.of(context)!.recipesNewRecipeButton,
+            message: 'Watch a short video to create a new recipe, or Upgrade to PRO.',
+            onAction: () => _navigateToEditor(context),
+          );
+        },
         label: Text(AppLocalizations.of(context)!.recipesNewRecipeButton, style: GoogleFonts.outfit(fontWeight: FontWeight.w600)),
         icon: const Icon(Icons.add),
       ).animate().scale(delay: 500.ms, curve: Curves.easeOutBack),

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "844165562343",
+    "project_id": "gastronomic-os-ef32c",
+    "storage_bucket": "gastronomic-os-ef32c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:844165562343:android:38982c8d1122dc656dc742",
+        "android_client_info": {
+          "package_name": "com.gastronomic.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5GA0GmxkeSd9J9zHhfe7wU5VvyWn3lGQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

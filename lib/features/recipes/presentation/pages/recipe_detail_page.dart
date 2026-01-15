@@ -27,6 +27,7 @@ import 'package:gastronomic_os/features/recipes/presentation/pages/recipe_editor
 import 'package:gastronomic_os/features/recipes/presentation/widgets/add_to_collection_sheet.dart';
 import 'package:gastronomic_os/l10n/generated/app_localizations.dart';
 import 'package:gastronomic_os/core/theme/app_dimens.dart';
+import 'package:gastronomic_os/features/recipes/domain/logic/action_guard.dart';
 
 import 'package:gastronomic_os/features/social/presentation/bloc/recipe_social/recipe_social_bloc.dart';
 import 'package:gastronomic_os/features/social/presentation/bloc/recipe_social/recipe_social_event.dart';
@@ -275,21 +276,28 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
                       IconButton(
                         icon: const Icon(Icons.fork_right),
                         tooltip: l10n.recipeForkTooltip,
-                        onPressed: () async {
-                          final newTitle = await showDialog<String>(
-                            context: context,
-                            builder: (_) => SmartForkDialog(originalTitle: fullRecipe.title),
-                          );
+                        onPressed: () {
+                          ActionGuard.guard(
+                            context,
+                            title: l10n.recipeForkTooltip,
+                            message: 'Watch a short video to Fork this recipe, or Upgrade to PRO.',
+                            onAction: () async {
+                              final newTitle = await showDialog<String>(
+                                context: context,
+                                builder: (_) => SmartForkDialog(originalTitle: fullRecipe.title),
+                              );
 
-                          if (newTitle != null && context.mounted) {
-                            context.read<RecipeBloc>().add(ForkRecipe(
-                                  originalRecipeId: fullRecipe.id,
-                                  newTitle: newTitle,
-                                ));
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(content: Text(l10n.recipeForking)),
-                            );
-                          }
+                              if (newTitle != null && context.mounted) {
+                                context.read<RecipeBloc>().add(ForkRecipe(
+                                      originalRecipeId: fullRecipe.id,
+                                      newTitle: newTitle,
+                                    ));
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(content: Text(l10n.recipeForking)),
+                                );
+                              }
+                            },
+                          );
                         },
                       ),
                       if (fullRecipe.authorId == Supabase.instance.client.auth.currentUser?.id)

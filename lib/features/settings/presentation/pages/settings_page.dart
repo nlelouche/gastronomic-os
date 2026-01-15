@@ -16,6 +16,10 @@ import 'package:gastronomic_os/init/injection_container.dart';
 import 'package:gastronomic_os/core/theme/app_dimens.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'package:gastronomic_os/features/premium/presentation/pages/paywall_page.dart';
+import 'package:gastronomic_os/features/premium/presentation/bloc/subscription_cubit.dart';
+import 'package:gastronomic_os/features/premium/presentation/bloc/subscription_state.dart';
+
 import 'package:gastronomic_os/l10n/generated/app_localizations.dart';
 import 'package:gastronomic_os/core/bloc/localization_bloc.dart';
 
@@ -89,6 +93,32 @@ class _SettingsViewState extends State<SettingsView> {
                 padding: const EdgeInsets.all(AppDimens.paddingPage),
                 sliver: SliverList(
                   delegate: SliverChildListDelegate([
+                    
+                    // --- Premium Section ---
+                    BlocBuilder<SubscriptionCubit, SubscriptionState>(
+                      builder: (context, state) {
+                        debugPrint('Building Settings Premium Tile. State: $state'); // DEBUG
+                        final isPremium = state is SubscriptionPremium;
+                        return _buildSettingsTile(
+                          context,
+                          title: isPremium ? 'Manage Subscription' : 'Gastronomic PRO',
+                          subtitle: isPremium ? 'You are a Pro Chef!' : 'Unlock unlimited recipes & clinical features',
+                          icon: Icons.diamond_outlined,
+                          iconColor: Colors.amber,
+                          onTap: () {
+                             if (isPremium) {
+                               // TODO: Open Manage Subscription (Platform specific)
+                               ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Manage on Play Store / App Store')));
+                             } else {
+                               Navigator.of(context).push(
+                                 MaterialPageRoute(builder: (_) => const PaywallPage()),
+                               );
+                             }
+                          },
+                        ).animate().shimmer(duration: 2.seconds, delay: 1.seconds);
+                      },
+                    ),
+                    const SizedBox(height: AppDimens.spaceM),
                     
                     // --- Data Management Section ---
                     SectionHeader(title: AppLocalizations.of(context)!.settingsDataPrivacy.toUpperCase()), 

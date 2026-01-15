@@ -14,13 +14,24 @@ import 'package:gastronomic_os/l10n/generated/app_localizations.dart';
 import 'package:gastronomic_os/core/bloc/localization_bloc.dart';
 import 'package:gastronomic_os/core/bloc/theme_cubit.dart';
 import 'package:gastronomic_os/core/bloc/theme_state.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:gastronomic_os/core/services/ad_service.dart';
+import 'package:gastronomic_os/core/services/remote_config_service.dart';
+import 'package:gastronomic_os/core/services/iap_service.dart';
+import 'package:gastronomic_os/features/premium/presentation/bloc/subscription_cubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   
   // Initialize Supabase and other core services
+  await Firebase.initializeApp(); // Initialize Firebase
   await SupabaseInit.init();
   await di.init(); // Initialize Dependency Injection
+  
+  // Initialize Monetization Services
+  await di.sl<RemoteConfigService>().initialize();
+  await di.sl<AdService>().initialize();
+  await di.sl<IAPService>().initialize();
   
   runApp(const GastronomicOSApp());
 }
@@ -41,6 +52,9 @@ class GastronomicOSApp extends StatelessWidget {
         ),
         BlocProvider<ThemeCubit>(
           create: (_) => di.sl<ThemeCubit>(),
+        ),
+        BlocProvider<SubscriptionCubit>(
+          create: (_) => di.sl<SubscriptionCubit>(),
         ),
       ],
       child: BlocBuilder<ThemeCubit, ThemeState>(

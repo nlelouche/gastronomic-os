@@ -14,6 +14,7 @@ import 'package:gastronomic_os/features/planner/presentation/pages/planner_page.
 import 'package:gastronomic_os/features/recipes/presentation/pages/my_recipes_page.dart'; // Phase 3.2
 import 'package:gastronomic_os/features/social/presentation/pages/feed_page.dart'; // Phase 5
 import 'package:gastronomic_os/l10n/generated/app_localizations.dart';
+import 'package:gastronomic_os/features/recipes/domain/logic/action_guard.dart';
 
 class DashboardPage extends StatelessWidget {
   const DashboardPage({super.key});

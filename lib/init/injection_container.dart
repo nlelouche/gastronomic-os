@@ -37,6 +37,12 @@ import 'package:gastronomic_os/core/bloc/localization_bloc.dart';
 import 'package:gastronomic_os/features/recipes/domain/logic/recipe_debug_service.dart';
 import 'package:gastronomic_os/features/recipes/data/datasources/recipe_cache_service.dart'; 
 
+import 'package:gastronomic_os/core/services/ad_service.dart';
+import 'package:gastronomic_os/core/services/remote_config_service.dart';
+import 'package:gastronomic_os/core/services/analytics_service.dart';
+import 'package:gastronomic_os/core/services/iap_service.dart';
+import 'package:gastronomic_os/features/premium/presentation/bloc/subscription_cubit.dart';
+
 final sl = GetIt.instance;
 
 Future<void> init() async {
@@ -135,6 +141,14 @@ Future<void> init() async {
 
   sl.registerFactory(() => LocalizationBloc());
   sl.registerFactory(() => ThemeCubit());
+
+  // ! Monetization & Core Services (Phase 6)
+  sl.registerLazySingleton(() => AdService());
+  sl.registerLazySingleton(() => RemoteConfigService());
+  sl.registerLazySingleton(() => AnalyticsService());
+  sl.registerLazySingleton(() => IAPService());
+
+  sl.registerFactory(() => SubscriptionCubit(iapService: sl()));
 
   // ! External
   sl.registerLazySingleton(() => Supabase.instance.client);

@@ -4,6 +4,8 @@ import 'package:gastronomic_os/core/theme/app_dimens.dart';
 import 'package:gastronomic_os/features/social/presentation/bloc/social_bloc.dart';
 import 'package:gastronomic_os/features/social/presentation/widgets/feed_recipe_card.dart';
 import 'package:gastronomic_os/init/injection_container.dart';
+import 'package:gastronomic_os/core/services/remote_config_service.dart';
+import 'package:gastronomic_os/core/widgets/banner_ad_widget.dart';
 
 class FeedPage extends StatelessWidget {
   const FeedPage({super.key});
@@ -87,7 +89,21 @@ class _FeedViewState extends State<FeedView> {
                 controller: _scrollController,
                 padding: const EdgeInsets.all(AppDimens.spaceS),
                 itemCount: state.hasReachedMax ? state.items.length : state.items.length + 1,
-                separatorBuilder: (context, index) => const SizedBox(height: AppDimens.spaceM),
+                separatorBuilder: (context, index) {
+                  final frequency = sl<RemoteConfigService>().adFrequencyFeed;
+                  // debugPrint('Feed Separator: Index $index, Freq $frequency'); 
+                  if (frequency > 0 && (index + 1) % frequency == 0) {
+                    debugPrint('Injecting Ad at index $index'); // DEBUG
+                    return const Column(
+                      children: [
+                        SizedBox(height: AppDimens.spaceM),
+                        BannerAdWidget(),
+                        SizedBox(height: AppDimens.spaceM),
+                      ],
+                    );
+                  }
+                  return const SizedBox(height: AppDimens.spaceM);
+                },
                 itemBuilder: (context, index) {
                   if (index >= state.items.length) {
                     return const Center(child: Padding(
