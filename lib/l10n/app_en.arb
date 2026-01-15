@@ -412,5 +412,6 @@
   "forkRemixSuffix": "(Remix)",
   "smartForkNewTitleLabel": "New Recipe Title",
   "smartForkTitleHint": "e.g. Grandma's Secret Version",
-  "smartForkBtn": "Fork Recipe"
+  "smartForkBtn": "Fork Recipe",
+  "recipeTabSocial": "Reviews & Proofs"
 }

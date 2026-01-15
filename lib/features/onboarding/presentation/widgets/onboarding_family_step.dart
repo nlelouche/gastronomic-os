@@ -161,7 +161,8 @@ class OnboardingFamilyStep extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                       // --- Field 0: Avatar ---
+                       _buildPrimaryCookOption(context, member, bloc, dialogContext),
+                       
                        // --- Field 0: Avatar ---
                        AvatarSelector(
                          currentAvatarPath: selectedAvatar,
@@ -285,6 +286,8 @@ class OnboardingFamilyStep extends StatelessWidget {
                         primaryDiet: selectedPrimaryDiet,
                         medicalConditions: selectedConditions,
                         avatarPath: selectedAvatar,
+                        isVerifiedChef: member?.isVerifiedChef ?? false,
+                        isPrimaryCook: member?.isPrimaryCook ?? false,
                       );
                       
                       if (member != null) {
@@ -302,6 +305,40 @@ class OnboardingFamilyStep extends StatelessWidget {
           },
         );
       },
+    );
+  }
+
+  Widget _buildPrimaryCookOption(BuildContext context, FamilyMember? member, OnboardingBloc bloc, BuildContext dialogContext) {
+    if (member == null) return const SizedBox.shrink();
+    if (member.isPrimaryCook) {
+      return Container(
+        margin: const EdgeInsets.only(bottom: AppDimens.spaceL),
+        padding: const EdgeInsets.all(AppDimens.spaceM),
+        decoration: BoxDecoration(
+          color: Colors.amber.withOpacity(0.1),
+          borderRadius: BorderRadius.circular(AppDimens.radiusM),
+          border: Border.all(color: Colors.amber),
+        ),
+        child: Row(
+          children: [
+            const Icon(Icons.star, color: Colors.amber),
+            const SizedBox(width: AppDimens.spaceM),
+            Expanded(child: Text("Primary Chef", style: TextStyle(color: Colors.amber[800], fontWeight: FontWeight.bold))),
+          ],
+        ),
+      );
+    }
+    
+    return Container(
+       margin: const EdgeInsets.only(bottom: AppDimens.spaceL),
+       child: OutlinedButton.icon(
+          onPressed: () {
+             bloc.add(SetPrimaryCookEvent(member.id));
+             Navigator.pop(dialogContext); // Close dialog to refresh
+          },
+          icon: const Icon(Icons.star_border, color: Colors.amber),
+          label: const Text("Make Primary Chef"),
+       ),
     );
   }
 }

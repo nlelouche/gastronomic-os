@@ -28,6 +28,10 @@ import 'package:gastronomic_os/features/recipes/presentation/widgets/add_to_coll
 import 'package:gastronomic_os/l10n/generated/app_localizations.dart';
 import 'package:gastronomic_os/core/theme/app_dimens.dart';
 
+import 'package:gastronomic_os/features/social/presentation/bloc/recipe_social/recipe_social_bloc.dart';
+import 'package:gastronomic_os/features/social/presentation/bloc/recipe_social/recipe_social_event.dart';
+import 'package:gastronomic_os/features/social/presentation/widgets/recipe_social_tab.dart'; // Add widget import
+
 class RecipeDetailPage extends StatelessWidget {
   final String recipeId;
   final Recipe? recipe;
@@ -42,8 +46,15 @@ class RecipeDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => sl<RecipeBloc>()..add(LoadRecipeDetails(recipeId)),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => sl<RecipeBloc>()..add(LoadRecipeDetails(recipeId)),
+        ),
+        BlocProvider(
+          create: (context) => sl<RecipeSocialBloc>()..add(LoadRecipeSocialData(recipeId)),
+        ),
+      ],
       child: RecipeDetailView(recipeId: recipeId, initialRecipe: recipe, isModal: isModal),
     );
   }
@@ -182,7 +193,7 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
             final filteredIngredients = fullRecipe.getIngredientsForProfile(familyTags.toList());
 
             return DefaultTabController(
-              length: 2,
+              length: 3,
               child: NestedScrollView(
                 headerSliverBuilder: (context, innerBoxIsScrolled) => [
                   SliverAppBar(
@@ -233,6 +244,7 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
                       tabs: [
                         Tab(text: l10n.recipeIngredientsTitle),
                         Tab(text: l10n.recipeInstructionsTitle),
+                        Tab(text: l10n.recipeTabSocial),
                       ],
                     ),
                     actions: [
@@ -384,6 +396,7 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
                         ],
                       ),
                     ),
+                    RecipeSocialTab(recipeId: fullRecipe.id), // Add Social Tab
                   ],
                 ),
               ),

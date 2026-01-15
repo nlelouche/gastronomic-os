@@ -24,6 +24,15 @@ import 'package:gastronomic_os/features/planner/domain/repositories/i_meal_plan_
 import 'package:gastronomic_os/features/planner/data/repositories/meal_plan_repository_impl.dart';
 import 'package:gastronomic_os/features/planner/presentation/bloc/planner_bloc.dart';
 import 'package:gastronomic_os/features/planner/domain/logic/shopping_engine.dart';
+
+import 'package:gastronomic_os/features/social/domain/repositories/social_repository.dart';
+import 'package:gastronomic_os/features/social/data/repositories/social_repository_impl.dart';
+import 'package:gastronomic_os/features/social/domain/usecases/get_reviews.dart';
+import 'package:gastronomic_os/features/social/domain/usecases/add_review.dart';
+import 'package:gastronomic_os/features/social/domain/usecases/get_cook_proofs.dart';
+import 'package:gastronomic_os/features/social/domain/usecases/add_cook_proof.dart';
+import 'package:gastronomic_os/features/social/presentation/bloc/recipe_social/recipe_social_bloc.dart';
+
 import 'package:gastronomic_os/core/bloc/localization_bloc.dart';
 import 'package:gastronomic_os/features/recipes/domain/logic/recipe_debug_service.dart';
 import 'package:gastronomic_os/features/recipes/data/datasources/recipe_cache_service.dart'; 
@@ -109,6 +118,21 @@ Future<void> init() async {
     inventoryRepository: sl(),
     shoppingEngine: sl(),
   ));
+
+  // ! Social Recipe Interactions (Phase 5)
+  sl.registerLazySingleton<ISocialRepository>(() => SocialRepositoryImpl(supabaseClient: sl()));
+  sl.registerLazySingleton(() => GetReviews(sl()));
+  sl.registerLazySingleton(() => AddReview(sl()));
+  sl.registerLazySingleton(() => GetCookProofs(sl()));
+  sl.registerLazySingleton(() => AddCookProof(sl()));
+  
+  sl.registerFactory(() => RecipeSocialBloc(
+    getReviews: sl(),
+    addReview: sl(),
+    getCookProofs: sl(),
+    addCookProof: sl(),
+  ));
+
   sl.registerFactory(() => LocalizationBloc());
   sl.registerFactory(() => ThemeCubit());
 

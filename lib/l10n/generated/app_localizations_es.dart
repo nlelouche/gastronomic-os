@@ -1378,4 +1378,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get smartForkBtn => 'Derivar Receta';
+
+  @override
+  String get recipeTabSocial => 'Reviews & Proofs';
 }

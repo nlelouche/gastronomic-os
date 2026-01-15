@@ -73,8 +73,48 @@ class OnboardingRepositoryImpl implements IOnboardingRepository {
   }
 
   @override
+  Future<(Failure?, void)> setPrimaryCook(String memberId) async {
+    try {
+      await remoteDataSource.setPrimaryCook(memberId);
+      return (null, null);
+    } catch (e, stackTrace) {
+      final failure = ExceptionHandler.handle(
+        e,
+        stackTrace: stackTrace,
+        context: ErrorContext.repository('setPrimaryCook'),
+      );
+      await ErrorReporter.instance.reportError(failure);
+      return (failure, null);
+    }
+  }
+
+  @override
   Future<(Failure?, List<FamilyMember>?)> getFamilyMembers() async {
     try {
+      // 1. Try Table Source (Source of Truth for Social/Primary)
+      final tableMembers = await remoteDataSource.getFamilyMembersFromTable();
+      if (tableMembers.isNotEmpty) {
+        final members = tableMembers.map((m) => FamilyMember(
+          id: m['id'] ?? '',
+          name: m['name'] ?? '',
+          role: _stringToRoleEnum(m['role']),
+          primaryDiet: _stringToDietEnum(m['primary_diet']),
+          medicalConditions: (m['medical_conditions'] as List?)
+              ?.map((e) => _stringToMedicalEnum(e.toString()))
+              .whereType<MedicalCondition>()
+              .toList() ?? [],
+          avatarPath: m['avatar_path'],
+          isVerifiedChef: m['is_verified_chef'] ?? false,
+          isPrimaryCook: m['is_primary_cook'] ?? false,
+        )).toList();
+        
+        // Sort: Primary Cook first
+        members.sort((a, b) => (b.isPrimaryCook ? 1 : 0) - (a.isPrimaryCook ? 1 : 0));
+        
+        return (null, members);
+      }
+
+      // 2. Fallback to JSON Profile Config (Legacy)
       final config = await remoteDataSource.getProfileConfig();
       if (config != null && config['members'] != null) {
         final membersList = config['members'] as List;
@@ -88,6 +128,9 @@ class OnboardingRepositoryImpl implements IOnboardingRepository {
               .whereType<MedicalCondition>()
               .toList() ?? [],
           avatarPath: m['avatar_path'],
+          // Default false for legacy
+          isVerifiedChef: false,
+          isPrimaryCook: false,
         )).toList();
         return (null, members);
       }

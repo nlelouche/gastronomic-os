@@ -2413,6 +2413,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Fork Recipe'**
   String get smartForkBtn;
+
+  /// No description provided for @recipeTabSocial.
+  ///
+  /// In en, this message translates to:
+  /// **'Reviews & Proofs'**
+  String get recipeTabSocial;
 }
 
 class _AppLocalizationsDelegate

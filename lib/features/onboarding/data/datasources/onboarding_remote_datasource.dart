@@ -6,6 +6,8 @@ abstract class OnboardingRemoteDataSource {
   Future<void> updateProfileConfig(Map<String, dynamic> config);
   Future<Map<String, dynamic>?> getProfileConfig();
   Future<void> resetProfileConfig();
+  Future<void> setPrimaryCook(String memberId);
+  Future<List<Map<String, dynamic>>> getFamilyMembersFromTable();
 }
 
 class OnboardingRemoteDataSourceImpl implements OnboardingRemoteDataSource {
@@ -58,6 +60,32 @@ class OnboardingRemoteDataSourceImpl implements OnboardingRemoteDataSource {
           .eq('id', user.id);
     } catch (e) {
       throw Exception('Datasource operation failed');
+    }
+  }
+
+  @override
+  Future<void> setPrimaryCook(String memberId) async {
+    try {
+      await supabaseClient.rpc('set_primary_cook', params: {'target_member_id': memberId});
+    } catch (e) {
+      throw Exception('Datasource operation failed: $e');
+    }
+  }
+
+  @override
+  Future<List<Map<String, dynamic>>> getFamilyMembersFromTable() async {
+    try {
+      final user = supabaseClient.auth.currentUser;
+      if (user == null) return [];
+
+      final response = await supabaseClient
+          .from('family_members')
+          .select()
+          .eq('user_id', user.id);
+      
+      return List<Map<String, dynamic>>.from(response);
+    } catch (e) {
+      return [];
     }
   }
 }

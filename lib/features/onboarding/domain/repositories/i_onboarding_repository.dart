@@ -7,4 +7,5 @@ abstract class IOnboardingRepository {
   Future<(Failure?, bool)> hasCompletedOnboarding();
   Future<(Failure?, void)> resetOnboarding();
   Future<(Failure?, List<FamilyMember>?)> getFamilyMembers();
+  Future<(Failure?, void)> setPrimaryCook(String memberId);
 }

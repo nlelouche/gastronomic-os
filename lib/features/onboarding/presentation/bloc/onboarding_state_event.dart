@@ -30,6 +30,13 @@ class RemoveFamilyMember extends OnboardingEvent {
   List<Object> get props => [id];
 }
 
+class SetPrimaryCookEvent extends OnboardingEvent {
+  final String memberId;
+  const SetPrimaryCookEvent(this.memberId);
+  @override
+  List<Object> get props => [memberId];
+}
+
 class SubmitOnboarding extends OnboardingEvent {}
 
 class ResetOnboarding extends OnboardingEvent {}

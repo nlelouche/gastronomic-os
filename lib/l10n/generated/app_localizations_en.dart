@@ -1377,4 +1377,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get smartForkBtn => 'Fork Recipe';
+
+  @override
+  String get recipeTabSocial => 'Reviews & Proofs';
 }

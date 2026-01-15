@@ -165,14 +165,48 @@ class FamilyMemberCard extends StatelessWidget {
       );
     }
 
-    return Container(
-      width: AppDimens.avatarSizeL,
-      height: AppDimens.avatarSizeL,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        border: Border.all(color: avatarColor, width: 2),
-      ),
-      child: ClipOval(child: imageContent),
+    return Stack(
+      alignment: Alignment.center,
+      children: [
+        Container(
+          width: AppDimens.avatarSizeL,
+          height: AppDimens.avatarSizeL,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            border: Border.all(color: avatarColor, width: 2),
+            boxShadow: member.isPrimaryCook ? [
+               BoxShadow(color: Colors.amber.withOpacity(0.5), blurRadius: 8, spreadRadius: 2)
+            ] : null,
+          ),
+          child: ClipOval(child: imageContent),
+        ),
+        if (member.isPrimaryCook)
+          Positioned(
+            top: 0,
+            right: 0,
+            child: Container(
+              padding: const EdgeInsets.all(4),
+              decoration: const BoxDecoration(
+                color: Colors.amber,
+                shape: BoxShape.circle,
+              ),
+              child: const Icon(Icons.star, color: Colors.white, size: 12),
+            ),
+          ),
+        if (member.isVerifiedChef)
+          Positioned(
+            bottom: 0,
+            right: 0,
+            child: Container(
+              padding: const EdgeInsets.all(4),
+              decoration: const BoxDecoration(
+                color: Colors.blue,
+                shape: BoxShape.circle,
+              ),
+              child: const Icon(Icons.verified, color: Colors.white, size: 12),
+            ),
+          ),
+      ],
     );
   }
 }

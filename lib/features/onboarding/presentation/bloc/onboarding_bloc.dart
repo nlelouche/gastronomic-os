@@ -35,6 +35,19 @@ class OnboardingBloc extends Bloc<OnboardingEvent, OnboardingState> {
       emit(OnboardingUpdated(members: updatedMembers));
     });
 
+
+
+    on<SetPrimaryCookEvent>((event, emit) async {
+       emit(OnboardingLoading(members: state.members));
+       final result = await repository.setPrimaryCook(event.memberId);
+       
+       if (result.$1 != null) {
+         emit(OnboardingError(result.$1!.message, members: state.members));
+       } else {
+         add(LoadFamilyMembers()); 
+       }
+    });
+
     on<SubmitOnboarding>((event, emit) async {
       emit(OnboardingLoading(members: state.members));
       final result = await repository.saveFamilyConfig(members: state.members);
@@ -52,9 +65,8 @@ class OnboardingBloc extends Bloc<OnboardingEvent, OnboardingState> {
       if (result.$1 != null) {
         emit(OnboardingError(result.$1!.message, members: state.members));
       } else {
-        // Reset local state to empty
         emit(const OnboardingInitial());
       }
     });
-  }
-}
+  } // Close Constructor
+} // Close Class
