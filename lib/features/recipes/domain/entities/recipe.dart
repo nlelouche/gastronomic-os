@@ -5,6 +5,7 @@ import 'recipe_step.dart';
 class Recipe extends Equatable {
   final String id;
   final String authorId;
+  final String? createdByMemberId; // The Family Chef
   final String? originId;
   final bool isFork;
   final String title;
@@ -29,6 +30,7 @@ class Recipe extends Equatable {
   const Recipe({
     required this.id,
     required this.authorId,
+    this.createdByMemberId,
     this.originId,
     this.isFork = false,
     required this.title,
@@ -107,6 +109,7 @@ class Recipe extends Equatable {
   Recipe copyWith({
     String? id,
     String? authorId,
+    String? createdByMemberId,
     String? originId,
     bool? isFork,
     String? title,
@@ -127,6 +130,7 @@ class Recipe extends Equatable {
     return Recipe(
       id: id ?? this.id,
       authorId: authorId ?? this.authorId,
+      createdByMemberId: createdByMemberId ?? this.createdByMemberId,
       originId: originId ?? this.originId,
       isFork: isFork ?? this.isFork,
       title: title ?? this.title,
@@ -148,7 +152,7 @@ class Recipe extends Equatable {
 
   @override
   List<Object?> get props => [
-    id, authorId, originId, isFork, title, description, coverPhotoUrl, isPublic, createdAt, 
+    id, authorId, createdByMemberId, originId, isFork, title, description, coverPhotoUrl, isPublic, createdAt, 
     ingredients, steps, tags, dietTags, titleEn, descriptionEn, ingredientsEn, stepsEn
   ];
 }

@@ -2,6 +2,7 @@ import 'package:gastronomic_os/core/error/failures.dart';
 import 'package:gastronomic_os/features/recipes/domain/entities/recipe.dart';
 import 'package:gastronomic_os/features/recipes/domain/entities/commit.dart';
 import 'package:gastronomic_os/features/recipes/domain/entities/recipe_collection.dart';
+import 'package:gastronomic_os/features/social/domain/entities/social_feed_item.dart';
 
 abstract class IRecipeRepository {
   // Recipes
@@ -45,4 +46,7 @@ abstract class IRecipeRepository {
   Future<(Failure?, void)> addToCollection(String recipeId, String collectionId);
   Future<(Failure?, void)> removeFromCollection(String recipeId, String collectionId);
   Future<(Failure?, void)> deleteCollection(String collectionId);
+  // Social & Feed (Phase 5)
+  Future<(Failure?, List<SocialFeedItem>?)> getPublicFeed({int limit = 10, int offset = 0});
+  Future<(Failure?, void)> toggleLike(String recipeId);
 }

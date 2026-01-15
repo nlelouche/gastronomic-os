@@ -3,60 +3,46 @@ import 'package:gastronomic_os/features/recipes/domain/entities/recipe_step.dart
 import 'package:gastronomic_os/features/recipes/data/models/recipe_step_model.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-part 'recipe_model.g.dart';
+// part 'recipe_model.g.dart'; // Disabled for manual override
 
-@JsonSerializable()
 class RecipeModel extends Recipe {
   @override
-  @JsonKey(name: 'author_id')
   final String authorId;
   @override
-  @JsonKey(name: 'cover_photo_url')
+  final String? createdByMemberId;
+  @override
   final String? coverPhotoUrl;
   @override
-  @JsonKey(name: 'origin_id')
   final String? originId;
   @override
-  @JsonKey(name: 'is_fork')
   final bool isFork;
   @override
-  @JsonKey(name: 'is_public')
   final bool isPublic;
   @override
-  @JsonKey(name: 'created_at')
   final DateTime createdAt;
   @override
   final List<String> ingredients;
   @override
-  @JsonKey(name: 'steps')
-  @_RecipeStepListConverter()
   final List<RecipeStep> steps;
   @override
-  @JsonKey(name: 'tags')
   final List<String> tags;
   @override
-  @override
-  @JsonKey(name: 'diet_tags')
   final List<String> dietTags;
   
   // Translations
   @override
-  @JsonKey(name: 'title_en')
   final String? titleEn;
   @override
-  @JsonKey(name: 'description_en')
   final String? descriptionEn;
   @override
-  @JsonKey(name: 'ingredients_en')
   final List<String>? ingredientsEn;
   @override
-  @JsonKey(name: 'steps_en')
-  @_RecipeStepListConverter()
   final List<RecipeStep>? stepsEn;
 
   const RecipeModel({
     required String id,
     required this.authorId,
+    this.createdByMemberId,
     this.originId,
     this.isFork = false,
     required String title,
@@ -76,6 +62,7 @@ class RecipeModel extends Recipe {
   }) : super(
           id: id,
           authorId: authorId,
+          createdByMemberId: createdByMemberId,
           originId: originId,
           isFork: isFork ?? false,
           title: title,
@@ -97,6 +84,7 @@ class RecipeModel extends Recipe {
   RecipeModel copyWith({
     String? id,
     String? authorId,
+    String? createdByMemberId,
     String? originId,
     bool? isFork,
     String? title,
@@ -117,6 +105,7 @@ class RecipeModel extends Recipe {
     return RecipeModel(
       id: id ?? this.id,
       authorId: authorId ?? this.authorId,
+      createdByMemberId: createdByMemberId ?? this.createdByMemberId,
       originId: originId ?? this.originId,
       isFork: isFork ?? this.isFork,
       title: title ?? this.title,
@@ -136,8 +125,53 @@ class RecipeModel extends Recipe {
     );
   }
 
-  factory RecipeModel.fromJson(Map<String, dynamic> json) => _$RecipeModelFromJson(json);
-  Map<String, dynamic> toJson() => _$RecipeModelToJson(this);
+  factory RecipeModel.fromJson(Map<String, dynamic> json) {
+    return RecipeModel(
+      id: json['id'] as String,
+      authorId: json['author_id'] as String,
+      createdByMemberId: json['created_by_member_id'] as String?,
+      originId: json['origin_id'] as String?,
+      isFork: json['is_fork'] as bool? ?? false,
+      title: json['title'] as String,
+      description: json['description'] as String?,
+      coverPhotoUrl: json['cover_photo_url'] as String?,
+      isPublic: json['is_public'] as bool? ?? false,
+      createdAt: DateTime.parse(json['created_at'] as String),
+      ingredients: (json['ingredients'] as List<dynamic>?)?.map((e) => e as String).toList() ?? [],
+      steps: const _RecipeStepListConverter().fromJson(json['steps'] as List<dynamic>? ?? []),
+      tags: (json['tags'] as List<dynamic>?)?.map((e) => e as String).toList() ?? [],
+      dietTags: (json['diet_tags'] as List<dynamic>?)?.map((e) => e as String).toList() ?? [],
+      titleEn: json['title_en'] as String?,
+      descriptionEn: json['description_en'] as String?,
+      ingredientsEn: (json['ingredients_en'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      stepsEn: json['steps_en'] != null ? const _RecipeStepListConverter().fromJson(json['steps_en'] as List<dynamic>) : null,
+      matchScore: (json['matchScore'] as num?)?.toDouble(),
+    );
+  }
+  
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'author_id': authorId,
+      'created_by_member_id': createdByMemberId,
+      'origin_id': originId,
+      'is_fork': isFork,
+      'title': title,
+      'description': description,
+      'cover_photo_url': coverPhotoUrl,
+      'is_public': isPublic,
+      'created_at': createdAt.toIso8601String(),
+      'ingredients': ingredients,
+      'steps': const _RecipeStepListConverter().toJson(steps),
+      'tags': tags,
+      'diet_tags': dietTags,
+      'title_en': titleEn,
+      'description_en': descriptionEn,
+      'ingredients_en': ingredientsEn,
+      'steps_en': stepsEn != null ? const _RecipeStepListConverter().toJson(stepsEn!) : null,
+      'matchScore': matchScore,
+    };
+  }
 }
 
 class _RecipeStepListConverter implements JsonConverter<List<RecipeStep>, List<dynamic>> {

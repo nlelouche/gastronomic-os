@@ -13,6 +13,7 @@ import 'package:gastronomic_os/features/recipes/domain/entities/commit.dart';
 import 'package:gastronomic_os/features/recipes/domain/repositories/i_recipe_repository.dart';
 import 'package:gastronomic_os/features/recipes/domain/entities/commit.dart';
 import 'package:gastronomic_os/features/recipes/domain/entities/recipe_collection.dart';
+import 'package:gastronomic_os/features/social/domain/entities/social_feed_item.dart'; // NEW
 import 'package:gastronomic_os/features/recipes/domain/repositories/i_recipe_repository.dart';
 import 'package:supabase_flutter/supabase_flutter.dart'; 
 import 'package:gastronomic_os/features/planner/domain/logic/scoring_engine.dart'; // NEW 
@@ -415,6 +416,27 @@ class RecipeRepositoryImpl implements IRecipeRepository {
       return (null, null);
     } catch (e, s) {
       return (ExceptionHandler.handle(e, stackTrace: s, context: ErrorContext.repository('deleteCollection')), null);
+    }
+  }
+
+  // Phase 5: Social Feed
+  @override
+  Future<(Failure?, List<SocialFeedItem>?)> getPublicFeed({int limit = 10, int offset = 0}) async {
+    try {
+      final result = await remoteDataSource.getPublicFeed(limit: limit, offset: offset);
+      return (null, result);
+    } catch (e, s) {
+      return (ExceptionHandler.handle(e, stackTrace: s, context: ErrorContext.repository('getPublicFeed')), null);
+    }
+  }
+
+  @override
+  Future<(Failure?, void)> toggleLike(String recipeId) async {
+    try {
+      await remoteDataSource.toggleLike(recipeId);
+      return (null, null);
+    } catch (e, s) {
+       return (ExceptionHandler.handle(e, stackTrace: s, context: ErrorContext.repository('toggleLike')), null);
     }
   }
 }

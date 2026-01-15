@@ -12,6 +12,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:gastronomic_os/features/planner/presentation/pages/planner_page.dart';
 import 'package:gastronomic_os/features/planner/presentation/pages/planner_page.dart';
 import 'package:gastronomic_os/features/recipes/presentation/pages/my_recipes_page.dart'; // Phase 3.2
+import 'package:gastronomic_os/features/social/presentation/pages/feed_page.dart'; // Phase 5
 import 'package:gastronomic_os/l10n/generated/app_localizations.dart';
 
 class DashboardPage extends StatelessWidget {
@@ -178,8 +179,8 @@ class DashboardPage extends StatelessWidget {
                         color: colorScheme.error, // or another slot like surfaceTint if defined
                         delay: 600.ms,
                         onTap: () {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text(AppLocalizations.of(context)!.socialComingSoon)),
+                          Navigator.of(context).push(
+                            MaterialPageRoute(builder: (context) => const FeedPage()),
                           );
                         },
                       ),

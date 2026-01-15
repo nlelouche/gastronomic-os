@@ -141,7 +141,7 @@ class _SuggestionCard extends StatelessWidget {
         padding: EdgeInsets.zero,
         onTap: () {
           Navigator.of(context).push(
-            MaterialPageRoute(builder: (_) => RecipeDetailPage(recipe: recipe)),
+            MaterialPageRoute(builder: (_) => RecipeDetailPage(recipeId: recipe.id, recipe: recipe)),
           );
         },
         child: Column(

@@ -7,6 +7,7 @@ import 'package:gastronomic_os/features/recipes/data/models/recipe_collection_mo
 import 'package:gastronomic_os/features/recipes/data/models/recipe_model.dart';
 import 'package:gastronomic_os/features/recipes/data/models/commit_model.dart';
 import 'package:gastronomic_os/features/recipes/data/models/recipe_step_model.dart';
+import 'package:gastronomic_os/features/social/data/models/social_feed_item_model.dart'; // New Import
 import 'package:gastronomic_os/features/recipes/domain/entities/recipe.dart'; 
 
 abstract class RecipeRemoteDataSource {
@@ -45,6 +46,10 @@ abstract class RecipeRemoteDataSource {
   Future<void> addToCollection(String recipeId, String collectionId);
   Future<void> removeFromCollection(String recipeId, String collectionId);
   Future<void> deleteCollection(String collectionId);
+
+  // Phase 5: Social Feed
+  Future<List<SocialFeedItemModel>> getPublicFeed({int limit = 10, int offset = 0});
+  Future<void> toggleLike(String recipeId);
 }
 
 
@@ -226,14 +231,73 @@ class RecipeRemoteDataSourceImpl implements RecipeRemoteDataSource {
             .eq('id', recipeId);
         AppLogger.d('   ✅ Tags updated in DB.');
       } else {
-        // 3. Insert New Recipe (using enrichedTags)
+        // 3. Get or create family member for created_by_member_id
+        String? createdByMemberId;
+        try {
+          // First, try to get existing family member
+          final memberResponse = await supabaseClient
+              .from('family_members')
+              .select('id')
+              .eq('user_id', currentUserId)
+              .order('created_at', ascending: true)
+              .limit(1)
+              .maybeSingle();
+          
+          if (memberResponse != null) {
+            createdByMemberId = memberResponse['id'];
+            AppLogger.d('✅ Found existing family member: $createdByMemberId');
+          } else {
+            // No family_members entry, check profiles.family_config
+            AppLogger.d('⚠️ No family_members found, checking profiles.family_config...');
+            final profileResponse = await supabaseClient
+                .from('profiles')
+                .select('family_config')
+                .eq('id', currentUserId)
+                .maybeSingle();
+            
+            if (profileResponse != null && profileResponse['family_config'] != null) {
+              final familyConfig = profileResponse['family_config'] as Map<String, dynamic>;
+              final members = familyConfig['members'] as List?;
+              
+              if (members != null && members.isNotEmpty) {
+                // Create family_member entry from first member in config
+                final firstMember = members[0] as Map<String, dynamic>;
+                final memberData = {
+                  'user_id': currentUserId,
+                  'name': firstMember['name'] ?? 'Chef',
+                  'primary_diet': firstMember['diet'] ?? 'omnivore',
+                  'medical_conditions': firstMember['conditions'] ?? [],
+                  'avatar_path': firstMember['avatar'],
+                };
+                
+                final newMemberResponse = await supabaseClient
+                    .from('family_members')
+                    .insert(memberData)
+                    .select('id')
+                    .single();
+                
+                createdByMemberId = newMemberResponse['id'];
+                AppLogger.d('✅ Created family_member from profile config: $createdByMemberId');
+              } else {
+                AppLogger.w('⚠️ No members in family_config');
+              }
+            } else {
+              AppLogger.w('⚠️ No family_config found for user');
+            }
+          }
+        } catch (e, s) {
+          AppLogger.e('Error fetching/creating family member for recipe creation', e, s);
+        }
+        
+        // 4. Insert New Recipe (using enrichedTags and created_by_member_id)
         final recipeData = {
           'title': recipe.title,
           'description': recipe.description,
-          'tags': enrichedTags, // ✅ Save enriched tags
+          'tags': enrichedTags,
           'is_public': recipe.isPublic,
-          'cover_photo_url': recipe.coverPhotoUrl, // Add field
+          'cover_photo_url': recipe.coverPhotoUrl,
           'author_id': currentUserId,
+          'created_by_member_id': createdByMemberId,
         };
 
         final recipeResponse = await supabaseClient
@@ -762,6 +826,55 @@ class RecipeRemoteDataSourceImpl implements RecipeRemoteDataSource {
           .delete()
           .eq('id', collectionId);
     } catch (e) {
+      throw Exception('Datasource operation failed');
+    }
+  }
+
+  // Phase 5: Social Feed Implementation
+  @override
+  Future<List<SocialFeedItemModel>> getPublicFeed({int limit = 10, int offset = 0}) async {
+    try {
+      final response = await supabaseClient
+          .from('recipe_feed_view')
+          .select()
+          .range(offset, offset + limit - 1)
+          .order('created_at', ascending: false);
+      
+      return (response as List).map((doc) => SocialFeedItemModel.fromJson(doc)).toList();
+    } catch (e, s) {
+      AppLogger.e('Error fetching public feed', e, s);
+      throw Exception('Datasource operation failed');
+    }
+  }
+
+  @override
+  Future<void> toggleLike(String recipeId) async {
+    try {
+      final userId = supabaseClient.auth.currentUser!.id;
+
+      // Check existence
+      final existing = await supabaseClient
+          .from('likes')
+          .select()
+          .eq('user_id', userId)
+          .eq('recipe_id', recipeId)
+          .maybeSingle();
+
+      if (existing != null) {
+        // Unlike
+        await supabaseClient
+            .from('likes')
+            .delete()
+            .eq('user_id', userId)
+            .eq('recipe_id', recipeId);
+      } else {
+        // Like
+        await supabaseClient
+            .from('likes')
+            .insert({'user_id': userId, 'recipe_id': recipeId});
+      }
+    } catch (e, s) {
+      AppLogger.e('Error toggling like', e, s);
       throw Exception('Datasource operation failed');
     }
   }

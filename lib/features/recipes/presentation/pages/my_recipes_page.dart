@@ -230,7 +230,7 @@ class _RecipeList extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (_) => RecipeDetailPage(recipe: recipe)),
+                MaterialPageRoute(builder: (_) => RecipeDetailPage(recipeId: recipe.id, recipe: recipe)),
               ).then((_) {
                  // Refresh on return (in case of edit/delete/unsave)
                  if (context.mounted) {

@@ -8,7 +8,10 @@ import 'package:gastronomic_os/features/inventory/presentation/bloc/inventory_bl
 import 'package:gastronomic_os/features/recipes/data/datasources/recipe_remote_datasource.dart';
 import 'package:gastronomic_os/features/recipes/data/repositories/recipe_repository_impl.dart';
 import 'package:gastronomic_os/features/recipes/domain/repositories/i_recipe_repository.dart';
-import 'package:gastronomic_os/features/recipes/presentation/bloc/recipe_bloc.dart';
+import 'package:gastronomic_os/features/recipes/presentation/bloc/recipe_bloc.dart'; // ADDED THIS IMPORT
+import 'package:gastronomic_os/features/social/domain/usecases/get_public_feed.dart';
+import 'package:gastronomic_os/features/social/domain/usecases/toggle_like.dart';
+import 'package:gastronomic_os/features/social/presentation/bloc/social_bloc.dart';
 import 'package:gastronomic_os/features/recipes/presentation/bloc/my_recipes_cubit.dart';
 import 'package:gastronomic_os/features/recipes/presentation/bloc/collections/collections_bloc.dart';
 import 'package:gastronomic_os/features/recipes/domain/usecases/manage_collections.dart';
@@ -23,7 +26,7 @@ import 'package:gastronomic_os/features/planner/presentation/bloc/planner_bloc.d
 import 'package:gastronomic_os/features/planner/domain/logic/shopping_engine.dart';
 import 'package:gastronomic_os/core/bloc/localization_bloc.dart';
 import 'package:gastronomic_os/features/recipes/domain/logic/recipe_debug_service.dart';
-import 'package:gastronomic_os/features/recipes/data/datasources/recipe_cache_service.dart'; // NEW
+import 'package:gastronomic_os/features/recipes/data/datasources/recipe_cache_service.dart'; 
 
 final sl = GetIt.instance;
 
@@ -44,8 +47,12 @@ Future<void> init() async {
   sl.registerLazySingleton(() => RemoveFromCollection(sl()));
   sl.registerLazySingleton(() => DeleteCollection(sl()));
 
+  // Social (Phase 5)
+  sl.registerLazySingleton(() => GetPublicFeed(sl()));
+  sl.registerLazySingleton(() => ToggleLike(sl()));
+
   // Data sources
-  sl.registerLazySingleton(() => RecipeCacheService()); // NEW
+  sl.registerLazySingleton(() => RecipeCacheService()); 
   sl.registerLazySingleton<InventoryRemoteDataSource>(
     () => InventoryRemoteDataSourceImpl(supabaseClient: sl()),
   );
@@ -68,6 +75,10 @@ Future<void> init() async {
     addToCollection: sl(),
     removeFromCollection: sl(),
     deleteCollection: sl(),
+  ));
+  sl.registerFactory(() => SocialBloc(
+    getPublicFeed: sl(),
+    toggleLike: sl(),
   ));
   sl.registerFactory(() => OnboardingBloc(repository: sl()));
 

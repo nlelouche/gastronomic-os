@@ -148,6 +148,7 @@ class _PlannerPageState extends State<PlannerPage> {
                                 ],
                               ),
                               body: RecipeDetailPage(
+                                recipeId: plan.recipe!.id,
                                 recipe: plan.recipe!,
                                 isModal: true, // Optional: Pass flag if we want slight UI variations for modal
                               ),

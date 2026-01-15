@@ -56,7 +56,7 @@ class CollectionDetailPage extends StatelessWidget {
                      onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (_) => RecipeDetailPage(recipe: recipes[index])),
+                          MaterialPageRoute(builder: (_) => RecipeDetailPage(recipeId: recipes[index].id, recipe: recipes[index])),
                         );
                      }
                    );

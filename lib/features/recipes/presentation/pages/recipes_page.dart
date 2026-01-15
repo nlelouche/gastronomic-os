@@ -342,7 +342,7 @@ class _RecipesViewState extends State<RecipesView> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => RecipeDetailPage(recipe: recipe),
+        builder: (context) => RecipeDetailPage(recipeId: recipe.id, recipe: recipe),
       ),
     ).then((result) {
       if ((result == true) && context.mounted) {
