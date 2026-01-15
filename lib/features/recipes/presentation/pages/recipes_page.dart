@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gastronomic_os/core/theme/app_dimens.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:gastronomic_os/core/widgets/ui_kit.dart';
@@ -13,6 +14,7 @@ import 'package:gastronomic_os/init/injection_container.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:gastronomic_os/l10n/generated/app_localizations.dart';
 import 'package:gastronomic_os/core/widgets/action_guard.dart';
+import 'package:gastronomic_os/core/widgets/banner_ad_widget.dart';
 
 class RecipesPage extends StatelessWidget {
   final String? initialQuery;
@@ -261,11 +263,18 @@ class _RecipesViewState extends State<RecipesView> {
                                controller: _scrollController,
                                padding: const EdgeInsets.all(AppDimens.spaceL),
                                itemCount: state.hasReachedMax 
-                                  ? state.recipes.length 
-                                  : state.recipes.length + 1,
+                                  ? state.recipes.length + (state.recipes.length ~/ 5) 
+                                  : state.recipes.length + (state.recipes.length ~/ 5) + 1,
                                separatorBuilder: (_, __) => const SizedBox(height: AppDimens.spaceL),
                                itemBuilder: (context, index) {
-                                  if (index >= state.recipes.length) {
+                                  // Ad logic
+                                  if ((index + 1) % 6 == 0) {
+                                    return const BannerAdWidget();
+                                  }
+
+                                  final recipeIndex = index - (index ~/ 6);
+
+                                  if (recipeIndex >= state.recipes.length) {
                                      return const Center(
                                        child: Padding(
                                          padding: EdgeInsets.all(AppDimens.spaceL),
@@ -273,7 +282,7 @@ class _RecipesViewState extends State<RecipesView> {
                                        )
                                      );
                                   }
-                                  final recipe = state.recipes[index];
+                                  final recipe = state.recipes[recipeIndex];
                                   return RecipeCard(
                                     recipe: recipe,
                                     onTap: () => _navigateToDetail(context, recipe),

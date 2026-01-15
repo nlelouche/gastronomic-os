@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gastronomic_os/core/theme/app_dimens.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
 // Import AppTheme to ensure consistency if needed, though Shadcn handles its own

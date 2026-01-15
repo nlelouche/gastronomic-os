@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gastronomic_os/core/theme/app_dimens.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gastronomic_os/l10n/generated/app_localizations.dart';
 import 'package:gastronomic_os/core/widgets/ui_kit.dart';

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gastronomic_os/core/theme/app_dimens.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:gastronomic_os/core/widgets/ui_kit.dart';
 import 'package:gastronomic_os/features/recipes/domain/entities/recipe.dart';

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gastronomic_os/core/theme/app_dimens.dart';
 import 'package:gastronomic_os/core/widgets/ui_kit.dart';
 import 'package:gastronomic_os/features/planner/domain/entities/meal_plan.dart';
 import 'package:google_fonts/google_fonts.dart';
