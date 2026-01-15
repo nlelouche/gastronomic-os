@@ -44,7 +44,7 @@ class _ChefsSuggestionsView extends StatelessWidget {
               final isDbError = state.message.contains('PGRST205') || state.message.contains('meal_plans');
               return AppCard(
                 child: Padding(
-                  padding: const EdgeInsets.all(16.0),
+                  padding: const EdgeInsets.all(AppDimens.paddingCard),
                   child: Row(
                     children: [
                       Icon(isDbError ? Icons.table_chart_outlined : Icons.error_outline, 

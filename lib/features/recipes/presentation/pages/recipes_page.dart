@@ -12,7 +12,7 @@ import 'package:gastronomic_os/features/recipes/presentation/widgets/recipe_filt
 import 'package:gastronomic_os/init/injection_container.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:gastronomic_os/l10n/generated/app_localizations.dart';
-import 'package:gastronomic_os/features/recipes/domain/logic/action_guard.dart';
+import 'package:gastronomic_os/core/widgets/action_guard.dart';
 
 class RecipesPage extends StatelessWidget {
   final String? initialQuery;
@@ -147,7 +147,7 @@ class _RecipesViewState extends State<RecipesView> {
               children: [
                 // Filter Bar
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  padding: const EdgeInsets.symmetric(horizontal: AppDimens.spaceL, vertical: AppDimens.spaceS),
                   child: Column(
                     children: [
                       // Search
@@ -174,7 +174,7 @@ class _RecipesViewState extends State<RecipesView> {
                           _dispatchFilter(context, state, query: val);
                         },
                       ),
-                      const SizedBox(height: 12),
+                      const SizedBox(height: AppDimens.spaceM),
                       
                       // Filter Chips
                       SingleChildScrollView(
@@ -185,31 +185,31 @@ class _RecipesViewState extends State<RecipesView> {
                             FilterChip(
                               label: Text(AppLocalizations.of(context)!.filterFamilySafe),
                               selected: state.isFamilySafe,
-                              avatar: const Icon(Icons.people_outline, size: 18),
+                              avatar: const Icon(Icons.people_outline, size: AppDimens.iconSizeS),
                               onSelected: (val) => _dispatchFilter(context, state, isFamilySafe: val),
                             ),
-                            const SizedBox(width: 8),
+                            const SizedBox(width: AppDimens.spaceS),
 
                             // Best Match Toggle
                             FilterChip(
                               label: Text(AppLocalizations.of(context)!.filterBestMatch),
                               selected: state.isPantryReady,
-                              avatar: const Icon(Icons.kitchen, size: 18),
+                              avatar: const Icon(Icons.kitchen, size: AppDimens.iconSizeS),
                               onSelected: (val) => _dispatchFilter(context, state, isPantryReady: val),
                             ),
-                            const SizedBox(width: 8),
+                            const SizedBox(width: AppDimens.spaceS),
 
                             // Add Ingredient Button
                             ActionChip(
                                label: Text(AppLocalizations.of(context)!.filterAddIngredient),
-                               avatar: const Icon(Icons.add_circle_outline, size: 18),
+                               avatar: const Icon(Icons.add_circle_outline, size: AppDimens.iconSizeS),
                                onPressed: () => _showAddIngredientDialog(context, state),
                             ),
-                            const SizedBox(width: 12),
+                            const SizedBox(width: AppDimens.spaceM),
                             
                             // Active Ingredient Filters
                             ...state.requiredIngredients.map((ing) => Padding(
-                              padding: const EdgeInsets.only(right: 8.0),
+                              padding: const EdgeInsets.only(right: AppDimens.spaceS),
                               child: Chip(
                                 label: Text(ing),
                                 onDeleted: () {
@@ -236,7 +236,7 @@ class _RecipesViewState extends State<RecipesView> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Icon(Icons.search_off, size: 64, color: theme.colorScheme.outline),
-                            const SizedBox(height: 16),
+                            const SizedBox(height: AppDimens.spaceL),
                             Text(AppLocalizations.of(context)!.recipesEmptyTitle, style: theme.textTheme.titleMedium),
                             if (state.query.isNotEmpty || state.isFamilySafe || state.isPantryReady || state.requiredIngredients.isNotEmpty)
                               TextButton(
@@ -259,16 +259,16 @@ class _RecipesViewState extends State<RecipesView> {
                           if (constraints.maxWidth < 450) {
                              return ListView.separated(
                                controller: _scrollController,
-                               padding: const EdgeInsets.all(16),
+                               padding: const EdgeInsets.all(AppDimens.spaceL),
                                itemCount: state.hasReachedMax 
                                   ? state.recipes.length 
                                   : state.recipes.length + 1,
-                               separatorBuilder: (_, __) => const SizedBox(height: 16),
+                               separatorBuilder: (_, __) => const SizedBox(height: AppDimens.spaceL),
                                itemBuilder: (context, index) {
                                   if (index >= state.recipes.length) {
                                      return const Center(
                                        child: Padding(
-                                         padding: EdgeInsets.all(16.0),
+                                         padding: EdgeInsets.all(AppDimens.spaceL),
                                          child: CircularProgressIndicator(),
                                        )
                                      );
@@ -284,12 +284,12 @@ class _RecipesViewState extends State<RecipesView> {
 
                           return GridView.builder(
                             controller: _scrollController,
-                            padding: const EdgeInsets.all(16),
+                            padding: const EdgeInsets.all(AppDimens.spaceL),
                             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                               crossAxisCount: crossAxisCount,
                               childAspectRatio: 0.8,
-                              crossAxisSpacing: 16,
-                              mainAxisSpacing: 16,
+                              crossAxisSpacing: AppDimens.spaceL,
+                              mainAxisSpacing: AppDimens.spaceL,
                             ),
                             itemCount: state.hasReachedMax 
                                 ? state.recipes.length 

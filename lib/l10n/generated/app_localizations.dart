@@ -2419,6 +2419,144 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Reviews & Proofs'**
   String get recipeTabSocial;
+
+  /// No description provided for @socialNoReviews.
+  ///
+  /// In en, this message translates to:
+  /// **'No reviews yet.'**
+  String get socialNoReviews;
+
+  /// No description provided for @socialWriteReview.
+  ///
+  /// In en, this message translates to:
+  /// **'Write a Review'**
+  String get socialWriteReview;
+
+  /// No description provided for @socialNoProofs.
+  ///
+  /// In en, this message translates to:
+  /// **'No proofs yet. Be the first to cook this!'**
+  String get socialNoProofs;
+
+  /// No description provided for @socialAddCaption.
+  ///
+  /// In en, this message translates to:
+  /// **'Add a caption...'**
+  String get socialAddCaption;
+
+  /// No description provided for @socialNoRecipes.
+  ///
+  /// In en, this message translates to:
+  /// **'No recipes yet. Be the first to share!'**
+  String get socialNoRecipes;
+
+  /// No description provided for @socialReviewHint.
+  ///
+  /// In en, this message translates to:
+  /// **'How was it?'**
+  String get socialReviewHint;
+
+  /// No description provided for @monetizationWatchAdPrompt.
+  ///
+  /// In en, this message translates to:
+  /// **'Watch a short video to unlock this feature, or Upgrade to PRO.'**
+  String get monetizationWatchAdPrompt;
+
+  /// No description provided for @monetizationProBadge.
+  ///
+  /// In en, this message translates to:
+  /// **'You are a Pro Chef!'**
+  String get monetizationProBadge;
+
+  /// No description provided for @monetizationUnlockFeatures.
+  ///
+  /// In en, this message translates to:
+  /// **'Unlock unlimited recipes & clinical features'**
+  String get monetizationUnlockFeatures;
+
+  /// No description provided for @monetizationManageSubscription.
+  ///
+  /// In en, this message translates to:
+  /// **'Manage on Play Store / App Store'**
+  String get monetizationManageSubscription;
+
+  /// No description provided for @actionCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get actionCancel;
+
+  /// No description provided for @actionWatchAd.
+  ///
+  /// In en, this message translates to:
+  /// **'Watch Ad to Continue'**
+  String get actionWatchAd;
+
+  /// No description provided for @actionUpgrade.
+  ///
+  /// In en, this message translates to:
+  /// **'Upgrade'**
+  String get actionUpgrade;
+
+  /// No description provided for @errorLoadFeed.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to load feed: {message}'**
+  String errorLoadFeed(Object message);
+
+  /// No description provided for @errorUploadProof.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to upload proof: {message}'**
+  String errorUploadProof(Object message);
+
+  /// No description provided for @recipeNoDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'No description available.'**
+  String get recipeNoDescription;
+
+  /// No description provided for @recipeNoVariations.
+  ///
+  /// In en, this message translates to:
+  /// **'No variations yet. Everyone sees the standard step.'**
+  String get recipeNoVariations;
+
+  /// No description provided for @settingsPremiumTitleManage.
+  ///
+  /// In en, this message translates to:
+  /// **'Manage Subscription'**
+  String get settingsPremiumTitleManage;
+
+  /// No description provided for @settingsPremiumTitleGet.
+  ///
+  /// In en, this message translates to:
+  /// **'Gastronomic PRO'**
+  String get settingsPremiumTitleGet;
+
+  /// No description provided for @settingsLanguageEnglish.
+  ///
+  /// In en, this message translates to:
+  /// **'English'**
+  String get settingsLanguageEnglish;
+
+  /// No description provided for @settingsLanguageSpanish.
+  ///
+  /// In en, this message translates to:
+  /// **'Español'**
+  String get settingsLanguageSpanish;
+
+  /// No description provided for @settingsLanguageSwitchToSpanish.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap to switch to Spanish'**
+  String get settingsLanguageSwitchToSpanish;
+
+  /// No description provided for @settingsLanguageSwitchToEnglish.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap to switch to English'**
+  String get settingsLanguageSwitchToEnglish;
 }
 
 class _AppLocalizationsDelegate

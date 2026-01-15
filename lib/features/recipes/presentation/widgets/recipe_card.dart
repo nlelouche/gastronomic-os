@@ -155,7 +155,7 @@ class RecipeCard extends StatelessWidget {
           
           // Content
           Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(AppDimens.paddingCard),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

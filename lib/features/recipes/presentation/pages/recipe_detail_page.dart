@@ -1,37 +1,26 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_animate/flutter_animate.dart';
+import 'package:gastronomic_os/core/theme/app_dimens.dart';
 import 'package:gastronomic_os/core/util/app_logger.dart';
-import 'package:gastronomic_os/core/widgets/ui_kit.dart';
-import 'package:gastronomic_os/features/recipes/presentation/widgets/recipe_tree_widget.dart';
+import 'package:gastronomic_os/features/onboarding/domain/repositories/i_onboarding_repository.dart';
+import 'package:gastronomic_os/features/onboarding/domain/entities/family_member.dart';
+import 'package:gastronomic_os/init/injection_container.dart';
 import 'package:gastronomic_os/features/recipes/domain/entities/recipe.dart';
-import 'package:gastronomic_os/features/recipes/domain/entities/recipe_step.dart';
 import 'package:gastronomic_os/features/recipes/domain/entities/resolved_step.dart';
 import 'package:gastronomic_os/features/recipes/domain/logic/recipe_resolver.dart';
 import 'package:gastronomic_os/features/recipes/presentation/bloc/recipe_bloc.dart';
 import 'package:gastronomic_os/features/recipes/presentation/bloc/recipe_event.dart';
 import 'package:gastronomic_os/features/recipes/presentation/bloc/recipe_state.dart';
-import 'package:gastronomic_os/features/onboarding/domain/repositories/i_onboarding_repository.dart';
-import 'package:gastronomic_os/features/onboarding/domain/entities/family_member.dart';
-import 'package:gastronomic_os/init/injection_container.dart';
-import 'package:gastronomic_os/features/planner/presentation/bloc/planner_bloc.dart';
-import 'package:gastronomic_os/features/planner/presentation/bloc/planner_event.dart';
-import 'package:gastronomic_os/features/planner/domain/entities/meal_plan.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:uuid/uuid.dart';
 import 'package:gastronomic_os/features/recipes/presentation/widgets/formatted_recipe_text.dart';
-import 'package:gastronomic_os/features/recipes/presentation/widgets/smart_fork_dialog.dart';
-import 'package:gastronomic_os/features/recipes/presentation/pages/recipe_editor_page.dart';
-import 'package:gastronomic_os/features/recipes/presentation/widgets/add_to_collection_sheet.dart';
+import 'package:gastronomic_os/features/recipes/presentation/widgets/recipe_tree_widget.dart';
 import 'package:gastronomic_os/l10n/generated/app_localizations.dart';
-import 'package:gastronomic_os/core/theme/app_dimens.dart';
-import 'package:gastronomic_os/features/recipes/domain/logic/action_guard.dart';
-
 import 'package:gastronomic_os/features/social/presentation/bloc/recipe_social/recipe_social_bloc.dart';
 import 'package:gastronomic_os/features/social/presentation/bloc/recipe_social/recipe_social_event.dart';
-import 'package:gastronomic_os/features/social/presentation/widgets/recipe_social_tab.dart'; // Add widget import
+import 'package:gastronomic_os/features/social/presentation/widgets/recipe_social_tab.dart';
+import 'package:gastronomic_os/features/recipes/presentation/widgets/detail/recipe_ingredients_widget.dart';
+import 'package:gastronomic_os/features/recipes/presentation/widgets/detail/recipe_instructions_widget.dart';
+import 'package:gastronomic_os/features/recipes/presentation/widgets/detail/recipe_detail_app_bar.dart'; // Extracted AppBar
 
 class RecipeDetailPage extends StatelessWidget {
   final String recipeId;
@@ -197,152 +186,11 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
               length: 3,
               child: NestedScrollView(
                 headerSliverBuilder: (context, innerBoxIsScrolled) => [
-                  SliverAppBar(
-                    expandedHeight: 200.0,
-                    pinned: true,
-                    forceElevated: innerBoxIsScrolled,
-                    scrolledUnderElevation: 4.0,
-                    backgroundColor: colorScheme.surface,
-                    surfaceTintColor: colorScheme.surfaceTint,
-                    flexibleSpace: FlexibleSpaceBar(
-                      titlePadding: const EdgeInsetsDirectional.only(start: 72, end: 96, bottom: 48),
-                      expandedTitleScale: 1.3,
-                      title: Text(
-                        fullRecipe.title,
-                        style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                              color: colorScheme.onSurface,
-                              fontWeight: FontWeight.bold,
-                            ),
-                        textAlign: TextAlign.center,
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      centerTitle: true,
-                      background: fullRecipe.coverPhotoUrl != null
-                          ? Image.network(
-                              fullRecipe.coverPhotoUrl!,
-                              fit: BoxFit.cover,
-                              errorBuilder: (context, error, stackTrace) => Container(
-                                color: colorScheme.surfaceContainerHighest,
-                                child: Center(child: Icon(Icons.broken_image, color: colorScheme.error)),
-                              ),
-                            )
-                          : Container(
-                              color: colorScheme.primaryContainer,
-                              child: Center(
-                                child: Icon(
-                                  Icons.restaurant,
-                                  size: 80,
-                                  color: colorScheme.onPrimaryContainer.withOpacity(0.2),
-                                ),
-                              ),
-                            ),
-                    ),
-                    bottom: TabBar(
-                      labelColor: colorScheme.primary,
-                      unselectedLabelColor: colorScheme.onSurfaceVariant,
-                      indicatorColor: colorScheme.primary,
-                      tabs: [
-                        Tab(text: l10n.recipeIngredientsTitle),
-                        Tab(text: l10n.recipeInstructionsTitle),
-                        Tab(text: l10n.recipeTabSocial),
-                      ],
-                    ),
-                    actions: [
-                      IconButton(
-                        icon: const Icon(Icons.calendar_today),
-                        tooltip: l10n.recipeAddToPlanTooltip,
-                        onPressed: () => _showAddToPlanDialog(context, fullRecipe),
-                      ),
-                      IconButton(
-                        icon: const Icon(Icons.playlist_add),
-                        tooltip: 'Add to Collection',
-                        onPressed: () {
-                          showModalBottomSheet(
-                            context: context,
-                            builder: (ctx) => AddToCollectionSheet(recipeId: fullRecipe.id),
-                            isScrollControlled: true,
-                          );
-                        },
-                      ),
-                      IconButton(
-                        icon: Icon(isSaved ? Icons.bookmark : Icons.bookmark_border),
-                        color: isSaved ? colorScheme.primary : null,
-                        tooltip: isSaved ? 'Unsave Recipe' : 'Save Recipe',
-                        onPressed: () {
-                          context.read<RecipeBloc>().add(ToggleSaveRecipe(fullRecipe.id));
-                        },
-                      ),
-                      IconButton(
-                        icon: const Icon(Icons.fork_right),
-                        tooltip: l10n.recipeForkTooltip,
-                        onPressed: () {
-                          ActionGuard.guard(
-                            context,
-                            title: l10n.recipeForkTooltip,
-                            message: 'Watch a short video to Fork this recipe, or Upgrade to PRO.',
-                            onAction: () async {
-                              final newTitle = await showDialog<String>(
-                                context: context,
-                                builder: (_) => SmartForkDialog(originalTitle: fullRecipe.title),
-                              );
-
-                              if (newTitle != null && context.mounted) {
-                                context.read<RecipeBloc>().add(ForkRecipe(
-                                      originalRecipeId: fullRecipe.id,
-                                      newTitle: newTitle,
-                                    ));
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(content: Text(l10n.recipeForking)),
-                                );
-                              }
-                            },
-                          );
-                        },
-                      ),
-                      if (fullRecipe.authorId == Supabase.instance.client.auth.currentUser?.id)
-                        PopupMenuButton<String>(
-                          onSelected: (value) {
-                            if (value == 'delete') {
-                              _showDeleteConfirmation(context, fullRecipe.id);
-                            } else if (value == 'edit') {
-                              final recipeBloc = context.read<RecipeBloc>();
-                              Navigator.of(context).push(
-                                MaterialPageRoute(
-                                  builder: (_) => BlocProvider.value(
-                                    value: recipeBloc,
-                                    child: RecipeEditorPage(initialRecipe: fullRecipe),
-                                  ),
-                                ),
-                              );
-                            }
-                          },
-                          itemBuilder: (BuildContext context) {
-                            return [
-                              PopupMenuItem<String>(
-                                value: 'edit',
-                                child: Row(
-                                  children: [
-                                    Icon(Icons.edit, color: colorScheme.onSurface),
-                                    const SizedBox(width: 8),
-                                    const Text('Edit'),
-                                  ],
-                                ),
-                              ),
-                              PopupMenuItem<String>(
-                                value: 'delete',
-                                child: Row(
-                                  children: [
-                                    Icon(Icons.delete, color: colorScheme.error),
-                                    const SizedBox(width: 8),
-                                    Text('Delete', style: TextStyle(color: colorScheme.error)),
-                                  ],
-                                ),
-                              ),
-                            ];
-                          },
-                        ),
-                    ],
+                  // Use Extracted Widget
+                  RecipeDetailAppBar(
+                    recipe: fullRecipe,
+                    isSaved: isSaved,
+                    onDelete: _showDeleteConfirmation,
                   ),
                 ],
                 body: TabBarView(
@@ -367,7 +215,7 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
                               title: Text(l10n.recipeLineageTitle,
                                   style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold)),
                               leading: const Icon(Icons.account_tree_outlined),
-                              childrenPadding: const EdgeInsets.all(16),
+                              childrenPadding: const EdgeInsets.all(AppDimens.paddingCard),
                               initiallyExpanded: false,
                               children: [
                                 RecipeTreeWidget(
@@ -385,11 +233,7 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
                             _buildTagsSection(context, fullRecipe.tags),
                             const SizedBox(height: 32),
                           ],
-                          SectionHeader(
-                              title: l10n.recipeIngredientsTitle,
-                              subtitle: l10n.recipeIngredientsCount(filteredIngredients.length)),
-                          const SizedBox(height: AppDimens.spaceL),
-                          _buildIngredientsList(context, filteredIngredients),
+                          RecipeIngredientsWidget(ingredients: filteredIngredients),
                           const SizedBox(height: 80),
                         ],
                       ),
@@ -399,12 +243,15 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          _buildStepsTimeline(context, fullRecipe.steps),
+                          RecipeInstructionsWidget(
+                              resolvedSteps: _resolvedSteps, 
+                              isResolving: _isResolvingSteps
+                          ),
                           const SizedBox(height: 80),
                         ],
                       ),
                     ),
-                    RecipeSocialTab(recipeId: fullRecipe.id), // Add Social Tab
+                    RecipeSocialTab(recipeId: fullRecipe.id),
                   ],
                 ),
               ),
@@ -415,203 +262,6 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
           return const Center(child: CircularProgressIndicator());
         },
       ),
-    );
-  }
-
-  Widget _buildIngredientsList(BuildContext context, List<String> ingredients) {
-    if (ingredients.isEmpty) {
-      return Text(AppLocalizations.of(context)!.recipeIngredientsEmpty);
-    }
-
-    return Column(
-      children: ingredients.map((ingredient) {
-        return Padding(
-          padding: const EdgeInsets.symmetric(vertical: 4.0),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Icon(Icons.check_circle_outline, size: 20, color: Theme.of(context).colorScheme.primary),
-              const SizedBox(width: 12),
-              Expanded(child: Text(ingredient, style: Theme.of(context).textTheme.bodyMedium)),
-            ],
-          ),
-        );
-      }).toList(),
-    );
-  }
-
-  Widget _buildStepsTimeline(BuildContext context, List<RecipeStep> steps) {
-    if (_isResolvingSteps) {
-      return const Center(child: CircularProgressIndicator());
-    }
-
-    if (_resolvedSteps == null || _resolvedSteps!.isEmpty) {
-      return Text(AppLocalizations.of(context)!.recipeInstructionsEmpty);
-    }
-
-    final Map<int, List<ResolvedStep>> groupedSteps = {};
-    for (var step in _resolvedSteps!) {
-      if (!groupedSteps.containsKey(step.index)) {
-        groupedSteps[step.index] = [];
-      }
-      groupedSteps[step.index]!.add(step);
-    }
-
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: groupedSteps.entries.map((groupEntry) {
-        final stepIndex = groupEntry.key;
-        final variants = groupEntry.value;
-        final isLast = stepIndex == groupedSteps.keys.last;
-
-        return IntrinsicHeight(
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Column(
-                children: [
-                  Container(
-                    width: 32,
-                    height: 32,
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.primaryContainer,
-                      shape: BoxShape.circle,
-                      border: Border.all(color: Theme.of(context).colorScheme.primary, width: 2),
-                    ),
-                    child: Center(
-                      child: Text(
-                        '$stepIndex',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Theme.of(context).colorScheme.primary,
-                          fontSize: 14,
-                        ),
-                      ),
-                    ),
-                  ),
-                  if (!isLast)
-                    Expanded(
-                      child: Container(
-                        width: 2,
-                        color: Theme.of(context).colorScheme.outlineVariant,
-                        margin: const EdgeInsets.symmetric(vertical: 4),
-                      ),
-                    ),
-                ],
-              ),
-              const SizedBox(width: 16),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.only(bottom: 32.0),
-                  child: Column(
-                    children: variants.map((resolvedStep) {
-                      return Container(
-                        margin: const EdgeInsets.only(bottom: 12),
-                        padding: const EdgeInsets.all(12),
-                        decoration: BoxDecoration(
-                          color: resolvedStep.isUniversal
-                              ? Theme.of(context).colorScheme.surface
-                              : Theme.of(context).colorScheme.surfaceContainerLow,
-                          borderRadius: BorderRadius.circular(12),
-                          border: Border.all(
-                            color: resolvedStep.isUniversal
-                                ? Colors.transparent
-                                : Theme.of(context).colorScheme.outlineVariant.withOpacity(0.5),
-                          ),
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Wrap(
-                              spacing: 8,
-                              runSpacing: 4,
-                              children: [
-                                Container(
-                                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                                  decoration: BoxDecoration(
-                                    color: Theme.of(context).colorScheme.tertiaryContainer,
-                                    borderRadius: BorderRadius.circular(20),
-                                  ),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      if (resolvedStep.targetMembers.isNotEmpty)
-                                        ...resolvedStep.targetMembers.map((member) => Padding(
-                                              padding: const EdgeInsets.only(right: 6),
-                                              child: _buildMicroAvatar(context, member, 20),
-                                            )),
-                                      if (resolvedStep.targetMembers.isEmpty)
-                                        Icon(Icons.person,
-                                            size: 16, color: Theme.of(context).colorScheme.onTertiaryContainer),
-                                      const SizedBox(width: 4),
-                                      Text(
-                                        resolvedStep.targetGroupLabel,
-                                        style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                                              color: Theme.of(context).colorScheme.onTertiaryContainer,
-                                            ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                if (resolvedStep.substitutionReason != null)
-                                  Container(
-                                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-                                    decoration: BoxDecoration(
-                                      color: Theme.of(context).colorScheme.secondaryContainer,
-                                      borderRadius: BorderRadius.circular(6),
-                                    ),
-                                    child: Text(
-                                      resolvedStep.substitutionReason!,
-                                      style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                                            color: Theme.of(context).colorScheme.onSecondaryContainer,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                    ),
-                                  ),
-                              ],
-                            ),
-                            if (!resolvedStep.isUniversal) const SizedBox(height: 8),
-                            FormattedRecipeText(
-                              text: resolvedStep.instruction,
-                              style: Theme.of(context).textTheme.bodyMedium?.copyWith(height: 1.5),
-                            ),
-                            if (resolvedStep.crossContaminationAlert != null)
-                              Container(
-                                margin: const EdgeInsets.only(top: 8),
-                                padding: const EdgeInsets.all(8),
-                                decoration: BoxDecoration(
-                                  color: Theme.of(context).colorScheme.errorContainer.withOpacity(0.5),
-                                  borderRadius: BorderRadius.circular(8),
-                                  border: Border.all(color: Theme.of(context).colorScheme.error.withOpacity(0.3)),
-                                ),
-                                child: Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Icon(Icons.warning_amber, size: 16, color: Theme.of(context).colorScheme.error),
-                                    const SizedBox(width: 8),
-                                    Expanded(
-                                      child: Text(
-                                        resolvedStep.crossContaminationAlert!,
-                                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                                              color: Theme.of(context).colorScheme.onErrorContainer,
-                                              fontWeight: FontWeight.bold,
-                                            ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                          ],
-                        ),
-                      );
-                    }).toList(),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        );
-      }).toList(),
     );
   }
 
@@ -638,44 +288,6 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
     );
   }
 
-  Future<void> _showAddToPlanDialog(BuildContext context, Recipe recipe) async {
-    final now = DateTime.now();
-    final date = await showDatePicker(
-      context: context,
-      initialDate: now,
-      firstDate: now.subtract(const Duration(days: 1)),
-      lastDate: now.add(const Duration(days: 365)),
-    );
-
-    if (date != null && context.mounted) {
-      final userId = Supabase.instance.client.auth.currentUser?.id;
-      if (userId == null) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(AppLocalizations.of(context)!.recipeLoginRequired)),
-        );
-        return;
-      }
-
-      final plan = MealPlan(
-        id: const Uuid().v4(),
-        userId: userId,
-        recipeId: recipe.id,
-        scheduledDate: date,
-        mealType: 'Dinner',
-        createdAt: DateTime.now(),
-        recipe: recipe,
-      );
-
-      context.read<PlannerBloc>().add(AddMealToPlan(plan));
-
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-            content: Text(AppLocalizations.of(context)!
-                .recipeAddedToPlan('${date.day}/${date.month}', recipe.title))),
-      );
-    }
-  }
-
   Future<void> _showDeleteConfirmation(BuildContext context, String recipeId) async {
     final confirmed = await showDialog<bool>(
       context: context,
@@ -699,77 +311,5 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
     if (confirmed == true && context.mounted) {
       context.read<RecipeBloc>().add(DeleteRecipe(recipeId));
     }
-  }
-
-  Widget _buildMicroAvatar(BuildContext context, FamilyMember member, double size) {
-    final path = member.avatarPath;
-    Color color = Theme.of(context).colorScheme.primary;
-    Widget? content;
-
-    if (path != null) {
-      if (path.startsWith('preset_')) {
-        IconData icon;
-        switch (path) {
-          case 'preset_dad':
-            icon = Icons.man;
-            color = Colors.blue.shade200;
-            break;
-          case 'preset_mom':
-            icon = Icons.woman;
-            color = Colors.pink.shade200;
-            break;
-          case 'preset_boy':
-            icon = Icons.boy;
-            color = Colors.blue.shade100;
-            break;
-          case 'preset_girl':
-            icon = Icons.girl;
-            color = Colors.pink.shade100;
-            break;
-          case 'preset_grandpa':
-            icon = Icons.elderly;
-            color = Colors.grey.shade400;
-            break;
-          case 'preset_grandma':
-            icon = Icons.elderly_woman;
-            color = Colors.purple.shade200;
-            break;
-          default:
-            icon = Icons.face;
-            color = Colors.grey;
-        }
-        content = Icon(icon, size: size * 0.7, color: Colors.white);
-      } else {
-        return Container(
-          width: size,
-          height: size,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            image: DecorationImage(image: FileImage(File(path)), fit: BoxFit.cover),
-            border: Border.all(color: Colors.white, width: 1.5),
-          ),
-        );
-      }
-    } else {
-      content = Text(
-        member.name.isNotEmpty ? member.name[0].toUpperCase() : '?',
-        style: TextStyle(
-          fontSize: size * 0.5,
-          fontWeight: FontWeight.bold,
-          color: Colors.white,
-        ),
-      );
-    }
-
-    return Container(
-      width: size,
-      height: size,
-      decoration: BoxDecoration(
-        color: color,
-        shape: BoxShape.circle,
-        border: Border.all(color: Colors.white, width: 1.5),
-      ),
-      child: Center(child: content),
-    );
   }
 }

@@ -139,7 +139,7 @@ class _CollectionsView extends StatelessWidget {
                child: const Icon(Icons.add),
              ),
              body: GridView.builder(
-               padding: const EdgeInsets.all(16),
+               padding: const EdgeInsets.all(AppDimens.paddingPage),
                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                  crossAxisCount: 2,
                  crossAxisSpacing: 16,
@@ -219,7 +219,7 @@ class _RecipeList extends StatelessWidget {
     // Reuse similar grid/list logic from RecipesPage
     // For simplicity, using ListView for now
     return ListView.builder(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(AppDimens.paddingCard),
       itemCount: recipes.length,
       itemBuilder: (context, index) {
         final recipe = recipes[index];

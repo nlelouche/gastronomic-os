@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gastronomic_os/core/services/ad_service.dart';
 import 'package:gastronomic_os/core/services/iap_service.dart';
 import 'package:gastronomic_os/init/injection_container.dart';
+import 'package:gastronomic_os/l10n/generated/app_localizations.dart';
 
 class ActionGuard {
   /// Guards an action with Rewarded Ad for non-premium users.
@@ -30,6 +30,7 @@ class ActionGuard {
     if (!context.mounted) return;
 
     // Show Dialog
+    final l10n = AppLocalizations.of(context)!;
     final shouldWatch = await showDialog<bool>(
       context: context,
       builder: (ctx) => AlertDialog(
@@ -40,16 +41,16 @@ class ActionGuard {
             Text(title),
           ],
         ),
-        content: Text(message),
+        content: Text(message), // Message often passed contextually, but default prompt exists in l10n if needed by caller
         actions: [
           TextButton(
             onPressed: () => Navigator.of(ctx).pop(false),
-            child: const Text('Cancel'),
+            child: Text(l10n.actionCancel),
           ),
           FilledButton.icon(
             onPressed: () => Navigator.of(ctx).pop(true),
             icon: const Icon(Icons.play_arrow),
-            label: const Text('Watch Ad to Continue'),
+            label: Text(l10n.actionWatchAd),
           ),
         ],
       ),

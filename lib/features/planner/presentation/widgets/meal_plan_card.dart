@@ -71,7 +71,7 @@ class MealPlanCard extends StatelessWidget {
               child: InkWell(
                 onTap: onContentTap,
                 child: Padding(
-                  padding: const EdgeInsets.all(16.0),
+                  padding: const EdgeInsets.all(AppDimens.paddingCard),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,

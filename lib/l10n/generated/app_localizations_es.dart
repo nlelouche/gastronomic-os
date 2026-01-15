@@ -1380,5 +1380,84 @@ class AppLocalizationsEs extends AppLocalizations {
   String get smartForkBtn => 'Derivar Receta';
 
   @override
-  String get recipeTabSocial => 'Reviews & Proofs';
+  String get recipeTabSocial => 'Reseñas y Pruebas';
+
+  @override
+  String get socialNoReviews => 'Aún no hay reseñas.';
+
+  @override
+  String get socialWriteReview => 'Escribir Reseña';
+
+  @override
+  String get socialNoProofs =>
+      '¡Aún no hay pruebas! Sé el primero en cocinarlo.';
+
+  @override
+  String get socialAddCaption => 'Añade un comentario...';
+
+  @override
+  String get socialNoRecipes =>
+      'No hay recetas aún. ¡Sé el primero en compartir!';
+
+  @override
+  String get socialReviewHint => '¿Qué tal estuvo?';
+
+  @override
+  String get monetizationWatchAdPrompt =>
+      'Mira un video corto para desbloquear, o actualiza sin limites con PRO.';
+
+  @override
+  String get monetizationProBadge => '¡Eres un Chef Pro!';
+
+  @override
+  String get monetizationUnlockFeatures =>
+      'Desbloquea recetas ilimitadas y perfil clínico';
+
+  @override
+  String get monetizationManageSubscription =>
+      'Gestionar en Play Store / App Store';
+
+  @override
+  String get actionCancel => 'Cancelar';
+
+  @override
+  String get actionWatchAd => 'Mirar Video para Continuar';
+
+  @override
+  String get actionUpgrade => 'Actualizar a PRO';
+
+  @override
+  String errorLoadFeed(Object message) {
+    return 'Error al cargar feed: $message';
+  }
+
+  @override
+  String errorUploadProof(Object message) {
+    return 'Falló la subida: $message';
+  }
+
+  @override
+  String get recipeNoDescription => 'Sin descripción disponible.';
+
+  @override
+  String get recipeNoVariations =>
+      'Sin variaciones. Todos ven el paso estándar.';
+
+  @override
+  String get settingsPremiumTitleManage => 'Gestionar Suscripción';
+
+  @override
+  String get settingsPremiumTitleGet => 'Gastronomic PRO';
+
+  @override
+  String get settingsLanguageEnglish => 'Inglés';
+
+  @override
+  String get settingsLanguageSpanish => 'Español';
+
+  @override
+  String get settingsLanguageSwitchToSpanish => 'Toca para cambiar a Español';
+
+  @override
+  String get settingsLanguageSwitchToEnglish => 'Toca para cambiar a Inglés';
 }

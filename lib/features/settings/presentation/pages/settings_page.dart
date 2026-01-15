@@ -94,21 +94,20 @@ class _SettingsViewState extends State<SettingsView> {
                 sliver: SliverList(
                   delegate: SliverChildListDelegate([
                     
-                    // --- Premium Section ---
+                      // --- Premium Section ---
                     BlocBuilder<SubscriptionCubit, SubscriptionState>(
                       builder: (context, state) {
-                        debugPrint('Building Settings Premium Tile. State: $state'); // DEBUG
                         final isPremium = state is SubscriptionPremium;
                         return _buildSettingsTile(
                           context,
-                          title: isPremium ? 'Manage Subscription' : 'Gastronomic PRO',
-                          subtitle: isPremium ? 'You are a Pro Chef!' : 'Unlock unlimited recipes & clinical features',
+                          title: isPremium ? AppLocalizations.of(context)!.settingsPremiumTitleManage : AppLocalizations.of(context)!.settingsPremiumTitleGet,
+                          subtitle: isPremium ? AppLocalizations.of(context)!.monetizationProBadge : AppLocalizations.of(context)!.monetizationUnlockFeatures,
                           icon: Icons.diamond_outlined,
                           iconColor: Colors.amber,
                           onTap: () {
                              if (isPremium) {
                                // TODO: Open Manage Subscription (Platform specific)
-                               ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Manage on Play Store / App Store')));
+                               ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(AppLocalizations.of(context)!.monetizationManageSubscription)));
                              } else {
                                Navigator.of(context).push(
                                  MaterialPageRoute(builder: (_) => const PaywallPage()),
@@ -156,8 +155,8 @@ class _SettingsViewState extends State<SettingsView> {
                         final isEnglish = localeState.locale.languageCode == 'en';
                         return _buildSettingsTile(
                           context,
-                          title: isEnglish ? 'English' : 'Español',
-                          subtitle: isEnglish ? 'Tap to switch to Spanish' : 'Toca para cambiar a Inglés',
+                          title: isEnglish ? AppLocalizations.of(context)!.settingsLanguageEnglish : AppLocalizations.of(context)!.settingsLanguageSpanish,
+                          subtitle: isEnglish ? AppLocalizations.of(context)!.settingsLanguageSwitchToSpanish : AppLocalizations.of(context)!.settingsLanguageSwitchToEnglish,
                           icon: Icons.language,
                           iconColor: colorScheme.primary,
                           onTap: () {

@@ -102,7 +102,7 @@ class _PlannerPageState extends State<PlannerPage> {
             }
 
             return ListView.separated(
-              padding: const EdgeInsets.all(16),
+              padding: const EdgeInsets.all(AppDimens.paddingCard),
               itemCount: plans.length,
               separatorBuilder: (_, __) => const SizedBox(height: 12),
               itemBuilder: (context, index) {

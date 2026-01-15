@@ -22,13 +22,13 @@ class GlossaryPage extends StatelessWidget {
         elevation: 0,
       ),
       body: ListView.separated(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(AppDimens.paddingPage),
         itemCount: GlossaryData.terms.length,
         separatorBuilder: (ctx, index) => const SizedBox(height: 12),
         itemBuilder: (context, index) {
           final item = GlossaryData.terms[index];
           return AppCard(
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.all(AppDimens.paddingCard),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

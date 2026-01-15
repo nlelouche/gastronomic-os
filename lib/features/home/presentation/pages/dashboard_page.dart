@@ -14,7 +14,7 @@ import 'package:gastronomic_os/features/planner/presentation/pages/planner_page.
 import 'package:gastronomic_os/features/recipes/presentation/pages/my_recipes_page.dart'; // Phase 3.2
 import 'package:gastronomic_os/features/social/presentation/pages/feed_page.dart'; // Phase 5
 import 'package:gastronomic_os/l10n/generated/app_localizations.dart';
-import 'package:gastronomic_os/features/recipes/domain/logic/action_guard.dart';
+import 'package:gastronomic_os/core/widgets/action_guard.dart';
 
 class DashboardPage extends StatelessWidget {
   const DashboardPage({super.key});
@@ -47,14 +47,14 @@ class DashboardPage extends StatelessWidget {
               ],
             ),
             body: SafeArea(
-              child: RefreshIndicator(
+                  child: RefreshIndicator(
                 onRefresh: () async {
                   context.read<PlannerBloc>().add(LoadPlannerSuggestions());
                   await Future.delayed(const Duration(seconds: 1));
                 },
                 child: SingleChildScrollView(
                   physics: const AlwaysScrollableScrollPhysics(),
-                  padding: const EdgeInsets.all(24.0),
+                  padding: const EdgeInsets.all(AppDimens.spaceXL),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -75,7 +75,7 @@ class DashboardPage extends StatelessWidget {
                         ),
                       ).animate().fadeIn(delay: 200.ms).slideX(begin: -0.1),
                       
-                      const SizedBox(height: 32),
+                      const SizedBox(height: AppDimens.spaceXL),
                       
                       // Search Bar
                       GestureDetector(
@@ -86,16 +86,16 @@ class DashboardPage extends StatelessWidget {
                            );
                         },
                         child: Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                          padding: const EdgeInsets.symmetric(horizontal: AppDimens.spaceM, vertical: AppDimens.spaceM),
                           decoration: BoxDecoration(
                             color: colorScheme.surfaceVariant.withOpacity(0.5),
-                            borderRadius: BorderRadius.circular(12),
+                            borderRadius: BorderRadius.circular(AppDimens.radiusM),
                             border: Border.all(color: colorScheme.outlineVariant.withOpacity(0.5)),
                           ),
                           child: Row(
                             children: [
                               Icon(Icons.search, color: colorScheme.onSurfaceVariant),
-                              const SizedBox(width: 12),
+                              const SizedBox(width: AppDimens.spaceM),
                               Text(
                                 AppLocalizations.of(context)!.searchRecipesHint,
                                 style: TextStyle(color: colorScheme.onSurfaceVariant),
@@ -105,11 +105,11 @@ class DashboardPage extends StatelessWidget {
                         ),
                       ).animate().fadeIn(delay: 300.ms).slideY(begin: 0.1),
 
-                      const SizedBox(height: 32),
+                      const SizedBox(height: AppDimens.spaceXL),
 
                       // The Brain (New)
                       const ChefsSuggestions(),
-                      const SizedBox(height: 32),
+                      const SizedBox(height: AppDimens.spaceXL),
 
                       _buildFeatureCard(
                         context,
@@ -123,7 +123,7 @@ class DashboardPage extends StatelessWidget {
                         ),
                       ),
                       
-                      const SizedBox(height: 16),
+                      const SizedBox(height: AppDimens.spaceM),
                       _buildFeatureCard(
                         context,
                         title: AppLocalizations.of(context)!.dashboardCookbookTitle,
@@ -136,7 +136,7 @@ class DashboardPage extends StatelessWidget {
                         ),
                       ),
                       
-                      const SizedBox(height: 16),
+                      const SizedBox(height: AppDimens.spaceM),
 
                       // My Recipes (New)
                       _buildFeatureCard(
@@ -151,7 +151,7 @@ class DashboardPage extends StatelessWidget {
                         ),
                       ),
                       
-                      const SizedBox(height: 16),
+                      const SizedBox(height: AppDimens.spaceM),
                       
                       // Planner Card
                       _buildFeatureCard(
@@ -171,7 +171,7 @@ class DashboardPage extends StatelessWidget {
                         ),
                       ),
                       
-                      const SizedBox(height: 16),
+                      const SizedBox(height: AppDimens.spaceM),
                       _buildFeatureCard(
                         context,
                         title: AppLocalizations.of(context)!.dashboardSocialTitle,
@@ -212,7 +212,7 @@ class DashboardPage extends StatelessWidget {
       child: Container(
         height: 120,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(AppDimens.radiusL),
           gradient: LinearGradient(
             colors: [
               color.withOpacity(0.15),
@@ -234,18 +234,18 @@ class DashboardPage extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(24.0),
+              padding: const EdgeInsets.all(AppDimens.spaceXL),
               child: Row(
                 children: [
                   Container(
-                    padding: const EdgeInsets.all(12),
+                    padding: const EdgeInsets.all(AppDimens.spaceM),
                     decoration: BoxDecoration(
                       color: theme.colorScheme.surface,
                       shape: BoxShape.circle,
                     ),
-                    child: Icon(icon, color: color, size: 32),
+                    child: Icon(icon, color: color, size: AppDimens.iconSizeL),
                   ),
-                  const SizedBox(width: 24),
+                  const SizedBox(width: AppDimens.spaceXL),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -272,7 +272,7 @@ class DashboardPage extends StatelessWidget {
                       ],
                     ),
                   ),
-                  const SizedBox(width: 8),
+                  const SizedBox(width: AppDimens.spaceS),
                   Icon(Icons.chevron_right, color: theme.colorScheme.onSurfaceVariant),
                 ],
               ),

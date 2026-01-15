@@ -10,6 +10,7 @@ import 'package:gastronomic_os/features/social/presentation/widgets/cook_proof_g
 import 'package:gastronomic_os/features/social/presentation/widgets/rating_bar.dart';
 import 'package:gastronomic_os/features/social/presentation/widgets/review_list_tile.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:gastronomic_os/l10n/generated/app_localizations.dart';
 
 class RecipeSocialTab extends StatelessWidget {
   final String recipeId;
@@ -55,7 +56,7 @@ class RecipeSocialTab extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('Cook Proofs', style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold)),
+                      Text(AppLocalizations.of(context)!.recipeTabSocial, style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold)),
                       IconButton(
                         icon: const Icon(Icons.add_a_photo),
                         onPressed: () => _showAddProofDialog(context),
@@ -68,7 +69,7 @@ class RecipeSocialTab extends StatelessWidget {
                 else 
                    Padding(
                      padding: const EdgeInsets.symmetric(horizontal: AppDimens.paddingPage),
-                     child: Text("No proofs yet. Be the first to cook this!", style: theme.textTheme.bodySmall),
+                     child: Text(AppLocalizations.of(context)!.socialNoProofs, style: theme.textTheme.bodySmall),
                    ),
 
                 const SizedBox(height: AppDimens.spaceXL),
@@ -79,10 +80,10 @@ class RecipeSocialTab extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('Reviews (${state.reviews.length})', style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold)),
+                      Text('${AppLocalizations.of(context)!.socialWriteReview} (${state.reviews.length})', style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold)),
                       TextButton(
                          onPressed: () => _showAddReviewDialog(context),
-                         child: const Text('Write Review'),
+                         child: Text(AppLocalizations.of(context)!.socialWriteReview),
                       ),
                     ],
                   ),
@@ -92,7 +93,7 @@ class RecipeSocialTab extends StatelessWidget {
                 if (state.reviews.isEmpty)
                   Center(child: Padding(
                     padding: const EdgeInsets.all(AppDimens.spaceXL),
-                    child: Text("No reviews yet.", style: theme.textTheme.bodyMedium),
+                    child: Text(AppLocalizations.of(context)!.socialNoReviews, style: theme.textTheme.bodyMedium),
                   ))
                 else
                   ListView.separated(
@@ -116,14 +117,15 @@ class RecipeSocialTab extends StatelessWidget {
   void _showAddReviewDialog(BuildContext context) {
     final commentController = TextEditingController();
     int selectedRating = 5;
-    final bloc = context.read<RecipeSocialBloc>(); // Capture bloc
+    final bloc = context.read<RecipeSocialBloc>();
+    final l10n = AppLocalizations.of(context)!;
 
     showDialog(
       context: context,
       builder: (dialogCtx) => StatefulBuilder(
         builder: (context, setState) {
           return AlertDialog(
-            title: const Text("Write a Review"),
+            title: Text(l10n.socialWriteReview),
             content: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -135,16 +137,16 @@ class RecipeSocialTab extends StatelessWidget {
                 const SizedBox(height: AppDimens.spaceM),
                 TextField(
                   controller: commentController,
-                  decoration: const InputDecoration(
-                    hintText: "How was it?",
-                    border: OutlineInputBorder(),
+                  decoration: InputDecoration(
+                    hintText: l10n.socialReviewHint,
+                    border: const OutlineInputBorder(),
                   ),
                   maxLines: 3,
                 ),
               ],
             ),
             actions: [
-              TextButton(onPressed: () => Navigator.pop(dialogCtx), child: const Text("Cancel")),
+              TextButton(onPressed: () => Navigator.pop(dialogCtx), child: Text(l10n.actionCancel)),
               FilledButton(
                 onPressed: () {
                   if (commentController.text.isNotEmpty) {
@@ -156,7 +158,7 @@ class RecipeSocialTab extends StatelessWidget {
                     Navigator.pop(dialogCtx);
                   }
                 }, 
-                child: const Text("Submit"),
+                child: Text(l10n.dialogAdd),
               ),
             ],
           );
@@ -175,10 +177,12 @@ class RecipeSocialTab extends StatelessWidget {
        final bloc = context.read<RecipeSocialBloc>();
        final file = File(image.path);
 
+       final l10n = AppLocalizations.of(context)!;
+
        await showDialog(
          context: context,
          builder: (dialogCtx) => AlertDialog(
-           title: const Text("Upload Cook Proof"),
+           title: const Text("Upload Cook Proof"), // Assuming key, or add: l10n.socialUploadProof
            content: Column(
              mainAxisSize: MainAxisSize.min,
              children: [
@@ -186,14 +190,14 @@ class RecipeSocialTab extends StatelessWidget {
                const SizedBox(height: AppDimens.spaceM),
                TextField(
                  controller: captionController,
-                 decoration: const InputDecoration(
-                   hintText: "Add a caption...",
+                 decoration: InputDecoration(
+                   hintText: l10n.socialAddCaption,
                  ),
                ),
              ],
            ),
            actions: [
-              TextButton(onPressed: () => Navigator.pop(dialogCtx), child: const Text("Cancel")),
+              TextButton(onPressed: () => Navigator.pop(dialogCtx), child: Text(l10n.actionCancel)),
               FilledButton(
                 onPressed: () {
                    bloc.add(SubmitCookProof(
@@ -203,7 +207,7 @@ class RecipeSocialTab extends StatelessWidget {
                    ));
                    Navigator.pop(dialogCtx);
                 }, 
-                child: const Text("Upload"),
+                child: Text(l10n.dialogAdd),
               ),
            ],
          ),

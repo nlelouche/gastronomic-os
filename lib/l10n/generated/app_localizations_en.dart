@@ -1380,4 +1380,81 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get recipeTabSocial => 'Reviews & Proofs';
+
+  @override
+  String get socialNoReviews => 'No reviews yet.';
+
+  @override
+  String get socialWriteReview => 'Write a Review';
+
+  @override
+  String get socialNoProofs => 'No proofs yet. Be the first to cook this!';
+
+  @override
+  String get socialAddCaption => 'Add a caption...';
+
+  @override
+  String get socialNoRecipes => 'No recipes yet. Be the first to share!';
+
+  @override
+  String get socialReviewHint => 'How was it?';
+
+  @override
+  String get monetizationWatchAdPrompt =>
+      'Watch a short video to unlock this feature, or Upgrade to PRO.';
+
+  @override
+  String get monetizationProBadge => 'You are a Pro Chef!';
+
+  @override
+  String get monetizationUnlockFeatures =>
+      'Unlock unlimited recipes & clinical features';
+
+  @override
+  String get monetizationManageSubscription =>
+      'Manage on Play Store / App Store';
+
+  @override
+  String get actionCancel => 'Cancel';
+
+  @override
+  String get actionWatchAd => 'Watch Ad to Continue';
+
+  @override
+  String get actionUpgrade => 'Upgrade';
+
+  @override
+  String errorLoadFeed(Object message) {
+    return 'Failed to load feed: $message';
+  }
+
+  @override
+  String errorUploadProof(Object message) {
+    return 'Failed to upload proof: $message';
+  }
+
+  @override
+  String get recipeNoDescription => 'No description available.';
+
+  @override
+  String get recipeNoVariations =>
+      'No variations yet. Everyone sees the standard step.';
+
+  @override
+  String get settingsPremiumTitleManage => 'Manage Subscription';
+
+  @override
+  String get settingsPremiumTitleGet => 'Gastronomic PRO';
+
+  @override
+  String get settingsLanguageEnglish => 'English';
+
+  @override
+  String get settingsLanguageSpanish => 'Español';
+
+  @override
+  String get settingsLanguageSwitchToSpanish => 'Tap to switch to Spanish';
+
+  @override
+  String get settingsLanguageSwitchToEnglish => 'Tap to switch to English';
 }

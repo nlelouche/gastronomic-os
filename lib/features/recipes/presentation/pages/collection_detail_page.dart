@@ -42,7 +42,7 @@ class CollectionDetailPage extends StatelessWidget {
               }
 
               return GridView.builder(
-                padding: const EdgeInsets.all(16),
+                padding: const EdgeInsets.all(AppDimens.paddingCard),
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                   childAspectRatio: 0.75,
