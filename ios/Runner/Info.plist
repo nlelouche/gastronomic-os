@@ -48,7 +48,7 @@
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>We need access to your photo library to select profile pictures for your family members.</string>
 	<key>NSCameraUsageDescription</key>
-	<string>We need access to your camera to take profile pictures for your family members.</string>
+	<string>We need access to your camera to identify ingredients and take profile pictures.</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>We need access to your microphone for video features.</string>
 </dict>

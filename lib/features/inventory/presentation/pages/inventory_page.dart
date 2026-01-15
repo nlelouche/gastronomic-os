@@ -12,6 +12,8 @@ import 'package:gastronomic_os/l10n/generated/app_localizations.dart';
 import 'package:gastronomic_os/core/theme/app_dimens.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'package:gastronomic_os/features/inventory/presentation/pages/vision_camera_page.dart';
+
 class InventoryPage extends StatelessWidget {
   const InventoryPage({super.key});
 
@@ -120,12 +122,37 @@ class InventoryView extends StatelessWidget {
           return const SizedBox.shrink();
         },
       ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () => _showItemDialog(context, null),
-        label: Text(AppLocalizations.of(context)!.inventoryAddItem, style: GoogleFonts.outfit(fontWeight: FontWeight.w600)),
-        icon: const Icon(Icons.add_rounded),
-        elevation: 4,
-        highlightElevation: 8,
+      floatingActionButton: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          FloatingActionButton.extended(
+            heroTag: 'vision_fab',
+            onPressed: () => Navigator.push(
+              context, 
+              MaterialPageRoute(
+                builder: (_) => BlocProvider.value(
+                  value: context.read<InventoryBloc>(),
+                  child: const VisionCameraPage(),
+                ),
+              ),
+            ),
+            label: Text('Scan (AI)', style: GoogleFonts.outfit(fontWeight: FontWeight.w600)),
+            icon: const Icon(Icons.camera_alt_rounded),
+            backgroundColor: theme.colorScheme.tertiaryContainer,
+            foregroundColor: theme.colorScheme.onTertiaryContainer,
+            elevation: 4,
+          ),
+          const SizedBox(height: 16),
+          FloatingActionButton.extended(
+            heroTag: 'manual_fab',
+            onPressed: () => _showItemDialog(context, null),
+            label: Text(AppLocalizations.of(context)!.inventoryAddItem, style: GoogleFonts.outfit(fontWeight: FontWeight.w600)),
+            icon: const Icon(Icons.add_rounded),
+            elevation: 4,
+            highlightElevation: 8,
+          ),
+        ],
       ).animate().scale(delay: 500.ms, duration: 300.ms, curve: Curves.easeOutBack),
     );
   }
