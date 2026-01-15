@@ -30,24 +30,36 @@ class AppTheme {
     }
   }
 
+  static const Color allergyColor = Color(0xFFFF453A); // Red/Orange for alerts
+  static const Color lifestyleColor = Color(0xFF30D158); // Green for Vegan/Veggie
+  static const Color dietColor = Color(0xFF0A84FF); // Blue for Keto/Paleo
+  
   static ThemeData _buildTheme(Color seed, Brightness brightness) {
     final isDark = brightness == Brightness.dark;
     
-    // Custom overrides for dark mode "Slate" look
+    // "Unicorn" Dark Mode Palette
     Color? scaffoldBg;
+    Color? surface;
+    
     if (isDark) {
-      scaffoldBg = const Color(0xFF020617); // Slate 950
+      scaffoldBg = const Color(0xFF0F0F0F); // Deep Charcoal (almost black)
+      surface = const Color(0xFF1C1C1E); // Apple-style dark surface
+    } else {
+      // "Premium" Light Mode Palette
+      scaffoldBg = const Color(0xFFF2F2F7); // Soft Gray (Apple style)
+      surface = const Color(0xFFFFFFFF); // Pure White
     }
+
+    final scheme = ColorScheme.fromSeed(
+      seedColor: seed,
+      brightness: brightness,
+      surface: surface,
+    );
 
     return ThemeData(
       useMaterial3: true,
       fontFamily: _fontFamily,
-      colorScheme: ColorScheme.fromSeed(
-        seedColor: seed,
-        brightness: brightness,
-        surface: isDark ? const Color(0xFF0F172A) : null, // Slate 900
-        onSurface: isDark ? const Color(0xFFE2E8F0) : null, // Slate 200
-      ),
+      colorScheme: scheme,
       scaffoldBackgroundColor: scaffoldBg,
       visualDensity: VisualDensity.standard,
       appBarTheme: const AppBarTheme(
@@ -55,10 +67,15 @@ class AppTheme {
         elevation: 0,
         backgroundColor: Colors.transparent,
       ),
+      tabBarTheme: TabBarThemeData(
+        labelColor: scheme.primary, // Matches the seed/primary exactly
+        unselectedLabelColor: isDark ? Colors.white54 : Colors.black54,
+        indicatorColor: scheme.primary,
+      ),
       cardTheme: CardThemeData(
         elevation: 0,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        color: isDark ? const Color(0xFF1E293B) : null, // Slate 800
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        color: surface,
       ),
     );
   }

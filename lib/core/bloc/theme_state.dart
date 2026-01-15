@@ -18,7 +18,7 @@ class ThemeState extends Equatable {
   factory ThemeState.initial() {
     return ThemeState(
       themeType: AppThemeType.emeraldTech,
-      themeMode: ThemeMode.system,
+      themeMode: ThemeMode.dark,
       lightTheme: AppTheme.getTheme(AppThemeType.emeraldTech, Brightness.light),
       darkTheme: AppTheme.getTheme(AppThemeType.emeraldTech, Brightness.dark),
     );

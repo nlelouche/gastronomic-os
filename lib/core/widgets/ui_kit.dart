@@ -80,27 +80,156 @@ class AppCard extends StatelessWidget {
   final Widget child;
   final EdgeInsetsGeometry? padding;
   final VoidCallback? onTap;
+  final Color? backgroundColor;
+  final DecorationImage? backgroundImage;
 
-  const AppCard({super.key, required this.child, this.padding, this.onTap});
+  const AppCard({
+    super.key, 
+    required this.child, 
+    this.padding, 
+    this.onTap,
+    this.backgroundColor,
+    this.backgroundImage,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 0,
-      color: Theme.of(context).colorScheme.surfaceContainer,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
-        side: BorderSide(
-          color: Theme.of(context).colorScheme.outlineVariant.withOpacity(0.5),
+    return Container(
+      decoration: BoxDecoration(
+        color: backgroundColor ?? Theme.of(context).colorScheme.surface,
+        borderRadius: BorderRadius.circular(24),
+        image: backgroundImage,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.1),
+            blurRadius: 20,
+            offset: const Offset(0, 10),
+          )
+        ],
+        border: Border.all(
+          color: Theme.of(context).colorScheme.outlineVariant.withOpacity(0.1),
+          width: 1,
         ),
       ),
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: BorderRadius.circular(16),
-        child: Padding(
-          padding: padding ?? const EdgeInsets.all(AppDimens.paddingCard),
-          child: child,
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: onTap,
+          borderRadius: BorderRadius.circular(24),
+          child: Padding(
+            padding: padding ?? const EdgeInsets.all(AppDimens.paddingCard),
+            child: child,
+          ),
         ),
+      ),
+    );
+  }
+}
+
+enum PillType { allergy, lifestyle, diet, neutral }
+
+class SemanticPill extends StatelessWidget {
+  final String label;
+  final IconData? icon;
+  final PillType type;
+
+  const SemanticPill({
+    super.key,
+    required this.label,
+    this.icon,
+    this.type = PillType.neutral,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    Color color;
+    switch (type) {
+      case PillType.allergy:
+        color = const Color(0xFFFF453A);
+        break;
+      case PillType.lifestyle:
+        color = const Color(0xFF30D158);
+        break;
+      case PillType.diet:
+        color = const Color(0xFF0A84FF);
+        break;
+      case PillType.neutral:
+      default:
+        color = Theme.of(context).colorScheme.onSurface;
+    }
+
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+      decoration: BoxDecoration(
+        color: color.withOpacity(0.1),
+        border: Border.all(color: color.withOpacity(0.2)),
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          if (icon != null) ...[
+            Icon(icon, size: 14, color: color),
+            const SizedBox(width: 6),
+          ],
+          Text(
+            label,
+            style: TextStyle(
+              color: color,
+              fontSize: 12,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class MatchBadge extends StatelessWidget {
+  final double score; // 0.0 to 100.0
+
+  const MatchBadge({super.key, required this.score});
+
+  @override
+  Widget build(BuildContext context) {
+    final percent = score / 100;
+    
+    // Determine color based on score
+    Color color = const Color(0xFFCCFF00); // Neon Lime
+    if (percent < 0.7) color = Colors.orange;
+    if (percent < 0.4) color = Colors.red;
+
+    return Container(
+      width: 50,
+      height: 50,
+      decoration: BoxDecoration(
+        color: Colors.black.withOpacity(0.6),
+        borderRadius: BorderRadius.circular(25),
+        border: Border.all(color: Colors.white.withOpacity(0.1)),
+      ),
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          SizedBox(
+            width: 32,
+            height: 32,
+            child: CircularProgressIndicator(
+              value: percent,
+              strokeWidth: 4,
+              backgroundColor: Colors.white.withOpacity(0.1),
+              valueColor: AlwaysStoppedAnimation<Color>(color),
+            ),
+          ),
+          Text(
+            '${score.toInt()}%',
+            style: TextStyle(
+              color: color,
+              fontSize: 10,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ],
       ),
     );
   }

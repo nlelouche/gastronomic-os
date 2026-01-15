@@ -55,7 +55,12 @@ class DashboardPage extends StatelessWidget {
                 },
                 child: SingleChildScrollView(
                   physics: const AlwaysScrollableScrollPhysics(),
-                  padding: const EdgeInsets.all(AppDimens.spaceXL),
+                  padding: const EdgeInsets.only(
+                    left: AppDimens.spaceXL, 
+                    right: AppDimens.spaceXL, 
+                    top: AppDimens.spaceXL, 
+                    bottom: 120, // Space for floating nav
+                  ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [

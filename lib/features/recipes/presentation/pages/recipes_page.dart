@@ -122,16 +122,8 @@ class _RecipesViewState extends State<RecipesView> {
     final theme = Theme.of(context);
     
     return Scaffold(
-      backgroundColor: theme.scaffoldBackgroundColor,
-      appBar: AppBar(
-        title: Text(
-          AppLocalizations.of(context)!.recipesTitle,
-          style: GoogleFonts.outfit(fontWeight: FontWeight.bold, fontSize: 24),
-        ),
-        centerTitle: false,
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-      ),
+      backgroundColor: Colors.transparent, // Let gradient show through from container if needed, or handle in shell
+      // AppBar is removed, MainShell handles structure or we use subtle header
       body: BlocBuilder<RecipeBloc, RecipeState>(
         builder: (context, state) {
           if (state is RecipeLoading) {
@@ -145,7 +137,19 @@ class _RecipesViewState extends State<RecipesView> {
             //   _searchController.text = state.query;
             // }
 
-            return Column(
+            return Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    theme.scaffoldBackgroundColor,
+                    theme.scaffoldBackgroundColor.withOpacity(0.8),
+                    theme.colorScheme.primaryContainer.withOpacity(0.05), // Subtle tint at bottom
+                  ],
+                ),
+              ),
+              child: Column(
               children: [
                 // Filter Bar
                 Container(
@@ -261,7 +265,12 @@ class _RecipesViewState extends State<RecipesView> {
                           if (constraints.maxWidth < 450) {
                              return ListView.separated(
                                controller: _scrollController,
-                               padding: const EdgeInsets.all(AppDimens.spaceL),
+                               padding: const EdgeInsets.only(
+                                 left: AppDimens.spaceL,
+                                 right: AppDimens.spaceL,
+                                 top: AppDimens.spaceL,
+                                 bottom: 120, // Space for floating nav
+                               ),
                                itemCount: state.hasReachedMax 
                                   ? state.recipes.length + (state.recipes.length ~/ 5) 
                                   : state.recipes.length + (state.recipes.length ~/ 5) + 1,
@@ -293,10 +302,15 @@ class _RecipesViewState extends State<RecipesView> {
 
                           return GridView.builder(
                             controller: _scrollController,
-                            padding: const EdgeInsets.all(AppDimens.spaceL),
+                            padding: const EdgeInsets.only(
+                              left: AppDimens.spaceL,
+                              right: AppDimens.spaceL,
+                              top: AppDimens.spaceL,
+                              bottom: 120, // Space for floating nav
+                            ),
                             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                               crossAxisCount: crossAxisCount,
-                              childAspectRatio: 0.8,
+                              childAspectRatio: 0.7, // Taller for Unicorn cards
                               crossAxisSpacing: AppDimens.spaceL,
                               mainAxisSpacing: AppDimens.spaceL,
                             ),
@@ -319,6 +333,7 @@ class _RecipesViewState extends State<RecipesView> {
                       ),
                 ),
               ],
+            ),
             );
           }
           return const SizedBox.shrink();

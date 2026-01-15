@@ -22,6 +22,7 @@ import 'package:gastronomic_os/features/social/presentation/widgets/recipe_socia
 import 'package:gastronomic_os/features/recipes/presentation/widgets/detail/recipe_ingredients_widget.dart';
 import 'package:gastronomic_os/features/recipes/presentation/widgets/detail/recipe_instructions_widget.dart';
 import 'package:gastronomic_os/features/recipes/presentation/widgets/detail/recipe_detail_app_bar.dart'; // Extracted AppBar
+import 'package:gastronomic_os/core/widgets/ui_kit.dart';
 
 class RecipeDetailPage extends StatelessWidget {
   final String recipeId;
@@ -273,17 +274,23 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
       children: tags.map((tag) {
         final isClinical = ['renal', 'keto', 'diabetes', 'celiac', 'aplv', 'histamine', 'low fodmap']
             .contains(tag.toLowerCase());
-        final colorScheme = Theme.of(context).colorScheme;
+        final isLifestyle = ['vegan', 'paleo', 'vegetarian'].contains(tag.toLowerCase());
+        
+        PillType type = PillType.neutral;
+        IconData? icon;
 
-        return Chip(
-          label: Text(tag),
-          labelStyle: TextStyle(
-            color: isClinical ? colorScheme.onPrimary : colorScheme.onSecondaryContainer,
-            fontWeight: isClinical ? FontWeight.bold : FontWeight.normal,
-          ),
-          backgroundColor: isClinical ? colorScheme.primary : colorScheme.secondaryContainer,
-          padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 0),
-          materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+        if (isClinical) {
+          type = PillType.allergy;
+          icon = Icons.medical_services_outlined;
+        } else if (isLifestyle) {
+          type = PillType.lifestyle;
+          icon = Icons.eco_outlined;
+        }
+
+        return SemanticPill(
+          label: tag,
+          type: type,
+          icon: icon,
         );
       }).toList(),
     );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gastronomic_os/core/theme/app_dimens.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:gastronomic_os/features/planner/domain/entities/meal_plan.dart';
 import 'package:gastronomic_os/features/planner/presentation/bloc/planner_bloc.dart';
 import 'package:gastronomic_os/features/planner/presentation/bloc/planner_event.dart';
@@ -34,49 +35,85 @@ class RecipeDetailAppBar extends StatelessWidget {
     final l10n = AppLocalizations.of(context)!;
 
     return SliverAppBar(
-      expandedHeight: 200.0,
+      expandedHeight: 320.0, // Taller header
       pinned: true,
-      scrolledUnderElevation: 4.0,
-      backgroundColor: colorScheme.surface,
-      surfaceTintColor: colorScheme.surfaceTint,
+      scrolledUnderElevation: 0, // Keep flat
+      backgroundColor: colorScheme.primary, // Immersive Primary Color for collapsed state
+      surfaceTintColor: Colors.transparent,
+      iconTheme: const IconThemeData(color: Colors.white), // Force white back arrow
+      actionsIconTheme: const IconThemeData(color: Colors.white), // Force white action buttons
       flexibleSpace: FlexibleSpaceBar(
-        titlePadding: const EdgeInsetsDirectional.only(start: 72, end: 96, bottom: 48),
-        expandedTitleScale: 1.3,
+        titlePadding: const EdgeInsetsDirectional.only(start: 16, end: 220, bottom: 60),
+        expandedTitleScale: 1.4,
         title: Text(
           recipe.title,
-          style: theme.textTheme.titleMedium?.copyWith(
-            color: colorScheme.onSurface,
-            fontWeight: FontWeight.bold,
+          style: GoogleFonts.outfit(
+            color: Colors.white, // Always White for immersive contrast
+            fontWeight: FontWeight.w800,
+            fontSize: 20,
+            shadows: [
+              Shadow(color: Colors.black.withOpacity(0.8), blurRadius: 8, offset: const Offset(0, 2)),
+            ],
           ),
-          textAlign: TextAlign.center,
-          maxLines: 2,
+          textAlign: TextAlign.start,
+          maxLines: 1,
           overflow: TextOverflow.ellipsis,
         ),
-        centerTitle: true,
-        background: recipe.coverPhotoUrl != null
-            ? Image.network(
-                recipe.coverPhotoUrl!,
-                fit: BoxFit.cover,
-                errorBuilder: (context, error, stackTrace) => Container(
-                  color: colorScheme.surfaceContainerHighest,
-                  child: Center(child: Icon(Icons.broken_image, color: colorScheme.error)),
-                ),
-              )
-            : Container(
-                color: colorScheme.primaryContainer,
-                child: Center(
-                  child: Icon(
-                    Icons.restaurant,
-                    size: 80,
-                    color: colorScheme.onPrimaryContainer.withOpacity(0.2),
+        centerTitle: false,
+        background: Stack(
+          fit: StackFit.expand,
+          children: [
+            recipe.coverPhotoUrl != null
+              ? Hero(
+                  tag: 'recipe_${recipe.id}',
+                  child: Image(
+                    image: ResizeImage(
+                      NetworkImage(recipe.coverPhotoUrl!),
+                      width: 800, // Optimize decode size for header
+                    ),
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) => Container(
+                      color: colorScheme.surfaceContainerHighest,
+                      child: Center(child: Icon(Icons.broken_image, color: colorScheme.error)),
+                    ),
+                  ),
+                )
+              : Container(
+                  color: colorScheme.primaryContainer,
+                  child: Center(
+                    child: Icon(
+                      Icons.restaurant,
+                      size: 80,
+                      color: colorScheme.onPrimaryContainer.withOpacity(0.2),
+                    ),
                   ),
                 ),
+            // Gradient Overlay
+            const DecoratedBox(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    Colors.black45, // For status bar visibility
+                    Colors.transparent,
+                    Colors.transparent,
+                    Colors.black87, // For title readability
+                  ],
+                  stops: [0.0, 0.2, 0.6, 1.0],
+                ),
               ),
+            ),
+          ],
+        ),
       ),
       bottom: TabBar(
-        labelColor: colorScheme.primary,
-        unselectedLabelColor: colorScheme.onSurfaceVariant,
-        indicatorColor: colorScheme.primary,
+        // Removed manual overrides to respect AppTheme.tabBarTheme
+        // BUT for this specific Immersive Header, we generally want White text 
+        // regardless of the theme, because the background is Primary (Dark-ish).
+        labelColor: Colors.white, 
+        unselectedLabelColor: Colors.white60,
+        indicatorColor: Colors.white,
         tabs: [
           Tab(text: l10n.recipeIngredientsTitle),
           Tab(text: l10n.recipeInstructionsTitle),

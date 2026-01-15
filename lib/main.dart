@@ -19,6 +19,7 @@ import 'package:gastronomic_os/core/services/ad_service.dart';
 import 'package:gastronomic_os/core/services/remote_config_service.dart';
 import 'package:gastronomic_os/core/services/iap_service.dart';
 import 'package:gastronomic_os/features/premium/presentation/bloc/subscription_cubit.dart';
+import 'package:gastronomic_os/core/widgets/main_shell.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -139,7 +140,7 @@ class _AuthWrapperState extends State<AuthWrapper> {
     }
     
     if (_onboardingCompleted!) {
-      return const DashboardPage();
+      return const MainShell();
     } else {
       return const OnboardingPage();
     }
