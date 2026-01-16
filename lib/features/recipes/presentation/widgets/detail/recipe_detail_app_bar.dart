@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gastronomic_os/core/theme/app_dimens.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:gastronomic_os/features/planner/domain/entities/meal_plan.dart';
 import 'package:gastronomic_os/features/planner/presentation/bloc/planner_bloc.dart';
 import 'package:gastronomic_os/features/planner/presentation/bloc/planner_event.dart';
@@ -66,13 +67,12 @@ class RecipeDetailAppBar extends StatelessWidget {
             recipe.coverPhotoUrl != null
               ? Hero(
                   tag: 'recipe_${recipe.id}',
-                  child: Image(
-                    image: ResizeImage(
-                      NetworkImage(recipe.coverPhotoUrl!),
-                      width: 800, // Optimize decode size for header
-                    ),
+                  child: CachedNetworkImage(
+                    imageUrl: recipe.coverPhotoUrl!,
+                    memCacheWidth: 800, // Optimize decode size for header
                     fit: BoxFit.cover,
-                    errorBuilder: (context, error, stackTrace) => Container(
+                    placeholder: (context, url) => Container(color: colorScheme.surfaceContainerHighest),
+                    errorWidget: (context, url, error) => Container(
                       color: colorScheme.surfaceContainerHighest,
                       child: Center(child: Icon(Icons.broken_image, color: colorScheme.error)),
                     ),

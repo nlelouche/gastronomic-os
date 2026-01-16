@@ -91,7 +91,12 @@ class InventoryView extends StatelessWidget {
             }
             
             return ListView.separated(
-              padding: const EdgeInsets.all(AppDimens.paddingPage),
+              padding: const EdgeInsets.only(
+                left: AppDimens.paddingPage,
+                right: AppDimens.paddingPage,
+                top: AppDimens.paddingPage,
+                bottom: 120, // Space for floating nav
+              ),
               itemCount: state.items.length + 1, // Add space at bottom for FAB
               separatorBuilder: (context, index) => const SizedBox(height: AppDimens.spaceM),
               itemBuilder: (context, index) {
@@ -122,38 +127,41 @@ class InventoryView extends StatelessWidget {
           return const SizedBox.shrink();
         },
       ),
-      floatingActionButton: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: [
-          FloatingActionButton.extended(
-            heroTag: 'vision_fab',
-            onPressed: () => Navigator.push(
-              context, 
-              MaterialPageRoute(
-                builder: (_) => BlocProvider.value(
-                  value: context.read<InventoryBloc>(),
-                  child: const VisionCameraPage(),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(bottom: 100),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            FloatingActionButton.extended(
+              heroTag: 'vision_fab',
+              onPressed: () => Navigator.push(
+                context, 
+                MaterialPageRoute(
+                  builder: (_) => BlocProvider.value(
+                    value: context.read<InventoryBloc>(),
+                    child: const VisionCameraPage(),
+                  ),
                 ),
               ),
+              label: Text('Scan (AI)', style: GoogleFonts.outfit(fontWeight: FontWeight.w600)),
+              icon: const Icon(Icons.camera_alt_rounded),
+              backgroundColor: theme.colorScheme.tertiaryContainer,
+              foregroundColor: theme.colorScheme.onTertiaryContainer,
+              elevation: 4,
             ),
-            label: Text('Scan (AI)', style: GoogleFonts.outfit(fontWeight: FontWeight.w600)),
-            icon: const Icon(Icons.camera_alt_rounded),
-            backgroundColor: theme.colorScheme.tertiaryContainer,
-            foregroundColor: theme.colorScheme.onTertiaryContainer,
-            elevation: 4,
-          ),
-          const SizedBox(height: 16),
-          FloatingActionButton.extended(
-            heroTag: 'manual_fab',
-            onPressed: () => _showItemDialog(context, null),
-            label: Text(AppLocalizations.of(context)!.inventoryAddItem, style: GoogleFonts.outfit(fontWeight: FontWeight.w600)),
-            icon: const Icon(Icons.add_rounded),
-            elevation: 4,
-            highlightElevation: 8,
-          ),
-        ],
-      ).animate().scale(delay: 500.ms, duration: 300.ms, curve: Curves.easeOutBack),
+            const SizedBox(height: 16),
+            FloatingActionButton.extended(
+              heroTag: 'manual_fab',
+              onPressed: () => _showItemDialog(context, null),
+              label: Text(AppLocalizations.of(context)!.inventoryAddItem, style: GoogleFonts.outfit(fontWeight: FontWeight.w600)),
+              icon: const Icon(Icons.add_rounded),
+              elevation: 4,
+              highlightElevation: 8,
+            ),
+          ],
+        ).animate().scale(delay: 500.ms, duration: 300.ms, curve: Curves.easeOutBack),
+      ),
     );
   }
 

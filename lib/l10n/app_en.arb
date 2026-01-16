@@ -436,5 +436,6 @@
   "settingsLanguageEnglish": "English",
   "settingsLanguageSpanish": "Español",
   "settingsLanguageSwitchToSpanish": "Tap to switch to Spanish",
-  "settingsLanguageSwitchToEnglish": "Tap to switch to English"
+  "settingsLanguageSwitchToEnglish": "Tap to switch to English",
+  "dashboardUseBottomNav": "Please use the bottom navigation to access the Cookbook."
 }

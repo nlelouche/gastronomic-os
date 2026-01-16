@@ -29,53 +29,60 @@ class _MainShellState extends State<MainShell> {
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
 
-    return Scaffold(
-      extendBody: true, // Important for floating nav
-      body: Stack(
-        children: [
-          // Content
-          IndexedStack(
-            index: _currentIndex,
-            children: _pages,
-          ),
-          
-          // Floating Glass Nav Bar
-          Positioned(
-            left: 20,
-            right: 20,
-            bottom: 20,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(30),
-              child: BackdropFilter(
-                filter: ui.ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-                child: Container(
-                  height: 70,
-                  decoration: BoxDecoration(
-                    color: Colors.black.withOpacity(0.8), // Deep glass
-                    borderRadius: BorderRadius.circular(30),
-                    border: Border.all(color: Colors.white.withOpacity(0.1)),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.4),
-                        blurRadius: 20,
-                        offset: const Offset(0, 10),
-                      ),
-                    ],
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      _buildNavItem(0, Icons.home_outlined, Icons.home_rounded, 'Home'),
-                      _buildNavItem(1, Icons.menu_book_outlined, Icons.menu_book_rounded, 'Cookbook'),
-                      _buildNavItem(2, Icons.calendar_today_outlined, Icons.calendar_month_rounded, 'Planner'),
-                      _buildNavItem(3, Icons.kitchen_outlined, Icons.kitchen_rounded, 'Fridge'),
-                    ],
+    return PopScope(
+      canPop: _currentIndex == 0,
+      onPopInvoked: (didPop) {
+        if (didPop) return;
+        setState(() => _currentIndex = 0);
+      },
+      child: Scaffold(
+        extendBody: true, // Important for floating nav
+        body: Stack(
+          children: [
+            // Content
+            IndexedStack(
+              index: _currentIndex,
+              children: _pages,
+            ),
+            
+            // Floating Glass Nav Bar
+            Positioned(
+              left: 20,
+              right: 20,
+              bottom: 20,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(30),
+                child: BackdropFilter(
+                  filter: ui.ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+                  child: Container(
+                    height: 70,
+                    decoration: BoxDecoration(
+                      color: Colors.black.withOpacity(0.8), // Deep glass
+                      borderRadius: BorderRadius.circular(30),
+                      border: Border.all(color: Colors.white.withOpacity(0.1)),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.4),
+                          blurRadius: 20,
+                          offset: const Offset(0, 10),
+                        ),
+                      ],
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        _buildNavItem(0, Icons.home_outlined, Icons.home_rounded, 'Home'),
+                        _buildNavItem(1, Icons.menu_book_outlined, Icons.menu_book_rounded, 'Cookbook'),
+                        _buildNavItem(2, Icons.calendar_today_outlined, Icons.calendar_month_rounded, 'Planner'),
+                        _buildNavItem(3, Icons.kitchen_outlined, Icons.kitchen_rounded, 'Fridge'),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            ).animate().fadeIn(delay: 300.ms).slideY(begin: 1.0, curve: Curves.easeOutBack),
-          ),
-        ],
+              ).animate().fadeIn(delay: 300.ms).slideY(begin: 1.0, curve: Curves.easeOutBack),
+            ),
+          ],
+        ),
       ),
     );
   }

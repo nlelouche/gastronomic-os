@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:gastronomic_os/core/theme/app_dimens.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gastronomic_os/l10n/generated/app_localizations.dart';
@@ -15,6 +16,10 @@ import 'package:gastronomic_os/features/recipes/presentation/bloc/collections/co
 import 'package:gastronomic_os/features/recipes/presentation/bloc/collections/collections_state.dart';
 import 'package:gastronomic_os/features/recipes/domain/entities/recipe_collection.dart';
 import 'package:gastronomic_os/features/recipes/presentation/pages/collection_detail_page.dart';
+import 'package:gastronomic_os/core/widgets/action_guard.dart';
+import 'package:gastronomic_os/features/recipes/presentation/pages/recipe_editor_page.dart';
+import 'package:gastronomic_os/features/recipes/presentation/bloc/recipe_bloc.dart';
+import 'package:gastronomic_os/features/recipes/presentation/bloc/recipe_event.dart';
 
 class MyRecipesPage extends StatelessWidget {
   const MyRecipesPage({super.key});
@@ -48,10 +53,30 @@ class MyRecipesPage extends StatelessWidget {
           body: TabBarView(
             children: [
               // Created
-              BlocBuilder<MyRecipesCubit, MyRecipesState>(
-                builder: (context, state) => state is MyRecipesLoaded 
-                  ? _RecipeList(recipes: state.createdRecipes, emptyMessage: l10n.myRecipesEmptyCreated)
-                  : const Center(child: CircularProgressIndicator()),
+              // Created
+              Scaffold(
+                backgroundColor: Colors.transparent,
+                floatingActionButton: Padding(
+                  padding: const EdgeInsets.only(bottom: 100),
+                  child: FloatingActionButton.extended(
+                    heroTag: 'new_recipe_fab',
+                    onPressed: () {
+                      ActionGuard.guard(
+                        context,
+                        title: l10n.recipesNewRecipeButton,
+                        message: 'Watch a short video to create a new recipe, or Upgrade to PRO.',
+                        onAction: () => _navigateToEditor(context),
+                      );
+                    },
+                    label: Text(l10n.recipesNewRecipeButton, style: GoogleFonts.outfit(fontWeight: FontWeight.w600)),
+                    icon: const Icon(Icons.add),
+                  ).animate().scale(delay: 500.ms, curve: Curves.easeOutBack),
+                ),
+                body: BlocBuilder<MyRecipesCubit, MyRecipesState>(
+                  builder: (context, state) => state is MyRecipesLoaded 
+                    ? _RecipeList(recipes: state.createdRecipes, emptyMessage: l10n.myRecipesEmptyCreated)
+                    : const Center(child: CircularProgressIndicator()),
+                ),
               ),
               // Forked
               BlocBuilder<MyRecipesCubit, MyRecipesState>(
@@ -72,6 +97,24 @@ class MyRecipesPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+
+  void _navigateToEditor(BuildContext context) {
+    // We need to provide a fresh RecipeBloc for the editor since MyRecipesCubit doesn't handle creation details
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (ctx) => BlocProvider<RecipeBloc>(
+          create: (_) => sl<RecipeBloc>(), // Fresh bloc
+          child: const RecipeEditorPage(),
+        ),
+      ),
+    ).then((_) {
+      if (context.mounted) {
+         context.read<MyRecipesCubit>().loadMyRecipes(); // Reload to see new recipe
+      }
+    });
   }
 }
 

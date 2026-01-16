@@ -1,0 +1,367 @@
+PS D:\Gastronomic OS> flutter run --debug
+Launching lib\main.dart on sdk gphone64 x86 64 in debug mode...
+Running Gradle task 'assembleDebug'...                             14,5s
+√ Built build\app\outputs\flutter-apk\app-debug.apk
+Installing build\app\outputs\flutter-apk\app-debug.apk...           3,7s
+D/FlutterJNI(10938): Beginning load of flutter...
+D/FlutterJNI(10938): flutter (null) was loaded normally!
+I/flutter (10938): [IMPORTANT:flutter/shell/platform/android/android_context_gl_impeller.cc(104)] Using the Impeller rendering backend (OpenGLES).
+I/gastronomic.app(10938): hiddenapi: Accessing hidden method Landroid/view/accessibility/AccessibilityNodeInfo;->getSourceNodeId()J (runtime_flags=0, domain=platform, api=unsupported,test-api) from Lio/flutter/view/AccessibilityViewEmbedder$ReflectionAccessors; (domain=app, TargetSdkVersion=36) using reflection: allowed
+I/gastronomic.app(10938): hiddenapi: Accessing hidden method Landroid/view/accessibility/AccessibilityRecord;->getSourceNodeId()J (runtime_flags=0, domain=platform, api=unsupported) from Lio/flutter/view/AccessibilityViewEmbedder$ReflectionAccessors; (domain=app, TargetSdkVersion=36) using reflection: allowed
+I/gastronomic.app(10938): hiddenapi: Accessing hidden field Landroid/view/accessibility/AccessibilityNodeInfo;->mChildNodeIds:Landroid/util/LongArray; (runtime_flags=0, domain=platform, api=unsupported) from Lio/flutter/view/AccessibilityViewEmbedder$ReflectionAccessors; (domain=app, TargetSdkVersion=36) using reflection: allowed
+I/gastronomic.app(10938): hiddenapi: Accessing hidden method Landroid/util/LongArray;->get(I)J (runtime_flags=0, domain=platform, api=unsupported) from Lio/flutter/view/AccessibilityViewEmbedder$ReflectionAccessors; (domain=app, TargetSdkVersion=36) using reflection: allowed
+D/CompatChangeReporter(10938): Compat change id reported: 377864165; UID 10232; state: ENABLED
+D/FirebaseSessions(10938): App foregrounded on com.gastronomic.app
+D/FirebaseSessions(10938): Process com.gastronomic.app is stale
+I/FA      (10938): Tag Manager is not found and thus will not be used
+D/FirebaseSessions(10938): Cold app start detected
+D/FirebaseSessions(10938): Process com.gastronomic.app is stale
+W/HWUI    (10938): Unknown dataspace 0
+W/gastronomic.app(10938): Suspending all threads took: 16.077ms
+D/FirebaseSessions(10938): Notified CRASHLYTICS of new session 82982a28f08c4712b36685e8ac0b09b4
+W/gastronomic.app(10938): userfaultfd: MOVE ioctl seems unsupported: Try again
+I/gastronomic.app(10938): Background concurrent mark compact GC freed 5993KB AllocSpace bytes, 21(460KB) LOS objects, 49% free, 4639KB/9278KB, paused 53.814ms,41.340ms total 462.733ms
+D/FirebaseSessions(10938): Session Event Type: SESSION_START
+D/FirebaseSessions(10938): Successfully logged Session Start event.
+Syncing files to device sdk gphone64 x86 64...                     558ms
+
+Flutter run key commands.
+r Hot reload. 
+R Hot restart.
+h List all available interactive commands.
+d Detach (terminate "flutter run" but leave application running).
+c Clear the screen
+q Quit (terminate the application on the device).
+
+A Dart VM Service on sdk gphone64 x86 64 is available at: http://127.0.0.1:59276/aYLUfD7XISo=/
+The Flutter DevTools debugger and profiler on sdk gphone64 x86 64 is available at:
+http://127.0.0.1:59276/aYLUfD7XISo=/devtools/?uri=ws://127.0.0.1:59276/aYLUfD7XISo=/ws
+I/Choreographer(10938): Skipped 89 frames!  The application may be doing too much work on its main thread.
+D/WindowOnBackDispatcher(10938): setTopOnBackInvokedCallback (unwrapped): android.app.Activity$$ExternalSyntheticLambda0@62928c6
+I/WindowExtensionsImpl(10938): Initializing Window Extensions, vendor API level=9, activity embedding enabled=true
+D/VRI[MainActivity](10938): WindowInsets changed: 1080x2400 statusBars:[0,63,0,0] navigationBars:[0,0,0,63] mandatorySystemGestures:[0,63,0,84]
+I/gastronomic.app(10938): Compiler allocated 5087KB to compile void android.view.ViewRootImpl.performTraversals()
+D/ProfileInstaller(10938): Installing profile for com.gastronomic.app
+I/Choreographer(10938): Skipped 55 frames!  The application may be doing too much work on its main thread.
+D/WindowLayoutComponentImpl(10938): Register WindowLayoutInfoListener on Context=com.example.gastronomic_os.MainActivity@81ff9ca, of which baseContext=android.app.ContextImpl@92fc0d6
+I/HWUI    (10938): Using FreeType backend (prop=Auto)
+I/Choreographer(10938): Skipped 33 frames!  The application may be doing too much work on its main thread.
+I/flutter (10938): supabase.supabase_flutter: INFO: ***** Supabase init completed ***** 
+I/flutter (10938): Remote Config initialized and fetched
+I/flutter (10938): RC: free_family_limit = 5
+I/flutter (10938): RC: ad_frequency_feed = 2
+I/flutter (10938): RC: show_interstitial_on_save = true
+I/flutter (10938): RC: premium_price_tag_string = $4.99/mo
+D/ApplicationLoaders(10938): Returning zygote-cached class loader: /system/framework/org.apache.http.legacy.jar
+D/ApplicationLoaders(10938): Returning zygote-cached class loader: /system/framework/com.android.media.remotedisplay.jar
+D/ApplicationLoaders(10938): Returning zygote-cached class loader: /system/framework/com.android.location.provider.jar
+D/ApplicationLoaders(10938): Returning zygote-cached class loader: /system_ext/framework/androidx.window.extensions.jar
+D/ApplicationLoaders(10938): Returning zygote-cached class loader: /system_ext/framework/androidx.window.sidecar.jar
+W/gastronomic.app(10938): Loading /data/app/~~HAJdDMxafIQI8uNJ3wmLrA==/com.google.android.gms-BZYTp9SrjdMZFvFfpFoS8g==/oat/x86_64/base.odex non-executable as it requires an image which we failed to load
+D/nativeloader(10938): Configuring clns-11 for other apk /data/app/~~HAJdDMxafIQI8uNJ3wmLrA==/com.google.android.gms-BZYTp9SrjdMZFvFfpFoS8g==/base.apk. target_sdk_version=36, uses_libraries=, library_path=/data/app/~~HAJdDMxafIQI8uNJ3wmLrA==/com.google.android.gms-BZYTp9SrjdMZFvFfpFoS8g==/lib/x86_64:/data/app/~~HAJdDMxafIQI8uNJ3wmLrA==/com.google.android.gms-BZYTp9SrjdMZFvFfpFoS8g==/base.apk!/lib/x86_64, permitted_path=/data:/mnt/expand:/data/user/0/com.google.android.gms
+D/CompatChangeReporter(10938): Compat change id reported: 288912692; UID 10232; state: ENABLED
+I/WebViewFactory(10938): Loading com.google.android.webview version 143.0.7499.192 (code 749919238)
+W/ResourcesManager(10938): Found a null ResourcesImpl, skipped.
+W/ResourcesManager(10938): Found a null ResourcesImpl, skipped.
+V/ResourcesManager(10938): The following library key has been added: ResourcesKey{ mHash=ec3efe0b mResDir=null mSplitDirs=[] mOverlayDirs=[] mLibDirs=[/data/app/~~FSo6lDgcMabyFJ6UiAyCZw==/com.google.android.webview-5HlhraXA00XWXnH6AWtrLw==/base.apk,/data/app/~~tsEHZAz2uBvdS8LxUlgqIw==/com.google.android.trichromelibrary_749919238-dAGDq6Gco1sTCnbhKvYzyQ==/base.apk,/system_ext/framework/androidx.window.extensions.jar] mDisplayId=0 mOverrideConfig=v36 mCompatInfo={420dpi always-compat} mLoaders=[]}
+W/gastronomic.app(10938): Failed to find entry 'classes.dex': Entry not found
+D/nativeloader(10938): Configuring clns-12 for other apk /data/app/~~tsEHZAz2uBvdS8LxUlgqIw==/com.google.android.trichromelibrary_749919238-dAGDq6Gco1sTCnbhKvYzyQ==/base.apk. target_sdk_version=36, uses_libraries=ALL, library_path=/data/app/~~FSo6lDgcMabyFJ6UiAyCZw==/com.google.android.webview-5HlhraXA00XWXnH6AWtrLw==/lib/x86_64:/data/app/~~FSo6lDgcMabyFJ6UiAyCZw==/com.google.android.webview-5HlhraXA00XWXnH6AWtrLw==/base.apk!/lib/x86_64:/data/app/~~tsEHZAz2uBvdS8LxUlgqIw==/com.google.android.trichromelibrary_749919238-dAGDq6Gco1sTCnbhKvYzyQ==/base.apk!/lib/x86_64, permitted_path=/data:/mnt/expand
+D/ApplicationLoaders(10938): Returning zygote-cached class loader: /system_ext/framework/androidx.window.extensions.jar
+W/gastronomic.app(10938): Loading /data/app/~~FSo6lDgcMabyFJ6UiAyCZw==/com.google.android.webview-5HlhraXA00XWXnH6AWtrLw==/oat/x86_64/base.odex non-executable as it requires an image which we failed to load
+D/nativeloader(10938): Configuring clns-13 for other apk /data/app/~~FSo6lDgcMabyFJ6UiAyCZw==/com.google.android.webview-5HlhraXA00XWXnH6AWtrLw==/base.apk. target_sdk_version=36, uses_libraries=, library_path=/data/app/~~FSo6lDgcMabyFJ6UiAyCZw==/com.google.android.webview-5HlhraXA00XWXnH6AWtrLw==/lib/x86_64:/data/app/~~FSo6lDgcMabyFJ6UiAyCZw==/com.google.android.webview-5HlhraXA00XWXnH6AWtrLw==/base.apk!/lib/x86_64:/data/app/~~tsEHZAz2uBvdS8LxUlgqIw==/com.google.android.trichromelibrary_749919238-dAGDq6Gco1sTCnbhKvYzyQ==/base.apk!/lib/x86_64, permitted_path=/data:/mnt/expand
+I/cr_WVCFactoryProvider(10938): version=143.0.7499.192 (749919238) minSdkVersion=29 multiprocess=true packageId=2 splits=<none>
+D/nativeloader(10938): Load /data/app/~~tsEHZAz2uBvdS8LxUlgqIw==/com.google.android.trichromelibrary_749919238-dAGDq6Gco1sTCnbhKvYzyQ==/base.apk!/lib/x86_64/libmonochrome_64.so using class loader ns clns-13 (caller=/data/app/~~FSo6lDgcMabyFJ6UiAyCZw==/com.google.android.webview-5HlhraXA00XWXnH6AWtrLw==/base.apk): ok
+D/nativeloader(10938): Load /system/lib64/libwebviewchromium_plat_support.so using class loader ns clns-13 (caller=/data/app/~~FSo6lDgcMabyFJ6UiAyCZw==/com.google.android.webview-5HlhraXA00XWXnH6AWtrLw==/base.apk): ok
+E/chromium(10938): [0116/001052.807156:ERROR:android_webview/browser/variations/variations_seed_loader.cc:39] Seed missing signature.
+I/chromium(10938): [0116/001052.826849:INFO:android_webview/browser/variations/variations_seed_loader.cc:67] Failed to open file for reading.: No such file or directory (2)
+I/cr_LibraryLoader(10938): Successfully loaded native library
+I/cr_CachingUmaRecorder(10938): Flushed 20 samples from 20 histograms, 0 samples were dropped.
+I/cr_CombinedPProvider(10938): #registerProvider() provider:WV.jk@80e31a7 isPolicyCacheEnabled:false policyProvidersSize:0
+I/cr_PolicyProvider(10938): #setManagerAndSource() 0
+I/cr_DisplayManager(10938): Is Display Topology available: false
+I/cr_CombinedPProvider(10938): #linkNativeInternal() 1
+I/cr_AppResProvider(10938): #getApplicationRestrictionsFromUserManager() Bundle[EMPTY_PARCEL]
+I/cr_PolicyProvider(10938): #notifySettingsAvailable() 0
+I/cr_CombinedPProvider(10938): #onSettingsAvailable() 0
+I/cr_CombinedPProvider(10938): #flushPolicies()
+W/chromium(10938): [WARNING:android_webview/browser/network_service/net_helpers.cc:143] HTTP Cache size is: 20971520
+W/gastronomic.app(10938): Suspending all threads took: 14.396ms
+I/gastronomic.app(10938): Background young concurrent mark compact GC freed 2175KB AllocSpace bytes, 14(472KB) LOS objects, 28% free, 6625KB/9278KB, paused 44.362ms,3.232ms total 128.387ms
+I/CameraManagerGlobal(10938): Connecting to camera service
+I/flutter (10938): AdMob initialized
+I/Choreographer(10938): Skipped 155 frames!  The application may be doing too much work on its main thread.
+W/cr_media(10938): BLUETOOTH_CONNECT permission is missing.
+W/cr_media(10938): getBluetoothAdapter() requires BLUETOOTH permission
+W/cr_media(10938): registerBluetoothIntentsIfNeeded: Requires BLUETOOTH permission
+W/libc    (10938): Access denied finding property "vendor.mesa.log"
+W/libc    (10938): Access denied finding property "vendor.mesa.log.file"
+E/MESA    (10938): Failed to open rendernode: No such file or directory
+E/MESA    (10938): Failed to open rendernode: No such file or directory
+D/vulkan  (10938): searching for layers in '/data/app/~~rTFMKT5GOopGWjSStPwwvw==/com.gastronomic.app-aK9du1pfbqAqJjOWiFc2GA==/lib/x86_64'
+D/vulkan  (10938): searching for layers in '/data/app/~~rTFMKT5GOopGWjSStPwwvw==/com.gastronomic.app-aK9du1pfbqAqJjOWiFc2GA==/base.apk!/lib/x86_64'
+E/MESA    (10938): Failed to open rendernode: No such file or directory
+E/MESA    (10938): Failed to open rendernode: No such file or directory
+E/MESA    (10938): Failed to open rendernode: No such file or directory
+E/MESA    (10938): Failed to open rendernode: No such file or directory
+E/MESA    (10938): Failed to open rendernode: No such file or directory
+E/MESA    (10938): Failed to open rendernode: No such file or directory
+W/libc    (10938): Access denied finding property "vendor.mesa.vk.trace.per.submit"
+W/libc    (10938): Access denied finding property "vendor.mesa.gallium.print.optio"
+W/libc    (10938): Access denied finding property "vendor.mesa.vk.trace.frame"
+E/MESA    (10938): Failed to open rendernode: No such file or directory
+W/libc    (10938): Access denied finding property "vendor.mesa.vk.wsi.headless.swa"
+E/MESA    (10938): Failed to open rendernode: No such file or directory
+E/MESA    (10938): Failed to open rendernode: No such file or directory
+D/GASS    (10938): Clearcut logging disabled
+I/Ads     (10938): This request is sent from a test device.
+I/Choreographer(10938): Skipped 66 frames!  The application may be doing too much work on its main thread.
+D/zzbak   (10938): File /data/user/0/com.gastronomic.app/cache/1761777210094.dex not found. No need for deletion
+W/gastronomic.app(10938): Verification of void com.google.android.gms.internal.ads.zzcot.<init>(com.google.android.gms.internal.ads.zzcnp, com.google.android.gms.internal.ads.zzcxl, com.google.android.gms.internal.ads.zzfkq, com.google.android.gms.internal.ads.zzczm, com.google.android.gms.internal.ads.zzdyo, com.google.android.gms.internal.ads.zzdhf, com.google.android.gms.internal.ads.zzdao, com.google.android.gms.internal.ads.zzeoa, com.google.android.gms.internal.ads.zzfjc, com.google.android.gms.internal.ads.zzfgn, com.google.android.gms.internal.ads.zzffr) took 211.029ms (15789.30 bytecodes/s) (0B arena alloc)
+D/GASS    (10938): Clearcut logging disabled
+W/gastronomic.app(10938): Suspending all threads took: 7.011ms
+I/gastronomic.app(10938): Background concurrent mark compact GC freed 2509KB AllocSpace bytes, 7(200KB) LOS objects, 49% free, 7530KB/14MB, paused 30.439ms,8.839ms total 336.812ms
+D/[Purchases] - DEBUG(10938): ℹ️ Debug logging enabled
+D/[Purchases] - DEBUG(10938): ℹ️ SDK Version - 9.19.0
+D/[Purchases] - DEBUG(10938): ℹ️ Package name - com.gastronomic.app
+D/[Purchases] - DEBUG(10938): 👤 Initial App User ID - null
+D/[Purchases] - DEBUG(10938): ℹ️ Purchases configured with response verification: DISABLED
+W/gastronomic.app(10938): Verification of void com.google.android.gms.internal.ads.zzhnl.<clinit>() took 296.033ms (466.16 bytecodes/s) (0B arena alloc)
+D/[Purchases] - DEBUG(10938): 👤 Identifying App User ID: $RCAnonymousID:b6c062b0eaa54060912d7fa90d817f73
+D/[Purchases] - DEBUG(10938): ℹ️ Deleting old synced subscriber attributes that don't belong to $RCAnonymousID:b6c062b0eaa540609112d7fa90d817f73
+D/[Purchases] - DEBUG(10938): ℹ️ App foregrounded
+D/[Purchases] - DEBUG(10938): ℹ️ Listener set
+D/[Purchases] - DEBUG(10938): ℹ️ CustomerInfo cache is stale, updating from network in foreground.
+D/[Purchases] - DEBUG(10938): Retrieving customer info with policy: FETCH_CURRENT
+D/[Purchases] - DEBUG(10938): ℹ️ Updating pending purchase queue
+D/[Purchases] - DEBUG(10938): ℹ️ Offerings cache is stale, updating from network in foreground
+D/[Purchases] - DEBUG(10938): 😻 Start Offerings update from network.
+D/[Purchases] - DEBUG(10938): Request already scheduled with jitter delay, adding existing callbacks to unjittered request with key: BackgroundAwareCallbackCacheKey(cacheKey=[/v1/subscribers/%24RCAnonymousID%3Ab6c062b0eaa54060912d7fa90d817f73/offerings], appInBackground=false)
+D/[Purchases] - DEBUG(10938): ℹ️ Updating pending purchase queue
+D/[Purchases] - DEBUG(10938): ℹ️ No subscriber attributes to synchronize.
+D/[Purchases] - DEBUG(10938): Product entitlement mappings are stale. Updating.
+I/Ads     (10938): JS: The jsLoaded GMSG has been sent (https://googleads.g.doubleclick.net/mads/static/sdk/native/sdk-core-v40.html:1017)
+I/chromium(10938): [INFO:CONSOLE:1017] "The jsLoaded GMSG has been sent", source: https://googleads.g.doubleclick.net/mads/static/sdk/native/sdk-core-v40.html (1017)
+I/Choreographer(10938): Skipped 127 frames!  The application may be doing too much work on its main thread.
+D/[Purchases] - DEBUG(10938): ℹ️ Querying purchases
+I/flutter (10938): RevenueCat initialized
+W/gastronomic.app(10938): Verification of void com.google.android.gms.internal.ads.zzheq.<clinit>() took 204.292ms (269.22 bytecodes/s) (0B arena alloc)
+W/gastronomic.app(10938): Verification of void com.revenuecat.purchases.google.usecase.BillingClientUseCase.processResult(com.android.billingclient.api.BillingResult, java.lang.Object, kotlin.jvm.functions.Function1, kotlin.jvm.functions.Function1) took 164.771ms (4673.14 bytecodes/s) (0B arena alloc)
+D/[Purchases] - DEBUG(10938): Getting storefront from cache was null.
+W/[Purchases] - WARN(10938): ! Unable to start a network connection due to a network configuration issue: https://api.revenuecat.com/v1/subscribers/%24RCAnonymousID%3Ab6c062b0eaa54060912d7fa90d817f73/offerings
+D/[Purchases] - DEBUG(10938): API request started: GET /v1/subscribers/%24RCAnonymousID%3Ab6c062b0eaa54060912d7fa90d817f73/offerings
+D/[Purchases] - DEBUG(10938): API request completed with status: GET /v1/subscribers/%24RCAnonymousID%3Ab6c062b0eaa54060912d7fa90d817f73/offerings 401
+E/[Purchases] - ERROR(10938): 🤖‼️ PurchasesError(code=InvalidCredentialsError, underlyingErrorMessage=Invalid API Key., message=='There was a credentials issue. Check the underlying error for more details.')
+E/[Purchases] - ERROR(10938): 🤖‼️ Error fetching offerings - PurchasesError(code=InvalidCredentialsError, underlyingErrorMessagee=Invalid API Key., message='There was a credentials issue. Check the underlying error for more details.')
+D/[Purchases] - DEBUG(10938): ℹ️ Querying purchases
+E/gastronomic.app(10938): No package ID 6a found for resource ID 0x6a0b0013.
+W/ServiceBindIntentUtils(10938): Dynamic lookup for intent failed for action: com.google.android.gms.ads.service.START
+D/[Purchases] - DEBUG(10938): ℹ️ Starting connection for com.android.billingclient.api.BillingClientImpl@7f1fb7e
+I/Choreographer(10938): Skipped 251 frames!  The application may be doing too much work on its main thread.
+I/HWUI    (10938): Davey! duration=4321ms; Flags=1, FrameTimelineVsyncId=711357, IntendedVsync=41530068340242, Vsync=41534251673408, InputEventId=0, HandleInputStart=41534259025500, AnimationStart=41534259041200, PerformTraversalsStart=41534267878000, DrawStart=41534298723000, FrameDeadline=41530085006908, FrameStartTime=41534258004600, FrameInterval=16666666, WorkloadTarget=16666666, SyncQueued=41534304982600, SyncStart=41534306893800, IssueDrawCommandsStart=41534310146400, SwapBuffers=41534342485100, FrameCompleted=41534391664800, DequeueBufferDuration=47091500, QueueBufferDuration=1362500, GpuCompleted=41534353202400, SwapBuffersCompleted=41534391664800, DisplayPresentTime=0, CommandSubmissionCompleted=41534342485100,
+D/InsetsController(10938): hide(ime())
+I/ImeTracker(10938): com.gastronomic.app:455e7eb7: onCancelled at PHASE_CLIENT_ALREADY_HIDDEN
+W/BillingClient(10938): In-app billing API version 3 is not supported on this device.
+W/gastronomic.app(10938): Suspending all threads took: 13.902ms
+I/gastronomic.app(10938): Background young concurrent mark compact GC freed 5172KB AllocSpace bytes, 19(2124KB) LOS objects, 37% free, 9388KB/14MB, paused 16.633ms,3.074ms total 149.212ms
+E/[Purchases] - ERROR(10938): 🤖‼️ PurchasesError(code=PurchaseNotAllowedError, underlyingErrorMessage=Billing is not available iin this device. DebugMessage: Billing service unavailable on device.. ErrorCode: BILLING_UNAVAILABLE. SubResponseCode: NO_APPLICABLE_SUB_RESPONSE_CODE., message='The device or user is not allowed to make the purchase.')
+E/[Purchases] - ERROR(10938): 🤖‼️ PurchasesError(code=PurchaseNotAllowedError, underlyingErrorMessage=Billing is not available iin this device. DebugMessage: Billing service unavailable on device.. ErrorCode: BILLING_UNAVAILABLE. SubResponseCode: NO_APPLICABLE_SUB_RESPONSE_CODE., message='The device or user is not allowed to make the purchase.')
+D/[Purchases] - DEBUG(10938): Request already scheduled with jitter delay, adding existing callbacks to unjittered request with key: BackgroundAwareCallbackCacheKey(cacheKey=[/v1/subscribers/%24RCAnonymousID%3Ab6c062b0eaa54060912d7fa90d817f73], appInBackground=false)
+E/[Purchases] - ERROR(10938): 🤖‼️ PurchasesError(code=PurchaseNotAllowedError, underlyingErrorMessage=Billing is not available iin this device. DebugMessage: Billing service unavailable on device.. ErrorCode: BILLING_UNAVAILABLE. SubResponseCode: NO_APPLICABLE_SUB_RESPONSE_CODE., message='The device or user is not allowed to make the purchase.')
+D/[Purchases] - DEBUG(10938): Getting storefront from cache was null.
+W/[Purchases] - WARN(10938): ! Unable to start a network connection due to a network configuration issue: https://api.revenuecat.com/v1/subscribers/%24RCAnonymousID%3Ab6c062b0eaa54060912d7fa90d817f73
+D/[Purchases] - DEBUG(10938): API request started: GET /v1/subscribers/%24RCAnonymousID%3Ab6c062b0eaa54060912d7fa90d817f73
+D/[Purchases] - DEBUG(10938): API request completed with status: GET /v1/subscribers/%24RCAnonymousID%3Ab6c062b0eaa54060912d7fa90d817f73 401
+E/[Purchases] - ERROR(10938): 🤖‼️ PurchasesError(code=InvalidCredentialsError, underlyingErrorMessage=Invalid API Key., message=='There was a credentials issue. Check the underlying error for more details.')
+E/[Purchases] - ERROR(10938): Error fetching customer data: PurchasesError(code=InvalidCredentialsError, underlyingErrorMessage=Invalid API Key., message='There was a credentials issue. Check the underlying error for more details.').
+I/Choreographer(10938): Skipped 51 frames!  The application may be doing too much work on its main thread.
+E/GFXSTREAM(10938): [GLClientState.cpp(298)] set vao to self, no-op (1)
+D/[Purchases] - DEBUG(10938): Getting storefront from cache was null.
+I/gastronomic.app(10938): Background young concurrent mark compact GC freed 1934KB AllocSpace bytes, 18(2420KB) LOS objects, 37% free, 9362KB/14MB, paused 11.592ms,36.204ms total 436.227ms
+W/[Purchases] - WARN(10938): ! Unable to start a network connection due to a network configuration issue: https://api.revenuecat.com/v1/product_entitlement_mapping
+D/[Purchases] - DEBUG(10938): API request started: GET /v1/product_entitlement_mapping
+D/[Purchases] - DEBUG(10938): API request completed with status: GET /v1/product_entitlement_mapping 401
+E/[Purchases] - ERROR(10938): 🤖‼️ PurchasesError(code=InvalidCredentialsError, underlyingErrorMessage=Invalid API Key., message=='There was a credentials issue. Check the underlying error for more details.')
+E/[Purchases] - ERROR(10938): Error updating product entitlement mappings. Error: PurchasesError(code=InvalidCredentialsError, underlyingErrorMessage=Invalid API Key., message='There was a credentials issue. Check the underlying error for more details.').   
+I/Ads     (10938): JS: The jsLoaded GMSG has been sent (https://googleads.g.doubleclick.net/mads/static/sdk/native/sdk-core-v40.html:1017)
+I/chromium(10938): [INFO:CONSOLE:1017] "The jsLoaded GMSG has been sent", source: https://googleads.g.doubleclick.net/mads/static/sdk/native/sdk-core-v40.html (1017)
+D/AudioSystem(10938): onNewServiceWithAdapter: media.audio_flinger service obtained 0x774c46309e40
+D/AudioSystem(10938): getService: IAudioFlingerService retrieved: 0x774d3625a8d0  IAudioFlinger cached: 0x774c46309e40
+D/AudioSystem(10938): onNewService: media.audio_policy service obtained 0x774d36259250
+D/AudioSystem(10938): getService: IAudioPolicyService retrieved: 0x774d36259250  cached: 0x774d36259250
+I/Choreographer(10938): Skipped 203 frames!  The application may be doing too much work on its main thread.
+I/AAudio  (10938): AAudioStreamBuilder_openStream() called ----------------------------------------
+I/AudioStreamBuilder(10938): rate   =  44100, channels  = 2, channelMask = 0x3, format   = 0x5, sharing = SH, dir = OUTPUT
+I/AudioStreamBuilder(10938): devices = AUDIO_PORT_HANDLE_NONE, sessionId = -1, perfMode = 11, callback: ON with frames = 4360
+I/AudioStreamBuilder(10938): usage  =      1, contentType = 0, inputPreset = 0, allowedCapturePolicy = 0
+I/AudioStreamBuilder(10938): privacy sensitive = false, opPackageName = (null), attributionTag = (null)
+D/AudioStreamBuilder(10938): build, global mmap policy is 0
+D/AudioStreamBuilder(10938): build, system mmap policy is 1
+D/AudioStreamBuilder(10938): build, final mmap policy is 1
+D/AudioStreamBuilder(10938): build, system mmap exclusive policy is 1
+D/AudioStreamBuilder(10938): build, final mmap exclusive policy is 1
+D/AudioStreamBuilder(10938): build() MMAP not used because AAUDIO_PERFORMANCE_MODE_LOW_LATENCY or AAUDIO_PERFORMANCE_MODE_POWER_SAVING_OFFLOADED not requested.
+D/gastronomic.app(10938): PlayerBase::PlayerBase()
+D/AudioStreamTrack(10938): open(), request notificationFrames = 0, frameCount = 0
+D/AudioStreamTrack(10938): open() flags changed from 0x00000008 to 0x00000000
+D/AudioStreamTrack(10938): open() perfMode changed from 11 to 10
+D/AAudioStream(10938): setState(s#1) from 0 to 2
+I/AAudio  (10938): AAudioStreamBuilder_openStream() got Legacy, devIds = [2], perf = NO, burst = 2006
+I/AAudio  (10938): AAudioStreamBuilder_openStream() returns 0 = AAUDIO_OK for s#1 ----------------
+D/AAudio  (10938): AAudioStream_requestStart(s#1) called --------------
+D/AAudioStream(10938): setState(s#1) from 2 to 3
+D/AudioStreamLegacy(10938): onAudioDeviceUpdate() devices 2 => 2
+D/AAudio  (10938): AAudioStream_requestStart(s#1) returned 0 ---------
+D/AAudioStream(10938): setState(s#1) from 3 to 4
+I/Choreographer(10938): Skipped 47 frames!  The application may be doing too much work on its main thread.
+I/cr_MediaCodecBridge(10938): create MediaCodec video decoder, mime video/x-vnd.on2.vp9, decoder name c2.goldfish.vp9.decoder, block_model=false
+D/CCodec  (10938): allocate(c2.goldfish.vp9.decoder)
+I/ApexCodecsLazy(10938): ApexCodecs loaded
+I/Codec2Client(10938): Available Codec2 services: "default" "software" "__ApexCodecs__"
+I/CCodec  (10938): setting up 'default' as default (vendor) store
+I/CCodec  (10938): Created component [c2.goldfish.vp9.decoder] for [c2.goldfish.vp9.decoder]
+D/CCodecConfig(10938): read media type: video/x-vnd.on2.vp9
+D/ReflectedParamUpdater(10938): extent() != 1 for single value type: algo.buffers.max-count.values
+D/ReflectedParamUpdater(10938): extent() != 1 for single value type: output.subscribed-indices.values
+D/ReflectedParamUpdater(10938): extent() != 1 for single value type: input.buffers.allocator-ids.values
+D/ReflectedParamUpdater(10938): extent() != 1 for single value type: output.buffers.allocator-ids.values
+D/ReflectedParamUpdater(10938): extent() != 1 for single value type: algo.buffers.allocator-ids.values
+D/ReflectedParamUpdater(10938): extent() != 1 for single value type: output.buffers.pool-ids.values
+D/ReflectedParamUpdater(10938): extent() != 1 for single value type: algo.buffers.pool-ids.values
+D/ReflectedParamUpdater(10938): ignored struct field coded.color-format.locations
+D/CCodecConfig(10938): ignoring local param raw.size (0xd2001800) as it is already supported
+D/CCodecConfig(10938): ignoring local param default.color (0x5200180b) as it is already supported
+D/ReflectedParamUpdater(10938): ignored struct field raw.hdr-static-info.mastering
+I/CCodecConfig(10938): query failed after returning 13 values (BAD_INDEX)
+D/CCodecConfig(10938): c2 config diff is Dict {
+D/CCodecConfig(10938):   c2::u32 coded.pl.level = 28680
+D/CCodecConfig(10938):   c2::u32 coded.pl.profile = 28672
+D/CCodecConfig(10938):   c2::u32 coded.vui.color.matrix = 0
+D/CCodecConfig(10938):   c2::u32 coded.vui.color.primaries = 0
+D/CCodecConfig(10938):   c2::u32 coded.vui.color.range = 2
+D/CCodecConfig(10938):   c2::u32 coded.vui.color.transfer = 0
+D/CCodecConfig(10938):   c2::u32 default.color.matrix = 0
+D/CCodecConfig(10938):   c2::u32 default.color.primaries = 0
+D/CCodecConfig(10938):   c2::u32 default.color.range = 0
+D/CCodecConfig(10938):   c2::u32 default.color.transfer = 0
+D/CCodecConfig(10938):   c2::u32 input.buffers.max-size.value = 6291456
+D/CCodecConfig(10938):   c2::u32 input.delay.value = 0
+D/CCodecConfig(10938):   Buffer input.hdr10-plus-info.value = {
+D/CCodecConfig(10938):   }
+D/CCodecConfig(10938):   string input.media-type.value = "video/x-vnd.on2.vp9"
+D/CCodecConfig(10938):   Buffer output.hdr10-plus-info.value = {
+D/CCodecConfig(10938):   }
+D/CCodecConfig(10938):   string output.media-type.value = "video/raw"
+D/CCodecConfig(10938):   c2::u32 raw.color.matrix = 0
+D/CCodecConfig(10938):   c2::u32 raw.color.primaries = 0
+D/CCodecConfig(10938):   c2::u32 raw.color.range = 2
+D/CCodecConfig(10938):   c2::u32 raw.color.transfer = 0
+D/CCodecConfig(10938):   c2::u32 raw.max-size.height = 240
+D/CCodecConfig(10938):   c2::u32 raw.max-size.width = 320
+D/CCodecConfig(10938):   c2::u32 raw.pixel-format.value = 35
+D/CCodecConfig(10938):   c2::i32 raw.rotation.flip = 0
+D/CCodecConfig(10938):   c2::i32 raw.rotation.value = 0
+D/CCodecConfig(10938):   c2::u32 raw.sar.height = 1
+D/CCodecConfig(10938):   c2::u32 raw.sar.width = 1
+W/ColorUtils(10938): expected specified color aspects (2:0:0:0)
+I/MediaCodec(10938): MediaCodec will operate in async mode
+I/MediaCodec(10938): media_quality service unavailable, skipping updatePictureProfile
+D/SurfaceUtils(10938): connecting to surface 0x774cd626b310, reason connectToSurface
+I/MediaCodec(10938): [c2.goldfish.vp9.decoder] setting surface generation to 11200513
+D/SurfaceUtils(10938): disconnecting from surface 0x774cd626b310, reason connectToSurface(reconnect)
+D/SurfaceUtils(10938): connecting to surface 0x774cd626b300, reason connectToSurface(reconnect-with-listener)
+D/CCodec  (10938): [c2.goldfish.vp9.decoder] buffers are bound to CCodec for this session
+D/CCodecConfig(10938): no c2 equivalents for native-window
+D/CCodecConfig(10938): no c2 equivalents for native-window-generation
+D/CCodecConfig(10938): no c2 equivalents for flags
+D/CCodecConfig(10938): config failed => CORRUPTED
+D/CCodecConfig(10938): c2 config diff is   c2::u32 raw.max-size.height = 360
+D/CCodecConfig(10938):   c2::u32 raw.max-size.width = 640
+D/CCodecConfig(10938):   c2::u32 raw.size.height = 360
+D/CCodecConfig(10938):   c2::u32 raw.size.width = 640
+W/Codec2Client(10938): query -- param skipped: index = 1107298332.
+D/CCodec  (10938): client requested max input size 86400, which is smaller than what component recommended (6291456); overriding with component recommendation.
+W/CCodec  (10938): This behavior is subject to change. It is recommended that app developers double check whether the requested max input size is in reasonable range.
+D/CCodec  (10938): encoding statistics level = 0
+D/CCodec  (10938): setup formats input: AMessage(what = 0x00000000) = {
+D/CCodec  (10938):   int32_t height = 360
+D/CCodec  (10938):   int32_t level = 256
+D/CCodec  (10938):   int32_t max-input-size = 6291456
+D/CCodec  (10938):   string mime = "video/x-vnd.on2.vp9"
+D/CCodec  (10938):   int32_t profile = 1
+D/CCodec  (10938):   int32_t width = 640
+D/CCodec  (10938):   Rect crop(0, 0, 639, 359)
+D/CCodec  (10938): }
+D/CCodec  (10938): setup formats output: AMessage(what = 0x00000000) = {
+D/CCodec  (10938):   int32_t android._color-format = 2135033992
+D/CCodec  (10938):   int32_t android._video-scaling = 1
+D/CCodec  (10938):   int32_t rotation-degrees = 0
+D/CCodec  (10938):   int32_t color-standard = 4
+D/CCodec  (10938):   int32_t color-range = 2
+D/CCodec  (10938):   int32_t color-transfer = 3
+D/CCodec  (10938):   int32_t sar-height = 1
+D/CCodec  (10938):   int32_t sar-width = 1
+D/CCodec  (10938):   Rect crop(0, 0, 639, 359)
+D/CCodec  (10938):   int32_t width = 640
+D/CCodec  (10938):   Buffer hdr10-plus-info = {
+D/CCodec  (10938):   }
+D/CCodec  (10938):   int32_t height = 360
+D/CCodec  (10938):   int32_t max-height = 360
+D/CCodec  (10938):   int32_t max-width = 640
+D/CCodec  (10938):   string mime = "video/raw"
+D/CCodec  (10938):   int32_t android._dataspace = 259
+D/CCodec  (10938):   int32_t color-format = 2130708361
+D/CCodec  (10938): }
+I/CCodecConfig(10938): query failed after returning 13 values (BAD_INDEX)
+E/gastronomic.app(10938): Failed to query component interface for required system resources: 6
+D/MediaCodec(10938): keep callback message for reclaim
+W/Codec2Client(10938): query -- param skipped: index = 1342179345.
+W/Codec2Client(10938): query -- param skipped: index = 2415921170.
+W/Codec2Client(10938): query -- param skipped: index = 2684356609.
+D/C2Store (10938): Using DMABUF Heaps
+D/CCodecBufferChannel(10938): [c2.goldfish.vp9.decoder#765] Created input block pool with allocatorID 16 => poolID 17 - OK (0)   
+D/CCodecBufferChannel(10938): [c2.goldfish.vp9.decoder#765] Query output surface allocator returned 0 params => BAD_INDEX (6)
+I/CCodecBufferChannel(10938): [c2.goldfish.vp9.decoder#765] Created output block pool with allocatorID 18 => poolID 46 - OK
+D/CCodecBufferChannel(10938): [c2.goldfish.vp9.decoder#765] Configured output block pool ids 46 => OK
+D/Codec2-OutputBufferQueue(10938): remote graphic buffer migration 0/0
+D/Codec2Client(10938): setOutputSurface -- failed to set consumer usage (6/BAD_INDEX)
+D/Codec2Client(10938): setOutputSurface -- generation=11200513 consumer usage=0x900
+D/Codec2Client(10938): Surface configure completed
+I/DMABUFHEAPS(10938): Using DMA-BUF heap named: system
+D/CCodecConfig(10938): c2 config diff is   c2::u32 raw.crop.height = 360
+D/CCodecConfig(10938):   c2::u32 raw.crop.left = 0
+D/CCodecConfig(10938):   c2::u32 raw.crop.top = 0
+D/CCodecConfig(10938):   c2::u32 raw.crop.width = 640
+D/AAudio  (10938): AAudioStream_requestStop(s#1) called
+D/AAudioStream(10938): setState(s#1) from 4 to 9
+D/AudioTrack(10938): stop(43): called with 96288 frames delivered
+W/cr_MediaCodecBridge(10938): Releasing: c2.goldfish.vp9.decoder
+D/SurfaceUtils(10938): connecting to surface 0x774cd6249650, reason connectToSurface
+I/MediaCodec(10938): [c2.goldfish.vp9.decoder] setting surface generation to 11200514
+D/SurfaceUtils(10938): disconnecting from surface 0x774cd6249650, reason connectToSurface(reconnect)
+D/SurfaceUtils(10938): connecting to surface 0x774cd6249640, reason connectToSurface(reconnect-with-listener)
+D/AAudioStream(10938): setState(s#1) from 9 to 10
+D/Codec2-OutputBufferQueue(10938): remote graphic buffer migration 4/4
+D/Codec2Client(10938): setOutputSurface -- failed to set consumer usage (6/BAD_INDEX)
+D/Codec2Client(10938): setOutputSurface -- generation=11200514 consumer usage=0x900
+D/Codec2Client(10938): Surface configure completed
+D/SurfaceUtils(10938): disconnecting from surface 0x774cd626b310, reason disconnectFromSurface
+D/CCodecBufferChannel(10938): [c2.goldfish.vp9.decoder#765] MediaCodec discarded an unknown buffer
+D/CCodecBufferChannel(10938): [c2.goldfish.vp9.decoder#765] MediaCodec discarded an unknown buffer
+I/hw-BpHwBinder(10938): onLastStrongRef automatically unlinking death recipients
+D/CCodecBufferChannel(10938): [c2.goldfish.vp9.decoder#765] MediaCodec discarded an unknown buffer
+D/CCodecBufferChannel(10938): [c2.goldfish.vp9.decoder#765] MediaCodec discarded an unknown buffer
+W/cr_MediaCodecBridge(10938): Codec released
+D/CCodecBufferChannel(10938): [c2.goldfish.vp9.decoder#765] MediaCodec discarded an unknown buffer
+D/CCodecBufferChannel(10938): [c2.goldfish.vp9.decoder#765] MediaCodec discarded an unknown buffer
+D/CCodecBufferChannel(10938): [c2.goldfish.vp9.decoder#765] MediaCodec discarded an unknown buffer
+D/CCodecBufferChannel(10938): [c2.goldfish.vp9.decoder#765] MediaCodec discarded an unknown buffer
+D/SurfaceUtils(10938): disconnecting from surface 0x774cd6249650, reason disconnectFromSurface
+I/flutter (10938): Rewarded Ad Loaded
+D/BufferPoolAccessor2.0(10938): bufferpool2 0x774ca62df928 : 0(0 size) total buffers - 0(0 size) used buffers - 7/11 (recycle/alloc) - 4/14 (fetch/transfer)
+D/BufferPoolAccessor2.0(10938): evictor expired: 1, evicted: 1
+D/AAudio  (10938): AAudioStream_requestStop(s#1) called
+D/AAudio  (10938): AAudioStream_close(s#1) called ---------------
+D/AAudioStream(10938): setState(s#1) from 10 to 11
+D/AAudioStream(10938): setState(s#1) from 11 to 12
+D/AAudioStream(10938): ~AudioStream(s#1) mPlayerBase strongCount = 2
+D/AAudio  (10938): AAudioStream_close(s#1) returned 0 ---------

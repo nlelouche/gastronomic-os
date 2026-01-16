@@ -422,5 +422,6 @@
   "settingsLanguageEnglish": "Inglés",
   "settingsLanguageSpanish": "Español",
   "settingsLanguageSwitchToSpanish": "Toca para cambiar a Español",
-  "settingsLanguageSwitchToEnglish": "Toca para cambiar a Inglés"
+  "settingsLanguageSwitchToEnglish": "Toca para cambiar a Inglés",
+  "dashboardUseBottomNav": "Por favor usa la barra de navegación inferior para acceder al Recetario."
 }

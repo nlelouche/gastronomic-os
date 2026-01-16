@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'dart:ui';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:gastronomic_os/init/supabase_init.dart';
 import 'package:gastronomic_os/features/planner/presentation/bloc/planner_bloc.dart';
 import 'package:gastronomic_os/features/planner/presentation/bloc/planner_event.dart';
@@ -26,6 +28,17 @@ void main() async {
   
   // Initialize Supabase and other core services
   await Firebase.initializeApp(); // Initialize Firebase
+  
+  // 🚨 CRASHLYTICS SETUP
+  // Pass all uncaught "fatal" errors from the framework to Crashlytics
+  FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
+
+  // Pass all uncaught asynchronous errors that aren't handled by the Flutter framework to Crashlytics
+  PlatformDispatcher.instance.onError = (error, stack) {
+    FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
+    return true;
+  };
+
   await SupabaseInit.init();
   await di.init(); // Initialize Dependency Injection
   

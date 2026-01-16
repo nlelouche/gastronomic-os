@@ -103,7 +103,12 @@ class _PlannerPageState extends State<PlannerPage> {
             }
 
             return ListView.separated(
-              padding: const EdgeInsets.all(AppDimens.paddingCard),
+              padding: const EdgeInsets.only(
+                left: AppDimens.paddingCard,
+                right: AppDimens.paddingCard,
+                top: AppDimens.paddingCard,
+                bottom: 120, // Space for floating nav
+              ),
               itemCount: plans.length,
               separatorBuilder: (_, __) => const SizedBox(height: 12),
               itemBuilder: (context, index) {
@@ -169,19 +174,22 @@ class _PlannerPageState extends State<PlannerPage> {
           return const SizedBox.shrink();
         },
       ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {
-           Navigator.of(context).push(
-             MaterialPageRoute(
-               builder: (ctx) => BlocProvider.value(
-                 value: context.read<PlannerBloc>()..add(GenerateShoppingList()),
-                 child: const ShoppingListPage(),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(bottom: 100),
+        child: FloatingActionButton.extended(
+          onPressed: () {
+             Navigator.of(context).push(
+               MaterialPageRoute(
+                 builder: (ctx) => BlocProvider.value(
+                   value: context.read<PlannerBloc>()..add(GenerateShoppingList()),
+                   child: const ShoppingListPage(),
+                 ),
                ),
-             ),
-           );
-        },
-        label: Text(AppLocalizations.of(context)!.shoppingListButton),
-        icon: const Icon(Icons.list_alt),
+             );
+          },
+          label: Text(AppLocalizations.of(context)!.shoppingListButton),
+          icon: const Icon(Icons.list_alt),
+        ),
       ),
     );
   }

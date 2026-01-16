@@ -37,7 +37,7 @@ class SocialRepositoryImpl implements ISocialRepository {
     try {
       final response = await supabaseClient
           .from('recipe_reviews')
-          .select('*, profiles(name:display_name)')
+          .select('id, recipe_id, rating, comment, user_id, created_at, profiles(name:display_name)')
           .eq('recipe_id', recipeId)
           .order('created_at', ascending: false);
 
@@ -83,7 +83,7 @@ class SocialRepositoryImpl implements ISocialRepository {
     try {
       final response = await supabaseClient
           .from('cook_proofs')
-          .select('*, profiles(name:display_name)')
+          .select('id, recipe_id, user_id, photo_url, caption, created_at, profiles(name:display_name)')
           .eq('recipe_id', recipeId)
           .order('created_at', ascending: false);
 

@@ -1457,4 +1457,8 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get settingsLanguageSwitchToEnglish => 'Tap to switch to English';
+
+  @override
+  String get dashboardUseBottomNav =>
+      'Please use the bottom navigation to access the Cookbook.';
 }

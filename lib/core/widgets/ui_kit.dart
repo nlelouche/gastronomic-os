@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:ui';
 import 'package:gastronomic_os/core/theme/app_dimens.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
@@ -275,5 +276,138 @@ class AppTextField extends StatelessWidget {
         contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
       ),
     );
+  }
+}
+
+/// A container that emits a colored glow, simulating neon lighting.
+/// Ideal for high-emphasis cards or featured items.
+class NeonCard extends StatelessWidget {
+  final Widget child;
+  final Color glowColor;
+  final double intensity; // 0.0 to 1.0 (subtle to radio-active)
+  final BorderRadius borderRadius;
+  final VoidCallback? onTap;
+
+  const NeonCard({
+    super.key,
+    required this.child,
+    required this.glowColor,
+    this.intensity = 0.5,
+    this.borderRadius = const BorderRadius.all(Radius.circular(24)),
+    this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    // If it's light mode, we might want to darken the glow nicely or keep it.
+    // For "Neon", dark themes work best, but let's make it adaptive.
+    
+    return Container(
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.surface, // Base background
+        borderRadius: borderRadius,
+        boxShadow: [
+          // The "Glow" - Outer soft light
+          BoxShadow(
+            color: glowColor.withOpacity(0.25 * intensity), // Lower opacity for elegance
+            blurRadius: 16 * intensity, // Tighter blur for "High Res" feel
+            spreadRadius: 0, // No negative spread, just natural falloff
+            offset: const Offset(0, 4),
+          ),
+          // Inner/Sharper shadow for depth
+          BoxShadow(
+            color: glowColor.withOpacity(0.15 * intensity),
+            blurRadius: 6,
+            offset: const Offset(0, 2),
+          ),
+        ],
+        // Subtle Border to define edges against the glow
+        border: Border.all(
+          color: glowColor.withOpacity(0.3),
+          width: 1.5,
+        ),
+      ),
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: onTap,
+          borderRadius: borderRadius,
+          child: child,
+        ),
+      ),
+    );
+  }
+}
+
+/// A premium glassmorphism container with gradient borders and shine.
+class GlassContainer extends StatelessWidget {
+  final Widget child;
+  final double blur;
+  final double opacity;
+  final BorderRadius? borderRadius;
+  final EdgeInsetsGeometry? padding;
+  final Gradient? borderGradient;
+
+  const GlassContainer({
+    super.key,
+    required this.child,
+    this.blur = 15,
+    this.opacity = 0.08,
+    this.borderRadius,
+    this.padding,
+    this.borderGradient,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final br = borderRadius ?? BorderRadius.circular(20);
+    
+    // Performance Optimization: If blur is 0, skip expensive BackdropFilter entirely
+    // and just use the semi-transparent overlay.
+    Widget content = Container(
+      decoration: BoxDecoration(
+        // Stronger fill if blur is disabled to simulate glass
+        color: Theme.of(context).colorScheme.surface.withOpacity(blur > 0 ? opacity : opacity + 0.1),
+        borderRadius: br,
+        border: Border.all(
+          color: Colors.white.withOpacity(0.12),
+          width: 1,
+        ),
+      ),
+      child: Container(
+         // Inner gradient for "sheen"
+         decoration: BoxDecoration(
+           borderRadius: br,
+           gradient: LinearGradient(
+             begin: Alignment.topLeft,
+             end: Alignment.bottomRight,
+             colors: [
+               Colors.white.withOpacity(0.2), 
+               Colors.white.withOpacity(0.0),
+               Colors.white.withOpacity(0.0),
+               Colors.white.withOpacity(0.05),
+             ],
+             stops: const [0.0, 0.4, 0.6, 1.0],
+           ),
+         ),
+         padding: padding,
+         child: child,
+      ),
+    );
+
+    if (blur > 0) {
+      return ClipRRect(
+        borderRadius: br,
+        child: BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: blur, sigmaY: blur),
+          child: content,
+        ),
+      );
+    } else {
+      return ClipRRect(
+        borderRadius: br,
+        child: content,
+      );
+    }
   }
 }

@@ -3,15 +3,11 @@ import 'package:gastronomic_os/core/theme/app_dimens.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gastronomic_os/core/widgets/ui_kit.dart';
-import 'package:gastronomic_os/features/inventory/presentation/pages/inventory_page.dart';
 import 'package:gastronomic_os/features/planner/presentation/bloc/planner_bloc.dart';
 import 'package:gastronomic_os/features/planner/presentation/bloc/planner_event.dart';
 import 'package:gastronomic_os/features/planner/presentation/widgets/chefs_suggestions.dart';
-import 'package:gastronomic_os/features/recipes/presentation/pages/recipes_page.dart';
 import 'package:gastronomic_os/features/settings/presentation/pages/settings_page.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:gastronomic_os/features/planner/presentation/pages/planner_page.dart';
-import 'package:gastronomic_os/features/planner/presentation/pages/planner_page.dart';
 import 'package:gastronomic_os/features/recipes/presentation/pages/my_recipes_page.dart'; // Phase 3.2
 import 'package:gastronomic_os/features/social/presentation/pages/feed_page.dart'; // Phase 5
 import 'package:gastronomic_os/l10n/generated/app_localizations.dart';
@@ -86,9 +82,8 @@ class DashboardPage extends StatelessWidget {
                       // Search Bar
                       GestureDetector(
                         onTap: () {
-                           Navigator.push(
-                             context,
-                             MaterialPageRoute(builder: (context) => const RecipesPage(autoFocus: true)), 
+                           ScaffoldMessenger.of(context).showSnackBar(
+                             SnackBar(content: Text(AppLocalizations.of(context)!.dashboardUseBottomNav)),
                            );
                         },
                         child: Container(
@@ -117,33 +112,6 @@ class DashboardPage extends StatelessWidget {
                       const ChefsSuggestions(),
                       const SizedBox(height: AppDimens.spaceXL),
 
-                      _buildFeatureCard(
-                        context,
-                        title: AppLocalizations.of(context)!.dashboardFridgeTitle,
-                        subtitle: AppLocalizations.of(context)!.dashboardFridgeSubtitle,
-                        icon: Icons.kitchen,
-                        color: colorScheme.secondary,
-                        delay: 400.ms,
-                        onTap: () => Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => const InventoryPage()),
-                        ),
-                      ),
-                      
-                      const SizedBox(height: AppDimens.spaceM),
-                      _buildFeatureCard(
-                        context,
-                        title: AppLocalizations.of(context)!.dashboardCookbookTitle,
-                        subtitle: AppLocalizations.of(context)!.dashboardCookbookSubtitle,
-                        icon: Icons.menu_book_rounded,
-                        color: colorScheme.tertiary,
-                        delay: 500.ms,
-                        onTap: () => Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => const RecipesPage()),
-                        ),
-                      ),
-                      
-                      const SizedBox(height: AppDimens.spaceM),
-
                       // My Recipes (New)
                       _buildFeatureCard(
                         context,
@@ -154,26 +122,6 @@ class DashboardPage extends StatelessWidget {
                         delay: 550.ms,
                         onTap: () => Navigator.of(context).push(
                           MaterialPageRoute(builder: (context) => const MyRecipesPage()),
-                        ),
-                      ),
-                      
-                      const SizedBox(height: AppDimens.spaceM),
-                      
-                      // Planner Card
-                      _buildFeatureCard(
-                        context,
-                        title: AppLocalizations.of(context)!.dashboardPlannerTitle,
-                        subtitle: AppLocalizations.of(context)!.dashboardPlannerSubtitle,
-                        icon: Icons.calendar_month_rounded,
-                        color: colorScheme.primary,
-                        delay: 450.ms,
-                        onTap: () => Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (ctx) => BlocProvider.value(
-                              value: context.read<PlannerBloc>(),
-                              child: const PlannerPage(),
-                            ),
-                          ),
                         ),
                       ),
                       
@@ -191,6 +139,8 @@ class DashboardPage extends StatelessWidget {
                           );
                         },
                       ),
+                      
+
                     ],
                   ),
                 ),

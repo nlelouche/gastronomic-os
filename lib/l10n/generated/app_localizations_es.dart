@@ -1460,4 +1460,8 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get settingsLanguageSwitchToEnglish => 'Toca para cambiar a Inglés';
+
+  @override
+  String get dashboardUseBottomNav =>
+      'Por favor usa la barra de navegación inferior para acceder al Recetario.';
 }

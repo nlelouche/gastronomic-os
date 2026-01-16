@@ -138,17 +138,7 @@ class _RecipesViewState extends State<RecipesView> {
             // }
 
             return Container(
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [
-                    theme.scaffoldBackgroundColor,
-                    theme.scaffoldBackgroundColor.withOpacity(0.8),
-                    theme.colorScheme.primaryContainer.withOpacity(0.05), // Subtle tint at bottom
-                  ],
-                ),
-              ),
+              // Gradient removed
               child: Column(
               children: [
                 // Filter Bar
@@ -173,7 +163,7 @@ class _RecipesViewState extends State<RecipesView> {
                                  child: const RecipeFilterSheet(),
                                ),
                                isScrollControlled: true,
-                             );
+                              );
                           },
                         ),
                         onChanged: (val) {
@@ -277,6 +267,9 @@ class _RecipesViewState extends State<RecipesView> {
                                separatorBuilder: (_, __) => const SizedBox(height: AppDimens.spaceL),
                                itemBuilder: (context, index) {
                                   // Ad logic
+                                  // if ((index + 1) % 6 == 0) {
+                                  //   return const BannerAdWidget();
+                                  // }
                                   if ((index + 1) % 6 == 0) {
                                     return const BannerAdWidget();
                                   }
@@ -339,18 +332,7 @@ class _RecipesViewState extends State<RecipesView> {
           return const SizedBox.shrink();
         },
       ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {
-          ActionGuard.guard(
-            context,
-            title: AppLocalizations.of(context)!.recipesNewRecipeButton,
-            message: 'Watch a short video to create a new recipe, or Upgrade to PRO.',
-            onAction: () => _navigateToEditor(context),
-          );
-        },
-        label: Text(AppLocalizations.of(context)!.recipesNewRecipeButton, style: GoogleFonts.outfit(fontWeight: FontWeight.w600)),
-        icon: const Icon(Icons.add),
-      ).animate().scale(delay: 500.ms, curve: Curves.easeOutBack),
+
     );
   }
 
@@ -379,23 +361,6 @@ class _RecipesViewState extends State<RecipesView> {
     ).then((result) {
       if ((result == true) && context.mounted) {
          bloc.add(LoadRecipes()); // Reload if deleted
-      }
-    });
-  }
-
-  void _navigateToEditor(BuildContext context) {
-    final bloc = context.read<RecipeBloc>();
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => BlocProvider.value(
-          value: bloc,
-          child: const RecipeEditorPage(),
-        ),
-      ),
-    ).then((_) {
-      if (context.mounted) {
-         bloc.add(LoadRecipes()); // Reload to see new recipe
       }
     });
   }

@@ -2557,6 +2557,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Tap to switch to English'**
   String get settingsLanguageSwitchToEnglish;
+
+  /// No description provided for @dashboardUseBottomNav.
+  ///
+  /// In en, this message translates to:
+  /// **'Please use the bottom navigation to access the Cookbook.'**
+  String get dashboardUseBottomNav;
 }
 
 class _AppLocalizationsDelegate

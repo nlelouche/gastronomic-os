@@ -70,7 +70,8 @@ class RecipeRemoteDataSourceImpl implements RecipeRemoteDataSource {
     String? collectionId, // New Parameter
   }) async {
     try {
-      var builder = supabaseClient.from('recipes').select();
+      // Optimization: Select only necessary fields for list view
+      var builder = supabaseClient.from('recipes').select('id, title, description, cover_photo_url, tags, author_id, created_at, is_fork, origin_id, is_public');
       
       // Filter by Author (for Created/Forked tabs)
       if (authorId != null) {
@@ -483,7 +484,10 @@ class RecipeRemoteDataSourceImpl implements RecipeRemoteDataSource {
     try {
       final response = await supabaseClient.rpc('get_dashboard_suggestions', params: {'limit_count': limit});
       
-      if (response == null) return [];
+      if (response == null || (response as List).isEmpty) {
+         AppLogger.w('⚠️ RPC get_dashboard_suggestions returned empty. Falling back to simple getRecipes.');
+         return getRecipes(limit: limit);
+      }
       
       // Response is a List of Maps (recipes)
       return (response as List).map((data) => RecipeModel.fromJson(data)).toList();
