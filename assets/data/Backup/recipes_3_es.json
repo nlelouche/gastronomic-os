@@ -1,0 +1,459 @@
+﻿[
+  {
+    "title": "Ensalada Diosa Verde (Estilo Dip)",
+    "description": "Una ensalada picada densa en nutrientes rediseñada como un dip; todos los vegetales se procesan en una brunoise de 2-3 mm para maximizar el área superficial para el aderezo emulsionado de hierbas y lípidos, aumentando la biodisponibilidad enzimática.",
+    "prep_time": "20 minutos",
+    "ingredients": [
+      "Col Verde [Base]",
+      "Pepino Inglés [Base]",
+      "Cebolletas [Estándar]",
+      "Espinacas y Albahaca Frescas [Universal]",
+      "Nueces o Anacardos [Estándar]",
+      "Semillas de Cáñamo o Calabacín Hervido Emulsionado [Alergia a Frutos Secos, APLV]",
+      "Levadura Nutricional [Universal]",
+      "Aceite con Infusión de Ajo [Bajo en FODMAP]",
+      "Ajo Fresco [Estándar]",
+      "Zumo de Limón [Universal]",
+      "Aguacate [Estándar]",
+      "Sal Marina [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Procesamiento Mecánico en Brunoise: Pique la col verde, el pepino y las cebolletas en una brunoise precisa de 2-3 mm. Este desglose mecánico asegura que la ensalada funcione como un dip y pre-digiere las fibras vegetales rígidas para mejorar el tránsito gastrointestinal.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Síntesis de la Matriz Cremosa: En una licuadora de alta velocidad, prepare la emulsión vibrante de hierbas. La fuente de lípidos debe emulsionarse completamente con los ácidos para asegurar un recubrimiento estable que no se separe.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Licue 1/2 taza de nueces o anacardos con espinacas, albahaca, 2 dientes de ajo y 1/4 de taza de zumo de limón hasta que esté ultra suave.",
+          "Alergia a Frutos Secos": "Sustituya los frutos secos por 1/2 taza de semillas de cáñamo o 1/2 taza de calabacín hervido y enfriado licuado con aceite de oliva para la base cremosa.",
+          "Bajo en FODMAP": "Use 2 cucharadas de aceite con infusión de ajo; omita estrictamente el ajo fresco y limite el aguacate a 30g para mantenerse dentro de los límites de seguridad de sorbitol."
+        }
+      },
+      {
+        "instruction": "Fortificación de Umami: Añada levadura nutricional y sal marina a la licuadora. Procese durante 20 segundos adicionales para airear el aderezo, creando una consistencia 'esponjosa' que se adhiera a los trozos de vegetales sin acumularse en el fondo.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Mezcla de Saturación: En un bol de vidrio refrigerado, combine los vegetales picados con el aderezo. Revuelva vigorosamente hasta que la ensalada alcance la saturación total. El aderezo debe actuar como un aglutinante estructural.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Servicio y Maridaje: Sirva en un bol de borde ancho con chips de maíz ricos en fibra o galletas de arroz. La ensalada está diseñada para ser recogida, utilizando el crujido del chip como contrapunto textural al aderezo aireado.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Bowl de Arroz con Salmón (Método de Sublimación de Hielo y Vapor)",
+    "description": "Una técnica de recalentamiento viral que utiliza el proceso físico de sublimación del hielo para crear una cámara de vapor presurizada, rehidratando los almidones a su estado gelatinizado original sin degradación textural.",
+    "prep_time": "10 minutos",
+    "ingredients": [
+      "Filete de Salmón Cocido [Estándar]",
+      "Pescado Blanco Recién Cocinado [Histamina]",
+      "Arroz Blanco Sobrante [Estándar]",
+      "Arroz Frío de 24h (Almidón Resistente) [Diabetes]",
+      "Cúbito de Hielo [Universal]",
+      "Mayonesa Kewpie [Estándar]",
+      "Mayonesa sin Aditivos [Histamina]",
+      "Sriracha y Salsa de Soja [Estándar]",
+      "Aminos de Coco [Histamina, Alergia a la Soja]",
+      "Aguacate [Estándar, Keto]",
+      "Hojas de Alga Seca [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Selección de la Base de Almidón: Coloque el arroz en un bol apto para microondas. Para protocolos de Diabetes, use arroz que haya sido refrigerado durante 24 horas para maximizar la retrogradación del almidón (formación de almidón resistente), lo que mitiga la respuesta glucémica.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Use 1 taza de arroz cocido sobrante.",
+          "Histamina": "Use arroz recién cocinado y enfriado rápidamente; evite las sobras para prevenir la acumulación de aminas biógenas."
+        }
+      },
+      {
+        "instruction": "Inclusión de Proteína: Desmenuce el salmón sobre el arroz. Si es sensible a la Histamina, use salmón ultracongelado en origen o pescado blanco (merluza/bacalao) recién cocinado para asegurar un consumo libre de aminas.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Use 100-150g de salmón cocido.",
+          "Histamina": "Use 100-150g de pescado blanco recién preparado y enfriado."
+        }
+      },
+      {
+        "instruction": "El Hack de Sublimación: Coloque un solo cúbito de hielo en el centro de la mezcla. Cubra el bol herméticamente con una hoja de papel pergamino o una tapa apta para microondas. El pergamino actúa como una trampa de calor.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Procesamiento en Microondas: Caliente durante 60-90 segundos. El cúbito de hielo sublimará vapor, rehidratando los granos de arroz desde adentro hacia afuera sin derretirse en el bol. Retire el fragmento de hielo restante.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Unión de la Matriz de Sabor: Rocíe con mayonesa y sriracha. Los lípidos de la mayonesa actúan como portadores del picante y cierran la brecha de sabor entre el pescado y el almidón neutro.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Añada 1 cucharada de mayonesa Kewpie, 1 cucharadita de sriracha y 1 cucharadita de salsa de soja.",
+          "Histamina": "Use mayonesa sin aditivos y 1 cucharadita de Aminos de Coco; omita estrictamente la sriracha y la salsa de soja fermentada."
+        }
+      },
+      {
+        "instruction": "Servicio: Mezcle bien hasta que sea cohesivo. Sirva con hojas de alga tostada (nori) para recoger la mezcla, proporcionando un contraste crujiente y yodo esencial.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Pasta Vodka Picante (Emulsión Rosé)",
+    "description": "Una salsa para pasta de alta estabilidad donde el etanol actúa como puente para unir los carotenoides del tomate insolubles en agua con los lípidos de la crema espesa para un acabado aterciopelado que no se corta.",
+    "prep_time": "20 minutos",
+    "ingredients": [
+      "Pasta Rigatoni o Penne [Base]",
+      "Pasta de Tomate [Estándar]",
+      "Salsa Nomato [Histamina, Renal]",
+      "Vodka [Estándar]",
+      "Crema Espesa [Estándar]",
+      "Mantequilla sin Sal [Estándar]",
+      "Chalotas y Ajo [Estándar]",
+      "Hojuelas de Chile Rojo [Estándar]",
+      "Queso Parmesano [Estándar]"
+    ],
+    "steps": [
+      {
+        "instruction": "Infusión Aromática: Saltee chalotas finamente picadas y ajo picado en mantequilla a fuego bajo. No permita que se doren; el objetivo es ablandar los tejidos para liberar compuestos de azufre sin crear notas amargas de Maillard.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Salteado del Concentrado: Añada la base de tomate/nomato. Saltee durante 3 minutos hasta que el color se oscurezca a un óxido profundo, concentrando los glutamatos umami.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Añada 3 cucharadas de pasta de tomate y hojuelas de chile rojo.",
+          "Renal": "Sustituya la pasta de tomate por 1/2 taza de salsa 'Nomato' (base de remolacha/zanahoria) para gestionar la concentración de potasio.",
+          "Histamina": "Use salsa 'Nomato'; omita estrictamente las hojuelas de chile para evitar la liberación de histamina."
+        }
+      },
+      {
+        "instruction": "Desglasado con Etanol: Vierta el vodka. El alcohol actúa como emulsionante, permitiendo que los compuestos de sabor liposolubles se disuelvan en la fase líquida. Cocine a fuego lento hasta que el aroma a alcohol crudo se elimine.",
+        "is_branch_point": false,
+        "skipped_for_diets": ["Histamina"]
+      },
+      {
+        "instruction": "Emulsificación: Incorpore la crema espesa batiendo constantemente. El vodka facilita una emulsión estable entre la base ácida y los lípidos de la crema, asegurando que la salsa permanezca cremosa incluso a altas temperaturas.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Unión del Almidón: Mezcle la pasta al dente con la salsa junto con 1/4 de taza de agua de cocción de la pasta. La amilopectina del agua actúa como un aglutinante final para la adherencia de la salsa a la pasta.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Emplatado: Termine con parmesano rallado. Para pacientes Renales, omita el queso para controlar la ingesta de fósforo y sodio.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Sopa de Lasaña (Un Solo Recipiente Ligada por Almidón)",
+    "description": "Una lasaña deconstruida que utiliza fideos rotos a mano para liberar almidones directamente en el caldo hirviendo, creando un guiso espesado naturalmente sin espesantes externos.",
+    "prep_time": "30 minutos",
+    "ingredients": [
+      "Carne de Ternera Picada o Salchicha Italiana [Base]",
+      "Láminas de Lasaña [Base]",
+      "Caldo de Tomate [Estándar]",
+      "Caldo Nomato [Histamina, Renal]",
+      "Mezcla de Ricotta, Mozzarella y Parmesano [Estándar]",
+      "Cebolla y Ajo [Estándar]",
+      "Aceite con Infusión de Ajo [Bajo en FODMAP]",
+      "Orégano Seco [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Renderizado de Proteína: En una olla grande y pesada, dore la carne picada. Escurra el 100% de la grasa para asegurar un perfil de caldo limpio. Saltee la cebolla y el ajo hasta que estén translúcidos.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Use 1 cebolla picada y 3 dientes de ajo picados.",
+          "Bajo en FODMAP": "Use 2 cucharadas de aceite con infusión de ajo y las partes verdes de las cebolletas; omita estrictamente el ajo fresco y los bulbos de cebolla."
+        }
+      },
+      {
+        "instruction": "Carga de Líquido: Añada la base de caldo. Si sigue protocolos Renales o de Histamina, se requiere la base 'Nomato' para eliminar los riesgos minerales y de aminas de los tomates.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Añada 4 tazas de caldo de ternera a base de tomate.",
+          "Renal": "Añada 4 tazas de caldo de verduras bajo en sodio mezclado con concentrado 'Nomato' (remolacha/zanahoria)."
+        }
+      },
+      {
+        "instruction": "Liberación Mecánica de Almidón: Rompa las láminas secas de lasaña a mano en trozos irregulares de 3 cm. Échelos en la sopa hirviendo. Revuelva frecuentemente; la fricción libera almidón que espesa el caldo en un guiso rico.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Preparación de la 'Bomba de Queso': Mientras los fideos terminan de cocerse, mezcle la ricotta fría, la mozzarella y el parmesano. Esta mezcla debe mantenerse refrigerada hasta el emplatado final.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Emplatado y Contraste Térmico: Sirva la sopa caliente en boles. Coloque una cucharada generosa de la mezcla de queso fría en el centro. El gradiente térmico es la firma sensorial de este plato.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Pimento Cheese de la Familia Carter",
+    "description": "Un dip de herencia sureña que utiliza queso rallado a mano para evitar agentes antiaglomerantes, asegurando una emulsión fría estable y con trozos con la mayonesa.",
+    "prep_time": "15 minutos",
+    "ingredients": [
+      "Queso Cheddar Extra Fuerte [Base]",
+      "Pimientos Morrón en Dados (Escurridos) [Universal]",
+      "Mayonesa [Universal]",
+      "Mayonesa Baja en Sodio [Renal, Hipertensión]",
+      "Pimienta de Cayena [Estándar]",
+      "Levadura Nutricional [Vegano]"
+    ],
+    "steps": [
+      {
+        "instruction": "Procesamiento Mecánico: Ralle a mano el cheddar fuerte usando el lado grueso de un rallador de caja. Advertencia Técnica: Debe evitar el queso ya rallado; la celulosa (antiaglomerante) evita que las grasas se emulsionen correctamente con la mayonesa.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Ralle 500g de cheddar extra fuerte.",
+          "Vegano": "Desmenuce finamente tofu firme y mézclelo con 1 cucharadita de levadura nutricional y 1 cucharadita de ácido láctico para la base."
+        }
+      },
+      {
+        "instruction": "Prevención de Sinéresis: Escurra los pimientos y séquelos agresivamente con papel de cocina. El exceso de líquido de la conserva hará que el dip se separe y 'llore' durante el almacenamiento.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Emulsificación en Frío: Incorpore la mayonesa y las especias en la base de queso. Para protocolos de Hipertensión o Renales, use una fórmula de mayonesa baja en sodio.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Mezcle con 1/2 taza de mayonesa entera y una pizca de cayena.",
+          "Renal": "Use mayonesa baja en sodio; omita estrictamente la sal extra."
+        }
+      },
+      {
+        "instruction": "Maduración de la Textura: Triture la mezcla suavemente con un tenedor para integrar pero manteniendo los trozos. Refrigere durante 30 minutos para permitir que los ácidos de la mayonesa ablanden las proteínas del queso.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Birria Ramen (Fusión de Colágeno y Chile)",
+    "description": "Un híbrido mexicano-japonés que utiliza el alto contenido de gelatina del consomé de birria para recubrir los fideos alcalinos, creando una profundidad umami intensa.",
+    "prep_time": "30 minutos (usando birria ya preparada)",
+    "ingredients": [
+      "Consomé de Birria (Rico en grasa) [Base]",
+      "Fideos Ramen Alcalinos [Estándar]",
+      "Fideos de Arroz [Celíaco]",
+      "Carne de Birria Deshebrada [Base]",
+      "Huevo Pasado por Agua [Estándar]",
+      "Cilantro y Lima [Universal]",
+      "Cebolla Blanca [Estándar]"
+    ],
+    "steps": [
+      {
+        "instruction": "Recalentamiento del Consomé: Lleve el consomé de birria a ebullición completa. Asegúrese de incluir la 'capa de grasa' (el aceite rojo de la parte superior); contiene los aromáticos de chile liposolubles esenciales para recubrir los fideos.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Ingeniería del Fideo: Cocine los fideos por separado para mantener la claridad del caldo. Se prefieren los fideos alcalinos por su textura firme y elástica que resiste el ablandamiento en el caldo ácido de chile.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Hierva fideos ramen durante 2-3 minutos hasta que estén al dente.",
+          "Celíaco": "Sustituya por fideos de arroz gruesos (estilo Pho)."
+        }
+      },
+      {
+        "instruction": "Arquitectura del Montaje: Coloque los fideos calientes en un bol profundo. Vierta el consomé hirviendo sobre ellos. La capa de grasa actúa como un aislante térmico para mantener la sopa caliente.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Guarnición de Proteína: Añada una porción generosa de carne deshebrada y un huevo pasado por agua (cortado longitudinalmente).",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Equilibrio de Acidez: Cubra con cilantro y cebolla picada. Sirva con 3 rodajas de lima; el ácido cítrico es técnicamente necesario para emulsionar las grasas pesadas de la ternera durante el consumo.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Use cebolla blanca y cilantro.",
+          "Bajo en FODMAP": "Cubra con cilantro y lima; omita estrictamente la cebolla blanca."
+        }
+      }
+    ]
+  },
+  {
+    "title": "Rosé Tteokbokki (Amortiguador de Lácteos y Capsaicina)",
+    "description": "Una adaptación moderna del 'K-Food' coreano que utiliza los lípidos de la crema de leche para encapsular las moléculas de capsaicina, proporcionando una textura aterciopelada y un calor percibido reducido.",
+    "prep_time": "20 minutos",
+    "ingredients": [
+      "Pasteles de Arroz (Garae-tteok) [Base]",
+      "Gochujang (Pasta de Chile Fermentada) [Estándar]",
+      "Crema Espesa [Estándar]",
+      "Leche de Coco Entera [Vegano, APLV]",
+      "Salchichas de Viena y Bacon [Estándar]",
+      "Ajo y Cebolla [Estándar]",
+      "Aceite con Infusión de Ajo [Bajo en FODMAP]"
+    ],
+    "steps": [
+      {
+        "instruction": "Renderizado de Lípidos: En una sartén, saltee las salchichas y el bacon hasta que los bordes estén crujientes y las grasas se hayan derretido.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Saltee con ajo y cebolla picados.",
+          "Bajo en FODMAP": "Use 2 cucharadas de aceite con infusión de ajo y la parte verde de las cebolletas; omita estrictamente los bulbos de ajo y cebolla frescos."
+        }
+      },
+      {
+        "instruction": "Síntesis de la Base Rosé: Añada la pasta de chile y la crema. Los lípidos de la crema actúan como un amortiguador químico, envolviendo la capsaicina para atenuar su ardor en la lengua.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Añada 1 cucharada de Gochujang y 1/2 taza de crema espesa.",
+          "Vegano": "Sustituya la crema por 1/2 taza de leche de coco entera.",
+          "Histamina": "Omita estrictamente el Gochujang (fermentado). Sustituya con una mezcla de puré de pimiento rojo fresco y miel cruda."
+        }
+      },
+      {
+        "instruction": "Hidratación del Almidón: Añada los pasteles de arroz. Cocine a fuego lento durante 8-10 minutos. A medida que los pasteles se ablandan, liberan almidón que espesa la crema en una salsa Rosé brillante.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Servicio: El plato está listo cuando los pasteles tienen una 'textura Q' (elástica/masticable) y la salsa es una emulsión espesa de color rosa chicle. Sirva inmediatamente.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Limonada Brasileña (Cítrico de Extracción en Frío)",
+    "description": "Una bebida de alta extracción que utiliza limas enteras y leche condensada como amortiguador de pH para lograr un perfil cremoso y no amargo mediante un licuado por pulsos preciso.",
+    "prep_time": "10 minutos",
+    "ingredients": [
+      "Limas Enteras (de piel fina) [Base]",
+      "Agua Fría [Base]",
+      "Azúcar o Alulosa [Estándar, Diabetes]",
+      "Leche Condensada Azucarada [Estándar]",
+      "Leche Condensada de Coco [Vegano, APLV]",
+      "Hielo [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Preparación del Cítrico: Lave y corte las limas en cuartos. No las pele; la piel contiene aceites cítricos esenciales necesarios para la complejidad aromática final.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Extracción a Alta Velocidad: Coloque las limas, el agua y el endulzante en una licuadora de alta velocidad.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Añada 3 cucharadas de azúcar granulada.",
+          "Diabetes": "Sustituya el azúcar por 2 cucharadas de alulosa para mantener la estabilidad glucémica."
+        }
+      },
+      {
+        "instruction": "Tiempo de Pulso (Crítico): Triture por pulsos durante exactamente 5-8 segundos. Advertencia Técnica: No exceda los 10 segundos de licuado o romperá las células del albedo (la parte blanca), liberando limonoides amargos que arruinarán la bebida.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Filtración Inmediata: Cole la mezcla a través de un tamiz de malla fina en una jarra. Deseche la pulpa y las pieles inmediatamente para detener la extracción de amargor adicional.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Amortiguación Cremosa: Incorpore la leche condensada. Los lípidos equilibran el alto contenido de ácido cítrico, creando una emulsión estable y espumosa.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Añada 1/3 de taza de leche condensada azucarada.",
+          "APLV": "Añada 1/3 de taza de leche condensada a base de coco."
+        }
+      },
+      {
+        "instruction": "Servicio: Sirva sobre hielo fresco inmediatamente. Consumir dentro de los primeros 30 minutos para evitar el amargor por oxidación.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Sándwich de Ensalada Grinder (Italiano Emulsionado)",
+    "description": "Una reingeniería viral del sub italiano donde los vegetales se emulsionan previamente con el aderezo para resolver el problema de hidratación del 'sándwich seco'.",
+    "prep_time": "15 minutos",
+    "ingredients": [
+      "Pan de Sándwich o Baguette [Estándar]",
+      "Embutidos Italianos (Salami, Prosciutto) [Estándar]",
+      "Pavo Asado Fresco [Histamina]",
+      "Lechuga Iceberg [Base]",
+      "Cebolla Roja y Pepperoncini [Estándar]",
+      "Mayonesa [Universal]",
+      "Vinagre de Vino Tinto [Estándar]",
+      "Aceite con Infusión de Ajo [Bajo en FODMAP]",
+      "Orégano Seco y Hojuelas de Chile [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Tostado Maillard: Abra el pan y añada queso provolone. Tueste a 200°C hasta que el pan esté ultra crujiente y el queso haya logrado una costra ligera de Maillard.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Síntesis de la Matriz Grinder: En un bol grande, bata la mayonesa, el vinagre y las especias hasta que se forme una emulsión espesa y estable.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Use vinagre de vino tinto y ajo picado.",
+          "Bajo en FODMAP": "Use zumo de limón y aceite con infusión de ajo; omita estrictamente las cebollas de la matriz de la ensalada.",
+          "Histamina": "Use mayonesa fresca sin aditivos y sal marina; omita estrictamente el vinagre y las hojuelas de chile."
+        }
+      },
+      {
+        "instruction": "Integración de Vegetales: Añada la lechuga rallada y los pimientos al bol del aderezo. Revuelva vigorosamente hasta que cada hoja esté completamente encapsulada. Esto evita que el pan absorba el agua de los vegetales.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Capas de Proteína: Añada las carnes al pan tostado.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Use salami y jamón italianos tradicionales.",
+          "Histamina": "Use pavo o pollo asado recién cocinado y enfriado; evite las carnes curadas o procesadas."
+        }
+      },
+      {
+        "instruction": "Emplatado: Amontone generosamente la Ensalada Grinder emulsionada sobre las carnes. Envuelva en papel pergamino durante 2 minutos para permitir que los sabores se fusionen antes de servir.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Pasta e Ceci (Aglutinante de Almidón de Aquafaba)",
+    "description": "Una comida tradicional de una sola olla que utiliza la sinergia química entre el almidón de la pasta y la aquafaba de los garbanzos para crear una salsa cremosa sin lácteos.",
+    "prep_time": "20 minutos",
+    "ingredients": [
+      "Pasta Corta (Ditalini) [Estándar]",
+      "Pasta Baja en Proteína [Renal]",
+      "Garbanzos de Lata (con líquido) [Base]",
+      "Salsa de Tomate [Estándar]",
+      "Salsa Nomato [Histamina, Renal]",
+      "Romero Fresco y Ajo [Universal]",
+      "Aceite de Oliva Virgen Extra [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Infusión Aromática: Saltee el romero y el ajo en un charco generoso de aceite de oliva hasta que el ajo esté dorado. Esto infunde la base lipídica con los aceites volátiles del romero.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Fundación de la Salsa: Añada la base de la salsa. Para protocolos Renales o de Histamina, se requiere el sustituto 'Nomato' para evitar desencadenantes minerales y de aminas.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Añada 1/2 taza de salsa de tomate.",
+          "Renal": "Añada 1/2 taza de salsa Nomato para minimizar la concentración de potasio."
+        }
+      },
+      {
+        "instruction": "Integración de Aquafaba: Añada los garbanzos junto con su líquido de conserva. Las saponinas en la aquafaba actúan como un emulsionante natural cuando se calientan, uniendo el aceite y el caldo.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Síntesis en una Olla: Añada la pasta seca directamente en la olla con el agua hirviendo justa para cubrir. A medida que la pasta se cuece, libera amilopectina que espesa la aquafaba en una salsa rica y cremosa.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Use 100g de pasta de trigo.",
+          "Renal": "Use pasta baja en proteína (aproteica) para permitir el contenido mineral de los garbanzos."
+        }
+      },
+      {
+        "instruction": "Servicio: Cocine hasta que esté al dente y el líquido se haya reducido a un guiso espeso. Termine con un chorrito de aceite de oliva crudo y sirva caliente.",
+        "is_branch_point": false
+      }
+    ]
+  }
+]

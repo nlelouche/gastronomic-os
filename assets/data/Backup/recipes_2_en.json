@@ -1,0 +1,393 @@
+﻿[
+  {
+    "title": "The Stew (Spiced Chickpea with Coconut and Turmeric)",
+    "description": "A high-nutrient vegan comfort dish utilizing mechanical starch release to achieve a creamy emulsion without flour, optimized for anti-inflammatory efficacy.",
+    "prep_time": "60 minutes",
+    "ingredients": [
+      "Cooked Chickpeas (or canned, thoroughly rinsed) [Base]",
+      "Full-fat Coconut Milk [Standard]",
+      "Vegetable Broth [Universal]",
+      "Fresh Turmeric (Grated) [Universal]",
+      "Fresh Ginger (Minced) [Universal]",
+      "Fresh Garlic (Minced) [Standard]",
+      "Garlic-infused Oil [Low FODMAP]",
+      "Red Pepper Flakes [Standard]",
+      "Greek Yogurt [Standard, Vegetarian]",
+      "Coconut Yogurt [Vegan, APLV]",
+      "Fresh Mint Leaves [Universal]",
+      "Sea Salt and Black Pepper [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Aromatic Base Activation: In a heavy-bottomed Dutch oven, heat your lipid choice over medium-high. Add turmeric, ginger, and garlic. Sauté for 3-5 minutes. Technical Note: This step is crucial for blooming the fat-soluble curcumin in turmeric, increasing its bioavailability.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Sauté 4 cloves of minced garlic and 1 inch of ginger in olive oil.",
+          "Low FODMAP": "Use 2 tbsp garlic-infused oil and scallion greens; strictly omit garlic and onion bulbs to prevent fructan triggers."
+        }
+      },
+      {
+        "instruction": "Liquid Phase Integration: Add the chickpeas and coconut milk. If following a Low FODMAP protocol, the coconut milk must be limited to 125ml per serving to maintain sorbitol compliance.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Mechanical Starch Thickening: While the stew simmers, use a heavy spoon to crush approximately 1/4 of the chickpeas against the side of the pot. This releases internal amylopectin, which binds with the coconut fats to create a natural, creamy thickening agent.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Thermal Reduction: Reduce heat to low and simmer uncovered for 30-35 minutes. The stew is finished when the liquid has reduced by 30%, resulting in a thick, velvety consistency that coats the back of a spoon.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Plating and Temperature Contrast: Ladle into warm bowls. Top with a cold dollop of yogurt to provide a thermal counterpoint to the earthy stew. Garnish with hand-torn mint leaves for volatile aromatic oils.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Top with full-fat Greek yogurt.",
+          "APLV": "Top with unsweetened coconut yogurt to avoid dairy proteins."
+        }
+      }
+    ]
+  },
+  {
+    "title": "Halal Cart Style Chicken (NYC Street Reconstruction)",
+    "description": "A forensic reconstruction of NYC street food focusing on acid-based protein denaturation and a high-stability, sugar-balanced white sauce emulsion.",
+    "prep_time": "30 minutes (plus 1h marination)",
+    "ingredients": [
+      "Boneless Chicken Thighs [Base]",
+      "Fresh Lemon Juice and Dried Oregano [Universal]",
+      "Basmati Rice [Standard]",
+      "Leached White Rice [Renal]",
+      "Turmeric and Cumin [Universal]",
+      "Mayonnaise [Standard]",
+      "Greek Yogurt [Standard]",
+      "White Sugar [Standard]",
+      "Raw Honey [Histamine]",
+      "White Vinegar [Standard]",
+      "Sea Salt [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Chemical Marination: Coat chicken thighs in lemon juice, oil, and oregano. Marinate for at least 1 hour. The citric acid acts as a tenderizer by partially breaking down the tough connective tissues in the thighs.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Pilaf Rice Technique: In a pot, sauté turmeric and cumin in oil before adding the rice. This encapsulates the rice starch in fat-soluble pigments, ensuring a uniform yellow color and preventing the grains from clumping.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Use standard basmati rice.",
+          "Renal": "Use white rice soaked for 2 hours and boiled in excess water (leached) to reduce phosphorus and potassium levels."
+        }
+      },
+      {
+        "instruction": "Maillard Searing: Heat a cast-iron skillet to high. Sear chicken until deeply charred. Let rest for 5 minutes before dicing into 1cm cubes; this ensures juices are reabsorbed into the protein fibers.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "White Sauce Synthesis: Whisk mayonnaise, yogurt, sugar, and vinegar. The sugar is technically mandatory here to balance the sharp acidity and replicate the specific street-food flavor profile.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Use white sugar and vinegar.",
+          "Histamine": "Use fresh additive-free mayo, honey, and avoid vinegar (substitute with lemon drops if tolerated)."
+        }
+      },
+      {
+        "instruction": "Service: Serve chicken over the rice, drizzled generously with white sauce. Accompany with cold shredded iceberg lettuce and tomato wedges for a temperature and texture gradient.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Cold-Start Boiled Corn (Structural Preservation Method)",
+    "description": "A scientific boiling method that prevents pectin degradation in cellular walls, resulting in ultra-plump, juicy kernels without shriveling.",
+    "prep_time": "15 minutes",
+    "ingredients": [
+      "Fresh Corn on the Cob [Base]",
+      "Cold Water [Universal]",
+      "Unsalted Butter [Standard]",
+      "Avocado Aioli [Diabetes]",
+      "Sea Salt [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Mineral Management: If preparing for a Renal diet, cut the corn into 'ribs' (longitudinal quarters) to increase surface area for mineral leaching during the boiling process.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Renal": "Cut into ribs and boil in a high volume of water (leaching) to remove excess potassium.",
+          "Standard": "Keep the ears whole."
+        }
+      },
+      {
+        "instruction": "Cold-Start Technique: Place the corn in a pot and cover with completely cold water. Technical Warning: Do not add salt to the water, as sodium ions can toughen the outer pericarp of the kernel.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Thermal Threshold: Bring the water to a rolling boil. The moment it boils, remove the pot from the heat source immediately. The residual heat is sufficient to gelatinize the starch while keeping the cell walls turgid.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Glycemic Buffer: Serve with a lipid source. For Diabetes, the healthy fats in avocado aioli are critical to slowing down the absorption of the corn's natural sugars.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Spread with butter and salt.",
+          "Diabetes": "Serve with 2 tbsp of avocado aioli; limit portion to 1/2 ear."
+        }
+      }
+    ]
+  },
+  {
+    "title": "Million Dollar Chicken Casserole",
+    "description": "A dairy-dense Southern casserole using a multi-cheese matrix for maximum mouthfeel and a buttery textural topping for palate balance.",
+    "prep_time": "40 minutes",
+    "ingredients": [
+      "Cooked Shredded Chicken [Base]",
+      "Cream Cheese (Softened) [Standard]",
+      "Cottage Cheese [Standard]",
+      "Sour Cream [Standard]",
+      "Condensed Chicken Soup [Standard]",
+      "Crushed Ritz Crackers [Standard]",
+      "Almond Flour & Nutritional Yeast [Low-Carb, Vegan]",
+      "Melted Butter [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Dairy Matrix Synthesis: In a large bowl, whisk together softened cream cheese, cottage cheese, and sour cream. This 'Dairy Triad' creates a stable, high-fat base that prevents the chicken from drying out.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Homogenization: Fold in the shredded chicken and condensed soup until every fiber is fully encapsulated in the dairy matrix.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Vessel Loading: Transfer the mixture into a greased baking dish and level the surface with an offset spatula to ensure even heat distribution.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Textural Contrast: Prepare the topping to provide a salt-and-crunch counterpoint to the soft filling.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Mix crushed Ritz crackers with melted butter.",
+          "Low-Carb": "Mix almond flour with nutritional yeast and garlic salt for an umami-rich, grain-free crust."
+        }
+      },
+      {
+        "instruction": "Bake: Hornea at 190°C (375°F) for 25-30 minutes until the edges are bubbling and the crust is deeply golden.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Marry Me Chicken (One-Pan Umami)",
+    "description": "A speed-optimized pan meal using sun-dried tomatoes for intense glutamate density and heavy cream for high palatability.",
+    "prep_time": "35 minutes",
+    "ingredients": [
+      "Thin Chicken Cutlets [Base]",
+      "All-purpose Flour (for dredging) [Standard]",
+      "Dry White Wine [Standard]",
+      "Heavy Cream [Standard]",
+      "Sun-dried Tomatoes (in oil) [Standard]",
+      "Nomato Sauce [Histamine, Renal]",
+      "Parmesan Cheese [Standard]",
+      "Chicken Broth [Universal]",
+      "Fresh Basil [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Surface Searing: Lightly flour the chicken cutlets and sear in a hot skillet until golden brown. Remove and set aside. The flour creates a 'fond' that will naturally thicken the final sauce.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Fond Deglazing: Pour the white wine into the hot pan. Use a wooden spatula to scrape the caramelized protein bits from the bottom; this is the primary flavor source for the sauce.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Sauce Construction: Add the cream and broth. Incorporate the flavor profile according to dietary needs.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Add sun-dried tomatoes and parmesan. The acidity in the tomatoes balances the cream's lipids.",
+          "Histamine": "Substitute with Nomato sauce and omit cheese to avoid biogenic amines.",
+          "Renal": "Use Nomato sauce to control potassium and phosphorus levels."
+        }
+      },
+      {
+        "instruction": "Reduction: Return the chicken to the pan. Simmer for 8 minutes until the sauce achieves a 'nappe' consistency (coats the back of a spoon).",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Plating: Garnish with fresh basil strips immediately before serving to maintain volatile aromatic integrity.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Microwave Poached Eggs (Protein-Set Method)",
+    "description": "A technical coagulation method using controlled microwave energy to set egg proteins while preserving a liquid yolk center.",
+    "prep_time": "5 minutes",
+    "ingredients": [
+      "Fresh Eggs [Base]",
+      "Water [Universal]",
+      "White Vinegar [Universal]",
+      "Sea Salt [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Vessel Setup: Fill a small bowl with 1/2 cup of water. Add a drop of vinegar and a pinch of salt. The vinegar acidifies the water, facilitating faster albumin (egg white) coagulation.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Egg Loading: Carefully crack the egg into the water, ensuring it is fully submerged.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Controlled Cooking: Cover the bowl with a plate. Microwave at 50-80% power for 60 seconds. Technical Warning: High power can cause the yolk to explode as internal steam builds up too rapidly.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Cook until the white is opaque but the yolk feels soft.",
+          "Renal": "Cook until the white is fully set (cuajada) to optimize the protein profile for renal patients."
+        }
+      },
+      {
+        "instruction": "Rest: Let the egg rest in the water for 30 seconds before lifting with a slotted spoon to drain on a paper towel.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Bang Bang Chicken Salad",
+    "description": "A nutrient-dense adaptation using a yogurt emulsion to provide the signature creamy-spicy profile with a reduced lipid burden.",
+    "prep_time": "20 minutes",
+    "ingredients": [
+      "Cooked Shredded Chicken [Base]",
+      "Plain Greek Yogurt [Standard]",
+      "Fresh Mayonnaise [Universal]",
+      "Sweet Chili Sauce [Standard]",
+      "Sriracha [Standard]",
+      "Honey and Cayenne [Histamine]",
+      "Cucumber and Carrots [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Emulsion Base: In a large bowl, whisk the yogurt and mayonnaise until homogeneous. This creates a stable, high-protein base for the salad.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Add sweet chili sauce and sriracha.",
+          "Histamine": "Use fresh mayo, honey, and cayenne to avoid fermented chili sauces.",
+          "Low FODMAP": "Ensure the mayo is garlic-free and use a compliant sriracha alternative."
+        }
+      },
+      {
+        "instruction": "Infusion: Add the warm shredded chicken to the sauce. Heat expands the meat fibers, allowing the sauce to penetrate deeper into the protein.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Texture Balance: Fold in the shredded vegetables last to ensure they remain crisp and don't release water into the emulsion.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Gochugaru Salmon with Crispy Rice",
+    "description": "A one-pan technique utilizing fish fats to caramelize rice into a 'socarrat' while simultaneously steam-cooking the salmon.",
+    "prep_time": "30 minutes",
+    "ingredients": [
+      "Fresh Salmon Fillet [Base]",
+      "24h Cold Rice [Universal]",
+      "Kewpie Mayonnaise [Standard]",
+      "Gochugaru (Korean Chili) [Standard]",
+      "Toasted Sesame Oil [Universal]",
+      "Scallion Greens [Standard]"
+    ],
+    "steps": [
+      {
+        "instruction": "Starch Retrogradation: Use rice that has been refrigerated for 24 hours. This maximizes resistant starch, significantly blunting the post-meal glucose spike—critical for Diabetes management.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Glaze Application: Mix the mayonnaise and Gochugaru and spread over the salmon. This acts as both a flavor agent and a thermal insulator during the steam-fry process.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Use 1 tbsp Gochugaru chili flakes.",
+          "Histamine": "Omit Gochugaru; use fresh salmon and a mayo-herb mixture."
+        }
+      },
+      {
+        "instruction": "Steam-Frying: In a non-stick skillet, press the rice into a flat layer. Place the salmon on top and cover the pan. The fish cooks via the rising steam, while the bottom of the rice crisps in the salmon's fats.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Socarrat Formation: Cook for 10 minutes until the salmon is flakey and the rice bottom has formed a deeply golden, crunchy crust.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Loaded Zucchini Casserole (Keto Potato Hack)",
+    "description": "A ketogenic deconstruction of the loaded potato, focusing on osmotic dehydration to prevent vegetable weeping.",
+    "prep_time": "45 minutes",
+    "ingredients": [
+      "Sliced Zucchini [Base]",
+      "Grated Cheddar Cheese [Standard]",
+      "Crispy Bacon [Standard]",
+      "Full-fat Sour Cream [Standard]",
+      "Scallion Greens [Universal]",
+      "Sea Salt [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Osmotic Dehydration: Salt the zucchini rodajas and let them sit on paper towels for 15 minutes. Pat dry aggressively. Technical Note: This prevents the 'weeping' effect that makes zucchini casseroles watery.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Pre-Roasting: Bake or sauté the zucchini until the edges soften to set its structural integrity before layering.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Layering Architecture: Create repetitive layers of zucchini, sour cream, bacon, and cheddar to ensure uniform flavor distribution.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Use traditional high-fat dairy.",
+          "Vegan": "Use cashew cream and coconut bacon crumbles."
+        }
+      },
+      {
+        "instruction": "Final Consolidation: Bake at 190°C (375°F) until the cheese is bubbling and has formed a golden-brown Maillard crust.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Sheet Pan Gnocchi (Dry-Heat Method)",
+    "description": "A high-efficiency baking method that skips the boiling process to achieve a crunchy Maillard exterior and soft interior.",
+    "prep_time": "25 minutes",
+    "ingredients": [
+      "Shelf-stable Gnocchi [Base]",
+      "Cherry Tomatoes [Standard]",
+      "Diced Bell Peppers [Histamine]",
+      "Olive Oil [Universal]",
+      "Rosemary [Universal]",
+      "Sea Salt [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Technical Loading: Place the dry gnocchi directly from the package onto a baking sheet. Technical Note: Do not boil; boiling adds moisture that prevents the final 'crunch'.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Use standard store-bought gnocchi.",
+          "Renal": "Use homemade gnocchi made from leached (boiled/soaked) potatoes and rice flour.",
+          "Keto": "Use cauliflower-based gnocchi."
+        }
+      },
+      {
+        "instruction": "Aromatic Coating: Toss the gnocchi with vegetables and olive oil. The oil is technically necessary to facilitate the Maillard reaction on the gnocchi surface.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Toss with cherry tomatoes and rosemary.",
+          "Histamine": "Avoid tomatoes; use bell peppers and zucchini instead."
+        }
+      },
+      {
+        "instruction": "Differential Roasting: Bake at 200°C (400°F) for 20 minutes. Toss halfway through until every gnocchi is golden and crisp while the interior remains fluffy and steamed.",
+        "is_branch_point": false
+      }
+    ]
+  }
+]

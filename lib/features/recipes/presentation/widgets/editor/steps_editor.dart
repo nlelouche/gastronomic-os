@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gastronomic_os/l10n/generated/app_localizations.dart';
 import 'package:gastronomic_os/core/enums/diet_enums.dart'; // Import Enums
 import 'package:gastronomic_os/features/recipes/domain/entities/recipe_step.dart';
 import 'package:gastronomic_os/features/recipes/data/models/recipe_step_model.dart'; // Use Model? Or just Step?
@@ -109,7 +110,7 @@ class _StepsEditorState extends State<StepsEditor> {
                     title: TextField(
                       controller: item.controller,
                       decoration: InputDecoration(
-                        hintText: 'Step ${index + 1}',
+                        hintText: AppLocalizations.of(context)!.recipeStepPrefix(index + 1),
                         border: InputBorder.none,
                       ),
                       maxLines: null,

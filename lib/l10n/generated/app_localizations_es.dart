@@ -307,6 +307,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get dietLowCarb => 'Bajo en Carbohidratos';
 
   @override
+  String get dietKosher => 'Kosher';
+
+  @override
   String get conditionAplv => 'APLV (Alergia Leche)';
 
   @override
@@ -335,6 +338,9 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get conditionRenal => 'Renal (Riñones)';
+
+  @override
+  String get conditionHypertension => 'Hipertensión (Bajo en Sodio)';
 
   @override
   String get medicalTags => 'Etiquetas Médicas';
@@ -1464,4 +1470,21 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get dashboardUseBottomNav =>
       'Por favor usa la barra de navegación inferior para acceder al Recetario.';
+
+  @override
+  String get navHome => 'Inicio';
+
+  @override
+  String get navCookbook => 'Recetario';
+
+  @override
+  String get navPlanner => 'Planificador';
+
+  @override
+  String get navFridge => 'Heladera';
+
+  @override
+  String recipeStepPrefix(int number) {
+    return 'Paso $number';
+  }
 }

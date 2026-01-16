@@ -307,6 +307,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get dietLowCarb => 'Low Carb';
 
   @override
+  String get dietKosher => 'Kosher';
+
+  @override
   String get conditionAplv => 'APLV (Milk Allergy)';
 
   @override
@@ -335,6 +338,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get conditionRenal => 'Renal (Kidney Safe)';
+
+  @override
+  String get conditionHypertension => 'Hypertension (Low Sodium)';
 
   @override
   String get medicalTags => 'Medical Tags';
@@ -1461,4 +1467,21 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get dashboardUseBottomNav =>
       'Please use the bottom navigation to access the Cookbook.';
+
+  @override
+  String get navHome => 'Home';
+
+  @override
+  String get navCookbook => 'Cookbook';
+
+  @override
+  String get navPlanner => 'Planner';
+
+  @override
+  String get navFridge => 'Fridge';
+
+  @override
+  String recipeStepPrefix(int number) {
+    return 'Step $number';
+  }
 }

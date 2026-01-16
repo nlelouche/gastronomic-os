@@ -13,6 +13,7 @@ import 'package:gastronomic_os/core/util/localized_enums.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:gastronomic_os/l10n/generated/app_localizations.dart';
 import 'package:gastronomic_os/features/onboarding/presentation/widgets/avatar_selector.dart';
+import 'package:uuid/uuid.dart';
 
 class OnboardingFamilyStep extends StatelessWidget {
   final bool isEditing;
@@ -280,7 +281,7 @@ class OnboardingFamilyStep extends StatelessWidget {
                   onPressed: () {
                     if (nameController.text.isNotEmpty) {
                       final newMember = FamilyMember(
-                        id: member?.id ?? DateTime.now().toIso8601String(), 
+                        id: member?.id ?? const Uuid().v4(), 
                         name: nameController.text,
                         role: selectedRole,
                         primaryDiet: selectedPrimaryDiet,

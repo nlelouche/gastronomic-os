@@ -1,0 +1,461 @@
+﻿[
+  {
+    "title": "Ensalada de Pepino Kinética (Método Logan)",
+    "description": "Una ensalada de alta precisión que utiliza agitación mecánica para una infusión rápida de sabor, creando una emulsión de aderezo estable mientras descompone las fibras vegetales mediante fuerza cinética.",
+    "prep_time": "5 minutos",
+    "ingredients": [
+      "Pepino Inglés (Sin semillas, piel fina) [Base]",
+      "Salsa de Soja [Estándar]",
+      "Aminos de Coco [Alergia a la Soja, Histamina, Renal, Hipertensión]",
+      "GMS (Glutamato Monosódico) [Estándar]",
+      "Aceite de Sésamo Tostado [Universal]",
+      "Vinagre de Arroz [Estándar]",
+      "Cristales de Ácido Cítrico [Histamina]",
+      "Aceite de Ajo [Bajo en FODMAP]",
+      "Ajo Fresco (Rallado) [Estándar]",
+      "Cebolletas Picadas [Estándar]",
+      "Cebolleta (Solo parte verde) [Bajo en FODMAP]",
+      "Azúcar [Estándar]",
+      "Alulosa [Diabetes]",
+      "Sal Marina [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Procesamiento Inicial: Lave y seque el pepino inglés. Si sigue un protocolo Renal, use un pelador de verduras para quitar el 100% de la piel para eliminar pesticidas dérmicos y reducir significativamente la carga de potasio. Para dietas estándar, mantenga la piel para el contraste de textura.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Renal": "Pele completamente el pepino para gestionar la ingesta de minerales.",
+          "Estándar": "Mantenga la piel para fibra y estética."
+        }
+      },
+      {
+        "instruction": "Corte Kinético: Utilizando una mandolina ajustada a un grosor preciso de 1.5 mm, corte todo el pepino directamente en un contenedor de plástico rígido de 1 litro o un frasco de vidrio con junta hermética. Este método asegura que toda el agua celular liberada durante el corte se capture como parte de la base del aderezo.",
+        "is_branch_point": false,
+        "cross_contamination_alert": "Utilice siempre el protector de mano de la mandolina para evitar el contacto accidental con la cuchilla."
+      },
+      {
+        "instruction": "Ensamblaje de la Fase Líquida: Introduzca los tensioactivos líquidos y los ácidos en el recipiente. El orden es crítico: los ácidos y aceites deben añadirse primero para facilitar una emulsión temporal durante la fase de agitación.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Añada 1 cucharada de salsa de soja, 1 cucharadita de vinagre de arroz y 1.5 cucharaditas de aceite de sésamo tostado.",
+          "Hipertensión": "Sustituya la salsa de soja por 2 cucharadas de Aminos de Coco y omita la sal añadida.",
+          "Histamina": "Use 2 cucharadas de Aminos de Coco y 1/4 de cucharadita de cristales de ácido cítrico en lugar de vinagre o soja fermentada."
+        }
+      },
+      {
+        "instruction": "Fortificación Aromática y de Sabor: Incorpore el ajo rallado, las cebolletas y los potenciadores de sabor. Rallar el ajo es técnicamente superior a picarlo, ya que maximiza la liberación de alicina.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Añada 1 diente de ajo recién rallado, cebolletas picadas, 1/2 cucharadita de azúcar y una pizca de GMS.",
+          "Bajo en FODMAP": "Use 1 cucharadita de aceite de ajo e incluya solo las puntas verdes de las cebolletas; omita estrictamente los bulbos de ajo.",
+          "Diabetes": "Sustituya el azúcar por alulosa o eritritol para mantener la estabilidad glucémica."
+        }
+      },
+      {
+        "instruction": "Emulsificación Kinética: Selle la tapa herméticamente. Agite el recipiente vigorosamente durante 45-60 segundos. La fuerza de las rodajas de pepino golpeando las paredes rompe las estructuras celulares para acelerar la penetración de la sal, mientras que la agitación crea una emulsión espesa y estable que cubre cada superficie.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Servicio Térmico: Sirva inmediatamente en un bol refrigerado. La ensalada debe tener una apariencia translúcida y un crujido agudo (factor ASMR). No la almacene por más de 2 horas, ya que el colapso celular provocará una liberación excesiva de agua.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Pan Plano Viral de Requesón (Cottage Cheese)",
+    "description": "Una alternativa de pan con alto contenido proteico y cero harina que utiliza la desnaturalización térmica de las proteínas lácteas y del huevo para crear una matriz estructural flexible.",
+    "prep_time": "30 minutos",
+    "ingredients": [
+      "Requesón (Cottage Cheese) Entero [Estándar, Keto, Vegetariano]",
+      "Requesón Sin Lactosa [Bajo en FODMAP]",
+      "Huevos Grandes Frescos [Estándar, Keto, Paleo]",
+      "Claras de Huevo [Renal]",
+      "Ricotta Casera Lixiviada [Renal]",
+      "Queso de Granja Fresco (<24h) [Histamina]",
+      "Harina de Garbanzo (Besan) [Vegano, Alergia al Huevo]",
+      "Orégano Seco [Universal]",
+      "Ajo en Polvo [Estándar]",
+      "Aceite de Ajo [Bajo en FODMAP]",
+      "Sal Marina [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Síntesis de la Matriz Proteica: Combine los componentes lácteos y de huevo en una licuadora de alta velocidad. El objetivo es emulsionar los grumos del requesón hasta que la mezcla sea ultra suave, lo que asegura un levantamiento uniforme y evita grietas.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Licue 1 taza de requesón con 2 huevos enteros.",
+          "Renal": "Use 1 taza de ricotta lixiviada y 3 claras de huevo para minimizar la carga de fósforo y sodio.",
+          "Histamina": "Use queso de granja fresco consumido inmediatamente después de la producción para evitar la acumulación de histamina.",
+          "Vegano": "Mezcle 1 taza de harina de garbanzo con 1/2 taza de agua y 2 cucharadas de levadura nutricional."
+        }
+      },
+      {
+        "instruction": "Integración de Sazonadores: Añada las hierbas secas y aromáticos. Para dietas Bajas en FODMAP, el uso de aceite con infusión de ajo es obligatorio para proporcionar sabor sin desencadenar malestar gastrointestinal por fructanos.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Añada 1 cucharadita de ajo en polvo y 1 cucharadita de orégano seco.",
+          "Bajo en FODMAP": "Use 1 cucharadita de orégano seco y un chorrito de aceite de ajo; omita el ajo en polvo."
+        }
+      },
+      {
+        "instruction": "Carga del Recipiente: Forre una bandeja para hornear con papel pergamino de alta calidad (indispensable para el desmolde). Extienda la masa en un rectángulo uniforme de aproximadamente 5 mm de grosor. Asegúrese de que los bordes no sean demasiado finos para evitar que se quemen.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Procesamiento Térmico: Hornee a 180°C (350°F) durante 25-30 minutos. El pan plano está listo cuando la superficie está mate, los bordes están dorados y la estructura es firme pero flexible al tacto.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Estabilización Post-Horneado: Deje enfriar el pan plano sobre el papel durante 5 minutos antes de despegarlo. Esto permite que los enlaces proteicos se asienten, evitando desgarros. Úselo como wrap o base de pizza.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Barra de Chocolate Dubai (Knafeh de Pistacho)",
+    "description": "Un producto de confitería de lujo diseñado para un contraste textural extremo entre una cáscara de chocolate templado quebradiza y una matriz de núcleo de cereal tostado y cremoso.",
+    "prep_time": "45 minutos (+30 min de enfriamiento)",
+    "ingredients": [
+      "Chocolate de Cobertura con Leche [Estándar]",
+      "Chocolate Negro (70%+) [Vegano, Diabetes, Paleo]",
+      "Masa Kataifi (Hilos de Phyllo) [Estándar]",
+      "Hilos de Calabacín Deshidratados [Keto, Celíaco]",
+      "Crema de Pistacho (100% Pura) [Estándar]",
+      "Mantequilla de Semillas de Girasol [Alergia a los Frutos Secos]",
+      "Tahini (Pasta de Sésamo) [Universal]",
+      "Mantequilla sin Sal [Estándar]",
+      "Aceite de Coco [Vegano]",
+      "Sal Marina [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Preparación de la Base Crujiente: Pique finamente la masa Kataifi en hilos de 5 mm. Si sigue un protocolo Keto o Celíaco, use cintas de calabacín cortadas finas como el papel que hayan sido saladas, exprimidas para eliminar el 100% de la humedad y deshidratadas hasta que estén quebradizas para imitar la textura de la masa.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Tostado Maillard: En una sartén de acero inoxidable a fuego medio, derrita la grasa (mantequilla o aceite de coco) y saltee la base crujiente. Revuelva constantemente durante 8-10 minutos hasta que alcance un tono caoba profundo y una textura crujiente similar al vidrio.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Saltee el Kataifi en mantequilla sin sal para una riqueza tradicional.",
+          "Vegano": "Saltee el Kataifi en aceite de coco refinado para un perfil neutro."
+        }
+      },
+      {
+        "instruction": "Estabilización Térmica: Transfiera la base tostada a un bol de acero inoxidable frío y deje que alcance la temperatura ambiente. Nota Técnica: Mezclar la base mientras está caliente hará que la crema de pistacho se separe (se corte), arruinando la textura emulsionada.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Síntesis de la Matriz del Núcleo: Incorpore la base enfriada a la crema de pistacho. Añada el tahini y una pizca de sal marina. El amargor tostado del tahini es necesario para mitigar el alto perfil de azúcar de la crema de pistacho.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Mezcle con crema de pistacho pura y 1 cucharada de tahini.",
+          "Alergia a los Frutos Secos": "Sustituya la crema de pistacho por mantequilla de semillas de girasol tostadas."
+        }
+      },
+      {
+        "instruction": "Templado del Chocolate: Derrita 2/3 de su elección de chocolate a 45°C, luego añada el 1/3 restante (la 'semilla') y revuelva hasta que se enfríe a 31°C (para chocolate con leche) o 32°C (para chocolate negro). Esto asegura una estructura cristalina beta-V estable para un brillo y chasquido profesional.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Use chocolate de cobertura con leche.",
+          "Diabetes": "Use chocolate negro sin azúcar endulzado con alulosa."
+        }
+      },
+      {
+        "instruction": "Construcción de la Cáscara: Recubra un molde de policarbonato con una capa fina de chocolate templado. Incline para cubrir todas las superficies, golpee para eliminar burbujas de aire e invierta para escurrir el exceso. Refrigere durante 5 minutos hasta que se asiente.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Llenado y Sellado: Distribuya la matriz del núcleo en la cáscara, dejando un espacio de 2 mm. Selle con el chocolate templado restante y nivele con una espátula de banco. Refrigere durante 30 minutos antes de desmoldar.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Corteza de Dátiles (Hack de Snickers)",
+    "description": "Un snack con alto contenido de fibra y base de fructosa que utiliza la densidad estructural de los dátiles Medjool para replicar una barra de caramelo tradicional sin azúcares refinados.",
+    "prep_time": "45 minutos (incluyendo congelación)",
+    "ingredients": [
+      "Dátiles Medjool (Sin hueso) [Estándar]",
+      "Migas de Galleta de Avena [Bajo en FODMAP]",
+      "Mantequilla de Cacahuete Natural [Estándar]",
+      "Mantequilla de Semillas de Girasol [Alergia a Frutos Secos, Vegano]",
+      "Cacahuetes Tostados [Estándar]",
+      "Nueces de Macadamia Tostadas [Bajo en FODMAP]",
+      "Semillas de Cáñamo [Alergia a Frutos Secos]",
+      "Chocolate Negro (70%) [Universal]",
+      "Aceite de Coco [Universal]",
+      "Sal Marina en Escamas [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Formación de la Base Estructural: Sobre una hoja de papel pergamino, organice los dátiles sin hueso en un patrón de cuadrícula ajustado.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Use dátiles Medjool enteros y presione firmemente con el fondo de un vaso pesado hasta que se fusionen en una hoja sólida y masticable de 5 mm.",
+          "Bajo en FODMAP": "Sustituya los dátiles por una capa base de galletas de avena sin gluten trituradas mezcladas con un poco de jarabe de arce."
+        }
+      },
+      {
+        "instruction": "Aplicación de la Capa de Lípidos: Extienda una capa gruesa y uniforme de la mantequilla elegida sobre la base. La mantequilla actúa como portadora de sabor y como aislante térmico para la capa de dátiles.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Aplique 1/2 taza de mantequilla de cacahuete natural cremosa.",
+          "Alergia a Frutos Secos": "Use mantequilla de semillas de girasol tostadas o tahini para un perfil libre de alérgenos."
+        }
+      },
+      {
+        "instruction": "Integración de Inclusiones: Esparza los frutos secos o semillas tostados sobre la mantequilla. Use el dorso de una cuchara para presionarlos firmemente en la matriz y asegurar que queden incrustados para un corte limpio posterior.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Use 1/4 de taza de cacahuetes tostados triturados.",
+          "Bajo en FODMAP": "Use nueces de macadamia tostadas."
+        }
+      },
+      {
+        "instruction": "Templado y Recubrimiento de Chocolate: Derrita el chocolate negro con 1 cucharadita de aceite de coco. El aceite reduce el punto de fusión del chocolate, asegurando que la corteza se pueda morder fácilmente incluso estando congelada.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Sellado y Emplatado: Vierta el chocolate sobre toda la corteza y alise con una espátula acodada. Termine con sal marina para realzar el perfil organoléptico del cacao. Congele durante 45 minutos. Una vez sólida, rompa la corteza en trozos irregulares destrozados a mano.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Bocaditos de Salmón con Miel y Ajo",
+    "description": "Dados de salmón cocinados en freidora de aire que utilizan la convección de alta velocidad para activar la reacción de Maillard, resultando en un exterior crujiente y un interior suculento.",
+    "prep_time": "15 minutos",
+    "ingredients": [
+      "Filete de Salmón Fresco [Base]",
+      "Miel [Estándar]",
+      "Salsa de Soja [Estándar]",
+      "Aminos de Coco [Histamina, Alergia a la Soja, Renal]",
+      "Ajo en Polvo [Estándar]",
+      "Jengibre Fresco (Rallado) [Universal]",
+      "Arroz Blanco [Base]",
+      "Sal Marina [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Corte de la Proteína: Corte el salmón en dados precisos de 1 pulgada (2.5 cm). Nota Técnica: El tamaño uniforme es esencial para alcanzar la temperatura interna deseada simultáneamente. Si es sensible a la Histamina, use salmón ultracongelado en origen.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Síntesis del Glaseado: Prepare la mezcla de miel y ajo. Los azúcares de la miel proporcionan el sustrato para la reacción de Maillard bajo condiciones de freidora de aire.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Mezcle 2 cucharadas de miel, 1 cucharada de salsa de soja y 1 cucharadita de ajo en polvo.",
+          "Histamina": "Sustituya la salsa de soja por Aminos de Coco y omita el ajo en polvo (use solo jengibre fresco).",
+          "Renal": "Use Aminos de Coco y limite la porción de salmón a 100g."
+        }
+      },
+      {
+        "instruction": "Procesamiento por Convección: Reboce el salmón en el glaseado y organícelo en una sola capa en la cesta de la freidora de aire. Cocine a 200°C (400°F) durante 8-10 minutos. No sobrecargue para permitir un flujo de aire adecuado para el efecto crujiente.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Preparación de la Base de Almidón: Para dietas Renales, hierva el arroz blanco en un gran volumen de agua y deseche el líquido (lixiviación) para eliminar el exceso de potasio/fósforo.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Sirva sobre arroz jazmín al vapor.",
+          "Renal": "Sirva sobre arroz blanco lixiviado."
+        }
+      },
+      {
+        "instruction": "Servicio: Emplate los bocaditos de salmón sobre el arroz y adorne con la parte verde de las cebolletas frescas. Sirva inmediatamente mientras el glaseado está brillante y caliente.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Helado de Requesón (Cottage Cheese)",
+    "description": "Un postre helado con alto contenido proteico que utiliza las propiedades emulsificantes de los sólidos lácteos licuados para crear una sensación en boca cremosa sin la crema espesa tradicional.",
+    "prep_time": "10 minutos (+4h de congelación)",
+    "ingredients": [
+      "Requesón (Cottage Cheese) [Estándar, Keto]",
+      "Requesón Sin Lactosa [Bajo en FODMAP]",
+      "Miel [Estándar]",
+      "Alulosa o Stevia [Diabetes, Keto]",
+      "Jarabe de Arce [Bajo en FODMAP, Vegano]",
+      "Extracto de Vainilla [Universal]",
+      "Bayas Frescas [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Licuado de la Base: Coloque el requesón en una licuadora de alta velocidad. Procese hasta que los grumos estén 100% emulsionados y la textura sea indistinguible de la crema espesa.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Procese requesón entero.",
+          "Bajo en FODMAP": "Procese requesón sin lactosa certificado."
+        }
+      },
+      {
+        "instruction": "Endulzado: Añada el endulzante y la vainilla. Para la Diabetes, se prefiere la alulosa sobre el eritritol, ya que evita las 'quemaduras por congelación' y la cristalización en la matriz helada.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Añada 2 cucharadas de miel.",
+          "Diabetes": "Añada 3 cucharadas de alulosa o 10 gotas de stevia líquida."
+        }
+      },
+      {
+        "instruction": "Incorporación de Inclusiones: Incorpore suavemente bayas frescas o trozos de chocolate negro. Las bayas deben cortarse finas para evitar trozos de hielo sólidos en el helado.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Asentamiento Criogénico: Vierta en un recipiente poco profundo y congele durante 4 horas. Consejo Técnico: Revuelva la mezcla cada 45 minutos durante las primeras 3 horas para romper los cristales de hielo y mantener una consistencia de helado suave.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Shawarma de Tofu Laminado",
+    "description": "Una reconstrucción de shawarma a base de plantas que utiliza el laminado mecánico para maximizar el área superficial para la absorción de especias y el crujiente textural.",
+    "prep_time": "20 minutos",
+    "ingredients": [
+      "Tofu Extra Firme (Prensado) [Estándar]",
+      "Tofu de Semillas de Calabaza (Pumfu) [Alergia a la Soja, Paleo]",
+      "Aceite de Ajo [Bajo en FODMAP]",
+      "Mezcla de Especias Shawarma (Comino, Paprika, Cúrcuma) [Universal]",
+      "Aminos de Coco [Histamina]",
+      "Zumo de Limón [Estándar]",
+      "Cebolleta (Solo parte verde) [Bajo en FODMAP]"
+    ],
+    "steps": [
+      {
+        "instruction": "Procesamiento Mecánico: Use un pelador de verduras afilado para laminar el tofu prensado en cintas ultra finas. Esta técnica replica la textura 'laminada' de la carne tradicional de asador vertical.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Lamine tofu de soja extra firme.",
+          "Alergia a la Soja": "Lamine bloques de Pumfu o 'tofu' de harina de garbanzo."
+        }
+      },
+      {
+        "instruction": "Matriz de Marinado: Mezcle las cintas en un bol con las especias y el aceite. La delgadez de las cintas permite una penetración de sabor casi instantánea en comparación con los cubos tradicionales.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Use aceite de oliva, ajo picado y zumo de limón.",
+          "Bajo en FODMAP": "Use 2 cucharadas de aceite de ajo y las partes verdes de las cebolletas; omita estrictamente el ajo fresco."
+        }
+      },
+      {
+        "instruction": "Sellado a Fuego Alto: Saltee las cintas en una sartén antiadherente a fuego medio-alto. La alta relación superficie-volumen asegura que los bordes se vuelvan dorados y crujientes (Maillard) mientras el centro permanece tierno.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Servicio: Sirva dentro de un pan de pita caliente o como base de un bowl con aderezo de tahini y ensalada fresca de pepino y tomate.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Revuelto de Tofu Optimizado",
+    "description": "Un revuelto enriquecido con proteínas que utiliza harina de almendra para aumentar la densidad de aminoácidos y simular la textura sabrosa de los huevos de cuajada suave.",
+    "prep_time": "15 minutos",
+    "ingredients": [
+      "Tofu Firme [Base]",
+      "Levadura Nutricional [Universal]",
+      "Harina de Almendra [Alto Rendimiento, Paleo]",
+      "Kala Namak (Sal Negra) [Estándar]",
+      "Cúrcuma [Universal]",
+      "Espinacas Frescas [Estándar]",
+      "Calabacín [Histamina]"
+    ],
+    "steps": [
+      {
+        "instruction": "Síntesis de Cuajada: Desmenuce el tofu con la mano en trozos irregulares que varíen de 0.5 cm a 2 cm. Esta variedad de tamaño es esencial para imitar la textura de un revuelto de huevo real.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Desmenuce directamente en la sartén.",
+          "Renal": "Hierva los trozos de tofu durante 2 minutos y escúrralos (lixiviación) para reducir el potasio antes de saltear."
+        }
+      },
+      {
+        "instruction": "Fortificación de Sabor y Nutrientes: Mezcle el tofu con harina de almendra y levadura nutricional. La harina de almendra proporciona lípidos saludables y un acabado 'cremoso' a la estructura proteica seca del tofu.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Use 2 cucharadas de harina de almendra y 1 cucharada de levadura nutricional.",
+          "Paleo": "Use estrictamente harina de almendra y omita la levadura nutricional si sigue un subprotocolo AIP."
+        }
+      },
+      {
+        "instruction": "Activación del Color: Saltee con cúrcuma y sal negra (Kala Namak). El azufre de la sal negra proporciona el perfil olfativo necesario de los huevos, mientras que la cúrcuma aporta el tinte amarillo visual.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Integración de Vegetales: Añada espinacas y cocine hasta que se marchiten. Para protocolos de Histamina, sustituya las espinacas (liberadoras de histamina) por calabacín picado o pimientos rojos.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Ensalada Picada Diosa Verde (Green Goddess)",
+    "description": "Una ensalada picada densa en nutrientes rediseñada como un dip; todos los vegetales se pican finamente para maximizar la adherencia del aderezo y la saciedad.",
+    "prep_time": "20 minutos",
+    "ingredients": [
+      "Col Verde [Base]",
+      "Pepino [Base]",
+      "Espinacas y Albahaca Frescas [Universal]",
+      "Nueces o Anacardos [Estándar]",
+      "Semillas de Cáñamo [Alergia a Frutos Secos, APLV]",
+      "Levadura Nutricional [Universal]",
+      "Aceite de Ajo [Bajo en FODMAP]",
+      "Zumo de Limón [Estándar]"
+    ],
+    "steps": [
+      {
+        "instruction": "Procesamiento en Brunoise: Pique la col y el pepino en una brunoise de 2 mm. Este desglose mecánico asegura que la ensalada sea fácil de comer con cuchara y actúe como un dip rico en fibra.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Emulsión del Aderezo: Licue las hojas verdes, los frutos secos/semillas y el ácido hasta que se forme una emulsión espesa de color verde brillante. Los lípidos de los frutos secos son críticos para absorber las vitaminas liposolubles de la col.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Licue nueces con espinacas, albahaca, ajo y limón.",
+          "Alergia a Frutos Secos": "Sustituya las nueces por semillas de cáñamo o semillas de calabaza remojadas.",
+          "Bajo en FODMAP": "Use aceite de ajo; omita estrictamente los dientes de ajo frescos."
+        }
+      },
+      {
+        "instruction": "Mezclado y Enfriamiento: Combine la base picada con el aderezo. Revuelva vigorosamente hasta que la ensalada esté completamente saturada. Refrigere durante 15 minutos antes de servir para permitir que las fibras de la col se ablanden.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Bowl de Requesón con Miel Picante (Hot Honey)",
+    "description": "Un bowl de fitness de alto rendimiento que utiliza el contraste térmico y de sabor para mejorar la respuesta metabólica y la saciedad.",
+    "prep_time": "40 minutos",
+    "ingredients": [
+      "Requesón (Cottage Cheese) Entero [Base]",
+      "Carne de Ternera Picada Magra (90/10) [Estándar, Keto]",
+      "Boniato (Batata) [Estándar, Alto Rendimiento]",
+      "Calabacín en Cubos [Bajo en Carbohidratos, Keto]",
+      "Miel Picante (Miel + Chile) [Estándar]",
+      "Aceite de Oliva [Universal]",
+      "Mezcla de Especias para Tacos [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Asado de Carbohidratos: Corte el vegetal en cubos de 2 cm. Rocíe con aceite y ase a 200°C hasta que esté carbonizado. La reacción de Maillard en los bordes del boniato es vital para la profundidad del sabor.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Ase 1 taza de boniatos.",
+          "Keto": "Sustituya el boniato por cubos de calabacín o floretes de coliflor asados.",
+          "Bajo en FODMAP": "Limite la porción de boniato a 1/2 taza."
+        }
+      },
+      {
+        "instruction": "Preparación de la Proteína: Dore la carne en una sartén. Escurra el 100% de la grasa. Sazone con especias para tacos y un chorrito de agua, cocinando a fuego lento hasta que el líquido sea absorbido completamente por las fibras de la carne.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Ensamblaje Térmico: Coloque 1 taza de requesón frío en un bol. Cubra con la carne y los vegetales asados, ambos bien calientes. El gradiente de temperatura (lácteo frío vs. proteína caliente) es la firma de este plato.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Integración de Sabores: Rocíe con Miel Picante (Hot Honey). La miel actúa como un puente entre la carne sabrosa y el lácteo ácido. Sirva inmediatamente.",
+        "is_branch_point": false
+      }
+    ]
+  }
+]

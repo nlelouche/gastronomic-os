@@ -19,6 +19,8 @@ class RecipeModel extends Recipe {
   @override
   final bool isPublic;
   @override
+  final String? prepTime;
+  @override
   final DateTime createdAt;
   @override
   final List<String> ingredients;
@@ -28,6 +30,8 @@ class RecipeModel extends Recipe {
   final List<String> tags;
   @override
   final List<String> dietTags;
+  @override
+  final String languageCode;
   
   // Translations
   @override
@@ -49,11 +53,13 @@ class RecipeModel extends Recipe {
     String? description,
     this.coverPhotoUrl,
     required this.isPublic,
+    this.prepTime,
     required this.createdAt,
     this.ingredients = const [],
     this.steps = const [],
     this.tags = const [],
     this.dietTags = const [],
+    this.languageCode = 'es',
     this.titleEn,
     this.descriptionEn,
     this.ingredientsEn,
@@ -69,11 +75,13 @@ class RecipeModel extends Recipe {
           description: description,
           coverPhotoUrl: coverPhotoUrl,
           isPublic: isPublic,
+          prepTime: prepTime,
           createdAt: createdAt,
           ingredients: ingredients,
           steps: steps,
           tags: tags,
           dietTags: dietTags,
+          languageCode: languageCode,
           titleEn: titleEn,
           descriptionEn: descriptionEn,
           ingredientsEn: ingredientsEn,
@@ -91,11 +99,13 @@ class RecipeModel extends Recipe {
     String? description,
     String? coverPhotoUrl,
     bool? isPublic,
+    String? prepTime,
     DateTime? createdAt,
     List<String>? ingredients,
     List<RecipeStep>? steps,
     List<String>? tags,
     List<String>? dietTags,
+    String? languageCode,
     String? titleEn,
     String? descriptionEn,
     List<String>? ingredientsEn,
@@ -112,11 +122,13 @@ class RecipeModel extends Recipe {
       description: description ?? this.description,
       coverPhotoUrl: coverPhotoUrl ?? this.coverPhotoUrl,
       isPublic: isPublic ?? this.isPublic,
+      prepTime: prepTime ?? this.prepTime,
       createdAt: createdAt ?? this.createdAt,
       ingredients: ingredients ?? this.ingredients,
       steps: steps ?? this.steps,
       tags: tags ?? this.tags,
       dietTags: dietTags ?? this.dietTags,
+      languageCode: languageCode ?? this.languageCode,
       titleEn: titleEn ?? this.titleEn,
       descriptionEn: descriptionEn ?? this.descriptionEn,
       ingredientsEn: ingredientsEn ?? this.ingredientsEn,
@@ -136,11 +148,13 @@ class RecipeModel extends Recipe {
       description: json['description'] as String?,
       coverPhotoUrl: json['cover_photo_url'] as String?,
       isPublic: json['is_public'] as bool? ?? false,
+      prepTime: json['prep_time'] as String?,
       createdAt: DateTime.parse(json['created_at'] as String),
       ingredients: (json['ingredients'] as List<dynamic>?)?.map((e) => e as String).toList() ?? [],
       steps: const _RecipeStepListConverter().fromJson(json['steps'] as List<dynamic>? ?? []),
       tags: (json['tags'] as List<dynamic>?)?.map((e) => e as String).toList() ?? [],
       dietTags: (json['diet_tags'] as List<dynamic>?)?.map((e) => e as String).toList() ?? [],
+      languageCode: json['language_code'] as String? ?? 'es',
       titleEn: json['title_en'] as String?,
       descriptionEn: json['description_en'] as String?,
       ingredientsEn: (json['ingredients_en'] as List<dynamic>?)?.map((e) => e as String).toList(),
@@ -160,11 +174,13 @@ class RecipeModel extends Recipe {
       'description': description,
       'cover_photo_url': coverPhotoUrl,
       'is_public': isPublic,
+      'prep_time': prepTime,
       'created_at': createdAt.toIso8601String(),
       'ingredients': ingredients,
       'steps': const _RecipeStepListConverter().toJson(steps),
       'tags': tags,
       'diet_tags': dietTags,
+      'language_code': languageCode,
       'title_en': titleEn,
       'description_en': descriptionEn,
       'ingredients_en': ingredientsEn,

@@ -1,0 +1,480 @@
+﻿[
+  {
+    "title": "Hamburguesa Smash Vegetariana Estilo Dubai",
+    "description": "Una hamburguesa de fusión inspirada en el Medio Oriente que utiliza la técnica de 'smash' a alta temperatura para maximizar el área de superficie de la reacción de Maillard; se sirve tradicionalmente sobre pan paratha tostado.",
+    "prep_time": "28 minutos",
+    "ingredients": [
+      "Paté Vegetal o Cordero Picado [Base]",
+      "Pollo Recién Picado [Histamina]",
+      "Pan Paratha de Trigo [Estándar]",
+      "Tortilla de Harina de Yuca [Celíaco, Paleo]",
+      "Lechuga Iceberg [Keto]",
+      "Salsa de Pimiento Rojo Asado [Histamina]",
+      "Especias Sumac y Za'atar [Universal]",
+      "Tomates Frescos y Pepino [Base]",
+      "Aceite de Oliva [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Preparación de la Proteína: Forme bolas de 80 g de la proteína elegida. Para protocolos de Histamina, use carne picada inmediatamente antes de cocinar; evite las carnes preenvasadas o envejecidas para minimizar los niveles de aminas.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Use una alternativa de carne vegetal o cordero especiado.",
+          "Histamina": "Use pollo o cordero recién picado; evite estrictamente la ternera envejecida o los patés procesados."
+        }
+      },
+      {
+        "instruction": "La Técnica Smash: Coloque la bola de proteína en una plancha de hierro fundido muy caliente. Use una prensa de hamburguesas pesada o un trozo pequeño de papel pergamino y una espátula para aplanar el paté hasta que tenga menos de 5 mm de grosor. Esto maximiza la reacción de Maillard, creando una costra profundamente caramelizada.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Activación del Sabor: Espolvoree sumac y za'atar directamente sobre la carne que se está sellando. El calor libera los aceites volátiles del tomillo y las semillas de sésamo, infundiendo la costra.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Caramelización del Pan: Tueste el vehículo de servicio en las grasas desprendidas del paté.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Selle ligeramente una paratha de trigo hasta que esté hojaldrada y dorada.",
+          "Celíaco": "Tueste una tortilla de yuca certificada sin gluten.",
+          "Keto": "Use hojas de lechuga iceberg grandes y frías como wrap; no las caliente."
+        }
+      },
+      {
+        "instruction": "Guarnición Aromática: Aplique la salsa de pimiento rojo asado. Para pacientes con Histamina, esta salsa proporciona la acidez y el color necesarios de los tomates sin la alta carga de histamina de los tomates frescos o cocidos.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Servicio: Apile el paté smash con pepinos frescos y sirva doblado. El crujido del pepino proporciona un contraste térmico y textural a la proteína caliente y especiada.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Albóndigas de Pollo con Calabacín Oculto",
+    "description": "Albóndigas de alta saciedad diseñadas con hidratación vegetal integrada, utilizando el exprimido mecánico para prevenir el colapso estructural mientras se aumenta la densidad de fibra.",
+    "prep_time": "29 minutos",
+    "ingredients": [
+      "Pollo Picado [Base]",
+      "Calabacín Fresco [Estándar]",
+      "Zanahorias Ralladas [Bajo en FODMAP]",
+      "Harina de Arroz [Bajo en FODMAP, Celíaco]",
+      "Huevo [Estándar]",
+      "Puré de Manzana sin Azúcar [Alergia al Huevo]",
+      "Perejil Fresco y Ajo [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Control Mecánico de Hidratación: Ralle el calabacín o las zanahorias. Paso Crítico: Coloque los vegetales rallados en un paño de cocina limpio y exprima con la máxima fuerza para eliminar al menos el 50% de su contenido de agua. De lo contrario, las albóndigas 'llorarán' y quedarán empapadas.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Use calabacín rallado (porción de 75 g).",
+          "Bajo en FODMAP": "Sustituya el calabacín por zanahorias ralladas para evitar los desencadenantes de manitol."
+        }
+      },
+      {
+        "instruction": "Síntesis de Proteínas: Combine el pollo picado con los vegetales exprimidos y los sazonadores en un bol frío.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Selección de Ligante: Añada el agente aglutinante para sostener la matriz proteica durante el procesamiento térmico.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Use 1 huevo entero y pan rallado de trigo.",
+          "Celíaco": "Use harina de arroz como ligante estructural.",
+          "Alergia al Huevo": "Use 1 cucharada de puré de manzana sin azúcar; la pectina actúa como un ligante secundario para las proteínas del pollo."
+        }
+      },
+      {
+        "instruction": "Formado: Forme esferas uniformes de 3 cm. Un tamaño más pequeño aumenta la relación superficie-volumen, asegurando una cocción uniforme y una mejor caramelización.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Procesamiento Térmico: Saltee en una sartén o hornee a 200°C (400°F) durante 15-18 minutos hasta que la temperatura interna alcance los 74°C (165°F).",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Emplatado: Sirva con un ligero chorrito de aceite de hierbas. Los vegetales 'ocultos' proporcionan hidratación interna, permitiendo que el pollo magro se mantenga suculento.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Tostada de Melocotón y Ricotta de Semillas de Girasol",
+    "description": "Una alternativa densa en nutrientes y libre de alérgenos a la tostada de lácteos; utiliza la emulsificación mecánica de semillas y la lixiviación controlada de fruta para la gestión de minerales.",
+    "prep_time": "30 minutos",
+    "ingredients": [
+      "Semillas de Girasol Crudas [Base]",
+      "Melocotones Frescos [Estándar]",
+      "Masa Madre Artesanal [Estándar]",
+      "Pan sin Gluten [Celíaco]",
+      "Zumo de Limón y Jarabe de Arce [Universal]",
+      "Canela [Universal]",
+      "Menta Fresca [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Ablandamiento de Semillas: Remoje las semillas de girasol en agua hirviendo durante 20 minutos. Esto ablanda la cáscara exterior y comienza la descomposición del ácido fítico (antinutrientes).",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Emulsión Mecánica: Escurra las semillas y licue con zumo de limón y un chorrito de agua hasta lograr una textura de 'ricotta' espesa y cremosa. La energía mecánica de la licuadora emulsiona las grasas de las semillas con el líquido añadido.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Sazone con una pizca de sal.",
+          "Renal": "Limite la porción a 2 cucharadas ya que las semillas son altas en fósforo."
+        }
+      },
+      {
+        "instruction": "Preparación del Pan: Tueste el pan hasta que esté profundamente dorado. Se requiere una tostada firme para soportar el peso de la densa ricotta de semillas.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Use masa madre artesanal.",
+          "Celíaco": "Use pan certificado sin gluten a base de arroz o maíz."
+        }
+      },
+      {
+        "instruction": "Control Mineral de la Fruta: Corte los melocotones.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Use rodajas de melocotón frescas y maduras.",
+          "Renal": "Pele y remoje las rodajas de melocotón en un gran volumen de agua durante 2 horas (lixiviación) para reducir significativamente los niveles de potasio."
+        }
+      },
+      {
+        "instruction": "Montaje: Extienda una capa gruesa de ricotta de girasol sobre la tostada, cubra con las rodajas de melocotón y espolvoree con canela.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Guarnición Final: Rocíe con jarabe de arce y menta fresca. Sirva inmediatamente para evitar que el pan absorba la humedad de la ricotta.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Arroz Frito de Coliflor con Pollo",
+    "description": "Un pilar cetogénico que utiliza el salteado en seco a alta temperatura para prevenir la flacidez del vegetal, asegurando la desactivación de los compuestos bociógenos mediante un procesamiento térmico minucioso.",
+    "prep_time": "31 minutos",
+    "ingredients": [
+      "‘Arroz’ de Coliflor [Base]",
+      "Floretes de Brócoli [Bajo en FODMAP]",
+      "Dados de Pechuga de Pollo [Base]",
+      "Jengibre y Ajo Frescos [Estándar]",
+      "Aminos de Coco [Histamina, Alergia a la Soja]",
+      "Zanahorias Frescas [Universal]",
+      "Aceite de Sésamo Tostado [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Técnica de Salteado en Seco: En un wok o sartén grande, saltee el arroz de coliflor a fuego alto sin aceite durante 5 minutos. Esto evapora el agua interna del vegetal, evitando la típica textura pastosa del arroz de coliflor.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Use arroz de coliflor.",
+          "Bajo en FODMAP": "Sustituya la coliflor (alta en manitol) por floretes de brócoli finamente picados o una mezcla 50/50 con arroz blanco lixiviado."
+        }
+      },
+      {
+        "instruction": "Desactivación Térmica: Asegúrese de que la coliflor/brócoli esté cocida hasta que esté completamente tierna. Esto es químicamente necesario para protocolos de Tiroides para desactivar los isotiocianatos (bociógenos) que pueden interferir con la captación de yodo.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Sellado de Proteínas: Empuje los vegetales hacia un lado y añada aceite de sésamo. Selle los dados de pechuga de pollo hasta que estén dorados y completamente cocidos.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Integración Aromática: Añada jengibre recién rallado y zanahorias en dados. Saltee durante 3 minutos para mantener un ligero crujido en las zanahorias.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Glaseado: Vierta los Aminos de Coco. Los azúcares naturales de los aminos se caramelizarán sobre los vegetales y la proteína a fuego alto.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Use salsa de soja y ajo picado.",
+          "Histamina": "Use estrictamente Aminos de Coco y omita el ajo; use jengibre fresco para el picante."
+        }
+      },
+      {
+        "instruction": "Servicio: Sirva en un bol cubierto con la parte verde de las cebolletas. El proceso a fuego alto asegura una sensación en boca de 'arroz frito' sin la alta carga de carbohidratos.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Wraps de Lechuga Keto con Atún y Huevo",
+    "description": "Una comida densa en nutrientes diseñada para el control rápido del peso; utiliza una emulsión a base de huevo y gestiona los niveles de mercurio e histamina mediante una selección estratégica de proteínas.",
+    "prep_time": "29 minutos",
+    "ingredients": [
+      "Hojas de Lechuga Grandes (Romana o de Manteca) [Base]",
+      "Atún en Lata al Natural [Estándar]",
+      "Pescado Blanco Fresco (Merluza/Bacalao) [Histamina]",
+      "Salmón o Sardinas Cocidas [Embarazo]",
+      "Huevos Pasados por Agua [Base]",
+      "Mayonesa sin Aditivos [Universal]",
+      "Mostaza y Hojuelas de Chile [Estándar]"
+    ],
+    "steps": [
+      {
+        "instruction": "Selección y Preparación de Proteínas: Seleccione la base de proteína de acuerdo con las necesidades inflamatorias y de seguridad.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Escurra el atún en lata y desmenúcelo con un tenedor.",
+          "Histamina": "El atún en lata es alto en histamina. Sustitúyalo por pescado blanco recién cocinado y enfriado rápidamente (merluza o bacalao).",
+          "Embarazo": "Use opciones bajas en mercurio como sardinas o salmón cocidos; evite el atún blanco (albacora)."
+        }
+      },
+      {
+        "instruction": "Preparación de Inclusiones: Pique finamente los huevos pasados por agua. La yema proporciona lecitina natural que ayuda a estabilizar la mezcla de atún y mayonesa.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Síntesis de Unión: Combine la proteína, los huevos y la mayonesa en un bol.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Sazone con mostaza, sal y hojuelas de chile.",
+          "Histamina": "Use mayonesa fresca casera sin zumo de limón; omita estrictamente la mostaza y las hojuelas de chile."
+        }
+      },
+      {
+        "instruction": "Preparación del Vehículo: Seleccione hojas de lechuga grandes y turgentes. Recorte el tallo duro de la base para facilitar el enrollado sin romper la hoja.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Montaje: Coloque 2 cucharadas de la mezcla de proteína en el centro de una hoja. Enrolle firmemente, doblando los lados como un burrito.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Servicio: Sirva frío. Para el manejo de la Diabetes, el alto contenido de proteínas y grasas en este wrap asegura una respuesta glucémica casi nula.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Brócoli Aplastado con Costra de Parmesano",
+    "description": "Un plato de vegetales impulsado por la técnica que utiliza la cocción dual (lixiviación seguida de asado) para lograr una caramelización de Maillard extrema mientras se desactivan los antinutrientes.",
+    "prep_time": "34 minutos",
+    "ingredients": [
+      "Floretes de Brócoli Fresco [Base]",
+      "Queso Parmesano Rallado [Estándar]",
+      "Harina de Almendra y Levadura Nutricional [Vegano, APLV]",
+      "Aceite de Oliva [Universal]",
+      "Sal de Ajo [Estándar]",
+      "Hojuelas de Chile Rojo [Estándar]"
+    ],
+    "steps": [
+      {
+        "instruction": "Paso de Ablandamiento: Hierva o cocine al vapor los floretes de brócoli hasta que estén tiernos (aprox. 5-7 minutos).",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Cocine al vapor hasta que estén de color verde brillante y tiernos.",
+          "Tiroides": "Hierva el brócoli en un gran volumen de agua para lixiviar y desactivar eficazmente los isotiocianatos bociógenos, haciéndolo más seguro para pacientes con Hashimoto."
+        }
+      },
+      {
+        "instruction": "Aplastamiento Mecánico: Organice los floretes tiernos en una bandeja para hornear forrada con pergamino. Use el fondo de un vaso pesado para 'aplastar' cada florete hasta que quede plano. Esto aumenta el área de superficie para el asado.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Preparación de la Superficie: Seque cada florete aplastado con papel de cocina. El agua residual creará vapor en lugar de una costra.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Capas de Umami: Aplique los componentes de la costra.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Pincele con aceite de oliva y cubra con una capa generosa de parmesano rallado y sal de ajo.",
+          "Vegano": "Cubra con una mezcla de 2 cucharadas de harina de almendra, 1 cucharada de levadura nutricional y sal de ajo para crear una costra quesosa similar."
+        }
+      },
+      {
+        "instruction": "Asado a Alta Temperatura: Hornee a 220°C (425°F) durante 15-20 minutos. El objetivo es que el queso (o la cobertura vegana) se caramelice y los bordes del brócoli se vuelvan quebradizos y de color marrón oscuro.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Emplatado: Sirva como snack o guarnición crujiente. El sonido del crujido y el intenso perfil umami del parmesano definen el éxito de esta receta.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Costillas de Maíz con Especias Ahumadas",
+    "description": "Una deconstrucción técnica de la mazorca de maíz que utiliza un corte longitudinal para aumentar el área de superficie para el sazonado y el rizado por calor de convección.",
+    "prep_time": "25 minutos",
+    "ingredients": [
+      "Mazorca de Maíz Fresco [Base]",
+      "Pimentón Ahumado [Universal]",
+      "Ajo en Polvo [Estándar]",
+      "Alioli de Aguacate [Diabetes]",
+      "Aceite de Oliva [Universal]",
+      "Sal Marina [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Corte Longitudinal Mecánico: Coloque la mazorca verticalmente sobre una tabla de cortar estable. Corte cuidadosamente la mazorca por la mitad a lo largo, luego en cuartos. Esto crea 'costillas' que se rizarán al calentarse.",
+        "is_branch_point": false,
+        "cross_contamination_alert": "Tenga mucho cuidado con el cuchillo; asegure una superficie plana y estable para este corte."
+      },
+      {
+        "instruction": "Gestión Mineral: Para protocolos Renales, las costillas de maíz deben someterse a una reducción de minerales antes de asarse.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Proceda directamente al sazonado.",
+          "Renal": "Hierva las costillas en un gran volumen de agua durante 10 minutos (lixiviación) para reducir las cargas de potasio y fósforo del maíz fresco."
+        }
+      },
+      {
+        "instruction": "Recubrimiento de Especias: En un bol, mezcle las costillas con aceite de oliva, pimentón ahumado y ajo en polvo. El aceite actúa como conductor térmico para el calor de convección.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Asado por Convección: Cocine en freidora de aire a 200°C (400°F) durante 12-15 minutos o hornee a alta temperatura. El calor hace que las fibras de la mazorca se contraigan y se ricen, dando como resultado la forma de 'costilla'.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Amortiguador Glucémico: Sirva con una fuente de grasa para retardar la absorción de azúcar.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Sirva con un chorrito de lima y sal.",
+          "Diabetes": "Acompañe con alioli de aguacate; las grasas saludables amortiguan el pico de insulina del maíz almidonado."
+        }
+      },
+      {
+        "instruction": "Emplatado: Sirva caliente; las costillas están diseñadas para comerse sujetando el 'asa' de la mazorca y mordiendo los granos.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Cintas de Zanahoria con Aderezo de Sésamo y Jengibre",
+    "description": "Una ensalada de alta digestibilidad que utiliza el laminado mecánico para cambiar la percepción de la textura y facilitar el tránsito gastrointestinal para estómagos sensibles.",
+    "prep_time": "28 minutos",
+    "ingredients": [
+      "Zanahorias Grandes [Base]",
+      "Aceite de Sésamo Tostado [Universal]",
+      "Jarabe de Arce [Bajo en FODMAP, Universal]",
+      "Vinagre de Arroz [Estándar]",
+      "Jengibre Fresco (Rallado) [Universal]",
+      "Semillas de Sésamo Tostadas [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Procesamiento Mecánico: Use un pelador de verduras para crear cintas de zanahoria largas y finas como el papel. Esto aumenta el área de superficie para la absorción del aderezo y hace que la fibra sea menos pesada para el sistema digestivo.",
+        "is_branch_point": false,
+        "instruction_note": "Las zanahorias son un 'comodín' bajo en FODMAP y pueden consumirse en cantidades generosas."
+      },
+      {
+        "instruction": "Optimización de la Digestibilidad: Ajuste la textura según la motilidad gastrointestinal.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Use cintas crudas para una textura fresca y crujiente.",
+          "Gastroparesia": "Cocine ligeramente las cintas de zanahoria al vapor durante 3 minutos hasta que estén muy tiernas para descomponer las fibras de celulosa y facilitar el vaciado gástrico."
+        }
+      },
+      {
+        "instruction": "Síntesis del Aderezo: Mezcle el aceite de sésamo, el jarabe de arce y el jengibre recién rallado. El jengibre actúa como un agente procinético, ayudando a la digestión.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Añada 1 cucharadita de vinagre de arroz.",
+          "Bajo en FODMAP": "Use 1 cucharadita de vinagre de arroz y 1 cucharadita de jarabe de arce; ambos son seguros en estas porciones."
+        }
+      },
+      {
+        "instruction": "Saturación: Mezcle las cintas con el aderezo hasta que estén completamente cubiertas. Deje reposar 5 minutos; el ácido del vinagre 'cocinará' ligeramente las cintas de zanahoria, haciéndolas más flexibles.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Guarnición Final: Espolvoree con semillas de sésamo tostadas para obtener minerales esenciales y un acabado a nuez.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Dumplings de Papel de Arroz Crujientes",
+    "description": "Una alternativa de gyoza sin gluten que utiliza una hidratación de doble capa para la integridad estructural y un sellado a alta temperatura para un crujido característico similar al vidrio.",
+    "prep_time": "25 minutos",
+    "ingredients": [
+      "Hojas de Papel de Arroz [Base]",
+      "Cerdo o Pollo Picado [Estándar]",
+      "Col y Zanahorias Ralladas [Base]",
+      "Jengibre Fresco [Universal]",
+      "Tamari [Celíaco]",
+      "Salsa de Soja [Estándar]",
+      "Aceite de Sésamo [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Síntesis del Relleno: Saltee la carne picada, la col, las zanahorias y el jengibre en aceite de sésamo hasta que estén completamente cocidos. Consejo Técnico: El relleno debe estar relativamente seco; el exceso de humedad romperá el papel de arroz durante la fritura.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Hidratación del Vehículo: Sumerja brevemente una hoja de papel de arroz en agua tibia (3 segundos). No la remoje demasiado; el papel debe estar aún ligeramente firme ya que continuará ablandándose durante el montaje.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Hack de Doble Capa: Coloque el relleno en el centro y doble en forma de cuadrado. Luego, envuelva este dumpling en una segunda hoja de papel de arroz hidratada. Esta doble capa es obligatoria para lograr un exterior crujiente sin que el dumpling se rompa.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Procesamiento Térmico: Coloque los dumplings en una sartén antiadherente con una capa fina de aceite. No permita que se toquen entre sí ya que el almidón de arroz es extremadamente adhesivo cuando está mojado.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Fría en la sartén hasta que estén dorados y crujientes por ambos lados.",
+          "Diabetes": "Limite la porción a 3 dumplings ya que el papel de arroz es almidón puro; asegúrese de que el relleno sea denso en fibra (col) para mitigar el pico de glucosa."
+        }
+      },
+      {
+        "instruction": "Servicio: Sirva con una salsa para mojar de tamari o soja mezclada con vinagre de arroz. Los dumplings deben tener un crujido fuerte y audible al morder.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Coliflor Bang Bang al Horno",
+    "description": "Una versión de alta convección y no frita del aperitivo viral, utilizando una emulsión cremosa y picante para encapsular el núcleo de vegetal o proteína.",
+    "prep_time": "18 minutos",
+    "ingredients": [
+      "Floretes de Coliflor [Base]",
+      "Dados de Pechuga de Pollo [Síndrome de Intestino Irritable]",
+      "Tofu Firme [Síndrome de Intestino Irritable]",
+      "Mayonesa [Universal]",
+      "Salsa de Chile Dulce [Estándar]",
+      "Sriracha [Estándar]",
+      "Miel Cruda y Cayena [Histamina]",
+      "Ajo en Polvo [Estándar]"
+    ],
+    "steps": [
+      {
+        "instruction": "Preparación del Núcleo: Seleccione el vehículo para la salsa Bang Bang.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Use floretes de coliflor frescos.",
+          "Síndrome de Intestino Irritable": "La coliflor es alta en manitol. Sustitúyala por dados de pollo o tofu firme. Si usa brócoli, limite a 75 g de floretes."
+        }
+      },
+      {
+        "instruction": "Asado Térmico: Mezcle los floretes o la proteína con aceite y ase a 200°C (400°F) durante 15 minutos. La alta convección es necesaria para lograr bordes ligeramente carbonizados que sostendrán mejor la salsa.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Emulsión Bang Bang: Bata la mayonesa con los elementos picantes. Esta salsa actúa como amortiguador de sabor y recubrimiento cremoso.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Mezcle mayonesa, salsa de chile dulce, sriracha y ajo en polvo.",
+          "Histamina": "Use mayonesa fresca sin aditivos, 1 cucharada de miel y una pizca de cayena; evite estrictamente las salsas de chile fermentadas.",
+          "Síndrome de Intestino Irritable": "Use mayonesa sin ajo y sriracha; asegúrese de que la salsa de chile no contenga sólidos de ajo o cebolla."
+        }
+      },
+      {
+        "instruction": "Saturación: Mezcle el núcleo asado en la salsa hasta que esté completa y uniformemente cubierto.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Carbonizado Final: Regrese al horno o freidora de aire durante 3 minutos. Esto 'fija' la salsa sobre el núcleo mediante una ligera caramelización.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Servicio: Guarnicione con la parte verde de las cebolletas y sirva inmediatamente mientras esté caliente y cremoso.",
+        "is_branch_point": false
+      }
+    ]
+  }
+]

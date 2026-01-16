@@ -1,0 +1,398 @@
+﻿[
+  {
+    "title": "Leche Dorada Fría (Latte de Cúrcuma y Jengibre)",
+    "description": "Una bebida funcional antiinflamatoria potente que utiliza la activación de nutrientes liposolubles y la absorción mejorada por piperina para modular la inflamación sistémica.",
+    "prep_time": "10 minutos",
+    "ingredients": [
+      "Raíz de Cúrcuma Fresca (Rallada) [Base]",
+      "Raíz de Jengibre Fresco (Rallada) [Universal]",
+      "Pimienta Negra (Recién molida) [Estándar]",
+      "Leche de Coco sin Aditivos [Histamina]",
+      "Leche sin Lactosa o Leche de Almendras [Bajo en FODMAP]",
+      "Leche de Anacardos sin Azúcar [Universal]",
+      "Jarabe de Arce o Estevia [Universal]",
+      "Canela de Ceilán y Clavos de Olor [Estándar]"
+    ],
+    "steps": [
+      {
+        "instruction": "Activación Fitoquímica: En un cazo pequeño, combine la cúrcuma rallada, el jengibre y un chorrito de agua. Caliente suavemente durante 3 minutos; este procesamiento térmico es técnicamente necesario para activar los curcuminoides, que se absorben mal en su estado crudo.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Mejora de la Biodisponibilidad: Introduzca una pizca de pimienta negra recién molida. La piperina de la pimienta inhibe la vía metabólica que elimina la curcumina, aumentando su absorción hasta en un 2,000%.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Integración del Portador de Lípidos: Añada su elección de leche. La curcumina es liposoluble y requiere una matriz grasa para su transporte al torrente sanguíneo.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Histamina": "Use leche de coco estrictamente sin aditivos; omita la canela y los clavos, ya que pueden actuar como liberadores de histamina.",
+          "Bajo en FODMAP": "Use leche de almendras o sin lactosa; limite la leche de coco a 120 ml para mantenerse dentro de los umbrales de sorbitol.",
+          "Estándar": "Use leche entera o de anacardos para obtener la máxima cremosidad."
+        }
+      },
+      {
+        "instruction": "Endulzado e Infusión: Añada jarabe de arce o estevia y cocine a fuego lento durante 5 minutos. No permita que hierva para preservar los gingeroles delicados.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Maduración Criogénica: Cole la mezcla y refrigere hasta que esté completamente fría. Sirva sobre hielo; la temperatura fría estabiliza el perfil aromático del jengibre fresco.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Soda de Vinagre Probiótica Casera",
+    "description": "Una bebida para la salud metabólica diseñada para mejorar la sensibilidad a la insulina y apoyar la diversidad del microbioma intestinal a través del ácido acético y polifenoles derivados de la fruta.",
+    "prep_time": "5 minutos",
+    "ingredients": [
+      "Vinagre de Sidra de Manzana Crudo (con 'la madre') [Estándar]",
+      "Bayas Frescas o Fruta de Hueso [Universal]",
+      "Agua Mineral con Gas [Universal]",
+      "Estevia Líquida o Fruta del Monje [Diabetes]",
+      "Miel o Jarabe de Arce [Estándar]",
+      "Hojas de Menta Fresca [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Maceración de la Base de Sabor: En el fondo de un vaso, triture la fruta fresca con su endulzante preferido. Macerar la fruta rompe las paredes celulares para liberar antioxidantes y azúcares naturales.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Diabetes": "Use estevia líquida para mantener una base de índice glucémico cero.",
+          "Histamina": "Evite los vinagres fermentados; cree un 'shrub' rápido macerando la fruta con azúcar y una pizca de ácido ascórbico (Vitamina C) para dar acidez.",
+          "Estándar": "Use miel cruda o jarabe de arce."
+        }
+      },
+      {
+        "instruction": "Carga de Ácido: Añada 1-2 cucharadas de vinagre de sidra de manzana crudo. Nota Técnica: Se ha demostrado que el ácido acético ralentiza el vaciado gástrico y reduce la respuesta postprandial de la glucosa hasta en un 30%.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Carbonatación y Servicio: Llene el vaso con hielo y complete con agua mineral con gas. Remueva suavemente para integrar el vinagre denso con el agua carbonatada; decore con menta para un acabado aromático refrescante.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "'Oatsotto' Salado (Avena Estilo Risotto)",
+    "description": "Una reingeniería del desayuno que trata la avena cortada como un grano de risotto, utilizando la liberación mecánica de almidón para crear una comida salada de alta saciedad.",
+    "prep_time": "15 minutos",
+    "ingredients": [
+      "Avena Cortada (Steel-cut) o en Copos [Base]",
+      "Avena Certificada con Protocolo de Pureza [Celíaco]",
+      "Caldo de Verduras Bajo en Sodio [Universal]",
+      "Champiñones (En lata o Ostra) [Bajo en FODMAP]",
+      "Champiñones Blancos Estándar [Estándar]",
+      "Espinacas Frescas [Universal]",
+      "Huevo (Pochado o Frito) [Estándar]",
+      "Queso Parmesano [Estándar]",
+      "Levadura Nutricional [Vegano]"
+    ],
+    "steps": [
+      {
+        "instruction": "Salteado Aromático: Saltee los champiñones elegidos en una pequeña cantidad de aceite hasta que el agua se haya evaporado y estén profundamente dorados (reacción de Maillard).",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Use champiñones frescos de París o Portobello.",
+          "Bajo en FODMAP": "Use champiñones en conserva (enjuagados) o champiñones ostra frescos (Pleurotus) para minimizar la carga de manitol."
+        }
+      },
+      {
+        "instruction": "Tostado del Grano: Añada la avena a la sartén y tueste durante 2 minutos hasta que desprenda un aroma a nuez. Esto protege el exterior del grano, asegurando una textura de 'risotto' en lugar de una papilla pastosa.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Celíaco": "Use estrictamente avena certificada 'Purity Protocol' para asegurar un 0% de contaminación cruzada con trigo.",
+          "Estándar": "Use avena cortada de alta calidad o copos gruesos."
+        }
+      },
+      {
+        "instruction": "Hidratación Incremental: Añada el caldo media taza cada vez, removiendo constantemente. Remover es técnicamente necesario para frotar los granos entre sí, liberando almidones superficiales (amilopectina) en el líquido para crear cremosidad.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Finalización Térmica: Una vez que la avena esté tierna pero todavía tenga 'mordida' (al dente), incorpore las espinacas frescas y su potenciador umami preferido.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Incorpore 2 cucharadas de queso parmesano.",
+          "Vegano": "Incorpore 1 cucharada de levadura nutricional."
+        }
+      },
+      {
+        "instruction": "Servicio: Cubra con un huevo pochado. La yema líquida actúa como una salsa secundaria, enriqueciendo la avena salada.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Avena Horneada (Pastel de Avena en Taza)",
+    "description": "Una transformación estructural de la avena en una matriz de pastel saludable utilizando la incorporación mecánica de aire y la unión proteica.",
+    "prep_time": "10 minutos",
+    "ingredients": [
+      "Avena en Copos [Base]",
+      "Plátano Muy Maduro [Estándar]",
+      "Puré de Manzana sin Azúcar [Renal]",
+      "Huevo Fresco [Estándar]",
+      "Huevo de Lino (Lino + Agua) [Vegano, Alergia al Huevo]",
+      "Proteína de Suero Aislada o Colágeno en Polvo [Alto Rendimiento]",
+      "Levadura en Polvo [Universal]",
+      "Leche o Leche de Arroz [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Molienda Mecánica: Coloque todos los ingredientes en una licuadora de alta velocidad. Licue durante 45 segundos hasta que la avena se reduzca a una harina fina y la mezcla esté aireada; la aireación es crítica para el levantamiento estilo pastel.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Licue avena con plátano, huevo y 1/4 de taza de leche.",
+          "Renal": "Sustituya el plátano por puré de manzana para reducir el potasio; use leche de arroz y añada proteína de suero aislada para proporcionar proteína de alto valor biológico sin exceso de fósforo.",
+          "Vegano": "Use huevo de lino y 1 cucharada de mantequilla de almendras para mayor estabilidad estructural."
+        }
+      },
+      {
+        "instruction": "Carga de Inclusiones: Vierta la mezcla en una taza o ramequín engrasado. Puede añadir un trozo de chocolate negro en el centro; se derretirá formando un núcleo de 'lava' durante el horneado.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Procesamiento Térmico: Hornee a 180°C (350°F) durante 15 minutos o en el microondas al 80% de potencia durante 2-3 minutos. El pastel está listo cuando la superficie recupera su forma al tocarla.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Servicio: Deje reposar durante 2 minutos para permitir que el vapor asiente la miga interna; sirva caliente.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Waffles de Falafel",
+    "description": "Una versión de falafel de alta eficiencia y no frita que utiliza una wafflera para maximizar el área de superficie crujiente manteniendo la humedad interna.",
+    "prep_time": "15 minutos",
+    "ingredients": [
+      "Garbanzos (Remojados o de Lata/Lavados) [Base]",
+      "Perejil y Cilantro Frescos [Universal]",
+      "Ajo y Cebolla [Estándar]",
+      "Aceite con Infusión de Ajo [Bajo en FODMAP]",
+      "Comino y Cilantro en Polvo [Universal]",
+      "Harina de Garbanzo [Universal]",
+      "Levadura en Polvo [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Síntesis de la Masa: En un procesador de alimentos, pulse los garbanzos con las hierbas y especias hasta formar una pasta gruesa. Consejo Técnico: No procese en exceso hasta formar un puré; se necesita una textura granulada para la sensación tradicional del falafel.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Procese con cebolla y ajo frescos.",
+          "Bajo en FODMAP": "Use garbanzos de lata lavados 3 veces para eliminar los GOS; sustituya la cebolla/ajo por 2 cucharadas de aceite de ajo y la parte verde de las cebolletas."
+        }
+      },
+      {
+        "instruction": "Refuerzo Estructural: Incorpore la harina de garbanzo y la levadura en polvo. La harina absorbe el exceso de humedad, asegurando que el 'waffle' no se pegue ni colapse.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Preparación de la Superficie: Precaliente la wafflera a su máxima potencia. Pincele ambas placas generosamente con aceite de oliva para facilitar la reacción de Maillard.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Waffling: Coloque la masa en el centro de la wafflera y cierre firmemente. Cocine durante 5-7 minutos. Nota Técnica: No abra la wafflera demasiado pronto; el vapor debe escapar para que el exterior alcance su crujido máximo.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Emplatado: Sirva con aderezo de tahini o un dip de yogur con limón; la forma del waffle proporciona 'bolsillos' para sostener la salsa.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Pasta e Ceci (Versión Viral Rápida)",
+    "description": "Una comida tradicional de una sola olla que utiliza la sinergia química entre el almidón de la pasta y la aquafaba de los garbanzos para crear un guiso naturalmente espeso y cremoso sin lácteos.",
+    "prep_time": "20 minutos",
+    "ingredients": [
+      "Pasta Corta (Ditalini o Conchas) [Base]",
+      "Garbanzos en Lata (Incluyendo su líquido) [Base]",
+      "Salsa o Pasta de Tomate [Estándar]",
+      "Salsa Nomato [Histamina, Renal]",
+      "Romero y Ajo Frescos [Universal]",
+      "Aceite de Oliva [Universal]",
+      "Sal Marina y Pimienta [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Infusión de Lípidos: En una olla grande, caliente aceite de oliva y saltee el romero y el ajo hasta que el aceite sea aromático y el ajo esté dorado. Esto transfiere los aceites volátiles del romero a la base grasa.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Fundación de la Salsa: Añada la base de la salsa. Para protocolos Renales o de Histamina, el sustituto 'Nomato' es obligatorio para evitar desencadenantes de potasio e histamina.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Añada 2 cucharadas de pasta de tomate.",
+          "Renal": "Añada 1/2 taza de salsa Nomato para minimizar la concentración de potasio."
+        }
+      },
+      {
+        "instruction": "Integración de Aquafaba: Añada los garbanzos junto con su líquido de conserva. Las saponinas en la aquafaba actúan como un emulsionante natural al calentarse, uniendo el aceite y el caldo.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Unión por Almidón: Añada la pasta seca directamente en la olla con el agua hirviendo justa para cubrirla. A medida que la pasta se cuece, libera almidones de amilopectina que espesan el guiso en una salsa rica y cremosa.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Simmer Final: Cocine hasta que esté al dente; la salsa debe estar espesa y brillante. Termine con un chorrito de aceite de oliva crudo de alta calidad por sus antioxidantes fenólicos.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Cowboy Caviar (Ensalada Picada de Precisión)",
+    "description": "Una ensalada picada vibrante y densa en nutrientes diseñada como un dip; utiliza un corte brunoise uniforme de 3 mm para asegurar una emulsión estable de lima y miel.",
+    "prep_time": "25 minutos",
+    "ingredients": [
+      "Frijoles Negros y Frijoles de Carilla (Enjuagados) [Base]",
+      "Maíz y Pimientos [Base]",
+      "Cebolla Roja y Tomates Roma [Estándar]",
+      "Aguacate [Estándar]",
+      "Cilantro Fresco [Universal]",
+      "Zumo de Lima y Miel [Estándar]",
+      "Jarabe de Arce [Vegano]",
+      "Aceite con Infusión de Ajo [Bajo en FODMAP]"
+    ],
+    "steps": [
+      {
+        "instruction": "Procesamiento Mecánico: Pique finamente todos los vegetales en una brunoise uniforme de 3 mm. Nota Técnica: Se requiere consistencia en el tamaño para asegurar que cada bocado contenga una mezcla proporcional de sabores y texturas.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Síntesis de la Emulsión: Bata el zumo de lima y el aceite con el endulzante hasta que se forme una emulsión temporal estable.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Bata con miel y aceite de oliva.",
+          "Bajo en FODMAP": "Use aceite de ajo y jarabe de arce; omita estrictamente las cebollas y limite el aguacate a 1/8 de porción por persona.",
+          "Vegano": "Use jarabe de arce en lugar de miel."
+        }
+      },
+      {
+        "instruction": "Saturación: Combine todos los ingredientes en un bol de vidrio. Mezcle suavemente para no dañar el aguacate. Deje reposar 15 minutos a temperatura ambiente; el ácido cítrico encurtirá ligeramente las cebollas y tomates.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Servicio: Sirva como dip con chips de maíz. Para Hipertensión, sirva con chips de pita horneados sin sal.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Cobbler de Pollo (Hack de Red Lobster)",
+    "description": "Una comida familiar de alta conveniencia que utiliza una técnica de capas sin mezclar para mantener una separación textural clara entre la base proteica y la costra de galleta dorada.",
+    "prep_time": "45 minutos",
+    "ingredients": [
+      "Pollo Desmenuzado Cocido [Base]",
+      "Vegetales Mixtos Congelados [Base]",
+      "Sopa de Pollo Condensada Cremosa [Estándar]",
+      "Sopa Condensada sin Gluten [Celíaco]",
+      "Mezcla para Galletas 'Cheddar Bay' [Estándar]",
+      "Mezcla de Galletas sin Gluten [Celíaco]",
+      "Leche y Mantequilla Derretida [Estándar]"
+    ],
+    "steps": [
+      {
+        "instruction": "Capas de la Base: Coloque el pollo desmenuzado y los vegetales en una fuente de horno profunda. No los mezcle. La integridad estructural del 'cobbler' depende de este montaje por capas.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Capa de Hidratación: Bata la sopa con caldo y vierta cuidadosamente sobre la base. Advertencia Técnica: No remueva; hacerlo integraría el almidón en la sopa, resultando en una textura gomosa en lugar de un cobbler.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Use sopa de pollo condensada estándar.",
+          "Celíaco": "Use sopa condensada certificada sin gluten."
+        }
+      },
+      {
+        "instruction": "Síntesis de la Costra: Mezcle la harina para galletas con leche y mantequilla hasta formar una masa espesa y vertible. Vierta uniformemente sobre la capa de sopa caliente.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Use 2 tazas de mezcla estándar.",
+          "Celíaco": "Use 2 tazas de mezcla certificada sin gluten."
+        }
+      },
+      {
+        "instruction": "Consolidación Térmica: Hornee a 200°C (400°F) durante 40 minutos. La masa subirá a través del líquido, formando una costra dorada y hojaldrada sobre el relleno espesado.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Pasta Turca con Yogur (Reconstrucción de Mantı)",
+    "description": "Un plato de recuperación de alto rendimiento que equilibra el contraste térmico y de sabor al combinar carne caliente especiada con yogur frío con ajo y aceite de chile.",
+    "prep_time": "28 minutos",
+    "ingredients": [
+      "Pasta Corta (Trigo) [Base]",
+      "Pasta Baja en Proteína [Renal]",
+      "Carne de Ternera o Cordero Picada Magra [Estándar]",
+      "Yogur Griego Natural [Estándar]",
+      "Yogur de Coco (sin endulzar) [APLV]",
+      "Ajo Fresco [Estándar]",
+      "Aceite de Chile o Mantequilla de Pimentón [Estándar]",
+      "Menta Fresca [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Preparación del Almidón: Hierva la pasta en agua con sal hasta que esté al dente.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Use 100g de pasta de trigo estándar.",
+          "Renal": "Use pasta baja en proteína (aproteica) para compensar la carga mineral de la salsa de carne."
+        }
+      },
+      {
+        "instruction": "Síntesis de la Matriz Fría: Bata el yogur con ajo picado y una pizca de sal. Debe mantenerse refrigerado hasta el montaje para preservar el contraste térmico característico.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Use yogur griego entero.",
+          "APLV": "Use yogur de coco sin azúcar con un chorrito de limón."
+        }
+      },
+      {
+        "instruction": "Sellado de Proteína: Dore la carne en una sartén hasta que esté crujiente. Escurra la grasa y sazone con comino y pimentón.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Montaje Térmico: Coloque la pasta caliente en un bol. Cubra con el yogur frío con ajo, luego la carne caliente especiada y finalmente un chorrito de aceite de chile. Las fluctuaciones rápidas de temperatura en la boca mejoran la percepción del sabor.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Ensalada de Pasta Proteica (Matriz Fitness)",
+    "description": "Una comida enfocada en el fitness que duplica el contenido de aminoácidos y fibra utilizando pastas de legumbres y fuentes de lípidos frescos para una saciedad sostenida.",
+    "prep_time": "20 minutos",
+    "ingredients": [
+      "Pasta de Garbanzos o Lentejas [Base]",
+      "Perlas de Mozzarella Fresca [Estándar]",
+      "Dados de Tofu Firme (Marinado) [Vegano]",
+      "Tomates Cherry y Pepino [Base]",
+      "Vinagreta Ligera de Hierbas [Universal]",
+      "Albahaca y Perejil Frescos [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Hidratación del Almidón: Hierva la pasta de legumbres durante exactamente 7-9 minutos. Nota Técnica: La pasta de legumbres no tiene gluten y pasa de estar al dente a desintegrarse rápidamente; el tiempo es crítico.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Inclusión de Proteína: Mezcle la pasta con su proteína elegida. Para Atletas, se recomienda añadir pechuga de pollo a la parrilla para maximizar la relación proteína/carbohidrato.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Añada perlas de mozzarella.",
+          "Vegano": "Añada dados de tofu marinados en tamari y aceite de oliva."
+        }
+      },
+      {
+        "instruction": "Unión por Vinagreta: Mezcle con una vinagreta ligera y hierbas frescas. Las legumbres absorberán el ácido, suavizando su textura densa.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Servicio: Enfríe durante 30 minutos antes de servir. Esto permite que los sabores se fusionen y que la pasta de legumbres alcance su textura 'elástica' óptima.",
+        "is_branch_point": false
+      }
+    ]
+  }
+]

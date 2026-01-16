@@ -1,0 +1,393 @@
+﻿[
+  {
+    "title": "El Estofado (Garbanzos Especiados con Coco y Cúrcuma)",
+    "description": "Un plato reconfortante vegano de alta densidad nutricional que utiliza la liberación mecánica de almidón para lograr una emulsión cremosa sin harina, optimizado para una eficacia antiinflamatoria.",
+    "prep_time": "60 minutos",
+    "ingredients": [
+      "Garbanzos Cocidos (o de lata, bien enjuagados) [Base]",
+      "Leche de Coco Entera [Estándar]",
+      "Caldo de Verduras [Universal]",
+      "Cúrcuma Fresca (Rallada) [Universal]",
+      "Jengibre Fresco (Picado) [Universal]",
+      "Ajo Fresco (Picado) [Estándar]",
+      "Aceite con Infusión de Ajo [Bajo en FODMAP]",
+      "Hojuelas de Chile Rojo [Estándar]",
+      "Yogur Griego [Estándar, Vegetariano]",
+      "Yogur de Coco [Vegano, APLV]",
+      "Hojas de Menta Fresca [Universal]",
+      "Sal Marina y Pimienta Negra [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Activación de la Base Aromática: En una olla de hierro fundido o de fondo pesado, caliente la grasa elegida a fuego medio-alto. Añada la cúrcuma, el jengibre y el ajo. Sofría durante 3-5 minutos. Nota Técnica: Este paso es crucial para 'hacer florecer' la curcumina liposoluble de la cúrcuma, aumentando su biodisponibilidad.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Sofría 4 dientes de ajo picados y 2.5 cm de jengibre en aceite de oliva.",
+          "Bajo en FODMAP": "Use 2 cucharadas de aceite con infusión de ajo y las puntas verdes de las cebolletas; omita estrictamente los bulbos de ajo y cebolla para evitar desencadenantes de fructanos."
+        }
+      },
+      {
+        "instruction": "Integración de la Fase Líquida: Añada los garbanzos y la leche de coco. Si sigue un protocolo Bajo en FODMAP, la leche de coco debe limitarse a 125 ml por porción para cumplir con los niveles de sorbitol.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Espesado Mecánico por Almidón: Mientras el estofado hierve a fuego lento, use una cuchara pesada para aplastar aproximadamente 1/4 de los garbanzos contra el borde de la olla. Esto libera amilopectina interna, que se une a las grasas del coco para crear un agente espesante natural y cremoso.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Reducción Térmica: Reduzca el fuego a bajo y cocine a fuego lento sin tapar durante 30-35 minutos. El estofado estará terminado cuando el líquido se haya reducido en un 30%, resultando en una consistencia espesa y aterciopelada que cubra el dorso de una cuchara.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Emplatado y Contraste Térmico: Sirva en boles calientes. Cubra con una porción de yogur frío para proporcionar un contrapunto térmico al estofado terroso. Decore con hojas de menta rotas a mano para liberar sus aceites aromáticos volátiles.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Cubra con yogur griego entero.",
+          "APLV": "Cubra con yogur de coco sin azúcar para evitar las proteínas lácteas."
+        }
+      }
+    ]
+  },
+  {
+    "title": "Pollo al Estilo Halal Cart (Reconstrucción de NYC)",
+    "description": "Una reconstrucción forense de la icónica comida callejera de Nueva York, centrada en la desnaturalización proteica por ácidos y una emulsión de salsa blanca con equilibrio de azúcares.",
+    "prep_time": "30 minutos (más 1h de marinado)",
+    "ingredients": [
+      "Muslos de Pollo Deshuesados [Base]",
+      "Zumo de Limón Fresco y Orégano Seco [Universal]",
+      "Arroz Basmati [Estándar]",
+      "Arroz Blanco Lixiviado [Renal]",
+      "Cúrcuma y Comino [Universal]",
+      "Mayonesa [Estándar]",
+      "Yogur Griego [Estándar]",
+      "Azúcar Blanco [Estándar]",
+      "Miel Cruda [Histamina]",
+      "Vinagre Blanco [Estándar]",
+      "Sal Marina [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Marinado Químico: Cubra los muslos de pollo con una mezcla de zumo de limón, aceite y orégano. Marine durante al menos 1 hora. El ácido cítrico actúa como ablandador al descomponer parcialmente los tejidos conectivos resistentes de los muslos.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Técnica de Arroz Pilaf: En una olla, saltee la cúrcuma y el comino en aceite antes de añadir el arroz. Esto encapsula el almidón del arroz en pigmentos liposolubles, asegurando un color amarillo uniforme y evitando que los granos se apelmacen.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Use arroz basmati estándar.",
+          "Renal": "Use arroz blanco remojado durante 2 horas y hervido en exceso de agua (lixiviado) para reducir los niveles de fósforo y potasio."
+        }
+      },
+      {
+        "instruction": "Sellado Maillard: Caliente una sartén de hierro fundido a fuego alto. Selle el pollo hasta que esté profundamente carbonizado en los bordes. Deje reposar durante 5 minutos antes de cortar en cubos de 1 cm; esto asegura que los jugos se reabsorban en las fibras proteicas.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Síntesis de la Salsa Blanca: Mezcle la mayonesa, el yogur, el azúcar y el vinagre. El azúcar es técnicamente obligatorio aquí para equilibrar la acidez aguda y replicar el perfil de sabor específico de la comida callejera.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Use azúcar blanco y vinagre.",
+          "Histamina": "Use mayonesa fresca sin aditivos, miel, y evite el vinagre (sustituya con gotas de limón si se tolera)."
+        }
+      },
+      {
+        "instruction": "Servicio: Sirva el pollo sobre el arroz, bañado generosamente con la salsa blanca. Acompañe con lechuga iceberg picada fría y rodajas de tomate para obtener un gradiente de temperatura y textura.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Maíz Hervido de 'Inicio en Frío' (Método de Preservación Estructural)",
+    "description": "Un método de ebullición científico que previene la degradación de la pectina en las paredes celulares, resultando en granos ultra carnosos y jugosos sin arrugarse.",
+    "prep_time": "15 minutos",
+    "ingredients": [
+      "Mazorcas de Maíz Fresco [Base]",
+      "Agua Fría [Universal]",
+      "Mantequilla sin Sal [Estándar]",
+      "Alioli de Aguacate [Diabetes]",
+      "Sal Marina [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Gestión Mineral: Si se prepara para una dieta Renal, corte el maíz en 'costillas' (cuartos longitudinales) para aumentar la superficie de lixiviación de minerales durante el proceso de ebullición.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Renal": "Corte en costillas y hierva en un alto volumen de agua (lixiviación) para eliminar el exceso de potasio.",
+          "Estándar": "Mantenga las mazorcas enteras."
+        }
+      },
+      {
+        "instruction": "Técnica de Inicio en Frío: Coloque el maíz en una olla y cubra con agua completamente fría. Advertencia Técnica: No añada sal al agua, ya que los iones de sodio pueden endurecer el pericarpio exterior del grano.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Umbral Térmico: Lleve el agua a ebullición completa. En el momento en que hierva, retire la olla del fuego inmediatamente. El calor residual es suficiente para gelatinizar el almidón manteniendo las paredes celulares turgentes.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Amortiguador Glucémico: Sirva con una fuente de lípidos. Para la Diabetes, las grasas saludables del alioli de aguacate son críticas para retardar la absorción de los azúcares naturales del maíz.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Unte con mantequilla y sal.",
+          "Diabetes": "Sirva con 2 cucharadas de alioli de aguacate; limite la porción a 1/2 mazorca."
+        }
+      }
+    ]
+  },
+  {
+    "title": "Cacerola de Pollo de un Millón de Dólares",
+    "description": "Una cacerola sureña densa en lácteos que utiliza una matriz de múltiples quesos para una sensación máxima en boca y una cobertura de textura mantecosa para el equilibrio del paladar.",
+    "prep_time": "40 minutos",
+    "ingredients": [
+      "Pollo Desmenuzado Cocido [Base]",
+      "Queso Crema (Suavizado) [Estándar]",
+      "Requesón (Cottage Cheese) [Estándar]",
+      "Crema Agria [Estándar]",
+      "Sopa de Pollo Condensada [Estándar]",
+      "Galletas Ritz Trituradas [Estándar]",
+      "Harina de Almendra y Levadura Nutricional [Bajo en Carbohidratos, Vegano]",
+      "Mantequilla Derretida [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Síntesis de la Matriz Láctea: En un bol grande, mezcle el queso crema suavizado, el requesón y la crema agria. Esta 'Tríada Láctea' crea una base estable y rica en grasas que evita que el pollo se seque.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Homogeneización: Incorpore el pollo desmenuzado y la sopa condensada hasta que cada fibra esté completamente encapsulada en la matriz láctea.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Carga del Recipiente: Transfiera la mezcla a un molde para hornear engrasado y nivele la superficie con una espátula acodada para asegurar una distribución uniforme del calor.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Contraste Textural: Prepare la cobertura para proporcionar un contrapunto de sal y crujido al relleno suave.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Mezcle galletas Ritz trituradas con mantequilla derretida.",
+          "Bajo en Carbohidratos": "Mezcle harina de almendra con levadura nutricional y sal de ajo para obtener una costra rica en umami y sin granos refinados."
+        }
+      },
+      {
+        "instruction": "Horneado: Hornee a 190°C (375°F) durante 25-30 minutos hasta que los bordes burbujeen y la costra haya alcanzado una reacción de Maillard dorada profunda.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Pollo 'Marry Me' (Umami en una Sola Sartén)",
+    "description": "Una comida en sartén optimizada para la velocidad, utilizando tomates secos para un impulso masivo de glutamato natural y crema espesa para una alta palatabilidad.",
+    "prep_time": "35 minutos",
+    "ingredients": [
+      "Chuletas de Pollo Finas [Base]",
+      "Harina para Todo Uso (para rebozar) [Estándar]",
+      "Vino Blanco Seco [Estándar]",
+      "Crema Espesa [Estándar]",
+      "Tomates Secos (en aceite) [Estándar]",
+      "Salsa Nomato [Histamina, Renal]",
+      "Queso Parmesano [Estándar]",
+      "Caldo de Pollo [Universal]",
+      "Albahaca Fresca [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Sellado de Superficie: Enharine ligeramente las chuletas de pollo y séllelas en una sartén caliente hasta que estén doradas. Retire y reserve. La harina crea un 'fond' que espesará naturalmente la salsa final.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Recuperación del Fond: Vierta el vino blanco en la sartén caliente. Use una espátula de madera para raspar los trozos de proteína caramelizada del fondo; esta es la fuente de sabor principal para la salsa.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Construcción de la Salsa: Añada la crema y el caldo. Incorpore el perfil de sabor según las necesidades dietéticas.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Añada tomates secos y parmesano. La acidez de los tomates equilibra los lípidos de la crema.",
+          "Histamina": "Sustituya con salsa Nomato y omita el queso para evitar las aminas biógenas.",
+          "Renal": "Use salsa Nomato para controlar los niveles de potasio y fósforo."
+        }
+      },
+      {
+        "instruction": "Reducción: Regrese el pollo a la sartén. Cocine a fuego lento durante 8 minutos hasta que la salsa logre una consistencia 'nappé' (que cubra el dorso de una cuchara).",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Emplatado: Decore con tiras de albahaca fresca inmediatamente antes de servir para mantener la integridad aromática volátil.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Huevos Pochados en Microondas (Método de Asentamiento Proteico)",
+    "description": "Un método de coagulación técnica que utiliza energía de microondas controlada para asentar las proteínas del huevo manteniendo el centro de la yema líquido.",
+    "prep_time": "5 minutos",
+    "ingredients": [
+      "Huevos Frescos [Base]",
+      "Agua [Universal]",
+      "Vinagre Blanco [Universal]",
+      "Sal Marina [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Configuración del Recipiente: Llene un bol pequeño con 1/2 taza de agua. Añada una gota de vinagre y una pizca de sal. El vinagre acidifica el agua, facilitando una coagulación más rápida de la albúmina (clara de huevo).",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Carga del Huevo: Rompa el huevo con cuidado en el agua, asegurándose de que quede totalmente sumergido.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Cocción Controlada: Cubra el bol con un plato. Cocine en el microondas al 50-80% de potencia durante 60 segundos. Advertencia Técnica: La potencia alta puede hacer que la yema explote debido a que el vapor interno se acumula demasiado rápido.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Cocine hasta que la clara esté opaca pero la yema se sienta suave.",
+          "Renal": "Cocine hasta que la clara esté totalmente asentada (cuajada) para optimizar el perfil proteico para pacientes renales."
+        }
+      },
+      {
+        "instruction": "Reposo: Deje reposar el huevo en el agua durante 30 segundos antes de levantarlo con una espumadera para escurrirlo sobre papel de cocina.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Ensalada de Pollo Bang Bang",
+    "description": "Una adaptación densa en nutrientes que utiliza una emulsión de yogur para proporcionar el perfil característico cremoso-picante con una carga lipídica reducida.",
+    "prep_time": "20 minutos",
+    "ingredients": [
+      "Pollo Desmenuzado Cocido [Base]",
+      "Yogur Griego Natural [Estándar]",
+      "Mayonesa Fresca [Universal]",
+      "Salsa de Chile Dulce [Estándar]",
+      "Sriracha [Estándar]",
+      "Miel y Cayena [Histamina]",
+      "Pepino y Zanahorias [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Base de Emulsión: En un bol grande, mezcle el yogur y la mayonesa hasta que sea homogénea. Esto crea una base estable y alta en proteínas para la ensalada.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Añada salsa de chile dulce y sriracha.",
+          "Histamina": "Use mayonesa fresca, miel y cayena para evitar las salsas de chile fermentadas.",
+          "Bajo en FODMAP": "Asegúrese de que la mayonesa no contenga ajo y use una alternativa de sriracha permitida."
+        }
+      },
+      {
+        "instruction": "Infusión: Añada el pollo desmenuzado tibio a la salsa. El calor expande las fibras de la carne, permitiendo que la salsa penetre más profundamente en la proteína.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Equilibrio de Textura: Incorpore los vegetales desmenuzados al final para asegurar que permanezcan crujientes y no liberen agua en la emulsión.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Salmón Gochugaru con Arroz Crujiente",
+    "description": "Una técnica de una sola sartén que utiliza las grasas del pescado para caramelizar el arroz en un 'socarrat' mientras se cocina el salmón al vapor simultáneamente.",
+    "prep_time": "30 minutos",
+    "ingredients": [
+      "Filete de Salmón Fresco [Base]",
+      "Arroz Frío de 24h [Universal]",
+      "Mayonesa Kewpie [Estándar]",
+      "Gochugaru (Chile Coreano) [Estándar]",
+      "Aceite de Sésamo Tostado [Universal]",
+      "Cebolleta [Estándar]"
+    ],
+    "steps": [
+      {
+        "instruction": "Retrogradación del Almidón: Use arroz que haya sido refrigerado durante 24 horas. Esto maximiza el almidón resistente, mitigando significativamente el pico de glucosa post-comida, crítico para el manejo de la Diabetes.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Aplicación del Glaseado: Mezcle la mayonesa y el Gochugaru y extiéndalo sobre el salmón. Esto actúa como agente de sabor y como aislante térmico durante el proceso de fritura al vapor.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Use 1 cucharada de hojuelas de chile Gochugaru.",
+          "Histamina": "Omita el Gochugaru; use salmón fresco y una mezcla de mayonesa y hierbas."
+        }
+      },
+      {
+        "instruction": "Fritura al Vapor: En una sartén antiadherente, presione el arroz formando una capa plana. Coloque el salmón encima y tape la sartén. El pescado se cocina mediante el vapor ascendente, mientras que la base del arroz se tuesta con las grasas del salmón.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Formación del Socarrat: Cocine durante 10 minutos hasta que el salmón esté tierno y la base del arroz haya formado una costra de 'socarrat' profundamente dorada y crujiente.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Cacerola de Calabacín Cargada (Keto Potato Hack)",
+    "description": "Una deconstrucción cetogénica de la patata rellena, centrada en la deshidratación osmótica para prevenir que el vegetal suelte agua.",
+    "prep_time": "45 minutos",
+    "ingredients": [
+      "Calabacín en Rodajas [Base]",
+      "Queso Cheddar Rallado [Estándar]",
+      "Bacon Crujiente [Estándar]",
+      "Crema Agria Entera [Estándar]",
+      "Cebolleta [Universal]",
+      "Sal Marina [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Deshidratación Osmótica: Sale las rodajas de calabacín y déjelas reposar sobre papel de cocina durante 15 minutos. Seque agresivamente. Nota Técnica: Esto evita el efecto de 'llanto' que hace que las cacerolas de calabacín queden aguadas.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Pre-Asado: Hornee o saltee el calabacín hasta que los bordes se ablanden para fijar su integridad estructural antes de montar las capas.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Arquitectura de Capas: Cree capas repetitivas de calabacín, crema agria, bacon y cheddar para asegurar una distribución uniforme del sabor.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Use lácteos enteros tradicionales.",
+          "Vegano": "Use crema de anacardos y trozos de bacon de coco."
+        }
+      },
+      {
+        "instruction": "Consolidación Final: Hornee a 190°C (375°F) hasta que el queso burbujee y haya formado una costra de Maillard dorada.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Ñoquis en Bandeja (Método de Calor Seco)",
+    "description": "Un método de horneado de alta eficiencia que omite el proceso de ebullición para lograr un exterior crujiente de Maillard y un interior suave.",
+    "prep_time": "25 minutos",
+    "ingredients": [
+      "Ñoquis comerciales de estante [Base]",
+      "Tomates Cherry [Estándar]",
+      "Pimientos Dulces en Dados [Histamina]",
+      "Aceite de Oliva [Universal]",
+      "Romero [Universal]",
+      "Sal Marina [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Carga Técnica: Coloque los ñoquis secos directamente del paquete en una bandeja de horno. Nota Técnica: No los hierva; hervirlos añade humedad que impide el 'crujido' final.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Use ñoquis comerciales de trigo estándar.",
+          "Renal": "Use ñoquis caseros hechos de patatas lixiviadas (hervidas/remojadas) y harina de arroz.",
+          "Keto": "Use ñoquis a base de coliflor."
+        }
+      },
+      {
+        "instruction": "Recubrimiento Aromático: Mezcle los ñoquis con vegetales y aceite de oliva. El aceite es técnicamente necesario para facilitar la reacción de Maillard en la superficie del ñoqui.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Mezcle con tomates cherry y romero.",
+          "Histamina": "Evite los tomates; use pimientos y calabacín en su lugar."
+        }
+      },
+      {
+        "instruction": "Asado Diferencial: Hornee a 200°C (400°F) durante 20 minutos. Remueva a mitad de tiempo hasta que cada ñoqui esté dorado y crujiente, mientras el interior permanece esponjoso y cocido al vapor.",
+        "is_branch_point": false
+      }
+    ]
+  }
+]

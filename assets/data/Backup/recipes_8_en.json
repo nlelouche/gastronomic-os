@@ -1,0 +1,403 @@
+﻿[
+  {
+  "title": "Strawberry Cheesecake Bars (Hydration Control Method)",
+  "description": "A fruit-forward portable dessert focusing on precise moisture management to prevent strawberry water content from compromising the lipid-rich cheesecake structure.",
+  "prep_time": "50 minutes (+3h chilling)",
+  "ingredients": [
+    "Graham Cracker Base [Base]",
+    "Gluten-Free Graham Cracker Base [Celiac]",
+    "Full-fat Cream Cheese [Standard]",
+    "Fresh Strawberries (Sliced) [Standard]",
+    "Concentrated Strawberry Jam [Histamine, Universal]",
+    "Sugar [Standard]",
+    "Erythritol or Allulose [Diabetes]",
+    "Lemon Juice [Standard]",
+    "Cornstarch [Universal]"
+  ],
+  "steps": [
+    {
+      "instruction": "Structural Foundation: Press the Graham cracker base into a parchment-lined pan. Bake at 175°C (350°F) for 10 minutes.",
+      "is_branch_point": true,
+      "variant_logic": {
+        "Standard": "Use standard wheat-based Graham cracker crumbs mixed with butter.",
+        "Celiac": "Use certified gluten-free Graham cracker crumbs or a mixture of almond flour and GF oat flour to ensure a stable, grain-free base."
+      }
+    },
+    {
+      "instruction": "Differential Fruit Preparation: To prevent 'weeping' (syneresis), prepare the strawberry layer.",
+      "is_branch_point": true,
+      "variant_logic": {
+        "Standard": "Toss sliced strawberries with 1 tsp of cornstarch and a splash of lemon juice to capture internal fruit water during the bake.",
+        "High-Stability": "Substitute fresh berries with a high-pectin concentrated strawberry jam to ensure zero water migration."
+      }
+    },
+    {
+      "instruction": "Lipid Matrix Assembly: Whisk the cream cheese and sweetener until homogeneous.",
+      "is_branch_point": true,
+      "variant_logic": {
+        "Standard": "Whisk with granulated white sugar.",
+        "Diabetes": "Whisk with erythritol or allulose. Technical Note: Allulose will keep the bars softer, while erythritol may result in a slightly firmer set."
+      }
+    },
+    {
+      "instruction": "Assembly and Bake: Pour half of the cheesecake batter into the pan, layer with the strawberry mixture, and cover with the remaining batter. Bake until edges are firm.",
+      "is_branch_point": false
+    },
+    {
+      "instruction": "Stabilization: Chill for at least 3 hours; this cryogenic set time is mandatory for clean slicing.",
+      "is_branch_point": false
+    }
+  ]
+},
+  {
+    "title": "Cloud Bread (Protein Foam Revival)",
+    "description": "An ethereal, grain-free foam-based bread substitute utilizing air-filled protein matrices for volume and aesthetic appeal.",
+    "prep_time": "15 minutes",
+    "ingredients": [
+      "Fresh Egg Whites [Base]",
+      "White Sugar [Standard]",
+      "Allulose [Diabetes, Keto]",
+      "Cornstarch or Arrowroot Powder [Standard, Paleo]",
+      "Natural Beet Juice [Clean Label]",
+      "Cream of Tartar [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Mechanical Aeration: Whisk egg whites with cream of tartar until soft peaks form. The tartar acidifies the proteins, allowing for a more stable and elastic air-bubble matrix.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Sweetener Titration: Slowly incorporate the sweetener while continuing to whisk. This increases the viscosity of the foam.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Use white granulated sugar.",
+          "Diabetes": "Substitute sugar with allulose to maintain volume without the glycemic load."
+        }
+      },
+      {
+        "instruction": "Stabilization: Sift in the cornstarch or arrowroot. The starch molecules bind to the water in the whites, preventing the 'cloud' from collapsing during thermal expansion.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Aesthetic Coloring: Add beet juice or food coloring and whisk to stiff peaks. The foam should be rigid enough to hold its shape when inverted.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Thermal Setting: Form into a mound and bake at 150°C (300°F) for 25 minutes. The low temperature allows the proteins to set without browning excessively.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "2-Ingredient Bagels (Rapid Fermentation)",
+    "description": "A shortcut bread utilizing the lactic acid in yogurt to chemically activate self-rising leaveners, bypassing traditional yeast requirements.",
+    "prep_time": "25 minutes",
+    "ingredients": [
+      "Self-Rising Flour [Standard]",
+      "Gluten-Free Self-Rising Flour [Celiac]",
+      "Thick Greek Yogurt [Standard]",
+      "Lactose-Free Greek Yogurt [Low FODMAP]",
+      "Everything Bagel Seasoning [Universal]",
+      "Egg Wash [Standard]"
+    ],
+    "steps": [
+      {
+        "instruction": "Matrix Synthesis: Combine equal parts by weight of flour and yogurt. The acidity of the yogurt immediately reacts with the baking powder in the flour to begin gas production.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Use wheat-based self-rising flour.",
+          "Celiac": "Use a certified gluten-free self-rising blend.",
+          "Low FODMAP": "Use lactose-free yogurt to avoid disaccharide fermentation in the gut."
+        }
+      },
+      {
+        "instruction": "Mechanical Development: Knead for 3 minutes until a smooth dough ball forms. Divide and roll into ropes to form the bagel rings.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Surface Glazing: Brush with egg wash and apply seasoning. The egg proteins promote the Maillard reaction, giving the bagels a professional golden crust.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Bake: Air fry at 190°C (375°F) for 10-12 minutes or bake at 200°C for 20 minutes until hollow-sounding when tapped.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Whipped Lemonade (Emulsified Citrus Beverage)",
+    "description": "A high-fat, high-acid emulsified beverage utilizing high-speed mechanical aeration for smoothie-like stability.",
+    "prep_time": "5 minutes",
+    "ingredients": [
+      "Fresh Lemon Juice [Base]",
+      "Ice Cubes [Base]",
+      "Sweetened Condensed Milk [Standard]",
+      "Coconut Condensed Milk [Vegan, APLV]",
+      "Heavy Cream and Stevia [Diabetes]"
+    ],
+    "steps": [
+      {
+        "instruction": "Emulsion Base Selection: Add ice, lemon juice, and the creamy lipid source to a high-speed blender.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Use 1/3 cup sweetened condensed milk.",
+          "Vegan": "Use chilled full-fat coconut cream or coconut condensed milk.",
+          "Diabetes": "Use heavy cream and liquid stevia."
+        }
+      },
+      {
+        "instruction": "High-Speed Aeration: Blend at maximum RPM for 45 seconds. The blades create a stable emulsion between the citrus acids and the milk fats, resulting in a thick, frothy texture.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Service: Pour into chilled glasses. The drink should maintain its 'whipped' volume for at least 15 minutes. Garnish with lemon zest.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+  "title": "Simplified Potato Pavé (15-Hour Potato)",
+  "description": "A technical side dish featuring a compressed 'mille-feuille' of potatoes, optimizing starch release and retrogradation for superior surface crunch.",
+  "prep_time": "45 minutes (+12h chilling)",
+  "ingredients": [
+    "Yukon Gold Potatoes (High Starch) [Base]",
+    "Duck Fat or Melted Butter [Standard]",
+    "Refined Coconut Oil [Vegan]",
+    "Fresh Thyme and Sea Salt [Universal]"
+  ],
+  "steps": [
+    {
+      "instruction": "Mandoline Processing: Slice peeled potatoes into translucent, paper-thin rounds. Technical Note: Do not rinse; the surface starch is required to 'glue' the layers together during compression.",
+      "is_branch_point": false
+    },
+    {
+      "instruction": "Architectural Layering: Layer the slices in a parchment-lined dish, brushing each layer with your chosen fat.",
+      "is_branch_point": true,
+      "variant_logic": {
+        "Standard": "Lightly season every 3 layers with sea salt and fresh thyme.",
+        "Hypertension": "Omit sea salt entirely; double the amount of fresh thyme and add a dusting of garlic powder between layers to enhance flavor without sodium."
+      }
+    },
+    {
+      "instruction": "Thermal Setting: Bake at 150°C (300°F) until tender. Immediately place a weight on top and refrigerate for 12 hours. This time allows the starch to retrograde, creating a solid block.",
+      "is_branch_point": false
+    },
+    {
+      "instruction": "Maillard Searing: Unmold, slice into cubes, and fry in a pan until all six sides are deeply golden and crispy. Serve warm.",
+      "is_branch_point": false
+    }
+  ]
+},
+ {
+  "title": "Whipped Cottage Cheese 'Queso' Dip",
+  "description": "A high-protein dip that replicates nacho cheese texture using emulsified dairy and roasted pepper carotenoids for natural coloring.",
+  "prep_time": "10 minutes",
+  "ingredients": [
+    "Low-Sodium Cottage Cheese [Renal, Base]",
+    "Standard Cottage Cheese [Standard]",
+    "Roasted Red Peppers (Canned)",
+    "Nutritional Yeast [Universal]",
+    "Garlic Powder and Turmeric [Standard, Universal]"
+  ],
+  "steps": [
+    {
+      "instruction": "Pepper Preparation: Prepare the roasted red peppers to manage mineral load.",
+      "is_branch_point": true,
+      "variant_logic": {
+        "Standard": "Drain the canned peppers and use directly.",
+        "Renal": "Rinse the canned peppers 3 times under cold water to remove the potassium-rich brine and preservation liquids. This is critical for mineral safety."
+      }
+    },
+    {
+      "instruction": "Emulsification: Blend the cottage cheese and peppers until the curds are completely smooth.",
+      "is_branch_point": true,
+      "variant_logic": {
+        "Standard": "Use full-fat or low-fat standard cottage cheese.",
+        "Renal": "Strictly use no-salt-added (low-sodium) cottage cheese to stay within sodium limits."
+      }
+    },
+    {
+      "instruction": "Flavor Activation: Add nutritional yeast and turmeric for color and flavor.",
+      "is_branch_point": true,
+      "variant_logic": {
+        "Standard": "Add 2 tbsp of nutritional yeast and 1 tsp of garlic powder.",
+        "Renal": "Limit nutritional yeast to 1 tsp (due to high phosphorus content) and use garlic powder as the primary flavor agent."
+      }
+    },
+    {
+      "instruction": "Service: Serve cold or gently warmed (do not boil).",
+      "is_branch_point": true,
+      "variant_logic": {
+        "Standard": "Pair with corn chips or toasted pita.",
+        "Hypertension": "Pair with cucumber rounds or celery sticks for a zero-sodium crunch.",
+        "Renal": "Pair with low-potassium cucumber rounds."
+      }
+    }
+  ]
+},
+  {
+  "title": "Baked Blueberry French Toast (Meal Prep)",
+  "description": "A structured breakfast casserole designed for consistent thermal setting and efficiency, balancing complex carbohydrates with high-value proteins.",
+  "prep_time": "45 minutes",
+  "ingredients": [
+    "Thick Sourdough or Brioche [Standard]",
+    "Certified Gluten-Free Bread [Celiac]",
+    "Fresh Large Eggs [Standard]",
+    "Milk or Nut Milk [Universal]",
+    "Fresh Blueberries [Base]"
+  ],
+  "steps": [
+    {
+      "instruction": "Starch Cubing: Cut the bread into 3cm cubes and arrange in a greased dish.",
+      "is_branch_point": true,
+      "variant_logic": {
+        "Standard": "Use thick-cut sourdough or brioche; these breads have the structural density to absorb custard without disintegrating.",
+        "Celiac": "Use certified gluten-free white or brioche-style bread. Technical Note: Ensure the bread is slightly stale or toasted briefly before cubing to improve liquid absorption."
+      }
+    },
+    {
+      "instruction": "Custard Synthesis: Whisk eggs, milk, and cinnamon. Pour over the bread and let sit for 15 minutes to allow for total hydration of the crumb.",
+      "is_branch_point": false
+    },
+    {
+      "instruction": "Inclusion: Top with fresh blueberries. The berries will burst during baking, releasing pectin to thicken the custard.",
+      "is_branch_point": false
+    },
+    {
+      "instruction": "Final Bake and Storage: Bake at 180°C (350°F) until the center is firm.",
+      "is_branch_point": true,
+      "variant_logic": {
+        "Standard": "Serve warm or allow to cool before refrigerating for meal prep.",
+        "Histamine": "If sensitive to Histamine, slice and freeze individual portions immediately after baking. Do not allow the dish to sit at room temperature to prevent biogenic amine buildup."
+      }
+    }
+  ]
+},
+  {
+  "title": "Red Velvet 'Beet' Crinkle Cookies",
+  "description": "A nutrient-dense dessert using roasted beet puree for moisture and pigmentation, avoiding synthetic dyes while managing cacao triggers.",
+  "prep_time": "30 minutes",
+  "ingredients": [
+    "Roasted Beet Puree [Base]",
+    "Cocoa Powder [Standard]",
+    "Carob Powder [Histamine]",
+    "All-purpose Flour [Base]",
+    "Gluten-Free All-purpose Flour [Celiac]",
+    "Baking Powder [Universal]"
+  ],
+  "steps": [
+    {
+      "instruction": "Pigment Extraction: Blend roasted beets into a smooth puree. Combine with fat and sweetener.",
+      "is_branch_point": true,
+      "variant_logic": {
+        "Standard": "Use 1/2 cup cocoa powder for flavor and antioxidant density.",
+        "Histamine": "Substitute cocoa with carob powder to avoid biogenic amines and caffeine triggers."
+      }
+    },
+    {
+      "instruction": "Dry Matrix Integration: Sift the flour and baking powder into the beet mixture.",
+      "is_branch_point": true,
+      "variant_logic": {
+        "Standard": "Use standard all-purpose wheat flour.",
+        "Celiac": "Use a certified gluten-free all-purpose flour blend. Ensure it contains xanthan gum for the necessary elasticity to achieve the 'crinkle' effect."
+      }
+    },
+    {
+      "instruction": "Chilling: Freeze the dough for 15 minutes. Cold dough ensures the 'crinkle' effect occurs as the exterior sets faster than the interior in the oven.",
+      "is_branch_point": false
+    },
+    {
+      "instruction": "Formation: Roll balls in powdered sugar and bake at 175°C (350°F) until the cracks appear.",
+      "is_branch_point": false
+    }
+  ]
+},
+  {
+  "title": "Unstuffed Zucchini Casserole (Moisture-Control Lasagna)",
+  "description": "A deconstructed lasagna utilizing zucchini ribbons, focusing on osmotic dehydration to maintain sauce integrity.",
+  "prep_time": "35 minutes",
+  "ingredients": [
+    "Zucchini Ribbons [Base]",
+    "Ground Beef [Base]",
+    "Marinara Sauce [Standard]",
+    "Nomato Sauce [Histamine, Renal]"
+  ],
+  "steps": [
+    {
+      "instruction": "Osmotic Dehydration: Salt the zucchini ribbons and let sit for 15 minutes; pat dry aggressively. This is mandatory to prevent the vegetable water from diluting the sauce during baking.",
+      "is_branch_point": false
+    },
+    {
+      "instruction": "Protein Preparation: Brown the ground beef in a skillet and drain 100% of the fat.",
+      "is_branch_point": false
+    },
+    {
+      "instruction": "Layering and Sauce Selection: Layer the cooked meat with the zucchini ribbons and your chosen sauce.",
+      "is_branch_point": true,
+      "variant_logic": {
+        "Standard": "Use 1 cup of standard Marinara sauce for traditional flavor.",
+        "Histamine": "Strictly use Nomato sauce (beet/carrot base) to avoid histamine triggers found in cooked tomatoes.",
+        "Renal": "Use Nomato sauce to significantly reduce the potassium and phosphorus load."
+      }
+    },
+    {
+      "instruction": "Final Bake: Bake at 190°C (375°F) for 20 minutes until bubbling. Serve as a low-carb alternative to traditional lasagna.",
+      "is_branch_point": false
+    }
+  ]
+},
+  {
+    "title": "Kale Chips (Goitrogen Deactivation Method)",
+    "description": "A nutrient-dense snack utilizing high-heat convection to deactivate goitrogens while achieving extreme textural crispness.",
+    "prep_time": "20 minutes",
+    "ingredients": [
+      "Fresh Curly Kale [Base]",
+      "White Cabbage Leaves [Renal]",
+      "Nutritional Yeast [Universal]",
+      "Olive Oil [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Preparation: Wash and dry kale leaves. For Renal patients, substitute with thinly sliced white cabbage to avoid the extreme potassium load of kale.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Thyroid": "Ensure kale is roasted at 150°C+ to deactivate goitrogenic isothiocyanates.",
+          "Renal": "Use cabbage or dehydrated apple skins."
+        }
+      },
+      {
+        "instruction": "Saturation: Massage with oil and nutritional yeast. The nutritional yeast provides a cheesy umami profile without dairy proteins.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Bake: Roast at 150°C (300°F) until crispy. The low temperature prevents the delicate leaves from burning while removing all moisture.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Unstuffed Zucchini Casserole (Moisture-Control Lasagna)",
+    "description": "A deconstructed lasagna utilizing zucchini ribbons, focusing on osmotic dehydration to maintain sauce integrity.",
+    "prep_time": "35 minutes",
+    "ingredients": [
+      "Zucchini Ribbons [Base]",
+      "Ground Beef [Base]",
+      "Marinara Sauce [Standard]",
+      "Nomato Sauce [Histamine, Renal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Osmotic Dehydration: Salt the zucchini ribbons and let sit for 15 minutes; pat dry. This is mandatory to prevent the vegetable water from diluting the sauce during baking.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Layering: Brown the meat and layer with zucchini ribbons and your chosen sauce. Use Nomato sauce for Renal or Histamine protocols.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Final Bake: Bake at 190°C (375°F) for 20 minutes until bubbling. Serve as a low-carb alternative to traditional pasta.",
+        "is_branch_point": false
+      }
+    ]
+  }
+]

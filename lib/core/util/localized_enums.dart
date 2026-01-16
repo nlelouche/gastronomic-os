@@ -17,6 +17,7 @@ extension LocalizedDiet on DietLifestyle {
       case DietLifestyle.mediterranean: return l10n.dietMediterranean;
       case DietLifestyle.highPerformance: return l10n.dietHighPerformance;
       case DietLifestyle.lowCarb: return l10n.dietLowCarb;
+      case DietLifestyle.kosher: return l10n.dietKosher;
     }
   }
 }
@@ -35,6 +36,7 @@ extension LocalizedMedicalCondition on MedicalCondition {
       case MedicalCondition.histamine: return l10n.conditionHistamine;
       case MedicalCondition.diabetes: return l10n.conditionDiabetes;
       case MedicalCondition.renal: return l10n.conditionRenal;
+      case MedicalCondition.hypertension: return l10n.conditionHypertension;
     }
   }
 }

@@ -1,0 +1,3269 @@
+﻿[
+  {
+    "title": "Kinetic Cucumber Salad (Logan Method)",
+    "description": "A high-speed salad utilizing mechanical agitation for rapid flavor infusion, focusing on umami and crunchy textures.",
+    "prep_time": "5 minutes",
+    "ingredients": [
+      "English Cucumber [Base]",
+      "Soy Sauce [Standard]",
+      "Coconut Aminos [Soy Allergy, Histamine, Renal, Hypertension]",
+      "MSG (Monosodium Glutamate) [Standard]",
+      "Toasted Sesame Oil [Universal]",
+      "Rice Vinegar [Standard]",
+      "Citric Acid Crystals [Histamine]",
+      "Garlic Oil [Low FODMAP]",
+      "Fresh Ginger [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Slice the cucumber thinly using a mandoline directly into a 1L deli container.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Renal": "Peel the cucumber completely before slicing to reduce potassium and pesticide load.",
+          "Standard": "Keep the skin for traditional texture and fiber."
+        }
+      },
+      {
+        "instruction": "Add the liquid flavor base components.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Add soy sauce, rice vinegar, and a pinch of MSG.",
+          "Hypertension": "Substitute soy sauce and MSG with Coconut Aminos and low-sodium salt.",
+          "Histamine": "Use Coconut Aminos and citric acid instead of fermented soy and vinegar to avoid histamine triggers."
+        }
+      },
+      {
+        "instruction": "Add aromatic enhancers.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Add freshly grated garlic and chopped spring onions.",
+          "Low FODMAP": "Use garlic-infused oil and the green tips of spring onions only to avoid soluble fructans."
+        }
+      },
+      {
+        "instruction": "Seal the container tightly and shake vigorously for 45 seconds to emulsify the dressing and slightly break down the vegetable structure.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Viral Cottage Cheese Flatbread",
+    "description": "A high-protein, flourless bread alternative that relies on the thermal denaturation of dairy and egg proteins for its structure.",
+    "prep_time": "30 minutes",
+    "ingredients": [
+      "Cottage Cheese [Standard, Keto, Vegetarian, Low FODMAP]",
+      "Whole Eggs [Standard, Keto, Vegetarian, Paleo]",
+      "Homemade Ricotta (Leached) [Renal]",
+      "Egg Whites [Renal]",
+      "Farmer's Cheese (Fresh <24h) [Histamine]",
+      "Chickpea Flour (Besan) [Vegan, Egg Allergy]",
+      "Dried Oregano [Universal]",
+      "Garlic Powder [Standard, Renal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Prepare the protein base mixture.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Blend 1 cup of standard cottage cheese with 2 whole eggs.",
+          "Renal": "Use leached homemade ricotta and 3 egg whites to minimize the phosphorus and sodium burden.",
+          "Histamine": "Use fresh Farmer's cheese consumed within 24 hours of production to prevent histamine buildup.",
+          "Vegan": "Mix chickpea flour with water and nutritional yeast to replicate the protein matrix."
+        }
+      },
+      {
+        "instruction": "Season the mixture.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Add garlic powder and dried oregano.",
+          "Low FODMAP": "Use dried herbs only; omit garlic powder to remain IBS-friendly."
+        }
+      },
+      {
+        "instruction": "Spread the batter into a thin layer on a baking sheet lined with parchment paper.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Bake at 180°C (350°F) for 25-30 minutes until edges are golden and the center is flexible.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Dubai Chocolate Bar (Knafeh Pistachio)",
+    "description": "A luxury confectionery item featuring a contrast between a crisp tempered chocolate shell and a creamy, crunchy core.",
+    "prep_time": "45 minutes",
+    "ingredients": [
+      "Milk Chocolate [Standard]",
+      "Dark Chocolate (70%+) [Vegan, Diabetes, Paleo]",
+      "Kataifi Dough [Standard]",
+      "Dehydrated Zucchini Strips [Keto, Celiac]",
+      "Pistachio Cream [Standard]",
+      "Sunflower Seed Butter [Nut Allergy]",
+      "Tahini [Universal]",
+      "Butter [Standard]",
+      "Coconut Oil [Vegan]"
+    ],
+    "steps": [
+      {
+        "instruction": "Sauté the crunchy base in fat until deep golden.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Sauté chopped Kataifi dough in butter.",
+          "Keto": "Sauté ultra-thin zucchini strips in butter until fully crisp.",
+          "Vegan": "Sauté Kataifi dough in coconut oil."
+        }
+      },
+      {
+        "instruction": "Combine the crunchy core with the creamy matrix once cooled.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Mix with pistachio cream and tahini to balance the sweetness.",
+          "Nut Allergy": "Substitute pistachio cream for roasted sunflower seed butter."
+        }
+      },
+      {
+        "instruction": "Prepare the outer chocolate shell.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Use high-quality tempered milk chocolate.",
+          "Diabetes": "Use allulose-sweetened 70% dark chocolate to prevent blood sugar spikes."
+        }
+      },
+      {
+        "instruction": "Fill the chocolate shell with the mixture, seal the bottom, and refrigerate until fully set.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Date Bark (Snickers Hack)",
+    "description": "A frozen, layered functional snack that mimics a candy bar using fiber-rich natural sweeteners.",
+    "prep_time": "45 minutes",
+    "ingredients": [
+      "Medjool Dates [Base, Standard]",
+      "Oat Cookie Crumbs [Low FODMAP]",
+      "Natural Peanut Butter [Standard]",
+      "Sunflower Seed Butter [Nut Allergy]",
+      "Dark Chocolate (70%) [Universal]",
+      "Coconut Oil [Universal]",
+      "Roasted Peanuts [Standard]",
+      "Roasted Macadamias [Low FODMAP]"
+    ],
+    "steps": [
+      {
+        "instruction": "Create the support layer on parchment paper.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Flatten pitted Medjool dates into a uniform sheet.",
+          "Low FODMAP": "Use a layer of gluten-free oat cookie crumbs bound with a small amount of maple syrup, as dates are high in fructans."
+        }
+      },
+      {
+        "instruction": "Spread the protein and fat layer.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Apply a layer of peanut butter and sprinkle with crushed peanuts.",
+          "Nut Allergy": "Apply sunflower seed butter and sprinkle with hemp seeds."
+        }
+      },
+      {
+        "instruction": "Top with a thin coating of melted dark chocolate mixed with coconut oil.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Freeze for at least 45 minutes until solid, then break into irregular shards.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Honey Garlic Salmon Bites",
+    "description": "Air-fried salmon cubes utilizing the Maillard reaction for a crispy exterior without deep frying.",
+    "prep_time": "15 minutes",
+    "ingredients": [
+      "Salmon Fillet [Base]",
+      "Honey [Standard]",
+      "Soy Sauce [Standard]",
+      "Coconut Aminos [Histamine, Soy Allergy, Renal]",
+      "Garlic Powder [Standard]",
+      "White Rice [Base]",
+      "Ginger [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Dice the salmon into 1-inch cubes.",
+        "is_branch_point": false,
+        "cross_contamination_alert": "For Histamine intolerance, ensure salmon is flash-frozen and thawed immediately before cooking."
+      },
+      {
+        "instruction": "Prepare the honey garlic glaze.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Mix honey, soy sauce, and minced garlic.",
+          "Histamine": "Substitute soy sauce for Coconut Aminos to avoid fermentation products.",
+          "Renal": "Use Coconut Aminos and limit total portion size to 85-100g to manage protein and mineral load."
+        }
+      },
+      {
+        "instruction": "Toss salmon in the glaze and air fry at 200°C (400°F) for 8-10 minutes.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Serve over rice.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Serve over jasmine or brown rice.",
+          "Renal": "Serve over leached white rice instead of brown rice to balance the phosphorus load."
+        }
+      }
+    ]
+  },
+  {
+    "title": "Cottage Cheese Ice Cream",
+    "description": "A high-protein frozen dessert trend that replaces traditional heavy cream with blended cottage cheese for a superior macrobiotic profile.",
+    "prep_time": "10 minutes (+4 hours freezing time)",
+    "ingredients": [
+      "Cottage Cheese [Standard, Keto, Vegetarian, Low FODMAP]",
+      "Lactose-free Cottage Cheese [Low FODMAP]",
+      "Honey [Standard]",
+      "Allulose or Stevia [Diabetes, Keto]",
+      "Maple Syrup [Low FODMAP, Vegan]",
+      "Strawberries or Raspberries [Universal]",
+      "Dark Chocolate Chips [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Blend the dairy base until completely smooth.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Use standard cottage cheese blended with honey.",
+          "Diabetes": "Use standard cottage cheese with allulose to prevent crystallization and manage glucose.",
+          "Low FODMAP": "Use lactose-free cottage cheese with maple syrup.",
+          "Vegan": "Use silken tofu emulsified with olive oil to replicate the texture."
+        }
+      },
+      {
+        "instruction": "Incorporate the fruit and texture elements.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Mix in any fresh fruit or chocolate chips.",
+          "Diabetes": "Stick to low-glycemic berries like strawberries or blackberries; avoid bananas or mango.",
+          "Low FODMAP": "Use strawberries or raspberries; avoid large amounts of blackberries due to sorbitol."
+        }
+      },
+      {
+        "instruction": "Pour into a container and freeze for at least 4 hours, stirring occasionally to maintain creaminess.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Shaved Tofu Shawarma",
+    "description": "A plant-based take on shawarma using a vegetable peeler to shave tofu into thin ribbons, maximizing surface area for flavor absorption.",
+    "prep_time": "20 minutes",
+    "ingredients": [
+      "Extra Firm Tofu [Standard, Vegan, Vegetarian]",
+      "Pumfu (Pumpkin Seed Tofu) [Soy Allergy, Paleo]",
+      "Garlic-infused Oil [Low FODMAP]",
+      "Shawarma Spice Blend (Cumin, Paprika) [Universal]",
+      "Coconut Aminos [Histamine]",
+      "Lemon Juice [Standard]",
+      "Scallion Greens [Low FODMAP]"
+    ],
+    "steps": [
+      {
+        "instruction": "Shave the protein into thin ribbons using a vegetable peeler.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Shave extra-firm tofu after pressing.",
+          "Soy Allergy": "Shave 'Pumfu' (pumpkin seed tofu) or chickpea flour blocks."
+        }
+      },
+      {
+        "instruction": "Marinate the ribbons in the spice and oil mixture.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Use olive oil, minced garlic, and shawarma spices.",
+          "Low FODMAP": "Use garlic-infused oil and scallion greens; avoid garlic cloves and onion.",
+          "Histamine": "Season with salt and cumin; avoid fermented sauces and citrus if sensitive."
+        }
+      },
+      {
+        "instruction": "Sauté in a hot pan until the edges are crispy and golden.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Optimized Tofu Scramble",
+    "description": "An enriched plant-based breakfast using almond flour or nutritional yeast to increase amino acid density and simulate a savory egg profile.",
+    "prep_time": "15 minutes",
+    "ingredients": [
+      "Firm Tofu [Standard, Vegan]",
+      "Nutritional Yeast [Universal]",
+      "Almond Flour [High-Performance, Paleo]",
+      "Kala Namak (Black Salt) [Standard]",
+      "Turmeric [Universal]",
+      "Red Bell Peppers [HistamineSafe]",
+      "Spinach [Standard]"
+    ],
+    "steps": [
+      {
+        "instruction": "Crumble the tofu and prepare it for the pan.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Crumble tofu by hand directly into the pan.",
+          "Renal": "Boil the tofu briefly before sautéing to reduce potassium content.",
+          "High-Performance": "Mix crumbled tofu with almond flour for increased caloric and protein density."
+        }
+      },
+      {
+        "instruction": "Add vegetables and seasonings.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Sauté with spinach, onions, and turmeric.",
+          "Histamine": "Sauté with red bell peppers or zucchini; avoid spinach and tomatoes.",
+          "Low FODMAP": "Use only the green tips of spring onions and avoid onion powders."
+        }
+      },
+      {
+        "instruction": "Cook until the liquid has evaporated and the scramble is heated through, seasoning with nutritional yeast for umami.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Green Goddess Chopped Salad",
+    "description": "A nutrient-dense chopped salad redefined as a dip, featuring an emulsified herb and seed dressing.",
+    "prep_time": "20 minutes",
+    "ingredients": [
+      "Green Cabbage [Base]",
+      "Cucumber [Base]",
+      "Scallions [Standard]",
+      "Hemp Seeds [APLV, Nut Allergy]",
+      "Walnuts or Cashews [Standard]",
+      "Nutritional Yeast [Universal]",
+      "Lemon Juice [Standard]",
+      "Garlic Oil [Low FODMAP]",
+      "Spinach and Basil [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Finely mince all vegetables into a 2-3mm brunoise.",
+        "is_branch_point": false,
+        "instruction_note": "The fine cut allows the salad to be eaten as a dip with chips."
+      },
+      {
+        "instruction": "Prepare the creamy 'Goddess' dressing.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Blend spinach, basil, walnuts, garlic, and lemon juice.",
+          "Nut Allergy": "Substitute walnuts with hemp seeds or pumpkin seeds.",
+          "Low FODMAP": "Use garlic-infused oil and omit fresh garlic cloves; limit avocado to 1/8 portion.",
+          "APLV": "Use nutritional yeast to provide the cheesy umami profile."
+        }
+      },
+      {
+        "instruction": "Toss the minced vegetables with the dressing until thoroughly coated and serve as a side or a dip.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Hot Honey Cottage Cheese Bowl",
+    "description": "A viral fitness bowl balancing sweet and spicy (swicy) flavors with high protein density from beef and cottage cheese.",
+    "prep_time": "40 minutes",
+    "ingredients": [
+      "Cottage Cheese [Standard, Keto, High-Performance]",
+      "Ground Beef [Standard, Paleo, Keto]",
+      "Sweet Potato [Standard, High-Performance]",
+      "Zucchini [Low-Carb]",
+      "Honey [Standard]",
+      "Chili Flakes [Standard]",
+      "Olive Oil [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Prepare the roasted vegetable base.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Roast cubed sweet potatoes until tender.",
+          "Keto": "Substitute sweet potato with roasted zucchini or cauliflower florets.",
+          "Low FODMAP": "Limit sweet potato portion to 1/2 cup or use common potatoes."
+        }
+      },
+      {
+        "instruction": "Cook the protein component.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Sauté lean ground beef with taco seasonings.",
+          "Vegetarian": "Substitute beef with sautéed seasoned tempeh or firm tofu crumbles."
+        }
+      },
+      {
+        "instruction": "Assemble the bowl by topping the hot vegetables and meat with cold cottage cheese and a drizzle of hot honey.",
+        "is_branch_point": false,
+        "instruction_note": "The contrast between cold dairy and hot protein defines this recipe's success."
+      }
+    ]
+  },
+  {
+    "title": "The Stew (Chickpea with Coconut and Turmeric)",
+    "description": "A viral vegan comfort food that creates its own thick texture by crushing starch-rich chickpeas directly in the pot.",
+    "prep_time": "60 minutes",
+    "ingredients": [
+      "Chickpeas [Base]",
+      "Full-fat Coconut Milk [Universal]",
+      "Turmeric [Universal]",
+      "Fresh Ginger [Universal]",
+      "Greek Yogurt [Standard, Vegetarian]",
+      "Coconut Yogurt [Vegan, APLV]",
+      "Fresh Mint [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Sauté the turmeric and ginger in oil until fragrant.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Add chickpeas and coconut milk, simmering until the flavors meld.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Use a heavy spoon to crush a portion of the chickpeas against the side of the pot to release natural starches for thickening.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Serve in bowls topped with herbs and yogurt.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Top with full-fat Greek yogurt and fresh mint.",
+          "Vegan": "Top with coconut-based yogurt and fresh mint."
+        }
+      }
+    ]
+  },
+  {
+    "title": "Halal Cart Style Chicken",
+    "description": "A forensic reconstruction of the iconic NYC street food featuring spiced chicken, turmeric rice, and a addictive white sauce.",
+    "prep_time": "30 minutes",
+    "ingredients": [
+      "Chicken Thighs [Base]",
+      "Lemon Juice and Oregano [Universal]",
+      "White Rice [Standard]",
+      "Turmeric and Cumin [Universal]",
+      "Mayonnaise [Standard]",
+      "Greek Yogurt [Standard]",
+      "Sugar [Standard]",
+      "Coconut Aminos [Histamine, Soy Allergy]"
+    ],
+    "steps": [
+      {
+        "instruction": "Marinate the chicken in lemon, oregano, and cilantro before searing.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Prepare the yellow rice by sautéing turmeric and cumin in oil before adding water (pilaf technique).",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Create the signature 'White Sauce'.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Emulsify mayonnaise, yogurt, sugar, and vinegar.",
+          "Histamine": "Use fresh mayonnaise, omit vinegar, and use honey instead of sugar."
+        }
+      },
+      {
+        "instruction": "Slice the seared chicken and serve over rice with plenty of sauce.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Cold-Start Boiled Corn",
+    "description": "A scientific method that allows starches to gelatinize without degrading cell walls, resulting in plump, juicy kernels.",
+    "prep_time": "15 minutes",
+    "ingredients": [
+      "Corn on the Cob [Base]",
+      "Water [Universal]",
+      "Butter [Standard]",
+      "Avocado Aioli [Diabetes, Keto]",
+      "Sea Salt [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Place the corn in a pot of cold water.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Bring the water to a boil and immediately remove the pot from the heat.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Serve with fat to slow sugar absorption.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Serve with melted butter and salt.",
+          "Diabetes": "Serve with avocado aioli to manage the glycemic load of the corn.",
+          "Renal": "Boil the corn in a large volume of water (leaching) to reduce potassium and phosphorus before serving."
+        }
+      }
+    ]
+  },
+  {
+    "title": "Million Dollar Chicken Casserole",
+    "description": "A southern-style comfort dish utilizing a composite dairy base and a buttery Ritz cracker topping.",
+    "prep_time": "40 minutes",
+    "ingredients": [
+      "Cooked Chicken [Base]",
+      "Cream Cheese [Standard]",
+      "Cottage Cheese [Standard]",
+      "Sour Cream [Standard]",
+      "Ritz Crackers [Standard]",
+      "Almond Flour and Nutritional Yeast [Vegetarian, Nut Allergy-Specific]",
+      "Butter [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Combine chicken with the dairy triad (cream cheese, cottage cheese, and sour cream).",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Prepare the textural topping.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Crush Ritz crackers and mix with melted butter.",
+          "Low-Carb": "Substitute crackers with a mixture of almond flour, nutritional yeast, and garlic salt."
+        }
+      },
+      {
+        "instruction": "Bake until the filling is bubbling and the topping is golden brown.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Marry Me Chicken",
+    "description": "An optimized one-pan meal using sun-dried tomatoes for intense umami and high-fat cream for palatability.",
+    "prep_time": "35 minutes",
+    "ingredients": [
+      "Chicken Cutlets [Base]",
+      "Heavy Cream [Standard]",
+      "Sun-dried Tomatoes [Standard]",
+      "Parmesan Cheese [Standard]",
+      "White Wine [Standard]",
+      "Chicken Broth [Universal]",
+      "Nomato Sauce [Histamine, Renal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Sear chicken cutlets and deglaze the pan with white wine to recover the 'fond'.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Create the cream sauce base.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Simmer heavy cream, parmesan, and sun-dried tomatoes.",
+          "Histamine": "Substitute tomatoes and parmesan for a 'Nomato' sauce base to avoid biogenic amines.",
+          "Renal": "Use standard chicken cutlets but substitute the dairy/tomato base with a low-potassium Nomato sauce."
+        }
+      },
+      {
+        "instruction": "Combine chicken with the sauce and finish in the oven or pan until thickened.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Microwave Poached Eggs",
+    "description": "A refined breakfast technique that solves the difficulty of traditional poaching by using controlled energy levels to coagulate egg proteins.",
+    "prep_time": "5 minutes",
+    "ingredients": [
+      "Eggs [Base]",
+      "Water [Universal]",
+      "Vinegar [Universal]",
+      "Sea Salt [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Place water, a drop of vinegar, and salt in a microwave-safe bowl.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Crack the egg into the water and prepare for cooking.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Cook using specific power settings.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Cook at medium power (50-80%) to avoid explosive over-coagulation of the yolk.",
+          "Renal": "Ensure the egg white is fully set to maximize the phosphorus/protein ratio benefit."
+        }
+      }
+    ]
+  },
+  {
+    "title": "Bang Bang Chicken Salad",
+    "description": "A high-protein, Asian-American fusion salad using a healthy emulsified yogurt-based sauce.",
+    "prep_time": "20 minutes",
+    "ingredients": [
+      "Shredded Chicken [Base]",
+      "Greek Yogurt [Standard]",
+      "Mayonnaise [Standard]",
+      "Sweet Chili Sauce [Standard]",
+      "Sriracha [Standard]",
+      "Carrots and Cucumbers [Base]",
+      "Fresh Chili (Non-fermented) [Histamine]"
+    ],
+    "steps": [
+      {
+        "instruction": "Prepare the 'Bang Bang' sauce emulsion.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Mix yogurt, mayo, sweet chili sauce, and sriracha.",
+          "Histamine": "Create a fresh version using mayonnaise, honey, and non-fermented chili powder or fresh chili.",
+          "Low FODMAP": "Use a mayonnaise-based sauce, ensuring no garlic or onion powders are in the chili sauce."
+        }
+      },
+      {
+        "instruction": "Toss shredded chicken with the sauce until fully absorbed.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Mix with crunchy vegetables for volume and satiety.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Gochugaru Salmon with Crispy Rice",
+    "description": "An innovative pan-seared dish where the rice is toasted in the salmon's natural fats to create a 'socarrat' texture.",
+    "prep_time": "30 minutes",
+    "ingredients": [
+      "Salmon Fillet [Base]",
+      "White Rice [Base]",
+      "Gochugaru (Korean Chili Flakes) [Standard]",
+      "Mayonnaise [Universal]",
+      "Coconut Aminos [Histamine, Soy Allergy]"
+    ],
+    "steps": [
+      {
+        "instruction": "Cook the rice and salmon together in a single pan.",
+        "is_branch_point": false,
+        "instruction_note": "Allow the rice to toast in the fish fat until a crispy bottom layer forms."
+      },
+      {
+        "instruction": "Prepare the glaze.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Mix mayonnaise and Gochugaru for a creamy, spicy finish.",
+          "Histamine": "Avoid Gochugaru if sensitive; use a plain mayonnaise and salt glaze with fresh herbs."
+        }
+      },
+      {
+        "instruction": "Broil briefly to brown the glaze.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Loaded Zucchini Casserole",
+    "description": "A ketogenic alternative to the loaded baked potato, using treated zucchini to mimic the starchy experience.",
+    "prep_time": "45 minutes",
+    "ingredients": [
+      "Zucchini [Base]",
+      "Cheddar Cheese [Standard, Keto]",
+      "Bacon [Standard, Keto, Paleo]",
+      "Sour Cream [Standard, Keto]",
+      "Scallion Greens [Universal]",
+      "Salt [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Perform a 'Critical Dry' on the vegetable.",
+        "is_branch_point": false,
+        "instruction_note": "Salt the sliced zucchini and let sit for 15 minutes, then pat dry to prevent a watery casserole."
+      },
+      {
+        "instruction": "Layer the dried zucchini with standard 'loaded potato' toppings.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Layer with cheddar, sour cream, and bacon.",
+          "Vegan": "Layer with cashew-based cream and coconut bacon.",
+          "Low FODMAP": "Use hard cheeses (cheddar) and only the green part of scallions."
+        }
+      },
+      {
+        "instruction": "Bake at 190°C (375°F) until the cheese is bubbly and the edges are crisp.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Sheet Pan Gnocchi",
+    "description": "A high-efficiency meal that skips the boiling process, resulting in gnocchi with a crispy exterior and steamed interior.",
+    "prep_time": "25 minutes",
+    "ingredients": [
+      "Shelf-stable Gnocchi [Standard]",
+      "Cauliflower Gnocchi [Low-Carb, Celiac]",
+      "Cherry Tomatoes [Standard]",
+      "Zucchini [Universal]",
+      "Olive Oil [Universal]",
+      "Fresh Rosemary [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Arrange the gnocchi and vegetables on a baking sheet.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Use standard wheat-based gnocchi.",
+          "Keto": "Use cauliflower or almond-based gnocchi.",
+          "Renal": "Substitute industrial gnocchi with homemade leached potato/rice gnocchi to control minerals."
+        }
+      },
+      {
+        "instruction": "Toss with olive oil and aromatics.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Toss with rosemary and cherry tomatoes.",
+          "Histamine": "Avoid tomatoes; use zucchini and bell peppers with rosemary."
+        }
+      },
+      {
+        "instruction": "Roast at 200°C (400°F) until the gnocchi are golden and crisp on the outside.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Green Goddess Salad (The Dip-Style Salad)",
+    "description": "A nutrient-dense chopped salad redefined as a dip where vegetables are minced into a fine brunoise to be eaten with chips.",
+    "prep_time": "20 minutes",
+    "ingredients": [
+      "Green Cabbage [Base]",
+      "English Cucumber [Base]",
+      "Scallions [Standard]",
+      "Spinach and Basil [Universal]",
+      "Walnuts or Cashews [Standard]",
+      "Hemp Seeds or Pumpkin Seeds [Nut Allergy]",
+      "Nutritional Yeast [Universal]",
+      "Garlic-infused Oil [Low FODMAP]",
+      "Lemon Juice [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Mince cabbage, cucumber, and scallions into a 2-3mm brunoise.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Prepare the Green Goddess emulsified dressing.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Blend spinach, basil, walnuts, garlic, and lemon juice.",
+          "Nut Allergy": "Substitute walnuts with hemp seeds or pumpkin seeds to maintain creaminess without allergens.",
+          "Low FODMAP": "Use garlic-infused oil and omit fresh garlic; substitute avocado with olive oil and a small amount of tahini."
+        }
+      },
+      {
+        "instruction": "Toss the finely chopped vegetables with the dressing and serve with corn chips.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Salmon Rice Bowl (The Steam Hack Method)",
+    "description": "A viral reheating technique using an ice cube to create a steam chamber in the microwave, rehydrating rice to its original texture.",
+    "prep_time": "10 minutes",
+    "ingredients": [
+      "Cooked Salmon [Standard, Pescatarian]",
+      "Fresh White Fish [Histamine]",
+      "Cold White Rice [Base]",
+      "Ice Cube [Universal]",
+      "Kewpie Mayonnaise [Standard]",
+      "Sriracha [Standard]",
+      "Coconut Aminos [Histamine, Soy Allergy]",
+      "Avocado [Standard, Keto]"
+    ],
+    "steps": [
+      {
+        "instruction": "Place rice and flaked salmon in a bowl with an ice cube on top; cover with parchment paper.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Diabetes": "Use rice that has been cooled for 24 hours to maximize resistant starch and reduce the glycemic spike.",
+          "Histamine": "Use freshly cooked fish and rice instead of leftovers to prevent histamine accumulation."
+        }
+      },
+      {
+        "instruction": "Microwave until heated; the ice cube will sublimate steam without melting into the rice.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Add seasonings and mix thoroughly.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Add soy sauce, kewpie mayo, and sriracha.",
+          "Histamine": "Omit sriracha and soy sauce; use coconut aminos and homemade mayo without lemon."
+        }
+      }
+    ]
+  },
+  {
+    "title": "Spicy Vodka Pasta (Rosé Sauce)",
+    "description": "A high-stability sauce where ethanol acts as an emulsifier and solvent for tomato aromatics.",
+    "prep_time": "20 minutes",
+    "ingredients": [
+      "Pasta [Base]",
+      "Tomato Paste [Standard]",
+      "Vodka [Standard]",
+      "Heavy Cream [Standard]",
+      "Red Pepper Flakes [Standard]",
+      "Nomato Sauce [Histamine, Renal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Sauté tomato paste in oil with chili flakes until dark red.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Histamine": "Substitute tomato paste with 'Nomato' sauce (beet and carrot base) and omit red pepper flakes.",
+          "Renal": "Use 'Nomato' sauce to avoid high potassium and acidity found in concentrated tomatoes."
+        }
+      },
+      {
+        "instruction": "Deglaze with vodka to release alcohol-soluble flavor compounds.",
+        "is_branch_point": false,
+        "skipped_for_diets": ["Histamine"]
+      },
+      {
+        "instruction": "Stir in heavy cream to emulsify and create the 'Rosé' color.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Toss with al dente pasta and reserved pasta water.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Lasagna Soup (One-Pot Deconstruction)",
+    "description": "A deconstructed lasagna that uses broken noodles to release starch directly into the broth for a rich, thick consistency.",
+    "prep_time": "30 minutes",
+    "ingredients": [
+      "Ground Beef or Sausage [Base]",
+      "Lasagna Noodles [Base]",
+      "Tomato Broth [Standard]",
+      "Nomato Sauce [Histamine, Renal]",
+      "Ricotta, Mozzarella, and Parmesan Mix [Standard]"
+    ],
+    "steps": [
+      {
+        "instruction": "Brown the meat and add the liquid base.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Add tomato-based broth.",
+          "Renal": "Use 'Nomato' sauce base to avoid the high potassium load of tomatoes."
+        }
+      },
+      {
+        "instruction": "Break lasagna noodles into bite-sized pieces and cook directly in the soup.",
+        "is_branch_point": false,
+        "instruction_note": "The starch from the noodles thickens the soup naturally."
+      },
+      {
+        "instruction": "Serve with a cold 'cheese bomb' on top.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Top with a mixture of ricotta, mozzarella, and parmesan.",
+          "APLV": "Top with a cashew-based ricotta and nutritional yeast."
+        }
+      }
+    ]
+  },
+  {
+    "title": "Carter Family Pimento Cheese",
+    "description": "A Southern heritage dip focusing on high-quality home-grated cheddar and precise mayonnaise ratios.",
+    "prep_time": "15 minutes",
+    "ingredients": [
+      "Extra Sharp Cheddar [Base]",
+      "Pimentos [Universal]",
+      "Mayonnaise [Universal]",
+      "Low-Sodium Mayonnaise [Renal, Hypertension]",
+      "Nutritional Yeast [Vegan]"
+    ],
+    "steps": [
+      {
+        "instruction": "Hand-grate the cheese to avoid anti-caking agents found in pre-shredded packs.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Use extra sharp cheddar.",
+          "Vegan": "Use a firm tofu-based 'cheese' with nutritional yeast and lactic acid for tang."
+        }
+      },
+      {
+        "instruction": "Fold in diced pimentos and mayonnaise until the desired consistency is reached.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Use standard mayonnaise.",
+          "Hypertension": "Use a low-sodium mayonnaise alternative to manage blood pressure."
+        }
+      },
+      {
+        "instruction": "Chill for at least 30 minutes to allow flavors to meld.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Birria Ramen",
+    "description": "A Mexican-Japanese fusion soup combining collagen-rich birria consommé with alkaline ramen noodles for extreme umami depth.",
+    "prep_time": "30 minutes (using prepared birria)",
+    "ingredients": [
+      "Birria Consommé [Base]",
+      "Ramen Noodles [Standard]",
+      "Rice Noodles [Celiac]",
+      "Shredded Beef [Base]",
+      "Soft-boiled Egg [Standard, Vegetarian]",
+      "Cilantro and Lime [Universal]",
+      "White Onion [Standard]"
+    ],
+    "steps": [
+      {
+        "instruction": "Prepare the rich liquid base using birria consommé.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Cook the noodles to the correct texture.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Boil alkaline ramen noodles until al dente.",
+          "Celiac": "Substitute with thick rice noodles."
+        }
+      },
+      {
+        "instruction": "Assemble the bowl by combining noodles, shredded beef, and the red fatty broth.",
+        "is_branch_point": false,
+        "instruction_note": "The fat from the consommé should coat the noodles to improve flavor adherence."
+      },
+      {
+        "instruction": "Garnish and serve.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Top with cilantro, lime, egg, and minced onions.",
+          "Low FODMAP": "Top with cilantro and lime; omit white onion."
+        }
+      }
+    ]
+  },
+  {
+    "title": "Rosé Tteokbokki",
+    "description": "A modern Korean 'K-Food' adaptation of spicy rice cakes using dairy to encapsulate capsaicina for a velvety, milder heat.",
+    "prep_time": "20 minutes",
+    "ingredients": [
+      "Rice Cakes (Garae-tteok) [Base]",
+      "Gochujang (Korean Chili Paste) [Standard]",
+      "Heavy Cream [Standard]",
+      "Coconut Cream [Vegan, APLV]",
+      "Vienna Sausages and Bacon [Standard]",
+      "Garlic and Onion [Standard]",
+      "Garlic Oil [Low FODMAP]"
+    ],
+    "steps": [
+      {
+        "instruction": "Sauté aromatics and proteins.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Sauté garlic, onion, sausages, and bacon.",
+          "Low FODMAP": "Sauté bacon in garlic-infused oil; omit fresh onion and garlic."
+        }
+      },
+      {
+        "instruction": "Create the Rosé sauce base.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Mix Gochujang with heavy cream.",
+          "Vegan": "Substitute heavy cream with full-fat coconut milk or cream.",
+          "Histamine": "Omit Gochujang (fermented); use fresh red pepper puree mixed with cream."
+        }
+      },
+      {
+        "instruction": "Add rice cakes and simmer until the sauce thickens and cakes are chewy.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Brazilian Lemonade",
+    "description": "A high-extraction summer beverage using whole limes and condensed milk as a buffer against acidity.",
+    "prep_time": "10 minutes",
+    "ingredients": [
+      "Whole Limes [Base]",
+      "Water [Universal]",
+      "Sugar [Standard]",
+      "Condensed Milk [Standard]",
+      "Coconut Condensed Milk [Vegan, APLV]",
+      "Stevia [Diabetes]"
+    ],
+    "steps": [
+      {
+        "instruction": "Wash and quarter the limes.",
+        "is_branch_point": false,
+        "instruction_note": "Keep the skins on for essential oil extraction."
+      },
+      {
+        "instruction": "Pulse blend the limes with water and sweetener.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Pulse blend for less than 10 seconds with sugar.",
+          "Diabetes": "Substitute sugar with Stevia or Erythritol."
+        },
+        "instruction_note": "Do not over-blend to avoid releasing bitter compounds from the albedo."
+      },
+      {
+        "instruction": "Strain immediately and add the creamy element.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Stir in condensed milk.",
+          "APLV": "Stir in coconut-based condensed milk."
+        }
+      }
+    ]
+  },
+  {
+    "title": "Big Mac Tacos (Smash Burger Tacos)",
+    "description": "A fast-food hack fusion that optimizes meat-to-bread ratio by smashing beef directly onto a tortilla.",
+    "prep_time": "15 minutes",
+    "ingredients": [
+      "Ground Beef [Base]",
+      "Flour Tortillas [Standard]",
+      "Corn Tortillas [Celiac]",
+      "American Cheese [Standard]",
+      "Shredded Lettuce [Universal]",
+      "Dill Pickles [Universal]",
+      "Special Sauce (Mayo, Relish, Mustard) [Standard]",
+      "Nomato Special Sauce [Histamine]"
+    ],
+    "steps": [
+      {
+        "instruction": "Smash a ball of raw beef directly onto the tortilla.",
+        "is_branch_point": false,
+        "instruction_note": "The meat should adhere to the tortilla during the searing process."
+      },
+      {
+        "instruction": "Sear beef-side down on a hot griddle until caramelized (Maillard reaction).",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Flip to lightly toast the tortilla in the beef fat and melt the cheese.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Top with toppings and special sauce.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Add pickles, lettuce, and Big Mac style sauce.",
+          "Histamine": "Use fresh lettuce and a 'Nomato' based special sauce."
+        }
+      }
+    ]
+  },
+  {
+    "title": "Grinder Salad Sandwich",
+    "description": "A viral redefinition of the Italian sandwich where vegetables are pre-emulsified with dressing to solve the 'dry sandwich' problem.",
+    "prep_time": "15 minutes",
+    "ingredients": [
+      "Baguette or Hoagie Roll [Standard]",
+      "Italian Meats (Salami, Ham) [Standard]",
+      "Iceberg Lettuce [Base]",
+      "Red Onion [Standard]",
+      "Pepperoncini [Standard]",
+      "Mayonnaise, Red Wine Vinegar, Oregano [Standard]",
+      "Garlic Oil and Lemon [Low FODMAP]"
+    ],
+    "steps": [
+      {
+        "instruction": "Prepare the 'Grinder Salad' emulsion.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Mix shredded lettuce, onion, and peppers with mayo, vinegar, garlic, and spices.",
+          "Low FODMAP": "Mix lettuce with mayo, lemon juice, and garlic-infused oil; omit onions and pepperoncini.",
+          "Histamine": "Mix fresh lettuce and carrots with fresh mayo and salt; avoid aged meats and vinegar."
+        }
+      },
+      {
+        "instruction": "Toast the bread with cheese and meats.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Toast hoagie with provolone and Italian cold cuts.",
+          "Vegan": "Toast with vegan cheese and marinated roasted peppers or eggplant."
+        }
+      },
+      {
+        "instruction": "Heavily pile the Grinder Salad onto the toasted bread just before serving.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Legume Pasta with Creamy Lemon (No Cream)",
+    "description": "A high-fiber, high-protein pasta alternative using chickpea or lentil flour, focusing on 'carbs with benefits'.",
+    "prep_time": "18 minutes",
+    "ingredients": [
+      "Legume Pasta (Garbanzo or Lentil) [Base]",
+      "White Wheat or Rice Pasta [Renal]",
+      "Lemon [Universal]",
+      "Chicken Breast or Egg Whites [Renal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Boil the pasta until al dente.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Cook legume pasta as directed; it provides higher fiber and protein.",
+          "Renal": "Substitute with white wheat or rice pasta to avoid the dangerous levels of potassium and phosphorus found in legume concentrates.",
+          "Diabetes": "Cook conventional pasta al dente and cool for 24 hours to generate resistant starch, then reheat gently to reduce the glycemic peak."
+        }
+      },
+      {
+        "instruction": "Prepare the protein addition.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Protein is built into the legume pasta.",
+          "Renal": "Supplement low-mineral pasta with egg whites or shredded chicken to ensure protein intake without excessive minerals."
+        }
+      },
+      {
+        "instruction": "Create the creamy lemon finish using reserved pasta water and fresh lemon zest/juice.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Dubai Style Veggie Smash Burger",
+    "description": "A Middle-Eastern inspired burger featuring sumac and za'atar, traditionally served on paratha flatbread.",
+    "prep_time": "28 minutes",
+    "ingredients": [
+      "Wheat Paratha [Standard]",
+      "Cassava Flour Tortilla [Celiac, Paleo]",
+      "Iceberg Lettuce or Scalded Cabbage [Keto, Whole30]",
+      "Freshly Ground Lamb or Chicken [Histamine]",
+      "Roasted Red Pepper Sauce [Histamine]",
+      "Sumac and Za'atar [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Prepare the patty and sear until crispy.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Use a seasoned vegetable or lamb patty.",
+          "Histamine": "Use freshly ground lamb or chicken; avoid aged or processed meats."
+        }
+      },
+      {
+        "instruction": "Select the serving vehicle.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Serve on a warm wheat paratha.",
+          "Celiac": "Substitute with a certified gluten-free cassava flour tortilla.",
+          "Keto": "Use large iceberg lettuce leaves or scalded cabbage for a carb-free crunch."
+        }
+      },
+      {
+        "instruction": "Add the sauce and toppings.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Serve with fresh tomatoes.",
+          "Histamine": "Omit tomato and use a sauce made from roasted red peppers and olive oil."
+        }
+      }
+    ]
+  },
+  {
+    "title": "Hidden Zucchini Chicken Meatballs",
+    "description": "Meatballs that integrate vegetables into the meat matrix to increase satiety and reduce caloric density.",
+    "prep_time": "29 minutes",
+    "ingredients": [
+      "Ground Chicken [Base]",
+      "Zucchini [Standard]",
+      "Grated Carrots [Low FODMAP]",
+      "Rice Flour [Low FODMAP]",
+      "Flax-egg (Flaxseed + Water) [Egg Allergy]",
+      "Unsweetened Applesauce [Egg Allergy]"
+    ],
+    "steps": [
+      {
+        "instruction": "Mix the ground meat with binders and vegetables.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Mix chicken with grated zucchini and wheat breadcrumbs.",
+          "Low FODMAP": "Zucchini is limited to 65g; use grated carrots and rice flour as a low-Low FODMAP binder.",
+          "Egg Allergy": "Use a 'flax-egg' or applesauce as the binding agent."
+        }
+      },
+      {
+        "instruction": "Form into meatballs and bake or sauté until cooked through.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Sunflower Seed Ricotta and Peach Toast",
+    "description": "A nutrient-dense alternative to avocado toast using a creamy seed-based 'ricotta'.",
+    "prep_time": "30 minutes",
+    "ingredients": [
+      "Sunflower Seeds (Soaked and Blended) [Base]",
+      "Peach [Standard]",
+      "Leached Peach or Applesauce [Renal]",
+      "Artisan Bread [Standard]",
+      "Gluten-Free Bread [Celiac]"
+    ],
+    "steps": [
+      {
+        "instruction": "Prepare the sunflower ricotta.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Spread a thick layer of blended sunflower seed ricotta.",
+          "Renal": "Use a thin layer only, as seeds are high in phosphorus.",
+          "Nut Allergy": "This recipe is naturally nut-free using sunflower seeds as the creamy base."
+        }
+      },
+      {
+        "instruction": "Add fruit topping.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Top with fresh sliced peaches.",
+          "Renal": "Use leached (soaked) peaches or homemade applesauce if potassium levels are critical."
+        }
+      }
+    ]
+  },
+  {
+    "title": "Cauliflower Fried Rice with Chicken",
+    "description": "A pillar of Keto and Paleo diets designed to reduce glycemic load while maintaining a familiar texture.",
+    "prep_time": "31 minutes",
+    "ingredients": [
+      "Cauliflower 'Rice' [Standard]",
+      "Broccoli Florets or White Rice [Low FODMAP]",
+      "Chicken [Universal]",
+      "Fresh Ginger [Universal]",
+      "Coconut Aminos [Histamine]",
+      "Fresh Carrots [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Prepare the 'rice' base.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Sauté cauliflower rice for 10 minutes; thorough cooking deactivates goitrogenic compounds.",
+          "Low FODMAP": "Cauliflower is high in mannitol; substitute with broccoli florets (less than 75g) or a mix with white rice to dilute Low FODMAP load."
+        }
+      },
+      {
+        "instruction": "Add flavorings and protein.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Season with soy sauce and add canned peas.",
+          "Histamine": "Avoid soy sauce and canned peas; use coconut aminos, fresh ginger, and diced carrots."
+        }
+      }
+    ]
+  },
+  {
+    "title": "Keto Lettuce Wraps with Tuna and Egg",
+    "description": "A quick and nutrient-dense meal designed for rapid weight control and simplicity.",
+    "prep_time": "29 minutes",
+    "ingredients": [
+      "Lettuce Leaves [Base]",
+      "Canned Tuna [Standard]",
+      "Fresh White Fish [Histamine]",
+      "Boiled Chicken [Histamine]",
+      "Sardines or Cooked Salmon [Pregnancy]",
+      "Eggs [Base]",
+      "Mayonnaise [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Prepare the protein filling.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Mix canned tuna with boiled eggs and mayonnaise.",
+          "Histamine": "Canned tuna is a high histamine source. Substitute with freshly cooked and cooled white fish or boiled shredded chicken.",
+          "Pregnancy": "Substitute tuna with low-mercury options like sardines or thoroughly cooked salmon."
+        }
+      },
+      {
+        "instruction": "Place the mixture inside large, fresh lettuce leaves and roll tightly.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Smashed Broccoli with Parmesan Crust",
+    "description": "A technique-driven vegetable dish that uses boiling followed by smashing and roasting to create a superior texture.",
+    "prep_time": "34 minutes",
+    "ingredients": [
+      "Broccoli Florets [Base]",
+      "Parmesan Cheese [Standard, Vegetarian]",
+      "Almond Flour [APLV, Vegan]",
+      "Nutritional Yeast [APLV, Vegan]",
+      "Garlic Salt [Universal]",
+      "Olive Oil [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Perform the initial cook to soften the vegetable fibers.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Steam or boil broccoli until tender.",
+          "Thyroid": "Use a double-cook method (pre-boil then high-heat roast) to effectively deactivate goitrogenic isothiocyanates, making it safer for patients with Hashimoto's or hypothyroidism."
+        }
+      },
+      {
+        "instruction": "Place broccoli on a baking sheet and 'smash' each floret with the bottom of a glass.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Apply the umami crust.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Top with plenty of grated Parmesan cheese.",
+          "Vegan": "Substitute Parmesan with a mix of almond flour, nutritional yeast, and garlic salt to create a similar caramelizing crust."
+        }
+      },
+      {
+        "instruction": "Roast at high heat until the edges are crispy and the cheese/topping is golden.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Corn Ribs with Smoked Spices",
+    "description": "Corn cobs cut longitudinally that curl when heated, creating a fun finger-food experience with high surface area for seasoning.",
+    "prep_time": "25 minutes",
+    "ingredients": [
+      "Fresh Corn on the Cob [Base]",
+      "Smoked Paprika and Spices [Universal]",
+      "Avocado Aioli [Diabetes]",
+      "Olive Oil [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Cut the corn into longitudinal 'ribs' (quarters).",
+        "is_branch_point": false,
+        "cross_contamination_alert": "Be extremely careful when cutting corn cobs lengthwise; ensure a stable surface."
+      },
+      {
+        "instruction": "Prepare the corn for cooking.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Coat with oil and spices before air-frying or roasting.",
+          "Renal": "Boil the ribs in a large volume of water first (leaching) to significantly reduce the high potassium and phosphorus content found in fresh corn."
+        }
+      },
+      {
+        "instruction": "Cook until the ribs curl and edges char slightly.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Serve with fat-based accompaniments.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Serve with choice of sauce.",
+          "Diabetes": "Must be counted as a carbohydrate (approx. 15g per half cob). Accompany with avocado aioli to slow down glucose absorption."
+        }
+      }
+    ]
+  },
+  {
+    "title": "Carrot Ribbons with Sesame-Ginger Dressing",
+    "description": "A high-digestibility salad using longitudinal peeling to change texture perception and ease gastrointestinal transit.",
+    "prep_time": "28 minutes",
+    "ingredients": [
+      "Carrots [Base]",
+      "Sesame Oil [Universal]",
+      "Maple Syrup [Low FODMAP, Universal]",
+      "Rice Vinegar [Standard]",
+      "Fresh Ginger [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Use a peeler to create thin ribbons of carrot.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Use raw ribbons for a crunchy texture.",
+          "Gastroparesis": "Steam the ribbons until very tender to break down the raw fiber, which is difficult for slow-emptying stomachs to handle."
+        },
+        "instruction_note": "Carrots are a safe 'wildcard' ingredient as they are free of Low FODMAPs in generous amounts."
+      },
+      {
+        "instruction": "Whisk the dressing of sesame oil, maple syrup, and ginger, then toss with the ribbons.",
+        "is_branch_point": false,
+        "variant_logic": {
+          "Standard": "Add rice vinegar for acidity.",
+          "Low FODMAP": "Use rice vinegar and maple syrup; both are low Low FODMAP."
+        }
+      }
+    ]
+  },
+  {
+    "title": "Crispy Rice Paper Dumplings",
+    "description": "A gluten-free alternative to traditional gyozas using double-layered Vietnamese rice paper for a crispy finish.",
+    "prep_time": "25 minutes",
+    "ingredients": [
+      "Rice Paper Sheets [Base]",
+      "Ground Pork [Standard]",
+      "Cabbage and Carrots [Base]",
+      "Ginger [Universal]",
+      "Tamari [Celiac]",
+      "Soy Sauce [Standard]"
+    ],
+    "steps": [
+      {
+        "instruction": "Prepare the filling by sautéing the meat, cabbage, carrots, and ginger.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Wrap the filling using rice paper.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Celiac": "Ensure the rice paper is certified gluten-free to avoid cross-contamination.",
+          "Diabetes": "Rice paper is pure starch; limit portion to 2-3 units and ensure the filling is dense with protein/fiber to mitigate glucose spikes."
+        }
+      },
+      {
+        "instruction": "Pan-fry until the rice paper is crisp and golden brown.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Baked Bang Bang Cauliflower",
+    "description": "A healthier, non-fried version of the viral spicy-sweet appetizer using convection heat for texture.",
+    "prep_time": "18 minutes",
+    "ingredients": [
+      "Cauliflower Florets [Base]",
+      "Chicken Cubes or Firm Tofu [IBS]",
+      "Broccoli Florets [IBS]",
+      "Mayonnaise [Universal]",
+      "Sweet Chili Sauce [Standard]",
+      "Sriracha [Standard]",
+      "Honey and Cayenne [Histamine]",
+      "Garlic Powder [Standard]"
+    ],
+    "steps": [
+      {
+        "instruction": "Prepare the main vegetable or protein base.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Use cauliflower florets.",
+          "IBS": "Substitute cauliflower with chicken cubes, firm tofu, or small portions of broccoli florets (under 75g) to avoid mannitol."
+        }
+      },
+      {
+        "instruction": "Create the Bang Bang emulsion.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Mix mayonnaise with sweet chili sauce, sriracha, and garlic powder.",
+          "Histamine": "Mix fresh additive-free mayonnaise with honey, cayenne pepper, and garlic oil.",
+          "IBS": "Use mayonnaise and sriracha; ensure the chili sauce is garlic-free."
+        }
+      },
+      {
+        "instruction": "Coat the florets evenly and bake at 200°C (400°F) until tender with slightly charred edges.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Zucchini Zoodles with Pumpkin Seed Pesto",
+    "description": "A low-carb nutrient-dense alternative to pasta that uses seeds to provide minerals and creaminess without common allergens.",
+    "prep_time": "25 minutes",
+    "ingredients": [
+      "Zucchini Noodles (Zoodles) [Base]",
+      "Pumpkin Seeds (Pepitas) [Universal]",
+      "Fresh Basil and Spinach [Universal]",
+      "Olive Oil [Universal]",
+      "Parmesan Cheese [Standard]",
+      "Nutritional Yeast [Histamine, Vegan]",
+      "Lemon Juice [Histamine, Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Spiralize the zucchini into thin noodles.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Prepare the seed-based pesto.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Blend pumpkin seeds, basil, spinach, olive oil, and parmesan.",
+          "Nut Allergy": "This recipe is naturally nut-free using pumpkin seeds as the creamy base.",
+          "Histamine": "Omit parmesan cheese. Increase pumpkin seeds and oil for creaminess, and add nutritional yeast for flavor. Finish with fresh lemon drops."
+        }
+      },
+      {
+        "instruction": "Toss the raw zoodles with the pesto; do not overcook to avoid water release.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Air Fryer Pasta Chips",
+    "description": "A crunchy snack that transforms cooked pasta into dehydrated crisps via rapid air circulation.",
+    "prep_time": "39 minutes",
+    "ingredients": [
+      "Cooked Pasta [Base]",
+      "Lentil or Chickpea Pasta [Diabetes]",
+      "White Wheat or Rice Pasta [Renal]",
+      "Olive Oil [Universal]",
+      "Parmesan Cheese [Standard]",
+      "Smoked Paprika and Garlic Powder [Universal]",
+      "Low-Sodium Seasoning [Hypertension]"
+    ],
+    "steps": [
+      {
+        "instruction": "Select and boil the pasta.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Use standard wheat pasta boiled al dente.",
+          "Diabetes": "Use lentil or chickpea pasta to leverage higher fiber and protein for glucose control.",
+          "Renal": "Use white wheat or rice pasta boiled in excess water (leached) to reduce phosphorus and potassium."
+        }
+      },
+      {
+        "instruction": "Season the cooked pasta.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Toss with olive oil, parmesan, and garlic powder.",
+          "Renal": "Toss with olive oil, paprika, and onion powder; strictly avoid potassium-based salt substitutes."
+        }
+      },
+      {
+        "instruction": "Air fry at 200°C (400°F) for 10-12 minutes, shaking the basket halfway through, until crunchy.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Smashed Brussels Sprouts with Balsamic",
+    "description": "An earthy, roasted vegetable dish utilizing mechanical crushing to increase caramelization area.",
+    "prep_time": "18 minutes",
+    "ingredients": [
+      "Brussels Sprouts [Base]",
+      "Baby Carrots [IBS]",
+      "Olive Oil [Universal]",
+      "Balsamic Glaze [Standard]",
+      "Salt and Black Pepper [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Boil the vegetable until tender.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Boil Brussels sprouts.",
+          "IBS": "Brussels sprouts are high in fructans; substitute with baby carrots boiled until tender."
+        }
+      },
+      {
+        "instruction": "Place on a baking sheet and smash with the bottom of a glass to flatten.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Roast at high heat until crispy and drizzle with balsamic glaze.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Asparagus in Puff Pastry",
+    "description": "Savory pastry sticks that use asparagus as a nutrient-dense core.",
+    "prep_time": "37 minutes",
+    "ingredients": [
+      "Asparagus Spears [Base]",
+      "Puff Pastry [Standard]",
+      "Gluten-Free Puff Pastry [Celiac]",
+      "Egg Wash [Standard]",
+      "Sesame Seeds [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Prepare the pastry and asparagus.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Use standard wheat puff pastry cut into strips.",
+          "Celiac": "Use certified gluten-free puff pastry (corn/rice starch base)."
+        }
+      },
+      {
+        "instruction": "Wrap strips of pastry around 2-3 asparagus spears in a spiral pattern.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Brush with egg wash, sprinkle with seeds, and bake until golden and puffed.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Miso Glazed Eggplant (Nasu Dengaku)",
+    "description": "A tender eggplant dish with a sweet-savory umami glaze, optimized for air fryer convenience.",
+    "prep_time": "32 minutes",
+    "ingredients": [
+      "Eggplant [Base]",
+      "Miso Paste [Standard, Low FODMAP]",
+      "Sesame Oil [Universal]",
+      "Maple Syrup [Universal]",
+      "Smoked Salt [Histamine]"
+    ],
+    "steps": [
+      {
+        "instruction": "Cut the eggplant in half and score the flesh in a diamond pattern.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Prepare the umami glaze.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Mix miso paste with a small amount of sugar or mirin.",
+          "Histamine": "Substitute miso (fermented soy) with a blend of sesame oil, maple syrup, and smoked salt to mimic the flavor profile without biogenic amines."
+        }
+      },
+      {
+        "instruction": "Brush the glaze over the eggplant and air fry until the flesh is tender and the top is caramelized.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Sleepy Girl Mocktail",
+    "description": "A viral evening beverage combining tart cherry juice and magnesium to support sleep and neurotransmitter modulation.",
+    "prep_time": "5 minutes",
+    "ingredients": [
+      "Tart Cherry Juice [Standard]",
+      "Magnesium Powder [Standard]",
+      "Hibiscus Infusion [Renal, Diabetes]",
+      "Sparkling Water [Universal]",
+      "Stevia [Diabetes]"
+    ],
+    "steps": [
+      {
+        "instruction": "Prepare the liquid base.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Use tart cherry juice, which contains natural melatonin and potassium.",
+          "Renal": "Substitute cherry juice with concentrated hibiscus tea to avoid high potassium levels.",
+          "Diabetes": "Use hibiscus infusion sweetened with liquid stevia to avoid free sugars from fruit juice."
+        }
+      },
+      {
+        "instruction": "Add magnesium and carbonation.",
+        "is_branch_point": false,
+        "instruction": "Mix in magnesium powder and top with sparkling water."
+      }
+    ]
+  },
+  {
+    "title": "Adrenal Cocktail",
+    "description": "A beverage designed to combat fatigue by supplying essential electrolytes (sodium and potassium).",
+    "prep_time": "5 minutes",
+    "ingredients": [
+      "Orange Juice [Standard]",
+      "Coconut Water [Standard]",
+      "Sea Salt [Standard]",
+      "Lemon Juice [Renal, Hypertension]",
+      "Cucumber and Mint [Renal, Hypertension]"
+    ],
+    "steps": [
+      {
+        "instruction": "Combine ingredients to balance hormones and electrolytes.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Mix orange juice, coconut water, and a pinch of sea salt.",
+          "Renal": "This version is contraindicated due to extreme potassium and sodium levels. Use sparkling water with a splash of lemon and cucumber slices for flavor without mineral overload.",
+          "Hypertension": "Avoid the salt and high-potassium juices. Use sparkling water and fresh mint."
+        }
+      }
+    ]
+  },
+  {
+    "title": "Renal Berry and Tofu Smoothie",
+    "description": "A specialized protein smoothie for dialysis patients that restricts liquids and minerals while providing high biological value protein.",
+    "prep_time": "6 minutes",
+    "ingredients": [
+      "Silken Tofu [Base]",
+      "Blueberries [Standard, Renal]",
+      "Rice Milk [Renal]",
+      "Ice [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Blend silken tofu, blueberries, rice milk, and ice until smooth.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Modern Iskiate (Chia Lime Water)",
+    "description": "A natural energy drink rich in Omega-3 and soluble fiber, based on ancient pre-Hispanic traditions.",
+    "prep_time": "10 minutes",
+    "ingredients": [
+      "Chia Seeds [Base]",
+      "Basil Seeds [Diverticulitis]",
+      "Fresh Lime Juice [Universal]",
+      "Water [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Prepare the seeds for hydration.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Stir whole chia seeds into water and lime juice.",
+          "Diverticulitis": "Substitute with basil seeds, which gel faster and are softer, or dry-grind chia seeds before hydrating to prevent irritation from whole husks.",
+          "Renal": "Limit to 1 teaspoon of chia per day due to high phosphorus content."
+        }
+      },
+      {
+        "instruction": "Wait 10-15 minutes for the mucilage to form a gel before drinking.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Cold Golden Milk (Turmeric and Ginger Latte)",
+    "description": "A potent anti-inflammatory beverage focused on fresh aromatics to support metabolic health and reduce systemic inflammation.",
+    "prep_time": "10 minutes",
+    "ingredients": [
+      "Fresh Turmeric and Ginger [Base]",
+      "Coconut Milk (Additive-free) [Histamine]",
+      "Almond Milk or Lactose-free Milk [Low FODMAP]",
+      "Stevia or Maple Syrup [Standard]",
+      "Cinnamon and Cloves [Standard]"
+    ],
+    "steps": [
+      {
+        "instruction": "Prepare the anti-inflammatory base by grating fresh turmeric and ginger.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Select the liquid vehicle and sweeteners.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Histamine": "Use only fresh turmeric, fresh ginger, and additive-free coconut milk; strictly avoid cinnamon and cloves as they can act as histamine releasers.",
+          "Low FODMAP": "Use almond milk or lactose-free milk; if using coconut milk, limit to 1/2 cup to stay within sorbitol thresholds."
+        }
+      },
+      {
+        "instruction": "Whisk or blend until frothy and serve chilled.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Homemade Probiotic Vinegar Soda",
+    "description": "A cost-effective alternative to commercial prebiotic sodas designed to improve insulin sensitivity and gut health.",
+    "prep_time": "5 minutes",
+    "ingredients": [
+      "Apple Cider Vinegar [Standard, Diabetes]",
+      "Sparkling Water [Universal]",
+      "Stevia [Diabetes]",
+      "Mashed Fresh Fruit [Histamine]",
+      "Sugar [Histamine]"
+    ],
+    "steps": [
+      {
+        "instruction": "Create the flavor base.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Diabetes": "Mix apple cider vinegar with stevia and sparkling water; this combination improves insulin sensitivity without added sugars.",
+          "Histamine": "Avoid fermented vinegar; create a quick 'shrub' by macerating fresh fruit with sugar for a short period, then mixing with sparkling water."
+        }
+      },
+      {
+        "instruction": "Serve over ice immediately to preserve carbonation.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Savory 'Oatsotto' (Risotto-Style Oats)",
+    "description": "A breakfast trend that treats oats as a savory grain to provide long-lasting satiety and stable energy levels.",
+    "prep_time": "15 minutes",
+    "ingredients": [
+      "Steel-cut or Rolled Oats [Base]",
+      "Purity Protocol Certified Oats [Celiac]",
+      "Mushrooms (Canned or Oyster) [Low FODMAP]",
+      "Standard Mushrooms [Standard]",
+      "Eggs, Cheese, and Spices [Standard]",
+      "Vegetable Broth [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Sauté the mushrooms and aromatics.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Sauté any fresh mushrooms in butter.",
+          "Low FODMAP": "Use drained canned mushrooms or oyster mushrooms (Pleurotus), as they are low in mannitol compared to standard varieties."
+        }
+      },
+      {
+        "instruction": "Add oats and broth, simmering until creamy.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Celiac": "Ensure the use of certified 'Purity Protocol' gluten-free oats.",
+          "Standard": "Use standard rolled or steel-cut oats."
+        }
+      },
+      {
+        "instruction": "Finish with a soft egg or cheese for a risotto-like texture.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Baked Oats (Oatmeal Mug Cake)",
+    "description": "Whipped and baked oats that transform breakfast into a healthy cake-like structure.",
+    "prep_time": "10 minutes",
+    "ingredients": [
+      "Oats [Base]",
+      "Banana [Standard]",
+      "Applesauce (Unsweetened) [Renal]",
+      "Whey Isolate Protein [Renal]",
+      "Egg [Standard]",
+      "Flax-egg and Coconut Yogurt [Vegan]"
+    ],
+    "steps": [
+      {
+        "instruction": "Blend the oats and structure-building ingredients into a smooth batter.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Blend oats with whole egg and banana.",
+          "Renal": "Substitute banana with unsweetened applesauce to reduce potassium load; add whey isolate to improve protein content without excess phosphorus.",
+          "Vegan": "Use a flax-egg and coconut yogurt for structure and moisture."
+        }
+      },
+      {
+        "instruction": "Bake in a mug or small ramekin at 180°C (350°F) until risen and firm.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Falafel Waffles (Waffled Falafel)",
+    "description": "A high-efficiency, non-fried version of falafel using a waffle iron to create maximum surface area and crunch.",
+    "prep_time": "15 minutes",
+    "ingredients": [
+      "Chickpeas (Canned and Washed) [Low FODMAP]",
+      "Chickpeas (Dried and Soaked) [Standard]",
+      "Garlic and Onion Infused Oils [Low FODMAP]",
+      "Fresh Herbs and Spices [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Prepare the falafel dough.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Use traditional soaked chickpeas, garlic, and onions.",
+          "Low FODMAP": "Use canned chickpeas that have been thoroughly washed to reduce GOS content; substitute fresh garlic and onion with infused oils."
+        }
+      },
+      {
+        "instruction": "Scoop the dough into a preheated waffle iron and cook until the exterior is deeply browned and crispy.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Pasta e Ceci (Viral Quick Version)",
+    "description": "A traditional 'cucina povera' dish adapted into a one-pot meal where pasta is cooked directly in chickpea broth to create a naturally creamy texture.",
+    "prep_time": "20 minutes",
+    "ingredients": [
+      "Short Pasta (Ditalini or Shells) [Base]",
+      "Canned Chickpeas (with liquid) [Base]",
+      "Tomato Sauce [Standard]",
+      "Rosemary and Garlic [Universal]",
+      "Olive Oil [Universal]",
+      "Sea Salt and Pepper [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Sauté rosemary and garlic in olive oil until fragrant.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Add tomato sauce and chickpeas with their liquid (aquafaba).",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Add dry pasta directly into the pot with a small amount of water or broth.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Simmer until pasta is al dente and the stew is thick; serve with a drizzle of high-quality olive oil.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Cowboy Caviar",
+    "description": "A vibrant, nutrient-dense chopped salad designed to be eaten as a dip, focusing on uniform texture and fresh acidity.",
+    "prep_time": "25 minutes",
+    "ingredients": [
+      "Black Beans and Black-eyed Peas [Base]",
+      "Corn and Bell Peppers [Base]",
+      "Red Onion [Standard]",
+      "Avocado [Standard]",
+      "Lime Juice and Honey [Universal]",
+      "Garlic-infused oil [Low FODMAP]",
+      "Fresh Cilantro [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Finely chop all vegetables into a uniform brunoise (2-3mm).",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Prepare the lime-honey vinaigrette.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Whisk lime juice, honey, and olive oil.",
+          "Low FODMAP": "Use lime juice and garlic-infused oil; ensure honey is limited or substituted with maple syrup."
+        }
+      },
+      {
+        "instruction": "Combine all ingredients and toss thoroughly; serve with corn chips.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Chicken Cobbler (Red Lobster Hack)",
+    "description": "A high-convenience family meal that uses pre-made biscuit mix to create a savory, golden crust over a creamy chicken filling.",
+    "prep_time": "45 minutes",
+    "ingredients": [
+      "Shredded Chicken [Base]",
+      "Frozen Mixed Vegetables [Base]",
+      "Creamy Chicken Soup/Base [Standard]",
+      "Cheddar Bay Biscuit Mix (Box) [Standard]",
+      "Milk and Melted Butter [Standard]",
+      "Gluten-Free Biscuit Mix [Celiac]"
+    ],
+    "steps": [
+      {
+        "instruction": "Layer shredded chicken and frozen vegetables in a baking dish, then pour over the creamy liquid base.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Prepare the cobbler topping.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Whisk the biscuit mix with milk and butter.",
+          "Celiac": "Use a certified gluten-free biscuit mix."
+        }
+      },
+      {
+        "instruction": "Pour the batter over the hot chicken mixture.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Bake at 200°C (400°F) until the crust is golden and the filling is bubbling.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Turkish Yogurt Pasta (Deconstructed Mantı)",
+    "description": "A modern take on traditional Turkish dumplings that balances hot spiced meat with cool, garlicky yogurt.",
+    "prep_time": "28 minutes",
+    "ingredients": [
+      "Pasta [Base]",
+      "Low-Protein Pasta [Renal]",
+      "Ground Beef or Lamb [Standard]",
+      "Greek Yogurt [Standard]",
+      "Coconut Yogurt [APLV]",
+      "Garlic [Standard]",
+      "Chili Oil or Paprika Butter [Standard]"
+    ],
+    "steps": [
+      {
+        "instruction": "Boil the pasta until al dente.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Use standard wheat pasta.",
+          "Renal": "Use low-protein (aproteic) pasta to allow for higher meat content in the sauce while managing nitrogen intake."
+        }
+      },
+      {
+        "instruction": "Prepare the cold yogurt sauce.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Whisk yogurt with minced garlic and salt.",
+          "APLV": "Whisk unsweetened coconut yogurt with lemon and salt."
+        }
+      },
+      {
+        "instruction": "Brown the meat with spices and prepare a quick chili-infused oil for the garnish.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Assemble by placing hot pasta first, followed by the cold yogurt, and finally the hot meat and chili oil.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "High-Protein Pasta Salad",
+    "description": "A fitness-focused meal that doubles protein and fiber content by utilizing legume-based pastas.",
+    "prep_time": "20 minutes",
+    "ingredients": [
+      "Chickpea or Lentil Pasta [Base]",
+      "Mozzarella Pearls [Standard]",
+      "Cherry Tomatoes and Cucumber [Base]",
+      "Light Vinaigrette [Universal]",
+      "Fresh Basil [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Cook the legume pasta as directed.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Toss the cooked pasta with mozzarella, fresh vegetables, and a light herb vinaigrette.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Use a standard balsamic vinaigrette.",
+          "High-Performance": "Add extra lean protein like grilled chicken or tuna."
+        }
+      },
+      {
+        "instruction": "Chill before serving to allow the pasta to absorb the flavors.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Chicken Crust Pizza (Carnivore/Keto)",
+    "description": "A zero-carb pizza base made entirely from protein, providing a sturdy and savory foundation for traditional toppings.",
+    "prep_time": "30 minutes",
+    "ingredients": [
+      "Ground Chicken [Base, Standard, Keto]",
+      "Whole Egg [Standard, Keto, Paleo]",
+      "Leached Cauliflower [Renal]",
+      "Rice Flour [Renal]",
+      "Marinara Sauce [Standard]",
+      "Nomato Sauce [Histamine, Renal]",
+      "Mozzarella [Standard, Keto]"
+    ],
+    "steps": [
+      {
+        "instruction": "Prepare the pizza base structure.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Mix ground chicken and egg into a paste and press into a thin circle on parchment paper.",
+          "Renal": "Use a base of boiled and leached cauliflower mixed with a small amount of rice flour to reduce the excessive protein and phosphorus load."
+        }
+      },
+      {
+        "instruction": "Pre-bake the crust at 200°C (400°F) for 15-20 minutes until firm and golden.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Apply the sauce layer.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Spread traditional low-sugar marinara sauce.",
+          "Histamine": "Use 'Nomato' sauce to avoid high-histamine tomatoes.",
+          "Renal": "Use 'Nomato' sauce to manage potassium levels."
+        }
+      },
+      {
+        "instruction": "Top with cheese and bake for an additional 10 minutes until melted.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Sweet Potato Flourless Brownies",
+    "description": "A dense and fudgy brownie using vegetable puree as a structural replacement for flour.",
+    "prep_time": "40 minutes",
+    "ingredients": [
+      "Sweet Potato Puree [Base, Standard]",
+      "Pumpkin Puree [Low FODMAP]",
+      "Almond Butter [Standard]",
+      "Cocoa Powder [Standard]",
+      "Carob Powder [Histamine]",
+      "Chocolate Chips [Universal]",
+      "Maple Syrup [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Prepare the moist vegetable base.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Use smooth sweet potato puree.",
+          "Low FODMAP": "Substitute sweet potato with pumpkin puree, which is lower in specific Low FODMAPs in the required portions."
+        }
+      },
+      {
+        "instruction": "Whisk in the dry components.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Mix in almond butter, cocoa powder, and maple syrup.",
+          "Histamine": "Substitute cocoa powder with carob powder to avoid histamine liberators found in cacao."
+        }
+      },
+      {
+        "instruction": "Fold in chocolate chips and bake at 175°C (350°F) for 25-30 minutes.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Adaptive Zucchini Banana Bread",
+    "description": "A high-moisture quick bread designed to optimize nutrient density while managing mineral intake for renal safety.",
+    "prep_time": "60 minutes",
+    "ingredients": [
+      "Mashed Bananas [Standard]",
+      "Grated Zucchini [Renal, Standard]",
+      "Flour (Wheat or Gluten-Free) [Base]",
+      "Flax-egg [Vegan]",
+      "Coconut Yogurt [Vegan]",
+      "Banana Essence [Renal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Create the structural moisture base.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Use overripe mashed bananas.",
+          "Renal": "Substitute bananas with grated and squeezed zucchini; add artificial banana essence if the flavor is desired to avoid extreme potassium.",
+          "Vegan": "Use a combination of coconut yogurt and flax-egg to provide moisture and binding without animal products."
+        }
+      },
+      {
+        "instruction": "Fold the wet ingredients into the dry flour mixture.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Bake at 175°C (350°F) for 50-55 minutes until a toothpick comes out clean.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Nomato Sauce (Tomato Substitute)",
+    "description": "A master sauce for renal and low-histamine diets, replicating the acidity and color of tomatoes using root vegetables.",
+    "prep_time": "45 minutes",
+    "ingredients": [
+      "Carrots [Base]",
+      "Beets [Base]",
+      "Celery [Base]",
+      "Onion [Standard]",
+      "Garlic Oil [Low FODMAP]",
+      "Lemon or Vinegar [Standard]",
+      "Vitamin C Powder [Histamine]"
+    ],
+    "steps": [
+      {
+        "instruction": "Boil the root vegetables until soft.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Boil in a small amount of water to retain nutrients.",
+          "Renal": "Boil the carrots, beets, and celery in a large volume of water and discard the liquid (leaching) to lower the potassium content significantly."
+        }
+      },
+      {
+        "instruction": "Sauté the aromatics.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Sauté onions and garlic in olive oil.",
+          "Low FODMAP": "Use garlic-infused oil; omit whole onions and garlic cloves."
+        }
+      },
+      {
+        "instruction": "Blend the roots and aromatics together until smooth.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Adjust acidity and seasoning.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Add lemon juice or vinegar for tang.",
+          "Histamine": "Use Vitamin C (ascorbic acid) powder to provide acidity without the histamine load of aged vinegars or citrus."
+        }
+      }
+    ]
+  },
+  {
+    "title": "Soy Sauce Substitute (False Soy)",
+    "description": "A savory, fermented-free alternative providing umami flavor for those with soy allergies or histamine intolerance.",
+    "prep_time": "20 minutes",
+    "ingredients": [
+      "Beef Bone Broth [Base]",
+      "Molasses [Base]",
+      "Sea Salt [Universal]",
+      "Apple Cider Vinegar [Standard]",
+      "Coconut Aminos [Histamine, Soy Allergy]"
+    ],
+    "steps": [
+      {
+        "instruction": "Reduce the base liquid to concentrate flavors.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Simmer beef bone broth and molasses until reduced by half.",
+          "Histamine": "Substitute homemade reduction with 'Coconut Aminos' for a safer, fermented-free profile.",
+          "Soy Allergy": "The bone broth and molasses reduction is naturally soy-free."
+        }
+      },
+      {
+        "instruction": "Whisk in salt and vinegar to balance the flavor.",
+        "is_branch_point": false,
+        "skipped_for_diets": ["Histamine"]
+      },
+      {
+        "instruction": "Bottle and refrigerate for up to two weeks.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Strawberry Tiramisu (Strawberries and Cream)",
+    "description": "A visual and flavor variation of the classic tiramisu, replacing coffee with an acidic strawberry syrup to align with current 'Coquette' aesthetic trends.",
+    "prep_time": "30 minutes (+4 hours chilling)",
+    "ingredients": [
+      "Ladyfingers [Base]",
+      "Fresh Strawberries [Base]",
+      "Mascarpone Cheese [Standard]",
+      "Heavy Cream [Standard]",
+      "Orange Liqueur (Grand Marnier) [Standard]",
+      "Strawberry Syrup [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Prepare the dipping liquid by blending strawberries with syrup and optional orange liqueur.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Create the cream layer by whisking mascarpone with lightened heavy cream.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Assemble by dipping ladyfingers into the strawberry liquid and layering with cream and fresh strawberry slices.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Refrigerate for at least 4 hours to allow the ladyfingers to soften and flavors to meld.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Blueberry Crumble Cheesecake Bars",
+    "description": "A multi-layered portable dessert that uses the natural pectin in blueberries to create a jam-like layer during a single-bake process.",
+    "prep_time": "50 minutes",
+    "ingredients": [
+      "Graham Cracker Crumbs [Base]",
+      "Cream Cheese [Standard]",
+      "Fresh Blueberries [Universal]",
+      "All-purpose Flour [Standard]",
+      "Butter [Universal]",
+      "Sugar [Standard]"
+    ],
+    "steps": [
+      {
+        "instruction": "Press the Graham cracker base into a pan.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Layer with a dense New York-style cheesecake filling.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Top with fresh blueberries and a buttery flour-sugar crumble.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Bake until the blueberries burst and the crumble is golden.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Cinnamon Toast Crunch Bread",
+    "description": "A nostalgia-driven quick bread featuring heavy cinnamon-sugar swirls and a crispy butter-sugar crust mimicking cereal textures.",
+    "prep_time": "65 minutes",
+    "ingredients": [
+      "Flour, Eggs, and Milk [Base]",
+      "Cinnamon and Sugar [Universal]",
+      "Butter [Universal]",
+      "Vanilla Glaze [Standard]"
+    ],
+    "steps": [
+      {
+        "instruction": "Prepare a standard quick-bread batter and fold in thick ribbons of cinnamon-sugar mixture.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Apply a generous topping of butter and sugar before baking to create a 'crunch' crust.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Bake at 175°C (350°F) until firm.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Finish with a milk-based vanilla glaze to evoke the flavor of 'cereal milk'.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Nanaimo Bars (Classic Canadian No-Bake)",
+    "description": "A triple-layered architectural dessert that requires no baking, utilizing a custard-flavored buttercream center and a chocolate ganache topping.",
+    "prep_time": "40 minutes (+2 hours chilling)",
+    "ingredients": [
+      "Graham Cracker Crumbs and Coconut [Base]",
+      "Almonds [Standard]",
+      "Cocoa Powder [Standard]",
+      "Butter [Universal]",
+      "Custard Powder (Bird's) [Base]",
+      "Dark Chocolate [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Create the base by binding crumbs, coconut, and chopped almonds with cocoa and melted butter; press into a pan.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Prepare the middle layer by whisking butter with custard powder for a nostalgic yellow tint and vanilla flavor.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Spread a final layer of melted dark chocolate ganache over the set custard.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Chill and slice using a hot knife to prevent the chocolate from cracking.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Banoffee Pie (5-Ingredient Express)",
+    "description": "An optimized dessert leveraging the molecular pairing of potassium-rich bananas and dairy-based caramel (Dulce de Leche).",
+    "prep_time": "20 minutes",
+    "ingredients": [
+      "Digestive Biscuits or Graham Crackers [Base]",
+      "Butter [Universal]",
+      "Dulce de Leche or Boiled Condensed Milk [Base]",
+      "Fresh Bananas [Base]",
+      "Heavy Whipping Cream [Standard]"
+    ],
+    "steps": [
+      {
+        "instruction": "Combine crushed biscuits with melted butter and press into a pie tin.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Spread a thick, even layer of Dulce de Leche over the base.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Layer with fresh banana slices.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Top with a massive amount of unsweetened whipped cream to balance the sugar density of the caramel.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Cracking Latte",
+    "description": "An experiential beverage that transforms passive coffee consumption into an active sensory event by fracturing a frozen chocolate shell within the cup.",
+    "prep_time": "15 minutes",
+    "ingredients": [
+      "Chocolate (Melted) [Base]",
+      "Espresso or Strong Coffee [Universal]",
+      "Milk or Plant-based Milk [Universal]",
+      "Ice [Universal]",
+      "Flexible Plastic Cup [Standard]"
+    ],
+    "steps": [
+      {
+        "instruction": "Melt the chocolate and coat the inner walls of a flexible plastic cup.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Place the coated cup in the freezer for 5-10 minutes until the chocolate shell is fully set.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Fill the cup with ice and your choice of milk and espresso.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Squeeze the flexible cup to fracture the internal chocolate shell, allowing pieces to fall into the drink as textured chips.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Tanghulu (Candied Fruit)",
+    "description": "A traditional Asian confection featuring fruit encapsulated in a high-precision 'Hard Crack' sugar shell.",
+    "prep_time": "20 minutes",
+    "ingredients": [
+      "Sugar [Base]",
+      "Water [Base]",
+      "Strawberries or Grapes [Universal]",
+      "Ice Water [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Prepare the fruit by ensuring it is absolutely dry; any surface moisture will dissolve the sugar matrix.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Combine sugar and water in a 2:1 ratio in a small saucepan.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Heat without stirring until the mixture reaches the 'Hard Crack' stage at 150°C (300°F).",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Quickly dip the fruit skewers into the syrup and immediately plunge into an ice water bath to vitrify the caramel.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Feta Fried Eggs",
+    "description": "A low-carb breakfast technique that substitutes cooking oil with the natural fats released from frying feta cheese.",
+    "prep_time": "10 minutes",
+    "ingredients": [
+      "Feta Cheese [Base]",
+      "Eggs [Base]",
+      "Tortilla [Standard]",
+      "Corn Tortilla [Celiac]",
+      "Chili Flakes [Standard]"
+    ],
+    "steps": [
+      {
+        "instruction": "Crumble feta cheese into a hot non-stick pan to form a ring shape.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Crack the egg into the center of the feta ring.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Cook until the feta forms a crispy 'skirt' through the Maillard reaction and the egg yolk is cooked to preference.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Serve on a warm tortilla.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Serve on a flour tortilla.",
+          "Celiac": "Serve on a corn tortilla."
+        }
+      }
+    ]
+  },
+  {
+    "title": "Korean Cream Cheese Garlic Bread",
+    "description": "A savory-sweet bakery trend featuring brioche saturated in garlic butter and filled with sweetened cream cheese.",
+    "prep_time": "25 minutes",
+    "ingredients": [
+      "Brioche Buns [Base]",
+      "Cream Cheese [Base]",
+      "Sugar [Standard]",
+      "Butter [Universal]",
+      "Minced Garlic [Universal]",
+      "Egg and Parsley [Standard]"
+    ],
+    "steps": [
+      {
+        "instruction": "Slice the brioche buns into six wedges without cutting through the base.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Pipe a mixture of sweetened cream cheese between the wedges.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Submerge the entire bun in a mixture of melted butter, minced garlic, egg, and parsley.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Bake until the exterior is golden and the filling is warm and molten.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Mochi Brownies",
+    "description": "A gluten-free fusion dessert that replaces wheat flour with glutinous rice flour to create a signature elastic 'chewy' texture.",
+    "prep_time": "45 minutes",
+    "ingredients": [
+      "Glutinous Rice Flour (Mochiko) [Base]",
+      "Cocoa Powder [Base]",
+      "Butter or Coconut Oil [Universal]",
+      "Sugar or Allulose [Diabetes]",
+      "Eggs [Standard]",
+      "Chocolate Chips [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Whisk the wet ingredients together until smooth.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Incorporate the dry ingredients.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Use glutinous rice flour and standard cocoa powder.",
+          "Diabetes": "Use allulose or stevia-based sweetener instead of sugar."
+        }
+      },
+      {
+        "instruction": "Fold in chocolate chips to balance the density of the rice flour.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Bake until the edges are firm but the center remains chewy.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "1-Ingredient Shaved Fruit Ice",
+    "description": "An ASMR-driven frozen dessert that uses a microplane to transform whole frozen fruit into a light, snow-like texture without added sugars or stabilizers.",
+    "prep_time": "10 minutes (+4 hours freezing time)",
+    "ingredients": [
+      "Frozen Watermelon or Peaches [Base, Standard]",
+      "Frozen Strawberries or Raspberries [Diabetes, Low-Carb]",
+      "Frozen Mango or Pineapple [High-Performance]",
+      "Honey or Maple Syrup [Standard]",
+      "Lime Juice [Universal]",
+      "Fresh Mint [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Select and freeze the fruit whole or in large chunks for at least 4 hours.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Use watermelon or peaches for a refreshing, high-volume texture.",
+          "Diabetes": "Use frozen strawberries or raspberries to maintain a lower glycemic load.",
+          "High-Performance": "Use frozen mango or pineapple for higher glycogen replenishment."
+        }
+      },
+      {
+        "instruction": "Using a microplane or fine grater, shave the frozen fruit directly into a chilled bowl.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Garnish with a drizzle of sweetener and fresh herbs.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Add honey and lime juice.",
+          "Vegan": "Use maple syrup and lime juice.",
+          "Histamine": "Use fresh mint and a dash of salt."
+        }
+      }
+    ]
+  },
+  {
+    "title": "Upside-Down Puff Pastry Tarts",
+    "description": "A viral technique where toppings are caramelized directly on the pan before being sealed with pastry, ensuring a crisp 'tart tatin' finish every time.",
+    "prep_time": "25 minutes",
+    "ingredients": [
+      "Puff Pastry [Standard]",
+      "Gluten-Free Puff Pastry [Celiac]",
+      "Honey or Hot Honey [Standard]",
+      "Maple Syrup [Vegan]",
+      "Shallots or Red Onion [Standard]",
+      "Chives [Low FODMAP]",
+      "Brie or Goat Cheese [Standard, Vegetarian]",
+      "Cashew Cream [Vegan, APLV]"
+    ],
+    "steps": [
+      {
+        "instruction": "Place small pools of sweetener on a parchment-lined baking sheet.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Use honey or hot honey.",
+          "Vegan": "Use maple syrup."
+        }
+      },
+      {
+        "instruction": "Arrange aromatics and cheese directly on top of the sweetener.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Layer sliced shallots and a slice of brie cheese.",
+          "Low FODMAP": "Layer fresh chives and a slice of hard cheddar (low lactose); avoid onions.",
+          "Vegan": "Layer sliced pears or apples with a dollop of thick cashew cream."
+        }
+      },
+      {
+        "instruction": "Cover each pile with a square of puff pastry and crimp the edges with a fork.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Use wheat-based puff pastry.",
+          "Celiac": "Use certified gluten-free puff pastry."
+        }
+      },
+      {
+        "instruction": "Bake at 200°C (400°F) for 15-18 minutes; flip immediately after removing from the oven to reveal the caramelized top.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Custard Yogurt Toast (Yogurt Toast)",
+    "description": "A high-protein breakfast hack that uses a yogurt-egg mixture to create a custard-like topping that bakes directly onto the bread.",
+    "prep_time": "15 minutes",
+    "ingredients": [
+      "Thick Sliced Bread [Standard]",
+      "Gluten-Free Bread [Celiac]",
+      "Greek Yogurt [Standard]",
+      "Coconut Yogurt [Vegan, APLV]",
+      "Egg [Standard]",
+      "Flax-egg (Flaxseed + Water) [Vegan, Egg Allergy]",
+      "Blueberries or Chocolate Chips [Universal]",
+      "Cinnamon [Standard]"
+    ],
+    "steps": [
+      {
+        "instruction": "Press the center of the bread slices with a spoon to create a shallow well.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Whisk the custard filling.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Mix Greek yogurt, 1 egg, and a dash of maple syrup.",
+          "Vegan": "Mix thick coconut yogurt, 1 flax-egg, and maple syrup.",
+          "Egg Allergy": "Use yogurt mixed with a tablespoon of cornstarch or arrowroot powder as a binder."
+        }
+      },
+      {
+        "instruction": "Pour the custard into the bread well and top with fruits or chocolate.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Air fry at 180°C (350°F) or bake for 10-12 minutes until the custard is set and the bread is toasted.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Grated Egg Avocado Toast",
+    "description": "A textural refinement of avocado toast where hard-boiled eggs are microplaned to create a light, airy protein topping.",
+    "prep_time": "10 minutes",
+    "ingredients": [
+      "Hard-boiled Eggs [Base]",
+      "Sourdough Bread [Standard, Low FODMAP-Friendly]",
+      "Gluten-Free Bread [Celiac]",
+      "Avocado [Standard]",
+      "Radishes [Low FODMAP]",
+      "Sriracha or Chili Oil [Standard]",
+      "Sea Salt and Pepper [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Toast the bread and prepare the avocado base.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Mash 1/2 avocado with salt and lime.",
+          "Low FODMAP": "Limit avocado to 30g (1/8 avocado) and fill the rest of the toast with sliced radishes for crunch.",
+          "Histamine": "Use freshly baked bread and omit lime juice."
+        }
+      },
+      {
+        "instruction": "Using a fine grater or microplane, grate 1-2 hard-boiled eggs over the avocado until it is completely covered.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Top with sriracha, chili oil, or seeds.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Drizzle with chili oil and sriracha.",
+          "LowSodium": "Omit spicy sauces; garnish with fresh microgreens and cracked black pepper."
+        }
+      }
+    ]
+  },
+  {
+    "title": "Whipped Feta Dip with Hot Honey",
+    "description": "An emulsified cheese dip that balances the saltiness of sheep's milk with aerated Greek yogurt and spicy honey.",
+    "prep_time": "10 minutes",
+    "ingredients": [
+      "Feta Cheese [Base]",
+      "Fresh Farmer's Cheese [Histamine]",
+      "Greek Yogurt [Standard]",
+      "Cream Cheese [Standard]",
+      "Cashew Cream [Vegan, APLV]",
+      "Garlic [Standard]",
+      "Garlic Oil [Low FODMAP]",
+      "Honey and Chili Flakes [Standard]"
+    ],
+    "steps": [
+      {
+        "instruction": "Combine the cheese and creamy base in a food processor.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Blend feta, Greek yogurt, cream cheese, and garlic.",
+          "Histamine": "Substitute feta with fresh Farmer's cheese and omit garlic.",
+          "Vegan": "Blend soaked cashews, nutritional yeast, lemon juice, and water.",
+          "Low FODMAP": "Use feta and lactose-free yogurt; substitute fresh garlic with garlic-infused oil."
+        }
+      },
+      {
+        "instruction": "Process until the mixture is ultra-smooth and aerated.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Transfer to a bowl and create a well in the center for the topping.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Drizzle with hot honey and garnish with fresh herbs.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Use standard honey mixed with chili flakes.",
+          "Hypertension": "Omit honey and chili flakes; garnish with lemon zest and fresh dill."
+        }
+      }
+    ]
+  },
+  {
+    "title": "Strawberry Cheesecake Bars",
+    "description": "A fruit-forward portable dessert that requires precise moisture management to prevent the strawberry water content from compromising the crust integrity.",
+    "prep_time": "50 minutes",
+    "ingredients": [
+      "Graham Cracker Base [Base]",
+      "Cream Cheese [Standard]",
+      "Fresh Strawberries [Standard]",
+      "Concentrated Strawberry Jam [Histamine, Universal]",
+      "Sugar [Standard]",
+      "Lemon Juice [Standard]"
+    ],
+    "steps": [
+      {
+        "instruction": "Prepare the Graham cracker crust and pre-bake for 10 minutes at 175°C (350°F).",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Prepare the strawberry component to manage hydration.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Toss fresh sliced strawberries with a small amount of sugar and lemon juice.",
+          "HighMoistureControl": "Lightly roast the strawberries or use a high-quality concentrated jam."
+        }
+      },
+      {
+        "instruction": "Pour the cream cheese filling over the crust, layer with the strawberry mixture, and bake until set.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Chill completely for at least 3 hours before slicing into bars.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Cloud Bread (2024 Revival)",
+    "description": "An ethereal, grain-free foam-based bread substitute that relies on air-filled protein matrices for volume and aesthetics.",
+    "prep_time": "15 minutes",
+    "ingredients": [
+      "Egg Whites [Base]",
+      "Sugar [Standard]",
+      "Allulose [Diabetes, Keto]",
+      "Cornstarch [Standard]",
+      "Arrowroot Powder [Paleo]",
+      "Food Coloring [Standard]",
+      "Natural Beet Juice [CleanLabel]"
+    ],
+    "steps": [
+      {
+        "instruction": "Whisk egg whites until they reach soft peaks.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Slowly incorporate the sweetener and stabilizer.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Add white sugar and cornstarch.",
+          "Diabetes": "Substitute sugar with allulose.",
+          "Paleo": "Substitute cornstarch with arrowroot powder."
+        }
+      },
+      {
+        "instruction": "Add aesthetic elements and whisk to stiff peaks.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Add 1-2 drops of pastel food coloring.",
+          "CleanLabel": "Add a few drops of beet juice for a natural pink tint."
+        }
+      },
+      {
+        "instruction": "Form into a mound on a baking sheet and bake at a low temperature (150°C/300°F) for 25 minutes.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "2-Ingredient Bagels",
+    "description": "A rapid-fermentation shortcut bread where the acidity of Greek yogurt activates chemical leaveners, bypassing traditional yeast requirements.",
+    "prep_time": "25 minutes",
+    "ingredients": [
+      "Self-Rising Flour [Standard]",
+      "Gluten-Free Self-Rising Flour [Celiac]",
+      "Greek Yogurt [Standard]",
+      "Lactose-Free Greek Yogurt [Low FODMAP]",
+      "Everything Bagel Seasoning [Universal]",
+      "Egg Wash [Standard]"
+    ],
+    "steps": [
+      {
+        "instruction": "Combine equal parts by weight of flour and yogurt.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Mix standard self-rising flour with thick Greek yogurt.",
+          "Celiac": "Use a certified gluten-free self-rising flour blend.",
+          "Low FODMAP": "Use lactose-free Greek yogurt to avoid disaccharides."
+        }
+      },
+      {
+        "instruction": "Knead briefly until a dough ball forms, then divide into 4 pieces and roll into ropes to form bagel rings.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Brush with egg wash and top with seasoning.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Air fry at 190°C (375°F) for 10-12 minutes or bake at 200°C (400°F) for 20 minutes.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Whipped Lemonade",
+    "description": "A high-fat, high-acid emulsified beverage that evolved from the Dalgona trend, using mechanical aeration for a smoothie-like stability.",
+    "prep_time": "5 minutes",
+    "ingredients": [
+      "Fresh Lemon Juice [Base]",
+      "Ice Cubes [Base]",
+      "Condensed Milk [Standard]",
+      "Full-Fat Coconut Cream [Vegan, APLV]",
+      "Stevia and Cream [Diabetes]"
+    ],
+    "steps": [
+      {
+        "instruction": "Add ice, lemon juice, and the creamy base to a high-speed blender.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Use standard sweetened condensed milk.",
+          "Vegan": "Use chilled full-fat coconut cream.",
+          "Diabetes": "Use heavy cream and liquid stevia."
+        }
+      },
+      {
+        "instruction": "Blend at maximum speed for 30-45 seconds until the fat and acid create a stable, frothy emulsion.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Pour into glasses and garnish with lemon zest.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Simplified Potato Pavé (15-Hour Potato)",
+    "description": "A technical side dish featuring a compressed 'mille-feuille' of potatoes, optimizing starch release for a superior crunch.",
+    "prep_time": "45 minutes (+chilling time)",
+    "ingredients": [
+      "Yukon Gold Potatoes [Base]",
+      "Duck Fat or Melted Butter [Standard]",
+      "Coconut Oil [Vegan]",
+      "Sea Salt [Universal]",
+      "Thyme [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Slice potatoes into translucent, paper-thin rounds using a mandoline.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Layer the potatoes in a parchment-lined dish, brushing each layer with fat and salt.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Use duck fat or melted butter.",
+          "Vegan": "Use refined coconut oil or olive oil.",
+          "Hypertension": "Omit salt during layering; use fresh thyme and garlic powder."
+        }
+      },
+      {
+        "instruction": "Bake at 150°C (300°F) until tender, then place a weight on top and refrigerate for at least 12 hours.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Unmold, slice into precise cubes, and fry in a pan until all sides are deeply golden and crispy.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Whipped Cottage Cheese 'Queso' Dip",
+    "description": "A high-protein dip that simulates the texture of melted nacho cheese using whipped dairy and roasted peppers.",
+    "prep_time": "10 minutes",
+    "ingredients": [
+      "Cottage Cheese [Base]",
+      "Roasted Red Peppers (Canned and Washed) [LowPotassium, Renal]",
+      "Nutritional Yeast [Universal]",
+      "Garlic Powder [Standard]",
+      "Paprika and Turmeric (for color) [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Place the cottage cheese and roasted peppers in a high-speed blender.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Use standard cottage cheese.",
+          "Renal": "Use low-sodium cottage cheese and washed canned roasted peppers."
+        }
+      },
+      {
+        "instruction": "Add nutritional yeast, turmeric, and paprika.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Blend until the mixture is ultra-smooth.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Serve cold or gently warmed.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Baked Blueberry French Toast (Meal Prep)",
+    "description": "A structured breakfast casserole designed for efficiency and consistent texture.",
+    "prep_time": "45 minutes",
+    "ingredients": [
+      "Thick Sliced Bread [Base]",
+      "Gluten-Free Bread (Rice/Corn base) [Celiac]",
+      "Fresh Eggs [Standard]",
+      "Milk or Plant-based Milk [Universal]",
+      "Fresh Blueberries [Base]",
+      "Cinnamon and Vanilla [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Cut the bread into 1-inch cubes and place in a greased baking dish.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Use brioche or sourdough bread cubes.",
+          "Celiac": "Substitute with certified gluten-free bread cubes."
+        }
+      },
+      {
+        "instruction": "Prepare the custard by whisking eggs, milk, cinnamon, and vanilla.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Use whole fresh eggs.",
+          "Histamine": "Ensure eggs are strictly fresh and prepared immediately."
+        }
+      },
+      {
+        "instruction": "Pour the custard over the bread cubes and top with fresh blueberries.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Bake at 180°C (350°F) until the center is set and the top is golden brown.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Red Velvet 'Beet' Crinkle Cookies",
+    "description": "A nutrient-dense dessert using beet puree for moisture and its signature deep red color.",
+    "prep_time": "30 minutes",
+    "ingredients": [
+      "Roasted Beet Puree [Base]",
+      "All-purpose Flour [Base]",
+      "Cocoa Powder [Standard]",
+      "Carob Powder [Histamine]",
+      "Baking Powder [Universal]",
+      "Powdered Sugar (for coating) [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Blend roasted beets until they reach a smooth puree consistency.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Combine the puree with the fat, sweetener, and dry flavor components.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Use standard cocoa powder.",
+          "Histamine": "Substitute cocoa powder with carob powder."
+        }
+      },
+      {
+        "instruction": "Chill the dough, then form into balls and roll generously in powdered sugar.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Bake at 175°C (350°F) until the 'crinkle' effect appears on the surface.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Chia Pudding with Coconut Milk",
+    "description": "A versatile, fiber-rich pudding that utilizes seed mucilage for structural thickness.",
+    "prep_time": "10 minutes (+3 hours chilling)",
+    "ingredients": [
+      "Chia Seeds [Base]",
+      "Tapioca Pearls [Renal]",
+      "Full-fat Coconut Milk [Standard]",
+      "Rice Milk (Low Phosphorus) [Renal]",
+      "Maple Syrup or Stevia [Universal]",
+      "Vanilla Extract [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Combine the seeds or grains with the liquid base.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Mix whole chia seeds with coconut milk.",
+          "Renal": "Substitute chia seeds with cooked tapioca pearls in rice milk."
+        }
+      },
+      {
+        "instruction": "Sweeten to taste and add vanilla.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Refrigerate for at least 3 hours.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Kale Chips with Nutritional Yeast",
+    "description": "A dehydrated vegetable snack optimized to deactivate antinutrients.",
+    "prep_time": "20 minutes",
+    "ingredients": [
+      "Fresh Curly Kale [Base]",
+      "White Cabbage Leaves [Renal]",
+      "Apple Skins [Renal]",
+      "Olive Oil [Universal]",
+      "Nutritional Yeast [Universal]",
+      "Garlic Salt [Standard]"
+    ],
+    "steps": [
+      {
+        "instruction": "Prepare the leaf or skin base.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Wash and thoroughly dry curly kale leaves.",
+          "Renal": "Substitute with thinly sliced white cabbage leaves or dehydrated apple skins.",
+          "Thyroid": "Ensure the kale is fully baked to deactivate goitrogenic compounds."
+        }
+      },
+      {
+        "instruction": "Massage with olive oil and coat evenly with nutritional yeast.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Bake at 150°C (300°F) for 15-20 minutes until completely crispy.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Unstuffed Zucchini Casserole",
+    "description": "A deconstructed lasagna that utilizes zucchini ribbons instead of pasta.",
+    "prep_time": "35 minutes",
+    "ingredients": [
+      "Zucchini Ribbons [Base]",
+      "Ground Beef [Base]",
+      "Marinara Sauce [Standard]",
+      "Nomato Sauce [Histamine, Renal]",
+      "Mozzarella and Parmesan [Standard]",
+      "Salt [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Salt the zucchini ribbons and let sit for 15 minutes, then pat dry.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Brown the ground beef and drain excess fat.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Assemble the layers in a baking dish.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Layer zucchini with meat, standard marinara sauce, and plenty of cheese.",
+          "Histamine": "Use freshly cooked ground meat and substitute marinara with 'Nomato' sauce.",
+          "Renal": "Use 'Nomato' sauce to avoid the high potassium load of cooked tomatoes."
+        }
+      },
+      {
+        "instruction": "Bake at 190°C (375°F) for 20-25 minutes.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Clinical Green Goddess Chicken Salad",
+    "description": "A high-protein emulsified salad that replaces common allergens with nutrient-dense seeds and vegetables.",
+    "prep_time": "20 minutes",
+    "ingredients": [
+      "Cooked Chicken Breast [Base]",
+      "Hemp Seeds [Universal]",
+      "Cashews or Walnuts [Standard]",
+      "Boiled and Emulsified Zucchini [Nut Allergy]",
+      "Fresh Basil and Spinach [Universal]",
+      "Garlic-infused Oil [Low FODMAP]",
+      "Tahini [Universal]",
+      "Olive Oil [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Prepare the 'Green Goddess' cream base.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Blend spinach, basil, and cashews or walnuts until creamy.",
+          "Nut Allergy": "Blend hemp seeds or boiled, emulsified zucchini with olive oil.",
+          "Low FODMAP": "Use garlic-infused oil and a maximum of 1 tablespoon of tahini."
+        }
+      },
+      {
+        "instruction": "Shred the chicken and combine with the dressing.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Garnish with fresh herbs and serve.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Vegan Scotch Eggs",
+    "description": "A plant-based take on the classic picnic snack, using tofu or hummus to replicate the textural experience.",
+    "prep_time": "30 minutes",
+    "ingredients": [
+      "Hard-boiled Eggs [Standard]",
+      "Firm Tofu [Vegan]",
+      "Hummus [Colesterol]",
+      "Meatless Sausage Crumbles [Vegan]",
+      "Breadcrumbs [Standard]",
+      "Flax-egg [Vegan]"
+    ],
+    "steps": [
+      {
+        "instruction": "Prepare the 'yolk' center.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Use a peeled hard-boiled egg.",
+          "Colesterol": "Use a hard-boiled egg white filled with a dollop of thick hummus.",
+          "Vegan": "Use a ball of seasoned firm tofu."
+        }
+      },
+      {
+        "instruction": "Encapsulate the center in the protein layer.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Wrap in seasoned sausage meat.",
+          "Vegan": "Wrap in a mixture of seasoned plant-based meat or mashed lentils."
+        }
+      },
+      {
+        "instruction": "Coat in crumbs and cook.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Bread with egg wash and wheat crumbs; deep fry.",
+          "Healthy": "Brush with olive oil and bake or air fry until the exterior is crispy."
+        }
+      }
+    ]
+  },
+  {
+    "title": "The Crookie (Croissant-Cookie Hybrid)",
+    "description": "A viral bakery hack that utilizes day-old croissants as a vessel for chocolate chip cookie dough.",
+    "prep_time": "20 minutes",
+    "ingredients": [
+      "Day-old Croissants [Base]",
+      "Chocolate Chip Cookie Dough [Standard]",
+      "Flax-egg Cookie Dough [Vegan]",
+      "Melted Butter [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Slice the croissants horizontally but do not separate the halves completely.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Insert the dough filling.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Insert 60-80g of standard cookie dough into the center.",
+          "Vegan": "Use a plant-based cookie dough made with coconut oil and flaxseed."
+        }
+      },
+      {
+        "instruction": "Flatten a small piece of dough on top of the croissant.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Bake at 180°C (350°F) for 10-12 minutes.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Sweet Potato Sheet Pan Gnocchi",
+    "description": "A variant of the viral gnocchi trend that uses sweet potatoes for a higher vitamin A profile.",
+    "prep_time": "25 minutes",
+    "ingredients": [
+      "Sweet Potato Gnocchi [Base]",
+      "Olive Oil [Universal]",
+      "Fresh Sage [Universal]",
+      "Garlic Oil [Low FODMAP]",
+      "Zucchini [Histamine]"
+    ],
+    "steps": [
+      {
+        "instruction": "Prepare the gnocchi for roasting.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Arrange store-bought or fresh sweet potato gnocchi on a sheet pan.",
+          "Renal": "Use homemade sweet potato gnocchi that have been peeled, cubed, soaked, and boiled."
+        }
+      },
+      {
+        "instruction": "Toss with aromatics and fat.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Toss with olive oil, fresh sage, and minced garlic.",
+          "Low FODMAP": "Use garlic-infused oil; omit fresh garlic cloves.",
+          "Histamine": "Pair with zucchini and fresh herbs like rosemary."
+        }
+      },
+      {
+        "instruction": "Roast at 200°C (400°F) until the exterior is browned and crispy.",
+        "is_branch_point": false
+      }
+    ]
+  }
+]

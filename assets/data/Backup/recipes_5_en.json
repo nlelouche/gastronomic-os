@@ -1,0 +1,398 @@
+﻿[
+  {
+    "title": "Cold Golden Milk (Turmeric and Ginger Latte)",
+    "description": "A potent anti-inflammatory functional beverage utilizing fat-soluble nutrient activation and piperine-enhanced absorption to modulate systemic inflammation.",
+    "prep_time": "10 minutes",
+    "ingredients": [
+      "Fresh Turmeric Root (Grated) [Base]",
+      "Fresh Ginger Root (Grated) [Universal]",
+      "Black Pepper (Freshly ground) [Standard]",
+      "Additive-free Coconut Milk [Histamine]",
+      "Lactose-free Milk or Almond Milk [Low FODMAP]",
+      "Unsweetened Cashew Milk [Universal]",
+      "Maple Syrup or Stevia [Universal]",
+      "Ceylon Cinnamon and Cloves [Standard]"
+    ],
+    "steps": [
+      {
+        "instruction": "Phytochemical Activation: In a small saucepan, combine the grated turmeric, ginger, and a splash of water. Heat gently for 3 minutes. This thermal processing is technically required to activate the curcuminoids, which are poorly absorbed in their raw state.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Bioavailability Enhancement: Introduce a pinch of freshly ground black pepper. Piperine from the pepper inhibits the metabolic pathway that eliminates curcumin, increasing its absorption by up to 2,000%.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Lipid Carrier Integration: Add your choice of milk. Curcumin is liposoluble and requires a fat matrix for transport into the bloodstream.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Histamine": "Use strictly additive-free coconut milk; omit cinnamon and cloves as they may act as histamine releasers.",
+          "Low FODMAP": "Use almond or lactose-free milk; limit coconut milk to 120ml to stay within sorbitol thresholds.",
+          "Standard": "Use whole milk or cashew milk for maximum creaminess."
+        }
+      },
+      {
+        "instruction": "Sweetening and Infusion: Add maple syrup or stevia and simmer for 5 minutes. Do not boil, to preserve the delicate gingerols.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Cryogenic Maturation: Strain the mixture and refrigerate until completely cold. Serve over ice. The cold temperature stabilizes the aromatic profile of the fresh ginger.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Homemade Probiotic Vinegar Soda",
+    "description": "A metabolic health beverage designed to improve insulin sensitivity and support gut microbiome diversity via acetic acid and fruit-derived polyphenols.",
+    "prep_time": "5 minutes",
+    "ingredients": [
+      "Raw Apple Cider Vinegar (with 'The Mother') [Standard]",
+      "Fresh Berries or Stone Fruit [Universal]",
+      "Sparkling Mineral Water [Universal]",
+      "Liquid Stevia or Monk Fruit [Diabetes]",
+      "Honey or Maple Syrup [Standard]",
+      "Fresh Mint Leaves [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Flavor Base Maceration: In the bottom of a glass, crush the fresh fruit with your sweetener of choice. Macerating the fruit breaks down cell walls to release antioxidants and natural sugars.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Diabetes": "Use liquid stevia to maintain a zero-glycemic base.",
+          "Histamine": "Avoid fermented vinegars; create a quick 'shrub' by macerating fruit with sugar and a dash of ascorbic acid (Vitamin C) for tartness.",
+          "Standard": "Use raw honey or maple syrup."
+        }
+      },
+      {
+        "instruction": "Acid Loading: Add 1-2 tbsp of raw apple cider vinegar. Technical Note: Acetic acid has been shown to slow gastric emptying and reduce postprandial glucose response by up to 30%.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Carbonation and Service: Fill the glass with ice and top with sparkling mineral water. Stir gently to integrate the dense vinegar with the carbonated water. Garnish with mint to provide a refreshing aromatic finish.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Savory 'Oatsotto' (Risotto-Style Oats)",
+    "description": "A breakfast re-engineering that treats steel-cut oats as a risotto grain, utilizing mechanical starch release to create a savory, high-satiety meal.",
+    "prep_time": "15 minutes",
+    "ingredients": [
+      "Steel-cut or Rolled Oats [Base]",
+      "Purity Protocol Certified Oats [Celiac]",
+      "Low-Sodium Vegetable Broth [Universal]",
+      "Mushrooms (Canned or Oyster) [Low FODMAP]",
+      "Standard White Mushrooms [Standard]",
+      "Fresh Spinach [Universal]",
+      "Egg (Poached or Fried) [Standard]",
+      "Parmesan Cheese [Standard]",
+      "Nutritional Yeast [Vegan]"
+    ],
+    "steps": [
+      {
+        "instruction": "Aromatic Sauté: Sauté your chosen mushrooms in a small amount of oil until the water has evaporated and they are deeply browned (Maillard reaction).",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Use fresh cremini or white mushrooms.",
+          "Low FODMAP": "Use canned (rinsed) mushrooms or fresh oyster mushrooms (Pleurotus) to minimize mannitol load."
+        }
+      },
+      {
+        "instruction": "Graining: Add the oats to the pan and toast for 2 minutes until they smell nutty. This protects the grain's exterior, ensuring a 'risotto' texture rather than a mushy porridge.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Celiac": "Strictly use 'Purity Protocol' certified oats to ensure 0% cross-contamination with wheat.",
+          "Standard": "Use high-quality steel-cut or thick rolled oats."
+        }
+      },
+      {
+        "instruction": "Incremental Hydration: Add the broth 1/2 cup at a time, stirring constantly. Stirring is technically necessary to rub the grains together, releasing surface starches (amylopectin) into the liquid to create creaminess.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Thermal Finishing: Once the oats are tender but still have a 'bite' (al dente), fold in fresh spinach and your choice of umami finisher.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Fold in 2 tbsp parmesan cheese.",
+          "Vegan": "Fold in 1 tbsp nutritional yeast."
+        }
+      },
+      {
+        "instruction": "Service: Top with a poached egg. The runny yolk acts as a secondary sauce, enriching the savory oats.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Baked Oats (Oatmeal Mug Cake)",
+    "description": "A structural transformation of oatmeal into a healthy cake matrix using mechanical air incorporation and protein binding.",
+    "prep_time": "10 minutes",
+    "ingredients": [
+      "Rolled Oats [Base]",
+      "Overripe Banana [Standard]",
+      "Unsweetened Applesauce [Renal]",
+      "Fresh Egg [Standard]",
+      "Flax-egg (Flax + Water) [Vegan, Egg Allergy]",
+      "Whey Isolate or Collagen Powder [High-Performance]",
+      "Baking Powder [Universal]",
+      "Milk or Rice Milk [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Mechanical Milling: Place all ingredients in a high-speed blender. Blend for 45 seconds until the oats are reduced to a fine flour and the mixture is aerated. Aeration is critical for the cake-like rise.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Blend oats with banana, egg, and 1/4 cup milk.",
+          "Renal": "Substitute banana with applesauce to reduce potassium; use rice milk and add whey isolate to provide high biological value protein without excess phosphorus.",
+          "Vegan": "Use flax-egg and 1 tbsp of almond butter for structural stability."
+        }
+      },
+      {
+        "instruction": "Inclusion Loading: Pour the batter into a greased mug or ramekin. You may add a piece of dark chocolate to the center; it will melt into a 'lava' core during baking.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Thermal Processing: Bake at 180°C (350°F) for 15 minutes or microwave at 80% power for 2-3 minutes. The cake is done when the surface springs back when touched.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Service: Let sit for 2 minutes to allow the steam to set the internal crumb. Serve warm.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Falafel Waffles (Waffled Falafel)",
+    "description": "A high-efficiency, non-fried version of falafel utilizing a waffle iron to maximize crispy surface area while maintaining internal moisture.",
+    "prep_time": "15 minutes",
+    "ingredients": [
+      "Chickpeas (Soaked or Canned/Washed) [Base]",
+      "Fresh Parsley and Cilantro [Universal]",
+      "Garlic and Onion [Standard]",
+      "Garlic-infused Oil [Low FODMAP]",
+      "Cumin and Coriander [Universal]",
+      "Chickpea Flour [Universal]",
+      "Baking Powder [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Dough Synthesis: In a food processor, pulse the chickpeas with herbs and spices until a coarse paste forms. Technical Tip: Do not over-process into a puree; a gritty texture is necessary for the traditional falafel mouthfeel.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Process with fresh onion and garlic.",
+          "Low FODMAP": "Use canned chickpeas that have been washed 3 times to remove GOS; substitute onion/garlic with 2 tbsp garlic-infused oil and the green part of scallions."
+        }
+      },
+      {
+        "instruction": "Structural Reinforcement: Fold in chickpea flour and baking powder. The flour absorbs excess moisture, ensuring the 'waffle' doesn't stick or collapse.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Surface Preparation: Preheat the waffle iron to its highest setting. Brush both plates generously with olive oil to facilitate the Maillard reaction.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Waffling: Scoop the dough onto the center of the waffle iron and close firmly. Bake for 5-7 minutes. Technical Note: Do not open the iron too early; the steam must escape for the exterior to reach peak crunchiness.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Plating: Serve with tahini dressing or a lemon-yogur dip. The waffle shape provides 'pockets' for holding the sauce.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Pasta e Ceci (Viral Quick Version)",
+    "description": "A traditional one-pot meal utilizing the chemical synergy between pasta starch and chickpea aquafaba to create a naturally thick, creamy stew without dairy.",
+    "prep_time": "20 minutes",
+    "ingredients": [
+      "Short Pasta (Ditalini or Shells) [Base]",
+      "Canned Chickpeas (including liquid) [Base]",
+      "Tomato Sauce or Paste [Standard]",
+      "Nomato Sauce [Histamine, Renal]",
+      "Fresh Rosemary and Garlic [Universal]",
+      "Olive Oil [Universal]",
+      "Sea Salt and Pepper [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Lipid Infusion: In a large pot, heat olive oil and sauté rosemary and garlic until the oil is aromatic and the garlic is golden-brown. This transfers the volatile rosemary oils into the fat base.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Sauce Foundation: Add the sauce base. For Renal or Histamine protocols, the 'Nomato' substitute is mandatory to avoid potassium and histamine triggers.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Add 2 tbsp tomato paste.",
+          "Renal": "Add 1/2 cup Nomato sauce to minimize potassium concentration."
+        }
+      },
+      {
+        "instruction": "Aquafaba Integration: Add the chickpeas along with their canning liquid. The saponins in the aquafaba act as a natural emulsifier when heated, binding the oil and broth together.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Starch Binding: Add dry pasta directly into the pot with just enough boiling water to cover. As the pasta cooks, it releases amylopectin starches that thicken the stew into a rich, creamy sauce.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Final Simmer: Cook until al dente. The sauce should be thick and glossy. Finish with a drizzle of high-quality raw olive oil for its phenolic antioxidants.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Cowboy Caviar (Precision Chopped Salad)",
+    "description": "A vibrant, nutrient-dense chopped salad engineered as a dip; utilizes a uniform 3mm brunoise cut to ensure a stable lime-honey emulsion.",
+    "prep_time": "25 minutes",
+    "ingredients": [
+      "Black Beans and Black-eyed Peas (Rinsed) [Base]",
+      "Corn and Bell Peppers [Base]",
+      "Red Onion and Roma Tomatoes [Standard]",
+      "Avocado [Standard]",
+      "Fresh Cilantro [Universal]",
+      "Lime Juice and Honey [Standard]",
+      "Maple Syrup [Vegan]",
+      "Garlic-infused Oil [Low FODMAP]"
+    ],
+    "steps": [
+      {
+        "instruction": "Mechanical Processing: Finely dice all vegetables into a uniform 3mm brunoise. Technical Note: Consistency in size is required to ensure that every scoop contains a mathematically proportional mix of flavors and textures.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Emulsion Synthesis: Whisk the lime juice and oil with the sweetener until a stable temporary emulsion forms.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Whisk with honey and olive oil.",
+          "Low FODMAP": "Use garlic-infused oil and maple syrup; strictly omit onions and limit avocado to 1/8 portion per serving.",
+          "Vegan": "Use maple syrup instead of honey."
+        }
+      },
+      {
+        "instruction": "Saturation: Combine all ingredients in a glass bowl. Toss gently to avoid bruising the avocado. Let the mixture sit for 15 minutes at room temperature; the citric acid will lightly pickle the onions and tomatoes.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Service: Serve as a dip with corn chips. For Hypertension, serve with unsalted baked pita chips.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Chicken Cobbler (Red Lobster Hack)",
+    "description": "A high-convenience family meal utilizing a zero-stir layering technique to maintain a distinct textural separation between the protein base and the golden biscuit crust.",
+    "prep_time": "45 minutes",
+    "ingredients": [
+      "Cooked Shredded Chicken [Base]",
+      "Frozen Mixed Vegetables [Base]",
+      "Creamy Chicken Soup Base [Standard]",
+      "Gluten-Free Condensed Soup [Celiac]",
+      "Cheddar Bay Biscuit Mix [Standard]",
+      "GF Biscuit Mix [Celiac]",
+      "Milk and Melted Butter [Standard]"
+    ],
+    "steps": [
+      {
+        "instruction": "Base Layering: Layer the shredded chicken and frozen vegetables in a deep baking dish. Do not mix. The structural integrity of the 'cobbler' depends on this layering.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Hydration Layer: Whisk the soup with broth and pour carefully over the base. Technical Warning: Do not stir. Stirring will integrate the starch into the soup, resulting in a gummy texture rather than a cobbler.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Use standard condensed chicken soup.",
+          "Celiac": "Use certified gluten-free condensed soup."
+        }
+      },
+      {
+        "instruction": "Crust Synthesis: Mix the biscuit flour with milk and butter until a thick, pourable batter forms. Pour evenly over the hot soup layer.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Use 2 cups of biscuit mix.",
+          "Celiac": "Use 2 cups of certified gluten-free biscuit mix."
+        }
+      },
+      {
+        "instruction": "Thermal Consolidation: Bake at 200°C (400°F) for 40 minutes. The batter will rise through the liquid, forming a golden, flaky crust on top of the thickened filling.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Turkish Yogurt Pasta (Mantı Reconstruction)",
+    "description": "A high-performance recovery dish balancing thermal and flavor contrast by pairing hot spiced meat with cold, garlicky yogurt and chili oil.",
+    "prep_time": "28 minutes",
+    "ingredients": [
+      "Short Pasta (Wheat) [Base]",
+      "Low-Protein Pasta [Renal]",
+      "Lean Ground Beef or Lamb [Standard]",
+      "Plain Greek Yogurt [Standard]",
+      "Coconut Yogurt (Unsweetened) [APLV]",
+      "Fresh Garlic [Standard]",
+      "Chili Oil or Paprika Butter [Standard]",
+      "Fresh Mint [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Starch Preparation: Boil the pasta in salted water until al dente.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Use 100g standard wheat pasta.",
+          "Renal": "Use low-protein (aproteic) pasta to allow for the mineral load of the meat sauce."
+        }
+      },
+      {
+        "instruction": "Cold Matrix Synthesis: Whisk the yogurt with minced garlic and a pinch of salt. This must be kept chilled until assembly to preserve the signature thermal contrast.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Use full-fat Greek yogurt.",
+          "APLV": "Use unsweetened coconut yogurt with a splash of lemon juice."
+        }
+      },
+      {
+        "instruction": "Protein Searing: Brown the meat in a skillet until crispy. Drain fat and season with cumin and paprika.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Thermal Assembly: Place the hot pasta in a bowl. Top with the cold garlicky yogurt, then the hot spiced meat, and finally a drizzle of chili oil. The rapid temperature fluctuations in the mouth enhance flavor perception.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "High-Protein Pasta Salad (Fitness Matrix)",
+    "description": "A fitness-focused meal that doubles amino acid and fiber content by utilizing legume-based pastas and fresh lipid sources for sustained satiety.",
+    "prep_time": "20 minutes",
+    "ingredients": [
+      "Chickpea or Lentil Pasta [Base]",
+      "Fresh Mozzarella Pearls [Standard]",
+      "Firm Tofu Cubes (Marinated) [Vegan]",
+      "Cherry Tomatoes and Cucumber [Base]",
+      "Light Herb Vinaigrette [Universal]",
+      "Fresh Basil and Parsley [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Starch Hydration: Boil the legume pasta for exactly 7-9 minutes. Technical Note: Legume pasta is gluten-free and transitions from al dente to disintegrated rapidly; timing is critical.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Protein Inclusion: Toss the pasta with your chosen protein. For Athletes, adding grilled chicken breast is recommended to maximize the protein-to-carbohydrate ratio.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Add mozzarella pearls.",
+          "Vegan": "Add tofu cubes marinated in tamari and olive oil."
+        }
+      },
+      {
+        "instruction": "Vinaigrette Binding: Toss with a light vinaigrette and fresh herbs. The legumes will absorb the acid, softening their dense texture.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Service: Chill for 30 minutes before serving. This allows the flavors to meld and the legume pasta to reach its optimal 'bouncy' texture.",
+        "is_branch_point": false
+      }
+    ]
+  }
+]

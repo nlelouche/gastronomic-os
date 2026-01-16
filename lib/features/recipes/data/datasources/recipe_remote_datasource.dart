@@ -20,10 +20,11 @@ abstract class RecipeRemoteDataSource {
     bool? isFork,
     bool onlySaved = false,
     String? collectionId,
+    String? languageCode,
   });
   Future<void> toggleSaveRecipe(String recipeId);
   Future<bool> isRecipeSaved(String recipeId);
-  Future<RecipeModel> createRecipe(Recipe recipe);
+  Future<RecipeModel> createRecipe(Recipe recipe, {String? authorId});
   Future<RecipeModel> forkRecipe(String originalRecipeId, String newTitle, String authorId);
   Future<List<CommitModel>> getCommits(String recipeId);
   Future<CommitModel> addCommit(CommitModel commit);
@@ -68,11 +69,20 @@ class RecipeRemoteDataSourceImpl implements RecipeRemoteDataSource {
     bool? isFork,          
     bool onlySaved = false,
     String? collectionId, // New Parameter
+    String? languageCode,
   }) async {
     try {
       // Optimization: Select only necessary fields for list view
-      var builder = supabaseClient.from('recipes').select('id, title, description, cover_photo_url, tags, author_id, created_at, is_fork, origin_id, is_public');
+      var builder = supabaseClient.from('recipes').select('id, title, description, cover_photo_url, tags, author_id, created_at, is_fork, origin_id, is_public, language_code');
       
+      // Filter by Language
+      if (languageCode != null) {
+        builder = builder.eq('language_code', languageCode); // Filter language
+        AppLogger.d('   Applying language filter: $languageCode');
+      } else {
+        AppLogger.w('   ⚠️ No language filter applied! Fetching all languages.');
+      }
+
       // Filter by Author (for Created/Forked tabs)
       if (authorId != null) {
         builder = builder.eq('author_id', authorId);
@@ -186,9 +196,9 @@ class RecipeRemoteDataSourceImpl implements RecipeRemoteDataSource {
   }
 
   @override
-  Future<RecipeModel> createRecipe(Recipe recipe) async {
+  Future<RecipeModel> createRecipe(Recipe recipe, {String? authorId}) async {
     try {
-      final currentUserId = supabaseClient.auth.currentUser!.id;
+      final currentUserId = authorId ?? supabaseClient.auth.currentUser!.id;
 
       // 1. Calculate Enriched Tags (Move logic to top)
       final enrichedTags = List<String>.from(recipe.tags);
@@ -299,6 +309,7 @@ class RecipeRemoteDataSourceImpl implements RecipeRemoteDataSource {
           'cover_photo_url': recipe.coverPhotoUrl,
           'author_id': currentUserId,
           'created_by_member_id': createdByMemberId,
+          'language_code': recipe.languageCode, // Saved to DB
         };
 
         final recipeResponse = await supabaseClient
@@ -602,6 +613,12 @@ class RecipeRemoteDataSourceImpl implements RecipeRemoteDataSource {
       
       // 0. Delete Meal Plans (FK Constraint Check)
       await supabaseClient.from('meal_plans').delete().eq('recipe_id', id);
+
+      // 0.1 Delete Saved Recipes (Bookmarks)
+      await supabaseClient.from('saved_recipes').delete().eq('recipe_id', id);
+
+      // 0.2 Delete Collection Items
+      await supabaseClient.from('collection_items').delete().eq('recipe_id', id);
 
       // 1. Delete Snapshots
       await supabaseClient.from('recipe_snapshots').delete().eq('recipe_id', id);

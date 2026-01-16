@@ -13,10 +13,12 @@ abstract class IRecipeRepository {
     List<String>? excludedTags,
     List<String>? pantryItems, // New: For Pantry Matching
     String? collectionId, // New: Filter by Collection
+    String? languageCode, // New: Filter by Language
   });
   Future<(Failure?, Recipe?)> getRecipeDetails(String id);
   Future<(Failure?, List<Recipe>?)> getDashboardSuggestions({int limit = 10});
   Future<(Failure?, Recipe?)> createRecipe(Recipe recipe);
+  Future<(Failure?, Recipe?)> createMasterRecipe(Recipe recipe);
   Future<(Failure?, Recipe?)> forkRecipe(String originalRecipeId, String newTitle);
   
   // Phase 3.2: My Recipes & Bookmarks

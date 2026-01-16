@@ -8,6 +8,7 @@ abstract class OnboardingRemoteDataSource {
   Future<void> resetProfileConfig();
   Future<void> setPrimaryCook(String memberId);
   Future<List<Map<String, dynamic>>> getFamilyMembersFromTable();
+  Future<void> syncFamilyMembers(List<Map<String, dynamic>> membersData);
 }
 
 class OnboardingRemoteDataSourceImpl implements OnboardingRemoteDataSource {
@@ -86,6 +87,39 @@ class OnboardingRemoteDataSourceImpl implements OnboardingRemoteDataSource {
       return List<Map<String, dynamic>>.from(response);
     } catch (e) {
       return [];
+    }
+  }
+
+  @override
+  Future<void> syncFamilyMembers(List<Map<String, dynamic>> membersData) async {
+    try {
+      final user = supabaseClient.auth.currentUser;
+      if (user == null) throw Exception('Datasource operation failed');
+
+      // 1. Enrich data with user_id
+      final enrichedData = membersData.map((m) => {
+        ...m,
+        'user_id': user.id,
+      }).toList();
+
+      // 2. Upsert Members
+      await supabaseClient
+          .from('family_members')
+          .upsert(enrichedData); // Use enriched data
+
+      // 3. Delete removed members
+      // Get IDs from incoming list
+      final incomingIds = membersData.map((m) => m['id']).toList();
+      
+      // Delete any family member for this user that is NOT in the incoming list
+      await supabaseClient
+          .from('family_members')
+          .delete()
+          .eq('user_id', user.id)
+          .not('id', 'in', incomingIds);
+
+    } catch (e) {
+      throw Exception('Datasource operation failed: $e');
     }
   }
 }

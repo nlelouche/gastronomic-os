@@ -1,0 +1,480 @@
+﻿[
+  {
+    "title": "Dubai Style Veggie Smash Burger",
+    "description": "A Middle-Eastern inspired fusion burger utilizing the high-heat 'smash' technique to maximize Maillard reaction surface area, traditionally served on toasted paratha bread.",
+    "prep_time": "28 minutes",
+    "ingredients": [
+      "Plant-based Patty or Ground Lamb [Base]",
+      "Freshly Ground Chicken [Histamine]",
+      "Wheat Paratha Bread [Standard]",
+      "Cassava Flour Tortilla [Celiac, Paleo]",
+      "Iceberg Lettuce [Keto]",
+      "Roasted Red Pepper Sauce [Histamine]",
+      "Sumac and Za'atar Spices [Universal]",
+      "Fresh Tomatoes and Cucumber [Base]",
+      "Olive Oil [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Protein Preparation: Form 80g balls of your chosen protein. For Histamine protocols, use meat ground immediately before cooking; avoid pre-packaged or aged meats to minimize amine levels.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Use a plant-based meat alternative or spiced lamb.",
+          "Histamine": "Use freshly ground chicken or lamb; strictly avoid aged beef or processed patties."
+        }
+      },
+      {
+        "instruction": "The Smash Technique: Place the protein ball on a scorching hot cast-iron griddle. Use a heavy burger press or a small piece of parchment paper and a spatula to flatten the patty until it is less than 5mm thick. This maximizes the Maillard reaction, creating a deeply caramelized crust.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Flavor Activation: Sprinkle sumac and za'atar directly onto the searing meat. The heat releases the volatile oils in the thyme and sesame seeds, infusing the crust.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Bread Caramellization: Toast the serving vehicle in the rendered fats from the patty.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Lightly sear a wheat paratha until flaky and golden.",
+          "Celiac": "Toast a certified gluten-free cassava tortilla.",
+          "Keto": "Use large, cold iceberg lettuce leaves as a wrap; do not heat."
+        }
+      },
+      {
+        "instruction": "Aromatic Garnish: Apply the roasted red pepper sauce. For Histamine patients, this sauce provides the necessary acidity and color of tomatoes without the high histamine load of fresh or cooked tomatoes.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Service: Stack the smash patty with fresh cucumbers and serve folded. The crunch of the cucumber provides a thermal and textural contrast to the hot, spiced protein.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Hidden Zucchini Chicken Meatballs",
+    "description": "High-satiety meatballs engineered with integrated vegetable hydration, utilizing mechanical squeezing to prevent structural collapse while increasing fiber density.",
+    "prep_time": "29 minutes",
+    "ingredients": [
+      "Ground Chicken [Base]",
+      "Fresh Zucchini [Standard]",
+      "Grated Carrots [Low FODMAP]",
+      "Rice Flour [Low FODMAP, Celiac]",
+      "Egg [Standard]",
+      "Unsweetened Applesauce [Egg Allergy]",
+      "Fresh Parsley and Garlic [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Mechanical Hydration Control: Grate the zucchini or carrots. Critical Step: Place the grated vegetables in a clean kitchen towel and squeeze with maximum force to remove at least 50% of their water content. Failure to do so will result in 'weeping' and soggy meatballs.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Use grated zucchini (75g portion).",
+          "Low FODMAP": "Substitute zucchini with grated carrots to avoid mannitol triggers."
+        }
+      },
+      {
+        "instruction": "Protein Synthesis: Combine the ground chicken with the squeezed vegetables and seasonings in a cold bowl.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Binding Selection: Add the binding agent to hold the protein matrix during thermal processing.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Use 1 whole egg and wheat breadcrumbs.",
+          "Celiac": "Use rice flour as the structural binder.",
+          "Egg Allergy": "Use 1 tbsp of unsweetened applesauce; the pectin acts as a secondary binder for the chicken proteins."
+        }
+      },
+      {
+        "instruction": "Shaping: Roll into 3cm uniform spheres. A smaller size increases the surface-to-volume ratio, ensuring even cooking and better caramelization.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Thermal Processing: Sauté in a pan or bake at 200°C (400°F) for 15-18 minutes until the internal temperature reaches 74°C (165°F).",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Plating: Serve with a light herb-oil drizzle. The 'hidden' vegetables provide internal moisture, allowing the lean chicken to stay succulent.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Sunflower Seed Ricotta and Peach Toast",
+    "description": "A nutrient-dense, allergen-free alternative to dairy toast utilizing mechanical seed emulsification and controlled fruit leaching for mineral management.",
+    "prep_time": "30 minutes",
+    "ingredients": [
+      "Raw Sunflower Seeds [Base]",
+      "Fresh Peaches [Standard]",
+      "Artisan Sourdough [Standard]",
+      "Gluten-Free Bread [Celiac]",
+      "Lemon Juice and Maple Syrup [Universal]",
+      "Cinnamon [Universal]",
+      "Fresh Mint [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Seed Softening: Soak sunflower seeds in boiling water for 20 minutes. This softens the outer shell and begins the breakdown of phytic acid (antinutrients).",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Mechanical Emulsion: Drain the seeds and blend with lemon juice and a splash of water until a thick, creamy 'ricotta' texture is achieved. The mechanical energy of the blender emulsifies the seed fats with the added liquid.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Season with a pinch of salt.",
+          "Renal": "Limit portion to 2 tbsp as seeds are high in phosphorus."
+        }
+      },
+      {
+        "instruction": "Bread Preparation: Toast the bread until deeply golden. A firmer toast is required to support the weight of the dense seed ricotta.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Use artisan sourdough.",
+          "Celiac": "Use certified gluten-free rice or corn-based bread."
+        }
+      },
+      {
+        "instruction": "Fruit Mineral Control: Slice the peaches.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Use fresh, ripe peach slices.",
+          "Renal": "Peel and soak peach slices in a large volume of water for 2 hours (leaching) to reduce potassium levels significantly."
+        }
+      },
+      {
+        "instruction": "Assembly: Spread a thick layer of sunflower ricotta on the toast, top with peach slices, and sprinkle with cinnamon.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Final Garnish: Drizzle with maple syrup and fresh mint. Serve immediately to prevent the bread from absorbing moisture from the ricotta.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Cauliflower Fried Rice with Chicken",
+    "description": "A ketogenic pillar utilizing high-heat dry-frying to prevent vegetable sogginess while ensuring the deactivation of goitrogenic compounds through thorough thermal processing.",
+    "prep_time": "31 minutes",
+    "ingredients": [
+      "Cauliflower 'Rice' [Base]",
+      "Broccoli Florets [Low FODMAP]",
+      "Chicken Breast Cubes [Base]",
+      "Fresh Ginger and Garlic [Standard]",
+      "Coconut Aminos [Histamine, Soy Allergy]",
+      "Fresh Carrots [Universal]",
+      "Toasted Sesame Oil [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Dry-Frying Technique: In a large wok or skillet, sauté the cauliflower rice over high heat without oil for 5 minutes. This evaporates the internal vegetable water, preventing the typical 'mushy' texture of cauliflower rice.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Use cauliflower rice.",
+          "Low FODMAP": "Substitute cauliflower (high mannitol) with finely chopped broccoli florets or a 50/50 mix with leached white rice."
+        }
+      },
+      {
+        "instruction": "Thermal Deactivation: Ensure the cauliflower/broccoli is cooked until completely tender. This is chemically necessary for Thyroid protocols to deactivate isothiocyanates (goitrogens) that can interfere with iodine uptake.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Protein Searing: Push the vegetables to the side and add sesame oil. Sear the chicken breast cubes until golden and fully cooked.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Aromatic Integration: Add freshly grated ginger and diced carrots. Sauté for 3 minutes to maintain a slight crunch in the carrots.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Glazing: Pour in the Coconut Aminos. The natural sugars in the aminos will caramelize over the high-heat vegetables and protein.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Use soy sauce and minced garlic.",
+          "Histamine": "Strictly use Coconut Aminos and omit garlic; use fresh ginger for pungency."
+        }
+      },
+      {
+        "instruction": "Service: Serve in a bowl topped with scallion greens. The high-heat process ensures a 'fried rice' mouthfeel without the high carbohydrate load.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Keto Lettuce Wraps with Tuna and Egg",
+    "description": "A high-density nutrient meal designed for rapid weight control, utilizing an egg-based emulsion and managing mercury and histamine levels through strategic protein selection.",
+    "prep_time": "29 minutes",
+    "ingredients": [
+      "Large Lettuce Leaves (Romaine or Butter) [Base]",
+      "Canned Tuna in Water [Standard]",
+      "Fresh White Fish (Hake/Cod) [Histamine]",
+      "Cooked Salmon or Sardines [Pregnancy]",
+      "Hard-boiled Eggs [Base]",
+      "Additive-free Mayonnaise [Universal]",
+      "Mustard and Chili Flakes [Standard]"
+    ],
+    "steps": [
+      {
+        "instruction": "Protein Selection and Preparation: Select the protein base according to safety and inflammatory needs.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Drain canned tuna and flake with a fork.",
+          "Histamine": "Canned tuna is high in histamine. Substitute with freshly cooked and quickly cooled white fish (hake or cod).",
+          "Pregnancy": "Use low-mercury options like cooked sardines or salmon; avoid albacore tuna."
+        }
+      },
+      {
+        "instruction": "Inclusion Preparation: Finely dice the hard-boiled eggs. The yolk provides natural lecithin that helps stabilize the tuna-mayo mixture.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Binding Synthesis: Combine the protein, eggs, and mayonnaise in a bowl.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Season with mustard, salt, and chili flakes.",
+          "Histamine": "Use fresh homemade mayo without lemon juice; strictly omit mustard and chili flakes."
+        }
+      },
+      {
+        "instruction": "Vessel Preparation: Select large, turgid lettuce leaves. Trim the tough bottom stem to facilitate rolling without fracturing the leaf.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Assembly: Place 2 tbsp of the protein mixture in the center of a leaf. Roll tightly, folding in the sides like a burrito.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Service: Serve chilled. For Diabetes management, the high protein and fat content in this wrap ensures a near-zero glycemic response.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Smashed Broccoli with Parmesan Crust",
+    "description": "A technique-driven vegetable dish utilizing dual cooking—leaching followed by roasting—to achieve extreme Maillard caramelization while deactivating antinutrients.",
+    "prep_time": "34 minutes",
+    "ingredients": [
+      "Fresh Broccoli Florets [Base]",
+      "Grated Parmesan Cheese [Standard]",
+      "Almond Flour and Nutritional Yeast [Vegan, APLV]",
+      "Olive Oil [Universal]",
+      "Garlic Salt [Standard]",
+      "Red Pepper Flakes [Standard]"
+    ],
+    "steps": [
+      {
+        "instruction": "Softening Step: Boil or steam the broccoli florets until tender (approx. 5-7 minutes).",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Steam until bright green and tender.",
+          "Thyroid": "Boil the broccoli in a large volume of water to effectively leach and deactivate goitrogenic isothiocyanates, making it safer for Hashimoto's patients."
+        }
+      },
+      {
+        "instruction": "Mechanical Smashing: Arrange the tender florets on a baking sheet lined with parchment. Use the bottom of a heavy glass to 'smash' each floret until flat. This increases the surface area for roasting.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Surface Preparation: Pat each smashed floret dry with a paper towel. Residual water will create steam instead of a crust.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Umami Layering: Apply the crust components.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Brush with olive oil and top with a generous layer of grated parmesan and garlic salt.",
+          "Vegan": "Top with a mixture of 2 tbsp almond flour, 1 tbsp nutritional yeast, and garlic salt to create a similar cheesy crust."
+        }
+      },
+      {
+        "instruction": "High-Heat Roasting: Bake at 220°C (425°F) for 15-20 minutes. The goal is for the cheese (or vegan topping) to caramelize and the broccoli edges to become brittle and dark brown.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Plating: Serve as a crunchy snack or side dish. The crunch sound and the intense umami profile from the parmesan define this recipe's success.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Corn Ribs with Smoked Spices",
+    "description": "A technical deconstruction of the corn cob, utilizing a longitudinal cut to increase surface area for seasoning and convection-heat curling.",
+    "prep_time": "25 minutes",
+    "ingredients": [
+      "Fresh Corn on the Cob [Base]",
+      "Smoked Paprika [Universal]",
+      "Garlic Powder [Standard]",
+      "Avocado Aioli [Diabetes]",
+      "Olive Oil [Universal]",
+      "Sea Salt [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Mechanical Longitudinal Cut: Stand the corn ear vertically on a stable cutting board. Carefully cut the cob in half lengthwise, then into quarters. This creates 'ribs' that will curl when heated.",
+        "is_branch_point": false,
+        "cross_contamination_alert": "Be extremely careful with the knife; ensure a flat, stable surface for this cut."
+      },
+      {
+        "instruction": "Mineral Management: For Renal protocols, the corn ribs must undergo mineral reduction before roasting.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Proceed directly to seasoning.",
+          "Renal": "Boil the ribs in a large volume of water for 10 minutes (leaching) to reduce potassium and phosphorus loads found in fresh corn."
+        }
+      },
+      {
+        "instruction": "Spice Coating: In a bowl, toss the ribs with olive oil, smoked paprika, and garlic powder. The oil acts as the thermal conductor for the convection heat.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Convection Roasting: Air fry at 200°C (400°F) for 12-15 minutes or bake at high heat. The heat causes the cob fibers to contract and curl, resulting in the 'rib' shape.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Glycemic Buffer: Serve with a fat source to slow sugar absorption.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Serve with a sprinkle of lime and salt.",
+          "Diabetes": "Accompany with avocado aioli; the healthy fats blunt the insulin spike of the starchy corn."
+        }
+      },
+      {
+        "instruction": "Plating: Serve warm; the ribs are designed to be eaten by holding the cob 'handle' and biting the kernels.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Carrot Ribbons with Sesame-Ginger Dressing",
+    "description": "A high-digestibility salad using mechanical ribboning to change texture perception and facilitate gastrointestinal transit for sensitive stomachs.",
+    "prep_time": "28 minutes",
+    "ingredients": [
+      "Large Carrots [Base]",
+      "Toasted Sesame Oil [Universal]",
+      "Maple Syrup [Low FODMAP, Universal]",
+      "Rice Vinegar [Standard]",
+      "Fresh Ginger (Grated) [Universal]",
+      "Toasted Sesame Seeds [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Mechanical Processing: Use a vegetable peeler to create long, paper-thin ribbons from the carrots. This increases the surface area for dressing absorption and makes the fiber less taxing on the digestive system.",
+        "is_branch_point": false,
+        "instruction_note": "Carrots are a low-Low FODMAP 'wildcard' and can be consumed in generous amounts."
+      },
+      {
+        "instruction": "Digestibility Optimization: Adjust texture based on gastrointestinal motility.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Use raw ribbons for a crunchy, fresh texture.",
+          "Gastroparesis": "Lightly steam the carrot ribbons for 3 minutes until very tender to break down the cellulose fibers for easier gastric emptying."
+        }
+      },
+      {
+        "instruction": "Dressing Synthesis: Whisk together sesame oil, maple syrup, and freshly grated ginger. The ginger acts as a prokinetic agent, aiding digestion.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Add 1 tsp of rice vinegar.",
+          "Low FODMAP": "Use 1 tsp rice vinegar and 1 tsp maple syrup; both are safe in these portions."
+        }
+      },
+      {
+        "instruction": "Saturation: Toss the ribbons in the dressing until fully coated. Let sit for 5 minutes; the acid in the vinegar will lightly 'cook' the carrot ribbons, making them more flexible.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Final Garnish: Sprinkle with toasted sesame seeds for essential minerals and a nutty finish.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Crispy Rice Paper Dumplings",
+    "description": "A gluten-free gyoza alternative utilizing double-layered hydration for structural integrity and high-heat searing for a signature glass-like crunch.",
+    "prep_time": "25 minutes",
+    "ingredients": [
+      "Rice Paper Sheets [Base]",
+      "Ground Pork or Chicken [Standard]",
+      "Shredded Cabbage and Carrots [Base]",
+      "Fresh Ginger [Universal]",
+      "Tamari [Celiac]",
+      "Soy Sauce [Standard]",
+      "Sesame Oil [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Filling Synthesis: Sauté the ground meat, cabbage, carrots, and ginger in sesame oil until fully cooked. Technical Tip: The filling must be relatively dry; excess moisture will rupture the rice paper during frying.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Vessel Hydration: Briefly dip a rice paper sheet into warm water (3 seconds). Do not over-soak; the paper should still be slightly firm as it will continue to soften during assembly.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Double-Layering Hack: Place the filling in the center and fold into a square. Then, wrap this dumpling in a second hydrated rice paper sheet. This double layering is mandatory to achieve a crispy exterior without the dumpling breaking.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Thermal Processing: Place dumplings in a non-stick pan with a thin layer of oil. Do not let them touch each other as the rice starch is extremely adhesive when wet.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Pan-fry until golden-brown and crispy on both sides.",
+          "Diabetes": "Limit portion to 3 dumplings as rice paper is pure starch; ensure the filling is dense with fiber (cabbage) to mitigate the glucose spike."
+        }
+      },
+      {
+        "instruction": "Service: Serve with a dipping sauce of tamari or soy sauce mixed with rice vinegar. The dumplings should have a loud, audible crunch upon biting.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Baked Bang Bang Cauliflower",
+    "description": "A high-convection, non-fried version of the viral appetizer, using a creamy-spicy emulsion to encapsulate the vegetable or protein core.",
+    "prep_time": "18 minutes",
+    "ingredients": [
+      "Cauliflower Florets [Base]",
+      "Chicken Breast Cubes [IBS]",
+      "Firm Tofu [IBS]",
+      "Mayonnaise [Universal]",
+      "Sweet Chili Sauce [Standard]",
+      "Sriracha [Standard]",
+      "Raw Honey and Cayenne [Histamine]",
+      "Garlic Powder [Standard]"
+    ],
+    "steps": [
+      {
+        "instruction": "Core Preparation: Select the vessel for the Bang Bang sauce.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Use fresh cauliflower florets.",
+          "IBS": "Cauliflower is high in mannitol. Substitute with chicken cubes or firm tofu. If using broccoli, limit to 75g florets."
+        }
+      },
+      {
+        "instruction": "Thermal Roasting: Toss the florets or protein in oil and roast at 200°C (400°F) for 15 minutes. High convection is necessary to achieve slightly charred edges which will hold the sauce better.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Bang Bang Emulsion: Whisk the mayonnaise with the spicy elements. This sauce acts as a flavor buffer and a creamy coating.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Mix mayo, sweet chili sauce, sriracha, and garlic powder.",
+          "Histamine": "Use fresh additive-free mayo, 1 tbsp honey, and a pinch of cayenne; strictly avoid fermented chili sauces.",
+          "IBS": "Use garlic-free mayo and sriracha; ensure the chili sauce contains no garlic or onion solids."
+        }
+      },
+      {
+        "instruction": "Saturation: Toss the roasted core in the sauce until fully and evenly coated.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Final Char: Return to the oven or air fryer for 3 minutes. This 'sets' the sauce onto the core through slight caramelization.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Service: Garnish with scallion greens and serve immediately while hot and creamy.",
+        "is_branch_point": false
+      }
+    ]
+  }
+]

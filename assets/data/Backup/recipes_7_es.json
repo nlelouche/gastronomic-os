@@ -1,0 +1,394 @@
+﻿[
+  {
+  "title": "Latte con Capa Crujiente (Método de Cáscara de Chocolate Experiencial)",
+  "description": "Una bebida sensorial interactiva que utiliza la vitrificación criogénica del chocolate para crear una cáscara quebradiza que se fractura en fragmentos texturales dentro de una matriz de latte frío.",
+  "prep_time": "15 minutos",
+  "ingredients": [
+    "Chocolate con Leche o Negro de Alta Calidad [Base]",
+    "Chocolate Negro sin Azúcar (Endulzado con Alulosa) [Diabetes]",
+    "Espresso o Concentrado de Café Frío [Universal]",
+    "Leche o Alternativa Vegetal [Universal]",
+    "Cúbitos de Hielo [Universal]",
+    "Vaso de Plástico Flexible o Silicona [Estándar]"
+  ],
+  "steps": [
+    {
+      "instruction": "Licuefacción del Chocolate: Derrita el chocolate en el microondas usando intervalos de 20 segundos o mediante un baño maría.",
+      "is_branch_point": true,
+      "variant_logic": {
+        "Estándar": "Use chocolate negro o con leche estándar; asegúrese de no exceder los 45°C (113°F) para mantener la estabilidad.",
+        "Diabetes": "Use chocolate negro sin azúcar endulzado con alulosa; esto mantiene la viscosidad necesaria para la cáscara sin la carga glucémica."
+      }
+    },
+    {
+      "instruction": "Recubrimiento Interno: Vierta 3 cucharadas de chocolate derretido en un vaso flexible. Gire a un ángulo de 45 grados para un recubrimiento uniforme de 2 mm. Invierta brevemente para escurrir el exceso.",
+      "is_branch_point": false
+    },
+    {
+      "instruction": "Vitrificación Criogénica: Coloque el vaso recubierto en el congelador durante exactamente 10 minutos para alcanzar un estado quebradizo similar al vidrio.",
+      "is_branch_point": false
+    },
+    {
+      "instruction": "Ensamblaje de la Fase Líquida: Prepare la base de café y leche.",
+      "is_branch_point": true,
+      "variant_logic": {
+        "Estándar": "Llene el vaso con hielo, leche y café; use leche estándar o alternativas vegetales endulzadas.",
+        "Diabetes": "Use leche de almendras o soja sin endulzar y asegúrese de que el café no tenga jarabes añadidos; use estevia líquida si requiere dulzor adicional."
+      }
+    },
+    {
+      "instruction": "Activación Sensorial: Apriete firmemente los lados del vaso flexible con ambas manos para fracturar la cáscara en fragmentos. Sirva inmediatamente.",
+      "is_branch_point": false
+    }
+  ]
+},
+  {
+  "title": "Tanghulu (Método de Fruta de Vidrio Caramelizada)",
+  "description": "Un dulce asiático de alta precisión que utiliza la etapa de azúcar de 'punto de caramelo duro' para crear una cáscara vitrificada transparente de menos de 1 mm que se rompe al impactar.",
+  "prep_time": "20 minutos",
+  "ingredients": [
+    "Fresas Frescas o Uvas sin Semillas [Base]",
+    "Azúcar Granulada [Base]",
+    "Alulosa [Diabetes]",
+    "Agua Filtrada [Base]",
+    "Baño de Agua con Hielo [Universal]"
+  ],
+  "steps": [
+    {
+      "instruction": "Preparación de la Superficie: Lave la fruta y seque cada pieza meticulosamente con papel de cocina. Advertencia Técnica: Cualquier humedad residual en la superficie provocará sinéresis y disolverá la cáscara de azúcar instantáneamente.",
+      "is_branch_point": false
+    },
+    {
+      "instruction": "Ensartado: Ensarte 3 piezas de fruta en brochetas de bambú; asegúrese de que la fruta se mantenga turgente.",
+      "is_branch_point": false
+    },
+    {
+      "instruction": "Ingeniería del Jarabe: En un cazo hondo y estrecho, combine el endulzante y el agua.",
+      "is_branch_point": true,
+      "variant_logic": {
+        "Estándar": "Use azúcar granulada y agua en una proporción de peso 2:1. No remueva, ya que esto introduce aire y promueve la cristalización.",
+        "Diabetes": "Use alulosa y agua. La alulosa es el único endulzante apto para keto que puede vitrificarse en un vidrio duro; sin embargo, alcanza el punto de caramelo duro más rápido que la sacarosa. Vigile de cerca."
+      }
+    },
+    {
+      "instruction": "Monitoreo Térmico: Caliente a fuego medio-alto hasta alcanzar exactamente los 150°C (300°F). El almíbar debe presentar burbujas grandes que estallan lentamente.",
+      "is_branch_point": false
+    },
+    {
+      "instruction": "Vitrificación: Sumerja y gire rápidamente la brocheta en el almíbar para una capa fina; sumerja inmediatamente en agua con hielo por 5 segundos para vitrificar el vidrio.",
+      "is_branch_point": false
+    },
+    {
+      "instruction": "Servicio: Consumir dentro de los primeros 30 minutos; el vidrio de azúcar es higroscópico y se volverá pegajoso con la humedad.",
+      "is_branch_point": false
+    }
+  ]
+},
+  {
+    "title": "Huevos Fritos con Feta (Método Frico Crujiente)",
+    "description": "Un desayuno técnico cetogénico donde las grasas y proteínas del queso feta se someten a una reacción de Maillard para crear una falda 'frico' crujiente alrededor de un huevo escalfado al vapor.",
+    "prep_time": "10 minutos",
+    "ingredients": [
+      "Queso Feta Entero [Base]",
+      "Huevos Grandes Frescos [Base]",
+      "Tortilla Pequeña [Estándar]",
+      "Tortilla de Maíz [Celíaco]",
+      "Hojuelas de Chile y Pimienta Negra [Estándar]"
+    ],
+    "steps": [
+      {
+        "instruction": "Preparación Térmica: Precaliente una sartén antiadherente a fuego medio-alto. No añada aceite; el queso proporciona su propia matriz lipídica.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Formación del Frico: Desmenuce 40 g de feta en forma de anillo en la sartén, dejando un centro hueco. Espere 60 segundos hasta que el queso comience a burbujear y soltar grasas.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Inclusión del Huevo: Una vez que los bordes del feta muestren un dorado tostado, rompa el huevo en el centro; sazone con hojuelas de chile y pimienta; omita la sal, ya que el feta es naturalmente alto en sodio por su salmuera.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Fritura al Vapor: Cubra la sartén con una tapa ajustada durante 2-3 minutos. Esto atrapa el vapor para cocinar la clara del huevo en la parte superior mientras el calor directo carameliza la base del feta en una falda crujiente y sabrosa.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Preparación del Vehículo: Mientras el huevo se cocina, tueste ligeramente una tortilla sobre una llama abierta durante 10 segundos por lado para activar los almidones.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Use una tortilla pequeña de harina de trigo.",
+          "Celíaco": "Use una tortilla de maíz certificada sin gluten."
+        }
+      },
+      {
+        "instruction": "Servicio: Deslice el huevo y su borde crujiente sobre la tortilla; el chasquido del queso proporciona un contrapunto textural a la yema líquida.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+  "title": "Pan de Ajo Coreano con Queso Crema (Método de Saturación)",
+  "description": "Un híbrido de panadería de alta indulgencia que utiliza una técnica de inmersión por saturación para infundir el brioche con queso crema dulce y una crema de huevo y ajo salada.",
+  "prep_time": "25 minutos",
+  "ingredients": [
+    "Bollos de Brioche [Base]",
+    "Bollos de Brioche o Pan Suave Certificado sin Gluten [Celíaco]",
+    "Queso Crema [Base]",
+    "Azúcar Glas [Estándar]",
+    "Mantequilla sin Sal (Derretida) [Universal]",
+    "Ajo Picado [Universal]",
+    "Huevo Fresco [Estándar]",
+    "Perejil Seco [Universal]",
+    "Crema Espesa [Estándar]"
+  ],
+  "steps": [
+    {
+      "instruction": "Síntesis del Núcleo: Bata el queso crema, el azúcar glas y un chorrito de crema espesa hasta que esté ultra suave; transfiera a una manga pastelera con boquilla redonda de 1 cm.",
+      "is_branch_point": false
+    },
+    {
+      "instruction": "Arquitectura del Pan: Corte cada bollo en 6 cuñas iguales; detenga el corte 1 cm antes de la base para mantener la unidad estructural.",
+      "is_branch_point": true,
+      "variant_logic": {
+        "Estándar": "Use bollos de brioche de trigo frescos para obtener la máxima esponjosidad.",
+        "Celíaco": "Use bollos de brioche certificados sin gluten de alta calidad. Nota: Algunos panes sin gluten pueden ser más quebradizos; manipúlelos con cuidado durante el corte."
+      }
+    },
+    {
+      "instruction": "Inyección Interna: Dosifique el relleno generosamente en cada hueco, asegurándose de que llegue al centro mismo del bollo.",
+      "is_branch_point": false
+    },
+    {
+      "instruction": "Preparación del Baño Salado: Mezcle mantequilla derretida, ajo, huevo y perejil. El huevo actúa como un aglutinante estructural para mantener el recubrimiento espeso y brillante durante el horneado.",
+      "is_branch_point": false
+    },
+    {
+      "instruction": "Saturación: Sumerja toda la mitad superior del bollo en el baño de mantequilla y ajo durante 5 segundos hasta que la miga esté saturada.",
+      "is_branch_point": false
+    },
+    {
+      "instruction": "Horneado: Hornee a 180°C (350°F) durante 12 minutos hasta que el exterior logre un crujido caoba mientras el interior permanece fundido.",
+      "is_branch_point": false
+    }
+  ]
+},
+  {
+    "title": "Brownies de Mochi (Textura Q de Arroz Glutinoso)",
+    "description": "Un postre de fusión sin gluten que reemplaza la harina de trigo con harina de arroz glutinoso (Mochiko) para crear una textura elástica 'Q' característica y una intensidad de cacao profunda.",
+    "prep_time": "45 minutos",
+    "ingredients": [
+      "Harina de Arroz Glutinoso (Mochiko) [Base]",
+      "Cacao en Polvo Alto en Grasa [Base]",
+      "Mantequilla o Aceite de Coco [Universal]",
+      "Azúcar o Alulosa [Diabetes]",
+      "Huevos [Estándar]",
+      "Chips de Chocolate [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Mezcla de Matriz Seca: Bata la harina Mochiko con el cacao en polvo y el azúcar. Nota Técnica: Se requiere harina Mochiko; la harina de arroz estándar carece de la amilopectina necesaria para la textura masticable del mochi.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Use azúcar blanca granulada.",
+          "Diabetes": "Sustituya el azúcar por alulosa para mantener la humedad sin el pico glucémico."
+        }
+      },
+      {
+        "instruction": "Emulsificación: Incorpore batiendo la mantequilla derretida, los huevos y un chorrito de leche hasta formar una masa espesa y elástica; añada los chips de chocolate.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Procesamiento Térmico: Hornee a 175°C (350°F) durante 25-30 minutos; los brownies de mochi subirán ligeramente y luego colapsarán en una placa densa y cremosa.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Asentamiento Criogénico: Estos DEBEN enfriarse completamente antes de cortarlos; cortarlos mientras están calientes resultará en una miga pegajosa y sin formar.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Granizado de Fruta de 1 Ingrediente (Postre ASMR)",
+    "description": "Un postre helado sin azúcar añadido que utiliza el micro-raspado mecánico para transformar la fruta entera congelada en una textura ligera similar a la nieve.",
+    "prep_time": "10 minutos (+4h de congelación)",
+    "ingredients": [
+      "Sandía o Melocotones Congelados [Estándar]",
+      "Bayas Congeladas [Diabetes]",
+      "Mango Congelado [Alto Rendimiento]",
+      "Miel o Jarabe de Arce [Estándar]",
+      "Zumo de Lima [Universal]",
+      "Menta Fresca [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Preparación de la Fruta: Congele la fruta entera o en trozos grandes durante al menos 4 horas. Nota Técnica: La fruta debe estar sólida como una roca para permitir un micro-raspado limpio sin convertirse en papilla.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Use sandía o melocotones para una hidratación de alto volumen.",
+          "Diabetes": "Use fresas o frambuesas congeladas para una carga glucémica menor.",
+          "Alto Rendimiento": "Use mango o piña congelados para una rápida reposición de glucógeno."
+        }
+      },
+      {
+        "instruction": "Raspado Mecánico: Usando un Microplane o rallador fino, raspe la fruta congelada directamente en un bol de vidrio refrigerado; trabaje rápidamente para evitar que la 'nieve' se derrita.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Equilibrio de Sabor: Rocíe con una pequeña cantidad de miel y zumo de lima fresco; el ácido realza los ésteres naturales de la fruta.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Servicio: Decore con menta fresca y sirva inmediatamente; este postre se define por su sensación en boca 'polvorienta' única.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Tartas de Hojaldre Invertidas (Inversión Caramelizada)",
+    "description": "Una técnica viral donde los ingredientes se caramelizan directamente en la bandeja de horno antes de ser sellados con hojaldre, asegurando un acabado crujiente estilo 'tarta tatin'.",
+    "prep_time": "25 minutos",
+    "ingredients": [
+      "Hojaldre [Estándar]",
+      "Hojaldre sin Gluten [Celíaco]",
+      "Miel o Miel Picante [Estándar]",
+      "Chalotas o Cebolla Roja [Estándar]",
+      "Cebollino [Bajo en FODMAP]",
+      "Queso Brie o de Cabra [Estándar]",
+      "Crema de Anacardos [Vegano]"
+    ],
+    "steps": [
+      {
+        "instruction": "Base de Caramelo: Coloque pequeños charcos de miel o jarabe de arce en una bandeja forrada con pergamino.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Capas Aromáticas: Disponga los aromáticos directamente sobre el endulzante; esto asegura que se caramelicen en los azúcares durante el horneado.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Coloque chalotas en rodajas y una loncha de queso brie.",
+          "Bajo en FODMAP": "Coloque cebollino fresco y cheddar curado; evite estrictamente las cebollas.",
+          "Vegano": "Coloque rodajas de pera y una porción de crema de anacardos espesa."
+        }
+      },
+      {
+        "instruction": "Aplicación del Vehículo: Cubra cada montón con un cuadrado de hojaldre; selle los bordes con un tenedor.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Use hojaldre de trigo.",
+          "Celíaco": "Use hojaldre certificado sin gluten."
+        }
+      },
+      {
+        "instruction": "Procesamiento Térmico: Hornee a 200°C (400°F) durante 15-18 minutos; voltee inmediatamente después de sacar del horno para revelar la parte superior caramelizada.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Tostada de Yogur y Natillas (Hack de Coagulación Térmica)",
+    "description": "Un desayuno rico en proteínas que utiliza las propiedades de asentamiento por calor del huevo y el yogur para crear una capa de natillas cremosa que se hornea directamente sobre el pan.",
+    "prep_time": "15 minutos",
+    "ingredients": [
+      "Pan de Rebanada Gruesa [Estándar]",
+      "Pan sin Gluten [Celíaco]",
+      "Yogur Griego [Estándar]",
+      "Yogur de Coco [Vegano]",
+      "Huevo Fresco [Estándar]",
+      "Huevo de Lino [Vegano, Alergia al Huevo]",
+      "Arándanos [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Preparación del Vehículo: Presione el centro del pan con una cuchara para crear un hueco rectangular poco profundo; este actúa como contenedor para las natillas líquidas.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Síntesis de las Natillas: Bata el yogur y el huevo (o huevo de lino) hasta que sea homogéneo; las proteínas del huevo proporcionarán el 'cuajado' estructural al calentarse.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Mezcle 2 cucharadas de yogur griego con 1 huevo.",
+          "Vegano": "Mezcle yogur de coco espeso con 1 huevo de lino y 1 cucharadita de almidón de maíz."
+        }
+      },
+      {
+        "instruction": "Aplicación: Vierta las natillas en el hueco y cubra con bayas frescas.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Horneado: Cocine en la freidora de aire a 180°C (350°F) durante 10-12 minutos hasta que las natillas estén firmes y los bordes del pan estén tostados; sirva caliente.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Tostada de Aguacate con Huevo Rallado (Texturizado con Microplane)",
+    "description": "Un refinamiento textural de la tostada de aguacate que utiliza huevos pasados por agua rallados con Microplane para crear una cobertura de proteína ligera y aireada.",
+    "prep_time": "10 minutos",
+    "ingredients": [
+      "Huevos Pasados por Agua [Base]",
+      "Pan de Masa Madre [Estándar]",
+      "Pan sin Gluten [Celíaco]",
+      "Aguacate [Estándar]",
+      "Rábanos [Bajo en FODMAP]",
+      "Aceite de Chile [Estándar]"
+    ],
+    "steps": [
+      {
+        "instruction": "Preparación del Almidón: Tueste el pan hasta que esté muy firme para soportar el peso de los ingredientes.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Use tostada de masa madre artesanal.",
+          "Celíaco": "Use pan de arroz certificado sin gluten."
+        }
+      },
+      {
+        "instruction": "Base Lipídica: Triture el aguacate con sal y lima; para dietas Bajas en FODMAP, limite el aguacate a 30g y complete con rábanos en rodajas para dar volumen.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Paso de Texturizado: Usando un Microplane o rallador fino, ralle 2 huevos pasados por agua fríos sobre el aguacate hasta cubrirlo completamente de 'nieve de huevo'; esto aumenta el área de superficie para la absorción de sal y aceite de chile.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Servicio: Rocíe con aceite de chile y sirva inmediatamente; la ligereza del huevo rallado evita que la tostada se sienta pesada.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Dip de Feta Batido con Miel Picante",
+    "description": "Un dip de queso aireado que utiliza emulsificación mecánica de alta velocidad para equilibrar la salinidad de la leche de oveja con la acidez del yogur griego.",
+    "prep_time": "10 minutos",
+    "ingredients": [
+      "Queso Feta [Base]",
+      "Queso de Granja Fresco [Histamina]",
+      "Yogur Griego [Estándar]",
+      "Queso Crema [Estándar]",
+      "Ajo y Aceite de Oliva [Universal]",
+      "Miel Picante [Estándar]"
+    ],
+    "steps": [
+      {
+        "instruction": "Aireación a Alta Velocidad: Combine feta, yogur y queso crema en un procesador de alimentos; procese durante 3 minutos hasta que esté ultra suave y aligerado con aire.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Use feta entera y yogur griego.",
+          "Histamina": "Sustituya el feta por queso de granja fresco (<24h) y omita el ajo.",
+          "Vegano": "Procese anacardos remojados, limón y levadura nutricional."
+        }
+      },
+      {
+        "instruction": "Integración Aromática: Añada un diente de ajo y pulse brevemente; para dietas Bajas en FODMAP, use 1 cucharadita de aceite de ajo en su lugar.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Emplatado: Transfiera a un bol y cree un pozo en espiral con una cuchara.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Acabado 'Swicy': Llene el pozo con Miel Picante (miel mezclada con hojuelas de chile); sirva con pita caliente o rodajas de pepino.",
+        "is_branch_point": false
+      }
+    ]
+  }
+]

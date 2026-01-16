@@ -7,6 +7,17 @@ class RecipeDebugService {
 
   RecipeDebugService({required this.remoteDataSource});
 
+  Future<void> clearDatabase() async {
+    AppLogger.w('🧹 Clearing all recipes manually...');
+    try {
+      await remoteDataSource.clearAllRecipes();
+      AppLogger.i('✅ Database cleared successfully');
+    } catch (e) {
+      AppLogger.e('⚠️ Error clearing database', e);
+      rethrow;
+    }
+  }
+
   Future<void> seedDatabase({String? filterTitle}) async {
     AppLogger.w('🧹 Clearing existing recipes...');
     

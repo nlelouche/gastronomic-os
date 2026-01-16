@@ -12,11 +12,13 @@ class Recipe extends Equatable {
   final String? description;
   final String? coverPhotoUrl;
   final bool isPublic;
+  final String? prepTime;
   final DateTime createdAt;
   final List<String> ingredients;
   final List<RecipeStep> steps;
   final List<String> tags; // e.g. ['Vegan', 'Keto', 'Gluten-Free']
   final List<String> dietTags; // System calculated diets
+  final String languageCode; // 'es', 'en', etc.
   
   // Translations (Optional)
   final String? titleEn;
@@ -37,11 +39,13 @@ class Recipe extends Equatable {
     this.description,
     this.coverPhotoUrl,
     this.isPublic = true,
+    this.prepTime,
     required this.createdAt,
     this.ingredients = const [],
     this.steps = const [],
     this.tags = const [],
     this.dietTags = const [],
+    this.languageCode = 'es',
     this.titleEn,
     this.descriptionEn,
     this.ingredientsEn,
@@ -116,6 +120,7 @@ class Recipe extends Equatable {
     String? description,
     String? coverPhotoUrl,
     bool? isPublic,
+    String? prepTime,
     DateTime? createdAt,
     List<String>? ingredients,
     List<RecipeStep>? steps,
@@ -137,6 +142,7 @@ class Recipe extends Equatable {
       description: description ?? this.description,
       coverPhotoUrl: coverPhotoUrl ?? this.coverPhotoUrl,
       isPublic: isPublic ?? this.isPublic,
+      prepTime: prepTime ?? this.prepTime,
       createdAt: createdAt ?? this.createdAt,
       ingredients: ingredients ?? this.ingredients,
       steps: steps ?? this.steps,
@@ -153,6 +159,6 @@ class Recipe extends Equatable {
   @override
   List<Object?> get props => [
     id, authorId, createdByMemberId, originId, isFork, title, description, coverPhotoUrl, isPublic, createdAt, 
-    ingredients, steps, tags, dietTags, titleEn, descriptionEn, ingredientsEn, stepsEn
+    ingredients, steps, tags, dietTags, titleEn, descriptionEn, ingredientsEn, stepsEn, prepTime, languageCode
   ];
 }

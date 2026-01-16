@@ -244,6 +244,21 @@ class _SettingsViewState extends State<SettingsView> {
                               },
                               isDestructive: false, // Override
                             ),
+                            const Divider(height: 1),
+                            _buildSettingsTile(
+                              context,
+                              title: "PURGE DATABASE (Fix Recipes)",
+                              subtitle: "Deletes ALL recipes. Use if you see duplicates.",
+                              icon: Icons.delete_forever,
+                              iconColor: Colors.red,
+                              onTap: () {
+                                context.read<RecipeBloc>().add(ClearAllRecipes());
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(content: Text('Database Purged. Please Seed again.'))
+                                );
+                              },
+                              isDestructive: true,
+                            ),
                           ],
                         ),
                       ).animate().fadeIn(),

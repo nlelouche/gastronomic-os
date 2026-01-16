@@ -1,0 +1,394 @@
+﻿[
+  {
+  "title": "Cracking Latte (Experiential Chocolate Shell Method)",
+  "description": "An interactive sensory beverage utilizing cryogenic vitrification of chocolate to create a brittle shell that fractures into textural shards within a cold latte matrix.",
+  "prep_time": "15 minutes",
+  "ingredients": [
+    "High-Quality Dark or Milk Chocolate [Base]",
+    "Sugar-Free Dark Chocolate (Endulzado con Alulosa) [Diabetes]",
+    "Espresso or Concentrated Cold Brew [Universal]",
+    "Milk or Plant-based Alternative [Universal]",
+    "Ice Cubes [Universal]",
+    "Flexible Plastic or Silicone Cup [Standard]"
+  ],
+  "steps": [
+    {
+      "instruction": "Chocolate Liquefaction: Melt the chocolate in a microwave using 20-second intervals or via a double boiler.",
+      "is_branch_point": true,
+      "variant_logic": {
+        "Standard": "Use standard dark or milk chocolate; ensure it does not exceed 45°C (113°F) to maintain stability.",
+        "Diabetes": "Use sugar-free dark chocolate sweetened with allulose; this maintains the necessary viscosity for the shell without the glycemic load."
+      }
+    },
+    {
+      "instruction": "Internal Coating: Pour 3 tbsp of melted chocolate into a flexible cup. Rotate at a 45-degree angle for a uniform 2mm coating. Invert briefly to drain excess.",
+      "is_branch_point": false
+    },
+    {
+      "instruction": "Cryogenic Vitrification: Place the coated cup in the freezer for exactly 10 minutes to reach a glass-like brittle state.",
+      "is_branch_point": false
+    },
+    {
+      "instruction": "Liquid Phase Assembly: Prepare the coffee and milk base.",
+      "is_branch_point": true,
+      "variant_logic": {
+        "Standard": "Fill the cup with ice, milk, and coffee; use standard milk or sweetened plant alternatives.",
+        "Diabetes": "Use unsweetened almond or soy milk and ensure the coffee has no added syrups; use liquid stevia if additional sweetness is required."
+      }
+    },
+    {
+      "instruction": "Sensory Activation: Firmly squeeze the sides of the cup with both hands to fracture the shell into shards. Serve immediately.",
+      "is_branch_point": false
+    }
+  ]
+},
+ {
+  "title": "Tanghulu (Candied Fruit Glass Method)",
+  "description": "A high-precision Asian confection utilizing the 'Hard Crack' sugar stage to create a transparent, <1mm vitrified shell that shatters upon impact.",
+  "prep_time": "20 minutes",
+  "ingredients": [
+    "Fresh Strawberries or Seedless Grapes [Base]",
+    "Granulated Sugar [Base]",
+    "Allulose [Diabetes]",
+    "Filtered Water [Base]",
+    "Ice Water Bath [Universal]"
+  ],
+  "steps": [
+    {
+      "instruction": "Surface Preparation: Wash the fruit and dry each piece meticulously with paper towels. Technical Warning: Any residual surface moisture will trigger syneresis and dissolve the sugar shell instantly.",
+      "is_branch_point": false
+    },
+    {
+      "instruction": "Skewering: Thread 3 pieces of fruit onto bamboo skewers. Ensure the entry points are dry and the fruit remains turgid.",
+      "is_branch_point": false
+    },
+    {
+      "instruction": "Syrup Engineering: In a deep, narrow saucepan, combine the sweetener and water.",
+      "is_branch_point": true,
+      "variant_logic": {
+        "Standard": "Use granulated sugar and water in a 2:1 weight ratio. Do not stir, as this introduces air and promotes sucrose crystallization.",
+        "Diabetes": "Use allulose and water. Allulose is the only keto-friendly sweetener that can vitrify into a hard glass; however, it reaches the 'Hard Crack' stage faster than sucrose. Monitor closely."
+      }
+    },
+    {
+      "instruction": "Thermal Monitoring: Heat over medium-high until you reach the 'Hard Crack' stage at exactly 150°C (300°F). The syrup should exhibit large, slow-bursting bubbles.",
+      "is_branch_point": false
+    },
+    {
+      "instruction": "Vitrification: Quickly dip and rotate the fruit skewer in the syrup for a paper-thin coat. Immediately plunge into an ice water bath for 5 seconds to vitrify the sweetener into glass.",
+      "is_branch_point": false
+    },
+    {
+      "instruction": "Service: Consume within 30 minutes. Sugar glass is extremely hygroscopic and will become sticky in humid environments.",
+      "is_branch_point": false
+    }
+  ]
+},
+  {
+    "title": "Feta Fried Eggs (Crispy Frico Method)",
+    "description": "A ketogenic technical breakfast where the fats and proteins in feta cheese undergo a Maillard reaction to create a crispy 'frico' skirt around a steam-poached egg.",
+    "prep_time": "10 minutes",
+    "ingredients": [
+      "Full-fat Feta Cheese [Base]",
+      "Fresh Large Eggs [Base]",
+      "Small Tortilla [Standard]",
+      "Corn Tortilla [Celiac]",
+      "Chili Flakes and Black Pepper [Standard]"
+    ],
+    "steps": [
+      {
+        "instruction": "Thermal Prep: Preheat a non-stick skillet over medium-high. Do not add oil; the cheese provides its own lipid matrix.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Frico Formation: Crumble 40g of feta into a ring shape in the pan, leaving a hollow center. Wait 60 seconds until the cheese begins to bubble and release fats.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Egg Inclusion: Once the feta edges show golden browning, crack the egg into the center. Season with chili flakes and pepper. Omit salt, as feta is naturally high in sodium from its brine.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Steam-Frying: Cover the pan with a tight lid for 2-3 minutes. This traps steam to cook the egg white on top while the direct heat caramelizes the bottom of the feta into a savory skirt.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Vessel Preparation: While the egg cooks, lightly char a tortilla over an open flame for 10 seconds per side to activate the starches.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Use a small flour tortilla.",
+          "Celiac": "Use a certified gluten-free corn tortilla."
+        }
+      },
+      {
+        "instruction": "Service: Slide the egg and its crispy border onto the tortilla. The 'snap' of the cheese provides a textural counterpoint to the liquid yolk.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+  "title": "Korean Cream Cheese Garlic Bread (Saturation Method)",
+  "description": "A high-indulgence bakery hybrid utilizing a saturation-dipping technique to infuse brioche with sweet cream cheese and a savory garlic-egg custard.",
+  "prep_time": "25 minutes",
+  "ingredients": [
+    "Brioche Buns [Base]",
+    "Certified Gluten-Free Brioche or Hamburger Buns [Celiac]",
+    "Cream Cheese [Base]",
+    "Powdered Sugar [Standard]",
+    "Unsalted Butter (Melted) [Universal]",
+    "Minced Garlic [Universal]",
+    "Fresh Egg [Standard]",
+    "Dried Parsley [Universal]",
+    "Heavy Cream [Standard]"
+  ],
+  "steps": [
+    {
+      "instruction": "Core Synthesis: Whisk cream cheese, powdered sugar, and a splash of heavy cream until ultra-smooth. Transfer to a piping bag with a 1cm round tip.",
+      "is_branch_point": false
+    },
+    {
+      "instruction": "Bread Architecture: Slice each bun into 6 even wedges, stopping 1cm before the base to maintain structural unity.",
+      "is_branch_point": true,
+      "variant_logic": {
+        "Standard": "Use fresh wheat-based brioche buns for maximum fluffiness.",
+        "Celiac": "Use high-quality certified gluten-free brioche or soft buns. Note: Some GF breads may be more brittle; handle with care during the slicing phase."
+      }
+    },
+    {
+      "instruction": "Internal Injection: Pipe the filling generously into each gap, ensuring it reaches the very center of the bun.",
+      "is_branch_point": false
+    },
+    {
+      "instruction": "Savory Bath Preparation: Whisk melted butter, garlic, egg, and parsley. The egg acts as a structural binder to keep the coating thick and glossy during the bake.",
+      "is_branch_point": false
+    },
+    {
+      "instruction": "Saturation: Submerge the entire top half of the bun into the garlic-butter bath for 5 seconds until the crumb is saturated.",
+      "is_branch_point": false
+    },
+    {
+      "instruction": "Baking: Bake at 180°C (350°F) for 12 minutes until the exterior achieves a mahogany crunch while the interior remains molten.",
+      "is_branch_point": false
+    }
+  ]
+},
+  {
+    "title": "Mochi Brownies (Glutinous Rice Q-Texture)",
+    "description": "A gluten-free fusion dessert replacing wheat flour with glutinous rice flour (Mochiko) to create a signature elastic 'Q-texture' and deep cocoa intensity.",
+    "prep_time": "45 minutes",
+    "ingredients": [
+      "Glutinous Rice Flour (Mochiko) [Base]",
+      "High-Fat Cocoa Powder [Base]",
+      "Butter or Coconut Oil [Universal]",
+      "Sugar or Allulose [Diabetes]",
+      "Eggs [Standard]",
+      "Chocolate Chips [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Dry Matrix Blend: Whisk Mochiko with cocoa powder and sugar. Technical Note: Mochiko is required; standard rice flour lacks the necessary amylopectin for the chewy mochi texture.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Use white granulated sugar.",
+          "Diabetes": "Substitute sugar with allulose to maintain moisture without the glycemic spike."
+        }
+      },
+      {
+        "instruction": "Emulsification: Whisk in melted butter, eggs, and a splash of milk until a thick, elastic batter forms. Fold in chocolate chips.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Thermal Processing: Bake at 175°C (350°F) for 25-30 minutes. The mochi brownies will rise slightly and then collapse into a dense, fudgy slab.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Cryogenic Setting: These MUST cool completely before slicing. Cutting while warm will result in a sticky, unformed crumb.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "1-Ingredient Shaved Fruit Ice (ASMR Dessert)",
+    "description": "A zero-added-sugar frozen dessert utilizing mechanical micro-shaving to transform whole frozen fruit into a light, snow-like texture.",
+    "prep_time": "10 minutes (+4h freezing)",
+    "ingredients": [
+      "Frozen Watermelon or Peaches [Standard]",
+      "Frozen Berries [Diabetes]",
+      "Frozen Mango [High-Performance]",
+      "Honey or Maple Syrup [Standard]",
+      "Lime Juice [Universal]",
+      "Fresh Mint [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Fruit Preparation: Freeze whole fruit or large chunks for at least 4 hours. Technical Note: The fruit must be rock-solid to allow for clean micro-shaving without turning into mush.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Use watermelon or peaches for high-volume hydration.",
+          "Diabetes": "Use frozen strawberries or raspberries for a lower glycemic load.",
+          "High-Performance": "Use frozen mango or pineapple for rapid glycogen replenishment."
+        }
+      },
+      {
+        "instruction": "Mechanical Shaving: Using a Microplane or fine grater, shave the frozen fruit directly into a chilled glass bowl. Work quickly to prevent the 'snow' from melting.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Flavor Balancing: Drizzle with a small amount of honey and fresh lime juice. The acid enhances the natural fruit esters.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Service: Garnish with fresh mint and serve immediately. This dessert is defined by its unique 'powdery' mouthfeel.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Upside-Down Puff Pastry Tarts (Caramelized Inversion)",
+    "description": "A viral technique where toppings are caramelized directly on the baking sheet before being sealed with pastry, ensuring a crisp 'tart tatin' finish.",
+    "prep_time": "25 minutes",
+    "ingredients": [
+      "Puff Pastry [Standard]",
+      "Gluten-Free Puff Pastry [Celiac]",
+      "Honey or Hot Honey [Standard]",
+      "Shallots or Red Onion [Standard]",
+      "Chives [Low FODMAP]",
+      "Brie or Goat Cheese [Standard]",
+      "Cashew Cream [Vegan]"
+    ],
+    "steps": [
+      {
+        "instruction": "Caramel Base: Place small pools of honey or maple syrup on a parchment-lined sheet.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Aromatic Layering: Arrange aromatics directly on top of the sweetener. This ensures they caramelize in the sugars during baking.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Layer sliced shallots and a slice of brie.",
+          "Low FODMAP": "Layer fresh chives and hard cheddar; strictly avoid onions.",
+          "Vegan": "Layer sliced pears and a dollop of thick cashew cream."
+        }
+      },
+      {
+        "instruction": "Vessel Application: Cover each pile with a square of puff pastry. Crimp the edges with a fork to seal.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Use wheat puff pastry.",
+          "Celiac": "Use certified gluten-free puff pastry."
+        }
+      },
+      {
+        "instruction": "Thermal Processing: Bake at 200°C (400°F) for 15-18 minutes. Flip immediately after removing from the oven to reveal the caramelized top.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Custard Yogurt Toast (Thermal Coagulation Hack)",
+    "description": "A high-protein breakfast utilizing the heat-setting properties of egg and yogurt to create a creamy custard layer that bakes directly onto the bread.",
+    "prep_time": "15 minutes",
+    "ingredients": [
+      "Thick Sliced Bread [Standard]",
+      "Gluten-Free Bread [Celiac]",
+      "Greek Yogurt [Standard]",
+      "Coconut Yogurt [Vegan]",
+      "Fresh Egg [Standard]",
+      "Flax-egg [Vegan, Egg Allergy]",
+      "Blueberries [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Vessel Preparation: Press the center of the bread with a spoon to create a shallow rectangular well. This acts as the container for the liquid custard.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Custard Synthesis: Whisk yogurt and egg (or flax-egg) until homogeneous. The proteins in the egg will provide the structural 'set' upon heating.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Mix 2 tbsp Greek yogurt with 1 egg.",
+          "Vegan": "Mix thick coconut yogurt with 1 flax-egg and 1 tsp cornstarch."
+        }
+      },
+      {
+        "instruction": "Application: Pour the custard into the well and top with fresh berries.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Baking: Air fry at 180°C (350°F) for 10-12 minutes until the custard is firm and the bread edges are charred. Serve warm.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Grated Egg Avocado Toast (Microplane Texturizing)",
+    "description": "A textural refinement of avocado toast utilizing microplaned hard-boiled eggs to create a light, aerated protein topping.",
+    "prep_time": "10 minutes",
+    "ingredients": [
+      "Hard-boiled Eggs [Base]",
+      "Sourdough Bread [Standard]",
+      "Gluten-Free Bread [Celiac]",
+      "Avocado [Standard]",
+      "Radishes [Low FODMAP]",
+      "Chili Oil [Standard]"
+    ],
+    "steps": [
+      {
+        "instruction": "Starch Prep: Toast the bread until very firm to support the weight of the toppings.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Use artisan sourdough toast.",
+          "Celiac": "Use certified gluten-free rice bread."
+        }
+      },
+      {
+        "instruction": "Lipid Base: Mash avocado with salt and lime. For Low FODMAP, limit avocado to 30g and top with sliced radishes for volume.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Texturizing Step: Using a Microplane or fine grater, grate 2 cold hard-boiled eggs over the avocado until it is completely blanketed in 'egg snow'. This increases the surface area for salt and chili oil absorption.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Service: Drizzle with chili oil and serve immediately. The lightness of the grated egg prevents the toast from feeling heavy.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Whipped Feta Dip with Hot Honey",
+    "description": "An aerated cheese dip utilizing high-speed mechanical emulsification to balance sheep's milk salinity with Greek yogurt acidity.",
+    "prep_time": "10 minutes",
+    "ingredients": [
+      "Feta Cheese [Base]",
+      "Fresh Farmer's Cheese [Histamine]",
+      "Greek Yogurt [Standard]",
+      "Cream Cheese [Standard]",
+      "Garlic and Olive Oil [Universal]",
+      "Hot Honey [Standard]"
+    ],
+    "steps": [
+      {
+        "instruction": "High-Speed Aeration: Combine feta, yogurt, and cream cheese in a food processor. Process for 3 minutes until ultra-smooth and lightened with air.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Use full-fat feta and Greek yogurt.",
+          "Histamine": "Substitute feta with fresh Farmer's cheese (<24h) and omit garlic.",
+          "Vegan": "Process soaked cashews, lemon, and nutritional yeast."
+        }
+      },
+      {
+        "instruction": "Aromatic Integration: Add a clove of garlic and pulse briefly. For Low FODMAP, use 1 tsp of garlic-infused oil instead.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Plating: Transfer to a bowl and create a spiral well with a spoon.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Swicy Finish: Fill the well with Hot Honey (honey mixed with chili flakes). Serve with warm pita or cucumber rounds.",
+        "is_branch_point": false
+      }
+    ]
+  }
+]

@@ -42,6 +42,7 @@ class RecipeRepositoryImpl implements IRecipeRepository {
         limit: 100, // Fetch more for personal list
         authorId: userId,
         isFork: isFork,
+        excludedTags: ['System Master'], // Hide master recipes from My Recipes view
       );
       return (null, result);
     } catch (e, s) {
@@ -94,15 +95,19 @@ class RecipeRepositoryImpl implements IRecipeRepository {
     List<String>? excludedTags,
     List<String>? pantryItems,
     String? collectionId,
+    String? languageCode,
   }) async {
     try {
       // 1. Fetch from Remote (Raw List)
+      AppLogger.d('🔍 getRecipes called with languageCode: $languageCode, excludedTags: $excludedTags');
+      
       final rawResult = await remoteDataSource.getRecipes(
         limit: limit, 
         offset: offset, 
         query: query, 
         excludedTags: excludedTags,
         collectionId: collectionId,
+        languageCode: languageCode,
       );
 
       var recipes = rawResult!; // Assuming non-null if no error throw
@@ -206,6 +211,24 @@ class RecipeRepositoryImpl implements IRecipeRepository {
         }),
       );
       await ErrorReporter.instance.reportError(failure);
+      return (failure, null);
+    }
+  }
+
+  @override
+  Future<(Failure?, Recipe?)> createMasterRecipe(Recipe recipe) async {
+    try {
+      // Reverted System ID strategy due to RLS 42501.
+      // Now we use the current user but rely on "System Master" tag to filter view.
+      final result = await remoteDataSource.createRecipe(recipe);
+      cacheService.invalidate();
+      return (null, result);
+    } catch (e, stackTrace) {
+       final failure = ExceptionHandler.handle(
+        e,
+        stackTrace: stackTrace,
+        context: ErrorContext.repository('createMasterRecipe'),
+      );
       return (failure, null);
     }
   }

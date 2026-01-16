@@ -1,0 +1,441 @@
+﻿[
+  {
+    "title": "Chicken Crust Pizza (Carnivore/Keto)",
+    "description": "A high-performance, zero-carb pizza foundation utilizing the thermal binding of poultry proteins and egg albumin to create a sturdy, savory base.",
+    "prep_time": "30 minutes",
+    "ingredients": [
+      "Ground Chicken (Extra lean) [Base]",
+      "Fresh Whole Egg [Standard, Keto, Paleo]",
+      "Boiled and Leached Cauliflower [Renal]",
+      "Rice Flour [Renal]",
+      "Grated Parmesan or Mozzarella [Keto]",
+      "Marinara Sauce [Standard]",
+      "Nomato Sauce [Histamine, Renal]",
+      "Italian Herbs [Universal]",
+      "Sea Salt [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Base Matrix Synthesis: Combine the protein source with the binding agent. For standard Keto, mix 500g ground chicken with 1 egg and 1/4 cup parmesan. The cheese and egg proteins act as a structural glue during the denaturation process.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Mix ground chicken, egg, and parmesan into a cohesive paste.",
+          "Renal": "Substitute chicken with a 50/50 mix of leached cauliflower and rice flour to reduce phosphorus and protein density while maintaining shape."
+        }
+      },
+      {
+        "instruction": "Mechanical Forming: Place the mixture on high-quality parchment paper. Top with a second sheet and use a rolling pin to flatten to a uniform 5mm thickness. Remove the top sheet.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Primary Thermal Processing: Bake the crust at 200°C (400°F) for 15-20 minutes. Technical Tip: The crust must be fully par-baked and golden-brown to ensure it can support the weight of the toppings without structural failure.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Hydration Barrier Application: Spread the sauce base over the par-baked crust. Selection depends on inflammatory or mineral protocols.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Apply 1/4 cup low-sugar marinara sauce.",
+          "Histamine": "Apply 1/4 cup Nomato sauce to eliminate solanine and histamine triggers.",
+          "Renal": "Apply a thin layer of Nomato sauce to manage potassium."
+        }
+      },
+      {
+        "instruction": "Topping and Final Melt: Add cheese and preferred toppings. Return to the oven for 8-10 minutes until the cheese is bubbling and the edges are ultra-crisp.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Stabilization: Let the pizza rest for 3 minutes before cutting. This allows the protein fibers to contract, ensuring clean, liftable slices.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Sweet Potato Flourless Brownies",
+    "description": "A dense, fudgy dessert utilizing the natural humectant properties of vegetable starch to replace wheat flour, ensuring high moisture retention.",
+    "prep_time": "40 minutes",
+    "ingredients": [
+      "Smooth Sweet Potato Puree [Base, Standard]",
+      "Smooth Pumpkin Puree [Low FODMAP]",
+      "Creamy Almond Butter [Standard]",
+      "Cocoa Powder [Standard]",
+      "Carob Powder [Histamine]",
+      "Maple Syrup or Stevia [Universal]",
+      "Dark Chocolate Chips [Universal]",
+      "Vanilla Extract [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Humectant Preparation: Prepare the vegetable base. The puree provides the structural 'crumb' and essential moisture to the fat-heavy brownie matrix.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Use 1 cup of roasted and blended sweet potato puree.",
+          "Low FODMAP": "Substitute sweet potato with pumpkin puree to remain within safe mannitol/polyol limits."
+        }
+      },
+      {
+        "instruction": "Lipid Integration: Whisk the vegetable puree with almond butter and vanilla. The fats in the nut butter provide the signature 'fudgy' mouthfeel of flourless bakes.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Dry Phase Incorporation: Sift the dry flavor agents into the wet base to prevent clumping.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Use 1/2 cup high-quality cocoa powder.",
+          "Histamine": "Substitute cocoa with carob powder to avoid histamine liberators and caffeine.",
+          "Diabetes": "Use liquid stevia or erythritol and strictly unsweetened cocoa powder."
+        }
+      },
+      {
+        "instruction": "Inclusion Loading: Gently fold in dark chocolate chips. These act as 'flavor pockets' that melt during baking and reset into a snappy texture upon cooling.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Bake: Pour into a 20x20cm lined pan. Bake at 175°C (350°F) for 25-30 minutes. Technical Tip: The brownies will look underbaked in the center; they must 'set' through residual heat to maintain moisture.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Cryogenic Set: Chill in the refrigerator for at least 2 hours before slicing. Cutting while warm will cause the brownies to crumble rather than hold their shape.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Adaptive Zucchini Banana Bread",
+    "description": "A moisture-engineered quick bread designed to optimize nutrient density while managing high-potassium fruit intake for specific clinical safety.",
+    "prep_time": "60 minutes",
+    "ingredients": [
+      "Overripe Mashed Bananas [Standard]",
+      "Grated Zucchini (Squeezed) [Renal, Standard]",
+      "Banana Essence [Renal]",
+      "All-purpose Flour (Wheat or GF) [Base]",
+      "Fresh Eggs [Standard]",
+      "Flax-egg & Coconut Yogurt [Vegan]",
+      "Unsalted Butter or Coconut Oil [Universal]",
+      "Cinnamon and Baking Soda [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Hydration Balance: If using zucchini, grate it and squeeze through a kitchen towel to remove 50% of the water. Technical Note: This prevents the bread from becoming heavy and gummy.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Structural Moisture Synthesis: Selection of the fruit/vegetable base is critical for potassium management.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Whisk 3 mashed bananas with eggs and butter.",
+          "Renal": "Substitute bananas with 1 cup grated zucchini and 1 tsp banana essence to achieve flavor without the extreme potassium load.",
+          "Vegan": "Use a combination of coconut yogurt and flax-eggs to provide protein binding without animal fats."
+        }
+      },
+      {
+        "instruction": "Dry Integration: Fold the dry ingredients into the wet mixture until just combined. Do not overmix; over-activation of gluten results in a tough, elastic crumb.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Thermal Processing: Bake at 175°C (350°F) in a loaf pan for 50-60 minutes. The internal temperature should reach 90-95°C for a fully cooked crumb.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Service: Let cool completely on a wire rack to allow steam to escape, which prevents the base from becoming soggy.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Nomato Sauce (Tomato Substitute)",
+    "description": "A technical master sauce for renal and low-histamine protocols, replicating the pH, color, and viscosity of tomato sauce using root vegetable starch.",
+    "prep_time": "45 minutes",
+    "ingredients": [
+      "Large Carrots [Base]",
+      "Beets (Fresh or Roasted) [Base]",
+      "Celery Stalks [Base]",
+      "Diced White Onion [Standard]",
+      "Garlic-infused Oil [Low FODMAP]",
+      "Fresh Garlic [Standard]",
+      "Vitamin C Powder or Lemon Juice [Universal]",
+      "Sea Salt [Universal]",
+      "Beet Juice [Optional for color]"
+    ],
+    "steps": [
+      {
+        "instruction": "Root Mineral Management: Peel and cube the carrots, beets, and celery.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Proceed to sautéing.",
+          "Renal": "Boil the roots in a large volume of water for 15 minutes and discard the water (leaching) to remove excess potassium before final cooking."
+        }
+      },
+      {
+        "instruction": "Aromatic Base: Sauté onions and garlic until translucent. For Low FODMAP, use garlic-infused oil and omit solid garlic/onions.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Softening and Reduction: Add the roots and just enough broth to cover. Simmer for 20 minutes until the vegetables have completely softened and the pectin is ready for emulsification.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Mechanical Liquefaction: Blend the mixture in a high-speed blender until ultra-smooth. Add beet juice if a brighter red hue is desired.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "pH Adjustment and Acidity: Whisk in the acid source. This is technically required to replicate the bright, sharp notes of a tomato.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Add 1 tbsp lemon juice or red wine vinegar.",
+          "Histamine": "Use 1/4 tsp of pure Vitamin C (ascorbic acid) powder to provide tartness without histamine triggers found in vinegar."
+        }
+      },
+      {
+        "instruction": "Service: Use as a 1:1 replacement for marinara in pasta, pizza, or stews.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Soy Sauce Substitute (False Soy)",
+    "description": "A savory, non-fermented liquid seasoning providing deep umami and salinity for patients with soy allergies or high histamine sensitivity.",
+    "prep_time": "20 minutes",
+    "ingredients": [
+      "Beef Bone Broth (Concentrated) [Base]",
+      "Molasses or Dark Brown Sugar [Base]",
+      "Coconut Aminos [Histamine, Soy Allergy]",
+      "Sea Salt [Universal]",
+      "Apple Cider Vinegar [Standard]",
+      "Vitamin C Powder [Histamine]"
+    ],
+    "steps": [
+      {
+        "instruction": "Umami Base Selection: Select the foundation for the substitute.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "In a saucepan, combine concentrated beef bone broth and molasses.",
+          "Histamine": "Use pure Coconut Aminos as the base, as bone broth can be high in histamine; skip the reduction step."
+        }
+      },
+      {
+        "instruction": "Thermal Reduction: For the broth base, simmer over medium-high heat for 10-12 minutes until reduced by half. This concentrates the natural glutamates to mimic the intensity of soy sauce.",
+        "is_branch_point": false,
+        "skipped_for_diets": ["Histamine"]
+      },
+      {
+        "instruction": "Acidity and Balance: Whisk in the acidic component to provide the signature 'tang'.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Add apple cider vinegar and a pinch of salt.",
+          "Histamine": "If using Coconut Aminos, add a pinch of Vitamin C powder to enhance the sharp profile without fermentation products."
+        }
+      },
+      {
+        "instruction": "Service: Bottle and refrigerate. This sauce is technically stable for 2 weeks in the refrigerator.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+  "title": "Strawberry Tiramisu (Strawberries and Cream)",
+  "description": "A modern aesthetic adaptation of the classic Italian dessert, utilizing a bright fruit-syrup reduction to soften the ladyfingers instead of coffee.",
+  "prep_time": "30 minutes (+4h chilling)",
+  "ingredients": [
+    "Ladyfingers (Savoiardi) [Base]",
+    "Gluten-Free Ladyfingers [Celiac]",
+    "Fresh Strawberries [Base]",
+    "Mascarpone Cheese [Standard]",
+    "Heavy Whipping Cream [Standard]",
+    "Strawberry Jam or Syrup [Universal]",
+    "Orange Liqueur [Optional]",
+    "Lemon Juice and Sugar [Universal]"
+  ],
+  "steps": [
+    {
+      "instruction": "Acidic Soaking Liquid Synthesis: Blend 1 cup of fresh strawberries with 2 tbsp sugar and a splash of lemon juice. Strain through a fine-mesh sieve to remove seeds.",
+      "is_branch_point": false
+    },
+    {
+      "instruction": "Cream Matrix Preparation: Whisk cold mascarpone with heavy cream and strawberry jam until stiff, stable peaks form.",
+      "is_branch_point": false
+    },
+    {
+      "instruction": "Vessel Assembly: Quickly dip each ladyfinger into the strawberry syrup.",
+      "is_branch_point": true,
+      "variant_logic": {
+        "Standard": "Use traditional Savoiardi ladyfingers; dip for exactly 2 seconds to ensure hydration without collapse.",
+        "Celiac": "Use certified gluten-free ladyfingers; reduce dipping time to 1 second as they tend to be more porous and absorb liquid faster."
+      }
+    },
+    {
+      "instruction": "Architectural Layering: Place a layer of dipped ladyfingers in a glass dish. Spread half of the pink cream matrix over them, followed by a layer of finely sliced fresh strawberries. Repeat once more.",
+      "is_branch_point": false
+    },
+    {
+      "instruction": "Cryogenic Maturation: Refrigerate for at least 4 hours to allow for moisture transfer.",
+      "is_branch_point": true,
+      "variant_logic": {
+        "Standard": "Garnish with fresh strawberries and orange liqueur if desired.",
+        "Histamine": "Serve immediately after the 4-hour set; strictly omit the orange liqueur to avoid biogenic amine triggers."
+      }
+    }
+  ]
+},
+  {
+    "title": "Blueberry Crumble Cheesecake Bars",
+    "description": "A technical triple-layered dessert utilizing the natural pectin of blueberries to create a fruit-gel barrier between the cream cheese and the crumble.",
+    "prep_time": "50 minutes",
+    "ingredients": [
+      "Graham Cracker Crumbs [Base]",
+      "Cream Cheese (Full fat) [Standard]",
+      "Fresh or Frozen Blueberries [Universal]",
+      "Cornstarch [Universal]",
+      "Unsalted Butter (Melted) [Universal]",
+      "All-purpose Flour [Standard]",
+      "Sugar or Erythritol [Standard, Diabetes]"
+    ],
+    "steps": [
+      {
+        "instruction": "Structural Foundation: Mix Graham cracker crumbs with melted butter and press firmly into a 20x20cm pan. Pre-bake at 175°C (350°F) for 10 minutes to form a heat-sealed moisture barrier.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Lipid Layer: Whisk cream cheese, sugar, and one egg until completely smooth. Pour over the hot crust.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Moisture Management Layer: Toss the blueberries with 1 tsp of cornstarch and 1 tbsp of sugar. The cornstarch is technically required to absorb the fruit water released during the bake, preventing a soggy cheesecake.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Textural Finish: Mix flour, sugar, and cold butter pieces until a sandy crumble forms. Sprinkle generously over the blueberries.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Use wheat flour and white sugar.",
+          "Diabetes": "Substitute flour with almond flour and sugar with erythritol for a lower glycemic index."
+        }
+      },
+      {
+        "instruction": "Thermal Consolidation: Bake for 35-40 minutes until the blueberries have burst and the crumble is golden-brown. Chill for at least 3 hours before slicing into bars.",
+        "is_branch_point": false
+      }
+    ]
+  },
+{
+  "title": "Cinnamon Toast Crunch Bread",
+  "description": "A nostalgia-driven quick bread featuring a high-density cinnamon-sugar swirl and a crispy butter-sugar 'crunch' crust.",
+  "prep_time": "65 minutes",
+  "ingredients": [
+    "All-purpose Flour [Base]",
+    "Gluten-Free All-purpose Flour (with Xanthan Gum) [Celiac]",
+    "Milk and Eggs [Base]",
+    "Cinnamon [Universal]",
+    "Brown Sugar and White Sugar [Universal]",
+    "Unsalted Butter [Universal]",
+    "Vanilla Extract [Universal]",
+    "Baking Powder [Universal]"
+  ],
+  "steps": [
+    {
+      "instruction": "Batter Synthesis: Whisk together the wet ingredients (milk, egg, butter, vanilla) and the dry ingredients (flour, baking powder, salt).",
+      "is_branch_point": true,
+      "variant_logic": {
+        "Standard": "Use standard all-purpose wheat flour; do not overmix to avoid developing gluten, ensuring a tender crumb.",
+        "Celiac": "Use a certified gluten-free all-purpose blend; ensure it contains xanthan gum for structural stability. Let the batter rest for 10 minutes before baking to hydrate the alternative starches."
+      }
+    },
+    {
+      "instruction": "The Swirl Protocol: Pour half the batter into a greased loaf pan. Sprinkle a heavy layer of cinnamon and brown sugar over it. Add the remaining batter.",
+      "is_branch_point": false
+    },
+    {
+      "instruction": "Internal Diffusion: Use a butter knife to create a figure-eight pattern through the batter. This distributes the cinnamon sugar into 'ribbons' that will caramelize inside the bread.",
+      "is_branch_point": false
+    },
+    {
+      "instruction": "Crystallization Top: Mix 2 tbsp melted butter with 2 tbsp sugar and 1 tsp cinnamon. Spread this over the top. This layer will dehydrate in the oven, creating the signature 'crunch'.",
+      "is_branch_point": false
+    },
+    {
+      "instruction": "Thermal Consolidation: Bake at 175°C (350°F) for 55-60 minutes until the crust is brittle and a toothpick comes out clean.",
+      "is_branch_point": false
+    }
+  ]
+},
+ {
+  "title": "Nanaimo Bars (Classic Canadian No-Bake)",
+  "description": "A high-stability, triple-layered architectural dessert focusing on a custard-powder buttercream center and a tempered chocolate ganache seal.",
+  "prep_time": "40 minutes (+2h chilling)",
+  "ingredients": [
+    "Graham Cracker Crumbs [Base]",
+    "Gluten-Free Graham Cracker Crumbs [Celiac]",
+    "Shredded Coconut [Base]",
+    "Cocoa Powder [Base]",
+    "Butter [Universal]",
+    "Bird's Custard Powder [Base]",
+    "Icing Sugar [Standard]",
+    "Dark Chocolate [Universal]"
+  ],
+  "steps": [
+    {
+      "instruction": "Foundation Matrix: Melt butter with cocoa and sugar. Stir in an egg to thicken (pasteurize), then fold in the crumbs and coconut.",
+      "is_branch_point": true,
+      "variant_logic": {
+        "Standard": "Use standard wheat-based Graham cracker crumbs; the coconut provides the structural fiber to support the layers above.",
+        "Celiac": "Use certified gluten-free Graham cracker crumbs or a 50/50 mix of almond flour and GF oat crumbs to maintain the base integrity."
+      }
+    },
+    {
+      "instruction": "Custard Synthesis: Whisk softened butter with icing sugar and custard powder.",
+      "is_branch_point": false,
+      "instruction_note": "Custard powder is essential for the authentic yellow hue and vanilla-malt profile."
+    },
+    {
+      "instruction": "Ganache Sealing: Melt dark chocolate with 1 tsp of butter. Pour over the custard layer and tilt the pan for a glossy, level finish.",
+      "is_branch_point": false
+    },
+    {
+      "instruction": "Precision Slicing: Chill for 2 hours. To avoid cracking the chocolate when cutting, use a hot knife (dipped in boiling water and wiped dry) for every single slice.",
+      "is_branch_point": false
+    }
+  ]
+},
+ {
+  "title": "Banoffee Pie (5-Ingredient Express)",
+  "description": "A dessert engineered around the molecular synergy of fresh bananas and dairy caramel (Dulce de Leche), utilizing fat-buffering to prevent fruit oxidation.",
+  "prep_time": "20 minutes",
+  "ingredients": [
+    "Digestive Biscuits or Graham Crackers [Base]",
+    "Gluten-Free Digestive Biscuits [Celiac]",
+    "Unsalted Butter (Melted) [Universal]",
+    "Dulce de Leche [Base]",
+    "Fresh Bananas [Base]",
+    "Heavy Whipping Cream [Standard]",
+    "Dark Chocolate Shavings [Universal]"
+  ],
+  "steps": [
+    {
+      "instruction": "Lipid Base Construction: Combine crushed biscuits with melted butter and press into a pie tin.",
+      "is_branch_point": true,
+      "variant_logic": {
+        "Standard": "Use standard wheat-based Digestive or Graham crackers.",
+        "Celiac": "Use certified gluten-free digestive biscuits; ensure they are crushed to a fine sand consistency to improve the cohesion of the base."
+      }
+    },
+    {
+      "instruction": "Caramel Saturation: Spread a thick, even layer of Dulce de Leche over the base.",
+      "is_branch_point": false,
+      "instruction_note": "Technical Tip: If the caramel is too thick, warm it for 10 seconds to improve spreadability without breaking the biscuit base."
+    },
+    {
+      "instruction": "Fruit Layering and Protection: Slice bananas into 1cm rounds and arrange them in a tight spiral. Ensure they are fully covered in the next step; the heavy cream will act as an oxygen barrier to prevent browning.",
+      "is_branch_point": false
+    },
+    {
+      "instruction": "Aerated Matrix Topping: Whisk heavy cream to stiff peaks and spread over the bananas.",
+      "is_branch_point": false,
+      "instruction_note": "Do not add sugar; the caramel provides sufficient glycemic load."
+    },
+    {
+      "instruction": "Final Garnish: Top with chocolate shavings and serve chilled.",
+      "is_branch_point": false
+    }
+  ]
+}
+]

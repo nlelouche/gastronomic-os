@@ -4,6 +4,7 @@ import 'package:gastronomic_os/features/recipes/domain/entities/recipe.dart';
 import 'package:gastronomic_os/features/recipes/data/models/recipe_step_model.dart';
 import 'package:gastronomic_os/features/recipes/presentation/bloc/recipe_bloc.dart';
 import 'package:gastronomic_os/features/recipes/presentation/bloc/recipe_event.dart';
+import 'package:gastronomic_os/features/recipes/presentation/bloc/recipe_state.dart';
 import 'package:gastronomic_os/l10n/generated/app_localizations.dart';
 import 'package:gastronomic_os/core/theme/app_dimens.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -221,7 +222,6 @@ class _RecipeEditorPageState extends State<RecipeEditorPage> {
         );
         context.read<RecipeBloc>().add(CreateRecipe(newRecipe));
       }
-      Navigator.pop(context);
     }
   }
 
@@ -229,16 +229,37 @@ class _RecipeEditorPageState extends State<RecipeEditorPage> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.initialRecipe == null ? AppLocalizations.of(context)!.editorNewTitle : AppLocalizations.of(context)!.editorEditTitle),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.save),
-            onPressed: _saveRecipe,
-          )
-        ],
-      ),
+    return BlocListener<RecipeBloc, RecipeState>(
+      listener: (context, state) {
+        if (state is RecipeLoaded || state is RecipeDetailLoaded) {
+          // Success
+          Navigator.pop(context, true);
+        } else if (state is RecipeError) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(state.message)),
+          );
+        }
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(widget.initialRecipe == null ? AppLocalizations.of(context)!.editorNewTitle : AppLocalizations.of(context)!.editorEditTitle),
+          actions: [
+            BlocBuilder<RecipeBloc, RecipeState>(
+              builder: (context, state) {
+                if (state is RecipeLoading) {
+                  return const Padding(
+                    padding: EdgeInsets.all(16.0),
+                    child: SizedBox(width: 20, height: 20, child: CircularProgressIndicator(strokeWidth: 2)),
+                  );
+                }
+                return IconButton(
+                  icon: const Icon(Icons.save),
+                  onPressed: _saveRecipe,
+                );
+              },
+            )
+          ],
+        ),
       body: Form(
         key: _formKey,
         child: SingleChildScrollView(
@@ -363,7 +384,7 @@ class _RecipeEditorPageState extends State<RecipeEditorPage> {
           ),
         ),
       ),
-    );
+    ));
   }
 }
 

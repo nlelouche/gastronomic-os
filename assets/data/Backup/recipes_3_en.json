@@ -1,0 +1,459 @@
+﻿[
+  {
+    "title": "Green Goddess Salad (The Dip-Style Salad)",
+    "description": "A nutrient-dense chopped salad redefined as a dip; all vegetables are processed into a 2-3mm brunoise to maximize surface area for the emulsified herb-lipid dressing, increasing enzyme bioavailability.",
+    "prep_time": "20 minutes",
+    "ingredients": [
+      "Green Cabbage [Base]",
+      "English Cucumber [Base]",
+      "Scallions [Standard]",
+      "Fresh Spinach and Basil [Universal]",
+      "Walnuts or Cashews [Standard]",
+      "Hemp Seeds or Emulsified Boiled Zucchini [Nut Allergy, APLV]",
+      "Nutritional Yeast [Universal]",
+      "Garlic-infused Oil [Low FODMAP]",
+      "Fresh Garlic [Standard]",
+      "Lemon Juice [Universal]",
+      "Avocado [Standard]",
+      "Sea Salt [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Mechanical Brunoise Processing: Mince the green cabbage, cucumber, and scallions into a precise 2-3mm brunoise. This mechanical breakdown ensures the salad functions as a dip and pre-digests rigid vegetable fibers for improved gastrointestinal transit.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Creamy Matrix Synthesis: In a high-speed blender, prepare the vibrant herb emulsion. The lipid source must be thoroughly emulsified with the acids to ensure a stable coating that won't separate.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Blend 1/2 cup walnuts or cashews with spinach, basil, 2 garlic cloves, and 1/4 cup lemon juice until ultra-smooth.",
+          "Nut Allergy": "Substitute nuts with 1/2 cup hemp seeds or 1/2 cup of boiled, cooled zucchini blended with olive oil for the creamy base.",
+          "Low FODMAP": "Use 2 tbsp garlic-infused oil; strictly omit fresh garlic and limit avocado to 30g to stay within sorbitol safety limits."
+        }
+      },
+      {
+        "instruction": "Umami Fortification: Add nutritional yeast and sea salt to the blender. Process for an additional 20 seconds to aerate the dressing, creating a 'fluffy' consistency that adheres to the vegetable shards without pooling at the bottom.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Saturation Mixing: In a chilled glass bowl, combine the minced vegetables with the dressing. Toss vigorously until the salad reaches total saturation. The dressing should act as a structural binder.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Service and Pairing: Serve in a wide-rimmed bowl with high-fiber corn chips or rice crackers. The salad is designed to be scooped, utilizing the crunch of the chip as a textural counterpoint to the aerated dressing.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Salmon Rice Bowl (Ice-Steam Sublimation Method)",
+    "description": "A viral reheating technique utilizing the physical process of ice sublimation to create a pressurized steam chamber, rehydrating starches to their original gelatinized state without textural degradation.",
+    "prep_time": "10 minutes",
+    "ingredients": [
+      "Cooked Salmon Fillet [Standard]",
+      "Freshly Cooked White Fish [Histamine]",
+      "Leftover White Rice [Standard]",
+      "24h Cold Rice (Resistant Starch) [Diabetes]",
+      "Ice Cube [Universal]",
+      "Kewpie Mayonnaise [Standard]",
+      "Additive-free Mayonnaise [Histamine]",
+      "Sriracha and Soy Sauce [Standard]",
+      "Coconut Aminos [Histamine, Soy Allergy]",
+      "Avocado [Standard, Keto]",
+      "Dried Seaweed Sheets [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Starch Base Selection: Place the rice in a microwave-safe bowl. For Diabetes protocols, use rice that has been refrigerated for 24 hours to maximize starch retrogradation (resistant starch formation), which blunts the glycemic response.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Use 1 cup of leftover cooked rice.",
+          "Histamine": "Use freshly cooked and quickly cooled rice; avoid leftovers to prevent the accumulation of biogenic amines."
+        }
+      },
+      {
+        "instruction": "Protein Inclusion: Flake the salmon over the rice. If Histamine sensitive, use salmon flash-frozen at the source or freshly cooked hake/cod to ensure amine-free consumption.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Use 100-150g of cooked salmon.",
+          "Histamine": "Use 100-150g of freshly prepared and cooled white fish."
+        }
+      },
+      {
+        "instruction": "The Sublimation Hack: Place a single ice cube in the center of the mixture. Cover the bowl hermetically with a sheet of parchment paper or a microwave-safe lid. The parchment acts as a heat-trap.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Microwave Processing: Heat for 60-90 seconds. The ice cube will sublimate steam, rehydrating the rice grains from the inside out without melting into the bowl. Remove the remaining ice shard.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Flavor Matrix Binding: Drizzle with mayonnaise and sriracha. The lipids in the mayo act as a carrier for the heat and bridge the flavor gap between the fish and the neutral starch.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Add 1 tbsp Kewpie mayo, 1 tsp sriracha, and 1 tsp soy sauce.",
+          "Histamine": "Use additive-free mayo and 1 tsp Coconut Aminos; strictly omit sriracha and fermented soy sauce."
+        }
+      },
+      {
+        "instruction": "Service: Mix thoroughly until cohesive. Serve with toasted seaweed (nori) sheets for scooping, providing a crunchy contrast and essential iodine.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Spicy Vodka Pasta (Rosé Emulsion)",
+    "description": "A high-stability pasta sauce where ethanol acts as a bridge to bind water-insoluble tomato carotenoids with heavy cream lipids for a velvet-smooth, non-breaking finish.",
+    "prep_time": "20 minutes",
+    "ingredients": [
+      "Rigatoni or Penne Pasta [Base]",
+      "Tomato Paste [Standard]",
+      "Nomato Sauce [Histamine, Renal]",
+      "Vodka [Standard]",
+      "Heavy Cream [Standard]",
+      "Unsalted Butter [Standard]",
+      "Shallots and Garlic [Standard]",
+      "Red Pepper Flakes [Standard]",
+      "Parmesan Cheese [Standard]"
+    ],
+    "steps": [
+      {
+        "instruction": "Aromatic Infusion: Sauté finely diced shallots and minced garlic in butter over low heat. Do not allow browning; the goal is to soften the tissues to release sulfur compounds without creating bitter Maillard notes.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Concentrate Sautéing: Add the tomato/nomato base. Sauté for 3 minutes until the color darkens to a deep rust, concentrating the umami glutamates.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Add 3 tbsp tomato paste and red pepper flakes.",
+          "Renal": "Substitute tomato paste with 1/2 cup 'Nomato' sauce (beet/carrot base) to manage potassium concentration.",
+          "Histamine": "Use 'Nomato' sauce; strictly omit red pepper flakes to avoid histamine release."
+        }
+      },
+      {
+        "instruction": "Ethanol Deglazing: Pour in the vodka. The alcohol acts as an emulsifier, allowing fat-soluble flavor compounds to dissolve into the liquid phase. Simmer until the raw alcohol scent is eliminated.",
+        "is_branch_point": false,
+        "skipped_for_diets": ["Histamine"]
+      },
+      {
+        "instruction": "Emulsification: Whisk in the heavy cream. The vodka facilitates a stable emulsion between the acidic base and the cream lipids, ensuring the sauce remains creamy even at high temperatures.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Starch Binding: Toss al dente pasta into the sauce with 1/4 cup of reserved starchy pasta water. The amylopectin in the water acts as a final binder for the sauce-to-pasta adherence.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Plating: Finish with grated parmesan. For Renal patients, omit the cheese to control phosphorus and sodium intake.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Lasagna Soup (Starch-Bound One-Pot)",
+    "description": "A deconstructed lasagna utilizing hand-broken noodles to release starches directly into the boiling broth, creating a naturally thickened stew without external thickeners.",
+    "prep_time": "30 minutes",
+    "ingredients": [
+      "Ground Beef or Italian Sausage [Base]",
+      "Lasagna Noodles [Base]",
+      "Tomato Broth [Standard]",
+      "Nomato Broth [Histamine, Renal]",
+      "Ricotta, Mozzarella, and Parmesan Blend [Standard]",
+      "Onion and Garlic [Standard]",
+      "Garlic-infused Oil [Low FODMAP]",
+      "Dried Oregano [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Protein Rendering: In a large heavy pot, brown the ground meat. Drain 100% of the fat to ensure a clean broth profile. Sauté onions and garlic until translucent.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Use 1 diced onion and 3 minced garlic cloves.",
+          "Low FODMAP": "Use 2 tbsp garlic-infused oil and scallion greens; strictly omit fresh garlic and onion bulbs."
+        }
+      },
+      {
+        "instruction": "Liquid Loading: Add the broth base. If following Renal or Histamine protocols, the 'Nomato' base is required to eliminate tomato-based mineral and amine risks.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Add 4 cups of tomato-based beef broth.",
+          "Renal": "Add 4 cups of low-sodium vegetable broth mixed with 'Nomato' concentrate (beet/carrot)."
+        }
+      },
+      {
+        "instruction": "Mechanical Starch Release: Break dry lasagna noodles by hand into 3cm irregular shards. Drop them into the boiling soup. Stir frequently; the friction releases starch that thickens the broth into a rich stew.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Cheese Bomb Preparation: While the noodles finish, whisk the cold ricotta, mozzarella, and parmesan. This mixture must be kept chilled until the final plating.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Plating and Thermal Contrast: Ladle hot soup into bowls. Place a generous scoop of the cold cheese mixture in the center. The thermal gradient is the signature sensory feature of this dish.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Carter Family Pimento Cheese",
+    "description": "A Southern heritage dip utilizing hand-grated cheese to avoid anti-caking agents, ensuring a stable, chunky cold emulsion with mayonnaise.",
+    "prep_time": "15 minutes",
+    "ingredients": [
+      "Extra Sharp Cheddar [Base]",
+      "Diced Pimentos (Drained) [Universal]",
+      "Mayonnaise [Universal]",
+      "Low-Sodium Mayonnaise [Renal, Hypertension]",
+      "Cayenne Pepper [Standard]",
+      "Nutritional Yeast [Vegan]"
+    ],
+    "steps": [
+      {
+        "instruction": "Mechanical Processing: Hand-grate the sharp cheddar using the coarse side of a box grater. Technical Warning: You must avoid pre-shredded cheese; the cellulose (anti-caking) prevents the fats from emulsifying properly with the mayo.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Grate 500g of extra sharp cheddar.",
+          "Vegan": "Crumble firm tofu finely and mix with 1 tsp nutritional yeast and 1 tsp lactic acid for the base."
+        }
+      },
+      {
+        "instruction": "Syneresis Prevention: Drain the pimentos and pat them aggressively dry with paper towels. Excess canning liquid will cause the dip to separate and weep during storage.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Lipid Emulsification: Fold in the mayonnaise and spices. For Hypertension or Renal protocols, use a low-sodium mayonnaise formula to control mineral load.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Mix with 1/2 cup full-fat mayo and a pinch of cayenne.",
+          "Renal": "Use low-sodium mayo; strictly omit extra salt."
+        }
+      },
+      {
+        "instruction": "Texture Maturation: Mash the mixture gently with a fork to integrate but maintain chunkiness. Chill for 30 minutes to allow the acids in the mayo to soften the cheese proteins.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Birria Ramen (Collagen-Chile Fusion)",
+    "description": "A Mexican-Japanese hybrid utilizing the high gelatin content of birria consommé to coat alkaline noodles, creating intense umami depth.",
+    "prep_time": "30 minutes (using prepared birria)",
+    "ingredients": [
+      "Birria Consommé (Fat-rich) [Base]",
+      "Alkaline Ramen Noodles [Standard]",
+      "Rice Noodles [Celiac]",
+      "Shredded Birria Beef [Base]",
+      "Soft-boiled Egg [Standard]",
+      "Cilantro and Lime [Universal]",
+      "White Onion [Standard]"
+    ],
+    "steps": [
+      {
+        "instruction": "Consommé Reheating: Bring the birria consommé to a rolling boil. Ensure the red fat cap (oil) is included; it contains the fat-soluble chile aromatics essential for coating the noodles.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Noodle Engineering: Cook the noodles separately. Alkaline noodles are preferred for their firm, springy texture that resists softening in the acidic chile broth.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Boil alkaline ramen noodles for 2-3 minutes until al dente.",
+          "Celiac": "Substitute with thick rice noodles (Pho style)."
+        }
+      },
+      {
+        "instruction": "Assembly: Place hot noodles in a deep bowl. Pour the boiling consommé over them. The fat layer acts as a thermal insulator to keep the soup hot.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Garnish: Top with shredded beef and a soft-boiled egg (split longitudinally).",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Acidity Balancing: Top with cilantro and minced onion. Serve with 3 lime wedges; the citric acid is technically required to emulsify the heavy beef fats during consumption.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Use white onion and cilantro.",
+          "Low FODMAP": "Top with cilantro and lime; strictly omit white onion."
+        }
+      }
+    ]
+  },
+  {
+    "title": "Rosé Tteokbokki (Dairy-Capsaicin Buffer)",
+    "description": "A modern Korean 'K-Food' adaptation using heavy cream lipids to encapsulate capsaicin molecules, providing a velvety texture and reduced perceived heat.",
+    "prep_time": "20 minutes",
+    "ingredients": [
+      "Rice Cakes (Garae-tteok) [Base]",
+      "Gochujang (Fermented Chili Paste) [Standard]",
+      "Heavy Cream [Standard]",
+      "Full-fat Coconut Milk [Vegan, APLV]",
+      "Vienna Sausages and Bacon [Standard]",
+      "Garlic and Onion [Standard]",
+      "Garlic-infused Oil [Low FODMAP]"
+    ],
+    "steps": [
+      {
+        "instruction": "Lipid Rendering: In a skillet, sauté the sausages and bacon until the edges are crispy and the fats have rendered.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Sauté with minced garlic and onion.",
+          "Low FODMAP": "Use 2 tbsp garlic-infused oil and scallion greens; strictly omit fresh garlic and onion bulbs."
+        }
+      },
+      {
+        "instruction": "Rosé Synthesis: Add the chili paste and cream. The lipids in the cream act as a chemical buffer, wrapping around capsaicin to dampen its heat on the tongue.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Add 1 tbsp Gochujang and 1/2 cup heavy cream.",
+          "Vegan": "Substitute heavy cream with 1/2 cup full-fat coconut milk.",
+          "Histamine": "Strictly omit Gochujang (fermented). Substitute with a mix of red pepper puree and raw honey."
+        }
+      },
+      {
+        "instruction": "Starch Hydration: Add the rice cakes. Simmer over medium heat for 8-10 minutes. As the cakes soften, they release starch which thickens the cream into a glossy Rosé sauce.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Service: The dish is ready when the cakes have a 'Q-texture' (chewy) and the sauce is a thick, bubblegum-pink emulsion. Serve immediately.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Brazilian Lemonade (Cold-Extraction Citrus)",
+    "description": "A high-extraction beverage utilizing whole limes and condensed milk as a pH buffer to achieve a creamy, non-bitter profile through precise pulse-blending.",
+    "prep_time": "10 minutes",
+    "ingredients": [
+      "Whole Limes (Thin-skinned) [Base]",
+      "Cold Water [Base]",
+      "Sugar or Allulose [Standard, Diabetes]",
+      "Sweetened Condensed Milk [Standard]",
+      "Coconut Condensed Milk [Vegan, APLV]",
+      "Ice [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Citrus Prep: Wash and quarter the limes. Do not peel; the skin contains essential citrus oils necessary for the final aromatic complexity.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "High-Speed Extraction: Place limes, water, and sweetener in a high-speed blender.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Add 3 tbsp of granulated sugar.",
+          "Diabetes": "Substitute sugar with 2 tbsp of allulose to maintain glycemic stability."
+        }
+      },
+      {
+        "instruction": "Pulse Timing (Critical): Pulse for exactly 5-8 seconds. Technical Warning: Do not exceed 10 seconds or you will rupture the albedo cells, releasing bitter limonoids into the drink.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Immediate Filtration: Strain through a fine-mesh sieve into a pitcher. Discard the pulp and skins immediately to stop further bitter extraction.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Creamy Buffering: Stir in the condensed milk. The lipids balance the high citric acid, creating a stable, frothy emulsion.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Add 1/3 cup of sweetened condensed milk.",
+          "APLV": "Add 1/3 cup of coconut-based condensed milk."
+        }
+      },
+      {
+        "instruction": "Service: Serve over fresh ice immediately. Consume within 30 minutes to prevent oxidation-induced bitterness.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Grinder Salad Sandwich (Emulsified Italian)",
+    "description": "A viral re-engineering of the Italian sub where vegetables are pre-emulsified with dressing to solve the 'dry sandwich' hydration problem.",
+    "prep_time": "15 minutes",
+    "ingredients": [
+      "Hoagie Roll or Baguette [Standard]",
+      "Italian Cold Cuts (Salami, Prosciutto) [Standard]",
+      "Fresh Roast Turkey [Histamine]",
+      "Iceberg Lettuce [Base]",
+      "Red Onion and Pepperoncini [Standard]",
+      "Mayonnaise [Universal]",
+      "Red Wine Vinegar [Standard]",
+      "Garlic-infused Oil [Low FODMAP]",
+      "Dried Oregano and Chili Flakes [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Maillard Toasting: Slice the roll and add provolone cheese. Toast at 200°C until the bread is ultra-crisp and the cheese has achieved a light brown Maillard crust.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Grinder Matrix Synthesis: In a large bowl, whisk mayonnaise, vinegar, and spices until a thick, stable emulsion forms.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Use red wine vinegar and minced garlic.",
+          "Low FODMAP": "Use lemon juice and garlic-infused oil; strictly omit onions from the salad matrix.",
+          "Histamine": "Use fresh additive-free mayo and sea salt; strictly omit vinegar and chili flakes."
+        }
+      },
+      {
+        "instruction": "Vegetable Integration: Add shredded lettuce and peppers to the dressing. Toss vigorously until every leaf is fully encapsulated in the dressing. This prevents the bread from absorbing water from the greens.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Protein Layering: Add the meats to the toasted roll.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Use traditional Italian salami and ham.",
+          "Histamine": "Use freshly cooked and cooled roast turkey; avoid aged or processed meats."
+        }
+      },
+      {
+        "instruction": "Plating: Pile the emulsified Grinder Salad onto the meats. Wrap in parchment paper for 2 minutes to allow the flavors to fuse before service.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Pasta e Ceci (Aquafaba Starch Binder)",
+    "description": "A traditional one-pot meal utilizing the chemical synergy between pasta starch and chickpea aquafaba to create a creamy sauce without dairy.",
+    "prep_time": "20 minutes",
+    "ingredients": [
+      "Short Pasta (Ditalini) [Standard]",
+      "Low-Protein Pasta [Renal]",
+      "Canned Chickpeas (with liquid) [Base]",
+      "Tomato Sauce [Standard]",
+      "Nomato Sauce [Histamine, Renal]",
+      "Fresh Rosemary and Garlic [Universal]",
+      "Extra Virgin Olive Oil [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Aromatic Infusion: Sauté rosemary and garlic in olive oil until the garlic is golden. This infuses the lipid base with volatile rosemary oils.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Sauce Foundation: Add the sauce base. For Renal or Histamine protocols, the 'Nomato' substitute is required to avoid mineral and amine triggers.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Add 1/2 cup tomato sauce.",
+          "Renal": "Add 1/2 cup Nomato sauce to minimize potassium concentration."
+        }
+      },
+      {
+        "instruction": "Aquafaba Integration: Add the chickpeas along with their canning liquid. Saponins in the aquafaba act as a natural emulsifier when heated, binding the oil and broth.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "One-Pot Synthesis: Add dry pasta directly into the pot with just enough boiling water to cover. As the pasta cooks, it releases amylopectin which thickens the aquafaba into a rich, creamy sauce.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Standard": "Use 100g wheat pasta.",
+          "Renal": "Use low-protein (aproteic) pasta to allow for the mineral content of the chickpeas."
+        }
+      },
+      {
+        "instruction": "Service: Cook until al dente and the liquid has reduced into a thick stew. Finish with a drizzle of raw olive oil and serve warm.",
+        "is_branch_point": false
+      }
+    ]
+  }
+]

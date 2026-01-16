@@ -1,0 +1,441 @@
+﻿[
+  {
+    "title": "Pizza con Corteza de Pollo (Carnívora/Keto)",
+    "description": "Una base de pizza de alto rendimiento y cero carbohidratos que utiliza la unión térmica de las proteínas de las aves y la albúmina del huevo para crear una base robusta y sabrosa.",
+    "prep_time": "30 minutos",
+    "ingredients": [
+      "Pollo Picado (Extra magro) [Base]",
+      "Huevo Entero Fresco [Estándar, Keto, Paleo]",
+      "Coliflor Hervida y Lixiviada [Renal]",
+      "Harina de Arroz [Renal]",
+      "Parmesano o Mozzarella Rallados [Keto]",
+      "Salsa Marinara [Estándar]",
+      "Salsa Nomato [Histamina, Renal]",
+      "Hierbas Italianas [Universal]",
+      "Sal Marina [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Síntesis de la Matriz Base: Combine la fuente de proteína con el agente ligante. Para Keto estándar, mezcle 500g de pollo picado con 1 huevo y 1/4 de taza de parmesano; las proteínas del queso y del huevo actúan como pegamento estructural durante el proceso de desnaturalización.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Mezcle pollo picado, huevo y parmesano hasta obtener una pasta cohesiva.",
+          "Renal": "Sustituya el pollo por una mezcla 50/50 de coliflor lixiviada y harina de arroz para reducir la densidad de fósforo y proteínas manteniendo la forma."
+        }
+      },
+      {
+        "instruction": "Formado Mecánico: Coloque la mezcla sobre papel pergamino de alta calidad. Cubra con una segunda hoja y use un rodillo para aplanar hasta obtener un grosor uniforme de 5 mm; retire la hoja superior.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Procesamiento Térmico Primario: Hornee la corteza a 200°C (400°F) durante 15-20 minutos. Consejo Técnico: La corteza debe estar completamente precocida y dorada para asegurar que pueda soportar el peso de los ingredientes sin fallas estructurales.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Aplicación de la Barrera de Hidratación: Extienda la base de la salsa sobre la corteza precocida; la selección depende de los protocolos inflamatorios o minerales.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Aplique 1/4 de taza de salsa marinara baja en azúcar.",
+          "Histamina": "Aplique 1/4 de taza de salsa Nomato para eliminar los desencadenantes de solanina e histamina.",
+          "Renal": "Aplique una capa fina de salsa Nomato para gestionar el potasio."
+        }
+      },
+      {
+        "instruction": "Topping y Fundido Final: Añada el queso y sus ingredientes preferidos; regrese al horno durante 8-10 minutos hasta que el queso burbujee y los bordes estén ultra crujientes.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Estabilización: Deje reposar la pizza durante 3 minutos antes de cortarla; esto permite que las fibras proteicas se contraigan, asegurando porciones limpias y fáciles de levantar.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Brownies de Boniato sin Harina",
+    "description": "Un postre denso y cremoso que utiliza las propiedades humectantes naturales del almidón vegetal para reemplazar la harina de trigo, asegurando una alta retención de humedad.",
+    "prep_time": "40 minutos",
+    "ingredients": [
+      "Puré de Boniato Suave [Base, Estándar]",
+      "Puré de Calabaza Suave [Bajo en FODMAP]",
+      "Mantequilla de Almendras Cremosa [Estándar]",
+      "Cacao en Polvo [Estándar]",
+      "Carob en Polvo [Histamina]",
+      "Jarabe de Arce o Estevia [Universal]",
+      "Chips de Chocolate Negro [Universal]",
+      "Extracto de Vainilla [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Preparación del Humectante: Prepare la base vegetal; el puré proporciona la 'miga' estructural y la humedad esencial a la matriz de brownies rica en grasas.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Use 1 taza de puré de boniato asado y licuado.",
+          "Bajo en FODMAP": "Sustituya el boniato por puré de calabaza para mantenerse dentro de los límites seguros de manitol/polioles."
+        }
+      },
+      {
+        "instruction": "Integración de Lípidos: Bata el puré vegetal con la mantequilla de almendras y la vainilla; las grasas de la mantequilla de frutos secos proporcionan la sensación en boca característica de los horneados sin harina.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Incorporación de la Fase Seca: Tamice los agentes de sabor secos sobre la base húmeda para evitar grumos.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Use 1/2 taza de cacao en polvo de alta calidad.",
+          "Histamina": "Sustituya el cacao por carob en polvo para evitar los liberadores de histamina y la cafeína.",
+          "Diabetes": "Use estevia líquida o eritritol y cacao en polvo estrictamente sin azúcar."
+        }
+      },
+      {
+        "instruction": "Carga de Inclusiones: Incorpore suavemente los chips de chocolate negro; estos actúan como 'bolsillos de sabor' que se derriten durante el horneado y se asientan con una textura firme al enfriar.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Horneado: Vierta en un molde de 20x20 cm forrado y hornee a 175°C (350°F) durante 25-30 minutos. Consejo Técnico: Los brownies parecerán poco hechos en el centro; deben 'asentarse' mediante calor residual para mantener la humedad.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Asentamiento Criogénico: Refrigere durante al menos 2 horas antes de cortar; cortarlos mientras están calientes hará que se desmoronen en lugar de mantener su forma.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Pan de Plátano y Calabacín Adaptable",
+    "description": "Un pan rápido diseñado con ingeniería de hidratación para optimizar la densidad de nutrientes mientras se gestiona la ingesta de frutas ricas en potasio para la seguridad clínica específica.",
+    "prep_time": "60 minutos",
+    "ingredients": [
+      "Plátanos Maduros Machacados [Estándar]",
+      "Calabacín Rallado (Exprimido) [Renal, Estándar]",
+      "Esencia de Plátano [Renal]",
+      "Harina para Todo Uso (Trigo o Sin Gluten) [Base]",
+      "Huevos Frescos [Estándar]",
+      "Huevo de Lino y Yogur de Coco [Vegano]",
+      "Mantequilla sin Sal o Aceite de Coco [Universal]",
+      "Canela y Bicarbonato de Sodio [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Equilibrio de Hidratación: Si usa calabacín, rállelo y exprímalo a través de un paño de cocina para eliminar el 50% del agua. Nota Técnica: Esto evita que el pan se vuelva pesado y gomoso.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Síntesis de Humedad Estructural: La selección de la base de frutas/verduras es crítica para la gestión del potasio.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Bata 3 plátanos machacados con huevos y mantequilla.",
+          "Renal": "Sustituya los plátanos por 1 taza de calabacín rallado y 1 cucharadita de esencia de plátano para lograr el sabor sin la carga extrema de potasio.",
+          "Vegano": "Use una combinación de yogur de coco y huevos de lino para proporcionar unión proteica sin grasas animales."
+        }
+      },
+      {
+        "instruction": "Integración Seca: Incorpore los ingredientes secos a la mezcla húmeda hasta que estén apenas combinados; no mezcle en exceso ya que la activación excesiva del gluten resulta en una miga dura y elástica.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Procesamiento Térmico: Hornee a 175°C (350°F) en un molde para pan durante 50-60 minutos; la temperatura interna debe alcanzar los 90-95°C para una miga completamente cocida.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Servicio: Deje enfriar completamente sobre una rejilla para permitir que el vapor escape, lo que evita que la base se humedezca.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Salsa Nomato (Sustituto del Tomate)",
+    "description": "Una salsa maestra técnica para protocolos renales y bajos en histamina, que replica el pH, el color y la viscosidad de la salsa de tomate utilizando almidón de hortalizas de raíz.",
+    "prep_time": "45 minutos",
+    "ingredients": [
+      "Zanahorias Grandes [Base]",
+      "Remolachas (Frescas o Asadas) [Base]",
+      "Tallos de Apio [Base]",
+      "Cebolla Blanca en Dados [Estándar]",
+      "Aceite con Infusión de Ajo [Bajo en FODMAP]",
+      "Ajo Fresco [Estándar]",
+      "Vitamina C en Polvo o Zumo de Limón [Universal]",
+      "Sal Marina [Universal]",
+      "Zumo de Remolacha [Opcional para color]"
+    ],
+    "steps": [
+      {
+        "instruction": "Gestión Mineral de Raíces: Pele y corte en cubos las zanahorias, remolachas y apio.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Proceda al salteado.",
+          "Renal": "Hierva las raíces en un gran volumen de agua durante 15 minutos y deseche el agua (lixiviación) para eliminar el exceso de potasio antes de la cocción final."
+        }
+      },
+      {
+        "instruction": "Base Aromática: Saltee las cebollas y el ajo hasta que estén translúcidos; para dietas bajas en FODMAP, use aceite con infusión de ajo y omita el ajo/cebolla sólidos.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Ablandamiento y Reducción: Añada las raíces y el caldo justo para cubrir; cocine a fuego lento durante 20 minutos hasta que los vegetales se hayan ablandado por completo y la pectina esté lista para la emulsificación.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Licuado Mecánico: Procese la mezcla en una licuadora de alta velocidad hasta que esté ultra suave; añada zumo de remolacha si desea un tono rojo más brillante.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Ajuste de pH y Acidez: Incorpore la fuente de ácido; esto es técnicamente necesario para replicar las notas brillantes y agudas del tomate.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Añada 1 cucharada de zumo de limón o vinagre de vino tinto.",
+          "Histamina": "Use 1/4 de cucharadita de vitamina C pura (ácido ascórbico) en polvo para proporcionar acidez sin los desencadenantes de histamina presentes en el vinagre."
+        }
+      },
+      {
+        "instruction": "Servicio: Úselo como reemplazo 1:1 de la marinara en pastas, pizzas o guisos.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Sustituto de Salsa de Soja (Falsa Soja)",
+    "description": "Un sazonador líquido sabroso y no fermentado que proporciona un umami profundo y salinidad para pacientes con alergias a la soja o alta sensibilidad a la histamina.",
+    "prep_time": "20 minutos",
+    "ingredients": [
+      "Caldo de Huesos de Ternera (Concentrado) [Base]",
+      "Melaza o Azúcar Moreno Oscuro [Base]",
+      "Aminos de Coco [Histamina, Alergia a la Soja]",
+      "Sal Marina [Universal]",
+      "Vinagre de Sidra de Manzana [Estándar]",
+      "Vitamina C en Polvo [Histamina]"
+    ],
+    "steps": [
+      {
+        "instruction": "Selección de la Base Umami: Seleccione la base para el sustituto.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "En un cazo, combine el caldo de huesos de ternera concentrado y la melaza.",
+          "Histamina": "Use aminos de coco puros como base, ya que el caldo de huesos puede ser alto en histamina; omita el paso de reducción."
+        }
+      },
+      {
+        "instruction": "Reducción Térmica: Para la base de caldo, cocine a fuego lento durante 10-12 minutos hasta que se reduzca a la mitad; esto concentra los glutamatos naturales para imitar la intensidad de la salsa de soja.",
+        "is_branch_point": false,
+        "skipped_for_diets": ["Histamina"]
+      },
+      {
+        "instruction": "Acidez y Equilibrio: Incorpore el componente ácido para proporcionar el 'toque' característico.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Añada vinagre de sidra de manzana y una pizca de sal.",
+          "Histamina": "Si usa aminos de coco, añada una pizca de vitamina C en polvo para realzar el perfil agudo sin productos de fermentación."
+        }
+      },
+      {
+        "instruction": "Servicio: Embotelle y refrigere; esta salsa es técnicamente estable durante 2 semanas en el refrigerador.",
+        "is_branch_point": false
+      }
+    ]
+  },
+ {
+  "title": "Tiramisú de Fresa (Fresas con Crema)",
+  "description": "Una adaptación estética moderna del postre clásico italiano, utilizando una reducción de jarabe de fruta brillante para ablandar los bizcochos en lugar de café.",
+  "prep_time": "30 minutos (+4h refrigeración)",
+  "ingredients": [
+    "Bizcochos de Soletilla (Savoiardi) [Base]",
+    "Bizcochos sin Gluten [Celíaco]",
+    "Fresas Frescas [Base]",
+    "Queso Mascarpone [Estándar]",
+    "Crema para Batir Entera [Estándar]",
+    "Mermelada o Jarabe de Fresa [Universal]",
+    "Licor de Naranja [Opcional]",
+    "Zumo de Limón y Azúcar [Universal]"
+  ],
+  "steps": [
+    {
+      "instruction": "Síntesis del Líquido de Remojo Ácido: Licue 1 taza de fresas frescas con 2 cucharadas de azúcar y un chorrito de zumo de limón; cole para eliminar las semillas.",
+      "is_branch_point": false
+    },
+    {
+      "instruction": "Preparación de la Matriz de Crema: Bata el mascarpone frío con la crema y la mermelada de fresa hasta obtener picos rígidos y estables.",
+      "is_branch_point": false
+    },
+    {
+      "instruction": "Montaje del Recipiente: Sumerja rápidamente cada bizcocho en el jarabe de fresa.",
+      "is_branch_point": true,
+      "variant_logic": {
+        "Estándar": "Use bizcochos de soletilla tradicionales; sumerja durante exactamente 2 segundos para asegurar la hidratación sin que colapsen.",
+        "Celíaco": "Use bizcochos certificados sin gluten; reduzca el tiempo de remojo a 1 segundo, ya que suelen ser más porosos y absorben el líquido más rápido."
+      }
+    },
+    {
+      "instruction": "Capas Arquitectónicas: Coloque una capa de bizcochos remojados en una fuente; distribuya la mitad de la matriz de crema rosa sobre ellos, seguido de una capa de fresas frescas; repita una vez más.",
+      "is_branch_point": false
+    },
+    {
+      "instruction": "Maduración Criogénica: Refrigere durante al menos 4 horas para permitir la transferencia de humedad.",
+      "is_branch_point": true,
+      "variant_logic": {
+        "Estándar": "Decore con fresas frescas y licor de naranja si lo desea.",
+        "Histamina": "Sirva inmediatamente después de las 4 horas de reposo; omita estrictamente el licor de naranja para evitar desencadenantes de aminas biógenas."
+      }
+    }
+  ]
+},
+  {
+    "title": "Barras de Cheesecake con Crumble de Arándanos",
+    "description": "Un postre técnico de triple capa que utiliza la pectina natural de los arándanos para crear una barrera de gel de fruta entre el queso crema y el crumble.",
+    "prep_time": "50 minutos",
+    "ingredients": [
+      "Migas de Galleta Graham [Base]",
+      "Queso Crema (Entero) [Estándar]",
+      "Arándanos Frescos o Congelados [Universal]",
+      "Almidón de Maíz [Universal]",
+      "Mantequilla sin Sal (Derretida) [Universal]",
+      "Harina para Todo Uso [Estándar]",
+      "Azúcar o Eritritol [Estándar, Diabetes]"
+    ],
+    "steps": [
+      {
+        "instruction": "Base Estructural: Mezcle las migas de galleta con la mantequilla derretida y presione firmemente en un molde de 20x20 cm; precocine a 175°C (350°F) durante 10 minutos para formar una barrera de humedad sellada por calor.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Capa de Lípidos: Bata el queso crema, el azúcar y un huevo hasta que esté completamente suave; vierta sobre la base caliente.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Capa de Gestión de Humedad: Mezcle los arándanos con 1 cucharadita de almidón de maíz y 1 cucharada de azúcar; el almidón es técnicamente necesario para absorber el agua de la fruta liberada durante el horneado, evitando un cheesecake aguado.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Acabado Textural: Mezcle la harina, el azúcar y trozos de mantequilla fría hasta obtener un crumble arenoso; espolvoree generosamente sobre los arándanos.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Use harina de trigo y azúcar blanca.",
+          "Diabetes": "Sustituya la harina por harina de almendras y el azúcar por eritritol para un índice glucémico más bajo."
+        }
+      },
+      {
+        "instruction": "Consolidación Térmica: Hornee durante 35-40 minutos hasta que los arándanos hayan explotado y el crumble esté dorado; refrigere al menos 3 horas antes de cortar en barras.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+  "title": "Pan 'Cinnamon Toast Crunch'",
+  "description": "Un pan rápido diseñado con nostalgia que utiliza la cristalización de azúcar y grasa para crear una costra crujiente estilo cereal con cintas internas de canela.",
+  "prep_time": "65 minutos",
+  "ingredients": [
+    "Harina para Todo Uso [Base]",
+    "Harina sin Gluten para Todo Uso (con Goma Xantana) [Celíaco]",
+    "Leche y Huevos [Base]",
+    "Canela [Universal]",
+    "Azúcar Moreno y Azúcar Blanca [Universal]",
+    "Mantequilla sin Sal [Universal]",
+    "Extracto de Vainilla [Universal]",
+    "Levadura en Polvo [Universal]"
+  ],
+  "steps": [
+    {
+      "instruction": "Síntesis del Batido: Bata los ingredientes húmedos (leche, huevo, mantequilla, vainilla) y los secos (harina, levadura, sal).",
+      "is_branch_point": true,
+      "variant_logic": {
+        "Estándar": "Use harina de trigo común; no mezcle en exceso para evitar desarrollar el gluten, asegurando una miga tierna.",
+        "Celíaco": "Use una mezcla certificada sin gluten; asegúrese de que contenga goma xantana para la estabilidad estructural. Deje reposar la masa 10 minutos antes de hornear para hidratar los almidones alternativos."
+      }
+    },
+    {
+      "instruction": "Protocolo de Remolino: Vierta la mitad del batido en un molde para pan engrasado; espolvoree una capa densa de canela y azúcar moreno; añada el batido restante.",
+      "is_branch_point": false
+    },
+    {
+      "instruction": "Difusión Interna: Use un cuchillo de mesa para crear un patrón en forma de ocho a través del batido para distribuir el azúcar de canela en 'cintas' que se caramelizarán dentro del pan.",
+      "is_branch_point": false
+    },
+    {
+      "instruction": "Parte Superior de Cristalización: Mezcle 2 cucharadas de mantequilla derretida con 2 de azúcar y 1 de canela; extienda sobre la parte superior; esta capa se deshidratará en el horno creando el 'crujido' característico.",
+      "is_branch_point": false
+    },
+    {
+      "instruction": "Consolidación Térmica: Hornee a 175°C (350°F) durante 55-60 minutos hasta que la costra esté quebradiza y pase la prueba del palillo.",
+      "is_branch_point": false
+    }
+  ]
+},
+  {
+  "title": "Barras Nanaimo (Clásico Canadiense sin Horno)",
+  "description": "Un postre arquitectónico de triple capa de alta estabilidad, centrado en un núcleo de crema de mantequilla con polvos de natillas y un sello de ganache de chocolate templado.",
+  "prep_time": "40 minutos (+2h refrigeración)",
+  "ingredients": [
+    "Migas de Galleta Graham [Base]",
+    "Migas de Galleta Graham sin Gluten [Celíaco]",
+    "Coco Rallado [Base]",
+    "Cacao en Polvo [Base]",
+    "Mantequilla [Universal]",
+    "Polvos para Natillas Bird's [Base]",
+    "Azúcar Glas [Estándar]",
+    "Chocolate Negro [Universal]"
+  ],
+  "steps": [
+    {
+      "instruction": "Matriz de Fundación: Derrita mantequilla con cacao y azúcar. Incorpore un huevo para espesar (pasteurizar), luego añada las migas y el coco.",
+      "is_branch_point": true,
+      "variant_logic": {
+        "Estándar": "Use migas de galleta Graham de trigo tradicionales; el coco proporciona la fibra estructural para soportar las capas superiores.",
+        "Celíaco": "Use migas de galleta Graham certificadas sin gluten o una mezcla 50/50 de harina de almendras y migas de avena sin gluten para mantener la integridad de la base."
+      }
+    },
+    {
+      "instruction": "Síntesis de Natillas: Bata mantequilla suavizada con azúcar glas y polvos para natillas.",
+      "is_branch_point": false,
+      "instruction_note": "Los polvos para natillas son esenciales para el tono amarillo auténtico y el perfil de vainilla y malta."
+    },
+    {
+      "instruction": "Sellado de Ganache: Derrita chocolate negro con 1 cucharadita de mantequilla. Vierta sobre la capa de natillas e incline el molde para un acabado nivelado y brillante.",
+      "is_branch_point": false
+    },
+    {
+      "instruction": "Corte de Precisión: Refrigere 2 horas. Para evitar que el chocolate se rompa al cortar, use un cuchillo caliente (sumergido en agua hirviendo y secado) para cada corte individual.",
+      "is_branch_point": false
+    }
+  ]
+},
+  {
+  "title": "Tarta Banoffee (Expreso de 5 Ingredientes)",
+  "description": "Un postre diseñado en torno a la sinergia molecular de los plátanos frescos y el caramelo lácteo (Dulce de Leche), utilizando grasas amortiguadoras para prevenir la oxidación de la fruta.",
+  "prep_time": "20 minutos",
+  "ingredients": [
+    "Galletas Digestive o Graham [Base]",
+    "Galletas Digestive sin Gluten [Celíaco]",
+    "Mantequilla sin Sal (Derretida) [Universal]",
+    "Dulce de Leche [Base]",
+    "Plátanos Frescos [Base]",
+    "Crema para Batir Entera [Estándar]",
+    "Virutas de Chocolate Negro [Universal]"
+  ],
+  "steps": [
+    {
+      "instruction": "Construcción de la Base Lipídica: Combine las galletas trituradas con la mantequilla y presione en un molde.",
+      "is_branch_point": true,
+      "variant_logic": {
+        "Estándar": "Use galletas Digestive o Graham de trigo tradicionales.",
+        "Celíaco": "Use galletas digestive certificadas sin gluten; asegúrese de triturarlas hasta obtener una consistencia de arena fina para mejorar la cohesión de la base."
+      }
+    },
+    {
+      "instruction": "Saturación de Caramelo: Extienda una capa gruesa y uniforme de dulce de leche.",
+      "is_branch_point": false,
+      "instruction_note": "Consejo Técnico: si el caramelo está muy espeso, caliéntelo 10 segundos para mejorar la esparcibilidad sin romper la base."
+    },
+    {
+      "instruction": "Capas y Protección de la Fruta: Corte los plátanos en rodajas de 1 cm y organícelos en un remolino apretado. Asegúrese de cubrirlos totalmente en el siguiente paso para que la crema actúe como barrera contra el oxígeno y evite el pardeamiento.",
+      "is_branch_point": false
+    },
+    {
+      "instruction": "Topping de Matriz Aireada: Bata la crema hasta obtener picos firmes y extienda sobre los plátanos.",
+      "is_branch_point": false,
+      "instruction_note": "No añada azúcar, ya que el caramelo proporciona carga glucémica suficiente."
+    },
+    {
+      "instruction": "Guarnición Final: Cubra con virutas de chocolate y sirva frío.",
+      "is_branch_point": false
+    }
+  ]
+}
+]

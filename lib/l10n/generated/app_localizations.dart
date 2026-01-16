@@ -686,6 +686,12 @@ abstract class AppLocalizations {
   /// **'Low Carb'**
   String get dietLowCarb;
 
+  /// No description provided for @dietKosher.
+  ///
+  /// In en, this message translates to:
+  /// **'Kosher'**
+  String get dietKosher;
+
   /// No description provided for @conditionAplv.
   ///
   /// In en, this message translates to:
@@ -745,6 +751,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Renal (Kidney Safe)'**
   String get conditionRenal;
+
+  /// No description provided for @conditionHypertension.
+  ///
+  /// In en, this message translates to:
+  /// **'Hypertension (Low Sodium)'**
+  String get conditionHypertension;
 
   /// No description provided for @medicalTags.
   ///
@@ -2563,6 +2575,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Please use the bottom navigation to access the Cookbook.'**
   String get dashboardUseBottomNav;
+
+  /// No description provided for @navHome.
+  ///
+  /// In en, this message translates to:
+  /// **'Home'**
+  String get navHome;
+
+  /// No description provided for @navCookbook.
+  ///
+  /// In en, this message translates to:
+  /// **'Cookbook'**
+  String get navCookbook;
+
+  /// No description provided for @navPlanner.
+  ///
+  /// In en, this message translates to:
+  /// **'Planner'**
+  String get navPlanner;
+
+  /// No description provided for @navFridge.
+  ///
+  /// In en, this message translates to:
+  /// **'Fridge'**
+  String get navFridge;
+
+  /// No description provided for @recipeStepPrefix.
+  ///
+  /// In en, this message translates to:
+  /// **'Step {number}'**
+  String recipeStepPrefix(int number);
 }
 
 class _AppLocalizationsDelegate

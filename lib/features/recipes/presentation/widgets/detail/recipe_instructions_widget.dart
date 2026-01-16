@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:gastronomic_os/core/theme/app_dimens.dart';
+import 'package:gastronomic_os/l10n/generated/app_localizations.dart';
+import 'package:gastronomic_os/core/theme/app_theme.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:gastronomic_os/features/onboarding/domain/entities/family_member.dart';
@@ -119,7 +120,7 @@ class RecipeInstructionsWidget extends StatelessWidget {
         border: Border.all(color: Theme.of(context).colorScheme.outlineVariant),
       ),
       child: Text(
-        'Step $index',
+        AppLocalizations.of(context)!.recipeStepPrefix(index),
         style: TextStyle(
           fontWeight: FontWeight.bold,
           color: Theme.of(context).colorScheme.onSurface,

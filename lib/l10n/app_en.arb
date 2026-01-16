@@ -97,6 +97,7 @@
   "dietMediterranean": "Mediterranean",
   "dietHighPerformance": "High Performance",
   "dietLowCarb": "Low Carb",
+  "dietKosher": "Kosher",
   "conditionAplv": "APLV (Milk Allergy)",
   "conditionEggAllergy": "Egg Allergy",
   "conditionSoyAllergy": "Soy Allergy",
@@ -107,6 +108,7 @@
   "conditionHistamine": "Histamine Intolerance",
   "conditionDiabetes": "Diabetes",
   "conditionRenal": "Renal (Kidney Safe)",
+  "conditionHypertension": "Hypertension (Low Sodium)",
   "medicalTags": "Medical Tags",
   "recipeLineageTitle": "Recipe Lineage",
   "recipeLineageParent": "Parent",
@@ -437,5 +439,17 @@
   "settingsLanguageSpanish": "Español",
   "settingsLanguageSwitchToSpanish": "Tap to switch to Spanish",
   "settingsLanguageSwitchToEnglish": "Tap to switch to English",
-  "dashboardUseBottomNav": "Please use the bottom navigation to access the Cookbook."
+  "dashboardUseBottomNav": "Please use the bottom navigation to access the Cookbook.",
+  "navHome": "Home",
+  "navCookbook": "Cookbook",
+  "navPlanner": "Planner",
+  "navFridge": "Fridge",
+  "recipeStepPrefix": "Step {number}",
+  "@recipeStepPrefix": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      }
+    }
+  }
 }

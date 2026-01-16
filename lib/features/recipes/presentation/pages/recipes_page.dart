@@ -25,9 +25,7 @@ class RecipesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<RecipeBloc>(
-      create: (context) => sl<RecipeBloc>()..add(initialQuery != null 
-          ? FilterRecipes(query: initialQuery!) 
-          : LoadRecipes()),
+      create: (context) => sl<RecipeBloc>(), // Initialization moved to RecipesView
       child: RecipesView(initialQuery: initialQuery, autoFocus: autoFocus),
     );
   }
@@ -53,6 +51,24 @@ class _RecipesViewState extends State<RecipesView> {
       _searchController.text = widget.initialQuery!;
     }
     _scrollController.addListener(_onScroll);
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (widget.initialQuery == null) {
+      // Trigger load with locale whenever dependencies (including locale) change
+      // Only trigger if we aren't filtering with initialQuery
+      final locale = Localizations.localeOf(context).languageCode;
+      
+      // We need to avoid infinite loops if LoadRecipes changes state which triggers rebuilds.
+      // But didChangeDependencies is for inherited widgets.
+      // We should check if the Bloc ALREADY has loaded this locale to avoid spamming.
+      // For now, simpler: Just add event. The Bloc ignores if it's busy loading or we can optimize later.
+      // BETTER: Check if state is Initial or we explicitly want to refresh.
+      
+      context.read<RecipeBloc>().add(LoadRecipes(languageCode: locale));
+    }
   }
 
   @override
@@ -226,104 +242,118 @@ class _RecipesViewState extends State<RecipesView> {
 
                 // List / Grid
                 Expanded(
-                  child: state.recipes.isEmpty
-                    ? Center(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(Icons.search_off, size: 64, color: theme.colorScheme.outline),
-                            const SizedBox(height: AppDimens.spaceL),
-                            Text(AppLocalizations.of(context)!.recipesEmptyTitle, style: theme.textTheme.titleMedium),
-                            if (state.query.isNotEmpty || state.isFamilySafe || state.isPantryReady || state.requiredIngredients.isNotEmpty)
-                              TextButton(
-                                onPressed: () {
-                                  // Clear filters
-                                  context.read<RecipeBloc>().add(const FilterRecipes());
-                                  _searchController.clear();
-                                }, 
-                                child: Text(AppLocalizations.of(context)!.recipesClearFilters)
+                  child: RefreshIndicator(
+                    onRefresh: () async {
+                      // Trigger reload with current filters/language
+                      // Since LoadRecipes(languageCode) resets list, we use that.
+                      // We need to pass current language code from state!
+                      final locale = state.languageCode ?? Localizations.localeOf(context).languageCode;
+                      context.read<RecipeBloc>().add(LoadRecipes(languageCode: locale));
+                    },
+                    child: state.recipes.isEmpty
+                      ? Center(
+                          child: SingleChildScrollView( // Scrollable for RefreshIndicator
+                            physics: const AlwaysScrollableScrollPhysics(),
+                            child: Container(
+                              height: 400, // Min height
+                              alignment: Alignment.center,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(Icons.search_off, size: 64, color: theme.colorScheme.outline),
+                                  const SizedBox(height: AppDimens.spaceL),
+                                  Text(AppLocalizations.of(context)!.recipesEmptyTitle, style: theme.textTheme.titleMedium),
+                                  if (state.query.isNotEmpty || state.isFamilySafe || state.isPantryReady || state.requiredIngredients.isNotEmpty)
+                                    TextButton(
+                                      onPressed: () {
+                                        // Clear filters
+                                        context.read<RecipeBloc>().add(const FilterRecipes());
+                                        _searchController.clear();
+                                      }, 
+                                      child: Text(AppLocalizations.of(context)!.recipesClearFilters)
+                                    ),
+                                ],
                               ),
-                          ],
+                            ),
+                          ),
+                        )
+                      : LayoutBuilder(
+                          builder: (context, constraints) {
+                            // ... existing grid logic
+                            final crossAxisCount = constraints.maxWidth > 900 
+                              ? 4 
+                              : constraints.maxWidth > 600 ? 3 : 2;
+                            
+                            if (constraints.maxWidth < 450) {
+                               return ListView.separated(
+                                 controller: _scrollController,
+                                 physics: const AlwaysScrollableScrollPhysics(), // Ensure scroll
+                                 padding: const EdgeInsets.only(
+                                   left: AppDimens.spaceL,
+                                   right: AppDimens.spaceL,
+                                   top: AppDimens.spaceL,
+                                   bottom: 120, 
+                                 ),
+                                 itemCount: state.hasReachedMax 
+                                    ? state.recipes.length + (state.recipes.length ~/ 5) 
+                                    : state.recipes.length + (state.recipes.length ~/ 5) + 1,
+                                 separatorBuilder: (_, __) => const SizedBox(height: AppDimens.spaceL),
+                                 itemBuilder: (context, index) {
+                                    // Ad logic
+                                    if ((index + 1) % 6 == 0) {
+                                      return const BannerAdWidget();
+                                    }
+                                    final recipeIndex = index - (index ~/ 6);
+
+                                    if (recipeIndex >= state.recipes.length) {
+                                       return const Center(
+                                         child: Padding(
+                                           padding: EdgeInsets.all(AppDimens.spaceL),
+                                           child: CircularProgressIndicator(),
+                                         )
+                                       );
+                                    }
+                                    final recipe = state.recipes[recipeIndex];
+                                    return RecipeCard(
+                                      recipe: recipe,
+                                      onTap: () => _navigateToDetail(context, recipe),
+                                    );
+                                 },
+                               );
+                            }
+
+                            return GridView.builder(
+                              controller: _scrollController,
+                              physics: const AlwaysScrollableScrollPhysics(),
+                              padding: const EdgeInsets.only(
+                                left: AppDimens.spaceL,
+                                right: AppDimens.spaceL,
+                                top: AppDimens.spaceL,
+                                bottom: 120, 
+                              ),
+                              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: crossAxisCount,
+                                childAspectRatio: 0.7, 
+                                crossAxisSpacing: AppDimens.spaceL,
+                                mainAxisSpacing: AppDimens.spaceL,
+                              ),
+                              itemCount: state.hasReachedMax 
+                                  ? state.recipes.length 
+                                  : state.recipes.length + 1,
+                              itemBuilder: (context, index) {
+                                if (index >= state.recipes.length) {
+                                   return const Center(child: CircularProgressIndicator());
+                                }
+                                final recipe = state.recipes[index];
+                                return RecipeCard(
+                                  recipe: recipe,
+                                  onTap: () => _navigateToDetail(context, recipe),
+                                ).animate().fadeIn(delay: (30 * index).ms).slideY(begin: 0.1, curve: Curves.easeOut);
+                              },
+                            );
+                          },
                         ),
-                      )
-                    : LayoutBuilder(
-                        builder: (context, constraints) {
-                          final crossAxisCount = constraints.maxWidth > 900 
-                            ? 4 
-                            : constraints.maxWidth > 600 ? 3 : 2;
-                          
-                          if (constraints.maxWidth < 450) {
-                             return ListView.separated(
-                               controller: _scrollController,
-                               padding: const EdgeInsets.only(
-                                 left: AppDimens.spaceL,
-                                 right: AppDimens.spaceL,
-                                 top: AppDimens.spaceL,
-                                 bottom: 120, // Space for floating nav
-                               ),
-                               itemCount: state.hasReachedMax 
-                                  ? state.recipes.length + (state.recipes.length ~/ 5) 
-                                  : state.recipes.length + (state.recipes.length ~/ 5) + 1,
-                               separatorBuilder: (_, __) => const SizedBox(height: AppDimens.spaceL),
-                               itemBuilder: (context, index) {
-                                  // Ad logic
-                                  // if ((index + 1) % 6 == 0) {
-                                  //   return const BannerAdWidget();
-                                  // }
-                                  if ((index + 1) % 6 == 0) {
-                                    return const BannerAdWidget();
-                                  }
-
-                                  final recipeIndex = index - (index ~/ 6);
-
-                                  if (recipeIndex >= state.recipes.length) {
-                                     return const Center(
-                                       child: Padding(
-                                         padding: EdgeInsets.all(AppDimens.spaceL),
-                                         child: CircularProgressIndicator(),
-                                       )
-                                     );
-                                  }
-                                  final recipe = state.recipes[recipeIndex];
-                                  return RecipeCard(
-                                    recipe: recipe,
-                                    onTap: () => _navigateToDetail(context, recipe),
-                                  );
-                               },
-                             );
-                          }
-
-                          return GridView.builder(
-                            controller: _scrollController,
-                            padding: const EdgeInsets.only(
-                              left: AppDimens.spaceL,
-                              right: AppDimens.spaceL,
-                              top: AppDimens.spaceL,
-                              bottom: 120, // Space for floating nav
-                            ),
-                            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: crossAxisCount,
-                              childAspectRatio: 0.7, // Taller for Unicorn cards
-                              crossAxisSpacing: AppDimens.spaceL,
-                              mainAxisSpacing: AppDimens.spaceL,
-                            ),
-                            itemCount: state.hasReachedMax 
-                                ? state.recipes.length 
-                                : state.recipes.length + 1,
-                            itemBuilder: (context, index) {
-                              if (index >= state.recipes.length) {
-                                 // Loading Indicator for Grid
-                                 return const Center(child: CircularProgressIndicator());
-                              }
-                              final recipe = state.recipes[index];
-                              return RecipeCard(
-                                recipe: recipe,
-                                onTap: () => _navigateToDetail(context, recipe),
-                              ).animate().fadeIn(delay: (30 * index).ms).slideY(begin: 0.1, curve: Curves.easeOut);
-                            },
-                          );
-                        },
-                      ),
+                  ),
                 ),
               ],
             ),
@@ -360,7 +390,8 @@ class _RecipesViewState extends State<RecipesView> {
       ),
     ).then((result) {
       if ((result == true) && context.mounted) {
-         bloc.add(LoadRecipes()); // Reload if deleted
+         final locale = Localizations.localeOf(context).languageCode;
+         bloc.add(LoadRecipes(languageCode: locale)); // Reload if deleted, with explicit locale
       }
     });
   }

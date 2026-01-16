@@ -9,12 +9,14 @@ import 'package:gastronomic_os/features/recipes/domain/entities/recipe.dart';
 import 'package:gastronomic_os/features/recipes/presentation/bloc/recipe_event.dart';
 import 'package:gastronomic_os/features/recipes/presentation/bloc/recipe_state.dart';
 import 'package:gastronomic_os/features/recipes/domain/logic/recipe_debug_service.dart';
+import 'package:gastronomic_os/features/recipes/data/services/recipe_importer_service.dart';
 
 class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
   final IRecipeRepository repository;
   final IInventoryRepository inventoryRepository;
   final IOnboardingRepository onboardingRepository;
   final RecipeDebugService debugService;
+  final RecipeImporterService importerService;
 
   final DietEngine _dietEngine = DietEngine();
   final ScoringEngine _scoringEngine = ScoringEngine();
@@ -24,6 +26,7 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
     required this.inventoryRepository,
     required this.onboardingRepository,
     required this.debugService,
+    required this.importerService,
   }) : super(RecipeInitial()) {
     on<LoadRecipes>(_onLoadRecipes);
     on<LoadMoreRecipes>(_onLoadMoreRecipes);
@@ -35,6 +38,17 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
     on<FilterRecipes>(_onFilterRecipes);
     on<DeleteRecipe>(_onDeleteRecipe);
     on<ToggleSaveRecipe>(_onToggleSaveRecipe);
+    on<ClearAllRecipes>(_onClearAllRecipes);
+  }
+
+  Future<void> _onClearAllRecipes(ClearAllRecipes event, Emitter<RecipeState> emit) async {
+    emit(RecipeLoading());
+    try {
+      await debugService.clearDatabase();
+      emit(const RecipeLoaded(recipes: [])); 
+    } catch (e) {
+      emit(RecipeError('Failed to clear database: $e'));
+    }
   }
 
   Future<void> _onDeleteRecipe(DeleteRecipe event, Emitter<RecipeState> emit) async {
@@ -46,7 +60,12 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
     } else {
       emit(RecipeDeleted());
       // Optionally reload list if we were on list view, but usually we pop details
-      add(LoadRecipes()); 
+      // Optionally reload list if we were on list view, but usually we pop details
+      String languageCode = 'es'; 
+      if (state is RecipeLoaded) {
+        languageCode = (state as RecipeLoaded).languageCode ?? 'es';
+      }
+      add(LoadRecipes(languageCode: languageCode)); 
     }
   }
 
@@ -110,6 +129,7 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
       limit: 20, 
       offset: 0,
       collectionId: event.collectionId, // Pass optional collectionId
+      languageCode: event.languageCode, // Pass language code
     ); 
     
     if (result.$1 != null) {
@@ -119,6 +139,7 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
       emit(RecipeLoaded(
         recipes: list,
         hasReachedMax: list.length < 20,
+        languageCode: event.languageCode, // Persist it
       ));
     }
   }
@@ -173,12 +194,25 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
     }
 
     // 3. Fetch from Repo with Filters & Pantry Sorting
+    String? languageCode;
+    if (state is RecipeLoaded) {
+      languageCode = (state as RecipeLoaded).languageCode;
+    }
+    
+    // Explicitly check for null languageCode if we expect it to be always set
+    if (languageCode == null) {
+       // This shouldn't happen if LoadRecipes was called first correctly. 
+       // But if it does, we might want to default or log warning.
+       // AppLogger.w('FilterRecipes called without active language code in state!');
+    }
+
     final result = await repository.getRecipes(
       limit: 20, 
       offset: 0,
       query: event.query,
       excludedTags: excludedTags,
       pantryItems: pantryItems, // Pass items for sorting
+      languageCode: languageCode, // Use persisted language
     );
 
     if (result.$1 != null) {
@@ -200,7 +234,8 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
         query: event.query,
         isFamilySafe: event.isFamilySafe,
         isPantryReady: event.isPantryReady,
-        requiredIngredients: event.requiredIngredients
+        requiredIngredients: event.requiredIngredients,
+        languageCode: languageCode, // Keep it for next filters
       ));
     }
   }
@@ -212,7 +247,11 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
     if (result.$1 != null) {
       emit(RecipeError(result.$1!.message));
     } else {
-      add(LoadRecipes());
+      String languageCode = 'es';
+      if (state is RecipeLoaded) {
+        languageCode = (state as RecipeLoaded).languageCode ?? 'es';
+      }
+      add(LoadRecipes(languageCode: languageCode));
     }
   }
 
@@ -258,7 +297,11 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
          // Safest is to let the UI handle Forked state as a "Loaded" variant.
       } else {
          // Fallback if we weren't in Detail view (shouldn't happen in this flow)
-         add(LoadRecipes());
+         String? languageCode;
+         if (state is RecipeLoaded) {
+           languageCode = (state as RecipeLoaded).languageCode;
+         }
+         add(LoadRecipes(languageCode: languageCode ?? 'es'));
       }
     }
   }
@@ -266,10 +309,32 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
   Future<void> _onSeedDatabase(SeedDatabase event, Emitter<RecipeState> emit) async {
     emit(RecipeLoading());
     try {
-      await debugService.seedDatabase(filterTitle: event.filterTitle);
-      add(LoadRecipes());
+      // Use the new Importer Service instead of DebugService
+      final stats = await importerService.importMasterRecipes();
+      
+      // We could add a specific event/state to show a Snackbar, 
+      // but for now we just reload and maybe log it.
+      // Since this is a "Debug" action, a console log or simple reload is acceptable.
+      // Ideally, emit(RecipeLoaded...) but we want to show a message?
+      // Don't auto-load here blindly. Emit Loaded with empty list if needed, or rely on UI to refresh.
+      // But if we do refresh, we MUST use a valid language code. 
+      // We cannot get context here easily.
+      // If state has language, use it. If not, we are in a bind. 
+      // For seeding, it's safer to NOT trigger a load and let the UI (SettingsPage) handle the success feedback.
+      // If we MUST reload, use existing language code if available
+      if (state is RecipeLoaded) {
+          final lang = (state as RecipeLoaded).languageCode;
+          if (lang != null) {
+             add(LoadRecipes(languageCode: lang));
+          } else {
+             emit(RecipeInitial()); // Reset if lost
+          }
+      } else {
+        // If unknown state, just emit Initial so UI knows to reset/re-init if needed
+        emit(RecipeInitial());
+      }
     } catch (e) {
-      emit(RecipeError('Failed to seed database: $e'));
+      emit(RecipeError('Failed to import recipes: $e'));
     }
   }
 }

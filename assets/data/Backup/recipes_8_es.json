@@ -1,0 +1,403 @@
+﻿[
+  {
+  "title": "Barras de Cheesecake de Fresa (Método de Control de Hidratación)",
+  "description": "Un postre portátil centrado en la fruta que utiliza una gestión precisa de la humedad para evitar que el contenido de agua de la fresa comprometa la estructura del cheesecake rica en lípidos.",
+  "prep_time": "50 minutos (+3h refrigeración)",
+  "ingredients": [
+    "Base de Galletas Graham [Base]",
+    "Base de Galletas Graham sin Gluten [Celíaco]",
+    "Queso Crema Entero [Estándar]",
+    "Fresas Frescas (Laminadas) [Estándar]",
+    "Mermelada de Fresa Concentrada [Histamina, Universal]",
+    "Azúcar Blanca [Estándar]",
+    "Eritritol o Alulosa [Diabetes]",
+    "Zumo de Limón [Estándar]",
+    "Almidón de Maíz [Universal]"
+  ],
+  "steps": [
+    {
+      "instruction": "Base Estructural: Presione la base de galleta Graham en un molde forrado con pergamino. Hornee a 175°C (350°F) durante 10 minutos.",
+      "is_branch_point": true,
+      "variant_logic": {
+        "Estándar": "Use migas de galleta Graham de trigo tradicionales mezcladas con mantequilla.",
+        "Celíaco": "Use migas de galleta Graham certificadas sin gluten o una mezcla de harina de almendras y harina de avena sin gluten para asegurar una base estable."
+      }
+    },
+    {
+      "instruction": "Preparación Diferencial de la Fruta: Para prevenir el 'llanto' (sinéresis), prepare la capa de fresa.",
+      "is_branch_point": true,
+      "variant_logic": {
+        "Estándar": "Mezcle las fresas laminadas con 1 cucharadita de almidón de maíz y un chorrito de zumo de limón para capturar el agua interna de la fruta durante el horneado.",
+        "Alta Estabilidad": "Sustituya las fresas frescas por una mermelada de fresa concentrada alta en pectina para asegurar una migración nula de agua."
+      }
+    },
+    {
+      "instruction": "Montaje de la Matriz Lipídica: Bata el queso crema y el endulzante hasta que sea homogéneo.",
+      "is_branch_point": true,
+      "variant_logic": {
+        "Estándar": "Bata con azúcar blanca granulada.",
+        "Diabetes": "Bata con eritritol o alulosa. Nota Técnica: La alulosa mantendrá las barras más suaves, mientras que el eritritol puede resultar en un cuajado ligeramente más firme."
+      }
+    },
+    {
+      "instruction": "Montaje y Horneado: Vierta la mitad de la masa de cheesecake en el molde, coloque la capa de fresa y cubra con el resto de la masa. Hornee hasta que los bordes estén firmes.",
+      "is_branch_point": false
+    },
+    {
+      "instruction": "Estabilización: Enfríe durante al menos 3 horas; este tiempo de asentamiento criogénico es obligatorio para obtener un corte limpio.",
+      "is_branch_point": false
+    }
+  ]
+},
+  {
+    "title": "Pan de Nube (Revivimiento de la Espuma Proteica)",
+    "description": "Un sustituto de pan etéreo, sin granos y a base de espuma, que utiliza matrices proteicas llenas de aire para aportar volumen y atractivo estético.",
+    "prep_time": "15 minutos",
+    "ingredients": [
+      "Claras de Huevo Frescas [Base]",
+      "Azúcar Blanca [Estándar]",
+      "Alulosa [Diabetes, Keto]",
+      "Almidón de Maíz o Polvo de Arrurruz [Estándar, Paleo]",
+      "Zumo de Remolacha Natural [Etiqueta Limpia]",
+      "Cremor Tártaro [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Aireación Mecánica: Bata las claras de huevo con el cremor tártaro hasta que se formen picos suaves. El tártaro acidifica las proteínas, permitiendo una matriz de burbujas de aire más estable y elástica.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Titulación del Endulzante: Incorpore lentamente el endulzante mientras continúa batiendo. Esto aumenta la viscosidad de la espuma.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Use azúcar blanca granulada.",
+          "Diabetes": "Sustituya el azúcar por alulosa para mantener el volumen sin la carga glucémica."
+        }
+      },
+      {
+        "instruction": "Estabilización: Tamice el almidón de maíz o arrurruz. Las moléculas de almidón se unen al agua de las claras, evitando que la 'nube' colapse durante la expansión térmica.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Coloración Estética: Añada zumo de remolacha o colorante alimentario y bata hasta obtener picos firmes. La espuma debe estar lo suficientemente rígida como para mantener su forma al invertirla.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Fraguado Térmico: Forme un montículo y hornee a 150°C (300°F) durante 25 minutos. La temperatura baja permite que las proteínas se asienten sin dorarse excesivamente.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Bagels de 2 Ingredientes (Fermentación Rápida)",
+    "description": "Un pan de atajo que utiliza el ácido láctico del yogur para activar químicamente los agentes leudantes de la harina leudante, evitando los requisitos tradicionales de la levadura.",
+    "prep_time": "25 minutos",
+    "ingredients": [
+      "Harina Leudante [Estándar]",
+      "Harina Leudante sin Gluten [Celíaco]",
+      "Yogur Griego Espeso [Estándar]",
+      "Yogur Griego sin Lactosa [Bajo en FODMAP]",
+      "Sazonador 'Everything Bagel' [Universal]",
+      "Huevo Batido (para pincelar) [Estándar]"
+    ],
+    "steps": [
+      {
+        "instruction": "Síntesis de la Matriz: Combine partes iguales por peso de harina y yogur. La acidez del yogur reacciona inmediatamente con el polvo de hornear de la harina para comenzar la producción de gas.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Use harina leudante a base de trigo.",
+          "Celíaco": "Use una mezcla leudante certificada sin gluten.",
+          "Bajo en FODMAP": "Use yogur sin lactosa para evitar la fermentación de disacáridos en el intestino."
+        }
+      },
+      {
+        "instruction": "Desarrollo Mecánico: Amase durante 3 minutos hasta formar una bola de masa suave. Divida y forme cuerdas para crear los anillos de los bagels.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Glaseado de Superficie: Pincele con huevo batido y aplique el sazonador. Las proteínas del huevo promueven la reacción de Maillard, otorgando a los bagels una costra dorada profesional.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Horneado: Cocine en la freidora de aire a 190°C (375°F) durante 10-12 minutos o en el horno a 200°C durante 20 minutos hasta que suenen huecos al golpearlos.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Limonada Batida (Bebida Cítrica Emulsionada)",
+    "description": "Una bebida emulsionada alta en grasas y ácidos que utiliza aireación mecánica de alta velocidad para lograr una estabilidad similar a la de un batido.",
+    "prep_time": "5 minutos",
+    "ingredients": [
+      "Zumo de Limón Fresco [Base]",
+      "Cúbitos de Hielo [Base]",
+      "Leche Condensada Azucarada [Estándar]",
+      "Leche Condensada de Coco [Vegano, APLV]",
+      "Crema Espesa y Estevia [Diabetes]"
+    ],
+    "steps": [
+      {
+        "instruction": "Selección de la Base de Emulsión: Añada hielo, zumo de limón y la fuente lipídica cremosa a una licuadora de alta velocidad.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Estándar": "Use 1/3 de taza de leche condensada azucarada.",
+          "Vegano": "Use crema de coco entera fría o leche condensada de coco.",
+          "Diabetes": "Use crema espesa y estevia líquida."
+        }
+      },
+      {
+        "instruction": "Aireación de Alta Velocidad: Licue a las RPM máximas durante 45 segundos. Las cuchillas crean una emulsión estable entre los ácidos cítricos y las grasas lácteas, resultando en una textura espesa y espumosa.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Servicio: Vierta en vasos fríos. La bebida debe mantener su volumen batido durante al menos 15 minutos; decore con ralladura de limón.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+  "title": "Pavé de Patata Simplificado (Patata de 15 Horas)",
+  "description": "Una guarnición técnica que presenta un milhojas comprimido de patatas, optimizando la liberación y retrogradación del almidón para un crujido superficial superior.",
+  "prep_time": "45 minutos (+12h refrigeración)",
+  "ingredients": [
+    "Patatas Yukon Gold (Altas en almidón) [Base]",
+    "Grasa de Pato o Mantequilla Derretida [Estándar]",
+    "Aceite de Coco Refinado [Vegano]",
+    "Tomillo Fresco y Sal Marina [Universal]"
+  ],
+  "steps": [
+    {
+      "instruction": "Procesamiento con Mandolina: Corte las patatas peladas en rodajas translúcidas y finas como el papel. Nota Técnica: No las enjuague; el almidón superficial es necesario para 'pegar' las capas durante la compresión.",
+      "is_branch_point": false
+    },
+    {
+      "instruction": "Capas Arquitectónicas: Disponga las rodajas en una fuente forrada con pergamino, pincelando cada capa con la grasa elegida.",
+      "is_branch_point": true,
+      "variant_logic": {
+        "Estándar": "Sazone ligeramente cada 3 capas con sal marina y tomillo fresco.",
+        "Hipertensión": "Omita totalmente la sal marina; duplique la cantidad de tomillo fresco y añada una lluvia de ajo en polvo entre las capas para realzar el sabor sin sodio."
+      }
+    },
+    {
+      "instruction": "Fraguado Térmico: Hornee a 150°C (300°F) hasta que estén tiernas. Coloque inmediatamente un peso encima y refrigere durante 12 horas; este tiempo permite que el almidón retrograde, creando un bloque sólido.",
+      "is_branch_point": false
+    },
+    {
+      "instruction": "Sellado Maillard: Desmolde, corte en cubos y fría en una sartén hasta que los seis lados estén profundamente dorados y crujientes; sirva caliente.",
+      "is_branch_point": false
+    }
+  ]
+},
+  {
+  "title": "Dip de 'Queso' de Requesón Batido",
+  "description": "Un dip alto en proteínas que replica la textura del queso para nachos utilizando lácteos emulsionados y carotenoides de pimiento asado para la coloración natural.",
+  "prep_time": "10 minutos",
+  "ingredients": [
+    "Requesón Bajo en Sodio [Renal, Base]",
+    "Requesón Estándar [Estándar]",
+    "Pimientos Rojos Asados (De lata)",
+    "Levadura Nutricional [Universal]",
+    "Ajo en Polvo y Cúrcuma [Estándar, Universal]"
+  ],
+  "steps": [
+    {
+      "instruction": "Preparación del Pimiento: Prepare los pimientos rojos asados para gestionar la carga mineral.",
+      "is_branch_point": true,
+      "variant_logic": {
+        "Estándar": "Escurra los pimientos de la lata y úselos directamente.",
+        "Renal": "Enjuague los pimientos enlatados 3 veces con agua fría para eliminar la salmuera y los líquidos de conservación ricos en potasio. Esto es crítico para la seguridad mineral."
+      }
+    },
+    {
+      "instruction": "Emulsificación: Licue el requesón y los pimientos hasta que los grumos desaparezcan y la textura sea suave.",
+      "is_branch_point": true,
+      "variant_logic": {
+        "Estándar": "Use requesón estándar (entero o bajo en grasa).",
+        "Renal": "Use estrictamente requesón sin sal añadida (bajo en sodio) para cumplir con los límites de ingesta de sodio."
+      }
+    },
+    {
+      "instruction": "Activación del Sabor: Añada la levadura nutricional y la cúrcuma para obtener el color y sabor deseados.",
+      "is_branch_point": true,
+      "variant_logic": {
+        "Estándar": "Añada 2 cucharadas de levadura nutricional y 1 cucharadita de ajo en polvo.",
+        "Renal": "Limite la levadura nutricional a 1 cucharadita (debido a su alto contenido de fósforo) y use el ajo en polvo como agente de sabor principal."
+      }
+    },
+    {
+      "instruction": "Servicio: Sirva frío o ligeramente tibio (no lo hierva para evitar la separación de proteínas).",
+      "is_branch_point": true,
+      "variant_logic": {
+        "Estándar": "Acompañe con chips de maíz o pita tostada.",
+        "Hipertensión": "Acompañe con rodajas de pepino o bastones de apio para obtener un crujido con cero sodio.",
+        "Renal": "Acompañe con rodajas de pepino (bajas en potasio)."
+      }
+    }
+  ]
+},
+ {
+  "title": "Tostada Francesa de Arándanos al Horno (Meal Prep)",
+  "description": "Una cacerola de desayuno estructurada diseñada para un cuajado térmico consistente y eficiente, equilibrando carbohidratos complejos con proteínas de alto valor.",
+  "prep_time": "45 minutos",
+  "ingredients": [
+    "Pan de Masa Madre o Brioche de Rebanada Gruesa [Estándar]",
+    "Pan Certificado sin Gluten [Celíaco]",
+    "Huevos Grandes Frescos [Estándar]",
+    "Leche o Leche Vegetal [Universal]",
+    "Arándanos Frescos [Base]"
+  ],
+  "steps": [
+    {
+      "instruction": "Corte de Almidón: Corte el pan en cubos de 3 cm y colóquelos en una fuente engrasada.",
+      "is_branch_point": true,
+      "variant_logic": {
+        "Estándar": "Use masa madre o brioche de rebanada gruesa; estos panes tienen la densidad estructural para absorber la crema sin desintegrarse.",
+        "Celíaco": "Use pan blanco o tipo brioche certificado sin gluten. Nota Técnica: Asegúrese de que el pan esté ligeramente seco o tuéstelo brevemente antes de cortarlo para mejorar la absorción del líquido."
+      }
+    },
+    {
+      "instruction": "Síntesis de la Crema: Bata los huevos, la leche y la canela. Vierta sobre el pan y deje reposar 15 minutos para permitir la hidratación total de la miga.",
+      "is_branch_point": false
+    },
+    {
+      "instruction": "Inclusión: Cubra con arándanos frescos. Las bayas explotarán durante el horneado, liberando pectina para espesar la crema.",
+      "is_branch_point": false
+    },
+    {
+      "instruction": "Horneado Final y Almacenamiento: Hornee a 180°C (350°F) hasta que el centro esté firme.",
+      "is_branch_point": true,
+      "variant_logic": {
+        "Estándar": "Sirva caliente o deje enfriar antes de refrigerar para meal prep.",
+        "Histamina": "Si es sensible a la Histamina, corte y congele las porciones individuales inmediatamente después del horneado. No deje el plato a temperatura ambiente para evitar la acumulación de aminas biógenas."
+      }
+    }
+  ]
+},
+  {
+  "title": "Galletas Crinkle 'Beet' Red Velvet",
+  "description": "Un postre denso en nutrientes que utiliza puré de remolacha asada para aportar humedad y pigmentación, evitando tintes sintéticos y gestionando los desencadenantes del cacao.",
+  "prep_time": "30 minutos",
+  "ingredients": [
+    "Puré de Remolacha Asada [Base]",
+    "Cacao en Polvo [Standard]",
+    "Carob en Polvo [Histamina]",
+    "Harina para Todo Uso [Base]",
+    "Harina sin Gluten [Celíaco]",
+    "Levadura en Polvo [Universal]"
+  ],
+  "steps": [
+    {
+      "instruction": "Extracción de Pigmentos: Licue las remolachas asadas hasta obtener un puré suave. Combine con grasa y endulzante.",
+      "is_branch_point": true,
+      "variant_logic": {
+        "Estándar": "Use 1/2 taza de cacao en polvo para dar sabor y densidad de antioxidantes.",
+        "Histamina": "Sustituya el cacao por carob en polvo para evitar aminas biógenas y desencadenantes de cafeína."
+      }
+    },
+    {
+      "instruction": "Integración de Matriz Seca: Tamice la harina y la levadura en polvo sobre la mezcla de remolacha.",
+      "is_branch_point": true,
+      "variant_logic": {
+        "Estándar": "Use harina de trigo común para todo uso.",
+        "Celíaco": "Use una mezcla de harina sin gluten certificada. Asegúrese de que contenga goma xantana para la elasticidad necesaria que permite el efecto 'agrietado'."
+      }
+    },
+    {
+      "instruction": "Enfriamiento: Congele la masa durante 15 minutos. La masa fría asegura que el efecto 'crinkle' ocurra ya que el exterior se asienta más rápido que el interior en el horno.",
+      "is_branch_point": false
+    },
+    {
+      "instruction": "Formación: Forme bolas, páselas por azúcar glas y hornee a 175°C (350°F) hasta que aparezcan las grietas.",
+      "is_branch_point": false
+    }
+  ]
+},
+ {
+  "title": "Cacerola de Calabacín Desmontada (Lasaña con Control de Humedad)",
+  "description": "Una lasaña deconstruida que utiliza cintas de calabacín, enfocándose en la deshidratación osmótica para mantener la integridad de la salsa.",
+  "prep_time": "35 minutes",
+  "ingredients": [
+    "Cintas de Calabacín [Base]",
+    "Carne de Ternera Picada [Base]",
+    "Salsa Marinara [Estándar]",
+    "Salsa Nomato [Histamina, Renal]"
+  ],
+  "steps": [
+    {
+      "instruction": "Deshidratación Osmótica: Sale las cintas de calabacín y deje reposar 15 minutos; seque con palmaditas agresivamente. Esto es obligatorio para evitar que el agua vegetal diluya la salsa durante el horneado.",
+      "is_branch_point": false
+    },
+    {
+      "instruction": "Preparación de la Proteína: Dore la carne picada en una sartén y escurra el 100% de la grasa.",
+      "is_branch_point": false
+    },
+    {
+      "instruction": "Montaje y Selección de Salsa: Coloque capas de carne cocida con las cintas de calabacín y la salsa elegida.",
+      "is_branch_point": true,
+      "variant_logic": {
+        "Estándar": "Use 1 taza de salsa Marinara estándar para un sabor tradicional.",
+        "Histamina": "Use estrictamente salsa Nomato (base de remolacha/zanahoria) para evitar los desencadenantes de histamina de los tomates cocidos.",
+        "Renal": "Use salsa Nomato para reducir significativamente la carga de potasio y fósforo."
+      }
+    },
+    {
+      "instruction": "Horneado Final: Hornee a 190°C (375°F) durante 20 minutos hasta que burbujee. Sirva como una alternativa baja en carbohidratos a la lasaña tradicional.",
+      "is_branch_point": false
+    }
+  ]
+},
+  {
+    "title": "Chips de Kale (Método de Desactivación de Bociógenos)",
+    "description": "Un snack denso en nutrientes que utiliza la convección a alta temperatura para desactivar los bociógenos mientras logra una crujencia textural extrema.",
+    "prep_time": "20 minutos",
+    "ingredients": [
+      "Kale Rizado Fresco [Base]",
+      "Hojas de Col Blanca [Renal]",
+      "Levadura Nutricional [Universal]",
+      "Aceite de Oliva [Universal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Preparación: Lave y seque las hojas de kale. Para pacientes Renales, sustituya por col blanca finamente laminada para evitar la carga extrema de potasio del kale.",
+        "is_branch_point": true,
+        "variant_logic": {
+          "Tiroides": "Asegure que el kale se tueste a más de 150°C para desactivar los isotiocianatos bociógenos.",
+          "Renal": "Use col o pieles de manzana deshidratadas."
+        }
+      },
+      {
+        "instruction": "Saturación: Masajee con aceite y levadura nutricional. La levadura proporciona un perfil umami quesoso sin proteínas lácteas.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Horneado: Ase a 150°C (300°F) hasta que estén crujientes. La temperatura baja evita que las hojas delicadas se quemen mientras elimina toda la humedad.",
+        "is_branch_point": false
+      }
+    ]
+  },
+  {
+    "title": "Cacerola de Calabacín Desmontada (Lasaña con Control de Humedad)",
+    "description": "Una lasaña deconstruida que utiliza cintas de calabacín, enfocándose en la deshidratación osmótica para mantener la integridad de la salsa.",
+    "prep_time": "35 minutos",
+    "ingredients": [
+      "Cintas de Calabacín [Base]",
+      "Carne de Ternera Picada [Base]",
+      "Salsa Marinara [Estándar]",
+      "Salsa Nomato [Histamina, Renal]"
+    ],
+    "steps": [
+      {
+        "instruction": "Deshidratación Osmótica: Sale las cintas de calabacín y deje reposar 15 minutos; seque con palmaditas. Esto es obligatorio para evitar que el agua vegetal diluya la salsa durante el horneado.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Montaje: Dore la carne y coloque capas con las cintas de calabacín y la salsa elegida. Use salsa Nomato para protocolos Renales o de Histamina.",
+        "is_branch_point": false
+      },
+      {
+        "instruction": "Horneado Final: Hornee a 190°C (375°F) durante 20 minutos hasta que burbujee. Sirva como una alternativa baja en carbohidratos a la pasta tradicional.",
+        "is_branch_point": false
+      }
+    ]
+  }
+]

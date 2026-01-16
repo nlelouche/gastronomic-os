@@ -10,10 +10,11 @@ abstract class RecipeEvent extends Equatable {
 
 class LoadRecipes extends RecipeEvent {
   final String? collectionId;
-  const LoadRecipes({this.collectionId});
+  final String languageCode;
+  const LoadRecipes({this.collectionId, required this.languageCode});
 
   @override
-  List<Object> get props => [if (collectionId != null) collectionId!];
+  List<Object> get props => [if (collectionId != null) collectionId!, languageCode];
 }
 class LoadMoreRecipes extends RecipeEvent {}
 
@@ -94,4 +95,6 @@ class FilterRecipes extends RecipeEvent {
   @override
   List<Object> get props => [query, isFamilySafe, isPantryReady, requiredIngredients];
 }
+
+class ClearAllRecipes extends RecipeEvent {}
 

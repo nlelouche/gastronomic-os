@@ -8,7 +8,8 @@ enum DietLifestyle {
   whole30,
   mediterranean,
   highPerformance,
-  lowCarb; // New addition
+  lowCarb,
+  kosher; // New addition
 
   String get displayName {
     switch (this) {
@@ -22,6 +23,7 @@ enum DietLifestyle {
       case DietLifestyle.mediterranean: return 'Mediterranean';
       case DietLifestyle.highPerformance: return 'High Performance';
       case DietLifestyle.lowCarb: return 'Low Carb';
+      case DietLifestyle.kosher: return 'Kosher';
     }
   }
 
@@ -39,6 +41,7 @@ enum DietLifestyle {
       case DietLifestyle.mediterranean: return 'Mediterranean';
       case DietLifestyle.highPerformance: return 'High-Performance'; // FIXED: was "High Performance"
       case DietLifestyle.lowCarb: return 'Low-Carb'; // FIXED: was "Low Carb"
+      case DietLifestyle.kosher: return 'Kosher';
     }
   }
 }
@@ -53,7 +56,8 @@ enum MedicalCondition {
   lowFodmap,        // Maps from 'low_fodmap'
   histamine,
   diabetes,
-  renal;
+  renal,
+  hypertension;
 
   String get displayName {
     switch (this) {
@@ -67,6 +71,7 @@ enum MedicalCondition {
       case MedicalCondition.histamine: return 'Histamine Intolerance';
       case MedicalCondition.diabetes: return 'Diabetes';
       case MedicalCondition.renal: return 'Renal (Kidney Safe)';
+      case MedicalCondition.hypertension: return 'Hypertension';
     }
   }
 
@@ -83,6 +88,7 @@ enum MedicalCondition {
       case MedicalCondition.histamine: return 'Histamine';
       case MedicalCondition.diabetes: return 'Diabetes';
       case MedicalCondition.renal: return 'Renal';
+      case MedicalCondition.hypertension: return 'Hypertension';
     }
   }
 }

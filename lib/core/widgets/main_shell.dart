@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:ui' as ui;
+import 'package:gastronomic_os/l10n/generated/app_localizations.dart';
 import 'package:gastronomic_os/features/home/presentation/pages/dashboard_page.dart';
 import 'package:gastronomic_os/features/recipes/presentation/pages/recipes_page.dart';
 import 'package:gastronomic_os/features/planner/presentation/pages/planner_page.dart';
@@ -71,10 +72,10 @@ class _MainShellState extends State<MainShell> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        _buildNavItem(0, Icons.home_outlined, Icons.home_rounded, 'Home'),
-                        _buildNavItem(1, Icons.menu_book_outlined, Icons.menu_book_rounded, 'Cookbook'),
-                        _buildNavItem(2, Icons.calendar_today_outlined, Icons.calendar_month_rounded, 'Planner'),
-                        _buildNavItem(3, Icons.kitchen_outlined, Icons.kitchen_rounded, 'Fridge'),
+                        _buildNavItem(0, Icons.home_outlined, Icons.home_rounded, AppLocalizations.of(context)!.navHome),
+                        _buildNavItem(1, Icons.menu_book_outlined, Icons.menu_book_rounded, AppLocalizations.of(context)!.navCookbook),
+                        _buildNavItem(2, Icons.calendar_today_outlined, Icons.calendar_month_rounded, AppLocalizations.of(context)!.navPlanner),
+                        _buildNavItem(3, Icons.kitchen_outlined, Icons.kitchen_rounded, AppLocalizations.of(context)!.navFridge),
                       ],
                     ),
                   ),

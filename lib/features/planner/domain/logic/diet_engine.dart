@@ -143,6 +143,11 @@ class DietEngine {
         if (_ingredientsContain(recipe, ['sugar', 'azucar', 'honey', 'miel', 'syrup', 'sirope', 'molasses', 'melaza', 'juice', 'zumo', 'nectar'])) return false;
         return true;
 
+      case MedicalCondition.hypertension:
+        if (lowerTags.any((t) => ['hypertension', 'low-sodium', 'heart-healthy', 'dash'].contains(t))) return true;
+        if (_ingredientsContain(recipe, ['salt', 'sal', 'soy sauce', 'salsa de soja', 'baking powder', 'levadura', 'cured', 'curado', 'sausage', 'embutido', 'bacon', 'panceta', 'bouillon', 'caldo', 'soup mix'])) return false;
+        return true;
+
       case MedicalCondition.renal:
         if (lowerTags.contains('renal') || lowerTags.contains('kidney')) return true;
         // Blocks: Banana, Potato, Tomato, Avocado, Spinach, Chocolate, Bran, Nuts

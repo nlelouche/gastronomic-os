@@ -97,6 +97,7 @@
   "dietMediterranean": "Mediterránea",
   "dietHighPerformance": "Alto Rendimiento",
   "dietLowCarb": "Bajo en Carbohidratos",
+  "dietKosher": "Kosher",
   "conditionAplv": "APLV (Alergia Leche)",
   "conditionEggAllergy": "Alergia al Huevo",
   "conditionSoyAllergy": "Alergia a la Soja",
@@ -107,6 +108,7 @@
   "conditionHistamine": "Intolerancia Histamina",
   "conditionDiabetes": "Diabetes",
   "conditionRenal": "Renal (Riñones)",
+  "conditionHypertension": "Hipertensión (Bajo en Sodio)",
   "medicalTags": "Etiquetas Médicas",
   "recipeLineageTitle": "Linaje de Receta",
   "recipeLineageParent": "Padre",
@@ -423,5 +425,17 @@
   "settingsLanguageSpanish": "Español",
   "settingsLanguageSwitchToSpanish": "Toca para cambiar a Español",
   "settingsLanguageSwitchToEnglish": "Toca para cambiar a Inglés",
-  "dashboardUseBottomNav": "Por favor usa la barra de navegación inferior para acceder al Recetario."
+  "dashboardUseBottomNav": "Por favor usa la barra de navegación inferior para acceder al Recetario.",
+  "navHome": "Inicio",
+  "navCookbook": "Recetario",
+  "navPlanner": "Planificador",
+  "navFridge": "Heladera",
+  "recipeStepPrefix": "Paso {number}",
+  "@recipeStepPrefix": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      }
+    }
+  }
 }

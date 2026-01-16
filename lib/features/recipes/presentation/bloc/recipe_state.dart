@@ -32,7 +32,10 @@ class RecipeLoaded extends RecipeState {
     this.isPantryReady = false,
     this.query = '',
     this.requiredIngredients = const [],
+    this.languageCode, // Store active language
   });
+  
+  final String? languageCode; // Added
   
   RecipeLoaded copyWith({
     List<Recipe>? recipes,
@@ -41,6 +44,7 @@ class RecipeLoaded extends RecipeState {
     bool? isPantryReady,
     String? query,
     List<String>? requiredIngredients,
+    String? languageCode,
   }) {
     return RecipeLoaded(
       recipes: recipes ?? this.recipes,
@@ -49,11 +53,12 @@ class RecipeLoaded extends RecipeState {
       isPantryReady: isPantryReady ?? this.isPantryReady,
       query: query ?? this.query,
       requiredIngredients: requiredIngredients ?? this.requiredIngredients,
+      languageCode: languageCode ?? this.languageCode,
     );
   }
 
   @override
-  List<Object?> get props => [recipes, hasReachedMax, isFamilySafe, isPantryReady, query, requiredIngredients];
+  List<Object?> get props => [recipes, hasReachedMax, isFamilySafe, isPantryReady, query, requiredIngredients, languageCode];
 }
 
 class RecipeError extends RecipeState {

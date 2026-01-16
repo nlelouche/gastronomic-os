@@ -7,6 +7,7 @@ import 'package:gastronomic_os/features/onboarding/domain/repositories/i_onboard
 import 'package:gastronomic_os/features/onboarding/domain/entities/family_member.dart';
 import 'package:gastronomic_os/core/enums/diet_enums.dart';
 import 'package:gastronomic_os/core/enums/family_role.dart';
+import 'package:uuid/uuid.dart';
 
 class OnboardingRepositoryImpl implements IOnboardingRepository {
   final OnboardingRemoteDataSource remoteDataSource;
@@ -16,18 +17,41 @@ class OnboardingRepositoryImpl implements IOnboardingRepository {
   @override
   Future<(Failure?, void)> saveFamilyConfig({required List<FamilyMember> members}) async {
     try {
-      final config = {
-        'members': members.map((m) => {
-          'id': m.id,
+      // 1. Prepare Data for Table
+      final membersData = members.map((m) {
+        // Sanitize ID: If it's a timestamp (legacy bug), generate a new UUID
+        String validId = m.id;
+        try {
+          Uuid.parse(validId);
+        } catch (_) {
+           // Not a valid UUID (likely a timestamp from previous bug)
+           // If it contains "T" and digits, it's definitely the timestamp.
+           // Safe fallback: Generate new UUID.
+           validId = const Uuid().v4();
+        }
+
+        return {
+          'id': validId,
           'name': m.name,
           'role': m.role.name,
           'primary_diet': _dietEnumToString(m.primaryDiet),
           'medical_conditions': m.medicalConditions.map((e) => _conditionEnumToString(e)).toList(),
           'avatar_path': m.avatarPath,
-        }).toList(),
+          'is_verified_chef': m.isVerifiedChef,
+          'is_primary_cook': m.isPrimaryCook,
+        };
+      }).toList();
+
+      // 2. Sync to Table (Source of Truth)
+      await remoteDataSource.syncFamilyMembers(membersData);
+
+      // 3. Keep Legacy JSON in sync (Optional but safer for now)
+      final config = {
+        'members': membersData,
         'onboarding_completed': true,
       };
       await remoteDataSource.updateProfileConfig(config);
+      
       return (null, null);
     } catch (e, stackTrace) {
       final failure = ExceptionHandler.handle(
@@ -178,6 +202,7 @@ class OnboardingRepositoryImpl implements IOnboardingRepository {
       case DietLifestyle.mediterranean: return 'mediterranean';
       case DietLifestyle.highPerformance: return 'high_performance';
       case DietLifestyle.lowCarb: return 'low_carb';
+      case DietLifestyle.kosher: return 'kosher';
     }
   }
 
@@ -209,6 +234,7 @@ class OnboardingRepositoryImpl implements IOnboardingRepository {
       case MedicalCondition.histamine: return 'histamine';
       case MedicalCondition.diabetes: return 'diabetes';
       case MedicalCondition.renal: return 'renal';
+      case MedicalCondition.hypertension: return 'hypertension';
     }
   }
 

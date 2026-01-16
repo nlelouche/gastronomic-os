@@ -34,6 +34,7 @@ import 'package:gastronomic_os/features/social/domain/usecases/add_cook_proof.da
 import 'package:gastronomic_os/features/social/presentation/bloc/recipe_social/recipe_social_bloc.dart';
 
 import 'package:gastronomic_os/core/bloc/localization_bloc.dart';
+import 'package:gastronomic_os/features/recipes/data/services/recipe_importer_service.dart';
 import 'package:gastronomic_os/features/recipes/domain/logic/recipe_debug_service.dart';
 import 'package:gastronomic_os/features/recipes/data/datasources/recipe_cache_service.dart'; 
 
@@ -82,6 +83,7 @@ Future<void> init() async {
     inventoryRepository: sl(),
     onboardingRepository: sl(),
     debugService: sl(),
+    importerService: sl(),
   ));
   sl.registerFactory(() => MyRecipesCubit(sl())); 
   sl.registerFactory(() => CollectionsBloc(
@@ -117,6 +119,7 @@ Future<void> init() async {
 
   sl.registerLazySingleton(() => ShoppingEngine());
   sl.registerLazySingleton(() => RecipeDebugService(remoteDataSource: sl()));
+  sl.registerLazySingleton(() => RecipeImporterService(sl()));
   
   sl.registerFactory(() => PlannerBloc(
     getMealSuggestions: sl(),
