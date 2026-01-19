@@ -145,7 +145,7 @@ class _RecipesViewState extends State<RecipesView> {
           if (state is RecipeLoading) {
             return const Center(child: CircularProgressIndicator());
           } else if (state is RecipeError) {
-            return Center(child: Text('Error: ${state.message}'));
+            return Center(child: Text(AppLocalizations.of(context)!.commonError(state.message)));
           } else if (state is RecipeLoaded) {
             
             // Sync controller if needed (simplified)

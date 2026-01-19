@@ -133,7 +133,7 @@ class _RecipeEditorPageState extends State<RecipeEditorPage> {
       } else {
          setState(() => _isUploadingImage = false);
          if (mounted) {
-           ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Upload failed: ${result.$1?.message}')));
+           ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(AppLocalizations.of(context)!.errorUploadFailed(result.$1?.message ?? ''))));
          }
       }
     } catch (e) {
@@ -291,7 +291,7 @@ class _RecipeEditorPageState extends State<RecipeEditorPage> {
                                FilledButton.icon(
                                  onPressed: _pickAndUploadImage,
                                  icon: const Icon(Icons.camera_alt, size: 16),
-                                 label: Text(_coverPhotoUrl == null ? 'Add Cover' : 'Change'),
+                                 label: Text(_coverPhotoUrl == null ? AppLocalizations.of(context)!.btnUploadPhoto : AppLocalizations.of(context)!.btnChangePhoto),
                                ),
                                if (_coverPhotoUrl != null) ...[
                                  const SizedBox(width: 8),
@@ -312,7 +312,7 @@ class _RecipeEditorPageState extends State<RecipeEditorPage> {
                              children: [
                                Icon(Icons.image, size: 48, color: colorScheme.onSurfaceVariant.withOpacity(0.5)),
                                const SizedBox(height: 8),
-                               Text('No Cover Photo', style: TextStyle(color: colorScheme.onSurfaceVariant)),
+                               Text(AppLocalizations.of(context)!.labelNoCoverPhoto, style: TextStyle(color: colorScheme.onSurfaceVariant)),
                              ],
                            ),
                          ),

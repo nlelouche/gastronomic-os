@@ -25,13 +25,13 @@ class RecipeSocialTab extends StatelessWidget {
     return BlocConsumer<RecipeSocialBloc, RecipeSocialState>(
       listener: (context, state) {
         if (state.status == RecipeSocialStatus.error) {
-           ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(state.errorMessage ?? 'Error')));
+           ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(state.errorMessage ?? AppLocalizations.of(context)!.commonError('Unknown'))));
         }
         if (state.status == RecipeSocialStatus.successReview) {
-           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Review Submitted!')));
+           ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(AppLocalizations.of(context)!.reviewSubmitted)));
         }
         if (state.status == RecipeSocialStatus.successProof) {
-           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Proof Uploaded!')));
+           ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(AppLocalizations.of(context)!.proofUploaded)));
         }
       },
       builder: (context, state) {
@@ -193,7 +193,7 @@ class RecipeSocialTab extends StatelessWidget {
            await showDialog(
              context: context,
              builder: (dialogCtx) => AlertDialog(
-               title: const Text("Upload Cook Proof"), // Assuming key, or add: l10n.socialUploadProof
+               title: Text(l10n.socialUploadProof),
                content: Column(
                  mainAxisSize: MainAxisSize.min,
                  children: [

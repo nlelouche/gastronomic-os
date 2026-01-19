@@ -245,7 +245,9 @@ class _InstructionStepCardState extends State<InstructionStepCard> {
                   });
                },
                child: Text(
-                 _isCompleted ? 'Completed' : 'Mark Complete',
+                 _isCompleted 
+                     ? AppLocalizations.of(context)!.stepCompleted 
+                     : AppLocalizations.of(context)!.stepMarkComplete,
                  style: TextStyle(
                    color: _isCompleted ? Colors.green : colorScheme.primary, 
                    fontSize: 11, 

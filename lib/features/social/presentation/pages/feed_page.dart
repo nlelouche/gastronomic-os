@@ -6,6 +6,7 @@ import 'package:gastronomic_os/features/social/presentation/widgets/feed_recipe_
 import 'package:gastronomic_os/init/injection_container.dart';
 import 'package:gastronomic_os/core/services/remote_config_service.dart';
 import 'package:gastronomic_os/core/widgets/banner_ad_widget.dart';
+import 'package:gastronomic_os/l10n/generated/app_localizations.dart';
 
 class FeedPage extends StatelessWidget {
   const FeedPage({super.key});
@@ -58,7 +59,7 @@ class _FeedViewState extends State<FeedView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Community Feed'),
+        title: Text(AppLocalizations.of(context)!.socialFeedTitle),
         centerTitle: false,
         actions: [
           IconButton(
@@ -75,11 +76,11 @@ class _FeedViewState extends State<FeedView> {
             return const Center(child: CircularProgressIndicator());
           }
           if (state is SocialError) {
-            return Center(child: Text('Failed to load feed: ${state.message}'));
+            return Center(child: Text(AppLocalizations.of(context)!.errorLoadFeed(state.message)));
           }
           if (state is SocialLoaded) {
             if (state.items.isEmpty) {
-              return const Center(child: Text('No recipes yet. Be the first to share!'));
+              return Center(child: Text(AppLocalizations.of(context)!.socialNoRecipes));
             }
             return RefreshIndicator(
               onRefresh: () async {

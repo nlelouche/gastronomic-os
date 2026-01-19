@@ -2720,11 +2720,149 @@ abstract class AppLocalizations {
   /// **'Delete & Exit'**
   String get settingsDeleteGuestDialogConfirm;
 
+  /// No description provided for @commonEdit.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit'**
+  String get commonEdit;
+
+  /// No description provided for @commonDelete.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get commonDelete;
+
+  /// No description provided for @tooltipSaveRecipe.
+  ///
+  /// In en, this message translates to:
+  /// **'Save Recipe'**
+  String get tooltipSaveRecipe;
+
+  /// No description provided for @tooltipUnsaveRecipe.
+  ///
+  /// In en, this message translates to:
+  /// **'Unsave Recipe'**
+  String get tooltipUnsaveRecipe;
+
+  /// No description provided for @tooltipAddToCollection.
+  ///
+  /// In en, this message translates to:
+  /// **'Add to Collection'**
+  String get tooltipAddToCollection;
+
+  /// No description provided for @featureForkRecipes.
+  ///
+  /// In en, this message translates to:
+  /// **'Fork Recipes'**
+  String get featureForkRecipes;
+
+  /// No description provided for @featureMealPlanning.
+  ///
+  /// In en, this message translates to:
+  /// **'Meal Planning'**
+  String get featureMealPlanning;
+
   /// No description provided for @errorGeneric.
   ///
   /// In en, this message translates to:
   /// **'Something went wrong.'**
   String get errorGeneric;
+
+  /// No description provided for @stepCompleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Completed'**
+  String get stepCompleted;
+
+  /// No description provided for @stepMarkComplete.
+  ///
+  /// In en, this message translates to:
+  /// **'Mark Complete'**
+  String get stepMarkComplete;
+
+  /// No description provided for @btnUploadPhoto.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Cover'**
+  String get btnUploadPhoto;
+
+  /// No description provided for @btnChangePhoto.
+  ///
+  /// In en, this message translates to:
+  /// **'Change'**
+  String get btnChangePhoto;
+
+  /// No description provided for @labelNoCoverPhoto.
+  ///
+  /// In en, this message translates to:
+  /// **'No Cover Photo'**
+  String get labelNoCoverPhoto;
+
+  /// No description provided for @errorUploadFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Upload failed: {message}'**
+  String errorUploadFailed(String message);
+
+  /// No description provided for @socialFeedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Community Feed'**
+  String get socialFeedTitle;
+
+  /// No description provided for @socialLikesCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} Likes'**
+  String socialLikesCount(int count);
+
+  /// No description provided for @socialUploadProof.
+  ///
+  /// In en, this message translates to:
+  /// **'Upload Cook Proof'**
+  String get socialUploadProof;
+
+  /// No description provided for @reviewSubmitted.
+  ///
+  /// In en, this message translates to:
+  /// **'Review Submitted!'**
+  String get reviewSubmitted;
+
+  /// No description provided for @proofUploaded.
+  ///
+  /// In en, this message translates to:
+  /// **'Proof Uploaded!'**
+  String get proofUploaded;
+
+  /// No description provided for @featureComingSoon.
+  ///
+  /// In en, this message translates to:
+  /// **'Feature coming soon!'**
+  String get featureComingSoon;
+
+  /// No description provided for @errorDbSetup.
+  ///
+  /// In en, this message translates to:
+  /// **'Database Setup Required'**
+  String get errorDbSetup;
+
+  /// No description provided for @errorDbMissingTable.
+  ///
+  /// In en, this message translates to:
+  /// **'The \'meal_plans\' table is missing. Please execute the SQL migration script.'**
+  String get errorDbMissingTable;
+
+  /// No description provided for @plannerQuickReview.
+  ///
+  /// In en, this message translates to:
+  /// **'Quick Review'**
+  String get plannerQuickReview;
+
+  /// No description provided for @visionAddedToInventory.
+  ///
+  /// In en, this message translates to:
+  /// **'Added {count} items to Inventory'**
+  String visionAddedToInventory(int count);
 }
 
 class _AppLocalizationsDelegate

@@ -6,6 +6,7 @@ import 'package:gastronomic_os/features/social/domain/entities/social_feed_item.
 import 'package:gastronomic_os/features/social/presentation/bloc/social_bloc.dart';
 import 'package:gastronomic_os/features/recipes/presentation/pages/recipe_detail_page.dart';
 import 'package:timeago/timeago.dart' as timeago;
+import 'package:gastronomic_os/l10n/generated/app_localizations.dart';
 
 class FeedRecipeCard extends StatelessWidget {
   final SocialFeedItem item;
@@ -133,11 +134,11 @@ class FeedRecipeCard extends StatelessWidget {
                   icon: const Icon(Icons.fork_right_outlined),
                   onPressed: () {
                     // Navigate to fork (To be implemented fully connected)
-                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Forking coming soon to this button! Use main recipe view.')));
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(AppLocalizations.of(context)!.featureComingSoon)));
                   },
                 ),
                 const Spacer(),
-                Text('${item.likesCount} Likes', style: Theme.of(context).textTheme.bodySmall),
+                Text(AppLocalizations.of(context)!.socialLikesCount(item.likesCount), style: Theme.of(context).textTheme.bodySmall),
               ],
             ),
           ),

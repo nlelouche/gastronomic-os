@@ -129,7 +129,7 @@ class RecipeDetailAppBar extends StatelessWidget {
         ),
         IconButton(
           icon: const Icon(Icons.playlist_add),
-          tooltip: 'Add to Collection',
+          tooltip: l10n.tooltipAddToCollection,
           onPressed: () {
             showModalBottomSheet(
               context: context,
@@ -141,7 +141,7 @@ class RecipeDetailAppBar extends StatelessWidget {
         IconButton(
           icon: Icon(isSaved ? Icons.bookmark : Icons.bookmark_border),
           color: isSaved ? colorScheme.primary : null,
-          tooltip: isSaved ? 'Unsave Recipe' : 'Save Recipe',
+          tooltip: isSaved ? l10n.tooltipUnsaveRecipe : l10n.tooltipSaveRecipe,
           onPressed: () {
             context.read<RecipeBloc>().add(ToggleSaveRecipe(recipe.id));
           },
@@ -152,7 +152,7 @@ class RecipeDetailAppBar extends StatelessWidget {
           onPressed: () {
             GuestGuard.check(
               context: context,
-              featureName: 'fork recipes', // Localize later
+              featureName: l10n.featureForkRecipes,
               onAuthorized: () {
                 ActionGuard.guard(
                   context,
@@ -203,8 +203,8 @@ class RecipeDetailAppBar extends StatelessWidget {
                   child: Row(
                     children: [
                       Icon(Icons.edit, color: colorScheme.onSurface),
-                      const SizedBox(width: 8),
-                      const Text('Edit'),
+                      const SizedBox(width: AppDimens.spaceS),
+                      Text(l10n.commonEdit),
                     ],
                   ),
                 ),
@@ -213,8 +213,8 @@ class RecipeDetailAppBar extends StatelessWidget {
                   child: Row(
                     children: [
                       Icon(Icons.delete, color: colorScheme.error),
-                      const SizedBox(width: 8),
-                      Text('Delete', style: TextStyle(color: colorScheme.error)),
+                      const SizedBox(width: AppDimens.spaceS),
+                      Text(l10n.commonDelete, style: TextStyle(color: colorScheme.error)),
                     ],
                   ),
                 ),
@@ -235,30 +235,36 @@ class RecipeDetailAppBar extends StatelessWidget {
     );
 
     if (date != null && context.mounted) {
-      final userId = Supabase.instance.client.auth.currentUser?.id;
-      if (userId == null) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(AppLocalizations.of(context)!.recipeLoginRequired)),
-        );
-        return;
-      }
+      GuestGuard.check(
+        context: context,
+        featureName: AppLocalizations.of(context)!.featureMealPlanning,
+        onAuthorized: () {
+          final userId = Supabase.instance.client.auth.currentUser?.id;
+          if (userId == null) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text(AppLocalizations.of(context)!.recipeLoginRequired)),
+            );
+            return;
+          }
 
-      final plan = MealPlan(
-        id: const Uuid().v4(),
-        userId: userId,
-        recipeId: recipe.id,
-        scheduledDate: date,
-        mealType: 'Dinner',
-        createdAt: DateTime.now(),
-        recipe: recipe,
-      );
+          final plan = MealPlan(
+            id: const Uuid().v4(),
+            userId: userId,
+            recipeId: recipe.id,
+            scheduledDate: date,
+            mealType: 'Dinner',
+            createdAt: DateTime.now(),
+            recipe: recipe,
+          );
 
-      context.read<PlannerBloc>().add(AddMealToPlan(plan));
+          context.read<PlannerBloc>().add(AddMealToPlan(plan));
 
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-            content: Text(AppLocalizations.of(context)!
-                .recipeAddedToPlan('${date.day}/${date.month}', recipe.title))),
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+                content: Text(AppLocalizations.of(context)!
+                    .recipeAddedToPlan('${date.day}/${date.month}', recipe.title))),
+          );
+        },
       );
     }
   }

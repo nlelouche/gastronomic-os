@@ -1545,5 +1545,81 @@ class AppLocalizationsEn extends AppLocalizations {
   String get settingsDeleteGuestDialogConfirm => 'Delete & Exit';
 
   @override
+  String get commonEdit => 'Edit';
+
+  @override
+  String get commonDelete => 'Delete';
+
+  @override
+  String get tooltipSaveRecipe => 'Save Recipe';
+
+  @override
+  String get tooltipUnsaveRecipe => 'Unsave Recipe';
+
+  @override
+  String get tooltipAddToCollection => 'Add to Collection';
+
+  @override
+  String get featureForkRecipes => 'Fork Recipes';
+
+  @override
+  String get featureMealPlanning => 'Meal Planning';
+
+  @override
   String get errorGeneric => 'Something went wrong.';
+
+  @override
+  String get stepCompleted => 'Completed';
+
+  @override
+  String get stepMarkComplete => 'Mark Complete';
+
+  @override
+  String get btnUploadPhoto => 'Add Cover';
+
+  @override
+  String get btnChangePhoto => 'Change';
+
+  @override
+  String get labelNoCoverPhoto => 'No Cover Photo';
+
+  @override
+  String errorUploadFailed(String message) {
+    return 'Upload failed: $message';
+  }
+
+  @override
+  String get socialFeedTitle => 'Community Feed';
+
+  @override
+  String socialLikesCount(int count) {
+    return '$count Likes';
+  }
+
+  @override
+  String get socialUploadProof => 'Upload Cook Proof';
+
+  @override
+  String get reviewSubmitted => 'Review Submitted!';
+
+  @override
+  String get proofUploaded => 'Proof Uploaded!';
+
+  @override
+  String get featureComingSoon => 'Feature coming soon!';
+
+  @override
+  String get errorDbSetup => 'Database Setup Required';
+
+  @override
+  String get errorDbMissingTable =>
+      'The \'meal_plans\' table is missing. Please execute the SQL migration script.';
+
+  @override
+  String get plannerQuickReview => 'Quick Review';
+
+  @override
+  String visionAddedToInventory(int count) {
+    return 'Added $count items to Inventory';
+  }
 }

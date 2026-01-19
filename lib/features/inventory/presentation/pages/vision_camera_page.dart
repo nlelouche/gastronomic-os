@@ -7,6 +7,7 @@ import 'package:google_mlkit_image_labeling/google_mlkit_image_labeling.dart';
 import 'package:gastronomic_os/core/services/vision_service.dart';
 import 'package:gastronomic_os/core/widgets/ui_kit.dart';
 import 'package:gastronomic_os/features/inventory/presentation/widgets/detected_item_sheet.dart';
+import 'package:gastronomic_os/l10n/generated/app_localizations.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:gastronomic_os/features/inventory/presentation/bloc/inventory_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -248,7 +249,7 @@ class _VisionCameraPageState extends State<VisionCameraPage> with WidgetsBinding
                 }
                 Navigator.pop(context);
                 ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text('Added ${_itemsInCart.length} items to Inventory'))
+                  SnackBar(content: Text(AppLocalizations.of(context)!.visionAddedToInventory(_itemsInCart.length)))
                 );
               },
             ),

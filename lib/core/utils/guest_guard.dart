@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gastronomic_os/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:gastronomic_os/features/auth/presentation/bloc/auth_state.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:gastronomic_os/core/config/feature_flags.dart';
 
 class GuestGuard {
   /// Checks if the current user is a guest.
@@ -16,6 +17,10 @@ class GuestGuard {
     final state = context.read<AuthBloc>().state;
     
     if (state is AuthGuest) {
+      if (!FeatureFlags.useGoogleAuth) {
+        onAuthorized();
+        return;
+      }
       _showUpgradeDialog(context, featureName);
     } else if (state is AuthAuthenticated) {
       onAuthorized();

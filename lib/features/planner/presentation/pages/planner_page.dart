@@ -68,14 +68,14 @@ class _PlannerPageState extends State<PlannerPage> {
                  children: [
                    Icon(isDbError ? Icons.table_view : Icons.error_outline, size: 60, color: Colors.orange),
                    const SizedBox(height: 16),
-                   Text(isDbError ? 'Database Setup Required' : 'Something went wrong', 
+                   Text(isDbError ? AppLocalizations.of(context)!.errorDbSetup : AppLocalizations.of(context)!.errorGeneric, 
                         style: GoogleFonts.outfit(fontSize: 20, fontWeight: FontWeight.bold)),
                    const SizedBox(height: 8),
                    Padding(
                      padding: const EdgeInsets.symmetric(horizontal: 32),
                      child: Text(
                        isDbError 
-                         ? "The 'meal_plans' table is missing. Please execute the SQL migration script." 
+                         ? AppLocalizations.of(context)!.errorDbMissingTable 
                          : state.message,
                        textAlign: TextAlign.center,
                        style: theme.textTheme.bodyMedium,
@@ -147,7 +147,7 @@ class _PlannerPageState extends State<PlannerPage> {
                             child: Scaffold(
                               appBar: AppBar(
                                 centerTitle: true,
-                                title: Text('Quick Review', style: GoogleFonts.outfit(fontWeight: FontWeight.bold)),
+                                title: Text(AppLocalizations.of(context)!.plannerQuickReview, style: GoogleFonts.outfit(fontWeight: FontWeight.bold)),
                                 automaticallyImplyLeading: false,
                                 actions: [
                                   IconButton(onPressed: () => Navigator.pop(ctx), icon: const Icon(Icons.close))

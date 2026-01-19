@@ -1548,5 +1548,81 @@ class AppLocalizationsEs extends AppLocalizations {
   String get settingsDeleteGuestDialogConfirm => 'Borrar y Salir';
 
   @override
+  String get commonEdit => 'Editar';
+
+  @override
+  String get commonDelete => 'Eliminar';
+
+  @override
+  String get tooltipSaveRecipe => 'Guardar Receta';
+
+  @override
+  String get tooltipUnsaveRecipe => 'Quitar de Guardados';
+
+  @override
+  String get tooltipAddToCollection => 'Añadir a Colección';
+
+  @override
+  String get featureForkRecipes => 'Derivar Recetas';
+
+  @override
+  String get featureMealPlanning => 'Planificación de Comidas';
+
+  @override
   String get errorGeneric => 'Algo salió mal.';
+
+  @override
+  String get stepCompleted => 'Completado';
+
+  @override
+  String get stepMarkComplete => 'Marcar Completado';
+
+  @override
+  String get btnUploadPhoto => 'Añadir Portada';
+
+  @override
+  String get btnChangePhoto => 'Cambiar';
+
+  @override
+  String get labelNoCoverPhoto => 'Sin Portada';
+
+  @override
+  String errorUploadFailed(String message) {
+    return 'Error de subida: $message';
+  }
+
+  @override
+  String get socialFeedTitle => 'Comunidad';
+
+  @override
+  String socialLikesCount(int count) {
+    return '$count Me Gusta';
+  }
+
+  @override
+  String get socialUploadProof => 'Subir Prueba';
+
+  @override
+  String get reviewSubmitted => '¡Reseña Enviada!';
+
+  @override
+  String get proofUploaded => '¡Prueba Subida!';
+
+  @override
+  String get featureComingSoon => '¡Pronto disponible!';
+
+  @override
+  String get errorDbSetup => 'Configuración de BD Requerida';
+
+  @override
+  String get errorDbMissingTable =>
+      'Falta la tabla \'meal_plans\'. Ejecute el script de migración.';
+
+  @override
+  String get plannerQuickReview => 'Vista Rápida';
+
+  @override
+  String visionAddedToInventory(int count) {
+    return 'Se añadieron $count ítems al inventario';
+  }
 }

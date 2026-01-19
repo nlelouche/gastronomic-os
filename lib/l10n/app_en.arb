@@ -471,5 +471,49 @@
   "settingsDeleteGuestDialogTitle": "Delete Guest Data?",
   "settingsDeleteGuestDialogContent": "Unsaved guest data will be lost. Are you sure you want to delete this session?",
   "settingsDeleteGuestDialogConfirm": "Delete & Exit",
-  "errorGeneric": "Something went wrong."
+  "commonEdit": "Edit",
+  "commonDelete": "Delete",
+  "tooltipSaveRecipe": "Save Recipe",
+  "tooltipUnsaveRecipe": "Unsave Recipe",
+  "tooltipAddToCollection": "Add to Collection",
+  "featureForkRecipes": "Fork Recipes",
+  "featureMealPlanning": "Meal Planning",
+  "errorGeneric": "Something went wrong.",
+  "stepCompleted": "Completed",
+  "stepMarkComplete": "Mark Complete",
+  "btnUploadPhoto": "Add Cover",
+  "btnChangePhoto": "Change",
+  "labelNoCoverPhoto": "No Cover Photo",
+  "errorUploadFailed": "Upload failed: {message}",
+  "@errorUploadFailed": {
+    "placeholders": {
+      "message": {
+        "type": "String"
+      }
+    }
+  },
+  "socialFeedTitle": "Community Feed",
+  "socialLikesCount": "{count} Likes",
+  "@socialLikesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "socialUploadProof": "Upload Cook Proof",
+  "reviewSubmitted": "Review Submitted!",
+  "proofUploaded": "Proof Uploaded!",
+  "featureComingSoon": "Feature coming soon!",
+  "errorDbSetup": "Database Setup Required",
+  "errorDbMissingTable": "The 'meal_plans' table is missing. Please execute the SQL migration script.",
+  "plannerQuickReview": "Quick Review",
+  "visionAddedToInventory": "Added {count} items to Inventory",
+  "@visionAddedToInventory": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  }
 }
