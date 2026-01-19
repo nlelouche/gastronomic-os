@@ -16,6 +16,7 @@ import 'package:gastronomic_os/features/recipes/presentation/widgets/smart_fork_
 import 'package:gastronomic_os/l10n/generated/app_localizations.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:uuid/uuid.dart';
+import 'package:gastronomic_os/core/utils/guest_guard.dart';
 
 class RecipeDetailAppBar extends StatelessWidget {
   final Recipe recipe;
@@ -149,25 +150,31 @@ class RecipeDetailAppBar extends StatelessWidget {
           icon: const Icon(Icons.fork_right),
           tooltip: l10n.recipeForkTooltip,
           onPressed: () {
-            ActionGuard.guard(
-              context,
-              title: l10n.recipeForkTooltip,
-              message: l10n.monetizationWatchAdPrompt,
-              onAction: () async {
-                final newTitle = await showDialog<String>(
-                  context: context,
-                  builder: (_) => SmartForkDialog(originalTitle: recipe.title),
-                );
+            GuestGuard.check(
+              context: context,
+              featureName: 'fork recipes', // Localize later
+              onAuthorized: () {
+                ActionGuard.guard(
+                  context,
+                  title: l10n.recipeForkTooltip,
+                  message: l10n.monetizationWatchAdPrompt,
+                  onAction: () async {
+                    final newTitle = await showDialog<String>(
+                      context: context,
+                      builder: (_) => SmartForkDialog(originalTitle: recipe.title),
+                    );
 
-                if (newTitle != null && context.mounted) {
-                  context.read<RecipeBloc>().add(ForkRecipe(
-                        originalRecipeId: recipe.id,
-                        newTitle: newTitle,
-                      ));
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text(l10n.recipeForking)),
-                  );
-                }
+                    if (newTitle != null && context.mounted) {
+                      context.read<RecipeBloc>().add(ForkRecipe(
+                            originalRecipeId: recipe.id,
+                            newTitle: newTitle,
+                          ));
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text(l10n.recipeForking)),
+                      );
+                    }
+                  },
+                );
               },
             );
           },

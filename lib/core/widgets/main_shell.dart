@@ -21,15 +21,12 @@ class _MainShellState extends State<MainShell> {
   final List<Widget> _pages = [
     const DashboardPage(),
     const RecipesPage(),
-    const PlannerPage(), // We might need to handle BLoC provision here or inside the page
+    const PlannerPage(),
     const InventoryPage(),
   ];
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final isDark = theme.brightness == Brightness.dark;
-
     return PopScope(
       canPop: _currentIndex == 0,
       onPopInvoked: (didPop) {
@@ -37,52 +34,39 @@ class _MainShellState extends State<MainShell> {
         setState(() => _currentIndex = 0);
       },
       child: Scaffold(
-        extendBody: true, // Important for floating nav
-        body: Stack(
-          children: [
-            // Content
-            IndexedStack(
-              index: _currentIndex,
-              children: _pages,
-            ),
-            
-            // Floating Glass Nav Bar
-            Positioned(
-              left: 20,
-              right: 20,
-              bottom: 20,
-              child: ClipRRect(
+        extendBody: true, // Allows body to go behind the navbar
+        body: IndexedStack(
+          index: _currentIndex,
+          children: _pages,
+        ),
+        bottomNavigationBar: Padding(
+          padding: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
+          child: SafeArea( // Ensures it respects bottom notch/indicator
+            child: Container(
+              height: 70,
+              decoration: BoxDecoration(
+                color: Colors.black.withOpacity(0.9),
                 borderRadius: BorderRadius.circular(30),
-                child: BackdropFilter(
-                  filter: ui.ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-                  child: Container(
-                    height: 70,
-                    decoration: BoxDecoration(
-                      color: Colors.black.withOpacity(0.8), // Deep glass
-                      borderRadius: BorderRadius.circular(30),
-                      border: Border.all(color: Colors.white.withOpacity(0.1)),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.4),
-                          blurRadius: 20,
-                          offset: const Offset(0, 10),
-                        ),
-                      ],
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        _buildNavItem(0, Icons.home_outlined, Icons.home_rounded, AppLocalizations.of(context)!.navHome),
-                        _buildNavItem(1, Icons.menu_book_outlined, Icons.menu_book_rounded, AppLocalizations.of(context)!.navCookbook),
-                        _buildNavItem(2, Icons.calendar_today_outlined, Icons.calendar_month_rounded, AppLocalizations.of(context)!.navPlanner),
-                        _buildNavItem(3, Icons.kitchen_outlined, Icons.kitchen_rounded, AppLocalizations.of(context)!.navFridge),
-                      ],
-                    ),
+                border: Border.all(color: Colors.white.withOpacity(0.1)),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.4),
+                    blurRadius: 20,
+                    offset: const Offset(0, 10),
                   ),
-                ),
-              ).animate().fadeIn(delay: 300.ms).slideY(begin: 1.0, curve: Curves.easeOutBack),
+                ],
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  _buildNavItem(0, Icons.home_outlined, Icons.home_rounded, AppLocalizations.of(context)!.navHome),
+                  _buildNavItem(1, Icons.menu_book_outlined, Icons.menu_book_rounded, AppLocalizations.of(context)!.navCookbook),
+                  _buildNavItem(2, Icons.calendar_today_outlined, Icons.calendar_month_rounded, AppLocalizations.of(context)!.navPlanner),
+                  _buildNavItem(3, Icons.kitchen_outlined, Icons.kitchen_rounded, AppLocalizations.of(context)!.navFridge),
+                ],
+              ),
             ),
-          ],
+          ),
         ),
       ),
     );
@@ -118,3 +102,4 @@ class _MainShellState extends State<MainShell> {
     );
   }
 }
+

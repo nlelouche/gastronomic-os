@@ -2605,6 +2605,126 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Step {number}'**
   String recipeStepPrefix(int number);
+
+  /// No description provided for @settingsAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Account'**
+  String get settingsAccount;
+
+  /// No description provided for @profileTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get profileTitle;
+
+  /// No description provided for @profileSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Manage your identity & bio'**
+  String get profileSubtitle;
+
+  /// No description provided for @profileNameLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Display Name'**
+  String get profileNameLabel;
+
+  /// No description provided for @profileBioLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Bio / About Me'**
+  String get profileBioLabel;
+
+  /// No description provided for @actionSave.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get actionSave;
+
+  /// No description provided for @settingsLogOut.
+  ///
+  /// In en, this message translates to:
+  /// **'Log Out'**
+  String get settingsLogOut;
+
+  /// No description provided for @settingsLogOutSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign out of your account'**
+  String get settingsLogOutSubtitle;
+
+  /// No description provided for @settingsLogOutDialogTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign Out?'**
+  String get settingsLogOutDialogTitle;
+
+  /// No description provided for @settingsLogOutDialogContent.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to sign out? You will need to sign in again to access your data.'**
+  String get settingsLogOutDialogContent;
+
+  /// No description provided for @settingsLogOutDialogConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign Out'**
+  String get settingsLogOutDialogConfirm;
+
+  /// No description provided for @settingsLinkGoogle.
+  ///
+  /// In en, this message translates to:
+  /// **'Link Google Account'**
+  String get settingsLinkGoogle;
+
+  /// No description provided for @settingsLinkGoogleSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Save your progress permanently'**
+  String get settingsLinkGoogleSubtitle;
+
+  /// No description provided for @settingsLinkingAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Linking account...'**
+  String get settingsLinkingAccount;
+
+  /// No description provided for @settingsDeleteGuestData.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Guest Data'**
+  String get settingsDeleteGuestData;
+
+  /// No description provided for @settingsDeleteGuestDataSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear all data and exit'**
+  String get settingsDeleteGuestDataSubtitle;
+
+  /// No description provided for @settingsDeleteGuestDialogTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Guest Data?'**
+  String get settingsDeleteGuestDialogTitle;
+
+  /// No description provided for @settingsDeleteGuestDialogContent.
+  ///
+  /// In en, this message translates to:
+  /// **'Unsaved guest data will be lost. Are you sure you want to delete this session?'**
+  String get settingsDeleteGuestDialogContent;
+
+  /// No description provided for @settingsDeleteGuestDialogConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete & Exit'**
+  String get settingsDeleteGuestDialogConfirm;
+
+  /// No description provided for @errorGeneric.
+  ///
+  /// In en, this message translates to:
+  /// **'Something went wrong.'**
+  String get errorGeneric;
 }
 
 class _AppLocalizationsDelegate

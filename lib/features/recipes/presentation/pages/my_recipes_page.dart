@@ -19,6 +19,7 @@ import 'package:gastronomic_os/features/recipes/presentation/pages/collection_de
 import 'package:gastronomic_os/core/widgets/action_guard.dart';
 import 'package:gastronomic_os/features/recipes/presentation/pages/recipe_editor_page.dart';
 import 'package:gastronomic_os/features/recipes/presentation/bloc/recipe_bloc.dart';
+import 'package:gastronomic_os/core/utils/guest_guard.dart';
 import 'package:gastronomic_os/features/recipes/presentation/bloc/recipe_event.dart';
 
 class MyRecipesPage extends StatelessWidget {
@@ -60,14 +61,20 @@ class MyRecipesPage extends StatelessWidget {
                   padding: const EdgeInsets.only(bottom: 100),
                   child: FloatingActionButton.extended(
                     heroTag: 'new_recipe_fab',
-                    onPressed: () {
-                      ActionGuard.guard(
-                        context,
-                        title: l10n.recipesNewRecipeButton,
-                        message: 'Watch a short video to create a new recipe, or Upgrade to PRO.',
-                        onAction: () => _navigateToEditor(context),
-                      );
-                    },
+                      onPressed: () {
+                        GuestGuard.check(
+                          context: context,
+                          featureName: 'create recipes',
+                          onAuthorized: () {
+                            ActionGuard.guard(
+                              context,
+                              title: l10n.recipesNewRecipeButton,
+                              message: 'Watch a short video to create a new recipe, or Upgrade to PRO.',
+                              onAction: () => _navigateToEditor(context),
+                            );
+                          },
+                        );
+                      },
                     label: Text(l10n.recipesNewRecipeButton, style: GoogleFonts.outfit(fontWeight: FontWeight.w600)),
                     icon: const Icon(Icons.add),
                   ).animate().scale(delay: 500.ms, curve: Curves.easeOutBack),

@@ -40,6 +40,8 @@ dependencies:
   purchases_flutter: ^9.10.6
   firebase_crashlytics: ^5.0.6
   cached_network_image: ^3.4.1
+  google_sign_in: ^6.2.1
+  sign_in_with_apple: ^6.1.0
 
 dev_dependencies:
   flutter_test:

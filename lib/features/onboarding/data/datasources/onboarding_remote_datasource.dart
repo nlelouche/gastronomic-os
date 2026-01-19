@@ -9,6 +9,8 @@ abstract class OnboardingRemoteDataSource {
   Future<void> setPrimaryCook(String memberId);
   Future<List<Map<String, dynamic>>> getFamilyMembersFromTable();
   Future<void> syncFamilyMembers(List<Map<String, dynamic>> membersData);
+  Future<void> updateFamilyMember(Map<String, dynamic> data);
+  Future<String> uploadAvatar(List<int> fileBytes, String fileExtension);
 }
 
 class OnboardingRemoteDataSourceImpl implements OnboardingRemoteDataSource {
@@ -120,6 +122,46 @@ class OnboardingRemoteDataSourceImpl implements OnboardingRemoteDataSource {
 
     } catch (e) {
       throw Exception('Datasource operation failed: $e');
+    }
+  }
+
+  @override
+  Future<void> updateFamilyMember(Map<String, dynamic> data) async {
+    try {
+      final user = supabaseClient.auth.currentUser;
+      if (user == null) throw Exception('Datasource operation failed');
+
+      // Enrich with user_id
+      final enrichedData = {
+        ...data,
+        'user_id': user.id,
+      };
+
+      await supabaseClient
+          .from('family_members')
+          .upsert(enrichedData);
+    } catch (e) {
+      throw Exception('Datasource operation failed: $e');
+    }
+  }
+
+  @override
+  Future<String> uploadAvatar(List<int> fileBytes, String fileExtension) async {
+    try {
+      final user = supabaseClient.auth.currentUser;
+      if (user == null) throw Exception('No user logged in');
+      
+      final path = '${user.id}/avatar_${DateTime.now().millisecondsSinceEpoch}.$fileExtension';
+      await supabaseClient.storage.from('avatars').uploadBinary(
+        path,
+        fileBytes as dynamic, 
+        fileOptions: const FileOptions(cacheControl: '3600', upsert: false),
+      );
+      
+      final publicUrl = supabaseClient.storage.from('avatars').getPublicUrl(path);
+      return publicUrl;
+    } catch (e) {
+      throw Exception('Avatar upload failed: $e');
     }
   }
 }

@@ -1487,4 +1487,66 @@ class AppLocalizationsEs extends AppLocalizations {
   String recipeStepPrefix(int number) {
     return 'Paso $number';
   }
+
+  @override
+  String get settingsAccount => 'Cuenta';
+
+  @override
+  String get profileTitle => 'Perfil';
+
+  @override
+  String get profileSubtitle => 'Gestiona tu identidad y biografía';
+
+  @override
+  String get profileNameLabel => 'Nombre Visible';
+
+  @override
+  String get profileBioLabel => 'Biografía / Sobre mí';
+
+  @override
+  String get actionSave => 'Guardar';
+
+  @override
+  String get settingsLogOut => 'Cerrar Sesión';
+
+  @override
+  String get settingsLogOutSubtitle => 'Salir de tu cuenta actual';
+
+  @override
+  String get settingsLogOutDialogTitle => '¿Cerrar Sesión?';
+
+  @override
+  String get settingsLogOutDialogContent =>
+      '¿Estás seguro de que quieres cerrar sesión? Necesitarás iniciar sesión de nuevo para ver tus datos.';
+
+  @override
+  String get settingsLogOutDialogConfirm => 'Cerrar Sesión';
+
+  @override
+  String get settingsLinkGoogle => 'Vincular Cuenta Google';
+
+  @override
+  String get settingsLinkGoogleSubtitle => 'Guarda tu progreso permanentemente';
+
+  @override
+  String get settingsLinkingAccount => 'Vinculando cuenta...';
+
+  @override
+  String get settingsDeleteGuestData => 'Borrar Datos de Invitado';
+
+  @override
+  String get settingsDeleteGuestDataSubtitle => 'Borrar todo y salir';
+
+  @override
+  String get settingsDeleteGuestDialogTitle => '¿Borrar Datos de Invitado?';
+
+  @override
+  String get settingsDeleteGuestDialogContent =>
+      'Los datos no guardados se perderán. ¿Estás seguro de que quieres eliminar esta sesión?';
+
+  @override
+  String get settingsDeleteGuestDialogConfirm => 'Borrar y Salir';
+
+  @override
+  String get errorGeneric => 'Algo salió mal.';
 }

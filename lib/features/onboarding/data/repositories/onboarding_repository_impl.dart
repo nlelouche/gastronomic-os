@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:gastronomic_os/core/error/failures.dart';
 import 'package:gastronomic_os/core/error/error_context.dart';
 import 'package:gastronomic_os/core/error/exception_handler.dart';
@@ -39,6 +40,7 @@ class OnboardingRepositoryImpl implements IOnboardingRepository {
           'avatar_path': m.avatarPath,
           'is_verified_chef': m.isVerifiedChef,
           'is_primary_cook': m.isPrimaryCook,
+          'bio': m.bio,
         };
       }).toList();
 
@@ -110,6 +112,86 @@ class OnboardingRepositoryImpl implements IOnboardingRepository {
       await ErrorReporter.instance.reportError(failure);
       return (failure, null);
     }
+
+  @override
+  Future<(Failure?, void)> updateFamilyMember(FamilyMember member) async {
+    try {
+      final data = {
+        'id': member.id,
+        'name': member.name,
+        'role': member.role.name,
+        'primary_diet': _dietEnumToString(member.primaryDiet),
+        'medical_conditions': member.medicalConditions.map((e) => _conditionEnumToString(e)).toList(),
+        'avatar_path': member.avatarPath,
+        'is_verified_chef': member.isVerifiedChef,
+        'is_primary_cook': member.isPrimaryCook,
+        'bio': member.bio,
+      };
+
+      await remoteDataSource.updateFamilyMember(data);
+      return (null, null);
+    } catch (e, stackTrace) {
+      final failure = ExceptionHandler.handle(
+        e,
+        stackTrace: stackTrace,
+        context: ErrorContext.repository('updateFamilyMember'),
+      );
+      await ErrorReporter.instance.reportError(failure);
+      return (failure, null);
+    }
+  }
+  }
+
+  @override
+  Future<(Failure?, void)> updateFamilyMember(FamilyMember member) async {
+    try {
+      final data = {
+        'id': member.id,
+        'name': member.name,
+        'role': member.role.name,
+        'primary_diet': _dietEnumToString(member.primaryDiet),
+        'medical_conditions': member.medicalConditions.map((e) => _conditionEnumToString(e)).toList(),
+        'avatar_path': member.avatarPath,
+        'is_verified_chef': member.isVerifiedChef,
+        'is_primary_cook': member.isPrimaryCook,
+        'bio': member.bio,
+      };
+
+      await remoteDataSource.updateFamilyMember(data);
+      return (null, null);
+    } catch (e, stackTrace) {
+      final failure = ExceptionHandler.handle(
+        e,
+        stackTrace: stackTrace,
+        context: ErrorContext.repository('updateFamilyMember'),
+      );
+      await ErrorReporter.instance.reportError(failure);
+      return (failure, null);
+    }
+  }
+
+  @override
+  Future<(Failure?, String)> uploadAvatar(String path) async {
+    try {
+      final file = File(path);
+      if (!await file.exists()) {
+        return (CacheFailure('File not found at $path', context: ErrorContext.repository('uploadAvatar')), "");
+      }
+
+      final bytes = await file.readAsBytes();
+      final extension = path.split('.').last;
+
+      final url = await remoteDataSource.uploadAvatar(bytes, extension);
+      return (null, url);
+    } catch (e, stackTrace) {
+      final failure = ExceptionHandler.handle(
+        e,
+        stackTrace: stackTrace,
+        context: ErrorContext.repository('uploadAvatar'),
+      );
+      await ErrorReporter.instance.reportError(failure);
+      return (failure, "");
+    }
   }
 
   @override
@@ -130,6 +212,7 @@ class OnboardingRepositoryImpl implements IOnboardingRepository {
           avatarPath: m['avatar_path'],
           isVerifiedChef: m['is_verified_chef'] ?? false,
           isPrimaryCook: m['is_primary_cook'] ?? false,
+          bio: m['bio'],
         )).toList();
         
         // Sort: Primary Cook first

@@ -8,4 +8,6 @@ abstract class IOnboardingRepository {
   Future<(Failure?, void)> resetOnboarding();
   Future<(Failure?, List<FamilyMember>?)> getFamilyMembers();
   Future<(Failure?, void)> setPrimaryCook(String memberId);
+  Future<(Failure?, void)> updateFamilyMember(FamilyMember member);
+  Future<(Failure?, String)> uploadAvatar(String path);
 }

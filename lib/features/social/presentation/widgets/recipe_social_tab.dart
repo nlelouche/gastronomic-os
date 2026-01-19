@@ -11,6 +11,7 @@ import 'package:gastronomic_os/features/social/presentation/widgets/rating_bar.d
 import 'package:gastronomic_os/features/social/presentation/widgets/review_list_tile.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:gastronomic_os/l10n/generated/app_localizations.dart';
+import 'package:gastronomic_os/core/utils/guest_guard.dart';
 
 class RecipeSocialTab extends StatelessWidget {
   final String recipeId;
@@ -115,103 +116,115 @@ class RecipeSocialTab extends StatelessWidget {
   }
 
   void _showAddReviewDialog(BuildContext context) {
-    final commentController = TextEditingController();
-    int selectedRating = 5;
-    final bloc = context.read<RecipeSocialBloc>();
-    final l10n = AppLocalizations.of(context)!;
-
-    showDialog(
+    GuestGuard.check(
       context: context,
-      builder: (dialogCtx) => StatefulBuilder(
-        builder: (context, setState) {
-          return AlertDialog(
-            title: Text(l10n.socialWriteReview),
-            content: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                RatingBar(
-                  rating: selectedRating.toDouble(), 
-                  size: 32, 
-                  onRatingChanged: (val) => setState(() => selectedRating = val),
+      featureName: 'reviews',
+      onAuthorized: () {
+        final commentController = TextEditingController();
+        int selectedRating = 5;
+        final bloc = context.read<RecipeSocialBloc>();
+        final l10n = AppLocalizations.of(context)!;
+    
+        showDialog(
+          context: context,
+          builder: (dialogCtx) => StatefulBuilder(
+            builder: (context, setState) {
+              return AlertDialog(
+                title: Text(l10n.socialWriteReview),
+                content: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    RatingBar(
+                      rating: selectedRating.toDouble(), 
+                      size: 32, 
+                      onRatingChanged: (val) => setState(() => selectedRating = val),
+                    ),
+                    const SizedBox(height: AppDimens.spaceM),
+                    TextField(
+                      controller: commentController,
+                      decoration: InputDecoration(
+                        hintText: l10n.socialReviewHint,
+                        border: const OutlineInputBorder(),
+                      ),
+                      maxLines: 3,
+                    ),
+                  ],
                 ),
-                const SizedBox(height: AppDimens.spaceM),
-                TextField(
-                  controller: commentController,
-                  decoration: InputDecoration(
-                    hintText: l10n.socialReviewHint,
-                    border: const OutlineInputBorder(),
+                actions: [
+                  TextButton(onPressed: () => Navigator.pop(dialogCtx), child: Text(l10n.actionCancel)),
+                  FilledButton(
+                    onPressed: () {
+                      if (commentController.text.isNotEmpty) {
+                        bloc.add(SubmitReview(
+                          recipeId: recipeId,
+                          rating: selectedRating,
+                          comment: commentController.text,
+                        ));
+                        Navigator.pop(dialogCtx);
+                      }
+                    }, 
+                    child: Text(l10n.dialogAdd),
                   ),
-                  maxLines: 3,
-                ),
-              ],
-            ),
-            actions: [
-              TextButton(onPressed: () => Navigator.pop(dialogCtx), child: Text(l10n.actionCancel)),
-              FilledButton(
-                onPressed: () {
-                  if (commentController.text.isNotEmpty) {
-                    bloc.add(SubmitReview(
-                      recipeId: recipeId,
-                      rating: selectedRating,
-                      comment: commentController.text,
-                    ));
-                    Navigator.pop(dialogCtx);
-                  }
-                }, 
-                child: Text(l10n.dialogAdd),
-              ),
-            ],
-          );
-        }
-      ),
+                ],
+              );
+            }
+          ),
+        );
+      },
     );
   }
 
   Future<void> _showAddProofDialog(BuildContext context) async {
-    final picker = ImagePicker();
-    // For MVP, just gallery
-    final XFile? image = await picker.pickImage(source: ImageSource.gallery);
-    
-    if (image != null && context.mounted) {
-       final captionController = TextEditingController();
-       final bloc = context.read<RecipeSocialBloc>();
-       final file = File(image.path);
+    GuestGuard.check(
+      context: context,
+      featureName: 'cook proofs',
+      onAuthorized: () async {
+        final picker = ImagePicker();
+        // For MVP, just gallery
+        final XFile? image = await picker.pickImage(source: ImageSource.gallery);
+        
+        if (image != null && context.mounted) {
+           final captionController = TextEditingController();
+           final bloc = context.read<RecipeSocialBloc>();
+           final file = File(image.path);
 
-       final l10n = AppLocalizations.of(context)!;
+           final l10n = AppLocalizations.of(context)!;
 
-       await showDialog(
-         context: context,
-         builder: (dialogCtx) => AlertDialog(
-           title: const Text("Upload Cook Proof"), // Assuming key, or add: l10n.socialUploadProof
-           content: Column(
-             mainAxisSize: MainAxisSize.min,
-             children: [
-               Image.file(file, height: 150, fit: BoxFit.cover),
-               const SizedBox(height: AppDimens.spaceM),
-               TextField(
-                 controller: captionController,
-                 decoration: InputDecoration(
-                   hintText: l10n.socialAddCaption,
-                 ),
+           await showDialog(
+             context: context,
+             builder: (dialogCtx) => AlertDialog(
+               title: const Text("Upload Cook Proof"), // Assuming key, or add: l10n.socialUploadProof
+               content: Column(
+                 mainAxisSize: MainAxisSize.min,
+                 children: [
+                   Image.file(file, height: 150, fit: BoxFit.cover),
+                   const SizedBox(height: AppDimens.spaceM),
+                   TextField(
+                     controller: captionController,
+                     decoration: InputDecoration(
+                       hintText: l10n.socialAddCaption,
+                     ),
+                   ),
+                 ],
                ),
-             ],
-           ),
-           actions: [
-              TextButton(onPressed: () => Navigator.pop(dialogCtx), child: Text(l10n.actionCancel)),
-              FilledButton(
-                onPressed: () {
-                   bloc.add(SubmitCookProof(
-                     recipeId: recipeId,
-                     photo: file,
-                     caption: captionController.text,
-                   ));
-                   Navigator.pop(dialogCtx);
-                }, 
-                child: Text(l10n.dialogAdd),
-              ),
-           ],
-         ),
-       );
-    }
+               actions: [
+                  TextButton(onPressed: () => Navigator.pop(dialogCtx), child: Text(l10n.actionCancel)),
+                  FilledButton(
+                    onPressed: () {
+                       bloc.add(SubmitCookProof(
+                         recipeId: recipeId,
+                         photo: file,
+                         caption: captionController.text,
+                       ));
+                       Navigator.pop(dialogCtx);
+                    }, 
+                    child: Text(l10n.dialogAdd),
+                  ),
+               ],
+             ),
+           );
+        }
+      },
+    );
   }
 }

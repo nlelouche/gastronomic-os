@@ -23,6 +23,11 @@ import 'package:gastronomic_os/core/services/iap_service.dart';
 import 'package:gastronomic_os/features/premium/presentation/bloc/subscription_cubit.dart';
 import 'package:gastronomic_os/core/widgets/main_shell.dart';
 
+import 'package:gastronomic_os/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:gastronomic_os/features/auth/presentation/bloc/auth_event.dart';
+import 'package:gastronomic_os/features/auth/presentation/bloc/auth_state.dart';
+import 'package:gastronomic_os/features/auth/presentation/pages/auth_landing_page.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   
@@ -30,10 +35,8 @@ void main() async {
   await Firebase.initializeApp(); // Initialize Firebase
   
   // 🚨 CRASHLYTICS SETUP
-  // Pass all uncaught "fatal" errors from the framework to Crashlytics
   FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
 
-  // Pass all uncaught asynchronous errors that aren't handled by the Flutter framework to Crashlytics
   PlatformDispatcher.instance.onError = (error, stack) {
     FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
     return true;
@@ -58,6 +61,9 @@ class GastronomicOSApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider<AuthBloc>(
+          create: (_) => di.sl<AuthBloc>()..add(AuthCheckRequested()),
+        ),
         BlocProvider<PlannerBloc>(
           create: (_) => di.sl<PlannerBloc>()..add(LoadPlannerSuggestions()),
         ),
@@ -110,14 +116,36 @@ class GastronomicOSApp extends StatelessWidget {
   }
 }
 
-class AuthWrapper extends StatefulWidget {
+class AuthWrapper extends StatelessWidget {
   const AuthWrapper({super.key});
 
   @override
-  State<AuthWrapper> createState() => _AuthWrapperState();
+  Widget build(BuildContext context) {
+    return BlocBuilder<AuthBloc, AuthState>(
+      builder: (context, state) {
+        if (state is AuthAuthenticated || state is AuthGuest) {
+          return const OnboardingCheckWrapper();
+        } else if (state is AuthUnauthenticated || state is AuthError) {
+           // Show landing page if not authenticated (or if error occurred during check)
+           return const AuthLandingPage();
+        }
+        // AuthLoading or AuthInitial
+        return const Scaffold(
+          body: Center(child: CircularProgressIndicator()),
+        );
+      },
+    );
+  }
 }
 
-class _AuthWrapperState extends State<AuthWrapper> {
+class OnboardingCheckWrapper extends StatefulWidget {
+  const OnboardingCheckWrapper({super.key});
+
+  @override
+  State<OnboardingCheckWrapper> createState() => _OnboardingCheckWrapperState();
+}
+
+class _OnboardingCheckWrapperState extends State<OnboardingCheckWrapper> {
   bool? _onboardingCompleted;
 
   @override
@@ -127,19 +155,12 @@ class _AuthWrapperState extends State<AuthWrapper> {
   }
 
   Future<void> _checkStatus() async {
-    // Wait for Supabase to be ready (just in case)
-    // Actually SupabaseInit.init() in main() awaits it.
-    
-    // Check repository
     final repo = di.sl<IOnboardingRepository>();
     final result = await repo.hasCompletedOnboarding();
     
-    // result is (Failure?, bool)
-    final isComplete = result.$2; 
-    
     if (mounted) {
       setState(() {
-        _onboardingCompleted = isComplete;
+        _onboardingCompleted = result.$2;
       });
     }
   }

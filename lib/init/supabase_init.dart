@@ -15,14 +15,6 @@ class SupabaseInit {
       anonKey: supabaseAnonKey,
     );
     
-    // Auto-sign in anonymously to allow RLS policies to work (user_id check)
-    try {
-      if (Supabase.instance.client.auth.currentUser == null) {
-        await Supabase.instance.client.auth.signInAnonymously();
-      }
-    } catch (e) {
-      // Ignore for now or log, but proceed.
-      print('Auth Init Error: $e'); 
-    }
+    // Auto-sign in removed. Authentication is now handled by AuthBloc.
   }
 }

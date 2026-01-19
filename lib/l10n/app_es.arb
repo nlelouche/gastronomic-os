@@ -437,5 +437,25 @@
         "type": "int"
       }
     }
-  }
+  },
+  "settingsAccount": "Cuenta",
+  "profileTitle": "Perfil",
+  "profileSubtitle": "Gestiona tu identidad y biografía",
+  "profileNameLabel": "Nombre Visible",
+  "profileBioLabel": "Biografía / Sobre mí",
+  "actionSave": "Guardar",
+  "settingsLogOut": "Cerrar Sesión",
+  "settingsLogOutSubtitle": "Salir de tu cuenta actual",
+  "settingsLogOutDialogTitle": "¿Cerrar Sesión?",
+  "settingsLogOutDialogContent": "¿Estás seguro de que quieres cerrar sesión? Necesitarás iniciar sesión de nuevo para ver tus datos.",
+  "settingsLogOutDialogConfirm": "Cerrar Sesión",
+  "settingsLinkGoogle": "Vincular Cuenta Google",
+  "settingsLinkGoogleSubtitle": "Guarda tu progreso permanentemente",
+  "settingsLinkingAccount": "Vinculando cuenta...",
+  "settingsDeleteGuestData": "Borrar Datos de Invitado",
+  "settingsDeleteGuestDataSubtitle": "Borrar todo y salir",
+  "settingsDeleteGuestDialogTitle": "¿Borrar Datos de Invitado?",
+  "settingsDeleteGuestDialogContent": "Los datos no guardados se perderán. ¿Estás seguro de que quieres eliminar esta sesión?",
+  "settingsDeleteGuestDialogConfirm": "Borrar y Salir",
+  "errorGeneric": "Algo salió mal."
 }

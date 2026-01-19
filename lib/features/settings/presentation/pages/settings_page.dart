@@ -9,12 +9,14 @@ import 'package:gastronomic_os/features/onboarding/presentation/bloc/onboarding_
 import 'package:gastronomic_os/features/settings/presentation/pages/glossary_page.dart';
 import 'package:gastronomic_os/features/settings/presentation/pages/appearance_page.dart';
 import 'package:gastronomic_os/features/onboarding/presentation/bloc/onboarding_state_event.dart';
+import 'package:gastronomic_os/features/profile/presentation/pages/profile_page.dart';
 import 'package:gastronomic_os/features/recipes/presentation/bloc/recipe_bloc.dart';
 import 'package:gastronomic_os/features/recipes/presentation/bloc/recipe_event.dart';
 import 'package:gastronomic_os/main.dart';
 import 'package:gastronomic_os/init/injection_container.dart';
 import 'package:gastronomic_os/core/theme/app_dimens.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:gastronomic_os/core/config/feature_flags.dart';
 
 import 'package:gastronomic_os/features/premium/presentation/pages/paywall_page.dart';
 import 'package:gastronomic_os/features/premium/presentation/bloc/subscription_cubit.dart';
@@ -22,6 +24,9 @@ import 'package:gastronomic_os/features/premium/presentation/bloc/subscription_s
 
 import 'package:gastronomic_os/l10n/generated/app_localizations.dart';
 import 'package:gastronomic_os/core/bloc/localization_bloc.dart';
+import 'package:gastronomic_os/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:gastronomic_os/features/auth/presentation/bloc/auth_state.dart';
+import 'package:gastronomic_os/features/auth/presentation/bloc/auth_event.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
@@ -122,6 +127,77 @@ class _SettingsViewState extends State<SettingsView> {
                     // --- Data Management Section ---
                     SectionHeader(title: AppLocalizations.of(context)!.settingsDataPrivacy.toUpperCase()), 
                     const SizedBox(height: AppDimens.spaceM),
+                    
+                    // --- Account Section ---
+                    SectionHeader(title: AppLocalizations.of(context)!.settingsAccount.toUpperCase()), 
+                    const SizedBox(height: AppDimens.spaceM),
+
+                    BlocBuilder<AuthBloc, AuthState>(
+                      builder: (context, authState) {
+                        final isGuest = authState is AuthGuest;
+                        
+                        return Column(
+                          children: [
+                            _buildSettingsTile(
+                              context,
+                              title: AppLocalizations.of(context)!.profileTitle,
+                              subtitle: AppLocalizations.of(context)!.profileSubtitle,
+                              icon: Icons.person_outline,
+                              onTap: () {
+                                 Navigator.of(context).push(
+                                   MaterialPageRoute(builder: (_) => const ProfilePage()),
+                                 );
+                              },
+                            ),
+                            const SizedBox(height: AppDimens.spaceM),
+
+                            if (isGuest) ...[
+                              if (FeatureFlags.useGoogleAuth)
+                                _buildSettingsTile(
+                                  context,
+                                  title: AppLocalizations.of(context)!.settingsLinkGoogle, 
+                                  subtitle: AppLocalizations.of(context)!.settingsLinkGoogleSubtitle, 
+                                  icon: Icons.link,
+                                  iconColor: Colors.blue,
+                                  onTap: () {
+                                    context.read<AuthBloc>().add(AuthLinkGoogle());
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(content: Text(AppLocalizations.of(context)!.settingsLinkingAccount)) 
+                                    );
+                                  },
+                                ),
+                              if (FeatureFlags.useGoogleAuth)
+                                const SizedBox(height: AppDimens.spaceM),
+                              const SizedBox(height: AppDimens.spaceM),
+                              
+                              _buildSettingsTile(
+                                context,
+                                title: AppLocalizations.of(context)!.settingsDeleteGuestData, 
+                                subtitle: AppLocalizations.of(context)!.settingsDeleteGuestDataSubtitle, 
+                                icon: Icons.delete_forever,
+                                iconColor: colorScheme.error,
+                                onTap: () => _confirmGuestReset(context),
+                                isDestructive: true,
+                              ),
+                            ] else ...[
+                              _buildSettingsTile(
+                                context,
+                                title: AppLocalizations.of(context)!.settingsLogOut,
+                                subtitle: AppLocalizations.of(context)!.settingsLogOutSubtitle,
+                                icon: Icons.logout_rounded,
+                                iconColor: colorScheme.error,
+                                onTap: () => _confirmLogOut(context),
+                                isDestructive: true,
+                              ),
+                            ],
+                          ],
+                        );
+                      },
+                    ),
+                    const SizedBox(height: AppDimens.spaceM),
+                    const SizedBox(height: AppDimens.spaceM),
+
+
                     
                     _buildSettingsTile(
                       context,
@@ -369,6 +445,84 @@ class _SettingsViewState extends State<SettingsView> {
               context.read<OnboardingBloc>().add(ResetOnboarding());
             },
             child: Text(AppLocalizations.of(context)!.settingsResetDialogConfirm),
+          ),
+        ],
+      ).animate().scale(duration: 300.ms, curve: Curves.easeOutBack),
+    );
+  }
+
+  void _confirmLogOut(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (dialogContext) => AlertDialog(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppDimens.radiusXL)),
+        title: Row(
+          children: [
+            const Icon(Icons.logout, color: Colors.red, size: 28),
+            const SizedBox(width: AppDimens.spaceM),
+            Text(AppLocalizations.of(context)!.settingsLogOutDialogTitle, style: GoogleFonts.outfit(fontWeight: FontWeight.bold)),
+          ],
+        ),
+        content: Text(
+          AppLocalizations.of(context)!.settingsLogOutDialogContent,
+          style: const TextStyle(height: 1.5),
+        ),
+        actionsPadding: const EdgeInsets.symmetric(horizontal: AppDimens.paddingPage, vertical: AppDimens.paddingPage),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(dialogContext),
+            child: Text(AppLocalizations.of(context)!.dialogCancel),
+          ),
+          FilledButton(
+            style: FilledButton.styleFrom(
+              backgroundColor: Theme.of(context).colorScheme.error,
+              foregroundColor: Theme.of(context).colorScheme.onError,
+            ),
+            onPressed: () {
+              Navigator.pop(dialogContext);
+              context.read<AuthBloc>().add(AuthSignOut());
+            },
+            child: Text(AppLocalizations.of(context)!.settingsLogOutDialogConfirm),
+          ),
+        ],
+      ).animate().scale(duration: 300.ms, curve: Curves.easeOutBack),
+    );
+  }
+
+  void _confirmGuestReset(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (dialogContext) => AlertDialog(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppDimens.radiusXL)),
+        title: Row(
+          children: [
+            const Icon(Icons.delete_forever, color: Colors.red, size: 28),
+            const SizedBox(width: AppDimens.spaceM),
+            Text(AppLocalizations.of(context)!.settingsDeleteGuestDialogTitle, style: GoogleFonts.outfit(fontWeight: FontWeight.bold)), 
+          ],
+        ),
+        content: Text(
+          AppLocalizations.of(context)!.settingsDeleteGuestDialogContent,
+          style: const TextStyle(height: 1.5),
+        ),
+        actionsPadding: const EdgeInsets.symmetric(horizontal: AppDimens.paddingPage, vertical: AppDimens.paddingPage),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(dialogContext),
+            child: Text(AppLocalizations.of(context)!.dialogCancel),
+          ),
+          FilledButton(
+            style: FilledButton.styleFrom(
+              backgroundColor: Theme.of(context).colorScheme.error,
+              foregroundColor: Theme.of(context).colorScheme.onError,
+            ),
+            onPressed: () {
+              Navigator.pop(dialogContext);
+              // For Guest: Reset Data AND Sign Out
+              context.read<OnboardingBloc>().add(ResetOnboarding());
+              context.read<AuthBloc>().add(AuthSignOut());
+            },
+            child: Text(AppLocalizations.of(context)!.settingsDeleteGuestDialogConfirm), 
           ),
         ],
       ).animate().scale(duration: 300.ms, curve: Curves.easeOutBack),

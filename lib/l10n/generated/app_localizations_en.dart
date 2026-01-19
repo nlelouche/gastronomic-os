@@ -1484,4 +1484,66 @@ class AppLocalizationsEn extends AppLocalizations {
   String recipeStepPrefix(int number) {
     return 'Step $number';
   }
+
+  @override
+  String get settingsAccount => 'Account';
+
+  @override
+  String get profileTitle => 'Profile';
+
+  @override
+  String get profileSubtitle => 'Manage your identity & bio';
+
+  @override
+  String get profileNameLabel => 'Display Name';
+
+  @override
+  String get profileBioLabel => 'Bio / About Me';
+
+  @override
+  String get actionSave => 'Save';
+
+  @override
+  String get settingsLogOut => 'Log Out';
+
+  @override
+  String get settingsLogOutSubtitle => 'Sign out of your account';
+
+  @override
+  String get settingsLogOutDialogTitle => 'Sign Out?';
+
+  @override
+  String get settingsLogOutDialogContent =>
+      'Are you sure you want to sign out? You will need to sign in again to access your data.';
+
+  @override
+  String get settingsLogOutDialogConfirm => 'Sign Out';
+
+  @override
+  String get settingsLinkGoogle => 'Link Google Account';
+
+  @override
+  String get settingsLinkGoogleSubtitle => 'Save your progress permanently';
+
+  @override
+  String get settingsLinkingAccount => 'Linking account...';
+
+  @override
+  String get settingsDeleteGuestData => 'Delete Guest Data';
+
+  @override
+  String get settingsDeleteGuestDataSubtitle => 'Clear all data and exit';
+
+  @override
+  String get settingsDeleteGuestDialogTitle => 'Delete Guest Data?';
+
+  @override
+  String get settingsDeleteGuestDialogContent =>
+      'Unsaved guest data will be lost. Are you sure you want to delete this session?';
+
+  @override
+  String get settingsDeleteGuestDialogConfirm => 'Delete & Exit';
+
+  @override
+  String get errorGeneric => 'Something went wrong.';
 }

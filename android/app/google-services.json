@@ -12,7 +12,20 @@
           "package_name": "com.gastronomic.app"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "844165562343-kiiokk9lam6k9ik0ogkouh9dn6gia249.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gastronomic.app",
+            "certificate_hash": "08d6177d765374411370453408276b85b5f2870e"
+          }
+        },
+        {
+          "client_id": "844165562343-krihfoqlde4a12k755uqsc0rsn2nqgc5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyC5GA0GmxkeSd9J9zHhfe7wU5VvyWn3lGQ"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "844165562343-krihfoqlde4a12k755uqsc0rsn2nqgc5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
